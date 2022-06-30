@@ -1,0 +1,49 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Configs/Prefix" />
+
+# Prefix
+
+This component is used to set the CSS class name prefix of subcomponents. It is recommended to set it only once in the root component. The default value of this component is `"li-"`.
+
+## Example
+
+```tsx
+import React from "react";
+import { Prefix, Button } from "@lilibraries/ui";
+
+function Root() {
+  return (
+    <Prefix value="hello-">
+      <Button /> {/* => "hello-button" */}
+      <Subcomponent />
+    </Prefix>
+  );
+}
+
+function Subcomponent() {
+  const prefix = Prefix.useConfig(); // => "hello-"
+  ...
+}
+```
+
+## API
+
+### Prefix
+
+| Property   | Type        | Description           |
+| ---------- | ----------- | --------------------- |
+| `value`    | `string`    | CSS class name prefix |
+| `children` | `ReactNode` | Subcomponents         |
+
+### Prefix.useConfig()
+
+```ts
+function useConfig(): string;
+```
+
+Get configured CSS class name prefix.
+
+### Prefix.Context
+
+A context returned by `React.createContext`. It's default value is `"li-"`.

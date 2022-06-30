@@ -44,8 +44,11 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.7",
-    "@floating-ui/dom": "^0.4.2",
     "@lilib/hooks": "^0.2.1",
-    "classnames": "^2.3.1"
+    "@types/lodash.omit": "^4.5.7",
+    "@types/lodash.pick": "^4.4.7",
+    "classnames": "^2.3.1",
+    "lodash.omit": "^4.5.0",
+    "lodash.pick": "^4.4.0"
   }
 }
