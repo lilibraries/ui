@@ -1,0 +1,23 @@
+{
+  "*.{ts,tsx}": [
+    "tsc-files --noEmit stories/assets.d.ts",
+    "eslint --fix",
+    "jest --bail --findRelatedTests",
+    "prettier --write",
+    "git add --patch"
+  ],
+  "*.{js,jsx}": [
+    "eslint --fix",
+    "prettier --write",
+    "git add --patch"
+  ],
+  "*.scss": [
+    "stylelint --fix",
+    "prettier --write",
+    "git add --patch"
+  ],
+  "*.{md,mdx,json}": [
+    "prettier --write",
+    "git add --patch"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "packages": ["packages/*"],
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": ["main"],
+      "ignoreChanges": ["**/*.md", "**/tests/**"],
+      "message": "chore(release): %s",
+      "noCommitHooks": true,
+      "conventionalCommits": true
+    },
+    "publish": {
+      "registry": "https://registry.npmjs.org/"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@lilib/styles",
+  "version": "0.0.0",
+  "description": "Style library for components",
+  "keywords": [
+    "ui",
+    "styles",
+    "components"
+  ],
+  "author": "李蔚生",
+  "homepage": "https://lilibraries.github.io/ui/",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilibraries/ui.git",
+    "directory": "packages/styles"
+  },
+  "bugs": {
+    "url": "https://github.com/lilibraries/ui/issues"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": true,
+  "main": "dist/css/index.js",
+  "unpkg": "dist/css/index.min.css",
+  "scripts": {
+    "dist": "rimraf dist && node ../../scripts/styles.js src dist"
+  }
+}
