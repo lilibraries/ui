@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier",
+    "stylelint-config-rational-order"
+  ],
+  "rules": {
+    "value-keyword-case": null,
+    "alpha-value-notation": null,
+    "keyframes-name-pattern": null,
+    "color-function-notation": null,
+    "scss/dollar-variable-pattern": null,
+    "scss/no-global-function-names": null,
+    "scss/dollar-variable-empty-line-before": null
+  }
+}
