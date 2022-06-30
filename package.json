@@ -6,8 +6,8 @@
   ],
   "scripts": {
     "postinstall": "husky install",
-    "start": "start-storybook -p 6006",
-    "build": "rimraf .storybook/dist && build-storybook -o .storybook/dist",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build": "rimraf .storybook/dist && cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook -o .storybook/dist",
     "test": "jest",
     "dist": "lerna run dist",
     "lint": "tsc -p tsconfig.json --noEmit && eslint . --ext .jsx,.js,.ts,.tsx && stylelint **/*.scss && prettier --check . --loglevel warn",
