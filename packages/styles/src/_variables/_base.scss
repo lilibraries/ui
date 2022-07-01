@@ -1,0 +1,24 @@
+$prefix: "li-" !default;
+$intents: ("major", "minor", "positive", "alertive", "negative") !default;
+
+$colors: (
+  "red",
+  "magenta",
+  "purple",
+  "indigo",
+  "navy",
+  "blue",
+  "cyan",
+  "teal",
+  "green",
+  "lime",
+  "yellow",
+  "orange",
+  "brown",
+  "gray"
+) !default;
+
+$motion-duration-base: 300ms !default;
+$motion-duration-fast: 150ms !default;
+$motion-duration-slow: 750ms !default;
+$motion-duration-lazy: 1250ms !default;

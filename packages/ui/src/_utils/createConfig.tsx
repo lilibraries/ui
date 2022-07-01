@@ -48,8 +48,8 @@ function createConfig<
           ? cloneElement(children, {
               ...restProps,
               ...children.props,
+              style: { ...restProps.style, ...children.props.style },
               className: cn(restProps.className, children.props.className),
-              style: Object.assign({}, restProps.style, children.props.style),
             })
           : children}
       </Context.Provider>
