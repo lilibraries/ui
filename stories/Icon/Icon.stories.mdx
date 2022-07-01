@@ -1,0 +1,39 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/Icon" />
+
+# Icon
+
+This component is just a wrapper for correcting icon alignment with text content around. This project doesn't provide a collection of icons. You can find many icon libraries in the open source community. [react-icons](https://react-icons.github.io/react-icons) is recommended, and it combines many other free icon libraries.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-icon--basic" />
+</Canvas>
+
+### Spinning
+
+<Canvas mdxSource={require("!!raw-loader!./Spinning").default}>
+  <Story id="examples-icon--spinning" />
+</Canvas>
+
+### Nested
+
+Icon component can be nested. It will clone the innermost Icon element as the result, and all refs will be applied.
+
+<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
+  <Story id="examples-icon--nested" />
+</Canvas>
+
+## Props
+
+| Property   | Type        | Description                                  |
+| ---------- | ----------- | -------------------------------------------- |
+| `icon`     | `ReactNode` | Element wrapped by Icon component            |
+| `children` | `ReactNode` | Same as `icon` prop, but with lower priority |
+| `spinning` | `boolean`   | Whether to perform rotate animation          |
+
+It accepts all props which the native `<span>` element supports.

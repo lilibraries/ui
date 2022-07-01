@@ -1,0 +1,3 @@
+@function light-color($color, $amount) {
+  @return mix(#fff, $color, $amount);
+}

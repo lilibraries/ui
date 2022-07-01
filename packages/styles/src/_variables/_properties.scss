@@ -1,0 +1,11 @@
+@import "./base";
+@import "../_functions/merge-maps";
+
+$base-properties: (
+  "--motion-duration-base": $motion-duration-base,
+  "--motion-duration-fast": $motion-duration-fast,
+  "--motion-duration-slow": $motion-duration-slow,
+  "--motion-duration-lazy": $motion-duration-lazy,
+) !default;
+
+$properties: merge-maps($base-properties) !default;

@@ -1,0 +1,13 @@
+@import "../_variables/base";
+@import "../_variables/properties";
+
+@function var($name) {
+  $property: str-insert($name, $prefix, 3);
+  $value: map-get($properties, $name);
+
+  @if not $value {
+    @error "Can't find " + $name + " property";
+  }
+
+  @return unquote("var(" + $property + ", " + $value + ")");
+}
