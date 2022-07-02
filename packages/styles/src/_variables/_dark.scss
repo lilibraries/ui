@@ -1,0 +1,103 @@
+@import "./light";
+@import "../_functions/light-color";
+@import "../_functions/shade-color";
+
+$dark-red: light-color($red, 20%) !default;
+$dark-magenta: light-color($magenta, 20%) !default;
+$dark-purple: light-color($purple, 20%) !default;
+$dark-indigo: light-color($indigo, 20%) !default;
+$dark-navy: light-color($navy, 20%) !default;
+$dark-blue: light-color($blue, 20%) !default;
+$dark-cyan: light-color($cyan, 20%) !default;
+$dark-teal: light-color($teal, 20%) !default;
+$dark-green: light-color($green, 20%) !default;
+$dark-lime: light-color($lime, 20%) !default;
+$dark-yellow: light-color($yellow, 20%) !default;
+$dark-orange: light-color($orange, 20%) !default;
+$dark-brown: light-color($brown, 20%) !default;
+$dark-gray: light-color($gray, 20%) !default;
+
+$dark-base: $base !default;
+$dark-major: light-color($major, 20%) !default;
+$dark-minor: light-color($minor, 20%) !default;
+$dark-positive: light-color($positive, 20%) !default;
+$dark-alertive: light-color($alertive, 20%) !default;
+$dark-negative: light-color($negative, 20%) !default;
+
+$dark-text-color-base: light-color($dark-base, 70%) !default;
+$dark-text-color-hover: light-color($dark-base, 85%) !default;
+$dark-text-color-active: $white !default;
+$dark-text-color-inactive: shade-color($dark-base, 15%) !default;
+$dark-text-color-disabled: shade-color($dark-base, 30%) !default;
+
+$dark-text-color-reverse-base: rgba($black, 0.8) !default;
+$dark-text-color-reverse-hover: rgba($black, 0.9) !default;
+$dark-text-color-reverse-active: $black !default;
+$dark-text-color-reverse-inactive: rgba($black, 0.45) !default;
+$dark-text-color-reverse-disabled: rgba($black, 0.35) !default;
+
+$dark-text-color-major-base: $dark-major !default;
+$dark-text-color-major-hover: light-color($dark-major, 20%) !default;
+$dark-text-color-major-active: light-color($dark-major, 40%) !default;
+$dark-text-color-major-inactive: shade-color($dark-major, 20%) !default;
+$dark-text-color-major-disabled: shade-color($dark-major, 40%) !default;
+
+$dark-text-color-minor-base: $dark-minor !default;
+$dark-text-color-minor-hover: light-color($dark-minor, 20%) !default;
+$dark-text-color-minor-active: light-color($dark-minor, 40%) !default;
+$dark-text-color-minor-inactive: shade-color($dark-minor, 20%) !default;
+$dark-text-color-minor-disabled: shade-color($dark-minor, 40%) !default;
+
+$dark-text-color-positive-base: $dark-positive !default;
+$dark-text-color-positive-hover: light-color($dark-positive, 20%) !default;
+$dark-text-color-positive-active: light-color($dark-positive, 40%) !default;
+$dark-text-color-positive-inactive: shade-color($dark-positive, 20%) !default;
+$dark-text-color-positive-disabled: shade-color($dark-positive, 40%) !default;
+
+$dark-text-color-alertive-base: $dark-alertive !default;
+$dark-text-color-alertive-hover: light-color($alertive, 20%) !default;
+$dark-text-color-alertive-active: light-color($alertive, 40%) !default;
+$dark-text-color-alertive-inactive: shade-color($alertive, 20%) !default;
+$dark-text-color-alertive-disabled: shade-color($alertive, 40%) !default;
+
+$dark-text-color-negative-base: $dark-negative !default;
+$dark-text-color-negative-hover: light-color($dark-negative, 20%) !default;
+$dark-text-color-negative-active: light-color($dark-negative, 40%) !default;
+$dark-text-color-negative-inactive: shade-color($dark-negative, 20%) !default;
+$dark-text-color-negative-disabled: shade-color($dark-negative, 40%) !default;
+
+$dark-border-color-base: shade-color($dark-base, 40%) !default;
+$dark-border-color-hover: shade-color($dark-base, 30%) !default;
+$dark-border-color-active: shade-color($dark-base, 20%) !default;
+$dark-border-color-inactive: shade-color($dark-base, 50%) !default;
+$dark-border-color-disabled: shade-color($dark-base, 60%) !default;
+
+$dark-border-color-major-base: shade-color($dark-major, 40%) !default;
+$dark-border-color-major-hover: shade-color($dark-major, 30%) !default;
+$dark-border-color-major-active: shade-color($dark-major, 20%) !default;
+$dark-border-color-major-inactive: shade-color($dark-major, 50%) !default;
+$dark-border-color-major-disabled: shade-color($dark-major, 60%) !default;
+
+$dark-border-color-minor-base: shade-color($dark-minor, 40%) !default;
+$dark-border-color-minor-hover: shade-color($dark-minor, 30%) !default;
+$dark-border-color-minor-active: shade-color($dark-minor, 20%) !default;
+$dark-border-color-minor-inactive: shade-color($dark-minor, 50%) !default;
+$dark-border-color-minor-disabled: shade-color($dark-minor, 60%) !default;
+
+$dark-border-color-positive-base: shade-color($dark-positive, 40%) !default;
+$dark-border-color-positive-hover: shade-color($dark-positive, 30%) !default;
+$dark-border-color-positive-active: shade-color($dark-positive, 20%) !default;
+$dark-border-color-positive-inactive: shade-color($dark-positive, 50%) !default;
+$dark-border-color-positive-disabled: shade-color($dark-positive, 60%) !default;
+
+$dark-border-color-alertive-base: shade-color($dark-alertive, 40%) !default;
+$dark-border-color-alertive-hover: shade-color($dark-alertive, 30%) !default;
+$dark-border-color-alertive-active: shade-color($dark-alertive, 20%) !default;
+$dark-border-color-alertive-inactive: shade-color($dark-alertive, 50%) !default;
+$dark-border-color-alertive-disabled: shade-color($dark-alertive, 60%) !default;
+
+$dark-border-color-negative-base: shade-color($dark-negative, 40%) !default;
+$dark-border-color-negative-hover: shade-color($dark-negative, 30%) !default;
+$dark-border-color-negative-active: shade-color($dark-negative, 20%) !default;
+$dark-border-color-negative-inactive: shade-color($dark-negative, 50%) !default;
+$dark-border-color-negative-disabled: shade-color($dark-negative, 60%) !default;

@@ -2,8 +2,8 @@ import { create } from "@storybook/theming";
 
 const common = {
   brandTitle: "UI",
-  appBorderRadius: 4,
-  inputBorderRadius: 4,
+  appBorderRadius: 8,
+  inputBorderRadius: 8,
   fontBase:
     'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   fontCode: 'Menlo, Monaco, Consolas, "Courier New", Courier, monospace',
