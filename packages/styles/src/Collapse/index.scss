@@ -1,0 +1,18 @@
+@import "../_variables/base";
+@import "../_mixins/transition";
+
+.#{$prefix}collapse {
+  &.#{$prefix}transition {
+    &-enter,
+    &-entering,
+    &-exit,
+    &-exiting {
+      overflow: hidden;
+      @include transition(fast, height);
+    }
+
+    &-exited {
+      display: none;
+    }
+  }
+}
