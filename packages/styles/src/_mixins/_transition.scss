@@ -1,0 +1,32 @@
+@import "../_functions/var";
+
+$durations: (
+  "base": var(--motion-duration-base),
+  "fast": var(--motion-duration-fast),
+  "slow": var(--motion-duration-slow),
+  "lazy": var(--motion-duration-lazy),
+);
+
+@mixin transition($speed, $properties...) {
+  @if $speed != base and $speed != fast and $speed != slow and $speed != lazy {
+    @error "Mixin `transition`'s first param must be on of `base`, `fast`, `slow` or `lazy`.";
+  }
+
+  $duration: map-get($durations, $speed);
+
+  @if length($properties) == 0 {
+    transition: all $duration var(--motion-function-base);
+  } @else {
+    $transition: ();
+
+    @for $i from 1 through length($properties) {
+      $transition: append(
+        $transition,
+        nth($properties, $i) $duration var(--motion-function-base),
+        comma
+      );
+    }
+
+    transition: $transition;
+  }
+}

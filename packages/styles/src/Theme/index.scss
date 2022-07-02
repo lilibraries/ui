@@ -1,0 +1,24 @@
+@import "../_variables/base";
+@import "../_variables/properties";
+
+.#{$prefix}light {
+  @each $name, $value in $light-properties {
+    $property: str-insert($name, $prefix, 3);
+
+    #{$property}: $value;
+  }
+
+  color-scheme: light;
+  color: unquote("var(--" + $prefix + "text-color-base)");
+}
+
+.#{$prefix}dark {
+  @each $name, $value in $dark-properties {
+    $property: str-insert($name, $prefix, 3);
+
+    #{$property}: $value;
+  }
+
+  color-scheme: dark;
+  color: unquote("var(--" + $prefix + "text-color-base)");
+}
