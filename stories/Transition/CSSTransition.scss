@@ -1,0 +1,15 @@
+.css-transition-example {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.css-transition-example-enter,
+.css-transition-example-exit,
+.css-transition-example-exiting,
+.css-transition-example-exited {
+  opacity: 0;
+}
+
+.css-transition-example-entering,
+.css-transition-example-entered {
+  opacity: 1;
+}

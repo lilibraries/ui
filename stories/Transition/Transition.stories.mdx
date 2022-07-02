@@ -1,0 +1,87 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Animations/Transition" />
+
+# Transition
+
+This component is like a combination of the Transition and CSSTransition components in [react-transition-group](https://reactcommunity.org/react-transition-group/). The biggest difference is that this component can delay entering and exiting.
+
+## Examples
+
+### Basic
+
+The following example will show content after 500ms when the checkbox is on.
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-transition--basic" />
+</Canvas>
+
+### CSS Transition
+
+You can set `classNames` prop to enable CSS transition. `classNames` has three types:
+
+- `boolean`: Use built-in class names, such as `li-enter`.
+- `string`: Prefix the class names with the string.
+- `object`: Set the class names of each state separately.
+
+The Transition component will automatically add the corresponding class name for the child element according to different states.
+
+<Canvas mdxSource={require("!!raw-loader!./CSSTransition").default}>
+  <Story id="examples-transition--css-transition" />
+</Canvas>
+
+## API
+
+### Transition
+
+| Property        | Type                                                              | Description                                                                                                    |
+| --------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `children`      | `ReactElement` &#124; `(state: TransitionState) => ReactElement)` | **Required.** Must be a React element, or a function returns a React element.                                  |
+| `durations`     | `number` &#124; `TransitionDurations`                             | **Required.** Specify transition durations. It is usually consistent with the duration time of CSS transition. |
+| `in`            | `boolean`                                                         | Enter when `true`, exit when `false`                                                                           |
+| `enterDelay`    | `number`                                                          | Delay time on enter, in milliseconds                                                                           |
+| `exitDelay`     | `number`                                                          | Delay time on exit, in milliseconds                                                                            |
+| `appearOnEnter` | `boolean`                                                         | Perform enter phase when the `in` prop is initially true                                                       |
+| `unmountOnExit` | `boolean`                                                         | Remove DOM node when the component is exited                                                                   |
+| classNames      | `boolean` &#124; `string` &#124; `TransitionClassNames`           | Specify classNames in different states                                                                         |
+| `onEnter`       | `() => void`                                                      | State changes to `"enter"`                                                                                     |
+| `onEntering`    | `() => void`                                                      | State changes to `"entering"`                                                                                  |
+| `onEntered`     | `() => void`                                                      | State changes to `"entered"`                                                                                   |
+| `onExit`        | `() => void`                                                      | State changes to `"exit"`                                                                                      |
+| `onExiting`     | `() => void`                                                      | State changes to `"exiting"`                                                                                   |
+| `onExited`      | `() => void`                                                      | State changes to `"exited"`                                                                                    |
+
+```ts
+type TransitionState =
+  | "enter"
+  | "entering"
+  | "entered"
+  | "exit"
+  | "exiting"
+  | "exited";
+
+interface TransitionDurations {
+  entering: number;
+  exiting: number;
+}
+
+interface TransitionClassNames {
+  enter?: string | boolean;
+  entering?: string | boolean;
+  entered?: string | boolean;
+  exit?: string | boolean;
+  exiting?: string | boolean;
+  exited?: string | boolean;
+}
+```
+
+### Static properties
+
+```ts
+Transition.ENTER = "enter";
+Transition.ENTERING = "entering";
+Transition.ENTERED = "entered";
+Transition.EXIT = "exit";
+Transition.EXITING = "exiting";
+Transition.EXITED = "exited";
+```
