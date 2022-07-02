@@ -1,3 +1,4 @@
+export * from "./Compact";
 export * from "./Duration";
 export * from "./Icon";
 export * from "./Prefix";
@@ -5,6 +6,7 @@ export * from "./Size";
 export * from "./Theme";
 export * from "./Transition";
 
+export { default as Compact } from "./Compact";
 export { default as Duration } from "./Duration";
 export { default as Icon } from "./Icon";
 export { default as Prefix } from "./Prefix";
