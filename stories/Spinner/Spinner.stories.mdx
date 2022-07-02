@@ -1,0 +1,69 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Feedbacks/Spinner" />
+
+# Spinner
+
+A inline loading indicator.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-spinner--basic" />
+</Canvas>
+
+### Contained
+
+It is contained when the `children` prop is renderable or the `contained` prop is `true`. In contained state, the component will perform zoom animation, and it will keep the space when it's not spinning.
+
+<Canvas mdxSource={require("!!raw-loader!./Contained").default}>
+  <Story id="examples-spinner--contained" />
+</Canvas>
+
+### Custom icon
+
+<Canvas mdxSource={require("!!raw-loader!./CustomIcon").default}>
+  <Story id="examples-spinner--custom-icon" />
+</Canvas>
+
+### Delay
+
+The following example will show spinner after 500ms when the switch is on.
+
+<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
+  <Story id="examples-spinner--delay" />
+</Canvas>
+
+### Config
+
+`Spinner` provides `Spinner.Config` component to set `delay` and `icon` for all sub Spinner components. The following example will show custom spinner icon after 500ms when the checkbox is on.
+
+<Canvas mdxSource={require("!!raw-loader!./Config").default}>
+  <Story id="examples-spinner--config" />
+</Canvas>
+
+## Props
+
+### Spinner
+
+| Property     | Type                                      | Description                          |
+| ------------ | ----------------------------------------- | ------------------------------------ |
+| `children`   | `ReactNode`                               | Element wrapped by Spinner component |
+| `icon`       | `ReactNode`                               | Custom spinner icon                  |
+| `delay`      | `number`                                  | Spinning delay time, in milliseconds |
+| `spinning`   | `boolean`                                 | Whether the Spinner is spinning      |
+| `contained`  | `boolean`                                 | Assume the `children` is renderable  |
+| `startSpace` | `boolean` &#124; `number` &#124; `string` | Start space from other elements      |
+| `endSpace`   | `boolean` &#124; `number` &#124; `string` | End space from other elements        |
+
+It accepts all props which the native `<span>` element supports.
+
+### Spinner.Config
+
+| Property   | Type        | Description                          |
+| ---------- | ----------- | ------------------------------------ |
+| `children` | `ReactNode` | Subcomponents                        |
+| `icon`     | `ReactNode` | Custom spinner icon                  |
+| `delay`    | `number`    | Spinning delay time, in milliseconds |

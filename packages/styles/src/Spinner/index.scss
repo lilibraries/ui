@@ -1,0 +1,71 @@
+@import "../_variables/base";
+@import "../_functions/var";
+@import "../_mixins/transition";
+
+.#{$prefix}spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  vertical-align: -0.125em;
+
+  &.#{$prefix}start-spaced {
+    margin-left: 0.375em;
+  }
+
+  &.#{$prefix}end-spaced {
+    margin-right: 0.375em;
+  }
+
+  &.#{$prefix}contained {
+    position: relative;
+
+    & > .#{$prefix}spinner-switcher {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      @include transition(fast, transform, opacity);
+
+      &.#{$prefix}transition {
+        &-enter,
+        &-exit,
+        &-exiting,
+        &-exited {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}standalone {
+    @include transition(
+      fast,
+      width,
+      margin-right,
+      margin-left,
+      transform,
+      opacity
+    );
+
+    &.#{$prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        width: 0.01px;
+        margin-right: 0;
+        margin-left: 0;
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  }
+}
