@@ -1,0 +1,72 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Feedbacks/Loader" />
+
+# Loader
+
+A block loading indicator.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-loader--basic" />
+</Canvas>
+
+### Standalone
+
+<Canvas mdxSource={require("!!raw-loader!./Standalone").default}>
+  <Story id="examples-loader--standalone" />
+</Canvas>
+
+### Custom icon
+
+<Canvas mdxSource={require("!!raw-loader!./CustomIcon").default}>
+  <Story id="examples-loader--custom-icon" />
+</Canvas>
+
+### Delay
+
+The following example will show loader after 500ms when the switch is on.
+
+<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
+  <Story id="examples-loader--delay" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-loader--sizes" />
+</Canvas>
+
+### Config
+
+`Loader` provides `Loader.Config` component to set `icon`, `message` and `delay` props for all sub Loader components. The following example will show custom loader icon after 500ms when the checkbox is on.
+
+<Canvas mdxSource={require("!!raw-loader!./Config").default}>
+  <Story id="examples-loader--config" />
+</Canvas>
+
+## Props
+
+### Loader
+
+| Property   | Type                                     | Description                   |
+| ---------- | ---------------------------------------- | ----------------------------- |
+| `children` | `ReactNode`                              | Content                       |
+| `size`     | `null` &#124; `"small"` &#124; `"large"` | Size                          |
+| `icon`     | `ReactNode`                              | Custom loader icon            |
+| `message`  | `ReactNode`                              | Tip message                   |
+| `delay`    | `number`                                 | Delay time, in milliseconds   |
+| `loading`  | `boolean`                                | Whether the Loader is loading |
+
+It accepts all props which the native `<div>` element supports.
+
+### Loader.Config
+
+| Property  | Type        | Description                 |
+| --------- | ----------- | --------------------------- |
+| `icon`    | `ReactNode` | Custom Loader icon          |
+| `message` | `ReactNode` | Tip message                 |
+| `delay`   | `number`    | Delay time, in milliseconds |
