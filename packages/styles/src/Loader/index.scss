@@ -1,0 +1,97 @@
+@import "../_variables/base";
+@import "../_functions/var";
+@import "../_mixins/transition";
+
+.#{$prefix}loader {
+  & > .#{$prefix}loader-content,
+  & > .#{$prefix}loader-mask {
+    & > .#{$prefix}loader-icon {
+      flex: 0 0 auto;
+      color: var(--text-color-base);
+      font-size: var(--line-height-fixed-base);
+    }
+
+    & > .#{$prefix}loader-message {
+      flex: 0 0 auto;
+      margin-top: var(--space-xxs);
+      color: var(--text-color-base);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+    }
+  }
+
+  &.#{$prefix}small {
+    & > .#{$prefix}loader-content,
+    & > .#{$prefix}loader-mask {
+      & > .#{$prefix}icon {
+        font-size: var(--line-height-fixed-small);
+      }
+
+      & > .#{$prefix}loader-message {
+        font-size: var(--font-size-small);
+      }
+    }
+  }
+
+  &.#{$prefix}large {
+    & > .#{$prefix}loader-content,
+    & > .#{$prefix}loader-mask {
+      & > .#{$prefix}icon {
+        font-size: var(--line-height-fixed-large);
+      }
+
+      & > .#{$prefix}loader-message {
+        font-size: var(--font-size-large);
+      }
+    }
+  }
+
+  &.#{$prefix}contained {
+    position: relative;
+
+    & > .#{$prefix}loader-content {
+      @include transition(fast, opacity, filter);
+
+      &.#{$prefix}transition {
+        &-enter,
+        &-entering,
+        &-entered {
+          opacity: 0.2;
+          filter: blur(var(--blur-small));
+        }
+      }
+    }
+
+    & > .#{$prefix}loader-mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+      @include transition(fast, opacity);
+
+      &.#{$prefix}transition {
+        &-enter,
+        &-exit,
+        &-exiting {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}standalone {
+    & > .#{$prefix}loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+  }
+}
