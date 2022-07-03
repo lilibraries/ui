@@ -26,6 +26,22 @@ $positive: $green !default;
 $alertive: $orange !default;
 $negative: $red !default;
 
+$bg-color-base: $white;
+$bg-color-light: light-color($base, 90%);
+$bg-color-dense: light-color($base, 80%);
+$bg-color-alpha-light: rgba($base, 0.1);
+$bg-color-alpha-dense: rgba($base, 0.2);
+$bg-color-major-light: rgba($major, 0.1);
+$bg-color-major-dense: rgba($major, 0.2);
+$bg-color-minor-light: rgba($minor, 0.1);
+$bg-color-minor-dense: rgba($minor, 0.2);
+$bg-color-positive-light: rgba($positive, 0.1);
+$bg-color-positive-dense: rgba($positive, 0.2);
+$bg-color-alertive-light: rgba($alertive, 0.1);
+$bg-color-alertive-dense: rgba($alertive, 0.2);
+$bg-color-negative-light: rgba($negative, 0.1);
+$bg-color-negative-dense: rgba($negative, 0.2);
+
 $text-color-base: shade-color($base, 60%) !default;
 $text-color-hover: shade-color($base, 75%) !default;
 $text-color-active: $black !default;

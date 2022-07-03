@@ -1,0 +1,109 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Forms/Button" />
+
+# Button
+
+Button components.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-button--basic" />
+</Canvas>
+
+### As link
+
+<Canvas mdxSource={require("!!raw-loader!./AsLink").default}>
+  <Story id="examples-button--as-link" />
+</Canvas>
+
+### With icons
+
+<Canvas mdxSource={require("!!raw-loader!./WithIcons").default}>
+  <Story id="examples-button--with-icons" />
+</Canvas>
+
+### Icon only
+
+<Canvas mdxSource={require("!!raw-loader!./IconOnly").default}>
+  <Story id="examples-button--icon-only" />
+</Canvas>
+
+### Round
+
+<Canvas mdxSource={require("!!raw-loader!./Round").default}>
+  <Story id="examples-button--round" />
+</Canvas>
+
+### Fluid
+
+<Canvas mdxSource={require("!!raw-loader!./Fluid").default}>
+  <Story id="examples-button--fluid" />
+</Canvas>
+
+### Truncated
+
+<Canvas mdxSource={require("!!raw-loader!./Truncated").default}>
+  <Story id="examples-button--truncated" />
+</Canvas>
+
+### Loading
+
+<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
+  <Story id="examples-button--loading" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-button--sizes" />
+</Canvas>
+
+### Intents
+
+<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
+  <Story id="examples-button--intents" />
+</Canvas>
+
+### Outlined
+
+<Canvas mdxSource={require("!!raw-loader!./Outlined").default}>
+  <Story id="examples-button--outlined" />
+</Canvas>
+
+### Flat
+
+<Canvas mdxSource={require("!!raw-loader!./Flat").default}>
+  <Story id="examples-button--flat" />
+</Canvas>
+
+### Disabled
+
+<Canvas mdxSource={require("!!raw-loader!./Disabled").default}>
+  <Story id="examples-button--disabled" />
+</Canvas>
+
+## Props
+
+| Property          | Type                                                                                                 | Description                            |
+| ----------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `as`              | `ElementType`                                                                                        | Element type, default is `"button"`    |
+| `children`        | `ReactNode`                                                                                          | Button content                         |
+| `variant`         | `null` &#124; `"outlined"`&#124; `"flat"`                                                            | Variant                                |
+| `intent`          | `null` &#124; `"major"` &#124; `"minor"` &#124; `"positive"` &#124; `"alertive"` &#124; `"negative"` | Intent                                 |
+| `size`            | `null` &#124; `"small"` &#124; `"large"`                                                             | Size                                   |
+| `fluid`           | `boolean`                                                                                            | Display like a block element           |
+| `round`           | `boolean`                                                                                            | Make corners round                     |
+| `truncated`       | `boolean`                                                                                            | Truncate text when it exceeds one line |
+| `active`          | `boolean`                                                                                            | Active state                           |
+| `disabled`        | `boolean`                                                                                            | Disabled state                         |
+| `startIcon`       | `ReactNode`                                                                                          | Start icon                             |
+| `endIcon`         | `ReactNode`                                                                                          | End icon                               |
+| `iconOnly`        | `boolean`                                                                                            | Show icon only                         |
+| `loading`         | `boolean`                                                                                            | Show spinner                           |
+| `loadingPosition` | `null` &#124; `"start"` &#124; `"center"` &#124; `"end"`                                             | Specify spinner position               |
+
+It accepts all props which the `as` element type supports.
