@@ -24,6 +24,22 @@ $dark-positive: light-color($positive, 20%) !default;
 $dark-alertive: light-color($alertive, 20%) !default;
 $dark-negative: light-color($negative, 20%) !default;
 
+$dark-bg-color-base: shade-color($dark-base, 70%);
+$dark-bg-color-light: shade-color($dark-base, 60%);
+$dark-bg-color-dense: shade-color($dark-base, 50%);
+$dark-bg-color-alpha-light: rgba($dark-base, 0.15);
+$dark-bg-color-alpha-dense: rgba($dark-base, 0.3);
+$dark-bg-color-major-light: rgba($dark-major, 0.15);
+$dark-bg-color-major-dense: rgba($dark-major, 0.3);
+$dark-bg-color-minor-light: rgba($dark-minor, 0.15);
+$dark-bg-color-minor-dense: rgba($dark-minor, 0.3);
+$dark-bg-color-positive-light: rgba($dark-positive, 0.15);
+$dark-bg-color-positive-dense: rgba($dark-positive, 0.3);
+$dark-bg-color-alertive-light: rgba($dark-alertive, 0.15);
+$dark-bg-color-alertive-dense: rgba($dark-alertive, 0.3);
+$dark-bg-color-negative-light: rgba($dark-negative, 0.15);
+$dark-bg-color-negative-dense: rgba($dark-negative, 0.3);
+
 $dark-text-color-base: light-color($dark-base, 70%) !default;
 $dark-text-color-hover: light-color($dark-base, 85%) !default;
 $dark-text-color-active: $white !default;

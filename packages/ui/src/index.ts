@@ -1,3 +1,4 @@
+export * from "./Button";
 export * from "./Collapse";
 export * from "./Compact";
 export * from "./Duration";
@@ -9,6 +10,7 @@ export * from "./Spinner";
 export * from "./Theme";
 export * from "./Transition";
 
+export { default as Button } from "./Button";
 export { default as Collapse } from "./Collapse";
 export { default as Compact } from "./Compact";
 export { default as Duration } from "./Duration";

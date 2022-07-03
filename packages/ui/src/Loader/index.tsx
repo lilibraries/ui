@@ -19,6 +19,7 @@ import LoaderIcon from "../_icons/LoaderIcon";
 import isRenderableNode from "../_utils/isRenderableNode";
 import LoaderConfig from "./LoaderConfig";
 
+export * from "./LoaderConfig";
 export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
   icon?: ReactNode;
@@ -26,7 +27,6 @@ export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   delay?: number;
   loading?: boolean;
 }
-
 export type LoaderComponent = ForwardRefExoticComponent<
   PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>
 > & {

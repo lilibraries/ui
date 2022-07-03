@@ -18,6 +18,7 @@ import isRenderableNode from "../_utils/isRenderableNode";
 import isCSSPropertyValue from "../_utils/isCSSPropertyValue";
 import SpinnerConfig from "./SpinnerConfig";
 
+export * from "./SpinnerConfig";
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
   delay?: number;
