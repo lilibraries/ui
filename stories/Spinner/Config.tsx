@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spinner, SpinnerProps } from "@lilib/ui";
+import { Spinner, SpinnerProps, Switch } from "@lilib/ui";
 import { FiLoader } from "react-icons/fi";
 
 function Config(props: SpinnerProps) {
@@ -7,8 +7,7 @@ function Config(props: SpinnerProps) {
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={spinning}
         onChange={(event) => setSpinning(event.target.checked)}
       />{" "}

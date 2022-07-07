@@ -1,6 +1,6 @@
 import createConfig from "../_utils/createConfig";
 
-export type ButtonVariant = null | "outlined" | "flat";
+export type ButtonVariant = null | "solid" | "outlined" | "flat";
 export type ButtonIntent =
   | null
   | "major"

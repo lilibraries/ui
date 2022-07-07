@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonProps } from "@lilib/ui";
+import { Button, ButtonProps, Switch } from "@lilib/ui";
 
 function Truncated(props: ButtonProps) {
   const [truncated, setTruncated] = useState(true);
@@ -7,8 +7,7 @@ function Truncated(props: ButtonProps) {
   return (
     <>
       <div style={{ marginBottom: 8 }}>
-        <input
-          type="checkbox"
+        <Switch
           checked={truncated}
           onChange={(event) => setTruncated(event.target.checked)}
         />

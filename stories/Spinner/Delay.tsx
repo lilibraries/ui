@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Spinner, SpinnerProps } from "@lilib/ui";
+import { Spinner, SpinnerProps, Switch } from "@lilib/ui";
 
 function Delay(props: SpinnerProps) {
   const [spinning, setSpinning] = useState(false);
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={spinning}
         onChange={(event) => setSpinning(event.target.checked)}
       />{" "}

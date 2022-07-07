@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Collapse, CollapseProps } from "@lilib/ui";
+import { Collapse, CollapseProps, Switch } from "@lilib/ui";
 
 function ScrollElement(props: CollapseProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={open}
         onChange={(event) => setOpen(event.target.checked)}
       />

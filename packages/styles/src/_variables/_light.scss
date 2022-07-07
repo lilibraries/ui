@@ -27,22 +27,43 @@ $alertive: $orange !default;
 $negative: $red !default;
 
 $bg-color-base: $white;
-$bg-color-light: light-color($base, 90%);
-$bg-color-dense: light-color($base, 80%);
-$bg-color-alpha-light: rgba($base, 0.1);
-$bg-color-alpha-dense: rgba($base, 0.2);
-$bg-color-major-light: rgba($major, 0.1);
-$bg-color-major-dense: rgba($major, 0.2);
-$bg-color-minor-light: rgba($minor, 0.1);
-$bg-color-minor-dense: rgba($minor, 0.2);
-$bg-color-positive-light: rgba($positive, 0.1);
-$bg-color-positive-dense: rgba($positive, 0.2);
-$bg-color-alertive-light: rgba($alertive, 0.1);
-$bg-color-alertive-dense: rgba($alertive, 0.2);
-$bg-color-negative-light: rgba($negative, 0.1);
-$bg-color-negative-dense: rgba($negative, 0.2);
+$bg-color-soft: light-color($base, 90%);
+$bg-color-deep: light-color($base, 80%);
+$bg-color-alpha-soft: rgba($base, 0.1);
+$bg-color-alpha-deep: rgba($base, 0.2);
+
+$bg-color-major-base: light-color($major, 90%);
+$bg-color-major-soft: light-color($major, 80%);
+$bg-color-major-deep: light-color($major, 70%);
+$bg-color-major-alpha-soft: rgba($major, 0.1);
+$bg-color-major-alpha-deep: rgba($major, 0.2);
+
+$bg-color-minor-base: light-color($minor, 90%);
+$bg-color-minor-soft: light-color($minor, 80%);
+$bg-color-minor-deep: light-color($minor, 70%);
+$bg-color-minor-alpha-soft: rgba($minor, 0.1);
+$bg-color-minor-alpha-deep: rgba($minor, 0.2);
+
+$bg-color-positive-base: light-color($positive, 90%);
+$bg-color-positive-soft: light-color($positive, 80%);
+$bg-color-positive-deep: light-color($positive, 70%);
+$bg-color-positive-alpha-soft: rgba($positive, 0.1);
+$bg-color-positive-alpha-deep: rgba($positive, 0.2);
+
+$bg-color-alertive-base: light-color($alertive, 90%);
+$bg-color-alertive-soft: light-color($alertive, 80%);
+$bg-color-alertive-deep: light-color($alertive, 70%);
+$bg-color-alertive-alpha-soft: rgba($alertive, 0.1);
+$bg-color-alertive-alpha-deep: rgba($alertive, 0.2);
+
+$bg-color-negative-base: light-color($negative, 90%);
+$bg-color-negative-soft: light-color($negative, 80%);
+$bg-color-negative-deep: light-color($negative, 70%);
+$bg-color-negative-alpha-soft: rgba($negative, 0.1);
+$bg-color-negative-alpha-deep: rgba($negative, 0.2);
 
 $text-color-base: shade-color($base, 60%) !default;
+$text-color-muted: $base !default;
 $text-color-hover: shade-color($base, 75%) !default;
 $text-color-active: $black !default;
 $text-color-inactive: light-color($base, 20%) !default;
@@ -52,7 +73,7 @@ $text-color-reverse-base: $white !default;
 $text-color-reverse-hover: $white !default;
 $text-color-reverse-active: $white !default;
 $text-color-reverse-inactive: rgba($white, 0.7) !default;
-$text-color-reverse-disabled: rgba($white, 0.6) !default;
+$text-color-reverse-disabled: rgba($white, 0.7) !default;
 
 $text-color-major-base: $major !default;
 $text-color-major-hover: shade-color($major, 20%) !default;
