@@ -6,7 +6,7 @@ export default {
     },
     variant: {
       control: { type: "select" },
-      options: [null, "outlined", "flat"],
+      options: [null, "solid", "outlined", "flat"],
     },
     intent: {
       control: { type: "select" },

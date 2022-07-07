@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Transition, TransitionProps } from "@lilib/ui";
+import { Transition, TransitionProps, Switch } from "@lilib/ui";
 
 function Basic(props: TransitionProps) {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={visible}
         onChange={(event) => setVisible(event.target.checked)}
       />

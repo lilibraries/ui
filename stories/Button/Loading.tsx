@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonProps } from "@lilib/ui";
+import { Button, ButtonProps, Switch } from "@lilib/ui";
 import { FiThumbsUp, FiArrowRight, FiGlobe } from "react-icons/fi";
 
 function Loading(props: ButtonProps) {
@@ -8,8 +8,7 @@ function Loading(props: ButtonProps) {
   return (
     <>
       <div style={{ marginBottom: 8 }}>
-        <input
-          type="checkbox"
+        <Switch
           checked={loading}
           onChange={(event) => setLoading(event.target.checked)}
         />

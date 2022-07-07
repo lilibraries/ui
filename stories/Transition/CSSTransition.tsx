@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Transition, TransitionProps } from "@lilib/ui";
+import { Transition, TransitionProps, Switch } from "@lilib/ui";
 
 /**
 .css-transition-example {
@@ -25,8 +25,7 @@ function CSSTransition(props: TransitionProps) {
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={visible}
         onChange={(event) => setVisible(event.target.checked)}
       />

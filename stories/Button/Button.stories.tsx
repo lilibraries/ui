@@ -3,7 +3,7 @@ export default {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: [null, "outlined", "flat"],
+      options: [null, "solid", "outlined", "flat"],
     },
     intent: {
       control: { type: "select" },
@@ -46,6 +46,7 @@ export { default as WithIcons } from "./WithIcons";
 export { default as IconOnly } from "./IconOnly";
 export { default as AsLink } from "./AsLink";
 export { default as Intents } from "./Intents";
+export { default as Solid } from "./Solid";
 export { default as Outlined } from "./Outlined";
 export { default as Flat } from "./Flat";
 export { default as Sizes } from "./Sizes";

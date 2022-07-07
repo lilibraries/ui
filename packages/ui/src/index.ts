@@ -7,6 +7,7 @@ export * from "./Loader";
 export * from "./Prefix";
 export * from "./Size";
 export * from "./Spinner";
+export * from "./Switch";
 export * from "./Theme";
 export * from "./Transition";
 
@@ -19,5 +20,6 @@ export { default as Loader } from "./Loader";
 export { default as Prefix } from "./Prefix";
 export { default as Size } from "./Size";
 export { default as Spinner } from "./Spinner";
+export { default as Switch } from "./Switch";
 export { default as Theme } from "./Theme";
 export { default as Transition } from "./Transition";

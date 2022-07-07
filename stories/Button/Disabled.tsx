@@ -5,6 +5,27 @@ function Disalbed(props: ButtonProps) {
   return (
     <>
       <div style={{ marginBottom: 16 }}>
+        <Button {...props} disabled variant="solid" intent={null}>
+          Button
+        </Button>{" "}
+        <Button {...props} disabled variant="solid" intent="major">
+          Button
+        </Button>{" "}
+        <Button {...props} disabled variant="solid" intent="minor">
+          Button
+        </Button>{" "}
+        <Button {...props} disabled variant="solid" intent="positive">
+          Button
+        </Button>{" "}
+        <Button {...props} disabled variant="solid" intent="alertive">
+          Button
+        </Button>{" "}
+        <Button {...props} disabled variant="solid" intent="negative">
+          Button
+        </Button>
+      </div>
+
+      <div style={{ marginBottom: 16 }}>
         <Button {...props} disabled intent={null}>
           Button
         </Button>{" "}

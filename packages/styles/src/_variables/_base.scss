@@ -1,6 +1,4 @@
 $prefix: "li-" !default;
-$intents: ("major", "minor", "positive", "alertive", "negative") !default;
-
 $colors: (
   "red",
   "magenta",
@@ -17,6 +15,7 @@ $colors: (
   "brown",
   "gray"
 ) !default;
+$intents: ("major", "minor", "positive", "alertive", "negative") !default;
 
 $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji",

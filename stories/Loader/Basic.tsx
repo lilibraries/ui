@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Loader, LoaderProps } from "@lilib/ui";
+import { Loader, LoaderProps, Switch } from "@lilib/ui";
 
 function Basic(props: LoaderProps) {
   const [loading, setLoading] = useState(true);
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />

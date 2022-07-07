@@ -27,20 +27,57 @@ $dark-negative: light-color($negative, 20%) !default;
 $dark-bg-color-base: shade-color($dark-base, 70%);
 $dark-bg-color-light: shade-color($dark-base, 60%);
 $dark-bg-color-dense: shade-color($dark-base, 50%);
-$dark-bg-color-alpha-light: rgba($dark-base, 0.15);
-$dark-bg-color-alpha-dense: rgba($dark-base, 0.3);
-$dark-bg-color-major-light: rgba($dark-major, 0.15);
-$dark-bg-color-major-dense: rgba($dark-major, 0.3);
-$dark-bg-color-minor-light: rgba($dark-minor, 0.15);
-$dark-bg-color-minor-dense: rgba($dark-minor, 0.3);
-$dark-bg-color-positive-light: rgba($dark-positive, 0.15);
-$dark-bg-color-positive-dense: rgba($dark-positive, 0.3);
-$dark-bg-color-alertive-light: rgba($dark-alertive, 0.15);
-$dark-bg-color-alertive-dense: rgba($dark-alertive, 0.3);
-$dark-bg-color-negative-light: rgba($dark-negative, 0.15);
-$dark-bg-color-negative-dense: rgba($dark-negative, 0.3);
+$dark-bg-color-alpha-light: rgba($dark-base, 0.1);
+$dark-bg-color-alpha-dense: rgba($dark-base, 0.2);
+$dark-bg-color-major-light: rgba($dark-major, 0.1);
+$dark-bg-color-major-dense: rgba($dark-major, 0.2);
+$dark-bg-color-minor-light: rgba($dark-minor, 0.1);
+$dark-bg-color-minor-dense: rgba($dark-minor, 0.2);
+$dark-bg-color-positive-light: rgba($dark-positive, 0.1);
+$dark-bg-color-positive-dense: rgba($dark-positive, 0.2);
+$dark-bg-color-alertive-light: rgba($dark-alertive, 0.1);
+$dark-bg-color-alertive-dense: rgba($dark-alertive, 0.2);
+$dark-bg-color-negative-light: rgba($dark-negative, 0.1);
+$dark-bg-color-negative-dense: rgba($dark-negative, 0.2);
+
+$dark-bg-color-base: shade-color($dark-base, 70%);
+$dark-bg-color-soft: shade-color($dark-base, 60%);
+$dark-bg-color-deep: shade-color($dark-base, 50%);
+$dark-bg-color-alpha-soft: rgba($dark-base, 0.1);
+$dark-bg-color-alpha-deep: rgba($dark-base, 0.2);
+
+$dark-bg-color-major-base: shade-color($dark-major, 70%);
+$dark-bg-color-major-soft: shade-color($dark-major, 60%);
+$dark-bg-color-major-deep: shade-color($dark-major, 50%);
+$dark-bg-color-major-alpha-soft: rgba($dark-major, 0.1);
+$dark-bg-color-major-alpha-deep: rgba($dark-major, 0.2);
+
+$dark-bg-color-minor-base: shade-color($dark-minor, 70%);
+$dark-bg-color-minor-soft: shade-color($dark-minor, 60%);
+$dark-bg-color-minor-deep: shade-color($dark-minor, 50%);
+$dark-bg-color-minor-alpha-soft: rgba($dark-minor, 0.1);
+$dark-bg-color-minor-alpha-deep: rgba($dark-minor, 0.2);
+
+$dark-bg-color-positive-base: shade-color($dark-positive, 70%);
+$dark-bg-color-positive-soft: shade-color($dark-positive, 60%);
+$dark-bg-color-positive-deep: shade-color($dark-positive, 50%);
+$dark-bg-color-positive-alpha-soft: rgba($dark-positive, 0.1);
+$dark-bg-color-positive-alpha-deep: rgba($dark-positive, 0.2);
+
+$dark-bg-color-alertive-base: shade-color($dark-alertive, 70%);
+$dark-bg-color-alertive-soft: shade-color($dark-alertive, 60%);
+$dark-bg-color-alertive-deep: shade-color($dark-alertive, 50%);
+$dark-bg-color-alertive-alpha-soft: rgba($dark-alertive, 0.1);
+$dark-bg-color-alertive-alpha-deep: rgba($dark-alertive, 0.2);
+
+$dark-bg-color-negative-base: shade-color($dark-negative, 70%);
+$dark-bg-color-negative-soft: shade-color($dark-negative, 60%);
+$dark-bg-color-negative-deep: shade-color($dark-negative, 50%);
+$dark-bg-color-negative-alpha-soft: rgba($dark-negative, 0.1);
+$dark-bg-color-negative-alpha-deep: rgba($dark-negative, 0.2);
 
 $dark-text-color-base: light-color($dark-base, 70%) !default;
+$dark-text-color-muted: light-color($dark-base, 15%) !default;
 $dark-text-color-hover: light-color($dark-base, 85%) !default;
 $dark-text-color-active: $white !default;
 $dark-text-color-inactive: shade-color($dark-base, 15%) !default;
@@ -50,7 +87,7 @@ $dark-text-color-reverse-base: rgba($black, 0.8) !default;
 $dark-text-color-reverse-hover: rgba($black, 0.9) !default;
 $dark-text-color-reverse-active: $black !default;
 $dark-text-color-reverse-inactive: rgba($black, 0.45) !default;
-$dark-text-color-reverse-disabled: rgba($black, 0.35) !default;
+$dark-text-color-reverse-disabled: rgba($black, 0.45) !default;
 
 $dark-text-color-major-base: $dark-major !default;
 $dark-text-color-major-hover: light-color($dark-major, 20%) !default;

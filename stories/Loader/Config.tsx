@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Loader, LoaderProps } from "@lilib/ui";
+import { Loader, LoaderProps, Switch } from "@lilib/ui";
 import { FiLoader } from "react-icons/fi";
 
 function Config(props: LoaderProps) {
@@ -7,8 +7,7 @@ function Config(props: LoaderProps) {
 
   return (
     <>
-      <input
-        type="checkbox"
+      <Switch
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />
