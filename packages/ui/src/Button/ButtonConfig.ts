@@ -1,17 +1,11 @@
+import { IntentValue } from "../_utils/types";
 import createConfig from "../_utils/createConfig";
 
 export type ButtonVariant = null | "solid" | "outlined" | "flat";
-export type ButtonIntent =
-  | null
-  | "major"
-  | "minor"
-  | "positive"
-  | "alertive"
-  | "negative";
 export type ButtonLoadingPosition = null | "start" | "center" | "end";
 export interface ButtonConfigValue {
   variant?: ButtonVariant;
-  intent?: ButtonIntent;
+  intent?: IntentValue;
   fluid?: boolean;
   round?: boolean;
   truncated?: boolean;

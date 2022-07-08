@@ -14,9 +14,9 @@ import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
+import { IntentValue } from "../_utils/types";
 import isRenderableNode from "../_utils/isRenderableNode";
 import ButtonConfig, {
-  ButtonIntent,
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
@@ -26,7 +26,7 @@ export * from "./ButtonConfig";
 export * from "./ButtonGroup";
 export interface ButtonCommonProps {
   variant?: ButtonVariant;
-  intent?: ButtonIntent;
+  intent?: IntentValue;
   size?: SizeValue;
   fluid?: boolean;
   round?: boolean;
