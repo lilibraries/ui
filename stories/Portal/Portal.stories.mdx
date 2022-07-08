@@ -1,0 +1,29 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Others/Portal" />
+
+# Portal
+
+This component renders children into a DOM node by using `ReactDOM.createPortal`.
+
+## Example
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-portal--basic" />
+</Canvas>
+
+## Props
+
+| Property    | Type                         | Description                                     |
+| ----------- | ---------------------------- | ----------------------------------------------- |
+| `children`  | `ReactNode`                  | The content to be rendered into the `container` |
+| `container` | `TargetCreator<HTMLElement>` | A HTML element, default is `document.body`      |
+
+```ts
+type Target<T> = T | undefined | null;
+type TargetCreator<T> =
+  | Target<T>
+  | (() => Target<T>)
+  | React.RefObject<Target<T>>
+  | React.MutableRefObject<Target<T>>;
+```
