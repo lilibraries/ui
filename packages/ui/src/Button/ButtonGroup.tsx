@@ -2,15 +2,15 @@ import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
+import { IntentValue } from "../_utils/types";
 import ButtonConfig, {
-  ButtonIntent,
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   variant?: ButtonVariant;
-  intent?: ButtonIntent;
+  intent?: IntentValue;
   size?: SizeValue;
   fluid?: boolean;
   round?: boolean;

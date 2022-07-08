@@ -1,6 +1,9 @@
+export * from "./_utils/types";
+
 export * from "./Button";
 export * from "./Collapse";
 export * from "./Compact";
+export * from "./Dot";
 export * from "./Duration";
 export * from "./Icon";
 export * from "./Loader";
@@ -15,6 +18,7 @@ export * from "./Transition";
 export { default as Button } from "./Button";
 export { default as Collapse } from "./Collapse";
 export { default as Compact } from "./Compact";
+export { default as Dot } from "./Dot";
 export { default as Duration } from "./Duration";
 export { default as Icon } from "./Icon";
 export { default as Loader } from "./Loader";

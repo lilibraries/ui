@@ -1,0 +1,110 @@
+@import "../_variables/base";
+@import "../_functions/var";
+
+.#{$prefix}dot {
+  display: inline-flex;
+  align-items: center;
+
+  &-indicator {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    color: var(--text-color-base);
+    background-color: var(--text-color-base);
+    border-radius: 50%;
+  }
+
+  &.#{$prefix}small {
+    & > .#{$prefix}dot-indicator {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  &.#{$prefix}large {
+    & > .#{$prefix}dot-indicator {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &.#{$prefix}standalone {
+    vertical-align: 0.125em;
+    border-radius: 50%;
+
+    &.#{$prefix}small {
+      vertical-align: 0.1875em;
+    }
+
+    &.#{$prefix}large {
+      vertical-align: 0.0625em;
+    }
+  }
+
+  &.#{$prefix}contained {
+    font-size: var(--font-size-base);
+    vertical-align: baseline;
+
+    & > .#{$prefix}dot-indicator {
+      margin-right: 0.375em;
+    }
+
+    &.#{$prefix}small {
+      font-size: var(--font-size-small);
+    }
+
+    &.#{$prefix}large {
+      font-size: var(--font-size-large);
+    }
+  }
+
+  &.#{$prefix}animated {
+    & > .#{$prefix}dot-indicator {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: currentColor;
+        border-radius: 50%;
+        animation: #{$prefix}dot-animate var(--motion-duration-lazy)
+          var(--motion-function-base) 0s infinite;
+        content: "";
+      }
+    }
+  }
+
+  @each $intent in $intents {
+    &.#{$prefix}#{$intent} {
+      & > .#{$prefix}dot-indicator {
+        color: var(--text-color-#{$intent}-base);
+        background-color: var(--text-color-#{$intent}-base);
+      }
+    }
+  }
+
+  @each $color in $colors {
+    &.#{$prefix}#{$color} {
+      & > .#{$prefix}dot-indicator {
+        color: var(--#{$color});
+        background-color: var(--#{$color});
+      }
+    }
+  }
+}
+
+@keyframes #{$prefix}dot-animate {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
