@@ -1,0 +1,115 @@
+@import "../_variables/base";
+@import "../_functions/var";
+@import "../_mixins/transition";
+
+.#{$prefix}badge {
+  &-switcher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @include transition(fast, transform, opacity);
+  }
+
+  & > .#{$prefix}badge-switcher {
+    & > .#{$prefix}tag {
+      font-family: var(--font-family-mono);
+
+      &.#{$prefix}quadrate {
+        width: var(--line-height-fixed-base);
+
+        & > .#{$prefix}tag-content {
+          padding: 0;
+        }
+
+        &.#{$prefix}small {
+          width: var(--line-height-fixed-small);
+        }
+
+        &.#{$prefix}large {
+          width: var(--line-height-fixed-large);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}outlined {
+    & > .#{$prefix}badge-switcher {
+      & > .#{$prefix}dot,
+      & > .#{$prefix}tag {
+        box-shadow: 0 0 0 2px var(--bg-color-base);
+      }
+    }
+  }
+
+  &.#{$prefix}standalone {
+    display: inline-flex;
+    @include transition(fast, transform, opacity);
+
+    &.#{$prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+  }
+
+  &.#{$prefix}contained {
+    position: relative;
+    display: inline-block;
+
+    & > .#{$prefix}badge-switcher {
+      position: absolute;
+
+      &-top-start {
+        transform: translate(-50%, -50%);
+      }
+
+      &-top-end {
+        transform: translate(50%, -50%);
+      }
+
+      &-bottom-start {
+        transform: translate(-50%, 50%);
+      }
+
+      &-bottom-end {
+        transform: translate(50%, 50%);
+      }
+    }
+
+    &.#{$prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        & > .#{$prefix}badge-switcher {
+          transform: scale(0);
+          opacity: 0;
+
+          &-top-start {
+            transform: translate(-50%, -50%) scale(0);
+          }
+
+          &-top-end {
+            transform: translate(50%, -50%) scale(0);
+          }
+
+          &-bottom-start {
+            transform: translate(-50%, 50%) scale(0);
+          }
+
+          &-bottom-end {
+            transform: translate(50%, 50%) scale(0);
+          }
+        }
+      }
+
+      &-exited {
+        & > .#{$prefix}badge-switcher {
+          display: none;
+        }
+      }
+    }
+  }
+}
