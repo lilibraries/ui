@@ -1,0 +1,90 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/Badge" />
+
+# Badge
+
+Show count tag.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-badge--basic" />
+</Canvas>
+
+### Standalone
+
+<Canvas mdxSource={require("!!raw-loader!./Standalone").default}>
+  <Story id="examples-badge--standalone" />
+</Canvas>
+
+### Custom tag
+
+<Canvas mdxSource={require("!!raw-loader!./CustomTag").default}>
+  <Story id="examples-badge--custom-tag" />
+</Canvas>
+
+### Outlined
+
+<Canvas mdxSource={require("!!raw-loader!./Outlined").default}>
+  <Story id="examples-badge--outlined" />
+</Canvas>
+
+### Intents
+
+<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
+  <Story id="examples-badge--intents" />
+</Canvas>
+
+### Solid
+
+<Canvas mdxSource={require("!!raw-loader!./Solid").default}>
+  <Story id="examples-badge--solid" />
+</Canvas>
+
+### Dotted
+
+<Canvas mdxSource={require("!!raw-loader!./Dotted").default}>
+  <Story id="examples-badge--dotted" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-badge--sizes" />
+</Canvas>
+
+### Placements
+
+<Canvas mdxSource={require("!!raw-loader!./Placements").default}>
+  <Story id="examples-badge--placements" />
+</Canvas>
+
+### Offset
+
+<Canvas
+  mdxSource={require("!!raw-loader!./Offset").default.replace(/\%/g, "%25")}
+>
+  <Story id="examples-badge--offset" />
+</Canvas>
+
+## Props
+
+| Property    | Type                                                                                                 | Description                                                                                                 |
+| ----------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `variant`   | `null` &#124; `"solid"` &#124; `"dotted"`                                                            | Variant                                                                                                     |
+| `size`      | `null` &#124; `"small"` &#124; `"large"`                                                             | Size                                                                                                        |
+| `intent`    | `null` &#124; `"major"` &#124; `"minor"` &#124; `"positive"` &#124; `"alertive"` &#124; `"negative"` | Intent                                                                                                      |
+| `round`     | `boolean`                                                                                            | Make tag corners round. Only works when the `variant` is not `"dotted"`                                     |
+| `outlined`  | `boolen`                                                                                             | Add outline to the tag                                                                                      |
+| `animated`  | `boolen`                                                                                             | Perform heartbeat animation. Only works when the `variant` is `"dotted"`                                    |
+| `count`     | `number` &#124; `ReactNode`                                                                          | Count number or custom tag element                                                                          |
+| `maxCount`  | `number`                                                                                             | If the `count` is large than `maxCount`, the tag will show `+` symbol                                       |
+| `showZero`  | `boolean`                                                                                            | The tag will hide when the `count` is zero by default. This property is used to modify the default behavior |
+| `invisible` | `boolean`                                                                                            | Control the tag visibility                                                                                  |
+| `placement` | `null` &#124; `"top-start"` &#124; `"top-end"` &#124; `"bottom-start"` &#124; `"bottom-end"`         | Specify the tag placement                                                                                   |
+| `offset`    | [`number` &#124; `string`, `number` &#124; `string`]                                                 | Position offsets. First value is horizontal offset, second value is vertical offset                         |
+
+It accepts all props which the native `<span>` element supports.
