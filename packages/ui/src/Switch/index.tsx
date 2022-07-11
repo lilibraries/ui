@@ -1,6 +1,5 @@
 import React, {
   Ref,
-  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -9,7 +8,7 @@ import React, {
   InputHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { useUpdate } from "@lilib/hooks";
+import { isFunction, useControllableState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Size, { SizeValue } from "../Size";
@@ -58,20 +57,17 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon = children;
   }
 
-  const [checked, setChecked] = useState(
-    checkedProp != null ? !!checkedProp : !!defaultChecked
+  const [checked, setChecked] = useControllableState(
+    defaultChecked,
+    checkedProp
   );
-  useUpdate(() => {
-    if (checkedProp != null) {
-      setChecked(!!checkedProp);
-    }
-  }, [checkedProp]);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    if (checkedProp == null) {
-      setChecked(event.target.checked);
+    if (disabled || loading) {
+      return;
     }
-    if (typeof onChange === "function") {
+    setChecked(event.target.checked);
+    if (isFunction(onChange)) {
       onChange(event);
     }
   }
