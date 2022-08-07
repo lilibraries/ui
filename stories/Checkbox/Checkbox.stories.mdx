@@ -1,0 +1,50 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Forms/Checkbox" />
+
+# Checkbox
+
+Based on `<input type="checkbox" />`.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-checkbox--basic" />
+</Canvas>
+
+### Indeterminate
+
+<Canvas mdxSource={require("!!raw-loader!./Indeterminate").default}>
+  <Story id="examples-checkbox--indeterminate" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-checkbox--sizes" />
+</Canvas>
+
+### Loading
+
+<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
+  <Story id="examples-checkbox--loading" />
+</Canvas>
+
+## Props
+
+| Property         | Type                                     | Description                   |
+| ---------------- | ---------------------------------------- | ----------------------------- |
+| `children`       | `ReactNode`                              | Checkbox label                |
+| `size`           | `null` &#124; `"small"` &#124; `"large"` | Size                          |
+| `loading`        | `boolean`                                | Show spinner                  |
+| `disabled`       | `boolean`                                | Disable change event          |
+| `indeterminate`  | `boolean`                                | Show minus icon when checked  |
+| `checked`        | `boolean`                                | Controlled checked            |
+| `defaultChecked` | `boolean`                                | Uncontrolled checked          |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement>`   | Change event                  |
+| `inputRef`       | `Ref<HTMLInputElement>`                  | Ref to internal input element |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`  | Internal input props          |
+
+It accepts all props which the native `<label>` element supports.
