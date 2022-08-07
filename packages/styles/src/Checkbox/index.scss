@@ -1,0 +1,116 @@
+@import "../_variables/base";
+@import "../_functions/var";
+@import "../_mixins/transition";
+
+.#{$prefix}checkbox {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  vertical-align: -0.125em;
+  cursor: pointer;
+
+  &-indicator {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 1em;
+    height: 1em;
+  }
+
+  &-base {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color-base);
+    border: 1px solid var(--border-color-base);
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 0.7em;
+    line-height: 1;
+  }
+
+  &-label {
+    display: block;
+    flex: 1 1 0;
+    margin-left: 0.5em;
+  }
+
+  &.#{$prefix}small {
+    font-size: var(--font-size-small);
+  }
+
+  &.#{$prefix}large {
+    font-size: var(--font-size-large);
+  }
+
+  &:hover {
+    & > .#{$prefix}checkbox-indicator {
+      & .#{$prefix}checkbox-base {
+        border-color: var(--major);
+      }
+    }
+  }
+
+  &.#{$prefix}checked {
+    & > .#{$prefix}checkbox-indicator {
+      & .#{$prefix}checkbox-base {
+        background-color: var(--major);
+        border-color: var(--major);
+      }
+
+      & .#{$prefix}checkbox-icon {
+        color: var(--text-color-reverse-active);
+      }
+    }
+  }
+
+  &.#{$prefix}loading {
+    cursor: auto;
+  }
+
+  &.#{$prefix}disabled {
+    color: var(--text-color-disabled);
+    cursor: not-allowed;
+
+    & > .#{$prefix}checkbox-indicator {
+      & .#{$prefix}checkbox-base {
+        background-color: var(--bg-color-soft);
+        border-color: var(--border-color-disabled);
+        cursor: not-allowed;
+      }
+    }
+
+    &.#{$prefix}checked {
+      & > .#{$prefix}checkbox-indicator {
+        & .#{$prefix}checkbox-base {
+          background-color: var(--bg-color-deep);
+          border-color: var(--border-color-inactive);
+        }
+
+        & .#{$prefix}checkbox-icon {
+          color: var(--text-color-disabled);
+        }
+      }
+    }
+  }
+}
