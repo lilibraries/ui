@@ -1,6 +1,4 @@
-@import "../_variables/base";
-@import "../_functions/var";
-@import "../_mixins/transition";
+@import "@lilib/themes";
 
 .#{$prefix}badge {
   &-switcher {

@@ -1,7 +1,7 @@
 @import "./base";
 @import "./light";
 @import "./dark";
-@import "../_functions/merge-maps";
+@import "../functions/merge-maps";
 
 $base-properties: (
   "--font-family-base": $font-family-base,

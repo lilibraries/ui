@@ -1,14 +1,14 @@
 {
   "name": "@lilib/styles",
   "version": "0.0.0",
-  "description": "Style library for components",
+  "description": "Component styles.",
   "keywords": [
     "ui",
     "styles",
     "components"
   ],
   "author": "李蔚生",
-  "homepage": "https://lilibraries.github.io/ui/",
+  "homepage": "https://github.com/lilibraries/ui/tree/main/packages/styles",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
@@ -23,13 +23,15 @@
     "url": "https://github.com/lilibraries/ui/issues"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "sideEffects": true,
   "main": "dist/css/index.js",
   "unpkg": "dist/css/index.min.css",
   "scripts": {
-    "dist": "rimraf dist && node ../../scripts/styles.js src dist"
+    "dist": "rimraf dist && node ../../scripts/buildStyles.js src dist"
+  },
+  "dependencies": {
+    "@lilib/themes": "^0.0.0"
   }
 }

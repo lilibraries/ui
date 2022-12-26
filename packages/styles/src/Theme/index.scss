@@ -1,5 +1,4 @@
-@import "../_variables/base";
-@import "../_variables/properties";
+@import "@lilib/themes";
 
 .#{$prefix}light {
   @each $name, $value in $light-properties {

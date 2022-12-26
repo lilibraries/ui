@@ -5,6 +5,7 @@ const fs = require("fs-extra");
 const babel = require("@babel/core");
 const postcss = require("postcss");
 const cssnano = require("cssnano");
+const { pathToFileURL } = require("url");
 const postcssrc = require("postcss-load-config");
 
 const cwd = process.cwd();
@@ -43,7 +44,24 @@ async function buildScss() {
 
   for (const name of scssFiles) {
     if (!path.basename(name).startsWith("_")) {
-      const sassResult = await sass.compileAsync(path.resolve(sourceDir, name));
+      const sassResult = await sass.compileAsync(
+        path.resolve(sourceDir, name),
+        {
+          importers: [
+            {
+              findFileUrl(url) {
+                if (url === "@lilib/themes") {
+                  return pathToFileURL(
+                    path.resolve(__dirname, "../packages/themes/")
+                  );
+                } else {
+                  return url;
+                }
+              },
+            },
+          ],
+        }
+      );
       const postcssResult = await postcss(plugins).process(sassResult.css);
 
       await fs.outputFile(

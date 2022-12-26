@@ -1,6 +1,4 @@
-@import "../_variables/base";
-@import "../_functions/var";
-@import "../_mixins/text-overflow";
+@import "@lilib/themes";
 
 .#{$prefix}tag {
   display: inline-flex;

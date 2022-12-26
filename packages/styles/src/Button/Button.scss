@@ -1,7 +1,4 @@
-@import "../_variables/base";
-@import "../_functions/var";
-@import "../_mixins/transition";
-@import "../_mixins/text-overflow";
+@import "@lilib/themes";
 
 .#{$prefix}button {
   display: inline-flex;
