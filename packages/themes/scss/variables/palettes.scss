@@ -1,0 +1,315 @@
+@import "../functions/light-color";
+@import "../functions/shade-color";
+
+$white: #fff;
+$black: #000;
+
+$red: hsl(355deg, 75%, 55%) !default;
+$magenta: hsl(300deg, 70%, 45%) !default;
+$purple: hsl(280deg, 80%, 50%) !default;
+$indigo: hsl(255deg, 80%, 50%) !default;
+$navy: hsl(235deg, 70%, 50%) !default;
+$blue: hsl(215deg, 80%, 50%) !default;
+$cyan: hsl(190deg, 65%, 40%) !default;
+$teal: hsl(165deg, 65%, 35%) !default;
+$green: hsl(130deg, 45%, 40%) !default;
+$lime: hsl(80deg, 55%, 45%) !default;
+$yellow: hsl(45deg, 95%, 45%) !default;
+$orange: hsl(30deg, 85%, 50%) !default;
+$brown: hsl(355deg, 15%, 50%) !default;
+$gray: hsl(215deg, 5%, 50%) !default;
+
+$red-1: light-color($red, 80%);
+$red-2: light-color($red, 60%);
+$red-3: light-color($red, 40%);
+$red-4: light-color($red, 20%);
+$red-5: $red;
+$red-6: shade-color($red, 20%);
+$red-7: shade-color($red, 40%);
+$red-8: shade-color($red, 60%);
+$red-9: shade-color($red, 80%);
+
+$magenta-1: light-color($magenta, 80%);
+$magenta-2: light-color($magenta, 60%);
+$magenta-3: light-color($magenta, 40%);
+$magenta-4: light-color($magenta, 20%);
+$magenta-5: $magenta;
+$magenta-6: shade-color($magenta, 20%);
+$magenta-7: shade-color($magenta, 40%);
+$magenta-8: shade-color($magenta, 60%);
+$magenta-9: shade-color($magenta, 80%);
+
+$purple-1: light-color($purple, 80%);
+$purple-2: light-color($purple, 60%);
+$purple-3: light-color($purple, 40%);
+$purple-4: light-color($purple, 20%);
+$purple-5: $purple;
+$purple-6: shade-color($purple, 20%);
+$purple-7: shade-color($purple, 40%);
+$purple-8: shade-color($purple, 60%);
+$purple-9: shade-color($purple, 80%);
+
+$indigo-1: light-color($indigo, 80%);
+$indigo-2: light-color($indigo, 60%);
+$indigo-3: light-color($indigo, 40%);
+$indigo-4: light-color($indigo, 20%);
+$indigo-5: $indigo;
+$indigo-6: shade-color($indigo, 20%);
+$indigo-7: shade-color($indigo, 40%);
+$indigo-8: shade-color($indigo, 60%);
+$indigo-9: shade-color($indigo, 80%);
+
+$navy-1: light-color($navy, 80%);
+$navy-2: light-color($navy, 60%);
+$navy-3: light-color($navy, 40%);
+$navy-4: light-color($navy, 20%);
+$navy-5: $navy;
+$navy-6: shade-color($navy, 20%);
+$navy-7: shade-color($navy, 40%);
+$navy-8: shade-color($navy, 60%);
+$navy-9: shade-color($navy, 80%);
+
+$blue-1: light-color($blue, 80%);
+$blue-2: light-color($blue, 60%);
+$blue-3: light-color($blue, 40%);
+$blue-4: light-color($blue, 20%);
+$blue-5: $blue;
+$blue-6: shade-color($blue, 20%);
+$blue-7: shade-color($blue, 40%);
+$blue-8: shade-color($blue, 60%);
+$blue-9: shade-color($blue, 80%);
+
+$cyan-1: light-color($cyan, 80%);
+$cyan-2: light-color($cyan, 60%);
+$cyan-3: light-color($cyan, 40%);
+$cyan-4: light-color($cyan, 20%);
+$cyan-5: $cyan;
+$cyan-6: shade-color($cyan, 20%);
+$cyan-7: shade-color($cyan, 40%);
+$cyan-8: shade-color($cyan, 60%);
+$cyan-9: shade-color($cyan, 80%);
+
+$teal-1: light-color($teal, 80%);
+$teal-2: light-color($teal, 60%);
+$teal-3: light-color($teal, 40%);
+$teal-4: light-color($teal, 20%);
+$teal-5: $teal;
+$teal-6: shade-color($teal, 20%);
+$teal-7: shade-color($teal, 40%);
+$teal-8: shade-color($teal, 60%);
+$teal-9: shade-color($teal, 80%);
+
+$green-1: light-color($green, 80%);
+$green-2: light-color($green, 60%);
+$green-3: light-color($green, 40%);
+$green-4: light-color($green, 20%);
+$green-5: $green;
+$green-6: shade-color($green, 20%);
+$green-7: shade-color($green, 40%);
+$green-8: shade-color($green, 60%);
+$green-9: shade-color($green, 80%);
+
+$lime-1: light-color($lime, 80%);
+$lime-2: light-color($lime, 60%);
+$lime-3: light-color($lime, 40%);
+$lime-4: light-color($lime, 20%);
+$lime-5: $lime;
+$lime-6: shade-color($lime, 20%);
+$lime-7: shade-color($lime, 40%);
+$lime-8: shade-color($lime, 60%);
+$lime-9: shade-color($lime, 80%);
+
+$yellow-1: light-color($yellow, 80%);
+$yellow-2: light-color($yellow, 60%);
+$yellow-3: light-color($yellow, 40%);
+$yellow-4: light-color($yellow, 20%);
+$yellow-5: $yellow;
+$yellow-6: shade-color($yellow, 20%);
+$yellow-7: shade-color($yellow, 40%);
+$yellow-8: shade-color($yellow, 60%);
+$yellow-9: shade-color($yellow, 80%);
+
+$orange-1: light-color($orange, 80%);
+$orange-2: light-color($orange, 60%);
+$orange-3: light-color($orange, 40%);
+$orange-4: light-color($orange, 20%);
+$orange-5: $orange;
+$orange-6: shade-color($orange, 20%);
+$orange-7: shade-color($orange, 40%);
+$orange-8: shade-color($orange, 60%);
+$orange-9: shade-color($orange, 80%);
+
+$brown-1: light-color($brown, 80%);
+$brown-2: light-color($brown, 60%);
+$brown-3: light-color($brown, 40%);
+$brown-4: light-color($brown, 20%);
+$brown-5: $brown;
+$brown-6: shade-color($brown, 20%);
+$brown-7: shade-color($brown, 40%);
+$brown-8: shade-color($brown, 60%);
+$brown-9: shade-color($brown, 80%);
+
+$gray-1: light-color($gray, 80%);
+$gray-2: light-color($gray, 60%);
+$gray-3: light-color($gray, 40%);
+$gray-4: light-color($gray, 20%);
+$gray-5: $gray;
+$gray-6: shade-color($gray, 20%);
+$gray-7: shade-color($gray, 40%);
+$gray-8: shade-color($gray, 60%);
+$gray-9: shade-color($gray, 80%);
+
+$dark-red: light-color($red, 20%) !default;
+$dark-magenta: light-color($magenta, 20%) !default;
+$dark-purple: light-color($purple, 20%) !default;
+$dark-indigo: light-color($indigo, 20%) !default;
+$dark-navy: light-color($navy, 20%) !default;
+$dark-blue: light-color($blue, 20%) !default;
+$dark-cyan: light-color($cyan, 20%) !default;
+$dark-teal: light-color($teal, 20%) !default;
+$dark-green: light-color($green, 20%) !default;
+$dark-lime: light-color($lime, 20%) !default;
+$dark-yellow: light-color($yellow, 20%) !default;
+$dark-orange: light-color($orange, 20%) !default;
+$dark-brown: light-color($brown, 20%) !default;
+$dark-gray: light-color($gray, 20%) !default;
+
+$dark-red-1: shade-color($dark-red, 80%);
+$dark-red-2: shade-color($dark-red, 60%);
+$dark-red-3: shade-color($dark-red, 40%);
+$dark-red-4: shade-color($dark-red, 20%);
+$dark-red-5: $dark-red;
+$dark-red-6: light-color($dark-red, 20%);
+$dark-red-7: light-color($dark-red, 40%);
+$dark-red-8: light-color($dark-red, 60%);
+$dark-red-9: light-color($dark-red, 80%);
+
+$dark-magenta-1: shade-color($dark-magenta, 80%);
+$dark-magenta-2: shade-color($dark-magenta, 60%);
+$dark-magenta-3: shade-color($dark-magenta, 40%);
+$dark-magenta-4: shade-color($dark-magenta, 20%);
+$dark-magenta-5: $dark-magenta;
+$dark-magenta-6: light-color($dark-magenta, 20%);
+$dark-magenta-7: light-color($dark-magenta, 40%);
+$dark-magenta-8: light-color($dark-magenta, 60%);
+$dark-magenta-9: light-color($dark-magenta, 80%);
+
+$dark-purple-1: shade-color($dark-purple, 80%);
+$dark-purple-2: shade-color($dark-purple, 60%);
+$dark-purple-3: shade-color($dark-purple, 40%);
+$dark-purple-4: shade-color($dark-purple, 20%);
+$dark-purple-5: $dark-purple;
+$dark-purple-6: light-color($dark-purple, 20%);
+$dark-purple-7: light-color($dark-purple, 40%);
+$dark-purple-8: light-color($dark-purple, 60%);
+$dark-purple-9: light-color($dark-purple, 80%);
+
+$dark-indigo-1: shade-color($dark-indigo, 80%);
+$dark-indigo-2: shade-color($dark-indigo, 60%);
+$dark-indigo-3: shade-color($dark-indigo, 40%);
+$dark-indigo-4: shade-color($dark-indigo, 20%);
+$dark-indigo-5: $dark-indigo;
+$dark-indigo-6: light-color($dark-indigo, 20%);
+$dark-indigo-7: light-color($dark-indigo, 40%);
+$dark-indigo-8: light-color($dark-indigo, 60%);
+$dark-indigo-9: light-color($dark-indigo, 80%);
+
+$dark-navy-1: shade-color($dark-navy, 80%);
+$dark-navy-2: shade-color($dark-navy, 60%);
+$dark-navy-3: shade-color($dark-navy, 40%);
+$dark-navy-4: shade-color($dark-navy, 20%);
+$dark-navy-5: $dark-navy;
+$dark-navy-6: light-color($dark-navy, 20%);
+$dark-navy-7: light-color($dark-navy, 40%);
+$dark-navy-8: light-color($dark-navy, 60%);
+$dark-navy-9: light-color($dark-navy, 80%);
+
+$dark-blue-1: shade-color($dark-blue, 80%);
+$dark-blue-2: shade-color($dark-blue, 60%);
+$dark-blue-3: shade-color($dark-blue, 40%);
+$dark-blue-4: shade-color($dark-blue, 20%);
+$dark-blue-5: $dark-blue;
+$dark-blue-6: light-color($dark-blue, 20%);
+$dark-blue-7: light-color($dark-blue, 40%);
+$dark-blue-8: light-color($dark-blue, 60%);
+$dark-blue-9: light-color($dark-blue, 80%);
+
+$dark-cyan-1: shade-color($dark-cyan, 80%);
+$dark-cyan-2: shade-color($dark-cyan, 60%);
+$dark-cyan-3: shade-color($dark-cyan, 40%);
+$dark-cyan-4: shade-color($dark-cyan, 20%);
+$dark-cyan-5: $dark-cyan;
+$dark-cyan-6: light-color($dark-cyan, 20%);
+$dark-cyan-7: light-color($dark-cyan, 40%);
+$dark-cyan-8: light-color($dark-cyan, 60%);
+$dark-cyan-9: light-color($dark-cyan, 80%);
+
+$dark-teal-1: shade-color($dark-teal, 80%);
+$dark-teal-2: shade-color($dark-teal, 60%);
+$dark-teal-3: shade-color($dark-teal, 40%);
+$dark-teal-4: shade-color($dark-teal, 20%);
+$dark-teal-5: $dark-teal;
+$dark-teal-6: light-color($dark-teal, 20%);
+$dark-teal-7: light-color($dark-teal, 40%);
+$dark-teal-8: light-color($dark-teal, 60%);
+$dark-teal-9: light-color($dark-teal, 80%);
+
+$dark-green-1: shade-color($dark-green, 80%);
+$dark-green-2: shade-color($dark-green, 60%);
+$dark-green-3: shade-color($dark-green, 40%);
+$dark-green-4: shade-color($dark-green, 20%);
+$dark-green-5: $dark-green;
+$dark-green-6: light-color($dark-green, 20%);
+$dark-green-7: light-color($dark-green, 40%);
+$dark-green-8: light-color($dark-green, 60%);
+$dark-green-9: light-color($dark-green, 80%);
+
+$dark-lime-1: shade-color($dark-lime, 80%);
+$dark-lime-2: shade-color($dark-lime, 60%);
+$dark-lime-3: shade-color($dark-lime, 40%);
+$dark-lime-4: shade-color($dark-lime, 20%);
+$dark-lime-5: $dark-lime;
+$dark-lime-6: light-color($dark-lime, 20%);
+$dark-lime-7: light-color($dark-lime, 40%);
+$dark-lime-8: light-color($dark-lime, 60%);
+$dark-lime-9: light-color($dark-lime, 80%);
+
+$dark-yellow-1: shade-color($dark-yellow, 80%);
+$dark-yellow-2: shade-color($dark-yellow, 60%);
+$dark-yellow-3: shade-color($dark-yellow, 40%);
+$dark-yellow-4: shade-color($dark-yellow, 20%);
+$dark-yellow-5: $dark-yellow;
+$dark-yellow-6: light-color($dark-yellow, 20%);
+$dark-yellow-7: light-color($dark-yellow, 40%);
+$dark-yellow-8: light-color($dark-yellow, 60%);
+$dark-yellow-9: light-color($dark-yellow, 80%);
+
+$dark-orange-1: shade-color($dark-orange, 80%);
+$dark-orange-2: shade-color($dark-orange, 60%);
+$dark-orange-3: shade-color($dark-orange, 40%);
+$dark-orange-4: shade-color($dark-orange, 20%);
+$dark-orange-5: $dark-orange;
+$dark-orange-6: light-color($dark-orange, 20%);
+$dark-orange-7: light-color($dark-orange, 40%);
+$dark-orange-8: light-color($dark-orange, 60%);
+$dark-orange-9: light-color($dark-orange, 80%);
+
+$dark-brown-1: shade-color($dark-brown, 80%);
+$dark-brown-2: shade-color($dark-brown, 60%);
+$dark-brown-3: shade-color($dark-brown, 40%);
+$dark-brown-4: shade-color($dark-brown, 20%);
+$dark-brown-5: $dark-brown;
+$dark-brown-6: light-color($dark-brown, 20%);
+$dark-brown-7: light-color($dark-brown, 40%);
+$dark-brown-8: light-color($dark-brown, 60%);
+$dark-brown-9: light-color($dark-brown, 80%);
+
+$dark-gray-1: shade-color($dark-gray, 80%);
+$dark-gray-2: shade-color($dark-gray, 60%);
+$dark-gray-3: shade-color($dark-gray, 40%);
+$dark-gray-4: shade-color($dark-gray, 20%);
+$dark-gray-5: $dark-gray;
+$dark-gray-6: light-color($dark-gray, 20%);
+$dark-gray-7: light-color($dark-gray, 40%);
+$dark-gray-8: light-color($dark-gray, 60%);
+$dark-gray-9: light-color($dark-gray, 80%);

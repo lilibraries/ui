@@ -11,7 +11,7 @@
 
     & > .#{$prefix}loader-message {
       flex: 0 0 auto;
-      margin-top: var(--space-xxs);
+      margin-top: var(--space-1x);
       color: var(--text-color-base);
       font-size: var(--font-size-base);
       line-height: var(--line-height-base);
@@ -70,7 +70,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: var(--space-md);
+      padding: var(--space-4x);
       @include transition(fast, opacity);
 
       &.#{$prefix}transition {
@@ -89,7 +89,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: var(--space-md);
+      padding: var(--space-4x);
     }
   }
 }
