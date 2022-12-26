@@ -7,17 +7,13 @@ import {
   ReactElement,
 } from "react";
 import cn from "classnames";
-import {
-  useMount,
-  useUpdate,
-  useTimeout,
-  isObject,
-  mergeRefs,
-  isFunction,
-} from "@lilib/hooks";
+import isObject from "lodash/isObject";
+import isNumber from "lodash/isNumber";
+import isString from "lodash/isString";
+import isFunction from "lodash/isFunction";
+import { composeRefs } from "@lilib/utils";
+import { useMount, useUpdate, useTimeout } from "@lilib/hooks";
 import Prefix from "../Prefix";
-import isNumber from "../_utils/isNumber";
-import isString from "../_utils/isString";
 import isPositiveNumber from "../_utils/isPositiveNumber";
 
 const ENTER = "enter";
@@ -232,7 +228,7 @@ const Transition: FC<TransitionProps> & {
   const element: any = isFunction(children) ? children(state) : children;
 
   return cloneElement(Children.only(element), {
-    ref: mergeRefs(element.ref, domRef),
+    ref: composeRefs(element.ref, domRef),
     className: cn(element.props.className, classNamesMapping[state]),
   });
 };

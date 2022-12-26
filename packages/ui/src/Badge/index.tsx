@@ -5,14 +5,14 @@ import React, {
   HTMLAttributes,
 } from "react";
 import cn from "classnames";
+import isNumber from "lodash/isNumber";
+import isString from "lodash/isString";
 import Dot from "../Dot";
 import Tag from "../Tag";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import isNumber from "../_utils/isNumber";
-import isString from "../_utils/isString";
 import { IntentValue } from "../_utils/types";
 import isRenderableNode from "../_utils/isRenderableNode";
 

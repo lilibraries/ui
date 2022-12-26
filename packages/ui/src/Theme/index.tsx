@@ -6,7 +6,8 @@ import React, {
   isValidElement,
 } from "react";
 import cn from "classnames";
-import { isBrowser, useIsomorphicLayoutEffect } from "@lilib/hooks";
+import { inBrowser } from "@lilib/utils";
+import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
 
 export type ThemeValue = null | "light" | "dark";
@@ -26,7 +27,7 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
   const prefix = Prefix.useConfig();
 
   useIsomorphicLayoutEffect(() => {
-    if (isBrowser && !scoped) {
+    if (inBrowser && !scoped) {
       const lightClassName = `${prefix}light`;
       const darkClassName = `${prefix}dark`;
       const classList = document.documentElement.classList;

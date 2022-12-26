@@ -9,7 +9,7 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import Icon from "../Icon";
+import Icon, { IconProps } from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Collapse from "../Collapse";
@@ -66,7 +66,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
     icon = <LoaderIcon />;
   }
   if (isValidElement(icon) && icon.type === Icon) {
-    icon = cloneElement(icon, {
+    icon = cloneElement<IconProps>(icon as any, {
       spinning: true,
       className: cn(`${prefix}loader-icon`, icon.props.className),
     });

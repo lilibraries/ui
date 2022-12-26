@@ -6,7 +6,8 @@ import React, {
   isValidElement,
 } from "react";
 import cn from "classnames";
-import { isBrowser, useIsomorphicLayoutEffect } from "@lilib/hooks";
+import { inBrowser } from "@lilib/utils";
+import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
 
 export interface SpaceScopedProps {
@@ -27,7 +28,7 @@ const Space: FC<SpaceScopedProps | SpaceUnscopedProps> = (props) => {
   const incompactClassName = `${prefix}incompact`;
 
   useIsomorphicLayoutEffect(() => {
-    if (isBrowser && !scoped) {
+    if (inBrowser && !scoped) {
       const classList = document.documentElement.classList;
 
       if (value === true) {

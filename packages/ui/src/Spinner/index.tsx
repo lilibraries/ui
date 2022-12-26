@@ -9,7 +9,7 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import Icon from "../Icon";
+import Icon, { IconProps } from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
@@ -68,7 +68,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     icon = <LoaderIcon />;
   }
   if (isValidElement(icon) && icon.type === Icon) {
-    icon = cloneElement(icon, { spinning: true });
+    icon = cloneElement<IconProps>(icon as any, { spinning: true });
   } else {
     icon = <Icon spinning>{icon}</Icon>;
   }

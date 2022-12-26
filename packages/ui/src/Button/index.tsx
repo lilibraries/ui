@@ -9,7 +9,7 @@ import React, {
   isValidElement,
 } from "react";
 import cn from "classnames";
-import { isFunction } from "@lilib/hooks";
+import isFunction from "lodash/isFunction";
 import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
@@ -169,7 +169,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     const endSpace = options && options.endSpace;
     if (isValidElement(node)) {
       if (node.type === Icon) {
-        return cloneElement(node, {
+        return cloneElement<SpinnerProps>(node as any, {
           className: cn(
             {
               [`${prefix}start-spaced`]: startSpace,
@@ -179,7 +179,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
           ),
         });
       } else if (node.type === Spinner) {
-        return cloneElement(node, {
+        return cloneElement<SpinnerProps>(node as any, {
           ...spinnerProps,
           startSpace: startSpace,
           endSpace: endSpace,

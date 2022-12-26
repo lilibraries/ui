@@ -9,7 +9,8 @@ import React, {
   isValidElement,
 } from "react";
 import cn from "classnames";
-import { isBrowser, useIsomorphicLayoutEffect } from "@lilib/hooks";
+import { inBrowser } from "@lilib/utils";
+import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import mergeConfig from "../_utils/mergeConfig";
 
@@ -67,7 +68,7 @@ const Duration: FC<DurationScopedProps | DurationUnscopedProps> & {
   }, [prefix, fast, base, slow, lazy]);
 
   useIsomorphicLayoutEffect(() => {
-    if (isBrowser && !scoped) {
+    if (inBrowser && !scoped) {
       for (const key in styles) {
         document.documentElement.style.setProperty(key, styles[key]);
       }

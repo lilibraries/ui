@@ -1,5 +1,6 @@
 import React, {
   Ref,
+  useState,
   forwardRef,
   ChangeEvent,
   ChangeEventHandler,
@@ -7,13 +8,13 @@ import React, {
   LabelHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { isFunction, useControllableState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Size, { SizeValue } from "../Size";
 import CheckIcon from "../_icons/CheckIcon";
 import MinusIcon from "../_icons/MinusIcon";
 import isRenderableNode from "../_utils/isRenderableNode";
+import { useUpdate } from "@lilib/hooks";
 
 export interface CheckboxProps
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
@@ -46,18 +47,17 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
 
   const prefix = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-
-  const [checked, setChecked] = useControllableState(
-    defaultChecked,
-    checkedProp
-  );
+  const isControlled = "checked" in props;
+  const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (disabled || loading) {
       return;
     }
-    setChecked(event.target.checked);
-    if (isFunction(onChange)) {
+    if (!isControlled) {
+      setChecked(event.target.checked);
+    }
+    if (onChange) {
       onChange(event);
     }
   }
@@ -72,6 +72,12 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
     },
     className
   );
+
+  useUpdate(() => {
+    if (isControlled) {
+      setChecked(!!checkedProp);
+    }
+  }, [checkedProp]);
 
   return (
     <label {...rest} ref={ref} className={classes}>

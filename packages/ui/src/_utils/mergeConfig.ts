@@ -1,4 +1,4 @@
-import { hasOwn, isObject } from "@lilib/hooks";
+import isObject from "lodash/isObject";
 
 function mergeConfig<T = any>(base: T, override?: Partial<T>): T {
   if (override === undefined) {
@@ -13,7 +13,7 @@ function mergeConfig<T = any>(base: T, override?: Partial<T>): T {
 
   for (const key in override) {
     if (
-      hasOwn(override, key) &&
+      Object.prototype.hasOwnProperty.call(override, key) &&
       override[key] !== undefined &&
       !Object.is(override[key], base[key])
     ) {

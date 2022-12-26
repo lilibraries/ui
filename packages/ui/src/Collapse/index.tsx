@@ -1,6 +1,6 @@
 import React, { useRef, HTMLAttributes, forwardRef } from "react";
 import cn from "classnames";
-import { useMergedRef } from "@lilib/hooks";
+import { useComposedRef } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
@@ -37,7 +37,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
   const prefix = Prefix.useConfig();
   const { fast } = Duration.useConfig();
   const domRef = useRef<HTMLDivElement>();
-  const mergedRef = useMergedRef(domRef, ref);
+  const composedRef = useComposedRef(domRef, ref);
 
   return (
     <Transition
@@ -82,7 +82,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
         return (
           <div
             {...rest}
-            ref={mergedRef}
+            ref={composedRef}
             style={Object.assign(
               {},
               style,
