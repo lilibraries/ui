@@ -61,4 +61,9 @@ $motion-duration-base: 300ms !default;
 $motion-duration-fast: 150ms !default;
 $motion-duration-slow: 750ms !default;
 $motion-duration-lazy: 1250ms !default;
+
 $motion-function-base: ease-in-out !default;
+$motion-function-linear: linear !default;
+$motion-function-ease-in: ease-in !default;
+$motion-function-ease-out: ease-out !default;
+$motion-function-ease-in-out: ease-in-out !default;
