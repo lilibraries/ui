@@ -55,6 +55,10 @@ $base-properties: (
   "--motion-duration-slow": $motion-duration-slow,
   "--motion-duration-lazy": $motion-duration-lazy,
   "--motion-function-base": $motion-function-base,
+  "--motion-function-linear": $motion-function-linear,
+  "--motion-function-ease-in": $motion-function-ease-in,
+  "--motion-function-ease-out": $motion-function-ease-out,
+  "--motion-function-ease-in-out": $motion-function-ease-in-out,
 ) !default;
 
 $light-palettes: (
