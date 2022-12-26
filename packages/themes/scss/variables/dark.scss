@@ -1,23 +1,8 @@
-@import "./light";
+@import "./palettes";
 @import "../functions/light-color";
 @import "../functions/shade-color";
 
-$dark-red: light-color($red, 20%) !default;
-$dark-magenta: light-color($magenta, 20%) !default;
-$dark-purple: light-color($purple, 20%) !default;
-$dark-indigo: light-color($indigo, 20%) !default;
-$dark-navy: light-color($navy, 20%) !default;
-$dark-blue: light-color($blue, 20%) !default;
-$dark-cyan: light-color($cyan, 20%) !default;
-$dark-teal: light-color($teal, 20%) !default;
-$dark-green: light-color($green, 20%) !default;
-$dark-lime: light-color($lime, 20%) !default;
-$dark-yellow: light-color($yellow, 20%) !default;
-$dark-orange: light-color($orange, 20%) !default;
-$dark-brown: light-color($brown, 20%) !default;
-$dark-gray: light-color($gray, 20%) !default;
-
-$dark-base: $base !default;
+$dark-base: $gray !default;
 $dark-major: light-color($major, 20%) !default;
 $dark-minor: light-color($minor, 20%) !default;
 $dark-positive: light-color($positive, 20%) !default;
