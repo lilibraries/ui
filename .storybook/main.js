@@ -44,6 +44,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@lilib/ui": path.resolve(__dirname, "../packages/ui/src"),
+      "@lilib/themes": path.resolve(__dirname, "../packages/themes"),
       "@lilib/styles": path.resolve(__dirname, "../packages/styles/src"),
     };
     config.module.rules.push({

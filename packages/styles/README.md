@@ -1,3 +1,3 @@
 # @lilib/styles
 
-Style library for components.
+Component styles.

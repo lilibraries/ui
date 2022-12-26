@@ -1,5 +1,4 @@
-@import "../_variables/base";
-@import "../_mixins/transition";
+@import "@lilib/themes";
 
 .#{$prefix}collapse {
   &.#{$prefix}transition {

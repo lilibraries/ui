@@ -1,0 +1,31 @@
+{
+  "name": "@lilib/themes",
+  "version": "0.0.0",
+  "description": "SCSS variables, functions and mixins.",
+  "keywords": [
+    "sass",
+    "scss",
+    "mixins",
+    "functions",
+    "variables"
+  ],
+  "author": "李蔚生",
+  "homepage": "https://github.com/lilibraries/ui/tree/main/packages/themes",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilibraries/ui.git",
+    "directory": "packages/themes"
+  },
+  "bugs": {
+    "url": "https://github.com/lilibraries/ui/issues"
+  },
+  "files": [
+    "scss",
+    "index.scss"
+  ]
+}

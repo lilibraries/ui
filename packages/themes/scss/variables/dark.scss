@@ -1,6 +1,6 @@
 @import "./light";
-@import "../_functions/light-color";
-@import "../_functions/shade-color";
+@import "../functions/light-color";
+@import "../functions/shade-color";
 
 $dark-red: light-color($red, 20%) !default;
 $dark-magenta: light-color($magenta, 20%) !default;

@@ -1,5 +1,4 @@
-@import "../_variables/base";
-@import "../_functions/var";
+@import "@lilib/themes";
 
 .#{$prefix}dot {
   display: inline-flex;

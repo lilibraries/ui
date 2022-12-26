@@ -1,5 +1,4 @@
-@import "../_variables/base";
-@import "../_variables/properties";
+@import "@lilib/themes";
 
 .#{$prefix}compact {
   @each $name, $value in $compact-properties {

@@ -1,7 +1,7 @@
 {
   "name": "@lilib/ui",
   "version": "0.0.0",
-  "description": "React component library",
+  "description": "React component library.",
   "keywords": [
     "ui",
     "react",
@@ -35,7 +35,7 @@
     "dist": "rimraf dist && concurrently --kill-others-on-fail npm:dist:*",
     "dist:cjs": "babel src --config-file ../../babel.cjs.json --out-dir dist/cjs --extensions .ts,.tsx --no-babelrc",
     "dist:esm": "babel src --config-file ../../babel.esm.json --out-dir dist/esm --extensions .ts,.tsx --no-babelrc",
-    "dist:umd": "node ../../scripts/rollup.js src/index.ts dist/umd @lilib/ui",
+    "dist:umd": "node ../../scripts/rollupBundle.js src/index.ts dist/umd @lilib/ui",
     "dist:types": "tsc -b tsconfig.build.json"
   },
   "peerDependencies": {
