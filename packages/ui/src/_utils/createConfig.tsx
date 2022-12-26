@@ -7,8 +7,8 @@ import React, {
   isValidElement,
 } from "react";
 import cn from "classnames";
-import omit from "lodash.omit";
-import pick from "lodash.pick";
+import omit from "lodash/omit";
+import pick from "lodash/pick";
 import mergeConfig from "./mergeConfig";
 
 function createConfig<

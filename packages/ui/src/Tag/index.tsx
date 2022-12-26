@@ -9,7 +9,6 @@ import React, {
   MouseEventHandler,
 } from "react";
 import cn from "classnames";
-import { isFunction } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import CloseIcon from "../_icons/CloseIcon";
@@ -85,7 +84,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          if (!disabled && isFunction(onClear)) {
+          if (!disabled && onClear) {
             onClear(event);
           }
         }}
@@ -105,7 +104,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       onClick: (event: MouseEvent<HTMLSpanElement>) => {
         if (disabled) {
           event.preventDefault();
-        } else if (isFunction(onClick)) {
+        } else if (onClick) {
           onClick(event);
         }
       },

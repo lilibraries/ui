@@ -1,5 +1,6 @@
 import React, {
   Ref,
+  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -8,7 +9,7 @@ import React, {
   InputHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { isFunction, useControllableState } from "@lilib/hooks";
+import { useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Size, { SizeValue } from "../Size";
@@ -57,20 +58,26 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon = children;
   }
 
-  const [checked, setChecked] = useControllableState(
-    defaultChecked,
-    checkedProp
-  );
+  const isControlled = "checked" in props;
+  const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (disabled || loading) {
       return;
     }
-    setChecked(event.target.checked);
-    if (isFunction(onChange)) {
+    if (!isControlled) {
+      setChecked(event.target.checked);
+    }
+    if (onChange) {
       onChange(event);
     }
   }
+
+  useUpdate(() => {
+    if (isControlled) {
+      setChecked(!!checkedProp);
+    }
+  }, [checkedProp]);
 
   const classes = cn(
     `${prefix}switch`,

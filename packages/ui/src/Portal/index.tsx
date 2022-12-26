@@ -1,17 +1,11 @@
 import { FC, ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
-import {
-  useOnce,
-  isBrowser,
-  getTarget,
-  useUnmount,
-  TargetCreator,
-  useLayoutMount,
-} from "@lilib/hooks";
+import { useOnce, useUnmount, useLayoutMount } from "@lilib/hooks";
+import { inBrowser, getEffectTarget, EffectTarget } from "@lilib/utils";
 
 export interface PortalProps {
   children?: ReactNode;
-  container?: TargetCreator<HTMLElement>;
+  container?: EffectTarget<HTMLElement>;
 }
 
 const Portal: FC<PortalProps> = (props) => {
@@ -21,14 +15,14 @@ const Portal: FC<PortalProps> = (props) => {
   const containerRef = useRef<HTMLElement>();
 
   useOnce(() => {
-    if (isBrowser) {
+    if (inBrowser) {
       rootRef.current = document.createElement("div");
     }
   });
 
   function appendRoot() {
     if (!containerRef.current) {
-      containerRef.current = getTarget(container) || document.body;
+      containerRef.current = getEffectTarget(container) || document.body;
     }
     if (rootRef.current && !containerRef.current.contains(rootRef.current)) {
       containerRef.current.appendChild(rootRef.current);

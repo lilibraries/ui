@@ -1,8 +1,8 @@
 import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
+import isString from "lodash/isString";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import isString from "../_utils/isString";
 import isColorPreset from "../_utils/isColorPreset";
 import isRenderableNode from "../_utils/isRenderableNode";
 import { IntentValue, ColorValue } from "../_utils/types";

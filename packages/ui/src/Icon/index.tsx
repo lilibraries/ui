@@ -6,10 +6,10 @@ import React, {
   HTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { mergeRefs } from "@lilib/hooks";
+import { composeRefs } from "@lilib/utils";
 import Prefix from "../Prefix";
-import isString from "../_utils/isString";
-import isNumber from "../_utils/isNumber";
+import isString from "lodash/isString";
+import isNumber from "lodash/isNumber";
 import isRenderableNode from "../_utils/isRenderableNode";
 
 export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
@@ -40,7 +40,7 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
       ...rest,
       spinning,
       ...icon.props,
-      ref: mergeRefs((icon as any).ref, ref),
+      ref: composeRefs((icon as any).ref, ref),
       style: { ...style, ...icon.props.style },
       className: cn(className, icon.props.className),
     });
