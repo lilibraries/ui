@@ -24,7 +24,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color-base);
+    background-color: var(--background-color-1);
     border: 1px solid var(--border-color-base);
     border-radius: var(--border-radius-small);
     cursor: pointer;
@@ -77,7 +77,7 @@
       }
 
       & .#{$prefix}checkbox-icon {
-        color: var(--text-color-reverse-active);
+        color: var(--text-color-solid-active);
       }
     }
   }
@@ -92,7 +92,7 @@
 
     & > .#{$prefix}checkbox-indicator {
       & .#{$prefix}checkbox-base {
-        background-color: var(--bg-color-soft);
+        background-color: var(--background-color-2);
         border-color: var(--border-color-disabled);
         cursor: not-allowed;
       }
@@ -101,7 +101,7 @@
     &.#{$prefix}checked {
       & > .#{$prefix}checkbox-indicator {
         & .#{$prefix}checkbox-base {
-          background-color: var(--bg-color-deep);
+          background-color: var(--background-color-3);
           border-color: var(--border-color-inactive);
         }
 
