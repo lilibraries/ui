@@ -11,9 +11,9 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Size, { SizeValue } from "../Size";
-import CheckIcon from "../_icons/CheckIcon";
-import MinusIcon from "../_icons/MinusIcon";
-import isRenderableNode from "../_utils/isRenderableNode";
+import CheckIcon from "../icons/CheckIcon";
+import MinusIcon from "../icons/MinusIcon";
+import isRenderableNode from "../utils/isRenderableNode";
 import { useUpdate } from "@lilib/hooks";
 
 export interface CheckboxProps

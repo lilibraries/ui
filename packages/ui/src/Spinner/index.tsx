@@ -13,9 +13,9 @@ import Icon, { IconProps } from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
-import LoaderIcon from "../_icons/LoaderIcon";
-import isRenderableNode from "../_utils/isRenderableNode";
-import isCSSPropertyValue from "../_utils/isCSSPropertyValue";
+import LoaderIcon from "../icons/LoaderIcon";
+import isRenderableNode from "../utils/isRenderableNode";
+import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 import SpinnerConfig from "./SpinnerConfig";
 
 export * from "./SpinnerConfig";

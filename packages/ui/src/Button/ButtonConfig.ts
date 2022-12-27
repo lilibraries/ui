@@ -1,5 +1,5 @@
-import { IntentValue } from "../_utils/types";
-import createConfig from "../_utils/createConfig";
+import { IntentValue } from "../Intent";
+import createConfig from "../utils/createConfig";
 
 export type ButtonVariant = null | "solid" | "outlined" | "flat";
 export type ButtonLoadingPosition = null | "start" | "center" | "end";

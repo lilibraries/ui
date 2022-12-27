@@ -1,4 +1,4 @@
-import createConfig from "../_utils/createConfig";
+import createConfig from "../utils/createConfig";
 
 export type SizeValue = null | "small" | "large";
 export interface SizeProps {

@@ -1,5 +1,3 @@
-export * from "./_utils/types";
-
 export * from "./Badge";
 export * from "./Button";
 export * from "./Checkbox";
