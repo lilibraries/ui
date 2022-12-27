@@ -14,8 +14,8 @@ import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
-import { IntentValue } from "../_utils/types";
-import isRenderableNode from "../_utils/isRenderableNode";
+import { IntentValue } from "../Intent";
+import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,

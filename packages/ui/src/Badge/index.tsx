@@ -13,8 +13,8 @@ import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import { IntentValue } from "../_utils/types";
-import isRenderableNode from "../_utils/isRenderableNode";
+import { IntentValue } from "../Intent";
+import isRenderableNode from "../utils/isRenderableNode";
 
 export type BadgeVariant = null | "solid" | "dotted";
 export type BadgePlacement =

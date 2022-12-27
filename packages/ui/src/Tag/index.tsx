@@ -11,9 +11,9 @@ import React, {
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import CloseIcon from "../_icons/CloseIcon";
-import { IntentValue } from "../_utils/types";
-import isRenderableNode from "../_utils/isRenderableNode";
+import CloseIcon from "../icons/CloseIcon";
+import { IntentValue } from "../Intent";
+import isRenderableNode from "../utils/isRenderableNode";
 
 export type TagVariant = null | "solid" | "outlined";
 export interface TagCommonProps {

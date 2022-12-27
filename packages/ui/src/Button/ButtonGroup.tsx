@@ -2,7 +2,7 @@ import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import { IntentValue } from "../_utils/types";
+import { IntentValue } from "../Intent";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,

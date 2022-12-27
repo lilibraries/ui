@@ -10,7 +10,7 @@ import { composeRefs } from "@lilib/utils";
 import Prefix from "../Prefix";
 import isString from "lodash/isString";
 import isNumber from "lodash/isNumber";
-import isRenderableNode from "../_utils/isRenderableNode";
+import isRenderableNode from "../utils/isRenderableNode";
 
 export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;

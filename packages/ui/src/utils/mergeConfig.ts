@@ -1,6 +1,6 @@
 import isObject from "lodash/isObject";
 
-function mergeConfig<T = any>(base: T, override?: Partial<T>): T {
+function mergeConfig<T>(base: T, override?: Partial<T>): T {
   if (override === undefined) {
     return base;
   }

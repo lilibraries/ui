@@ -15,8 +15,8 @@ import Duration from "../Duration";
 import Collapse from "../Collapse";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import LoaderIcon from "../_icons/LoaderIcon";
-import isRenderableNode from "../_utils/isRenderableNode";
+import LoaderIcon from "../icons/LoaderIcon";
+import isRenderableNode from "../utils/isRenderableNode";
 import LoaderConfig from "./LoaderConfig";
 
 export * from "./LoaderConfig";

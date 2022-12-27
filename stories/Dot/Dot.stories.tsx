@@ -10,24 +10,7 @@ export default {
       options: [null, "major", "minor", "positive", "alertive", "negative"],
     },
     color: {
-      control: { type: "select" },
-      options: [
-        null,
-        "red",
-        "magenta",
-        "purple",
-        "indigo",
-        "navy",
-        "blue",
-        "cyan",
-        "teal",
-        "green",
-        "lime",
-        "yellow",
-        "orange",
-        "brown",
-        "gray",
-      ],
+      control: { type: "text" },
     },
     animated: {
       control: { type: "boolean" },
@@ -38,6 +21,5 @@ export default {
 export { default as Basic } from "./Basic";
 export { default as Sizes } from "./Sizes";
 export { default as Intents } from "./Intents";
-export { default as ColorPresets } from "./ColorPresets";
 export { default as CustomColor } from "./CustomColor";
 export { default as Animated } from "./Animated";

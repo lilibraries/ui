@@ -14,7 +14,7 @@ import isFunction from "lodash/isFunction";
 import { composeRefs } from "@lilib/utils";
 import { useMount, useUpdate, useTimeout } from "@lilib/hooks";
 import Prefix from "../Prefix";
-import isPositiveNumber from "../_utils/isPositiveNumber";
+import isPositiveNumber from "../utils/isPositiveNumber";
 
 const ENTER = "enter";
 const ENTERING = "entering";

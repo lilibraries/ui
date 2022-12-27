@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import createConfig from "../_utils/createConfig";
+import createConfig from "../utils/createConfig";
 
 export interface LoaderConfigValue {
   icon?: ReactNode;

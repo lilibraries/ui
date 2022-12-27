@@ -23,8 +23,8 @@
     "url": "https://github.com/lilibraries/ui/issues"
   },
   "files": [
-    "dist",
-    "src"
+    "src",
+    "dist"
   ],
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.7",
-    "@lilib/utils": "^1.0.0",
     "@lilib/hooks": "^1.0.0",
+    "@lilib/utils": "^1.0.0",
     "@types/lodash": "^4.14.190",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21"

@@ -12,7 +12,7 @@ import cn from "classnames";
 import { inBrowser } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
-import mergeConfig from "../_utils/mergeConfig";
+import mergeConfig from "../utils/mergeConfig";
 
 export interface DurationValue {
   base: number;

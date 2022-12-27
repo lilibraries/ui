@@ -13,7 +13,7 @@ import { useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Size, { SizeValue } from "../Size";
-import isRenderableNode from "../_utils/isRenderableNode";
+import isRenderableNode from "../utils/isRenderableNode";
 
 export interface SwitchProps
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
