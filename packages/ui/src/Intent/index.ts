@@ -7,6 +7,7 @@ export type IntentValue =
   | "positive"
   | "alertive"
   | "negative";
+
 export interface IntentProps {
   value?: IntentValue;
 }
