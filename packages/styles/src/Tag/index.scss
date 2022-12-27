@@ -13,7 +13,7 @@
   font-size: var(--font-size-base);
   line-height: var(--line-height-fixed-base);
   text-decoration: none;
-  background-color: var(--bg-color-base);
+  background-color: var(--background-color-1);
   border: 0;
   border-radius: var(--border-radius-small);
   box-shadow: 0 0 0 1px var(--border-color-base);
@@ -44,12 +44,12 @@
 
     &:hover {
       color: var(--text-color-hover);
-      background-color: var(--bg-color-soft);
+      background-color: var(--background-color-2);
     }
 
     &:active {
       color: var(--text-color-active);
-      background-color: var(--bg-color-deep);
+      background-color: var(--background-color-3);
     }
   }
 
@@ -109,12 +109,12 @@
 
       &:hover {
         color: var(--text-color-hover);
-        background-color: var(--bg-color-soft);
+        background-color: var(--background-color-2);
       }
 
       &:active {
         color: var(--text-color-active);
-        background-color: var(--bg-color-deep);
+        background-color: var(--background-color-3);
       }
     }
   }
@@ -122,7 +122,7 @@
   @each $intent in $intents {
     &.#{$prefix}#{$intent} {
       color: var(--text-color-#{$intent}-base);
-      background-color: var(--bg-color-#{$intent}-base);
+      background-color: var(--background-color-#{$intent}-1);
       box-shadow: 0 0 0 1px var(--border-color-#{$intent}-base);
 
       & > .#{$prefix}tag-clear {
@@ -130,12 +130,12 @@
 
         &:hover {
           color: var(--text-color-#{$intent}-hover);
-          background-color: var(--bg-color-#{$intent}-soft);
+          background-color: var(--background-color-#{$intent}-2);
         }
 
         &:active {
           color: var(--text-color-#{$intent}-active);
-          background-color: var(--bg-color-#{$intent}-deep);
+          background-color: var(--background-color-#{$intent}-3);
         }
       }
 
@@ -143,12 +143,12 @@
         & > .#{$prefix}tag-content {
           &:hover {
             color: var(--text-color-#{$intent}-hover);
-            background-color: var(--bg-color-#{$intent}-soft);
+            background-color: var(--background-color-#{$intent}-2);
           }
 
           &:active {
             color: var(--text-color-#{$intent}-active);
-            background-color: var(--bg-color-#{$intent}-deep);
+            background-color: var(--background-color-#{$intent}-3);
           }
         }
       }
@@ -156,20 +156,20 @@
   }
 
   &.#{$prefix}solid {
-    color: var(--text-color-reverse-base);
+    color: var(--text-color-solid-base);
     background-color: var(--text-color-base);
     box-shadow: none;
 
     & > .#{$prefix}tag-clear {
-      color: var(--text-color-reverse-inactive);
+      color: var(--text-color-solid-inactive);
 
       &:hover {
-        color: var(--text-color-reverse-base);
+        color: var(--text-color-solid-base);
         background-color: var(--text-color-hover);
       }
 
       &:active {
-        color: var(--text-color-reverse-base);
+        color: var(--text-color-solid-base);
         background-color: var(--text-color-active);
       }
     }
@@ -177,12 +177,12 @@
     &.#{$prefix}clickable {
       & > .#{$prefix}tag-content {
         &:hover {
-          color: var(--text-color-reverse-base);
+          color: var(--text-color-solid-base);
           background-color: var(--text-color-hover);
         }
 
         &:active {
-          color: var(--text-color-reverse-base);
+          color: var(--text-color-solid-base);
           background-color: var(--text-color-active);
         }
       }
@@ -223,22 +223,22 @@
 
     & > .#{$prefix}tag-clear {
       &:hover {
-        background-color: var(--bg-color-alpha-soft);
+        background-color: var(--background-color-a1);
       }
 
       &:active {
-        background-color: var(--bg-color-alpha-deep);
+        background-color: var(--background-color-a2);
       }
     }
 
     &.#{$prefix}clickable {
       & > .#{$prefix}tag-content {
         &:hover {
-          background-color: var(--bg-color-alpha-soft);
+          background-color: var(--background-color-a1);
         }
 
         &:active {
-          background-color: var(--bg-color-alpha-deep);
+          background-color: var(--background-color-a2);
         }
       }
     }
@@ -251,12 +251,12 @@
         & > .#{$prefix}tag-clear {
           &:hover {
             color: var(--text-color-#{$intent}-hover);
-            background-color: var(--bg-color-#{$intent}-alpha-soft);
+            background-color: var(--background-color-#{$intent}-a1);
           }
 
           &:active {
             color: var(--text-color-#{$intent}-active);
-            background-color: var(--bg-color-#{$intent}-alpha-deep);
+            background-color: var(--background-color-#{$intent}-a2);
           }
         }
 
@@ -264,12 +264,12 @@
           & > .#{$prefix}tag-content {
             &:hover {
               color: var(--text-color-#{$intent}-hover);
-              background-color: var(--bg-color-#{$intent}-alpha-soft);
+              background-color: var(--background-color-#{$intent}-a1);
             }
 
             &:active {
               color: var(--text-color-#{$intent}-active);
-              background-color: var(--bg-color-#{$intent}-alpha-deep);
+              background-color: var(--background-color-#{$intent}-a2);
             }
           }
         }
@@ -279,7 +279,7 @@
 
   &.#{$prefix}disabled {
     color: var(--text-color-disabled);
-    background-color: var(--bg-color-base);
+    background-color: var(--background-color-1);
     box-shadow: 0 0 0 1px var(--border-color-disabled);
     cursor: not-allowed;
 
@@ -300,7 +300,7 @@
     @each $intent in $intents {
       &.#{$prefix}#{$intent} {
         color: var(--text-color-#{$intent}-disabled);
-        background-color: var(--bg-color-#{$intent}-base);
+        background-color: var(--background-color-#{$intent}-1);
         box-shadow: 0 0 0 1px var(--border-color-#{$intent}-disabled);
 
         & > .#{$prefix}tag-clear {
@@ -318,18 +318,18 @@
     }
 
     &.#{$prefix}solid {
-      color: var(--text-color-reverse-disabled);
+      color: var(--text-color-solid-disabled);
       background-color: var(--text-color-disabled);
       box-shadow: none;
 
       & > .#{$prefix}tag-clear {
-        color: var(--text-color-reverse-disabled);
+        color: var(--text-color-solid-disabled);
         background-color: transparent;
       }
 
       &.#{$prefix}clickable {
         & > .#{$prefix}tag-content {
-          color: var(--text-color-reverse-disabled);
+          color: var(--text-color-solid-disabled);
           background-color: transparent;
         }
       }

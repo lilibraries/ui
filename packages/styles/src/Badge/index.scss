@@ -34,7 +34,7 @@
     & > .#{$prefix}badge-switcher {
       & > .#{$prefix}dot,
       & > .#{$prefix}tag {
-        box-shadow: 0 0 0 2px var(--bg-color-base);
+        box-shadow: 0 0 0 2px var(--background-color-1);
       }
     }
   }
