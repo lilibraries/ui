@@ -14,7 +14,7 @@ import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
-import { IntentValue } from "../Intent";
+import Intent, { IntentValue } from "../Intent";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
@@ -78,12 +78,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const prefix = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const intent = Intent.useConfig(intentProp);
   const hasStartIcon = isRenderableNode(startIcon);
   const hasEndIcon = isRenderableNode(endIcon);
 
   const {
     variant,
-    intent,
     fluid,
     round,
     truncated,
