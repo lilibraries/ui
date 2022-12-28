@@ -1,0 +1,42 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Configs/Size" />
+
+# Size
+
+This component is used to configure the `size` prop of all subcomponents.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-size--basic" />
+</Canvas>
+
+### Nested
+
+<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
+  <Story id="examples-size--nested" />
+</Canvas>
+
+## API
+
+### Size
+
+| Property   | Type                             | Description   | Default |
+| ---------- | -------------------------------- | ------------- | ------- |
+| `value`    | `null` \| `"small"` \| `"large"` | Size value    | `null`  |
+| `children` | `ReactNode`                      | Subcomponents | -       |
+
+### Size.useConfig()
+
+```ts
+function useConfig(): null | "small" | "large";
+```
+
+Get configured size value.
+
+### Size.Context
+
+A context created by `React.createContext`. It's default value is `null`.
