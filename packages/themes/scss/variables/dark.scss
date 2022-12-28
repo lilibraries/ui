@@ -9,6 +9,7 @@ $dark-positive: light-color($positive, 20%) !default;
 $dark-alertive: light-color($alertive, 20%) !default;
 $dark-negative: light-color($negative, 20%) !default;
 
+$dark-background-color-0: shade-color($dark-base, 80%);
 $dark-background-color-1: shade-color($dark-base, 70%);
 $dark-background-color-2: shade-color($dark-base, 60%);
 $dark-background-color-3: shade-color($dark-base, 50%);

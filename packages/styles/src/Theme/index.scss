@@ -1,23 +1,31 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}light {
-  @each $name, $value in $light-properties {
+  @each $name, $value in merge-maps($light-palettes, $light-properties) {
     $property: str-insert($name, $var-prefix, 3);
 
     #{$property}: $value;
   }
 
   color-scheme: light;
-  color: unquote("var(--" + $var-prefix + "text-color-base)");
 }
 
 .#{$cls-prefix}dark {
-  @each $name, $value in $dark-properties {
+  @each $name, $value in merge-maps($dark-palettes, $dark-properties) {
     $property: str-insert($name, $var-prefix, 3);
 
     #{$property}: $value;
   }
 
   color-scheme: dark;
+}
+
+.#{$cls-prefix}light,
+.#{$cls-prefix}dark {
   color: unquote("var(--" + $var-prefix + "text-color-base)");
+
+  &.body,
+  & > body {
+    background-color: unquote("var(--" + $var-prefix + "background-color-0)");
+  }
 }

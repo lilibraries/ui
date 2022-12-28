@@ -11,11 +11,13 @@ import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
 
 export type ThemeValue = null | "light" | "dark";
+
 export interface ThemeScopedProps {
   scoped: true;
   value?: ThemeValue;
   children: ReactElement;
 }
+
 export interface ThemeUnscopedProps {
   scoped?: false;
   value?: ThemeValue;
@@ -28,30 +30,30 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {
-      const lightClassName = `${cls}light`;
-      const darkClassName = `${cls}dark`;
+      const light = `${cls}light`;
+      const dark = `${cls}dark`;
       const classList = document.documentElement.classList;
 
       if (value === "light") {
-        if (classList.contains(darkClassName)) {
-          classList.remove(darkClassName);
+        if (classList.contains(dark)) {
+          classList.remove(dark);
         }
-        if (!classList.contains(lightClassName)) {
-          classList.add(lightClassName);
+        if (!classList.contains(light)) {
+          classList.add(light);
         }
       } else if (value === "dark") {
-        if (classList.contains(lightClassName)) {
-          classList.remove(lightClassName);
+        if (classList.contains(light)) {
+          classList.remove(light);
         }
-        if (!classList.contains(darkClassName)) {
-          classList.add(darkClassName);
+        if (!classList.contains(dark)) {
+          classList.add(dark);
         }
       } else {
-        if (classList.contains(lightClassName)) {
-          classList.remove(lightClassName);
+        if (classList.contains(light)) {
+          classList.remove(light);
         }
-        if (classList.contains(darkClassName)) {
-          classList.remove(darkClassName);
+        if (classList.contains(dark)) {
+          classList.remove(dark);
         }
       }
     }
