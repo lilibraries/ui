@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
-import { Root, Theme, Size, Intent, Direction } from "@lilib/ui";
 import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
+import { Root, Baseline, Theme, Size, Intent, Direction } from "@lilib/ui";
 import order from "./order";
 import { light, dark } from "./themes";
-import "./preview.css";
+import "./preview.scss";
 
 export const parameters = {
   darkMode: { light, dark },
@@ -13,37 +13,42 @@ export const parameters = {
   docs: {
     container: function DocsContainer({ children, context }) {
       const isDarkMode = useDarkMode();
-      const { size, intent, direction } = context.globals;
+      const story = context.storyById(context.id);
+      const { globals } = context.getStoryContext(story);
+      const { size, intent, direction } = globals;
+
       return (
         <Root>
-          <Theme value={isDarkMode ? "dark" : "light"}>
-            <Size value={size}>
-              <Intent value={intent}>
-                <Direction value={direction}>
-                  <BaseContainer
-                    context={{
-                      ...context,
-                      storyById: (id) => {
-                        const storyContext = context.storyById(id);
-                        return {
-                          ...storyContext,
-                          parameters: {
-                            ...storyContext?.parameters,
-                            docs: {
-                              ...storyContext?.parameters?.docs,
-                              theme: isDarkMode ? dark : light,
+          <Baseline>
+            <Theme value={isDarkMode ? "dark" : "light"}>
+              <Size value={size}>
+                <Intent value={intent}>
+                  <Direction value={direction}>
+                    <BaseContainer
+                      context={{
+                        ...context,
+                        storyById: (id) => {
+                          const storyContext = context.storyById(id);
+                          return {
+                            ...storyContext,
+                            parameters: {
+                              ...storyContext?.parameters,
+                              docs: {
+                                ...storyContext?.parameters?.docs,
+                                theme: isDarkMode ? dark : light,
+                              },
                             },
-                          },
-                        };
-                      },
-                    }}
-                  >
-                    {children}
-                  </BaseContainer>
-                </Direction>
-              </Intent>
-            </Size>
-          </Theme>
+                          };
+                        },
+                      }}
+                    >
+                      {children}
+                    </BaseContainer>
+                  </Direction>
+                </Intent>
+              </Size>
+            </Theme>
+          </Baseline>
         </Root>
       );
     },
@@ -97,15 +102,17 @@ export const decorators = [
 
     return (
       <Root>
-        <Theme value={useDarkMode() ? "dark" : "light"}>
-          <Size value={size}>
-            <Intent value={intent}>
-              <Direction value={direction}>
-                <div ref={demoContainerRef}>{render()}</div>
-              </Direction>
-            </Intent>
-          </Size>
-        </Theme>
+        <Baseline>
+          <Theme value={useDarkMode() ? "dark" : "light"}>
+            <Size value={size}>
+              <Intent value={intent}>
+                <Direction value={direction}>
+                  <div ref={demoContainerRef}>{render()}</div>
+                </Direction>
+              </Intent>
+            </Size>
+          </Theme>
+        </Baseline>
       </Root>
     );
   },

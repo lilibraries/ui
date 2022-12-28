@@ -1,4 +1,5 @@
 export * from "./Badge";
+export * from "./Baseline";
 export * from "./Button";
 export * from "./Checkbox";
 export * from "./Collapse";
@@ -19,6 +20,7 @@ export * from "./Theme";
 export * from "./Transition";
 
 export { default as Badge } from "./Badge";
+export { default as Baseline } from "./Baseline";
 export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
 export { default as Collapse } from "./Collapse";
