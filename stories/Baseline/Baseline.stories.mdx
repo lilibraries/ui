@@ -1,0 +1,40 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Configs/Baseline" />
+
+# Baseline
+
+## Usage
+
+```tsx
+import React from "react";
+import { Baseline } from "@lilib/ui";
+
+function App() {
+  return <Baseline />;
+}
+// Or
+function App() {
+  return <Baseline>...</Baseline>;
+}
+```
+
+## Examples
+
+### Headings
+
+<Canvas mdxSource={require("!!raw-loader!./Headings").default}>
+  <Story id="examples-baseline--headings" />
+</Canvas>
+
+### Paragraph
+
+<Canvas mdxSource={require("!!raw-loader!./Paragraph").default}>
+  <Story id="examples-baseline--paragraph" />
+</Canvas>
+
+### Horizontal rule
+
+<Canvas mdxSource={require("!!raw-loader!./HorizontalRule").default}>
+  <Story id="examples-baseline--horizontal-rule" />
+</Canvas>
