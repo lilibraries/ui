@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
 import { Theme, Size } from "@lilib/ui";
-import { DocsContainer as BaseContainer } from "@storybook/addon-docs/blocks";
+import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
 import order from "./order";
 import { light, dark } from "./themes";
 
@@ -47,7 +47,7 @@ export const globalTypes = {
   size: {
     name: "Size",
     toolbar: {
-      showName: true,
+      title: "Size",
       items: [{ value: null, title: "null" }, "small", "large"],
     },
   },

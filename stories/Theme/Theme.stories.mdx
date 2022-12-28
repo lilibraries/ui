@@ -1,0 +1,62 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Configs/Theme" />
+
+# Theme
+
+The purpose of this component is changing theme. It provides two themes: `light` and `dark`. The light theme is used by default.
+
+If you have read the source code of this repository, you can find that almost all styles use CSS variables. There are two ways to change theme: global and scoped. No matter which way, they will modify color-related CSS variables by adding CSS class name. Global way will add CSS class name to the `<html>` element. Scoped way will add CSS class name to the child element.
+
+## Examples
+
+### Global
+
+The first button in the document toolbar is used to change global theme, you can click it to try.
+
+```tsx
+import React from "react";
+import { Theme } from "@lilib/ui";
+
+function Root() {
+  return <Theme value="dark" />;
+}
+// Or
+function Root() {
+  return <Theme value="dark">...</Theme>;
+}
+```
+
+### Scoped
+
+If the `scoped` prop is specified to `true`, the `children` prop must be a React element that accepts `className` prop.
+
+<Canvas mdxSource={require("!!raw-loader!./Scoped").default}>
+  <Story id="examples-theme--scoped" />
+</Canvas>
+
+### Nested
+
+<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
+  <Story id="examples-theme--nested" />
+</Canvas>
+
+### Sync with system
+
+You can change the system theme mode to see the effect.
+
+<Canvas mdxSource={require("!!raw-loader!./SyncWithSystem").default}>
+  <Story id="examples-theme--sync-with-system" />
+</Canvas>
+
+## Props
+
+| Property   | Type                            | Description                  | Default |
+| ---------- | ------------------------------- | ---------------------------- | ------- |
+| `scoped`   | `boolean`                       | Scoped theme                 | `false` |
+| `value`    | `null` \| `"light"` \| `"dark"` | Theme value                  | `null`  |
+| `children` | `ReactElement` \| `ReactNode`   | Child element or child nodes | -       |
+
+The `scoped` prop is used to distinguish between different ways to change the theme. When `scoped` is `true`, the Theme component is scoped, and the `children` prop must be a React element. Otherwise, it is global, and the `children` can be any React nodes.
+
+The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` props is `null` or `undefined`, all theme class names added before will be cleared.
