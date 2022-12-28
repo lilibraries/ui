@@ -1,9 +1,18 @@
+import { ReactNode } from "react";
 import createConfig from "../utils/createConfig";
 
-export interface PrefixProps {
-  value?: string;
+export interface PrefixValue {
+  cls: string;
+  var: string;
 }
 
-const Prefix = createConfig<string, PrefixProps>("value", "li-");
+export interface PrefixProps extends Partial<PrefixValue> {
+  children?: ReactNode;
+}
+
+const Prefix = createConfig<PrefixValue>(["cls", "var"], {
+  cls: "li-",
+  var: "li-",
+});
 
 export default Prefix;

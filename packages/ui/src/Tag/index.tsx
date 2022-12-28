@@ -58,19 +58,19 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
   const classes = cn(
-    `${prefix}tag`,
+    `${cls}tag`,
     {
-      [`${prefix}${variant}`]: variant,
-      [`${prefix}${size}`]: size,
-      [`${prefix}${intent}`]: intent,
-      [`${prefix}round`]: round,
-      [`${prefix}clearable`]: clearable,
-      [`${prefix}clickable`]: clickable,
-      [`${prefix}disabled`]: disabled,
+      [`${cls}${variant}`]: variant,
+      [`${cls}${size}`]: size,
+      [`${cls}${intent}`]: intent,
+      [`${cls}round`]: round,
+      [`${cls}clearable`]: clearable,
+      [`${cls}clickable`]: clickable,
+      [`${cls}disabled`]: disabled,
     },
     className
   );
@@ -80,7 +80,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     clear = (
       <span
         tabIndex={0}
-        className={`${prefix}tag-clear`}
+        className={`${cls}tag-clear`}
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
@@ -109,7 +109,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         }
       },
     },
-    <span className={`${prefix}tag-content`}>{children}</span>,
+    <span className={`${cls}tag-content`}>{children}</span>,
     clear
   );
 }) as TagComponent;

@@ -1,7 +1,7 @@
 @import "@lilib/themes";
 
-.#{$prefix}button-group {
-  & .#{$prefix}button {
+.#{$cls-prefix}button-group {
+  & .#{$cls-prefix}button {
     position: relative;
     z-index: 2;
 
@@ -21,7 +21,7 @@
       z-index: 2;
     }
 
-    &.#{$prefix}active {
+    &.#{$cls-prefix}active {
       z-index: 4;
 
       &:focus-visible {
@@ -29,22 +29,22 @@
       }
     }
 
-    &.#{$prefix}disabled {
+    &.#{$cls-prefix}disabled {
       z-index: 0;
 
-      &.#{$prefix}active {
+      &.#{$cls-prefix}active {
         z-index: 1;
       }
     }
   }
 
-  &.#{$prefix}horizontal {
+  &.#{$cls-prefix}horizontal {
     display: inline-flex;
     align-items: stretch;
     max-width: 100%;
     vertical-align: middle;
 
-    & .#{$prefix}button {
+    & .#{$cls-prefix}button {
       &:not(:first-child) {
         margin-left: -1px;
       }
@@ -64,22 +64,22 @@
       }
     }
 
-    &.#{$prefix}fluid {
+    &.#{$cls-prefix}fluid {
       display: flex;
       width: 100%;
 
-      & .#{$prefix}button {
+      & .#{$cls-prefix}button {
         flex: 1 1 auto;
         text-align: center;
       }
     }
   }
 
-  &.#{$prefix}vertical {
+  &.#{$cls-prefix}vertical {
     display: inline-block;
     max-width: 100%;
 
-    & .#{$prefix}button {
+    & .#{$cls-prefix}button {
       &:not(:first-child) {
         margin-top: -1px;
       }
@@ -99,7 +99,7 @@
       }
     }
 
-    &.#{$prefix}fluid {
+    &.#{$cls-prefix}fluid {
       display: block;
       width: 100%;
     }

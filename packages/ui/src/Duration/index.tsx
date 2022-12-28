@@ -48,24 +48,24 @@ const Duration: FC<DurationScopedProps | DurationUnscopedProps> & {
   useConfig: typeof useDurationConfig;
 } = (props) => {
   const { fast, base, slow, lazy, scoped, children, ...rest } = props;
-  const prefix = Prefix.useConfig();
+  const { var: varPrefix } = Prefix.useConfig();
 
   const styles = useMemo(() => {
     const result: { [key: string]: string } = {};
     if (base !== undefined) {
-      result[`--${prefix}motion-duration-base`] = `${base}ms`;
+      result[`--${varPrefix}motion-duration-base`] = `${base}ms`;
     }
     if (fast !== undefined) {
-      result[`--${prefix}motion-duration-fast`] = `${fast}ms`;
+      result[`--${varPrefix}motion-duration-fast`] = `${fast}ms`;
     }
     if (slow !== undefined) {
-      result[`--${prefix}motion-duration-slow`] = `${slow}ms`;
+      result[`--${varPrefix}motion-duration-slow`] = `${slow}ms`;
     }
     if (lazy !== undefined) {
-      result[`--${prefix}motion-duration-lazy`] = `${lazy}ms`;
+      result[`--${varPrefix}motion-duration-lazy`] = `${lazy}ms`;
     }
     return result;
-  }, [prefix, fast, base, slow, lazy]);
+  }, [varPrefix, fast, base, slow, lazy]);
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {

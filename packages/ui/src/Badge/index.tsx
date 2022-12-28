@@ -61,16 +61,16 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const dotted = variant === "dotted";
   const contained = isRenderableNode(children);
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const { fast } = Duration.useConfig();
 
   const classes = cn(
-    `${prefix}badge`,
+    `${cls}badge`,
     {
-      [`${prefix}contained`]: contained,
-      [`${prefix}standalone`]: !contained,
-      [`${prefix}outlined`]: outlined,
+      [`${cls}contained`]: contained,
+      [`${cls}standalone`]: !contained,
+      [`${cls}outlined`]: outlined,
     },
     className
   );
@@ -102,7 +102,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
             intent={intent}
             round={round}
             className={cn({
-              [`${prefix}quadrate`]: String(count).length === 1,
+              [`${cls}quadrate`]: String(count).length === 1,
             })}
           >
             {tag}
@@ -149,8 +149,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
         {children}
         <span
           style={position}
-          className={cn(`${prefix}badge-switcher`, {
-            [`${prefix}badge-switcher-${placement}`]: isString(placement),
+          className={cn(`${cls}badge-switcher`, {
+            [`${cls}badge-switcher-${placement}`]: isString(placement),
           })}
         >
           {tag}

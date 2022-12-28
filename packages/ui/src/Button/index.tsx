@@ -76,7 +76,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const intent = Intent.useConfig(intentProp);
   const hasStartIcon = isRenderableNode(startIcon);
@@ -129,18 +129,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     spinning: loading,
   };
   const classes = cn(
-    `${prefix}button`,
+    `${cls}button`,
     {
-      [`${prefix}${variant}`]: variant,
-      [`${prefix}${intent}`]: intent,
-      [`${prefix}${size}`]: size,
-      [`${prefix}fluid`]: fluid,
-      [`${prefix}round`]: round,
-      [`${prefix}truncated`]: truncated,
-      [`${prefix}active`]: active,
-      [`${prefix}disabled`]: disabled,
-      [`${prefix}loading`]: loading && loadingPositionCenter,
-      [`${prefix}icon-only`]: iconOnly,
+      [`${cls}${variant}`]: variant,
+      [`${cls}${intent}`]: intent,
+      [`${cls}${size}`]: size,
+      [`${cls}fluid`]: fluid,
+      [`${cls}round`]: round,
+      [`${cls}truncated`]: truncated,
+      [`${cls}active`]: active,
+      [`${cls}disabled`]: disabled,
+      [`${cls}loading`]: loading && loadingPositionCenter,
+      [`${cls}icon-only`]: iconOnly,
     },
     className
   );
@@ -172,8 +172,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         return cloneElement<SpinnerProps>(node as any, {
           className: cn(
             {
-              [`${prefix}start-spaced`]: startSpace,
-              [`${prefix}end-spaced`]: endSpace,
+              [`${cls}start-spaced`]: startSpace,
+              [`${cls}end-spaced`]: endSpace,
             },
             node.props.className
           ),
@@ -190,8 +190,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       return (
         <Icon
           className={cn({
-            [`${prefix}start-spaced`]: startSpace,
-            [`${prefix}end-spaced`]: endSpace,
+            [`${cls}start-spaced`]: startSpace,
+            [`${cls}end-spaced`]: endSpace,
           })}
         >
           {node}
@@ -223,10 +223,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     } else if (loadingPositionEnd) {
       end = wrapSpinner(null, { startSpace: true });
     }
-    center = <span className={`${prefix}button-content`}>{children}</span>;
+    center = <span className={`${cls}button-content`}>{children}</span>;
     if (loadingPositionCenter) {
       loader = (
-        <span className={`${prefix}button-loader`}>
+        <span className={`${cls}button-loader`}>
           <Spinner spinning delay={0} />
         </span>
       );

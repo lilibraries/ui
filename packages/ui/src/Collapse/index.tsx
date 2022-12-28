@@ -34,7 +34,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
   const domRef = useRef<HTMLDivElement>();
   const composedRef = useComposedRef(domRef, ref);
@@ -88,7 +88,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
               style,
               height !== undefined ? { height } : {}
             )}
-            className={cn(`${prefix}collapse`, className)}
+            className={cn(`${cls}collapse`, className)}
           >
             {children}
           </div>

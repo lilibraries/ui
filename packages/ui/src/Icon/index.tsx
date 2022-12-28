@@ -26,7 +26,7 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
     className,
     ...rest
   } = props;
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
 
   let icon: ReactNode;
   if (isRenderableNode(iconProp)) {
@@ -48,10 +48,10 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
 
   const textual = isString(icon) || isNumber(icon);
   const classes = cn(
-    `${prefix}icon`,
+    `${cls}icon`,
     {
-      [`${prefix}textual`]: textual,
-      [`${prefix}spinning`]: spinning,
+      [`${cls}textual`]: textual,
+      [`${cls}spinning`]: spinning,
     },
     className
   );

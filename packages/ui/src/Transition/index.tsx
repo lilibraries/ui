@@ -92,7 +92,7 @@ const Transition: FC<TransitionProps> & {
     : durations[ENTERING];
   const exitingDuration = isNumber(durations) ? durations : durations[EXITING];
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const domRef = useRef<HTMLElement>();
 
   const [state, setState] = useState<TransitionState>(() => {
@@ -115,14 +115,14 @@ const Transition: FC<TransitionProps> & {
   if (classNames) {
     STATES.forEach((s) => {
       if (classNames === true) {
-        classNamesMapping[s] = `${prefix}transition-${s}`;
+        classNamesMapping[s] = `${cls}transition-${s}`;
       } else if (isString(classNames)) {
         classNamesMapping[s] = `${classNames}-${s}`;
       } else if (isObject(classNames)) {
         if (isString(classNames[s])) {
           classNamesMapping[s] = classNames[s] as string;
         } else if (classNames[s]) {
-          classNamesMapping[s] = `${prefix}transition-${s}`;
+          classNamesMapping[s] = `${cls}transition-${s}`;
         }
       }
     });

@@ -1,4 +1,9 @@
-$prefix: "li-" !default;
+$cls-prefix: "li-" !default;
+$var-prefix: "li-" !default;
+
+$enable-variables: true !default;
+$enable-fallbacks: true !default;
+
 $intents: ("major", "minor", "positive", "alertive", "negative") !default;
 
 $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -27,6 +32,7 @@ $font-weight-heading: 700 !default;
 $line-height-base: 1.5 !default;
 $line-height-small: 1.25 !default;
 $line-height-large: 2 !default;
+
 $line-height-fixed-base: 24px !default;
 $line-height-fixed-small: 18px !default;
 $line-height-fixed-large: 30px !default;
@@ -53,6 +59,7 @@ $border-width-active: 2px !default;
 $border-radius-base: 0.5em !default;
 $border-radius-small: 0.25em !default;
 $border-radius-large: 1em !default;
+
 $border-radius-fixed-base: 8px !default;
 $border-radius-fixed-small: 4px !default;
 $border-radius-fixed-large: 16px !default;

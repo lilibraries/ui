@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs";
 
 # Prefix
 
-This component is used to set the CSS class name prefix of subcomponents. It is recommended to set it only once in the root component. The default value of this component is `"li-"`.
+This component is used to set the CSS class name prefix and CSS variable name prefix of subcomponents. It is recommended to set it only once in the root component.
 
 ## Example
 
@@ -14,7 +14,7 @@ import { Prefix, Button } from "@lilibraries/ui";
 
 function Root() {
   return (
-    <Prefix value="hello-">
+    <Prefix cls="hello-" var="hello-">
       <Button /> {/* => "hello-button" */}
       <Subcomponent />
     </Prefix>
@@ -22,7 +22,10 @@ function Root() {
 }
 
 function Subcomponent() {
-  const prefix = Prefix.useConfig(); // => "hello-"
+  const {
+    cls, // => "hello-"
+    var, // => "hello-"
+  } = Prefix.useConfig();
   ...
 }
 ```
@@ -31,19 +34,20 @@ function Subcomponent() {
 
 ### Prefix
 
-| Property   | Type        | Description           |
-| ---------- | ----------- | --------------------- |
-| `value`    | `string`    | CSS class name prefix |
-| `children` | `ReactNode` | Subcomponents         |
+| Property   | Type        | Description              | Default |
+| ---------- | ----------- | ------------------------ | ------- |
+| `cls`      | `string`    | CSS class name prefix    | "li-"   |
+| `var`      | `string`    | CSS variable name prefix | "li-"   |
+| `children` | `ReactNode` | Subcomponents            | -       |
 
 ### Prefix.useConfig()
 
 ```ts
-function useConfig(): string;
+function useConfig(): { cls: string; var: string };
 ```
 
 Get configured CSS class name prefix.
 
 ### Prefix.Context
 
-A context returned by `React.createContext`. It's default value is `"li-"`.
+A context created by `React.createContext`. It's default value is `{ cls: "li-", var: "li-" }`.

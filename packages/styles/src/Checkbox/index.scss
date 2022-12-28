@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}checkbox {
+.#{$cls-prefix}checkbox {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
@@ -53,59 +53,59 @@
     margin-left: 0.5em;
   }
 
-  &.#{$prefix}small {
+  &.#{$cls-prefix}small {
     font-size: var(--font-size-small);
   }
 
-  &.#{$prefix}large {
+  &.#{$cls-prefix}large {
     font-size: var(--font-size-large);
   }
 
   &:hover {
-    & > .#{$prefix}checkbox-indicator {
-      & .#{$prefix}checkbox-base {
+    & > .#{$cls-prefix}checkbox-indicator {
+      & .#{$cls-prefix}checkbox-base {
         border-color: var(--major);
       }
     }
   }
 
-  &.#{$prefix}checked {
-    & > .#{$prefix}checkbox-indicator {
-      & .#{$prefix}checkbox-base {
+  &.#{$cls-prefix}checked {
+    & > .#{$cls-prefix}checkbox-indicator {
+      & .#{$cls-prefix}checkbox-base {
         background-color: var(--major);
         border-color: var(--major);
       }
 
-      & .#{$prefix}checkbox-icon {
+      & .#{$cls-prefix}checkbox-icon {
         color: var(--text-color-solid-active);
       }
     }
   }
 
-  &.#{$prefix}loading {
+  &.#{$cls-prefix}loading {
     cursor: auto;
   }
 
-  &.#{$prefix}disabled {
+  &.#{$cls-prefix}disabled {
     color: var(--text-color-disabled);
     cursor: not-allowed;
 
-    & > .#{$prefix}checkbox-indicator {
-      & .#{$prefix}checkbox-base {
+    & > .#{$cls-prefix}checkbox-indicator {
+      & .#{$cls-prefix}checkbox-base {
         background-color: var(--background-color-2);
         border-color: var(--border-color-disabled);
         cursor: not-allowed;
       }
     }
 
-    &.#{$prefix}checked {
-      & > .#{$prefix}checkbox-indicator {
-        & .#{$prefix}checkbox-base {
+    &.#{$cls-prefix}checked {
+      & > .#{$cls-prefix}checkbox-indicator {
+        & .#{$cls-prefix}checkbox-base {
           background-color: var(--background-color-3);
           border-color: var(--border-color-inactive);
         }
 
-        & .#{$prefix}checkbox-icon {
+        & .#{$cls-prefix}checkbox-icon {
           color: var(--text-color-disabled);
         }
       }

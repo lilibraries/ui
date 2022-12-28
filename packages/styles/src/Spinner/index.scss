@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}spinner {
+.#{$cls-prefix}spinner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -9,18 +9,18 @@
   line-height: 1;
   vertical-align: -0.125em;
 
-  &.#{$prefix}start-spaced {
+  &.#{$cls-prefix}start-spaced {
     margin-left: 0.375em;
   }
 
-  &.#{$prefix}end-spaced {
+  &.#{$cls-prefix}end-spaced {
     margin-right: 0.375em;
   }
 
-  &.#{$prefix}contained {
+  &.#{$cls-prefix}contained {
     position: relative;
 
-    & > .#{$prefix}spinner-switcher {
+    & > .#{$cls-prefix}spinner-switcher {
       position: absolute;
       top: 0;
       right: 0;
@@ -32,7 +32,7 @@
       line-height: 1;
       @include transition(fast, transform, opacity);
 
-      &.#{$prefix}transition {
+      &.#{$cls-prefix}transition {
         &-enter,
         &-exit,
         &-exiting,
@@ -44,7 +44,7 @@
     }
   }
 
-  &.#{$prefix}standalone {
+  &.#{$cls-prefix}standalone {
     @include transition(
       fast,
       width,
@@ -54,7 +54,7 @@
       opacity
     );
 
-    &.#{$prefix}transition {
+    &.#{$cls-prefix}transition {
       &-enter,
       &-exit,
       &-exiting {

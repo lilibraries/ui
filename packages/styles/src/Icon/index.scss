@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}icon {
+.#{$cls-prefix}icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -16,17 +16,17 @@
     overflow: hidden;
   }
 
-  &.#{$prefix}textual {
+  &.#{$cls-prefix}textual {
     vertical-align: baseline;
   }
 
-  &.#{$prefix}spinning {
-    animation: #{$prefix}icon-spin var(--motion-duration-slow) linear 0s
+  &.#{$cls-prefix}spinning {
+    animation: #{$cls-prefix}icon-spin var(--motion-duration-slow) linear 0s
       infinite;
   }
 }
 
-@keyframes #{$prefix}icon-spin {
+@keyframes #{$cls-prefix}icon-spin {
   from {
     transform: rotate(0deg);
   }

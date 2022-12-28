@@ -45,7 +45,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const isControlled = "checked" in props;
   const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
@@ -63,12 +63,12 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   }
 
   const classes = cn(
-    `${prefix}checkbox`,
+    `${cls}checkbox`,
     {
-      [`${prefix}${size}`]: size,
-      [`${prefix}loading`]: loading,
-      [`${prefix}checked`]: checked,
-      [`${prefix}disabled`]: disabled,
+      [`${cls}${size}`]: size,
+      [`${cls}loading`]: loading,
+      [`${cls}checked`]: checked,
+      [`${cls}disabled`]: disabled,
     },
     className
   );
@@ -81,7 +81,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
 
   return (
     <label {...rest} ref={ref} className={classes}>
-      <Spinner spinning={loading} className={`${prefix}checkbox-indicator`}>
+      <Spinner spinning={loading} className={`${cls}checkbox-indicator`}>
         <input
           {...inputProps}
           ref={inputRef}
@@ -89,10 +89,10 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
           checked={checked}
           disabled={disabled || loading}
           onChange={handleChange}
-          className={cn(`${prefix}checkbox-base`, inputProps?.className)}
+          className={cn(`${cls}checkbox-base`, inputProps?.className)}
         />
         {checked && (
-          <span className={`${prefix}checkbox-icon`}>
+          <span className={`${cls}checkbox-icon`}>
             {indeterminate ? (
               <MinusIcon strokeWidth="8" />
             ) : (
@@ -102,7 +102,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
         )}
       </Spinner>
       {isRenderableNode(children) && (
-        <span className={`${prefix}checkbox-label`}>{children}</span>
+        <span className={`${cls}checkbox-label`}>{children}</span>
       )}
     </label>
   );

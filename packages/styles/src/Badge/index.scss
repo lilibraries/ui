@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}badge {
+.#{$cls-prefix}badge {
   &-switcher {
     display: inline-flex;
     align-items: center;
@@ -8,42 +8,42 @@
     @include transition(fast, transform, opacity);
   }
 
-  & > .#{$prefix}badge-switcher {
-    & > .#{$prefix}tag {
+  & > .#{$cls-prefix}badge-switcher {
+    & > .#{$cls-prefix}tag {
       font-family: var(--font-family-mono);
 
-      &.#{$prefix}quadrate {
+      &.#{$cls-prefix}quadrate {
         width: var(--line-height-fixed-base);
 
-        & > .#{$prefix}tag-content {
+        & > .#{$cls-prefix}tag-content {
           padding: 0;
         }
 
-        &.#{$prefix}small {
+        &.#{$cls-prefix}small {
           width: var(--line-height-fixed-small);
         }
 
-        &.#{$prefix}large {
+        &.#{$cls-prefix}large {
           width: var(--line-height-fixed-large);
         }
       }
     }
   }
 
-  &.#{$prefix}outlined {
-    & > .#{$prefix}badge-switcher {
-      & > .#{$prefix}dot,
-      & > .#{$prefix}tag {
+  &.#{$cls-prefix}outlined {
+    & > .#{$cls-prefix}badge-switcher {
+      & > .#{$cls-prefix}dot,
+      & > .#{$cls-prefix}tag {
         box-shadow: 0 0 0 2px var(--background-color-1);
       }
     }
   }
 
-  &.#{$prefix}standalone {
+  &.#{$cls-prefix}standalone {
     display: inline-flex;
     @include transition(fast, transform, opacity);
 
-    &.#{$prefix}transition {
+    &.#{$cls-prefix}transition {
       &-enter,
       &-exit,
       &-exiting {
@@ -53,11 +53,11 @@
     }
   }
 
-  &.#{$prefix}contained {
+  &.#{$cls-prefix}contained {
     position: relative;
     display: inline-block;
 
-    & > .#{$prefix}badge-switcher {
+    & > .#{$cls-prefix}badge-switcher {
       position: absolute;
 
       &-top-start {
@@ -77,11 +77,11 @@
       }
     }
 
-    &.#{$prefix}transition {
+    &.#{$cls-prefix}transition {
       &-enter,
       &-exit,
       &-exiting {
-        & > .#{$prefix}badge-switcher {
+        & > .#{$cls-prefix}badge-switcher {
           transform: scale(0);
           opacity: 0;
 
@@ -104,7 +104,7 @@
       }
 
       &-exited {
-        & > .#{$prefix}badge-switcher {
+        & > .#{$cls-prefix}badge-switcher {
           display: none;
         }
       }

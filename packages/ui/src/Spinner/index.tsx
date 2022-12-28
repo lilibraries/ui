@@ -47,7 +47,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
   const { icon: iconConfig, delay } = SpinnerConfig.useConfig({
     icon: iconProp,
@@ -84,11 +84,11 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     );
 
     const classes = cn(
-      `${prefix}spinner`,
-      `${prefix}contained`,
+      `${cls}spinner`,
+      `${cls}contained`,
       {
-        [`${prefix}start-spaced`]: hasStartSpaceClass,
-        [`${prefix}end-spaced`]: hasEndSpaceClass,
+        [`${cls}start-spaced`]: hasStartSpaceClass,
+        [`${cls}end-spaced`]: hasEndSpaceClass,
       },
       className
     );
@@ -116,7 +116,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
               [Transition.EXITED]: true,
             }}
           >
-            <span className={`${prefix}spinner-switcher`}>{content}</span>
+            <span className={`${cls}spinner-switcher`}>{content}</span>
           </Transition>
         )}
         <Transition
@@ -130,7 +130,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             [Transition.EXITED]: true,
           }}
         >
-          <span className={`${prefix}spinner-switcher`}>{icon}</span>
+          <span className={`${cls}spinner-switcher`}>{icon}</span>
         </Transition>
       </span>
     );
@@ -161,11 +161,11 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
           );
 
           const classes = cn(
-            `${prefix}spinner`,
-            `${prefix}standalone`,
+            `${cls}spinner`,
+            `${cls}standalone`,
             {
-              [`${prefix}start-spaced`]: enter && hasStartSpaceClass,
-              [`${prefix}end-spaced`]: enter && hasEndSpaceClass,
+              [`${cls}start-spaced`]: enter && hasStartSpaceClass,
+              [`${cls}end-spaced`]: enter && hasEndSpaceClass,
             },
             className
           );
