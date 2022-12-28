@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs";
 
 # Prefix
 
-This component is used to set the CSS class name prefix and CSS variable name prefix of subcomponents. It is recommended to set it only once in the root component.
+This component is used to set the CSS class name prefix and CSS variable name prefix of subcomponents. It is recommended to set it only once in the entry component.
 
 ## Example
 
@@ -12,7 +12,7 @@ This component is used to set the CSS class name prefix and CSS variable name pr
 import React from "react";
 import { Prefix, Button } from "@lilib/ui";
 
-function Root() {
+function App() {
   return (
     <Prefix cls="hello-" var="hello-">
       <Button /> {/* => "hello-button" */}
