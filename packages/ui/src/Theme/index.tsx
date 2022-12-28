@@ -24,12 +24,12 @@ export interface ThemeUnscopedProps {
 
 const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
   const { value, scoped, children, ...rest } = props;
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {
-      const lightClassName = `${prefix}light`;
-      const darkClassName = `${prefix}dark`;
+      const lightClassName = `${cls}light`;
+      const darkClassName = `${cls}dark`;
       const classList = document.documentElement.classList;
 
       if (value === "light") {
@@ -55,7 +55,7 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
         }
       }
     }
-  }, [scoped, value, prefix]);
+  }, [scoped, value, cls]);
 
   if (isValidElement(children)) {
     return cloneElement(children, {
@@ -63,7 +63,7 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
       ...children.props,
       className: cn(
         (rest as any).className,
-        { [`${prefix}${value}`]: scoped && value },
+        { [`${cls}${value}`]: scoped && value },
         children.props.className
       ),
       style: Object.assign({}, (rest as any).style, children.props.style),

@@ -48,7 +48,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
   let icon: ReactNode;
@@ -80,12 +80,12 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   }, [checkedProp]);
 
   const classes = cn(
-    `${prefix}switch`,
+    `${cls}switch`,
     {
-      [`${prefix}${size}`]: size,
-      [`${prefix}checked`]: checked,
-      [`${prefix}loading`]: loading,
-      [`${prefix}disabled`]: disabled,
+      [`${cls}${size}`]: size,
+      [`${cls}checked`]: checked,
+      [`${cls}loading`]: loading,
+      [`${cls}disabled`]: disabled,
     },
     className
   );
@@ -99,17 +99,15 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         checked={checked}
         disabled={disabled || loading}
         onChange={handleChange}
-        className={cn(`${prefix}switch-base`, inputProps?.className)}
+        className={cn(`${cls}switch-base`, inputProps?.className)}
       />
       {isRenderableNode(checkedLabel) && (
-        <span className={`${prefix}switch-checked-label`}>{checkedLabel}</span>
+        <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>
       )}
       {isRenderableNode(uncheckedLabel) && (
-        <span className={`${prefix}switch-unchecked-label`}>
-          {uncheckedLabel}
-        </span>
+        <span className={`${cls}switch-unchecked-label`}>{uncheckedLabel}</span>
       )}
-      <span className={`${prefix}switch-slider`}>
+      <span className={`${cls}switch-slider`}>
         <Spinner contained spinning={loading}>
           {icon}
         </Spinner>

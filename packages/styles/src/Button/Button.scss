@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}button {
+.#{$cls-prefix}button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -39,97 +39,97 @@
     justify-content: center;
   }
 
-  & > .#{$prefix}icon,
-  & > .#{$prefix}spinner {
+  & > .#{$cls-prefix}icon,
+  & > .#{$cls-prefix}spinner {
     flex: 0 0 auto;
 
-    &.#{$prefix}start-spaced {
+    &.#{$cls-prefix}start-spaced {
       margin-left: var(--space-2x);
     }
 
-    &.#{$prefix}end-spaced {
+    &.#{$cls-prefix}end-spaced {
       margin-right: var(--space-2x);
     }
   }
 
-  &.#{$prefix}small {
+  &.#{$cls-prefix}small {
     padding: var(--space-1x) calc(var(--space-1x) * 2);
     font-size: var(--font-size-small);
     line-height: var(--line-height-fixed-small);
 
-    & > .#{$prefix}icon,
-    & > .#{$prefix}spinner {
-      &.#{$prefix}start-spaced {
+    & > .#{$cls-prefix}icon,
+    & > .#{$cls-prefix}spinner {
+      &.#{$cls-prefix}start-spaced {
         margin-left: var(--space-1x);
       }
 
-      &.#{$prefix}end-spaced {
+      &.#{$cls-prefix}end-spaced {
         margin-right: var(--space-1x);
       }
     }
   }
 
-  &.#{$prefix}large {
+  &.#{$cls-prefix}large {
     padding: var(--space-3x) calc(var(--space-3x) * 2);
     font-size: var(--font-size-large);
     line-height: var(--line-height-fixed-large);
 
-    & > .#{$prefix}icon,
-    & > .#{$prefix}spinner {
-      &.#{$prefix}start-spaced {
+    & > .#{$cls-prefix}icon,
+    & > .#{$cls-prefix}spinner {
+      &.#{$cls-prefix}start-spaced {
         margin-left: var(--space-3x);
       }
 
-      &.#{$prefix}end-spaced {
+      &.#{$cls-prefix}end-spaced {
         margin-right: var(--space-3x);
       }
     }
   }
 
-  &.#{$prefix}fluid {
+  &.#{$cls-prefix}fluid {
     display: flex;
     width: 100%;
     margin: auto;
     text-align: center;
   }
 
-  &.#{$prefix}round {
+  &.#{$cls-prefix}round {
     border-radius: 1000px;
   }
 
-  &.#{$prefix}truncated {
-    & > .#{$prefix}button-content {
+  &.#{$cls-prefix}truncated {
+    & > .#{$cls-prefix}button-content {
       @include text-overflow;
     }
   }
 
-  &.#{$prefix}icon-only {
+  &.#{$cls-prefix}icon-only {
     padding: var(--space-2x);
     line-height: 1;
 
-    &.#{$prefix}small {
+    &.#{$cls-prefix}small {
       padding: var(--space-1x);
     }
 
-    &.#{$prefix}large {
+    &.#{$cls-prefix}large {
       padding: var(--space-3x);
     }
 
-    &.#{$prefix}fluid {
+    &.#{$cls-prefix}fluid {
       width: auto;
     }
   }
 
-  &.#{$prefix}loading {
+  &.#{$cls-prefix}loading {
     position: relative;
 
-    & > .#{$prefix}icon,
-    & > .#{$prefix}spinner,
-    & > .#{$prefix}button-content {
+    & > .#{$cls-prefix}icon,
+    & > .#{$cls-prefix}spinner,
+    & > .#{$cls-prefix}button-content {
       opacity: 0;
     }
 
-    & > .#{$prefix}button-loader {
+    & > .#{$cls-prefix}button-loader {
       display: flex;
     }
   }
@@ -157,19 +157,19 @@
     }
   }
 
-  &.#{$prefix}active {
+  &.#{$cls-prefix}active {
     color: var(--text-color-active);
     background-color: var(--background-color-3);
     border-color: var(--border-color-active);
   }
 
-  &.#{$prefix}disabled {
+  &.#{$cls-prefix}disabled {
     color: var(--text-color-disabled);
     background-color: var(--background-color-1);
     border-color: var(--border-color-disabled);
     cursor: not-allowed;
 
-    &.#{$prefix}active {
+    &.#{$cls-prefix}active {
       color: var(--text-color-inactive);
       background-color: var(--background-color-2);
       border-color: var(--border-color-inactive);
@@ -177,7 +177,7 @@
   }
 
   @each $intent in $intents {
-    &.#{$prefix}#{$intent} {
+    &.#{$cls-prefix}#{$intent} {
       color: var(--text-color-#{$intent}-base);
       background-color: var(--background-color-#{$intent}-1);
       border-color: var(--border-color-#{$intent}-base);
@@ -200,18 +200,18 @@
         border-color: var(--border-color-#{$intent}-base);
       }
 
-      &.#{$prefix}active {
+      &.#{$cls-prefix}active {
         color: var(--text-color-#{$intent}-active);
         background-color: var(--background-color-#{$intent}-3);
         border-color: var(--border-color-#{$intent}-active);
       }
 
-      &.#{$prefix}disabled {
+      &.#{$cls-prefix}disabled {
         color: var(--text-color-#{$intent}-disabled);
         background-color: var(--background-color-#{$intent}-1);
         border-color: var(--border-color-#{$intent}-disabled);
 
-        &.#{$prefix}active {
+        &.#{$cls-prefix}active {
           color: var(--text-color-#{$intent}-inactive);
           background-color: var(--background-color-#{$intent}-2);
           border-color: var(--border-color-#{$intent}-inactive);
@@ -220,7 +220,7 @@
     }
   }
 
-  &.#{$prefix}solid {
+  &.#{$cls-prefix}solid {
     color: var(--text-color-solid-base);
     background-color: var(--text-color-base);
     border-color: var(--text-color-base);
@@ -243,18 +243,18 @@
       border-color: var(--text-color-base);
     }
 
-    &.#{$prefix}active {
+    &.#{$cls-prefix}active {
       color: var(--text-color-solid-active);
       background-color: var(--text-color-active);
       border-color: var(--text-color-active);
     }
 
-    &.#{$prefix}disabled {
+    &.#{$cls-prefix}disabled {
       color: var(--text-color-solid-disabled);
       background-color: var(--text-color-disabled);
       border-color: var(--text-color-disabled);
 
-      &.#{$prefix}active {
+      &.#{$cls-prefix}active {
         color: var(--text-color-solid-inactive);
         background-color: var(--text-color-inactive);
         border-color: var(--text-color-inactive);
@@ -262,7 +262,7 @@
     }
 
     @each $intent in $intents {
-      &.#{$prefix}#{$intent} {
+      &.#{$cls-prefix}#{$intent} {
         background-color: var(--text-color-#{$intent}-base);
         border-color: var(--text-color-#{$intent}-base);
 
@@ -281,16 +281,16 @@
           border-color: var(--text-color-#{$intent}-base);
         }
 
-        &.#{$prefix}active {
+        &.#{$cls-prefix}active {
           background-color: var(--text-color-#{$intent}-active);
           border-color: var(--text-color-#{$intent}-active);
         }
 
-        &.#{$prefix}disabled {
+        &.#{$cls-prefix}disabled {
           background-color: var(--text-color-#{$intent}-disabled);
           border-color: var(--text-color-#{$intent}-disabled);
 
-          &.#{$prefix}active {
+          &.#{$cls-prefix}active {
             background-color: var(--text-color-#{$intent}-inactive);
             border-color: var(--text-color-#{$intent}-inactive);
           }
@@ -299,7 +299,7 @@
     }
   }
 
-  &.#{$prefix}outlined {
+  &.#{$cls-prefix}outlined {
     background-color: transparent;
 
     &:hover {
@@ -314,20 +314,20 @@
       background-color: transparent;
     }
 
-    &.#{$prefix}active {
+    &.#{$cls-prefix}active {
       background-color: var(--background-color-a2);
     }
 
-    &.#{$prefix}disabled {
+    &.#{$cls-prefix}disabled {
       background-color: transparent;
 
-      &.#{$prefix}active {
+      &.#{$cls-prefix}active {
         background-color: var(--background-color-a1);
       }
     }
 
     @each $intent in $intents {
-      &.#{$prefix}#{$intent} {
+      &.#{$cls-prefix}#{$intent} {
         background-color: transparent;
 
         &:hover {
@@ -342,14 +342,14 @@
           background-color: transparent;
         }
 
-        &.#{$prefix}active {
+        &.#{$cls-prefix}active {
           background-color: var(--background-color-#{$intent}-a2);
         }
 
-        &.#{$prefix}disabled {
+        &.#{$cls-prefix}disabled {
           background-color: transparent;
 
-          &.#{$prefix}active {
+          &.#{$cls-prefix}active {
             background-color: var(--background-color-#{$intent}-a1);
           }
         }
@@ -357,7 +357,7 @@
     }
   }
 
-  &.#{$prefix}flat {
+  &.#{$cls-prefix}flat {
     background-color: transparent;
     border-color: transparent;
 
@@ -376,23 +376,23 @@
       border-color: transparent;
     }
 
-    &.#{$prefix}active {
+    &.#{$cls-prefix}active {
       background-color: var(--background-color-a2);
       border-color: transparent;
     }
 
-    &.#{$prefix}disabled {
+    &.#{$cls-prefix}disabled {
       background-color: transparent;
       border-color: transparent;
 
-      &.#{$prefix}active {
+      &.#{$cls-prefix}active {
         background-color: var(--background-color-a1);
         border-color: transparent;
       }
     }
 
     @each $intent in $intents {
-      &.#{$prefix}#{$intent} {
+      &.#{$cls-prefix}#{$intent} {
         background-color: transparent;
 
         &:hover {
@@ -407,14 +407,14 @@
           background-color: transparent;
         }
 
-        &.#{$prefix}active {
+        &.#{$cls-prefix}active {
           background-color: var(--background-color-#{$intent}-a2);
         }
 
-        &.#{$prefix}disabled {
+        &.#{$cls-prefix}disabled {
           background-color: transparent;
 
-          &.#{$prefix}active {
+          &.#{$cls-prefix}active {
             background-color: var(--background-color-#{$intent}-a1);
           }
         }

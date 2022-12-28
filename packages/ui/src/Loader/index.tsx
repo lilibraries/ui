@@ -45,7 +45,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const { fast } = Duration.useConfig();
   const contained = isRenderableNode(children);
@@ -68,22 +68,22 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   if (isValidElement(icon) && icon.type === Icon) {
     icon = cloneElement<IconProps>(icon as any, {
       spinning: true,
-      className: cn(`${prefix}loader-icon`, icon.props.className),
+      className: cn(`${cls}loader-icon`, icon.props.className),
     });
   } else {
     icon = (
-      <Icon spinning className={`${prefix}loader-icon`}>
+      <Icon spinning className={`${cls}loader-icon`}>
         {icon}
       </Icon>
     );
   }
 
   const classes = cn(
-    `${prefix}loader`,
+    `${cls}loader`,
     {
-      [`${prefix}contained`]: contained,
-      [`${prefix}standalone`]: !contained,
-      [`${prefix}${size}`]: size,
+      [`${cls}contained`]: contained,
+      [`${cls}standalone`]: !contained,
+      [`${cls}${size}`]: size,
     },
     className
   );
@@ -101,7 +101,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
             [Transition.ENTERED]: true,
           }}
         >
-          <div className={`${prefix}loader-content`}>{children}</div>
+          <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
         <Transition
           unmountOnExit
@@ -114,10 +114,10 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
             [Transition.EXITING]: true,
           }}
         >
-          <div className={`${prefix}loader-mask`}>
+          <div className={`${cls}loader-mask`}>
             {icon}
             {isRenderableNode(message) && (
-              <div className={`${prefix}loader-message`}>{message}</div>
+              <div className={`${cls}loader-message`}>{message}</div>
             )}
           </div>
         </Transition>
@@ -134,10 +134,10 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
           openDelay={delay}
           unmountOnClose
         >
-          <div className={`${prefix}loader-content`}>
+          <div className={`${cls}loader-content`}>
             {icon}
             {isRenderableNode(message) && (
-              <div className={`${prefix}loader-message`}>{message}</div>
+              <div className={`${cls}loader-message`}>{message}</div>
             )}
           </div>
         </Collapse>

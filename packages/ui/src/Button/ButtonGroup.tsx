@@ -41,13 +41,13 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       ...rest
     } = props;
 
-    const prefix = Prefix.useConfig();
+    const { cls } = Prefix.useConfig();
     const classes = cn(
-      `${prefix}button-group`,
+      `${cls}button-group`,
       {
-        [`${prefix}vertical`]: vertical,
-        [`${prefix}horizontal`]: !vertical,
-        [`${prefix}fluid`]: fluid,
+        [`${cls}vertical`]: vertical,
+        [`${cls}horizontal`]: !vertical,
+        [`${cls}fluid`]: fluid,
       },
       className
     );

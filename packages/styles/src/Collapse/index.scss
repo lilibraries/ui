@@ -1,7 +1,7 @@
 @import "@lilib/themes";
 
-.#{$prefix}collapse {
-  &.#{$prefix}transition {
+.#{$cls-prefix}collapse {
+  &.#{$cls-prefix}transition {
     &-enter,
     &-entering,
     &-exit,

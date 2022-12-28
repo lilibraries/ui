@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}switch {
+.#{$cls-prefix}switch {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -77,101 +77,101 @@
     @include transition(fast, left, color, background-color);
   }
 
-  &.#{$prefix}checked {
+  &.#{$cls-prefix}checked {
     background-color: var(--text-color-major-base);
 
-    & > .#{$prefix}switch-checked-label {
+    & > .#{$cls-prefix}switch-checked-label {
       height: 100%;
       visibility: visible;
     }
 
-    & > .#{$prefix}switch-unchecked-label {
+    & > .#{$cls-prefix}switch-unchecked-label {
       height: 0;
       visibility: hidden;
     }
 
-    & > .#{$prefix}switch-slider {
+    & > .#{$cls-prefix}switch-slider {
       left: calc(100% - ((#{var(--line-height-fixed-base)} - 2px)));
       color: var(--text-color-major-base);
     }
   }
 
-  &.#{$prefix}small {
+  &.#{$cls-prefix}small {
     min-width: calc(#{var(--line-height-fixed-small)} * 1.75);
     height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
 
-    & > .#{$prefix}switch-checked-label {
+    & > .#{$cls-prefix}switch-checked-label {
       padding-right: calc((#{var(--line-height-fixed-small)} * 1.125) - 2px);
       padding-left: calc(#{var(--line-height-fixed-small)} / 4);
     }
 
-    & > .#{$prefix}switch-unchecked-label {
+    & > .#{$cls-prefix}switch-unchecked-label {
       padding-right: calc(#{var(--line-height-fixed-small)} / 4);
       padding-left: calc((#{var(--line-height-fixed-small)} * 1.125) - 2px);
     }
 
-    & > .#{$prefix}switch-slider {
+    & > .#{$cls-prefix}switch-slider {
       width: calc(#{var(--line-height-fixed-small)} - 4px);
       height: calc(#{var(--line-height-fixed-small)} - 4px);
     }
 
-    &.#{$prefix}checked > .#{$prefix}switch-slider {
+    &.#{$cls-prefix}checked > .#{$cls-prefix}switch-slider {
       left: calc(100% - ((#{var(--line-height-fixed-small)} - 2px)));
     }
   }
 
-  &.#{$prefix}large {
+  &.#{$cls-prefix}large {
     min-width: calc(#{var(--line-height-fixed-large)} * 1.75);
     height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
 
-    & > .#{$prefix}switch-checked-label {
+    & > .#{$cls-prefix}switch-checked-label {
       padding-right: calc((#{var(--line-height-fixed-large)} * 1.125) - 2px);
       padding-left: calc(#{var(--line-height-fixed-large)} / 4);
     }
 
-    & > .#{$prefix}switch-unchecked-label {
+    & > .#{$cls-prefix}switch-unchecked-label {
       padding-right: calc(#{var(--line-height-fixed-large)} / 4);
       padding-left: calc((#{var(--line-height-fixed-large)} * 1.125) - 2px);
     }
 
-    & > .#{$prefix}switch-slider {
+    & > .#{$cls-prefix}switch-slider {
       width: calc(#{var(--line-height-fixed-large)} - 4px);
       height: calc(#{var(--line-height-fixed-large)} - 4px);
     }
 
-    &.#{$prefix}checked > .#{$prefix}switch-slider {
+    &.#{$cls-prefix}checked > .#{$cls-prefix}switch-slider {
       left: calc(100% - ((#{var(--line-height-fixed-large)} - 2px)));
     }
   }
 
-  &.#{$prefix}loading {
+  &.#{$cls-prefix}loading {
     cursor: default;
   }
 
-  &.#{$prefix}disabled {
+  &.#{$cls-prefix}disabled {
     background-color: var(--border-color-disabled);
     cursor: not-allowed;
 
-    & > .#{$prefix}switch-checked-label {
+    & > .#{$cls-prefix}switch-checked-label {
       color: var(--text-color-disabled);
     }
 
-    & > .#{$prefix}switch-unchecked-label {
+    & > .#{$cls-prefix}switch-unchecked-label {
       color: var(--text-color-disabled);
     }
 
-    & > .#{$prefix}switch-base {
+    & > .#{$cls-prefix}switch-base {
       cursor: not-allowed;
     }
 
-    & > .#{$prefix}switch-slider {
+    & > .#{$cls-prefix}switch-slider {
       color: var(--text-color-disabled);
     }
 
-    &.#{$prefix}checked {
-      & > .#{$prefix}switch-slider {
+    &.#{$cls-prefix}checked {
+      & > .#{$cls-prefix}switch-slider {
         color: var(--text-color-solid-inactive);
         background-color: var(--text-color-disabled);
       }

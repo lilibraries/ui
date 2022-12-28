@@ -2,12 +2,20 @@
 @import "../variables/properties";
 
 @function var($name) {
-  $property: str-insert($name, $prefix, 3);
+  $property: str-insert($name, $var-prefix, 3);
   $value: map-get($properties, $name);
 
   @if not $value {
     @error "Can't find " + $name + " property";
   }
 
-  @return unquote("var(" + $property + ", " + $value + ")");
+  @if $enable-variables {
+    @if $enable-fallbacks {
+      @return unquote("var(" + $property + ", " + $value + ")");
+    } @else {
+      @return unquote("var(" + $property + ")");
+    }
+  } @else {
+    @return map-get($properties, $name);
+  }
 }

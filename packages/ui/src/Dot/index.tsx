@@ -25,19 +25,19 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
     ...rest
   } = props;
 
-  const prefix = Prefix.useConfig();
+  const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const contained = isRenderableNode(children);
   const useColorStyle = isString(color);
 
   const classes = cn(
-    `${prefix}dot`,
+    `${cls}dot`,
     {
-      [`${prefix}contained`]: contained,
-      [`${prefix}standalone`]: !contained,
-      [`${prefix}${size}`]: size,
-      [`${prefix}${intent}`]: intent,
-      [`${prefix}animated`]: animated,
+      [`${cls}contained`]: contained,
+      [`${cls}standalone`]: !contained,
+      [`${cls}${size}`]: size,
+      [`${cls}${intent}`]: intent,
+      [`${cls}animated`]: animated,
     },
     className
   );
@@ -45,7 +45,7 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
   return (
     <span {...rest} ref={ref} className={classes}>
       <span
-        className={`${prefix}dot-indicator`}
+        className={`${cls}dot-indicator`}
         style={useColorStyle ? { color, backgroundColor: color } : undefined}
       />
       {children}

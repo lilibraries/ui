@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$prefix}dot {
+.#{$cls-prefix}dot {
   display: inline-flex;
   align-items: center;
 
@@ -14,52 +14,52 @@
     border-radius: 50%;
   }
 
-  &.#{$prefix}small {
-    & > .#{$prefix}dot-indicator {
+  &.#{$cls-prefix}small {
+    & > .#{$cls-prefix}dot-indicator {
       width: 6px;
       height: 6px;
     }
   }
 
-  &.#{$prefix}large {
-    & > .#{$prefix}dot-indicator {
+  &.#{$cls-prefix}large {
+    & > .#{$cls-prefix}dot-indicator {
       width: 10px;
       height: 10px;
     }
   }
 
-  &.#{$prefix}standalone {
+  &.#{$cls-prefix}standalone {
     vertical-align: 0.125em;
     border-radius: 50%;
 
-    &.#{$prefix}small {
+    &.#{$cls-prefix}small {
       vertical-align: 0.1875em;
     }
 
-    &.#{$prefix}large {
+    &.#{$cls-prefix}large {
       vertical-align: 0.0625em;
     }
   }
 
-  &.#{$prefix}contained {
+  &.#{$cls-prefix}contained {
     font-size: var(--font-size-base);
     vertical-align: baseline;
 
-    & > .#{$prefix}dot-indicator {
+    & > .#{$cls-prefix}dot-indicator {
       margin-right: 0.375em;
     }
 
-    &.#{$prefix}small {
+    &.#{$cls-prefix}small {
       font-size: var(--font-size-small);
     }
 
-    &.#{$prefix}large {
+    &.#{$cls-prefix}large {
       font-size: var(--font-size-large);
     }
   }
 
-  &.#{$prefix}animated {
-    & > .#{$prefix}dot-indicator {
+  &.#{$cls-prefix}animated {
+    & > .#{$cls-prefix}dot-indicator {
       position: relative;
 
       &::after {
@@ -70,7 +70,7 @@
         height: 100%;
         background-color: currentColor;
         border-radius: 50%;
-        animation: #{$prefix}dot-animate var(--motion-duration-lazy)
+        animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy)
           var(--motion-function-base) 0s infinite;
         content: "";
       }
@@ -78,8 +78,8 @@
   }
 
   @each $intent in $intents {
-    &.#{$prefix}#{$intent} {
-      & > .#{$prefix}dot-indicator {
+    &.#{$cls-prefix}#{$intent} {
+      & > .#{$cls-prefix}dot-indicator {
         color: var(--text-color-#{$intent}-base);
         background-color: var(--text-color-#{$intent}-base);
       }
@@ -87,7 +87,7 @@
   }
 }
 
-@keyframes #{$prefix}dot-animate {
+@keyframes #{$cls-prefix}dot-animate {
   from {
     transform: scale(1);
     opacity: 0.5;
