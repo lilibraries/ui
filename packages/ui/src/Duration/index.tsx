@@ -20,10 +20,12 @@ export interface DurationValue {
   slow: number;
   lazy: number;
 }
+
 export interface DurationScopedProps extends Partial<DurationValue> {
   scoped: true;
   children: ReactElement;
 }
+
 export interface DurationUnscopedProps extends Partial<DurationValue> {
   scoped?: false;
   children: ReactNode;
@@ -48,24 +50,24 @@ const Duration: FC<DurationScopedProps | DurationUnscopedProps> & {
   useConfig: typeof useDurationConfig;
 } = (props) => {
   const { fast, base, slow, lazy, scoped, children, ...rest } = props;
-  const { var: varPrefix } = Prefix.useConfig();
+  const { var: prefix } = Prefix.useConfig();
 
   const styles = useMemo(() => {
     const result: { [key: string]: string } = {};
     if (base !== undefined) {
-      result[`--${varPrefix}motion-duration-base`] = `${base}ms`;
+      result[`--${prefix}motion-duration-base`] = `${base}ms`;
     }
     if (fast !== undefined) {
-      result[`--${varPrefix}motion-duration-fast`] = `${fast}ms`;
+      result[`--${prefix}motion-duration-fast`] = `${fast}ms`;
     }
     if (slow !== undefined) {
-      result[`--${varPrefix}motion-duration-slow`] = `${slow}ms`;
+      result[`--${prefix}motion-duration-slow`] = `${slow}ms`;
     }
     if (lazy !== undefined) {
-      result[`--${varPrefix}motion-duration-lazy`] = `${lazy}ms`;
+      result[`--${prefix}motion-duration-lazy`] = `${lazy}ms`;
     }
     return result;
-  }, [varPrefix, fast, base, slow, lazy]);
+  }, [prefix, fast, base, slow, lazy]);
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {
