@@ -6,6 +6,7 @@ addons.setConfig({
     zoom: { hidden: true },
     title: { hidden: true },
     eject: { hidden: true },
+    remount: { hidden: true },
     fullscreen: { hidden: true },
   },
 });

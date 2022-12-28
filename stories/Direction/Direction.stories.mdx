@@ -1,0 +1,50 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Configs/Direction" />
+
+# Direction
+
+Config document or element direction.
+
+## Examples
+
+### Global
+
+The `Direction` button in the document toolbar is used to set the `<html>`'s `dir` attribute, you can click it to try.
+
+```tsx
+import React from "react";
+import { Direction } from "@lilib/ui";
+
+function Root() {
+  return <Direction value="rtl" />;
+}
+// Or
+function Root() {
+  return <Direction value="rtl">...</Direction>;
+}
+```
+
+### Scoped
+
+If the `scoped` prop is specified to `true`, the `children` prop must be a React element that accepts `dir` prop.
+
+<Canvas mdxSource={require("!!raw-loader!./Scoped").default}>
+  <Story id="examples-direction--scoped" />
+</Canvas>
+
+### Nested
+
+<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
+  <Story id="examples-direction--nested" />
+</Canvas>
+
+## Props
+
+| Property   | Type                          | Description                  | Default |
+| ---------- | ----------------------------- | ---------------------------- | ------- |
+| `scoped`   | `boolean`                     | Scoped                       | `false` |
+| `value`    | `null` \| `"ltr"` \| `"rtl"`  | Direction value              | `null`  |
+| `children` | `ReactElement` \| `ReactNode` | Child element or child nodes | -       |
+
+When the `scoped` prop is `true`, the `children` prop must be a React element that accepts `dir` prop.
