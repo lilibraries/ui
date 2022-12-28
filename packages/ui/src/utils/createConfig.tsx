@@ -27,7 +27,7 @@ function createConfig<
     return mergeConfig(base, override);
   }
 
-  const Config: FC<Props & { children: ReactNode }> & {
+  const Config: FC<Props & { children?: ReactNode }> & {
     Context: typeof Context;
     useConfig: typeof useConfig;
   } = (props) => {

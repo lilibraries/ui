@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import createConfig from "../utils/createConfig";
 
 export type IntentValue =
@@ -10,6 +11,7 @@ export type IntentValue =
 
 export interface IntentProps {
   value?: IntentValue;
+  children?: ReactNode;
 }
 
 const Intent = createConfig<IntentValue, IntentProps>("value", null);
