@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
-import { Theme, Size, Intent, Direction } from "@lilib/ui";
+import { Root, Theme, Size, Intent, Direction } from "@lilib/ui";
 import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
 import order from "./order";
 import { light, dark } from "./themes";
@@ -15,34 +15,36 @@ export const parameters = {
       const isDarkMode = useDarkMode();
       const { size, intent, direction } = context.globals;
       return (
-        <Theme value={isDarkMode ? "dark" : "light"}>
-          <Size value={size}>
-            <Intent value={intent}>
-              <Direction value={direction}>
-                <BaseContainer
-                  context={{
-                    ...context,
-                    storyById: (id) => {
-                      const storyContext = context.storyById(id);
-                      return {
-                        ...storyContext,
-                        parameters: {
-                          ...storyContext?.parameters,
-                          docs: {
-                            ...storyContext?.parameters?.docs,
-                            theme: isDarkMode ? dark : light,
+        <Root>
+          <Theme value={isDarkMode ? "dark" : "light"}>
+            <Size value={size}>
+              <Intent value={intent}>
+                <Direction value={direction}>
+                  <BaseContainer
+                    context={{
+                      ...context,
+                      storyById: (id) => {
+                        const storyContext = context.storyById(id);
+                        return {
+                          ...storyContext,
+                          parameters: {
+                            ...storyContext?.parameters,
+                            docs: {
+                              ...storyContext?.parameters?.docs,
+                              theme: isDarkMode ? dark : light,
+                            },
                           },
-                        },
-                      };
-                    },
-                  }}
-                >
-                  {children}
-                </BaseContainer>
-              </Direction>
-            </Intent>
-          </Size>
-        </Theme>
+                        };
+                      },
+                    }}
+                  >
+                    {children}
+                  </BaseContainer>
+                </Direction>
+              </Intent>
+            </Size>
+          </Theme>
+        </Root>
       );
     },
   },
@@ -94,15 +96,17 @@ export const decorators = [
     });
 
     return (
-      <Theme value={useDarkMode() ? "dark" : "light"}>
-        <Size value={size}>
-          <Intent value={intent}>
-            <Direction value={direction}>
-              <div ref={demoContainerRef}>{render()}</div>
-            </Direction>
-          </Intent>
-        </Size>
-      </Theme>
+      <Root>
+        <Theme value={useDarkMode() ? "dark" : "light"}>
+          <Size value={size}>
+            <Intent value={intent}>
+              <Direction value={direction}>
+                <div ref={demoContainerRef}>{render()}</div>
+              </Direction>
+            </Intent>
+          </Size>
+        </Theme>
+      </Root>
     );
   },
 ];

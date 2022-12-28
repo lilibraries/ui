@@ -1,0 +1,9 @@
+@import "@lilib/themes";
+
+html {
+  @each $name, $value in $properties {
+    $property: str-insert($name, $var-prefix, 3);
+
+    #{$property}: $value;
+  }
+}
