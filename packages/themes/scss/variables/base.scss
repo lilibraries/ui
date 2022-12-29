@@ -11,16 +11,16 @@ $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-mono: Menlo, Monaco, Consolas, "Courier New", Courier, monospace !default;
 
-$font-size-h1: 46px !default;
-$font-size-h2: 36px !default;
-$font-size-h3: 28px !default;
-$font-size-h4: 22px !default;
-$font-size-h5: 18px !default;
-$font-size-h6: 16px !default;
-
 $font-size-base: 16px !default;
-$font-size-small: 12px !default;
-$font-size-large: 20px !default;
+$font-size-small: $font-size-base - 4px !default;
+$font-size-large: $font-size-base + 4px !default;
+
+$font-size-h6: $font-size-base !default;
+$font-size-h5: $font-size-h6 + 2px !default;
+$font-size-h4: $font-size-h5 + 4px !default;
+$font-size-h3: $font-size-h4 + 6px !default;
+$font-size-h2: $font-size-h3 + 8px !default;
+$font-size-h1: $font-size-h2 + 10px !default;
 
 $font-weight-base: 400 !default;
 $font-weight-title: 600 !default;
@@ -38,14 +38,14 @@ $line-height-fixed-small: 18px !default;
 $line-height-fixed-large: 30px !default;
 
 $space-1x: 4px !default;
-$space-2x: 8px !default;
-$space-3x: 12px !default;
-$space-4x: 16px !default;
-$space-5x: 20px !default;
-$space-6x: 24px !default;
-$space-7x: 28px !default;
-$space-8x: 32px !default;
-$space-9x: 36px !default;
+$space-2x: $space-1x * 2 !default;
+$space-3x: $space-1x * 3 !default;
+$space-4x: $space-1x * 4 !default;
+$space-5x: $space-1x * 5 !default;
+$space-6x: $space-1x * 6 !default;
+$space-7x: $space-1x * 7 !default;
+$space-8x: $space-1x * 8 !default;
+$space-9x: $space-1x * 9 !default;
 
 $blur-base: 12px !default;
 $blur-small: 4px !default;
