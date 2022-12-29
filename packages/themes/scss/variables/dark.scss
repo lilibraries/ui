@@ -13,38 +13,38 @@ $dark-background-color-0: shade-color($dark-base, 80%);
 $dark-background-color-1: shade-color($dark-base, 70%);
 $dark-background-color-2: shade-color($dark-base, 60%);
 $dark-background-color-3: shade-color($dark-base, 50%);
-$dark-background-color-a1: rgba($dark-base, 0.1);
-$dark-background-color-a2: rgba($dark-base, 0.2);
+$dark-background-color-a1: rgba($dark-base, 0.15);
+$dark-background-color-a2: rgba($dark-base, 0.3);
 
 $dark-background-color-major-1: shade-color($dark-major, 70%);
 $dark-background-color-major-2: shade-color($dark-major, 60%);
 $dark-background-color-major-3: shade-color($dark-major, 50%);
-$dark-background-color-major-a1: rgba($dark-major, 0.1);
-$dark-background-color-major-a2: rgba($dark-major, 0.2);
+$dark-background-color-major-a1: rgba($dark-major, 0.15);
+$dark-background-color-major-a2: rgba($dark-major, 0.3);
 
 $dark-background-color-minor-1: shade-color($dark-minor, 70%);
 $dark-background-color-minor-2: shade-color($dark-minor, 60%);
 $dark-background-color-minor-3: shade-color($dark-minor, 50%);
-$dark-background-color-minor-a1: rgba($dark-minor, 0.1);
-$dark-background-color-minor-a2: rgba($dark-minor, 0.2);
+$dark-background-color-minor-a1: rgba($dark-minor, 0.15);
+$dark-background-color-minor-a2: rgba($dark-minor, 0.3);
 
 $dark-background-color-positive-1: shade-color($dark-positive, 70%);
 $dark-background-color-positive-2: shade-color($dark-positive, 60%);
 $dark-background-color-positive-3: shade-color($dark-positive, 50%);
-$dark-background-color-positive-a1: rgba($dark-positive, 0.1);
-$dark-background-color-positive-a2: rgba($dark-positive, 0.2);
+$dark-background-color-positive-a1: rgba($dark-positive, 0.15);
+$dark-background-color-positive-a2: rgba($dark-positive, 0.3);
 
 $dark-background-color-alertive-1: shade-color($dark-alertive, 70%);
 $dark-background-color-alertive-2: shade-color($dark-alertive, 60%);
 $dark-background-color-alertive-3: shade-color($dark-alertive, 50%);
-$dark-background-color-alertive-a1: rgba($dark-alertive, 0.1);
-$dark-background-color-alertive-a2: rgba($dark-alertive, 0.2);
+$dark-background-color-alertive-a1: rgba($dark-alertive, 0.15);
+$dark-background-color-alertive-a2: rgba($dark-alertive, 0.3);
 
 $dark-background-color-negative-1: shade-color($dark-negative, 70%);
 $dark-background-color-negative-2: shade-color($dark-negative, 60%);
 $dark-background-color-negative-3: shade-color($dark-negative, 50%);
-$dark-background-color-negative-a1: rgba($dark-negative, 0.1);
-$dark-background-color-negative-a2: rgba($dark-negative, 0.2);
+$dark-background-color-negative-a1: rgba($dark-negative, 0.15);
+$dark-background-color-negative-a2: rgba($dark-negative, 0.3);
 
 $dark-text-color-base: light-color($dark-base, 70%) !default;
 $dark-text-color-muted: light-color($dark-base, 15%) !default;
@@ -58,6 +58,12 @@ $dark-text-color-solid-hover: rgba($black, 0.9) !default;
 $dark-text-color-solid-active: $black !default;
 $dark-text-color-solid-inactive: rgba($black, 0.45) !default;
 $dark-text-color-solid-disabled: rgba($black, 0.45) !default;
+
+$dark-text-color-reverse-base: rgba($black, 0.8) !default;
+$dark-text-color-reverse-hover: rgba($black, 0.9) !default;
+$dark-text-color-reverse-active: $black !default;
+$dark-text-color-reverse-inactive: rgba($black, 0.45) !default;
+$dark-text-color-reverse-disabled: rgba($black, 0.45) !default;
 
 $dark-text-color-major-base: $dark-major !default;
 $dark-text-color-major-hover: light-color($dark-major, 20%) !default;
