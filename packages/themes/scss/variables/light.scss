@@ -59,6 +59,12 @@ $text-color-solid-active: $white !default;
 $text-color-solid-inactive: rgba($white, 0.7) !default;
 $text-color-solid-disabled: rgba($white, 0.7) !default;
 
+$text-color-reverse-base: $white !default;
+$text-color-reverse-hover: $white !default;
+$text-color-reverse-active: $white !default;
+$text-color-reverse-inactive: rgba($white, 0.7) !default;
+$text-color-reverse-disabled: rgba($white, 0.7) !default;
+
 $text-color-major-base: $major !default;
 $text-color-major-hover: shade-color($major, 20%) !default;
 $text-color-major-active: shade-color($major, 40%) !default;

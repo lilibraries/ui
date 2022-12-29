@@ -75,40 +75,21 @@ p {
   margin-bottom: var(--space-4x);
 }
 
-hr {
-  box-sizing: content-box;
-  height: 0;
-  margin: var(--space-1x) 0;
-  overflow: visible;
-  border: 0;
-  border-top: var(--border-width-base) solid var(--border-color-base);
-}
-
-pre {
-  font-size: 1em;
-  font-family: monospace;
-}
-
 a {
+  color: var(--text-color-major-base);
+  text-decoration: none;
   background-color: transparent;
-}
+  cursor: pointer;
 
-abbr[title] {
-  text-decoration: underline;
-  text-decoration: underline dotted;
-  border-bottom: none;
-}
+  &:hover {
+    color: var(--text-color-major-hover);
+    text-decoration: underline;
+  }
 
-b,
-strong {
-  font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-  font-size: 1em;
-  font-family: monospace;
+  &:active {
+    color: var(--text-color-major-active);
+    text-decoration: underline;
+  }
 }
 
 small {
@@ -129,6 +110,125 @@ sub {
 
 sup {
   top: -0.5em;
+}
+
+b,
+em,
+strong {
+  font-style: normal;
+}
+
+b {
+  font-weight: 500;
+}
+
+em {
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 700;
+}
+
+mark,
+ins,
+del,
+code,
+kbd {
+  padding: 0.25em 0.5em;
+  border-radius: var(--border-radius-small);
+}
+
+mark {
+  color: inherit;
+  background-color: var(--background-color-major-a1);
+}
+
+ins {
+  text-decoration: none;
+  background-color: var(--background-color-positive-a1);
+}
+
+del {
+  text-decoration: none;
+  background-color: var(--background-color-negative-a1);
+}
+
+code,
+kbd,
+var,
+samp,
+output {
+  font-size: 1em;
+  font-family: var(--font-family-mono);
+}
+
+code,
+kbd {
+  background-color: var(--background-color-a1);
+}
+
+kbd {
+  box-shadow: 0 1px 0 0 var(--border-color-base);
+}
+
+var {
+  font-style: normal;
+}
+
+time {
+  font-weight: 500;
+}
+
+abbr[title] {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+  border-bottom: none;
+  cursor: help;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  margin: var(--space-1x) 0;
+  overflow: visible;
+  border: 0;
+  border-top: var(--border-width-base) solid var(--border-color-base);
+}
+
+pre {
+  margin: 0 0 var(--space-4x);
+  overflow: auto;
+  font-size: 1em;
+  font-family: var(--font-family-mono);
+
+  code {
+    font: inherit;
+    background-color: transparent;
+  }
+}
+
+blockquote {
+  margin: 0 0 var(--space-4x);
+  padding: var(--space-4x);
+  background-color: var(--background-color-a1);
+  border-radius: var(--border-radius-fixed-base);
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ol,
+ul {
+  margin: 0 0 var(--space-4x);
+  padding-left: 2em;
+
+  ol,
+  ul {
+    margin-bottom: 0;
+  }
 }
 
 img {
