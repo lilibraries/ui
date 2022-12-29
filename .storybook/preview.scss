@@ -1,21 +1,11 @@
 @import "@lilib/themes";
 
-pre.prismjs {
-  direction: ltr;
-}
-
-div.docblock-source {
-  margin-top: var(--space-4x);
-  margin-bottom: var(--space-4x);
-}
-
 h1.sbdocs.sbdocs-h1,
 h2.sbdocs.sbdocs-h2,
 h3.sbdocs.sbdocs-h3,
 h4.sbdocs.sbdocs-h4,
 h5.sbdocs.sbdocs-h5,
 h6.sbdocs.sbdocs-h6 {
-  margin-top: 1em;
   margin-bottom: var(--space-4x);
   font-weight: var(--font-weight-heading);
 }
@@ -26,21 +16,40 @@ h1.sbdocs.sbdocs-h1 {
 }
 
 h2.sbdocs.sbdocs-h2 {
+  margin-top: var(--space-8x);
   font-size: var(--font-size-h2);
 }
 
 h3.sbdocs.sbdocs-h3 {
+  margin-top: var(--space-7x);
   font-size: var(--font-size-h3);
 }
 
 h4.sbdocs.sbdocs-h4 {
+  margin-top: var(--space-6x);
   font-size: var(--font-size-h4);
 }
 
 h5.sbdocs.sbdocs-h5 {
+  margin-top: var(--space-5x);
   font-size: var(--font-size-h5);
 }
 
 h6.sbdocs.sbdocs-h6 {
+  margin-top: var(--space-4x);
   font-size: var(--font-size-h6);
+}
+
+p.sbdocs.sbdocs-p {
+  margin-top: 0;
+  margin-bottom: var(--space-4x);
+}
+
+pre.prismjs {
+  direction: ltr;
+}
+
+div.docblock-source {
+  margin-top: var(--space-4x);
+  margin-bottom: var(--space-4x);
 }
