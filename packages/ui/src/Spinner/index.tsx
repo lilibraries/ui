@@ -9,16 +9,18 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import Icon, { IconProps } from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import LoaderIcon from "../icons/LoaderIcon";
+import Icon, { IconProps } from "../Icon";
 import isRenderableNode from "../utils/isRenderableNode";
 import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 import SpinnerConfig from "./SpinnerConfig";
+import Direction from "../Direction";
 
 export * from "./SpinnerConfig";
+
 export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
   delay?: number;
@@ -27,6 +29,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   startSpace?: boolean | number | string;
   endSpace?: boolean | number | string;
 }
+
 export type SpinnerComponent = ForwardRefExoticComponent<
   PropsWithoutRef<SpinnerProps> & RefAttributes<HTMLSpanElement>
 > & {
@@ -49,6 +52,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
+  const direction = Direction.useConfig();
   const { icon: iconConfig, delay } = SpinnerConfig.useConfig({
     icon: iconProp,
     delay: delayProp,
@@ -74,12 +78,14 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   }
 
   if (contained) {
+    const start = hasStartSpaceStyle ? startSpace : undefined;
+    const end = hasEndSpaceStyle ? endSpace : undefined;
+
     const styles = Object.assign(
       {},
-      {
-        marginLeft: hasStartSpaceStyle ? startSpace : undefined,
-        marginRight: hasEndSpaceStyle ? endSpace : undefined,
-      },
+      direction === "rtl"
+        ? { marginLeft: end, marginRight: start }
+        : { marginLeft: start, marginRight: end },
       style
     );
 
@@ -87,6 +93,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
       `${cls}spinner`,
       `${cls}contained`,
       {
+        [`${cls}rtl`]: direction === "rtl",
         [`${cls}start-spaced`]: hasStartSpaceClass,
         [`${cls}end-spaced`]: hasEndSpaceClass,
       },
@@ -150,13 +157,14 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
         {(status) => {
           const enter =
             status === Transition.ENTERING || status === Transition.ENTERED;
+          const start = enter && hasStartSpaceStyle ? startSpace : undefined;
+          const end = enter && hasEndSpaceStyle ? endSpace : undefined;
 
           const styles = Object.assign(
             {},
-            {
-              marginLeft: enter && hasStartSpaceStyle ? startSpace : undefined,
-              marginRight: enter && hasEndSpaceStyle ? endSpace : undefined,
-            },
+            direction === "rtl"
+              ? { marginLeft: end, marginRight: start }
+              : { marginLeft: start, marginRight: end },
             style
           );
 
@@ -164,6 +172,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             `${cls}spinner`,
             `${cls}standalone`,
             {
+              [`${cls}rtl`]: direction === "rtl",
               [`${cls}start-spaced`]: enter && hasStartSpaceClass,
               [`${cls}end-spaced`]: enter && hasEndSpaceClass,
             },

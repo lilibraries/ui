@@ -67,3 +67,13 @@
     }
   }
 }
+
+.#{$cls-prefix}spinner.#{$cls-prefix}rtl {
+  &.#{$cls-prefix}start-spaced {
+    margin-right: 0.375em;
+  }
+
+  &.#{$cls-prefix}end-spaced {
+    margin-left: 0.375em;
+  }
+}

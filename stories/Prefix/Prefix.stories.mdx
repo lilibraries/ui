@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs";
 
 # Prefix
 
-This component is used to set the CSS class name prefix and CSS variable name prefix of subcomponents. It is recommended to set it only once in the entry component.
+Prefix is used to configure the CSS class name prefix and CSS variable name prefix of subcomponents.
 
 ## Example
 
@@ -40,13 +40,15 @@ function Subcomponent() {
 | `var`      | `string`    | CSS variable name prefix | `"li-"` |
 | `children` | `ReactNode` | Subcomponents            | -       |
 
+Prefix will inherit the upper configuration.
+
 ### Prefix.useConfig
 
 ```ts
 function useConfig(): { cls: string; var: string };
 ```
 
-Get configured CSS class name prefix.
+Get configured CSS class name prefix and CSS variable name prefix.
 
 ### Prefix.Context
 

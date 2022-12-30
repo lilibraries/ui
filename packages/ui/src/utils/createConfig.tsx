@@ -1,6 +1,5 @@
 import React, {
   FC,
-  ReactNode,
   useContext,
   cloneElement,
   createContext,
@@ -11,33 +10,30 @@ import omit from "lodash/omit";
 import pick from "lodash/pick";
 import mergeConfig from "./mergeConfig";
 
-function createConfig<
-  Value,
-  Props extends Partial<Value> | { value?: Value } = Value
->(
-  propNames:
+function createConfig<Value, Props>(
+  configNames:
     | Exclude<keyof Props, "children">
     | Exclude<keyof Props, "children">[],
-  defaultConfig: Value
+  defaultValue: Value
 ) {
-  const Context = createContext<Value>(defaultConfig);
+  const Context = createContext<Value>(defaultValue);
 
-  function useConfig<T extends Value = Value>(override?: Partial<T>): Value {
+  function useConfig(override?: Partial<Value>): Value {
     const base = useContext(Context);
     return mergeConfig(base, override);
   }
 
-  const Config: FC<Props & { children?: ReactNode }> & {
+  const Config: FC<Props> & {
     Context: typeof Context;
     useConfig: typeof useConfig;
   } = (props) => {
     const { children, ...rest } = props;
-    const ownProps: any = pick(rest, propNames);
-    const restProps: any = omit(rest, propNames);
+    const ownProps: any = pick(rest, configNames);
+    const restProps: any = omit(rest, configNames);
     let override: any;
 
-    if (typeof propNames === "string") {
-      override = ownProps[propNames];
+    if (typeof configNames === "string") {
+      override = ownProps[configNames];
     } else {
       override = ownProps;
     }

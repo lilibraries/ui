@@ -4,7 +4,7 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Theme
 
-The purpose of this component is changing theme. It provides two themes: `light` and `dark`. The light theme is used by default.
+This component is used to change theme. It provides two themes: `light` and `dark`. The light theme is used by default.
 
 If you have read the source code of this repository, you can find that almost all styles use CSS variables. There are two ways to change theme: global and scoped. No matter which way, they will modify color-related CSS variables by adding CSS class name. Global way will add CSS class name to the `<html>` element. Scoped way will add CSS class name to the child element.
 
@@ -18,10 +18,6 @@ The first button in the document toolbar is used to change global theme, you can
 import React from "react";
 import { Theme } from "@lilib/ui";
 
-function App() {
-  return <Theme value="dark" />;
-}
-// Or
 function App() {
   return <Theme value="dark">...</Theme>;
 }
@@ -55,9 +51,11 @@ You can change the system theme mode to see the effect.
 
 | Property   | Type                            | Description                  | Default |
 | ---------- | ------------------------------- | ---------------------------- | ------- |
-| `scoped`   | `boolean`                       | Scoped theme                 | `false` |
 | `value`    | `null` \| `"light"` \| `"dark"` | Theme value                  | `null`  |
+| `scoped`   | `boolean`                       | Scoped theme                 | `false` |
 | `children` | `ReactElement` \| `ReactNode`   | Child element or child nodes | -       |
+
+Theme will inherit the upper configured value if you don't specify the `value` prop.
 
 The `scoped` prop is used to distinguish between different ways to change the theme. When `scoped` is `true`, the Theme component is scoped, and the `children` prop must be a React element. Otherwise, it is global, and the `children` can be any React nodes.
 
@@ -73,4 +71,4 @@ Get configured theme.
 
 ### Theme.Context
 
-A context created by `React.createContext`.
+A context created by `React.createContext`. It's default value is `null`.

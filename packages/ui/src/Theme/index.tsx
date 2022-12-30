@@ -16,22 +16,20 @@ import mergeConfig from "../utils/mergeConfig";
 export type ThemeValue = null | "light" | "dark";
 
 export interface ThemeScopedProps {
-  scoped: true;
   value?: ThemeValue;
+  scoped: true;
   children: ReactElement;
 }
 
 export interface ThemeUnscopedProps {
-  scoped?: false;
   value?: ThemeValue;
+  scoped?: false;
   children?: ReactNode;
 }
 
 const ThemeContext = createContext<ThemeValue>(null);
 
-function useThemeConfig<T extends ThemeValue = ThemeValue>(
-  override?: T
-): ThemeValue {
+function useThemeConfig(override?: ThemeValue): ThemeValue {
   const base = useContext(ThemeContext);
   return mergeConfig(base, override);
 }

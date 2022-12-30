@@ -28,7 +28,7 @@ export interface DurationScopedProps extends Partial<DurationValue> {
 
 export interface DurationUnscopedProps extends Partial<DurationValue> {
   scoped?: false;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const DurationContext = createContext<DurationValue>({
@@ -38,9 +38,7 @@ const DurationContext = createContext<DurationValue>({
   lazy: 1250,
 });
 
-function useDurationConfig<T extends DurationValue = DurationValue>(
-  override?: Partial<T>
-): DurationValue {
+function useDurationConfig(override?: Partial<DurationValue>): DurationValue {
   const base = useContext(DurationContext);
   return mergeConfig(base, override);
 }

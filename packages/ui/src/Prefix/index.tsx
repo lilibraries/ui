@@ -10,7 +10,7 @@ export interface PrefixProps extends Partial<PrefixValue> {
   children?: ReactNode;
 }
 
-const Prefix = createConfig<PrefixValue>(["cls", "var"], {
+const Prefix = createConfig<PrefixValue, PrefixProps>(["cls", "var"], {
   cls: "li-",
   var: "li-",
 });

@@ -10,7 +10,7 @@ Duration component can configure animation durations. It has two functions: one 
 
 ### Global
 
-Setting durations globally will add styles to `<html>`, and the `children` prop must be specified.
+Setting durations globally will add styles to `<html>`.
 
 ```tsx
 import React from "react";
@@ -27,7 +27,7 @@ function App() {
 
 ### Scoped
 
-Many components in this library perform animation effects. The following example describes how to configure scoped durations. The Spinner component performs a rotation animation of 750 milliseconds by default, but 3000 milliseconds in the example. Scoped way will add styles to the child element, and the `children` prop must be a React element that accepts `style` prop.
+Many components in this library perform animation effects. The following example describes how to configure scoped durations. The Spinner component performs a rotation animation of 750 milliseconds by default, but 3000 milliseconds in this example. Scoped way will add styles to the child element, and the `children` prop must be a React element that accepts `style` prop.
 
 <Canvas mdxSource={require("!!raw-loader!./Scoped").default}>
   <Story id="examples-duration--scoped" />
@@ -45,12 +45,14 @@ Many components in this library perform animation effects. The following example
 
 | Property   | Type                          | Description                              | Default |
 | ---------- | ----------------------------- | ---------------------------------------- | ------- |
-| `scoped`   | `boolean`                     | Scoped                                   | `false` |
 | `base`     | `number`                      | Base animation duration, in milliseconds | `300`   |
 | `fast`     | `number`                      | Fast animation duration, in milliseconds | `150`   |
 | `slow`     | `number`                      | Slow animation duration, in milliseconds | `750`   |
 | `lazy`     | `number`                      | Lazy animation duration, in milliseconds | `1250`  |
+| `scoped`   | `boolean`                     | Scoped                                   | `false` |
 | `children` | `ReactElement` \| `ReactNode` | Child element or child nodes             | -       |
+
+Prefix will inherit the upper configuration.
 
 ### Duration.useConfig
 
@@ -67,4 +69,4 @@ Get configured durations.
 
 ### Duration.Context
 
-A context created by `React.createContext`.
+A context created by `React.createContext`. It's default value is `{ base: 300, fast: 150, slow: 750, lazy: 1250 }`.

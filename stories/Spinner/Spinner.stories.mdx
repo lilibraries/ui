@@ -44,19 +44,19 @@ The following example will show spinner after 500ms when the switch is on.
   <Story id="examples-spinner--config" />
 </Canvas>
 
-## Props
+## API
 
 ### Spinner
 
 | Property     | Type                                      | Description                          |
 | ------------ | ----------------------------------------- | ------------------------------------ |
-| `children`   | `ReactNode`                               | Element wrapped by Spinner component |
 | `icon`       | `ReactNode`                               | Custom spinner icon                  |
 | `delay`      | `number`                                  | Spinning delay time, in milliseconds |
 | `spinning`   | `boolean`                                 | Whether the Spinner is spinning      |
 | `contained`  | `boolean`                                 | Assume the `children` is renderable  |
 | `startSpace` | `boolean` &#124; `number` &#124; `string` | Start space from other elements      |
 | `endSpace`   | `boolean` &#124; `number` &#124; `string` | End space from other elements        |
+| `children`   | `ReactNode`                               | Element wrapped by Spinner component |
 
 It accepts all props which the native `<span>` element supports.
 
@@ -64,6 +64,20 @@ It accepts all props which the native `<span>` element supports.
 
 | Property   | Type        | Description                          |
 | ---------- | ----------- | ------------------------------------ |
-| `children` | `ReactNode` | Subcomponents                        |
 | `icon`     | `ReactNode` | Custom spinner icon                  |
 | `delay`    | `number`    | Spinning delay time, in milliseconds |
+| `children` | `ReactNode` | Subcomponents                        |
+
+Spinner.Config will inherit the upper configuration.
+
+### Spinner.Config.useConfig
+
+```ts
+function useConfig(): { icon?: ReactNode; delay?: number };
+```
+
+Get configuration.
+
+### Spinner.Config.Context
+
+A context created by `React.createContext`. It's default value is an empty object `{}`.
