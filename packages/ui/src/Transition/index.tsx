@@ -5,13 +5,14 @@ import {
   Children,
   cloneElement,
   ReactElement,
+  isValidElement,
 } from "react";
 import cn from "classnames";
 import isObject from "lodash/isObject";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
 import isFunction from "lodash/isFunction";
-import { composeRefs } from "@lilib/utils";
+import { composeRefs, warning } from "@lilib/utils";
 import { useMount, useUpdate, useTimeout } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import isPositiveNumber from "../utils/isPositiveNumber";
@@ -22,7 +23,7 @@ const ENTERED = "entered";
 const EXIT = "exit";
 const EXITING = "exiting";
 const EXITED = "exited";
-const STATES = [ENTER, ENTERING, ENTERED, EXIT, EXITING, EXITED] as const;
+const states = [ENTER, ENTERING, ENTERED, EXIT, EXITING, EXITED] as const;
 
 export type TransitionState =
   | typeof ENTER
@@ -31,10 +32,12 @@ export type TransitionState =
   | typeof EXIT
   | typeof EXITING
   | typeof EXITED;
+
 export interface TransitionDurations {
   [ENTERING]: number;
   [EXITING]: number;
 }
+
 export interface TransitionClassNames {
   [ENTER]?: string | boolean;
   [ENTERING]?: string | boolean;
@@ -43,6 +46,7 @@ export interface TransitionClassNames {
   [EXITING]?: string | boolean;
   [EXITED]?: string | boolean;
 }
+
 export interface TransitionProps {
   children: ReactElement | ((state: TransitionState) => ReactElement);
   durations: number | TransitionDurations;
@@ -92,6 +96,18 @@ const Transition: FC<TransitionProps> & {
     : durations[ENTERING];
   const exitingDuration = isNumber(durations) ? durations : durations[EXITING];
 
+  if (process.env.NODE_ENV !== "production") {
+    warning(
+      !isNumber(enteringDuration) ||
+        !(enteringDuration > 0) ||
+        !isNumber(exitingDuration) ||
+        !(exitingDuration > 0),
+      "The `durations` prop must be a positive number or an object contains " +
+        "entering and exiting durations whose are positive numbers.",
+      { scope: "Transition" }
+    );
+  }
+
   const { cls } = Prefix.useConfig();
   const domRef = useRef<HTMLElement>();
 
@@ -111,18 +127,21 @@ const Transition: FC<TransitionProps> & {
     }
   });
 
-  const classNamesMapping: { [key in TransitionState]?: string } = {};
+  const classNamesMapping: {
+    [key in TransitionState]?: string;
+  } = {};
+
   if (classNames) {
-    STATES.forEach((s) => {
+    states.forEach((state) => {
       if (classNames === true) {
-        classNamesMapping[s] = `${cls}transition-${s}`;
+        classNamesMapping[state] = `${cls}transition-${state}`;
       } else if (isString(classNames)) {
-        classNamesMapping[s] = `${classNames}-${s}`;
+        classNamesMapping[state] = `${classNames}-${state}`;
       } else if (isObject(classNames)) {
-        if (isString(classNames[s])) {
-          classNamesMapping[s] = classNames[s] as string;
-        } else if (classNames[s]) {
-          classNamesMapping[s] = `${cls}transition-${s}`;
+        if (isString(classNames[state])) {
+          classNamesMapping[state] = classNames[state] as string;
+        } else if (classNames[state]) {
+          classNamesMapping[state] = `${cls}transition-${state}`;
         }
       }
     });
@@ -136,18 +155,27 @@ const Transition: FC<TransitionProps> & {
     }
     setState(state);
 
-    if (state === ENTER && isFunction(onEnter)) {
-      onEnter();
-    } else if (state === ENTERING && isFunction(onEntering)) {
-      onEntering();
-    } else if (state === ENTERED && isFunction(onEntered)) {
-      onEntered();
-    } else if (state === EXIT && isFunction(onExit)) {
-      onExit();
-    } else if (state === EXITING && isFunction(onExiting)) {
-      onExiting();
-    } else if (state === EXITED && isFunction(onExited)) {
-      onExited();
+    switch (state) {
+      case ENTER:
+        if (onEnter) onEnter();
+        break;
+      case ENTERING:
+        if (onEntering) onEntering();
+        break;
+      case ENTERED:
+        if (onEntered) onEntered();
+        break;
+      case EXIT:
+        if (onExit) onExit();
+        break;
+      case EXITING:
+        if (onExiting) onExiting();
+        break;
+      case EXITED:
+        if (onExited) onExited();
+        break;
+      default:
+        break;
     }
   }
 
@@ -226,6 +254,14 @@ const Transition: FC<TransitionProps> & {
   }
 
   const element: any = isFunction(children) ? children(state) : children;
+
+  if (process.env.NODE_ENV !== "production") {
+    warning(
+      !isValidElement(element),
+      "The `children` must be a React element or a function returns a React element.",
+      { scope: "Transition" }
+    );
+  }
 
   return cloneElement(Children.only(element), {
     ref: composeRefs(element.ref, domRef),
