@@ -20,6 +20,7 @@ import isRenderableNode from "../utils/isRenderableNode";
 import LoaderConfig from "./LoaderConfig";
 
 export * from "./LoaderConfig";
+
 export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
   icon?: ReactNode;
@@ -27,6 +28,7 @@ export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   delay?: number;
   loading?: boolean;
 }
+
 export type LoaderComponent = ForwardRefExoticComponent<
   PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>
 > & {
@@ -49,6 +51,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const { fast } = Duration.useConfig();
   const contained = isRenderableNode(children);
+
   const {
     icon: iconConfig,
     delay,

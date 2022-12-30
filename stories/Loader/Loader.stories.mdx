@@ -48,18 +48,18 @@ The following example will show loader after 500ms when the switch is on.
   <Story id="examples-loader--config" />
 </Canvas>
 
-## Props
+## API
 
 ### Loader
 
-| Property   | Type                                     | Description                   |
-| ---------- | ---------------------------------------- | ----------------------------- |
-| `children` | `ReactNode`                              | Content                       |
-| `size`     | `null` &#124; `"small"` &#124; `"large"` | Size                          |
-| `icon`     | `ReactNode`                              | Custom loader icon            |
-| `message`  | `ReactNode`                              | Tip message                   |
-| `delay`    | `number`                                 | Delay time, in milliseconds   |
-| `loading`  | `boolean`                                | Whether the Loader is loading |
+| Property   | Type                             | Description                   |
+| ---------- | -------------------------------- | ----------------------------- |
+| `size`     | `null` \| `"small"` \| `"large"` | Size                          |
+| `icon`     | `ReactNode`                      | Custom loader icon            |
+| `message`  | `ReactNode`                      | Tip message                   |
+| `delay`    | `number`                         | Delay time, in milliseconds   |
+| `loading`  | `boolean`                        | Whether the Loader is loading |
+| `children` | `ReactNode`                      | Content                       |
 
 It accepts all props which the native `<div>` element supports.
 
@@ -67,6 +67,20 @@ It accepts all props which the native `<div>` element supports.
 
 | Property  | Type        | Description                 |
 | --------- | ----------- | --------------------------- |
-| `icon`    | `ReactNode` | Custom Loader icon          |
+| `icon`    | `ReactNode` | Custom loader icon          |
 | `message` | `ReactNode` | Tip message                 |
 | `delay`   | `number`    | Delay time, in milliseconds |
+
+Loader.Config will inherit the upper configuration.
+
+### Loader.Config.useConfig
+
+```ts
+function useConfig(): { icon?: ReactNode; message?: ReactNode; delay?: number };
+```
+
+Get configuration.
+
+### Loader.Config.Context
+
+A context created by `React.createContext`. It's default value is an empty object `{}`.
