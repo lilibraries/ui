@@ -77,6 +77,8 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
             height = element.getBoundingClientRect().height;
             break;
           }
+          default:
+            break;
         }
 
         return (
