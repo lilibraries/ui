@@ -1,14 +1,17 @@
 import React, {
   FC,
   ReactNode,
+  useContext,
   cloneElement,
   ReactElement,
+  createContext,
   isValidElement,
 } from "react";
 import cn from "classnames";
 import { inBrowser } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
+import mergeConfig from "../utils/mergeConfig";
 
 export type ThemeValue = null | "light" | "dark";
 
@@ -24,7 +27,19 @@ export interface ThemeUnscopedProps {
   children?: ReactNode;
 }
 
-const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
+const ThemeContext = createContext<ThemeValue>(null);
+
+function useThemeConfig<T extends ThemeValue = ThemeValue>(
+  override?: T
+): ThemeValue {
+  const base = useContext(ThemeContext);
+  return mergeConfig(base, override);
+}
+
+const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> & {
+  Context: typeof ThemeContext;
+  useConfig: typeof useThemeConfig;
+} = (props) => {
   const { value, scoped, children, ...rest } = props;
   const { cls } = Prefix.useConfig();
 
@@ -59,20 +74,25 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> = (props) => {
     }
   }, [scoped, value, cls]);
 
-  if (isValidElement(children)) {
-    return cloneElement(children, {
-      ...rest,
-      ...children.props,
-      className: cn(
-        (rest as any).className,
-        { [`${cls}${value}`]: scoped && value },
-        children.props.className
-      ),
-      style: Object.assign({}, (rest as any).style, children.props.style),
-    });
-  } else {
-    return <>{children}</>;
-  }
+  return (
+    <ThemeContext.Provider value={useThemeConfig(value)}>
+      {isValidElement(children)
+        ? cloneElement(children, {
+            ...rest,
+            ...children.props,
+            className: cn(
+              (rest as any).className,
+              { [`${cls}${value}`]: scoped && value },
+              children.props.className
+            ),
+            style: Object.assign({}, (rest as any).style, children.props.style),
+          })
+        : children}
+    </ThemeContext.Provider>
+  );
 };
+
+Theme.Context = ThemeContext;
+Theme.useConfig = useThemeConfig;
 
 export default Theme;

@@ -49,7 +49,9 @@ You can change the system theme mode to see the effect.
   <Story id="examples-theme--sync-with-system" />
 </Canvas>
 
-## Props
+## API
+
+### Theme
 
 | Property   | Type                            | Description                  | Default |
 | ---------- | ------------------------------- | ---------------------------- | ------- |
@@ -60,3 +62,15 @@ You can change the system theme mode to see the effect.
 The `scoped` prop is used to distinguish between different ways to change the theme. When `scoped` is `true`, the Theme component is scoped, and the `children` prop must be a React element. Otherwise, it is global, and the `children` can be any React nodes.
 
 The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` props is `null` or `undefined`, all theme class names added before will be cleared.
+
+### Theme.useConfig
+
+```ts
+function useConfig(): null | "light" | "dark";
+```
+
+Get configured theme.
+
+### Theme.Context
+
+A context created by `React.createContext`.
