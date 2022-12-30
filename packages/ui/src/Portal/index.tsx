@@ -21,11 +21,13 @@ const Portal: FC<PortalProps> = (props) => {
   });
 
   function appendRoot() {
-    if (!containerRef.current) {
-      containerRef.current = getEffectTarget(container) || document.body;
-    }
-    if (rootRef.current && !containerRef.current.contains(rootRef.current)) {
-      containerRef.current.appendChild(rootRef.current);
+    if (inBrowser) {
+      if (!containerRef.current) {
+        containerRef.current = getEffectTarget(container) || document.body;
+      }
+      if (rootRef.current && !containerRef.current.contains(rootRef.current)) {
+        containerRef.current.appendChild(rootRef.current);
+      }
     }
   }
 
