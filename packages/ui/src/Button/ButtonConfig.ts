@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
 import { IntentValue } from "../Intent";
 import createConfig from "../utils/createConfig";
 
 export type ButtonVariant = null | "solid" | "outlined" | "flat";
 export type ButtonLoadingPosition = null | "start" | "center" | "end";
+
 export interface ButtonConfigValue {
   variant?: ButtonVariant;
   intent?: IntentValue;
@@ -15,7 +17,11 @@ export interface ButtonConfigValue {
   loadingPosition?: ButtonLoadingPosition;
 }
 
-const ButtonConfig = createConfig<ButtonConfigValue>(
+export interface ButtonConfigProps extends ButtonConfigValue {
+  children?: ReactNode;
+}
+
+const ButtonConfig = createConfig<ButtonConfigValue, ButtonConfigProps>(
   [
     "variant",
     "intent",

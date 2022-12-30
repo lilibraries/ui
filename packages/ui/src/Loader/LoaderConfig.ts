@@ -7,7 +7,11 @@ export interface LoaderConfigValue {
   message?: ReactNode;
 }
 
-const LoaderConfig = createConfig<LoaderConfigValue>(
+export interface LoaderConfigProps extends LoaderConfigValue {
+  children?: ReactNode;
+}
+
+const LoaderConfig = createConfig<LoaderConfigValue, LoaderConfigProps>(
   ["icon", "delay", "message"],
   {}
 );

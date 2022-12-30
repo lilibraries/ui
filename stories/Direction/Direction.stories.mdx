@@ -17,10 +17,6 @@ import React from "react";
 import { Direction } from "@lilib/ui";
 
 function Root() {
-  return <Direction value="rtl" />;
-}
-// Or
-function Root() {
   return <Direction value="rtl">...</Direction>;
 }
 ```
@@ -41,10 +37,24 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
 
 ## Props
 
+### Direction
+
 | Property   | Type                          | Description                  | Default |
 | ---------- | ----------------------------- | ---------------------------- | ------- |
-| `scoped`   | `boolean`                     | Scoped                       | `false` |
 | `value`    | `null` \| `"ltr"` \| `"rtl"`  | Direction value              | `null`  |
+| `scoped`   | `boolean`                     | Scoped                       | `false` |
 | `children` | `ReactElement` \| `ReactNode` | Child element or child nodes | -       |
 
-When the `scoped` prop is `true`, the `children` prop must be a React element that accepts `dir` prop.
+Direction will inherit the upper configured value if you don't specify the `value` prop.
+
+### Direction.useConfig
+
+```ts
+function useConfig(): null | "ltr" | "rtl";
+```
+
+Get configured direction.
+
+### Direction.Context
+
+A context created by `React.createContext`. It's default value is `null`.
