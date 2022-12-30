@@ -4,6 +4,8 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Baseline
 
+This component is a placeholder component to import global styles to reset default styles of some elements. It is recommended to use it only once in the application.
+
 ## Usage
 
 ```tsx
@@ -63,8 +65,32 @@ function App() {
   <Story id="examples-baseline--lists" />
 </Canvas>
 
+### Summary
+
+<Canvas mdxSource={require("!!raw-loader!./Summary").default}>
+  <Story id="examples-baseline--summary" />
+</Canvas>
+
+### Description list
+
+<Canvas mdxSource={require("!!raw-loader!./DescriptionList").default}>
+  <Story id="examples-baseline--description-list" />
+</Canvas>
+
+### Addresses
+
+<Canvas mdxSource={require("!!raw-loader!./Addresses").default}>
+  <Story id="examples-baseline--addresses" />
+</Canvas>
+
 ### Table
 
 <Canvas mdxSource={require("!!raw-loader!./Table").default}>
   <Story id="examples-baseline--table" />
+</Canvas>
+
+### Forms
+
+<Canvas mdxSource={require("!!raw-loader!./Forms").default}>
+  <Story id="examples-baseline--forms" />
 </Canvas>

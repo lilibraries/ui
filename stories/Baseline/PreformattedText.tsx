@@ -12,7 +12,11 @@ function App() {
 }`;
 
 function PreformattedText() {
-  return <pre>{code}</pre>;
+  return (
+    <pre dir="ltr">
+      <code>{code}</code>
+    </pre>
+  );
 }
 
 export default PreformattedText;

@@ -1,8 +1,9 @@
 import React from "react";
 
-function Blockquote() {
+function Summary() {
   return (
-    <blockquote cite="https://datatracker.ietf.org/doc/html/rfc1149">
+    <details>
+      <summary>React</summary>
       <p>
         React (also known as React.js or ReactJS) is a free and open-source
         front-end JavaScript library for building user interfaces or UI
@@ -13,8 +14,8 @@ function Blockquote() {
         React applications usually requires the use of additional libraries for
         routing, as well as certain client-side functionality.
       </p>
-    </blockquote>
+    </details>
   );
 }
 
-export default Blockquote;
+export default Summary;
