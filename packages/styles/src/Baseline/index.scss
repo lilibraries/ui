@@ -135,7 +135,7 @@ ins,
 del,
 code,
 kbd {
-  padding: 0.25em 0.5em;
+  padding: 0.125em 0.5em;
   border-radius: var(--border-radius-small);
 }
 
@@ -200,18 +200,20 @@ hr {
 pre {
   margin: 0 0 var(--space-4x);
   overflow: auto;
-  font-size: 1em;
+  font-size: 0.875em;
   font-family: var(--font-family-mono);
 
   code {
+    padding: unset;
     font: inherit;
-    background-color: transparent;
+    background-color: unset;
+    border-radius: unset;
   }
 }
 
 blockquote {
   margin: 0 0 var(--space-4x);
-  padding: var(--space-4x);
+  padding: var(--space-4x) var(--space-6x);
   background-color: var(--background-color-a1);
   border-radius: var(--border-radius-fixed-base);
 
@@ -231,8 +233,76 @@ ul {
   }
 }
 
-img {
-  border-style: none;
+details {
+  display: block;
+  margin-bottom: var(--space-4x);
+}
+
+summary {
+  display: list-item;
+  font-weight: var(--font-weight-title);
+  cursor: pointer;
+
+  & + * {
+    margin-top: var(--space-1x);
+  }
+}
+
+dt {
+  font-weight: var(--font-weight-title);
+}
+
+dd {
+  margin: 0 0 var(--space-2x);
+}
+
+dl {
+  margin: 0 0 var(--space-4x);
+
+  & dd:last-child {
+    margin-bottom: 0;
+  }
+}
+
+address {
+  margin-bottom: var(--space-4x);
+  font-style: normal;
+}
+
+table {
+  min-width: 100%;
+  margin-bottom: var(--space-4x);
+  caption-side: bottom;
+  border-color: var(--border-color-base);
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: var(--background-color-a1);
+  border-top: var(--border-width-base) solid var(--border-color-base);
+  border-bottom: var(--border-width-base) solid var(--border-color-base);
+}
+
+tr {
+  border-bottom: var(--border-width-base) solid var(--border-color-base);
+}
+
+th,
+td {
+  padding: var(--space-2x) var(--space-4x);
+}
+
+th {
+  font-weight: var(--font-weight-title);
+  text-align: unset;
+}
+
+caption {
+  padding: var(--space-2x) var(--space-4x);
+  text-align: unset;
+  background-color: var(--background-color-a1);
+  border-bottom: var(--border-width-base) solid var(--border-color-base);
 }
 
 button,
@@ -324,16 +394,16 @@ textarea {
   appearance: button;
 }
 
-details {
-  display: block;
-}
-
-summary {
-  display: list-item;
+img {
+  border-style: none;
 }
 
 template {
   display: none;
+}
+
+iframe {
+  border: 0;
 }
 
 [hidden] {
