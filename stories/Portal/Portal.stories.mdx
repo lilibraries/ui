@@ -14,16 +14,9 @@ This component renders children into a DOM node by using `ReactDOM.createPortal`
 
 ## Props
 
-| Property    | Type                         | Description                                     |
-| ----------- | ---------------------------- | ----------------------------------------------- |
-| `children`  | `ReactNode`                  | The content to be rendered into the `container` |
-| `container` | `TargetCreator<HTMLElement>` | A HTML element, default is `document.body`      |
+| Property    | Type                                                                                        | Description                                     |
+| ----------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `children`  | `ReactNode`                                                                                 | The content to be rendered into the `container` |
+| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | A HTML element, default is `document.body`      |
 
-```ts
-type Target<T> = T | undefined | null;
-type TargetCreator<T> =
-  | Target<T>
-  | (() => Target<T>)
-  | React.RefObject<Target<T>>
-  | React.MutableRefObject<Target<T>>;
-```
+The `container` prop can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element.
