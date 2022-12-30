@@ -5,7 +5,6 @@ import {
   Children,
   cloneElement,
   ReactElement,
-  isValidElement,
 } from "react";
 import cn from "classnames";
 import isObject from "lodash/isObject";
@@ -254,14 +253,6 @@ const Transition: FC<TransitionProps> & {
   }
 
   const element: any = isFunction(children) ? children(state) : children;
-
-  if (process.env.NODE_ENV !== "production") {
-    warning(
-      !isValidElement(element),
-      "The `children` must be a React element or a function returns a React element.",
-      { scope: "Transition" }
-    );
-  }
 
   return cloneElement(Children.only(element), {
     ref: composeRefs(element.ref, domRef),
