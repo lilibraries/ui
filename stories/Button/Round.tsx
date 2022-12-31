@@ -1,28 +1,28 @@
 import React from "react";
-import { Button, ButtonProps } from "@lilib/ui";
-import { FiThumbsUp, FiArrowRight, FiGlobe } from "react-icons/fi";
+import { Button, ButtonProps, Flexbox } from "@lilib/ui";
+import { FiLogOut, FiThumbsUp, FiFileText, FiArrowRight } from "react-icons/fi";
 
 function Round(props: ButtonProps) {
   return (
-    <>
+    <Flexbox gap="2x" align="center">
       <Button {...props} round>
         Button
-      </Button>{" "}
+      </Button>
       <Button {...props} round startIcon={<FiThumbsUp />}>
         Like
-      </Button>{" "}
-      <Button {...props} round endIcon={<FiArrowRight />}>
-        Next
-      </Button>{" "}
+      </Button>
+      <Button {...props} round endIcon={<FiLogOut />}>
+        Logout
+      </Button>
       <Button
         {...props}
         round
-        startIcon={<FiGlobe />}
+        startIcon={<FiFileText />}
         endIcon={<FiArrowRight />}
       >
-        Link
+        Next page
       </Button>
-    </>
+    </Flexbox>
   );
 }
 

@@ -14,6 +14,12 @@ Button groups.
   <Story id="examples-button-group--basic" />
 </Canvas>
 
+### Vertical
+
+<Canvas mdxSource={require("!!raw-loader!./Vertical").default}>
+  <Story id="examples-button-group--vertical" />
+</Canvas>
+
 ### Icon only
 
 <Canvas mdxSource={require("!!raw-loader!./IconOnly").default}>
@@ -24,12 +30,6 @@ Button groups.
 
 <Canvas mdxSource={require("!!raw-loader!./Mixed").default}>
   <Story id="examples-button-group--mixed" />
-</Canvas>
-
-### Vertical
-
-<Canvas mdxSource={require("!!raw-loader!./Vertical").default}>
-  <Story id="examples-button-group--vertical" />
 </Canvas>
 
 ### Round
@@ -46,18 +46,21 @@ Button groups.
 
 ## Props
 
-| Property          | Type                                                                                                 | Description                            |
-| ----------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `vertical`        | `boolean`                                                                                            | Vertical display                       |
-| `variant`         | `null` &#124; `"solid"` &#124; `"outlined"` &#124; `"flat"`                                          | Variant                                |
-| `intent`          | `null` &#124; `"major"` &#124; `"minor"` &#124; `"positive"` &#124; `"alertive"` &#124; `"negative"` | Intent                                 |
-| `size`            | `null` &#124; `"small"` &#124; `"large"`                                                             | Size                                   |
-| `fluid`           | `boolean`                                                                                            | Display like a block element           |
-| `round`           | `boolean`                                                                                            | Make corners round                     |
-| `truncated`       | `boolean`                                                                                            | Truncate text when it exceeds one line |
-| `disabled`        | `boolean`                                                                                            | Disabled state                         |
-| `iconOnly`        | `boolean`                                                                                            | Show icon only                         |
-| `loading`         | `boolean`                                                                                            | Show spinner                           |
-| `loadingPosition` | `null` &#124; `"start"` &#124; `"center"` &#124; `"end"`                                             | Specify spinner position               |
+| Property          | Type                                                                             | Description                         |
+| ----------------- | -------------------------------------------------------------------------------- | ----------------------------------- |
+| `vertical`        | `boolean`                                                                        | Vertical display                    |
+| `variant`         | `null` \| `"solid"` \| `"hollow"`                                                | Variant                             |
+| `intent`          | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                              |
+| `size`            | `null` \| `"small"` \| `"large"`                                                 | Size                                |
+| `fluid`           | `boolean`                                                                        | Display as a block element          |
+| `round`           | `boolean`                                                                        | Make corners round                  |
+| `truncated`       | `boolean`                                                                        | Truncate text                       |
+| `borderless`      | `boolean`                                                                        | Remove borders                      |
+| `disabled`        | `boolean`                                                                        | Disabled state                      |
+| `iconOnly`        | `boolean`                                                                        | Show icon only                      |
+| `loading`         | `boolean`                                                                        | Show spinner                        |
+| `loadingIcon`     | `ReactNode`                                                                      | Custom spinner icon                 |
+| `loadingDelay`    | `number`                                                                         | Loading delay time, in milliseconds |
+| `loadingPosition` | `null` \| `"start"` \| `"center"` \| `"end"`                                     | Specify spinner position            |
 
 It accepts all props which the native `<div>` element supports.

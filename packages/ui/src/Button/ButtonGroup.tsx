@@ -1,24 +1,29 @@
-import React, { forwardRef, HTMLAttributes } from "react";
+import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import { IntentValue } from "../Intent";
+import Intent, { IntentValue } from "../Intent";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
+import SpinnerConfig from "../Spinner/SpinnerConfig";
+import Direction from "../Direction";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
+  vertical?: boolean;
   variant?: ButtonVariant;
   intent?: IntentValue;
   size?: SizeValue;
   fluid?: boolean;
   round?: boolean;
-  vertical?: boolean;
   truncated?: boolean;
+  borderless?: boolean;
   disabled?: boolean;
   iconOnly?: boolean;
   loading?: boolean;
+  loadingIcon?: ReactNode;
+  loadingDelay?: number;
   loadingPosition?: ButtonLoadingPosition;
 }
 
@@ -27,27 +32,34 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     const {
       children,
       className,
+      vertical,
       variant,
       intent,
       size,
       fluid,
       round,
-      vertical,
       truncated,
+      borderless,
       disabled,
       iconOnly,
       loading,
+      loadingIcon,
+      loadingDelay,
       loadingPosition,
       ...rest
     } = props;
 
     const { cls } = Prefix.useConfig();
+    const isRTL = Direction.useConfig() === "rtl";
+
     const classes = cn(
       `${cls}button-group`,
       {
         [`${cls}vertical`]: vertical,
         [`${cls}horizontal`]: !vertical,
         [`${cls}fluid`]: fluid,
+        [`${cls}rtl`]: isRTL,
+        [`${cls}ltr`]: !isRTL,
       },
       className
     );
@@ -55,19 +67,23 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     return (
       <div {...rest} ref={ref} className={classes}>
         <Size value={size}>
-          <ButtonConfig
-            variant={variant}
-            intent={intent}
-            fluid={vertical}
-            round={round}
-            truncated={truncated}
-            disabled={disabled}
-            iconOnly={iconOnly}
-            loading={loading}
-            loadingPosition={loadingPosition}
-          >
-            {children}
-          </ButtonConfig>
+          <Intent value={intent}>
+            <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
+              <ButtonConfig
+                variant={variant}
+                fluid={vertical}
+                round={round}
+                truncated={truncated}
+                borderless={borderless}
+                disabled={disabled}
+                iconOnly={iconOnly}
+                loading={loading}
+                loadingPosition={loadingPosition}
+              >
+                {children}
+              </ButtonConfig>
+            </SpinnerConfig>
+          </Intent>
         </Size>
       </div>
     );

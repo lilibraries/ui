@@ -1,15 +1,16 @@
 import React from "react";
-import { Duration, Spinner } from "@lilib/ui";
+import { Duration, Flexbox, Spinner } from "@lilib/ui";
 
 function Nested() {
   return (
     <Duration scoped slow={3000}>
-      <div>
-        <Spinner spinning />{" "}
+      <Flexbox gap="2x" align="center">
+        <Spinner spinning />
+
         <Duration scoped slow={1000}>
           <Spinner spinning />
         </Duration>
-      </div>
+      </Flexbox>
     </Duration>
   );
 }

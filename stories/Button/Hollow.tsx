@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, ButtonProps, Flexbox, Switch } from "@lilib/ui";
 
-function Solid(props: ButtonProps) {
+function Hollow(props: ButtonProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -25,7 +25,7 @@ function Solid(props: ButtonProps) {
       <Flexbox gap="2x" align="center">
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent={null}
           disabled={disabled}
           borderless={borderless}
@@ -34,7 +34,7 @@ function Solid(props: ButtonProps) {
         </Button>
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="major"
           disabled={disabled}
           borderless={borderless}
@@ -43,7 +43,7 @@ function Solid(props: ButtonProps) {
         </Button>
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="minor"
           disabled={disabled}
           borderless={borderless}
@@ -52,7 +52,7 @@ function Solid(props: ButtonProps) {
         </Button>
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="positive"
           disabled={disabled}
           borderless={borderless}
@@ -61,7 +61,7 @@ function Solid(props: ButtonProps) {
         </Button>
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="alertive"
           disabled={disabled}
           borderless={borderless}
@@ -70,7 +70,7 @@ function Solid(props: ButtonProps) {
         </Button>
         <Button
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="negative"
           disabled={disabled}
           borderless={borderless}
@@ -82,4 +82,4 @@ function Solid(props: ButtonProps) {
   );
 }
 
-export default Solid;
+export default Hollow;

@@ -47,6 +47,7 @@ $base-properties: (
   "--border-radius-base": $border-radius-base,
   "--border-radius-small": $border-radius-small,
   "--border-radius-large": $border-radius-large,
+  "--border-radius-round": $border-radius-round,
   "--border-radius-fixed-base": $border-radius-fixed-base,
   "--border-radius-fixed-small": $border-radius-fixed-small,
   "--border-radius-fixed-large": $border-radius-fixed-large,
@@ -356,6 +357,55 @@ $light-properties: (
   "--background-color-negative-3": $background-color-negative-3,
   "--background-color-negative-a1": $background-color-negative-a1,
   "--background-color-negative-a2": $background-color-negative-a2,
+  "--background-color-solid-base": $background-color-solid-base,
+  "--background-color-solid-hover": $background-color-solid-hover,
+  "--background-color-solid-active": $background-color-solid-active,
+  "--background-color-solid-inactive": $background-color-solid-inactive,
+  "--background-color-solid-disabled": $background-color-solid-disabled,
+  "--background-color-solid-major-base": $background-color-solid-major-base,
+  "--background-color-solid-major-hover": $background-color-solid-major-hover,
+  "--background-color-solid-major-active": $background-color-solid-major-active,
+  "--background-color-solid-major-inactive":
+    $background-color-solid-major-inactive,
+  "--background-color-solid-major-disabled":
+    $background-color-solid-major-disabled,
+  "--background-color-solid-minor-base": $background-color-solid-minor-base,
+  "--background-color-solid-minor-hover": $background-color-solid-minor-hover,
+  "--background-color-solid-minor-active": $background-color-solid-minor-active,
+  "--background-color-solid-minor-inactive":
+    $background-color-solid-minor-inactive,
+  "--background-color-solid-minor-disabled":
+    $background-color-solid-minor-disabled,
+  "--background-color-solid-positive-base":
+    $background-color-solid-positive-base,
+  "--background-color-solid-positive-hover":
+    $background-color-solid-positive-hover,
+  "--background-color-solid-positive-active":
+    $background-color-solid-positive-active,
+  "--background-color-solid-positive-inactive":
+    $background-color-solid-positive-inactive,
+  "--background-color-solid-positive-disabled":
+    $background-color-solid-positive-disabled,
+  "--background-color-solid-alertive-base":
+    $background-color-solid-alertive-base,
+  "--background-color-solid-alertive-hover":
+    $background-color-solid-alertive-hover,
+  "--background-color-solid-alertive-active":
+    $background-color-solid-alertive-active,
+  "--background-color-solid-alertive-inactive":
+    $background-color-solid-alertive-inactive,
+  "--background-color-solid-alertive-disabled":
+    $background-color-solid-alertive-disabled,
+  "--background-color-solid-negative-base":
+    $background-color-solid-negative-base,
+  "--background-color-solid-negative-hover":
+    $background-color-solid-negative-hover,
+  "--background-color-solid-negative-active":
+    $background-color-solid-negative-active,
+  "--background-color-solid-negative-inactive":
+    $background-color-solid-negative-inactive,
+  "--background-color-solid-negative-disabled":
+    $background-color-solid-negative-disabled,
   "--text-color-base": $text-color-base,
   "--text-color-muted": $text-color-muted,
   "--text-color-hover": $text-color-hover,
@@ -427,6 +477,42 @@ $light-properties: (
   "--border-color-negative-active": $border-color-negative-active,
   "--border-color-negative-inactive": $border-color-negative-inactive,
   "--border-color-negative-disabled": $border-color-negative-disabled,
+  "--border-color-solid-base": $border-color-solid-base,
+  "--border-color-solid-hover": $border-color-solid-hover,
+  "--border-color-solid-active": $border-color-solid-active,
+  "--border-color-solid-inactive": $border-color-solid-inactive,
+  "--border-color-solid-disabled": $border-color-solid-disabled,
+  "--border-color-solid-major-base": $border-color-solid-major-base,
+  "--border-color-solid-major-hover": $border-color-solid-major-hover,
+  "--border-color-solid-major-active": $border-color-solid-major-active,
+  "--border-color-solid-major-inactive": $border-color-solid-major-inactive,
+  "--border-color-solid-major-disabled": $border-color-solid-major-disabled,
+  "--border-color-solid-minor-base": $border-color-solid-minor-base,
+  "--border-color-solid-minor-hover": $border-color-solid-minor-hover,
+  "--border-color-solid-minor-active": $border-color-solid-minor-active,
+  "--border-color-solid-minor-inactive": $border-color-solid-minor-inactive,
+  "--border-color-solid-minor-disabled": $border-color-solid-minor-disabled,
+  "--border-color-solid-positive-base": $border-color-solid-positive-base,
+  "--border-color-solid-positive-hover": $border-color-solid-positive-hover,
+  "--border-color-solid-positive-active": $border-color-solid-positive-active,
+  "--border-color-solid-positive-inactive":
+    $border-color-solid-positive-inactive,
+  "--border-color-solid-positive-disabled":
+    $border-color-solid-positive-disabled,
+  "--border-color-solid-alertive-base": $border-color-solid-alertive-base,
+  "--border-color-solid-alertive-hover": $border-color-solid-alertive-hover,
+  "--border-color-solid-alertive-active": $border-color-solid-alertive-active,
+  "--border-color-solid-alertive-inactive":
+    $border-color-solid-alertive-inactive,
+  "--border-color-solid-alertive-disabled":
+    $border-color-solid-alertive-disabled,
+  "--border-color-solid-negative-base": $border-color-solid-negative-base,
+  "--border-color-solid-negative-hover": $border-color-solid-negative-hover,
+  "--border-color-solid-negative-active": $border-color-solid-negative-active,
+  "--border-color-solid-negative-inactive":
+    $border-color-solid-negative-inactive,
+  "--border-color-solid-negative-disabled":
+    $border-color-solid-negative-disabled,
 ) !default;
 
 $dark-properties: (
@@ -466,6 +552,59 @@ $dark-properties: (
   "--background-color-negative-3": $dark-background-color-negative-3,
   "--background-color-negative-a1": $dark-background-color-negative-a1,
   "--background-color-negative-a2": $dark-background-color-negative-a2,
+  "--background-color-solid-base": $dark-background-color-solid-base,
+  "--background-color-solid-hover": $dark-background-color-solid-hover,
+  "--background-color-solid-active": $dark-background-color-solid-active,
+  "--background-color-solid-inactive": $dark-background-color-solid-inactive,
+  "--background-color-solid-disabled": $dark-background-color-solid-disabled,
+  "--background-color-solid-major-base": $dark-background-color-solid-major-base,
+  "--background-color-solid-major-hover":
+    $dark-background-color-solid-major-hover,
+  "--background-color-solid-major-active":
+    $dark-background-color-solid-major-active,
+  "--background-color-solid-major-inactive":
+    $dark-background-color-solid-major-inactive,
+  "--background-color-solid-major-disabled":
+    $dark-background-color-solid-major-disabled,
+  "--background-color-solid-minor-base": $dark-background-color-solid-minor-base,
+  "--background-color-solid-minor-hover":
+    $dark-background-color-solid-minor-hover,
+  "--background-color-solid-minor-active":
+    $dark-background-color-solid-minor-active,
+  "--background-color-solid-minor-inactive":
+    $dark-background-color-solid-minor-inactive,
+  "--background-color-solid-minor-disabled":
+    $dark-background-color-solid-minor-disabled,
+  "--background-color-solid-positive-base":
+    $dark-background-color-solid-positive-base,
+  "--background-color-solid-positive-hover":
+    $dark-background-color-solid-positive-hover,
+  "--background-color-solid-positive-active":
+    $dark-background-color-solid-positive-active,
+  "--background-color-solid-positive-inactive":
+    $dark-background-color-solid-positive-inactive,
+  "--background-color-solid-positive-disabled":
+    $dark-background-color-solid-positive-disabled,
+  "--background-color-solid-alertive-base":
+    $dark-background-color-solid-alertive-base,
+  "--background-color-solid-alertive-hover":
+    $dark-background-color-solid-alertive-hover,
+  "--background-color-solid-alertive-active":
+    $dark-background-color-solid-alertive-active,
+  "--background-color-solid-alertive-inactive":
+    $dark-background-color-solid-alertive-inactive,
+  "--background-color-solid-alertive-disabled":
+    $dark-background-color-solid-alertive-disabled,
+  "--background-color-solid-negative-base":
+    $dark-background-color-solid-negative-base,
+  "--background-color-solid-negative-hover":
+    $dark-background-color-solid-negative-hover,
+  "--background-color-solid-negative-active":
+    $dark-background-color-solid-negative-active,
+  "--background-color-solid-negative-inactive":
+    $dark-background-color-solid-negative-inactive,
+  "--background-color-solid-negative-disabled":
+    $dark-background-color-solid-negative-disabled,
   "--text-color-base": $dark-text-color-base,
   "--text-color-muted": $dark-text-color-muted,
   "--text-color-hover": $dark-text-color-hover,
@@ -537,6 +676,45 @@ $dark-properties: (
   "--border-color-negative-active": $dark-border-color-negative-active,
   "--border-color-negative-inactive": $dark-border-color-negative-inactive,
   "--border-color-negative-disabled": $dark-border-color-negative-disabled,
+  "--border-color-solid-base": $dark-border-color-solid-base,
+  "--border-color-solid-hover": $dark-border-color-solid-hover,
+  "--border-color-solid-active": $dark-border-color-solid-active,
+  "--border-color-solid-inactive": $dark-border-color-solid-inactive,
+  "--border-color-solid-disabled": $dark-border-color-solid-disabled,
+  "--border-color-solid-major-base": $dark-border-color-solid-major-base,
+  "--border-color-solid-major-hover": $dark-border-color-solid-major-hover,
+  "--border-color-solid-major-active": $dark-border-color-solid-major-active,
+  "--border-color-solid-major-inactive": $dark-border-color-solid-major-inactive,
+  "--border-color-solid-major-disabled": $dark-border-color-solid-major-disabled,
+  "--border-color-solid-minor-base": $dark-border-color-solid-minor-base,
+  "--border-color-solid-minor-hover": $dark-border-color-solid-minor-hover,
+  "--border-color-solid-minor-active": $dark-border-color-solid-minor-active,
+  "--border-color-solid-minor-inactive": $dark-border-color-solid-minor-inactive,
+  "--border-color-solid-minor-disabled": $dark-border-color-solid-minor-disabled,
+  "--border-color-solid-positive-base": $dark-border-color-solid-positive-base,
+  "--border-color-solid-positive-hover": $dark-border-color-solid-positive-hover,
+  "--border-color-solid-positive-active":
+    $dark-border-color-solid-positive-active,
+  "--border-color-solid-positive-inactive":
+    $dark-border-color-solid-positive-inactive,
+  "--border-color-solid-positive-disabled":
+    $dark-border-color-solid-positive-disabled,
+  "--border-color-solid-alertive-base": $dark-border-color-solid-alertive-base,
+  "--border-color-solid-alertive-hover": $dark-border-color-solid-alertive-hover,
+  "--border-color-solid-alertive-active":
+    $dark-border-color-solid-alertive-active,
+  "--border-color-solid-alertive-inactive":
+    $dark-border-color-solid-alertive-inactive,
+  "--border-color-solid-alertive-disabled":
+    $dark-border-color-solid-alertive-disabled,
+  "--border-color-solid-negative-base": $dark-border-color-solid-negative-base,
+  "--border-color-solid-negative-hover": $dark-border-color-solid-negative-hover,
+  "--border-color-solid-negative-active":
+    $dark-border-color-solid-negative-active,
+  "--border-color-solid-negative-inactive":
+    $dark-border-color-solid-negative-inactive,
+  "--border-color-solid-negative-disabled":
+    $dark-border-color-solid-negative-disabled,
 ) !default;
 
 $properties: merge-maps(
