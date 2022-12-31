@@ -98,3 +98,11 @@
     opacity: 0;
   }
 }
+
+.#{$cls-prefix}dot.#{$cls-prefix}rtl {
+  &.#{$cls-prefix}contained {
+    & > .#{$cls-prefix}dot-indicator {
+      margin-left: 0.375em;
+    }
+  }
+}
