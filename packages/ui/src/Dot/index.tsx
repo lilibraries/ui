@@ -2,9 +2,10 @@ import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import isString from "lodash/isString";
 import Prefix from "../Prefix";
-import { IntentValue } from "../Intent";
 import Size, { SizeValue } from "../Size";
+import Intent, { IntentValue } from "../Intent";
 import isRenderableNode from "../utils/isRenderableNode";
+import Direction from "../Direction";
 
 export interface DotProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
@@ -19,7 +20,7 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
     children,
     className,
     size: sizeProp,
-    intent,
+    intent: intentProp,
     color,
     animated,
     ...rest
@@ -27,6 +28,8 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const intent = Intent.useConfig(intentProp);
+  const isRTL = Direction.useConfig() === "rtl";
   const contained = isRenderableNode(children);
   const useColorStyle = isString(color);
 
@@ -38,6 +41,7 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
       [`${cls}${size}`]: size,
       [`${cls}${intent}`]: intent,
       [`${cls}animated`]: animated,
+      [`${cls}rtl`]: isRTL,
     },
     className
   );
