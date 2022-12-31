@@ -3,7 +3,7 @@ export default {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: [null, "solid", "outlined", "flat"],
+      options: [null, "solid", "hollow"],
     },
     intent: {
       control: { type: "select" },
@@ -22,6 +22,9 @@ export default {
     truncated: {
       control: { type: "boolean" },
     },
+    borderless: {
+      control: { type: "boolean" },
+    },
     active: {
       control: { type: "boolean" },
     },
@@ -34,6 +37,12 @@ export default {
     loading: {
       control: { type: "boolean" },
     },
+    loadingIcon: {
+      control: { type: "text" },
+    },
+    loadingDelay: {
+      control: { type: "number" },
+    },
     loadingPosition: {
       control: { type: "select" },
       options: [null, "start", "center", "end"],
@@ -42,16 +51,13 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
-export { default as WithIcons } from "./WithIcons";
-export { default as IconOnly } from "./IconOnly";
-export { default as AsLink } from "./AsLink";
-export { default as Intents } from "./Intents";
-export { default as Solid } from "./Solid";
-export { default as Outlined } from "./Outlined";
-export { default as Flat } from "./Flat";
-export { default as Sizes } from "./Sizes";
+export { default as Link } from "./Link";
+export { default as Icons } from "./Icons";
 export { default as Fluid } from "./Fluid";
 export { default as Round } from "./Round";
 export { default as Truncated } from "./Truncated";
 export { default as Loading } from "./Loading";
-export { default as Disabled } from "./Disabled";
+export { default as Sizes } from "./Sizes";
+export { default as Intents } from "./Intents";
+export { default as Solid } from "./Solid";
+export { default as Hollow } from "./Hollow";

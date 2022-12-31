@@ -6,7 +6,7 @@ export default {
     },
     variant: {
       control: { type: "select" },
-      options: [null, "solid", "outlined", "flat"],
+      options: [null, "solid", "hollow"],
     },
     intent: {
       control: { type: "select" },
@@ -25,6 +25,9 @@ export default {
     truncated: {
       control: { type: "boolean" },
     },
+    borderless: {
+      control: { type: "boolean" },
+    },
     disabled: {
       control: { type: "boolean" },
     },
@@ -34,6 +37,12 @@ export default {
     loading: {
       control: { type: "boolean" },
     },
+    loadingIcon: {
+      control: { type: "text" },
+    },
+    loadingDelay: {
+      control: { type: "number" },
+    },
     loadingPosition: {
       control: { type: "select" },
       options: [null, "start", "center", "end"],
@@ -42,8 +51,8 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
+export { default as Vertical } from "./Vertical";
 export { default as IconOnly } from "./IconOnly";
 export { default as Mixed } from "./Mixed";
-export { default as Vertical } from "./Vertical";
 export { default as Round } from "./Round";
 export { default as Fluid } from "./Fluid";

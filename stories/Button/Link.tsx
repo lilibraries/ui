@@ -1,17 +1,18 @@
 import React from "react";
 import { Button, ButtonProps } from "@lilib/ui";
 
-function AsLink(props: ButtonProps) {
+function Link(props: ButtonProps) {
   return (
     <Button
       {...props}
       as="a"
-      target="_blank"
+      rel="noreferrer noopener"
       href="https://github.com/lilibraries/ui"
+      target="_blank"
     >
       Github
     </Button>
   );
 }
 
-export default AsLink;
+export default Link;
