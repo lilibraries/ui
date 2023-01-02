@@ -9,42 +9,42 @@ $positive: $green !default;
 $alertive: $orange !default;
 $negative: $red !default;
 
-$background-color-0: $white;
-$background-color-1: $white;
-$background-color-2: light-color($base, 90%);
-$background-color-3: light-color($base, 80%);
-$background-color-a1: rgba($base, 0.1);
-$background-color-a2: rgba($base, 0.2);
+$background-color-0: $white !default;
+$background-color-1: $white !default;
+$background-color-2: light-color($base, 90%) !default;
+$background-color-3: light-color($base, 80%) !default;
+$background-color-a1: rgba($base, 0.1) !default;
+$background-color-a2: rgba($base, 0.2) !default;
 
-$background-color-major-1: light-color($major, 90%);
-$background-color-major-2: light-color($major, 80%);
-$background-color-major-3: light-color($major, 70%);
-$background-color-major-a1: rgba($major, 0.1);
-$background-color-major-a2: rgba($major, 0.2);
+$background-color-major-1: light-color($major, 90%) !default;
+$background-color-major-2: light-color($major, 80%) !default;
+$background-color-major-3: light-color($major, 70%) !default;
+$background-color-major-a1: rgba($major, 0.1) !default;
+$background-color-major-a2: rgba($major, 0.2) !default;
 
-$background-color-minor-1: light-color($minor, 90%);
-$background-color-minor-2: light-color($minor, 80%);
-$background-color-minor-3: light-color($minor, 70%);
-$background-color-minor-a1: rgba($minor, 0.1);
-$background-color-minor-a2: rgba($minor, 0.2);
+$background-color-minor-1: light-color($minor, 90%) !default;
+$background-color-minor-2: light-color($minor, 80%) !default;
+$background-color-minor-3: light-color($minor, 70%) !default;
+$background-color-minor-a1: rgba($minor, 0.1) !default;
+$background-color-minor-a2: rgba($minor, 0.2) !default;
 
-$background-color-positive-1: light-color($positive, 90%);
-$background-color-positive-2: light-color($positive, 80%);
-$background-color-positive-3: light-color($positive, 70%);
-$background-color-positive-a1: rgba($positive, 0.1);
-$background-color-positive-a2: rgba($positive, 0.2);
+$background-color-positive-1: light-color($positive, 90%) !default;
+$background-color-positive-2: light-color($positive, 80%) !default;
+$background-color-positive-3: light-color($positive, 70%) !default;
+$background-color-positive-a1: rgba($positive, 0.1) !default;
+$background-color-positive-a2: rgba($positive, 0.2) !default;
 
-$background-color-alertive-1: light-color($alertive, 90%);
-$background-color-alertive-2: light-color($alertive, 80%);
-$background-color-alertive-3: light-color($alertive, 70%);
-$background-color-alertive-a1: rgba($alertive, 0.1);
-$background-color-alertive-a2: rgba($alertive, 0.2);
+$background-color-alertive-1: light-color($alertive, 90%) !default;
+$background-color-alertive-2: light-color($alertive, 80%) !default;
+$background-color-alertive-3: light-color($alertive, 70%) !default;
+$background-color-alertive-a1: rgba($alertive, 0.1) !default;
+$background-color-alertive-a2: rgba($alertive, 0.2) !default;
 
-$background-color-negative-1: light-color($negative, 90%);
-$background-color-negative-2: light-color($negative, 80%);
-$background-color-negative-3: light-color($negative, 70%);
-$background-color-negative-a1: rgba($negative, 0.1);
-$background-color-negative-a2: rgba($negative, 0.2);
+$background-color-negative-1: light-color($negative, 90%) !default;
+$background-color-negative-2: light-color($negative, 80%) !default;
+$background-color-negative-3: light-color($negative, 70%) !default;
+$background-color-negative-a1: rgba($negative, 0.1) !default;
+$background-color-negative-a2: rgba($negative, 0.2) !default;
 
 $background-color-solid-base: shade-color($base, 60%) !default;
 $background-color-solid-hover: shade-color($base, 70%) !default;

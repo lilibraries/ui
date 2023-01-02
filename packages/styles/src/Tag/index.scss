@@ -2,32 +2,68 @@
 
 .#{$cls-prefix}tag {
   display: inline-flex;
-  align-items: center;
+  align-items: stretch;
   box-sizing: border-box;
   max-width: 100%;
-  height: var(--line-height-fixed-base);
   margin: 0;
   padding: 0;
-  color: var(--text-color-base);
-  font: inherit;
+  font-weight: var(--font-weight-base);
   font-size: var(--font-size-base);
+  font-family: inherit;
+  font-style: normal;
   line-height: var(--line-height-fixed-base);
   text-decoration: none;
-  background-color: var(--background-color-1);
+  vertical-align: baseline;
+  background: none;
   border: 0;
   border-radius: var(--border-radius-small);
-  box-shadow: 0 0 0 1px var(--border-color-base);
   appearance: none;
 
   &-content {
     flex: 1 1 0;
     box-sizing: border-box;
-    height: 100%;
     padding: 0
       calc((#{var(--line-height-fixed-base)} - #{var(--font-size-base)}));
+    color: var(--text-color-base);
     text-align: center;
+    background: var(--background-color-1);
+    border: var(--border-width-base) solid var(--border-color-base);
     border-radius: var(--border-radius-small);
     @include text-overflow;
+  }
+
+  &.#{$cls-prefix}clickable {
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+
+    & > .#{$cls-prefix}tag-content {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--text-color-hover);
+        background-color: var(--background-color-2);
+        border-color: var(--border-color-hover);
+      }
+
+      &:active {
+        color: var(--text-color-active);
+        background-color: var(--background-color-3);
+        border-color: var(--border-color-active);
+      }
+
+      &:focus-visible {
+        z-index: 1;
+      }
+    }
+  }
+
+  &.#{$cls-prefix}clearable {
+    & > .#{$cls-prefix}tag-content {
+      border-right-width: 0;
+      border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+    }
   }
 
   &-clear {
@@ -35,39 +71,44 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: var(--line-height-fixed-base);
-    height: 100%;
+    box-sizing: border-box;
+    width: calc(var(--line-height-fixed-base) + var(--border-width-base));
     color: var(--text-color-inactive);
-    border-top-right-radius: var(--border-radius-small);
-    border-bottom-right-radius: var(--border-radius-small);
+    border: var(--border-width-base) solid var(--border-color-base);
+    border-left-width: 0;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     cursor: pointer;
 
     &:hover {
       color: var(--text-color-hover);
       background-color: var(--background-color-2);
+      border-color: var(--border-color-hover);
     }
 
     &:active {
       color: var(--text-color-active);
       background-color: var(--background-color-3);
+      border-color: var(--border-color-active);
+    }
+
+    &:focus-visible {
+      z-index: 1;
     }
   }
 
   &.#{$cls-prefix}round {
-    border-radius: 1000px;
+    border-radius: var(--border-radius-round);
 
     & > .#{$cls-prefix}tag-content {
-      border-radius: 1000px;
+      border-radius: var(--border-radius-round) 0 0 var(--border-radius-round);
     }
 
     & > .#{$cls-prefix}tag-clear {
-      border-top-right-radius: 1000px;
-      border-bottom-right-radius: 1000px;
+      border-radius: 0 var(--border-radius-round) var(--border-radius-round) 0;
     }
   }
 
   &.#{$cls-prefix}small {
-    height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
     line-height: var(--line-height-fixed-small);
 
@@ -77,12 +118,11 @@
     }
 
     & > .#{$cls-prefix}tag-clear {
-      width: var(--line-height-fixed-small);
+      width: calc(var(--line-height-fixed-small) + var(--border-width-base));
     }
   }
 
   &.#{$cls-prefix}large {
-    height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
     line-height: var(--line-height-fixed-large);
 
@@ -92,298 +132,265 @@
     }
 
     & > .#{$cls-prefix}tag-clear {
-      width: var(--line-height-fixed-large);
+      width: calc(var(--line-height-fixed-large) + var(--border-width-base));
     }
   }
 
-  &.#{$cls-prefix}clearable {
-    & > .#{$cls-prefix}tag-content {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &.#{$cls-prefix}clickable {
-    & > .#{$cls-prefix}tag-content {
-      cursor: pointer;
-
-      &:hover {
-        color: var(--text-color-hover);
-        background-color: var(--background-color-2);
-      }
-
-      &:active {
-        color: var(--text-color-active);
-        background-color: var(--background-color-3);
-      }
+  &.#{$cls-prefix}disabled {
+    & > .#{$cls-prefix}tag-clear,
+    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      color: var(--text-color-disabled);
+      background-color: var(--background-color-1);
+      border-color: var(--border-color-disabled);
+      cursor: not-allowed;
     }
   }
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
-      color: var(--text-color-#{$intent}-base);
-      background-color: var(--background-color-#{$intent}-1);
-      box-shadow: 0 0 0 1px var(--border-color-#{$intent}-base);
+      & > .#{$cls-prefix}tag-content {
+        color: var(--text-color-#{$intent}-base);
+        background-color: var(--background-color-#{$intent}-1);
+        border-color: var(--border-color-#{$intent}-base);
+      }
 
       & > .#{$cls-prefix}tag-clear {
         color: var(--text-color-#{$intent}-inactive);
+        background-color: var(--background-color-#{$intent}-1);
+        border-color: var(--border-color-#{$intent}-base);
+      }
 
+      & > .#{$cls-prefix}tag-clear,
+      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
         &:hover {
           color: var(--text-color-#{$intent}-hover);
           background-color: var(--background-color-#{$intent}-2);
+          border-color: var(--border-color-#{$intent}-hover);
         }
 
         &:active {
           color: var(--text-color-#{$intent}-active);
           background-color: var(--background-color-#{$intent}-3);
+          border-color: var(--border-color-#{$intent}-active);
         }
       }
 
-      &.#{$cls-prefix}clickable {
-        & > .#{$cls-prefix}tag-content {
-          &:hover {
-            color: var(--text-color-#{$intent}-hover);
-            background-color: var(--background-color-#{$intent}-2);
-          }
-
-          &:active {
-            color: var(--text-color-#{$intent}-active);
-            background-color: var(--background-color-#{$intent}-3);
-          }
+      &.#{$cls-prefix}disabled {
+        & > .#{$cls-prefix}tag-clear,
+        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+          color: var(--text-color-#{$intent}-disabled);
+          background-color: var(--background-color-#{$intent}-1);
+          border-color: var(--border-color-#{$intent}-disabled);
         }
       }
     }
   }
+}
 
-  &.#{$cls-prefix}solid {
-    color: var(--text-color-solid-base);
-    background-color: var(--text-color-base);
-    box-shadow: none;
-
-    & > .#{$cls-prefix}tag-clear {
-      color: var(--text-color-solid-inactive);
-
-      &:hover {
-        color: var(--text-color-solid-base);
-        background-color: var(--text-color-hover);
-      }
-
-      &:active {
-        color: var(--text-color-solid-base);
-        background-color: var(--text-color-active);
-      }
-    }
-
-    &.#{$cls-prefix}clickable {
-      & > .#{$cls-prefix}tag-content {
-        &:hover {
-          color: var(--text-color-solid-base);
-          background-color: var(--text-color-hover);
-        }
-
-        &:active {
-          color: var(--text-color-solid-base);
-          background-color: var(--text-color-active);
-        }
-      }
-    }
-
-    @each $intent in $intents {
-      &.#{$cls-prefix}#{$intent} {
-        background-color: var(--text-color-#{$intent}-base);
-
-        & > .#{$cls-prefix}tag-clear {
-          &:hover {
-            background-color: var(--text-color-#{$intent}-hover);
-          }
-
-          &:active {
-            background-color: var(--text-color-#{$intent}-active);
-          }
-        }
-
-        &.#{$cls-prefix}clickable {
-          & > .#{$cls-prefix}tag-content {
-            &:hover {
-              background-color: var(--text-color-#{$intent}-hover);
-            }
-
-            &:active {
-              background-color: var(--text-color-#{$intent}-active);
-            }
-          }
-        }
-      }
-    }
+.#{$cls-prefix}tag.#{$cls-prefix}solid {
+  & > .#{$cls-prefix}tag-content {
+    color: var(--text-color-reverse-base);
+    background-color: var(--background-color-solid-base);
+    border-color: var(--border-color-solid-base);
   }
 
-  &.#{$cls-prefix}outlined {
-    background-color: transparent;
-    box-shadow: 0 0 0 1px var(--border-color-base);
+  & > .#{$cls-prefix}tag-clear {
+    color: var(--text-color-reverse-inactive);
+    background-color: var(--background-color-solid-base);
+    border-color: var(--border-color-solid-base);
+  }
 
-    & > .#{$cls-prefix}tag-clear {
-      &:hover {
-        background-color: var(--background-color-a1);
-      }
-
-      &:active {
-        background-color: var(--background-color-a2);
-      }
+  & > .#{$cls-prefix}tag-clear,
+  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &:hover {
+      color: var(--text-color-reverse-hover);
+      background-color: var(--background-color-solid-hover);
+      border-color: var(--border-color-solid-hover);
     }
 
-    &.#{$cls-prefix}clickable {
-      & > .#{$cls-prefix}tag-content {
-        &:hover {
-          background-color: var(--background-color-a1);
-        }
-
-        &:active {
-          background-color: var(--background-color-a2);
-        }
-      }
-    }
-
-    @each $intent in $intents {
-      &.#{$cls-prefix}#{$intent} {
-        color: var(--text-color-#{$intent}-base);
-        box-shadow: 0 0 0 1px var(--border-color-#{$intent}-base);
-
-        & > .#{$cls-prefix}tag-clear {
-          &:hover {
-            color: var(--text-color-#{$intent}-hover);
-            background-color: var(--background-color-#{$intent}-a1);
-          }
-
-          &:active {
-            color: var(--text-color-#{$intent}-active);
-            background-color: var(--background-color-#{$intent}-a2);
-          }
-        }
-
-        &.#{$cls-prefix}clickable {
-          & > .#{$cls-prefix}tag-content {
-            &:hover {
-              color: var(--text-color-#{$intent}-hover);
-              background-color: var(--background-color-#{$intent}-a1);
-            }
-
-            &:active {
-              color: var(--text-color-#{$intent}-active);
-              background-color: var(--background-color-#{$intent}-a2);
-            }
-          }
-        }
-      }
+    &:active {
+      color: var(--text-color-reverse-active);
+      background-color: var(--background-color-solid-active);
+      border-color: var(--border-color-solid-active);
     }
   }
 
   &.#{$cls-prefix}disabled {
-    color: var(--text-color-disabled);
-    background-color: var(--background-color-1);
-    box-shadow: 0 0 0 1px var(--border-color-disabled);
-    cursor: not-allowed;
+    & > .#{$cls-prefix}tag-clear,
+    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      color: var(--text-color-reverse-disabled);
+      background-color: var(--background-color-solid-disabled);
+      border-color: var(--border-color-solid-disabled);
+    }
+  }
+
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      & > .#{$cls-prefix}tag-content {
+        color: var(--text-color-solid-base);
+        background-color: var(--background-color-solid-#{$intent}-base);
+        border-color: var(--border-color-solid-#{$intent}-base);
+      }
+
+      & > .#{$cls-prefix}tag-clear {
+        color: var(--text-color-solid-inactive);
+        background-color: var(--background-color-solid-#{$intent}-base);
+        border-color: var(--border-color-solid-#{$intent}-base);
+      }
+
+      & > .#{$cls-prefix}tag-clear,
+      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &:hover {
+          color: var(--text-color-solid-hover);
+          background-color: var(--background-color-solid-#{$intent}-hover);
+          border-color: var(--border-color-solid-#{$intent}-hover);
+        }
+
+        &:active {
+          color: var(--text-color-solid-active);
+          background-color: var(--background-color-solid-#{$intent}-active);
+          border-color: var(--border-color-solid-#{$intent}-active);
+        }
+      }
+
+      &.#{$cls-prefix}disabled {
+        & > .#{$cls-prefix}tag-clear,
+        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+          color: var(--text-color-solid-disabled);
+          background-color: var(--background-color-solid-#{$intent}-disabled);
+          border-color: var(--border-color-solid-#{$intent}-disabled);
+        }
+      }
+    }
+  }
+}
+
+.#{$cls-prefix}tag.#{$cls-prefix}hollow {
+  & > .#{$cls-prefix}tag-clear,
+  & > .#{$cls-prefix}tag-content {
+    background-color: transparent;
+  }
+
+  & > .#{$cls-prefix}tag-clear,
+  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &:hover {
+      background-color: var(--background-color-a1);
+    }
+
+    &:active {
+      background-color: var(--background-color-a2);
+    }
+  }
+
+  &.#{$cls-prefix}disabled {
+    & > .#{$cls-prefix}tag-clear,
+    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      background-color: transparent;
+    }
+  }
+
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      & > .#{$cls-prefix}tag-clear,
+      & > .#{$cls-prefix}tag-content {
+        background-color: transparent;
+      }
+
+      & > .#{$cls-prefix}tag-clear,
+      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &:hover {
+          background-color: var(--background-color-#{$intent}-a1);
+        }
+
+        &:active {
+          background-color: var(--background-color-#{$intent}-a2);
+        }
+      }
+
+      &.#{$cls-prefix}disabled {
+        & > .#{$cls-prefix}tag-clear,
+        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.#{$cls-prefix}tag.#{$cls-prefix}borderless {
+  & > .#{$cls-prefix}tag-clear,
+  & > .#{$cls-prefix}tag-content {
+    border-color: transparent;
+  }
+
+  & > .#{$cls-prefix}tag-clear,
+  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &:hover {
+      border-color: transparent;
+    }
+
+    &:active {
+      border-color: transparent;
+    }
+  }
+
+  &.#{$cls-prefix}disabled {
+    & > .#{$cls-prefix}tag-clear,
+    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      border-color: transparent;
+    }
+  }
+
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      & > .#{$cls-prefix}tag-clear,
+      & > .#{$cls-prefix}tag-content {
+        border-color: transparent;
+      }
+
+      & > .#{$cls-prefix}tag-clear,
+      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &:hover {
+          border-color: transparent;
+        }
+
+        &:active {
+          border-color: transparent;
+        }
+      }
+
+      &.#{$cls-prefix}disabled {
+        & > .#{$cls-prefix}tag-clear,
+        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.#{$cls-prefix}tag.#{$cls-prefix}rtl {
+  & > .#{$cls-prefix}tag-clear {
+    border-right-width: 0;
+    border-left-width: var(--border-width-base);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+  }
+
+  &.#{$cls-prefix}clearable {
+    & > .#{$cls-prefix}tag-content {
+      border-right-width: var(--border-width-base);
+      border-left-width: 0;
+      border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+    }
+  }
+
+  &.#{$cls-prefix}round {
+    & > .#{$cls-prefix}tag-content {
+      border-radius: 0 var(--border-radius-round) var(--border-radius-round) 0;
+    }
 
     & > .#{$cls-prefix}tag-clear {
-      color: var(--text-color-disabled);
-      background-color: transparent;
-      cursor: not-allowed;
-    }
-
-    &.#{$cls-prefix}clickable {
-      & > .#{$cls-prefix}tag-content {
-        color: var(--text-color-disabled);
-        background-color: transparent;
-        cursor: not-allowed;
-      }
-    }
-
-    @each $intent in $intents {
-      &.#{$cls-prefix}#{$intent} {
-        color: var(--text-color-#{$intent}-disabled);
-        background-color: var(--background-color-#{$intent}-1);
-        box-shadow: 0 0 0 1px var(--border-color-#{$intent}-disabled);
-
-        & > .#{$cls-prefix}tag-clear {
-          color: var(--text-color-#{$intent}-disabled);
-          background-color: transparent;
-        }
-
-        &.#{$cls-prefix}clickable {
-          & > .#{$cls-prefix}tag-content {
-            color: var(--text-color-#{$intent}-disabled);
-            background-color: transparent;
-          }
-        }
-      }
-    }
-
-    &.#{$cls-prefix}solid {
-      color: var(--text-color-solid-disabled);
-      background-color: var(--text-color-disabled);
-      box-shadow: none;
-
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--text-color-solid-disabled);
-        background-color: transparent;
-      }
-
-      &.#{$cls-prefix}clickable {
-        & > .#{$cls-prefix}tag-content {
-          color: var(--text-color-solid-disabled);
-          background-color: transparent;
-        }
-      }
-
-      @each $intent in $intents {
-        &.#{$cls-prefix}#{$intent} {
-          background-color: var(--text-color-#{$intent}-disabled);
-
-          & > .#{$cls-prefix}tag-clear {
-            background-color: transparent;
-          }
-
-          &.#{$cls-prefix}clickable {
-            & > .#{$cls-prefix}tag-content {
-              background-color: transparent;
-            }
-          }
-        }
-      }
-    }
-
-    &.#{$cls-prefix}outlined {
-      background-color: transparent;
-      box-shadow: 0 0 0 1px var(--border-color-disabled);
-
-      & > .#{$cls-prefix}tag-clear {
-        background-color: transparent;
-      }
-
-      &.#{$cls-prefix}clickable {
-        & > .#{$cls-prefix}tag-content {
-          background-color: transparent;
-        }
-      }
-
-      @each $intent in $intents {
-        &.#{$cls-prefix}#{$intent} {
-          color: var(--text-color-#{$intent}-disabled);
-          background-color: transparent;
-          box-shadow: 0 0 0 1px var(--border-color-#{$intent}-disabled);
-
-          & > .#{$cls-prefix}tag-clear {
-            color: var(--text-color-#{$intent}-disabled);
-            background-color: transparent;
-          }
-
-          &.#{$cls-prefix}clickable {
-            & > .#{$cls-prefix}tag-content {
-              color: var(--text-color-#{$intent}-disabled);
-              background-color: transparent;
-            }
-          }
-        }
-      }
+      border-radius: var(--border-radius-round) 0 0 var(--border-radius-round);
     }
   }
 }

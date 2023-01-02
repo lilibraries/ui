@@ -1,18 +1,19 @@
 import React from "react";
 import { Tag, TagProps } from "@lilib/ui";
 
-function AsLink(props: TagProps) {
+function Link(props: TagProps) {
   return (
     <Tag
       {...props}
       as="a"
-      clickable
-      target="_blank"
+      rel="noreferrer"
       href="https://github.com/lilibraries/ui"
+      target="_blank"
+      clickable
     >
       Github
     </Tag>
   );
 }
 
-export default AsLink;
+export default Link;

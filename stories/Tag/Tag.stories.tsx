@@ -3,7 +3,7 @@ export default {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: [null, "solid", "outlined"],
+      options: [null, "solid", "hollow"],
     },
     size: {
       control: { type: "select" },
@@ -16,11 +16,17 @@ export default {
     round: {
       control: { type: "boolean" },
     },
-    clearable: {
+    borderless: {
       control: { type: "boolean" },
     },
     clickable: {
       control: { type: "boolean" },
+    },
+    clearable: {
+      control: { type: "boolean" },
+    },
+    clearIcon: {
+      control: { type: "text" },
     },
     disabled: {
       control: { type: "boolean" },
@@ -29,13 +35,12 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
-export { default as Clearable } from "./Clearable";
+export { default as Link } from "./Link";
 export { default as Clickable } from "./Clickable";
-export { default as AsLink } from "./AsLink";
-export { default as Sizes } from "./Sizes";
+export { default as Clearable } from "./Clearable";
 export { default as Round } from "./Round";
 export { default as LongTag } from "./LongTag";
+export { default as Sizes } from "./Sizes";
 export { default as Intents } from "./Intents";
 export { default as Solid } from "./Solid";
-export { default as Outlined } from "./Outlined";
-export { default as Disabled } from "./Disabled";
+export { default as Hollow } from "./Hollow";

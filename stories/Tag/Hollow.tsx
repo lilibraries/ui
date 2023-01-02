@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Flexbox, Tag, TagProps, Switch } from "@lilib/ui";
 
-function Solid(props: TagProps) {
+function Hollow(props: TagProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -25,7 +25,7 @@ function Solid(props: TagProps) {
       <Flexbox gap="2x" align="center">
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent={null}
           clickable
           clearable
@@ -36,7 +36,7 @@ function Solid(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="major"
           clickable
           clearable
@@ -47,7 +47,7 @@ function Solid(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="minor"
           clickable
           clearable
@@ -58,7 +58,7 @@ function Solid(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="positive"
           clickable
           clearable
@@ -69,7 +69,7 @@ function Solid(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="alertive"
           clickable
           clearable
@@ -80,7 +80,7 @@ function Solid(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="solid"
+          variant="hollow"
           intent="negative"
           clickable
           clearable
@@ -94,4 +94,4 @@ function Solid(props: TagProps) {
   );
 }
 
-export default Solid;
+export default Hollow;
