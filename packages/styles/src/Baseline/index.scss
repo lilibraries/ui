@@ -135,7 +135,7 @@ ins,
 del,
 code,
 kbd {
-  padding: 0.125em 0.5em;
+  padding: 0.125em 0.375em;
   border-radius: var(--border-radius-small);
 }
 
@@ -408,4 +408,9 @@ iframe {
 
 [hidden] {
   display: none !important;
+}
+
+:focus-visible {
+  outline: var(--border-width-focus) solid var(--major);
+  outline-offset: var(--border-width-focus);
 }

@@ -3,7 +3,6 @@
 .#{$cls-prefix}button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   box-sizing: border-box;
   max-width: 100%;
   margin: 0;
@@ -25,7 +24,7 @@
   user-select: none;
 
   &-content {
-    flex: 1 1 auto;
+    flex: 1 1 0;
   }
 
   &-loader {
@@ -440,6 +439,12 @@
 }
 
 .#{$cls-prefix}button.#{$cls-prefix}rtl {
+  text-align: right;
+
+  &.#{$cls-prefix}fluid {
+    text-align: center;
+  }
+
   & > .#{$cls-prefix}icon,
   & > .#{$cls-prefix}spinner {
     &.#{$cls-prefix}start-spaced {

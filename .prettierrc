@@ -1,1 +1,13 @@
-{}
+{
+  "overrides": [
+    {
+      "files": [
+        "packages/themes/scss/variables/dark.scss",
+        "packages/themes/scss/variables/properties.scss"
+      ],
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
+}

@@ -10,23 +10,27 @@ import React, {
 } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
+import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
+import Intent, { IntentValue } from "../Intent";
 import CloseIcon from "../icons/CloseIcon";
-import { IntentValue } from "../Intent";
 import isRenderableNode from "../utils/isRenderableNode";
 
-export type TagVariant = null | "solid" | "outlined";
+export type TagVariant = null | "solid" | "hollow";
+
 export interface TagCommonProps {
   variant?: TagVariant;
   size?: SizeValue;
   intent?: IntentValue;
   round?: boolean;
+  borderless?: boolean;
+  clickable?: boolean;
   clearable?: boolean;
   clearIcon?: ReactNode;
-  clickable?: boolean;
   disabled?: boolean;
   onClear?: MouseEventHandler<HTMLSpanElement>;
 }
+
 export type TagProps<C extends ElementType = "span"> = C extends "span"
   ? {
       as?: C;
@@ -36,6 +40,7 @@ export type TagProps<C extends ElementType = "span"> = C extends "span"
       as: C;
     } & TagCommonProps &
       ComponentProps<C>;
+
 export interface TagComponent {
   <C extends ElementType = "span">(props: TagProps<C>): ReactElement;
 }
@@ -47,12 +52,13 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     as = "span",
     variant,
     size: sizeProp,
-    intent,
+    intent: intentProp,
     round,
-    disabled,
+    borderless,
+    clickable,
     clearable,
     clearIcon,
-    clickable,
+    disabled,
     onClear,
     onClick,
     ...rest
@@ -60,6 +66,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const intent = Intent.useConfig(intentProp);
+  const isRTL = Direction.useConfig() === "rtl";
 
   const classes = cn(
     `${cls}tag`,
@@ -68,9 +76,11 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       [`${cls}${size}`]: size,
       [`${cls}${intent}`]: intent,
       [`${cls}round`]: round,
-      [`${cls}clearable`]: clearable,
+      [`${cls}borderless`]: borderless,
       [`${cls}clickable`]: clickable,
+      [`${cls}clearable`]: clearable,
       [`${cls}disabled`]: disabled,
+      [`${cls}rtl`]: isRTL,
     },
     className
   );
@@ -82,8 +92,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         tabIndex={0}
         className={`${cls}tag-clear`}
         onClick={(event) => {
-          event.preventDefault();
           event.stopPropagation();
+          event.nativeEvent.stopPropagation();
           if (!disabled && onClear) {
             onClear(event);
           }
@@ -99,17 +109,17 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     {
       ...rest,
       ref,
-      className: classes,
       disabled,
+      className: classes,
       onClick: (event: MouseEvent<HTMLSpanElement>) => {
-        if (disabled) {
-          event.preventDefault();
-        } else if (onClick) {
+        if (!disabled && onClick) {
           onClick(event);
         }
       },
     },
-    <span className={`${cls}tag-content`}>{children}</span>,
+    <span tabIndex={clickable ? 0 : undefined} className={`${cls}tag-content`}>
+      {children}
+    </span>,
     clear
   );
 }) as TagComponent;
