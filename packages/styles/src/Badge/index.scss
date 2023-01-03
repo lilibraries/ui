@@ -13,18 +13,21 @@
       font-family: var(--font-family-mono);
 
       &.#{$cls-prefix}quadrate {
-        width: var(--line-height-fixed-base);
-
         & > .#{$cls-prefix}tag-content {
+          width: var(--line-height-fixed-base);
           padding: 0;
         }
 
         &.#{$cls-prefix}small {
-          width: var(--line-height-fixed-small);
+          & > .#{$cls-prefix}tag-content {
+            width: var(--line-height-fixed-small);
+          }
         }
 
         &.#{$cls-prefix}large {
-          width: var(--line-height-fixed-large);
+          & > .#{$cls-prefix}tag-content {
+            width: var(--line-height-fixed-large);
+          }
         }
       }
     }
