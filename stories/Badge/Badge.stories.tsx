@@ -16,10 +16,13 @@ export default {
     round: {
       control: { type: "boolean" },
     },
-    outlined: {
+    borderless: {
       control: { type: "boolean" },
     },
     animated: {
+      control: { type: "boolean" },
+    },
+    outlined: {
       control: { type: "boolean" },
     },
     count: {
@@ -36,7 +39,7 @@ export default {
     },
     placement: {
       control: { type: "select" },
-      options: [null, "top-start", "top-end", "bottom-start", "bottom-end"],
+      options: ["top-start", "top-end", "bottom-start", "bottom-end"],
     },
   },
 };
@@ -44,10 +47,10 @@ export default {
 export { default as Basic } from "./Basic";
 export { default as Standalone } from "./Standalone";
 export { default as CustomTag } from "./CustomTag";
+export { default as Positions } from "./Positions";
+export { default as Offset } from "./Offset";
 export { default as Outlined } from "./Outlined";
+export { default as Sizes } from "./Sizes";
 export { default as Intents } from "./Intents";
 export { default as Solid } from "./Solid";
 export { default as Dotted } from "./Dotted";
-export { default as Sizes } from "./Sizes";
-export { default as Placements } from "./Placements";
-export { default as Offset } from "./Offset";

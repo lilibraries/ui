@@ -111,3 +111,49 @@
     }
   }
 }
+
+.#{$cls-prefix}badge.#{$cls-prefix}rtl {
+  &.#{$cls-prefix}contained {
+    & > .#{$cls-prefix}badge-switcher {
+      &-top-start {
+        transform: translate(50%, -50%);
+      }
+
+      &-top-end {
+        transform: translate(-50%, -50%);
+      }
+
+      &-bottom-start {
+        transform: translate(50%, 50%);
+      }
+
+      &-bottom-end {
+        transform: translate(-50%, 50%);
+      }
+    }
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        & > .#{$cls-prefix}badge-switcher {
+          &-top-start {
+            transform: translate(50%, -50%) scale(0);
+          }
+
+          &-top-end {
+            transform: translate(-50%, -50%) scale(0);
+          }
+
+          &-bottom-start {
+            transform: translate(50%, 50%) scale(0);
+          }
+
+          &-bottom-end {
+            transform: translate(-50%, 50%) scale(0);
+          }
+        }
+      }
+    }
+  }
+}
