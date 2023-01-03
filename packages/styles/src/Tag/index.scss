@@ -6,7 +6,7 @@
   max-width: 100%;
   margin: 0;
   padding: 0;
-  font-weight: var(--font-weight-base);
+  font-weight: inherit;
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
@@ -32,7 +32,7 @@
     color: var(--text-color-base);
     text-align: center;
     background: var(--background-color-1);
-    border: var(--border-width-base) solid var(--border-color-base);
+    border: 1px solid var(--border-color-base);
     border-radius: var(--border-radius-small);
     @include text-overflow;
   }
@@ -47,7 +47,7 @@
     height: var(--line-height-fixed-base);
     color: var(--text-color-inactive);
     background: var(--background-color-1);
-    border: var(--border-width-base) solid var(--border-color-base);
+    border: 1px solid var(--border-color-base);
     border-radius: var(--border-radius-small);
     cursor: pointer;
 
@@ -388,14 +388,14 @@
 .#{$cls-prefix}tag.#{$cls-prefix}rtl {
   &.#{$cls-prefix}clearable {
     & > .#{$cls-prefix}tag-content {
-      border-right-width: var(--border-width-base);
+      border-right-width: 1px;
       border-left-width: 0;
       border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     }
 
     & > .#{$cls-prefix}tag-clear {
       border-right-width: 0;
-      border-left-width: var(--border-width-base);
+      border-left-width: 1px;
       border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
     }
 

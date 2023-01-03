@@ -90,7 +90,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   if (clearable) {
     clear = (
       <span
-        tabIndex={0}
+        tabIndex={!disabled ? 0 : undefined}
         className={`${cls}tag-clear`}
         onClick={(event) => {
           if (!disabled && onClear) {
@@ -112,7 +112,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       className: classes,
     },
     <span
-      tabIndex={clickable ? 0 : undefined}
+      tabIndex={!disabled && clickable ? 0 : undefined}
       className={`${cls}tag-content`}
       onClick={(event: MouseEvent<HTMLSpanElement>) => {
         if (!disabled && onClick) {
