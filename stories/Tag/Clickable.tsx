@@ -1,11 +1,16 @@
 import React from "react";
-import { Tag, TagProps } from "@lilib/ui";
+import { Flexbox, Tag, TagProps } from "@lilib/ui";
 
 function Clickable(props: TagProps) {
   return (
-    <Tag {...props} clickable onClick={() => alert("Click")}>
-      Click
-    </Tag>
+    <Flexbox gap="2x" align="center">
+      <Tag {...props} onClick={() => alert("Click")}>
+        Click
+      </Tag>
+      <Tag {...props} clickable>
+        Clickable
+      </Tag>
+    </Flexbox>
   );
 }
 

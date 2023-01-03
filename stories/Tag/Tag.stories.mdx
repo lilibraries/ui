@@ -22,7 +22,7 @@ Tag component.
 
 ### Clickable
 
-This component can be clicked by default. The `clickable` prop only effects component styles, not events.
+When the `onClick` prop is specified, it is clickable by default. You can set `clickable` prop to `false` to disable it. Note that the `clickable` prop only effects component styles, not events. If you want to disable events, please use the `disabled` prop.
 
 <Canvas mdxSource={require("!!raw-loader!./Clickable").default}>
   <Story id="examples-tag--clickable" />

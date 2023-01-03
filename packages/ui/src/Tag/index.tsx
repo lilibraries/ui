@@ -55,7 +55,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     intent: intentProp,
     round,
     borderless,
-    clickable,
+    clickable: clickableProp,
     clearable,
     clearIcon,
     disabled,
@@ -68,6 +68,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const intent = Intent.useConfig(intentProp);
   const isRTL = Direction.useConfig() === "rtl";
+  const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
 
   const classes = cn(
     `${cls}tag`,
@@ -92,8 +93,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         tabIndex={0}
         className={`${cls}tag-clear`}
         onClick={(event) => {
-          event.stopPropagation();
-          event.nativeEvent.stopPropagation();
           if (!disabled && onClear) {
             onClear(event);
           }
@@ -111,13 +110,16 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       ref,
       disabled,
       className: classes,
-      onClick: (event: MouseEvent<HTMLSpanElement>) => {
+    },
+    <span
+      tabIndex={clickable ? 0 : undefined}
+      className={`${cls}tag-content`}
+      onClick={(event: MouseEvent<HTMLSpanElement>) => {
         if (!disabled && onClick) {
           onClick(event);
         }
-      },
-    },
-    <span tabIndex={clickable ? 0 : undefined} className={`${cls}tag-content`}>
+      }}
+    >
       {children}
     </span>,
     clear
