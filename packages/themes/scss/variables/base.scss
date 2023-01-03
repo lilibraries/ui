@@ -22,13 +22,6 @@ $font-size-h3: $font-size-h4 + 6px !default;
 $font-size-h2: $font-size-h3 + 8px !default;
 $font-size-h1: $font-size-h2 + 10px !default;
 
-$font-weight-base: 400 !default;
-$font-weight-title: 600 !default;
-$font-weight-input: 400 !default;
-$font-weight-button: 400 !default;
-$font-weight-active: 400 !default;
-$font-weight-heading: 700 !default;
-
 $line-height-base: 1.5 !default;
 $line-height-small: 1.25 !default;
 $line-height-large: 2 !default;
@@ -50,11 +43,6 @@ $space-9x: $space-1x * 9 !default;
 $blur-base: 12px !default;
 $blur-small: 4px !default;
 $blur-large: 20px !default;
-
-$border-width-base: 1px !default;
-$border-width-form: 1px !default;
-$border-width-focus: 2px !default;
-$border-width-active: 2px !default;
 
 $border-radius-base: 0.5em !default;
 $border-radius-small: 0.25em !default;

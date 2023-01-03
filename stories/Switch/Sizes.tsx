@@ -1,12 +1,13 @@
 import React from "react";
-import { Switch, SwitchProps } from "@lilib/ui";
+import { Flexbox, Switch, SwitchProps } from "@lilib/ui";
 
 function Sizes(props: SwitchProps) {
   return (
-    <>
-      <Switch {...props} size="small" /> <Switch {...props} size={null} />{" "}
+    <Flexbox gap="2x" align="center">
+      <Switch {...props} size="small" />
+      <Switch {...props} size={null} />
       <Switch {...props} size="large" />
-    </>
+    </Flexbox>
   );
 }
 

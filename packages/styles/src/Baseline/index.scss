@@ -19,7 +19,7 @@ html {
 body {
   margin: 0;
   color: var(--text-color-base);
-  font-weight: var(--font-weight-base);
+  font-weight: 400;
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
@@ -37,7 +37,7 @@ h4,
 h5,
 h6 {
   margin-bottom: var(--space-4x);
-  font-weight: var(--font-weight-heading);
+  font-weight: 700;
 }
 
 h1 {
@@ -194,7 +194,7 @@ hr {
   margin: var(--space-1x) 0;
   overflow: visible;
   border: 0;
-  border-top: var(--border-width-base) solid var(--border-color-base);
+  border-top: 1px solid var(--border-color-base);
 }
 
 pre {
@@ -240,7 +240,7 @@ details {
 
 summary {
   display: list-item;
-  font-weight: var(--font-weight-title);
+  font-weight: 600;
   cursor: pointer;
 
   & + * {
@@ -249,7 +249,7 @@ summary {
 }
 
 dt {
-  font-weight: var(--font-weight-title);
+  font-weight: 600;
 }
 
 dd {
@@ -280,12 +280,12 @@ table {
 
 thead {
   background-color: var(--background-color-a1);
-  border-top: var(--border-width-base) solid var(--border-color-base);
-  border-bottom: var(--border-width-base) solid var(--border-color-base);
+  border-top: 1px solid var(--border-color-base);
+  border-bottom: 1px solid var(--border-color-base);
 }
 
 tr {
-  border-bottom: var(--border-width-base) solid var(--border-color-base);
+  border-bottom: 1px solid var(--border-color-base);
 }
 
 th,
@@ -294,7 +294,7 @@ td {
 }
 
 th {
-  font-weight: var(--font-weight-title);
+  font-weight: 600;
   text-align: unset;
 }
 
@@ -302,7 +302,7 @@ caption {
   padding: var(--space-2x) var(--space-4x);
   text-align: unset;
   background-color: var(--background-color-a1);
-  border-bottom: var(--border-width-base) solid var(--border-color-base);
+  border-bottom: 1px solid var(--border-color-base);
 }
 
 button,
@@ -411,6 +411,6 @@ iframe {
 }
 
 :focus-visible {
-  outline: var(--border-width-focus) solid var(--major);
-  outline-offset: var(--border-width-focus);
+  outline: 2px solid var(--major);
+  outline-offset: 2px;
 }

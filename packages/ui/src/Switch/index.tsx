@@ -22,6 +22,8 @@ export interface SwitchProps
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
   loading?: boolean;
+  loadingIcon?: ReactNode;
+  loadingDelay?: number;
   disabled?: boolean;
   checked?: boolean;
   defaultChecked?: boolean;
@@ -39,6 +41,8 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     checkedLabel,
     uncheckedLabel,
     loading,
+    loadingIcon,
+    loadingDelay,
     disabled,
     checked: checkedProp,
     defaultChecked,
@@ -61,6 +65,12 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const isControlled = "checked" in props;
   const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
 
+  useUpdate(() => {
+    if (isControlled) {
+      setChecked(!!checkedProp);
+    }
+  }, [checkedProp]);
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (disabled || loading) {
       return;
@@ -72,12 +82,6 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
       onChange(event);
     }
   }
-
-  useUpdate(() => {
-    if (isControlled) {
-      setChecked(!!checkedProp);
-    }
-  }, [checkedProp]);
 
   const classes = cn(
     `${cls}switch`,
@@ -108,7 +112,12 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         <span className={`${cls}switch-unchecked-label`}>{uncheckedLabel}</span>
       )}
       <span className={`${cls}switch-slider`}>
-        <Spinner contained spinning={loading}>
+        <Spinner
+          contained
+          spinning={loading}
+          icon={loadingIcon}
+          delay={loadingDelay}
+        >
           {icon}
         </Spinner>
       </span>

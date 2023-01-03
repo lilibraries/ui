@@ -14,6 +14,12 @@ A boolean control component.
   <Story id="examples-switch--basic" />
 </Canvas>
 
+### Icon
+
+<Canvas mdxSource={require("!!raw-loader!./Icon").default}>
+  <Story id="examples-switch--icon" />
+</Canvas>
+
 ### Labelled
 
 <Canvas mdxSource={require("!!raw-loader!./Labelled").default}>
@@ -32,6 +38,12 @@ A boolean control component.
   <Story id="examples-switch--loading" />
 </Canvas>
 
+### Disabled
+
+<Canvas mdxSource={require("!!raw-loader!./Disabled").default}>
+  <Story id="examples-switch--disabled" />
+</Canvas>
+
 ## Props
 
 | Property         | Type                                     | Description                                  |
@@ -42,6 +54,8 @@ A boolean control component.
 | `checkedLabel`   | `ReactNode`                              | Checked label                                |
 | `uncheckedLabel` | `ReactNode`                              | Unchecked label                              |
 | `loading`        | `boolean`                                | Show spinner on the slider                   |
+| `loadingIcon`    | `ReactNode`                              | Custom spinner icon                          |
+| `loadingDelay`   | `number`                                 | Loading delay time, in milliseconds          |
 | `disabled`       | `boolean`                                | Disable change event                         |
 | `checked`        | `boolean`                                | Controlled checked value                     |
 | `defaultChecked` | `boolean`                                | Uncontrolled checked value                   |

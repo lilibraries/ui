@@ -8,7 +8,7 @@
   margin: 0;
   padding: var(--space-2x) var(--space-4x);
   color: var(--text-color-base);
-  font-weight: var(--font-weight-button);
+  font-weight: 400;
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
@@ -17,7 +17,7 @@
   text-decoration: none;
   vertical-align: middle;
   background-color: var(--background-color-1);
-  border: var(--border-width-form) solid var(--border-color-base);
+  border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-base);
   cursor: pointer;
   appearance: none;
