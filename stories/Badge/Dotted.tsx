@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -10,56 +10,26 @@ const block = {
 
 function Dotted(props: BadgeProps) {
   return (
-    <>
-      <Badge
-        count={9}
-        {...props}
-        variant="dotted"
-        intent={null}
-        style={{ marginRight: 32 }}
-      >
+    <Flexbox gap="8x" align="center">
+      <Badge count={9} outlined {...props} variant="dotted" intent={null}>
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="dotted"
-        intent="major"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="dotted" intent="major">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="dotted"
-        intent="minor"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="dotted" intent="minor">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="dotted"
-        intent="positive"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="dotted" intent="positive">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="dotted"
-        intent="alertive"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="dotted" intent="alertive">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} variant="dotted" intent="negative">
+      <Badge count={9} outlined {...props} variant="dotted" intent="negative">
         <div style={block} />
       </Badge>
-    </>
+    </Flexbox>
   );
 }
 

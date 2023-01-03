@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -10,21 +10,14 @@ const block = {
 
 function Outlined(props: BadgeProps) {
   return (
-    <>
-      <Badge
-        count={9}
-        {...props}
-        outlined
-        variant="solid"
-        intent="major"
-        style={{ marginRight: 32 }}
-      >
+    <Flexbox gap="8x" align="center">
+      <Badge count={9} variant="solid" intent="major" {...props} outlined>
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} outlined variant="dotted" intent="positive">
+      <Badge count={9} variant="dotted" intent="positive" {...props} outlined>
         <div style={block} />
       </Badge>
-    </>
+    </Flexbox>
   );
 }
 

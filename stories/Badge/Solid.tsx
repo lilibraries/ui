@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -10,56 +10,26 @@ const block = {
 
 function Solid(props: BadgeProps) {
   return (
-    <>
-      <Badge
-        count={9}
-        {...props}
-        variant="solid"
-        intent={null}
-        style={{ marginRight: 32 }}
-      >
+    <Flexbox gap="8x" align="center">
+      <Badge count={9} outlined {...props} variant="solid" intent={null}>
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="solid"
-        intent="major"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="solid" intent="major">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="solid"
-        intent="minor"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="solid" intent="minor">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="solid"
-        intent="positive"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="solid" intent="positive">
         <div style={block} />
       </Badge>
-      <Badge
-        count={9}
-        {...props}
-        variant="solid"
-        intent="alertive"
-        style={{ marginRight: 32 }}
-      >
+      <Badge count={9} outlined {...props} variant="solid" intent="alertive">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} variant="solid" intent="negative">
+      <Badge count={9} outlined {...props} variant="solid" intent="negative">
         <div style={block} />
       </Badge>
-    </>
+    </Flexbox>
   );
 }
 

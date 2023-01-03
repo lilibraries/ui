@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -10,26 +10,26 @@ const block = {
 
 function Intents(props: BadgeProps) {
   return (
-    <>
-      <Badge count={9} {...props} intent={null} style={{ marginRight: 32 }}>
+    <Flexbox gap="8x" align="center">
+      <Badge count={9} {...props} intent={null}>
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} intent="major" style={{ marginRight: 32 }}>
+      <Badge count={9} {...props} intent="major">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} intent="minor" style={{ marginRight: 32 }}>
+      <Badge count={9} {...props} intent="minor">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} intent="positive" style={{ marginRight: 32 }}>
+      <Badge count={9} {...props} intent="positive">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} intent="alertive" style={{ marginRight: 32 }}>
+      <Badge count={9} {...props} intent="alertive">
         <div style={block} />
       </Badge>
       <Badge count={9} {...props} intent="negative">
         <div style={block} />
       </Badge>
-    </>
+    </Flexbox>
   );
 }
 

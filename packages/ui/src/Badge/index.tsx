@@ -11,30 +11,33 @@ import Dot from "../Dot";
 import Tag from "../Tag";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
+import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import { IntentValue } from "../Intent";
+import Intent, { IntentValue } from "../Intent";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export type BadgeVariant = null | "solid" | "dotted";
-export type BadgePlacement =
-  | null
+
+export type BadgePosition =
   | "top-start"
   | "top-end"
   | "bottom-start"
   | "bottom-end";
+
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
   size?: SizeValue;
   intent?: IntentValue;
   round?: boolean;
-  outlined?: boolean;
+  borderless?: boolean;
   animated?: boolean;
+  outlined?: boolean;
   count?: ReactNode;
   maxCount?: number;
   showZero?: boolean;
   invisible?: boolean;
-  placement?: BadgePlacement;
+  position?: BadgePosition;
   offset?: [number | string, number | string];
 }
 
@@ -44,15 +47,16 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     className,
     variant,
     size: sizeProp,
-    intent,
+    intent: intentProp,
     round,
-    outlined,
+    borderless,
     animated,
+    outlined,
     count,
     maxCount,
     showZero,
     invisible,
-    placement = "top-end",
+    position = "top-end",
     offset = [0, 0],
     ...rest
   } = props;
@@ -63,7 +67,9 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const intent = Intent.useConfig(intentProp);
   const { fast } = Duration.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
 
   const classes = cn(
     `${cls}badge`,
@@ -71,13 +77,14 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
       [`${cls}contained`]: contained,
       [`${cls}standalone`]: !contained,
       [`${cls}outlined`]: outlined,
+      [`${cls}rtl`]: isRTL,
     },
     className
   );
 
   let tag: ReactNode = null;
   let visible: boolean = true;
-  let position: CSSProperties = {};
+  let style: CSSProperties = {};
 
   if (isRenderableNode(count)) {
     if (
@@ -93,7 +100,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     }
     if (isNumber(count)) {
       if (dotted) {
-        tag = <Dot intent={intent} size={size} animated={animated} />;
+        tag = <Dot size={size} intent={intent} animated={animated} />;
       } else {
         tag = (
           <Tag
@@ -101,6 +108,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
             size={size}
             intent={intent}
             round={round}
+            borderless={borderless}
             className={cn({
               [`${cls}quadrate`]: String(count).length === 1,
             })}
@@ -113,7 +121,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   }
 
   if (invisible) {
-    visible = !invisible;
+    visible = false;
   } else if (isNumber(count)) {
     if (isNaN(count) || (count === 0 && !showZero)) {
       visible = false;
@@ -122,15 +130,28 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     visible = false;
   }
 
-  const [horizontal = 0, vertical = 0] = offset;
-  if (placement === "top-start") {
-    position = { top: vertical, left: horizontal };
-  } else if (placement === "top-end") {
-    position = { top: vertical, right: horizontal };
-  } else if (placement === "bottom-start") {
-    position = { bottom: vertical, left: horizontal };
-  } else if (placement === "bottom-end") {
-    position = { bottom: vertical, right: horizontal };
+  if (contained) {
+    const [horizontal, vertical] = offset;
+
+    if (position.includes("top")) {
+      style.top = vertical;
+    } else if (position.includes("bottom")) {
+      style.bottom = vertical;
+    }
+
+    if (position.includes("start")) {
+      if (isRTL) {
+        style.right = horizontal;
+      } else {
+        style.left = horizontal;
+      }
+    } else if (position.includes("end")) {
+      if (isRTL) {
+        style.left = horizontal;
+      } else {
+        style.right = horizontal;
+      }
+    }
   }
 
   return (
@@ -148,9 +169,9 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
       <span {...rest} ref={ref} className={classes}>
         {children}
         <span
-          style={position}
+          style={style}
           className={cn(`${cls}badge-switcher`, {
-            [`${cls}badge-switcher-${placement}`]: isString(placement),
+            [`${cls}badge-switcher-${position}`]: isString(position),
           })}
         >
           {tag}

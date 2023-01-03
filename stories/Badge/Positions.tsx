@@ -8,20 +8,23 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Sizes(props: BadgeProps) {
+function Positions(props: BadgeProps) {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={9} {...props} size="small">
+      <Badge count={9} {...props} position="top-start">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} size={null}>
+      <Badge count={9} {...props} position="top-end">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} size="large">
+      <Badge count={9} {...props} position="bottom-start">
+        <div style={block} />
+      </Badge>
+      <Badge count={9} {...props} position="bottom-end">
         <div style={block} />
       </Badge>
     </Flexbox>
   );
 }
 
-export default Sizes;
+export default Positions;
