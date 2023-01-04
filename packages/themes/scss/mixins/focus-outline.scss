@@ -1,0 +1,6 @@
+@import "../functions/var";
+
+@mixin focus-outline {
+  outline: 2px solid var(--major);
+  outline-offset: 2px;
+}

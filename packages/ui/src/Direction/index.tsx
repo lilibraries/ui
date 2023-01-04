@@ -46,7 +46,7 @@ const Direction: FC<DirectionScopedProps | DirectionUnscopedProps> & {
       if (value) {
         doc.setAttribute("dir", value);
       } else {
-        doc.removeAttribute("dir");
+        doc.setAttribute("dir", "auto");
       }
     }
   }, [scoped, value, value]);
