@@ -416,7 +416,3 @@ iframe {
 [hidden] {
   display: none !important;
 }
-
-:focus-visible {
-  @include focus-outline;
-}
