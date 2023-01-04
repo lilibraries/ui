@@ -182,7 +182,6 @@ time {
 
 abbr[title] {
   font-style: italic;
-  text-decoration: underline;
   text-decoration: underline dotted;
   border-bottom: none;
   cursor: help;
@@ -233,6 +232,14 @@ ul {
   }
 }
 
+ol[dir="rtl"],
+ul[dir="rtl"],
+[dir="rtl"] ol,
+[dir="rtl"] ul {
+  padding-right: 2em;
+  padding-left: 0;
+}
+
 details {
   display: block;
   margin-bottom: var(--space-4x);
@@ -271,16 +278,18 @@ address {
 
 table {
   min-width: 100%;
-  margin-bottom: var(--space-4x);
+  text-align: left;
   caption-side: bottom;
-  border-color: var(--border-color-base);
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+table[dir="rtl"],
+[dir="rtl"] table {
+  text-align: right;
+}
+
 thead {
-  background-color: var(--background-color-a1);
-  border-top: 1px solid var(--border-color-base);
   border-bottom: 1px solid var(--border-color-base);
 }
 
@@ -295,14 +304,12 @@ td {
 
 th {
   font-weight: 600;
-  text-align: unset;
+  text-align: inherit;
 }
 
 caption {
   padding: var(--space-2x) var(--space-4x);
-  text-align: unset;
-  background-color: var(--background-color-a1);
-  border-bottom: 1px solid var(--border-color-base);
+  text-align: inherit;
 }
 
 button,
@@ -411,6 +418,5 @@ iframe {
 }
 
 :focus-visible {
-  outline: 2px solid var(--major);
-  outline-offset: 2px;
+  @include focus-outline;
 }
