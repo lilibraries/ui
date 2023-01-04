@@ -97,6 +97,7 @@
     }
 
     & > .#{$cls-prefix}tag-clear {
+      margin-left: -1px;
       border-left-width: 0;
       border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     }
@@ -394,6 +395,8 @@
     }
 
     & > .#{$cls-prefix}tag-clear {
+      margin-right: -1px;
+      margin-left: 0;
       border-right-width: 0;
       border-left-width: 1px;
       border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
