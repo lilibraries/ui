@@ -103,23 +103,27 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         checked={checked}
         disabled={disabled || loading}
         onChange={handleChange}
-        className={cn(`${cls}switch-base`, inputProps?.className)}
+        className={cn(`${cls}switch-input`, inputProps?.className)}
       />
-      {isRenderableNode(checkedLabel) && (
-        <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>
-      )}
-      {isRenderableNode(uncheckedLabel) && (
-        <span className={`${cls}switch-unchecked-label`}>{uncheckedLabel}</span>
-      )}
-      <span className={`${cls}switch-slider`}>
-        <Spinner
-          contained
-          spinning={loading}
-          icon={loadingIcon}
-          delay={loadingDelay}
-        >
-          {icon}
-        </Spinner>
+      <span className={`${cls}switch-track`}>
+        {isRenderableNode(checkedLabel) && (
+          <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>
+        )}
+        {isRenderableNode(uncheckedLabel) && (
+          <span className={`${cls}switch-unchecked-label`}>
+            {uncheckedLabel}
+          </span>
+        )}
+        <span className={`${cls}switch-slider`}>
+          <Spinner
+            contained
+            spinning={loading}
+            icon={loadingIcon}
+            delay={loadingDelay}
+          >
+            {icon}
+          </Spinner>
+        </span>
       </span>
     </label>
   );
