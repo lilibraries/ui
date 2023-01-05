@@ -39,14 +39,15 @@
     height: var(--line-height-fixed-base);
     color: var(--text-color-base);
     vertical-align: middle;
-    background-color: var(--border-color-base);
-    border: 1px solid var(--text-color-inactive);
+    background-color: var(--background-color-deep-base);
+    border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
   }
 
   &-checked-label {
     display: flex;
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 100%;
     height: 0;
@@ -54,13 +55,13 @@
     padding-left: calc(#{var(--line-height-fixed-base)} / 4);
     overflow: hidden;
     white-space: nowrap;
-    text-align: left;
     visibility: hidden;
   }
 
   &-unchecked-label {
     display: flex;
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -68,7 +69,6 @@
     padding-left: calc((#{var(--line-height-fixed-base)} * 1.125) - 2px);
     overflow: hidden;
     white-space: nowrap;
-    text-align: right;
   }
 
   &-slider {
@@ -83,9 +83,33 @@
     height: calc(#{var(--line-height-fixed-base)} - 4px);
     color: var(--text-color-base);
     background-color: var(--background-color-1);
-    border: 1px solid var(--text-color-inactive);
+    border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
     @include transition(fast, left);
+  }
+
+  &.#{$cls-prefix}checked {
+    & .#{$cls-prefix}switch-track {
+      color: var(--text-color-solid-base);
+      background-color: var(--background-color-solid-major-base);
+      border-color: var(--border-color-solid-major-base);
+    }
+
+    & .#{$cls-prefix}switch-checked-label {
+      height: 100%;
+      visibility: visible;
+    }
+
+    & .#{$cls-prefix}switch-unchecked-label {
+      height: 0;
+      visibility: hidden;
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      left: calc(100% - ((#{var(--line-height-fixed-base)} - 2px)));
+      color: var(--text-color-major-base);
+      border-color: var(--border-color-solid-major-base);
+    }
   }
 
   &.#{$cls-prefix}small {
@@ -144,103 +168,193 @@
     }
   }
 
-  &-track:hover {
-    color: var(--text-color-hover);
-    background-color: var(--border-color-hover);
-    border-color: var(--text-color-muted);
-
-    & > .#{$cls-prefix}switch-slider {
+  &:hover {
+    & .#{$cls-prefix}switch-track {
       color: var(--text-color-hover);
-      border-color: var(--text-color-muted);
+      background-color: var(--background-color-deep-hover);
+      border-color: var(--border-color-deep-hover);
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      color: var(--text-color-hover);
+      border-color: var(--border-color-deep-hover);
     }
   }
 
-  &-track:active {
-    color: var(--text-color-active);
-    background-color: var(--border-color-active);
-    border-color: var(--text-color-base);
-
-    & > .#{$cls-prefix}switch-slider {
+  &:active {
+    & .#{$cls-prefix}switch-track {
       color: var(--text-color-active);
-      border-color: var(--text-color-base);
+      background-color: var(--background-color-deep-active);
+      border-color: var(--border-color-deep-active);
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      color: var(--text-color-active);
+      border-color: var(--border-color-deep-active);
+    }
+  }
+
+  &.#{$cls-prefix}checked:hover {
+    & .#{$cls-prefix}switch-track {
+      color: var(--text-color-solid-hover);
+      background-color: var(--background-color-solid-major-hover);
+      border-color: var(--border-color-solid-major-hover);
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      color: var(--text-color-major-hover);
+      border-color: var(--border-color-solid-major-hover);
+    }
+  }
+
+  &.#{$cls-prefix}checked:active {
+    & .#{$cls-prefix}switch-track {
+      color: var(--text-color-solid-active);
+      background-color: var(--background-color-solid-major-active);
+      border-color: var(--border-color-solid-major-active);
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      color: var(--text-color-major-active);
+      border-color: var(--border-color-solid-major-active);
     }
   }
 
   &.#{$cls-prefix}loading {
     cursor: default;
-  }
 
-  &.#{$cls-prefix}checked {
     & .#{$cls-prefix}switch-track {
-      color: var(--text-color-solid-base);
-      background-color: var(--text-color-major-base);
-      border-color: var(--border-color-solid-major-base);
-    }
-
-    & .#{$cls-prefix}switch-checked-label {
-      height: 100%;
-      visibility: visible;
-    }
-
-    & .#{$cls-prefix}switch-unchecked-label {
-      height: 0;
-      visibility: hidden;
+      color: var(--text-color-base);
+      background-color: var(--background-color-deep-base);
+      border-color: var(--border-color-deep-base);
     }
 
     & .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-base)} - 2px)));
-      color: var(--text-color-major-base);
-      border-color: var(--border-color-solid-major-base);
+      color: var(--text-color-base);
+      border-color: var(--border-color-deep-base);
     }
 
-    & .#{$cls-prefix}switch-track:hover {
-      color: var(--text-color-solid-hover);
-      background-color: var(--background-color-solid-major-hover);
-      border-color: var(--border-color-solid-major-hover);
-
-      & > .#{$cls-prefix}switch-slider {
-        color: var(--text-color-major-hover);
-        border-color: var(--border-color-solid-major-hover);
+    &.#{$cls-prefix}checked {
+      & .#{$cls-prefix}switch-track {
+        color: var(--text-color-solid-base);
+        background-color: var(--background-color-solid-major-base);
+        border-color: var(--border-color-solid-major-base);
       }
-    }
 
-    & .#{$cls-prefix}switch-track:active {
-      color: var(--text-color-solid-active);
-      background-color: var(--background-color-solid-major-active);
-      border-color: var(--border-color-solid-major-active);
-
-      & > .#{$cls-prefix}switch-slider {
-        color: var(--text-color-major-active);
-        border-color: var(--border-color-solid-major-active);
+      & .#{$cls-prefix}switch-slider {
+        color: var(--text-color-major-base);
+        border-color: var(--border-color-solid-major-base);
       }
     }
   }
 
   &.#{$cls-prefix}disabled {
-    // background-color: var(--border-color-disabled);
     cursor: not-allowed;
 
-    // & > .#{$cls-prefix}switch-checked-label {
-    //   color: var(--text-color-disabled);
-    // }
+    & .#{$cls-prefix}switch-track {
+      color: var(--text-color-disabled);
+      background-color: var(--background-color-deep-disabled);
+      border-color: var(--border-color-deep-disabled);
+    }
 
-    // & > .#{$cls-prefix}switch-unchecked-label {
-    //   color: var(--text-color-disabled);
-    // }
+    & .#{$cls-prefix}switch-slider {
+      color: var(--text-color-disabled);
+      border-color: var(--border-color-deep-disabled);
+    }
 
-    // & > .#{$cls-prefix}switch-base {
-    //   cursor: not-allowed;
-    // }
+    &.#{$cls-prefix}checked {
+      & .#{$cls-prefix}switch-track {
+        color: var(--text-color-solid-disabled);
+        background-color: var(--background-color-solid-major-disabled);
+        border-color: var(--border-color-solid-major-disabled);
+      }
 
-    // & > .#{$cls-prefix}switch-slider {
-    //   color: var(--text-color-disabled);
-    // }
+      & .#{$cls-prefix}switch-slider {
+        color: var(--text-color-major-disabled);
+        border-color: var(--border-color-solid-major-disabled);
+      }
+    }
+  }
 
-    // &.#{$cls-prefix}checked {
-    //   & > .#{$cls-prefix}switch-slider {
-    //     color: var(--text-color-solid-inactive);
-    //     background-color: var(--text-color-disabled);
-    //   }
-    // }
+  &.#{$cls-prefix}borderless {
+    & .#{$cls-prefix}switch-track {
+      border-color: transparent;
+    }
+
+    & .#{$cls-prefix}switch-slider {
+      border-color: transparent;
+    }
+
+    &.#{$cls-prefix}checked {
+      & .#{$cls-prefix}switch-track {
+        border-color: transparent;
+      }
+
+      & .#{$cls-prefix}switch-slider {
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+.#{$cls-prefix}switch.#{$cls-prefix}rtl {
+  & .#{$cls-prefix}switch-checked-label {
+    padding-right: calc(#{var(--line-height-fixed-base)} / 4);
+    padding-left: calc((#{var(--line-height-fixed-base)} * 1.125) - 2px);
+  }
+
+  & .#{$cls-prefix}switch-unchecked-label {
+    padding-right: calc((#{var(--line-height-fixed-base)} * 1.125) - 2px);
+    padding-left: calc(#{var(--line-height-fixed-base)} / 4);
+  }
+
+  & .#{$cls-prefix}switch-slider {
+    left: calc(100% - ((#{var(--line-height-fixed-base)} - 2px)));
+  }
+
+  &.#{$cls-prefix}checked {
+    & .#{$cls-prefix}switch-slider {
+      left: 2px;
+    }
+  }
+
+  &.#{$cls-prefix}small {
+    & .#{$cls-prefix}switch-slider {
+      left: calc(100% - ((#{var(--line-height-fixed-small)} - 2px)));
+    }
+
+    & .#{$cls-prefix}switch-checked-label {
+      padding-right: calc(#{var(--line-height-fixed-small)} / 4);
+      padding-left: calc((#{var(--line-height-fixed-small)} * 1.125) - 2px);
+    }
+
+    & .#{$cls-prefix}switch-unchecked-label {
+      padding-right: calc((#{var(--line-height-fixed-small)} * 1.125) - 2px);
+      padding-left: calc(#{var(--line-height-fixed-small)} / 4);
+    }
+
+    &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
+      left: 2px;
+    }
+  }
+
+  &.#{$cls-prefix}large {
+    & .#{$cls-prefix}switch-slider {
+      left: calc(100% - ((#{var(--line-height-fixed-large)} - 2px)));
+    }
+
+    & .#{$cls-prefix}switch-checked-label {
+      padding-right: calc(#{var(--line-height-fixed-large)} / 4);
+      padding-left: calc((#{var(--line-height-fixed-large)} * 1.125) - 2px);
+    }
+
+    & .#{$cls-prefix}switch-unchecked-label {
+      padding-right: calc((#{var(--line-height-fixed-large)} * 1.125) - 2px);
+      padding-left: calc(#{var(--line-height-fixed-large)} / 4);
+    }
+
+    &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
+      left: 2px;
+    }
   }
 }
