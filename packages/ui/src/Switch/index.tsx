@@ -12,6 +12,7 @@ import cn from "classnames";
 import { useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
+import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import isRenderableNode from "../utils/isRenderableNode";
 
@@ -21,6 +22,7 @@ export interface SwitchProps
   icon?: ReactNode;
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
+  borderless?: boolean;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
@@ -40,6 +42,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon: iconProp,
     checkedLabel,
     uncheckedLabel,
+    borderless,
     loading,
     loadingIcon,
     loadingDelay,
@@ -54,6 +57,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const isRTL = Direction.useConfig() === "rtl";
 
   let icon: ReactNode;
   if (isRenderableNode(iconProp)) {
@@ -90,6 +94,8 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
       [`${cls}checked`]: checked,
       [`${cls}loading`]: loading,
       [`${cls}disabled`]: disabled,
+      [`${cls}borderless`]: borderless,
+      [`${cls}rtl`]: isRTL,
     },
     className
   );

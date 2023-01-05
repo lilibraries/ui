@@ -47,6 +47,12 @@ $dark-background-color-negative-3: shade-color($dark-negative, 50%) !default;
 $dark-background-color-negative-a1: rgba($dark-negative, 0.2) !default;
 $dark-background-color-negative-a2: rgba($dark-negative, 0.3) !default;
 
+$dark-background-color-deep-base: shade-color($dark-base, 40%) !default;
+$dark-background-color-deep-hover: shade-color($dark-base, 30%) !default;
+$dark-background-color-deep-active: shade-color($dark-base, 20%) !default;
+$dark-background-color-deep-inactive: shade-color($dark-base, 50%) !default;
+$dark-background-color-deep-disabled: shade-color($dark-base, 60%) !default;
+
 $dark-background-color-solid-base: light-color($dark-base, 60%) !default;
 $dark-background-color-solid-hover: light-color($dark-base, 70%) !default;
 $dark-background-color-solid-active: light-color($dark-base, 80%) !default;
@@ -137,6 +143,12 @@ $dark-border-color-hover: shade-color($dark-base, 30%) !default;
 $dark-border-color-active: shade-color($dark-base, 20%) !default;
 $dark-border-color-inactive: shade-color($dark-base, 50%) !default;
 $dark-border-color-disabled: shade-color($dark-base, 60%) !default;
+
+$dark-border-color-deep-base: shade-color($dark-base, 20%) !default;
+$dark-border-color-deep-hover: shade-color($dark-base, 10%) !default;
+$dark-border-color-deep-active: $dark-base !default;
+$dark-border-color-deep-inactive: shade-color($dark-base, 30%) !default;
+$dark-border-color-deep-disabled: shade-color($dark-base, 40%) !default;
 
 $dark-border-color-major-base: shade-color($dark-major, 40%) !default;
 $dark-border-color-major-hover: shade-color($dark-major, 30%) !default;
