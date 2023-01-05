@@ -1,6 +1,7 @@
 import React, {
   Ref,
   useState,
+  ReactNode,
   forwardRef,
   ChangeEvent,
   ChangeEventHandler,
@@ -8,20 +9,23 @@ import React, {
   LabelHTMLAttributes,
 } from "react";
 import cn from "classnames";
+import { usePersist, useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
+import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import CheckIcon from "../icons/CheckIcon";
 import MinusIcon from "../icons/MinusIcon";
 import isRenderableNode from "../utils/isRenderableNode";
-import { useUpdate } from "@lilib/hooks";
 
 export interface CheckboxProps
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
+  indeterminate?: boolean;
   size?: SizeValue;
   loading?: boolean;
+  loadingIcon?: ReactNode;
+  loadingDelay?: number;
   disabled?: boolean;
-  indeterminate?: boolean;
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -33,10 +37,12 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const {
     children,
     className,
+    indeterminate,
     size: sizeProp,
     loading,
+    loadingIcon,
+    loadingDelay,
     disabled,
-    indeterminate,
     checked: checkedProp,
     defaultChecked,
     onChange,
@@ -47,10 +53,18 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
+  const isRTL = Direction.useConfig() === "rtl";
+
   const isControlled = "checked" in props;
   const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  useUpdate(() => {
+    if (isControlled) {
+      setChecked(!!checkedProp);
+    }
+  }, [checkedProp]);
+
+  const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
     if (disabled || loading) {
       return;
     }
@@ -60,7 +74,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
     if (onChange) {
       onChange(event);
     }
-  }
+  });
 
   const classes = cn(
     `${cls}checkbox`,
@@ -69,37 +83,34 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
       [`${cls}loading`]: loading,
       [`${cls}checked`]: checked,
       [`${cls}disabled`]: disabled,
+      [`${cls}rtl`]: isRTL,
     },
     className
   );
 
-  useUpdate(() => {
-    if (isControlled) {
-      setChecked(!!checkedProp);
-    }
-  }, [checkedProp]);
-
   return (
     <label {...rest} ref={ref} className={classes}>
-      <Spinner spinning={loading} className={`${cls}checkbox-indicator`}>
-        <input
-          {...inputProps}
-          ref={inputRef}
-          type="checkbox"
-          checked={checked}
-          disabled={disabled || loading}
-          onChange={handleChange}
-          className={cn(`${cls}checkbox-base`, inputProps?.className)}
-        />
-        {checked && (
-          <span className={`${cls}checkbox-icon`}>
-            {indeterminate ? (
-              <MinusIcon strokeWidth="8" />
-            ) : (
-              <CheckIcon strokeWidth="8" />
-            )}
-          </span>
-        )}
+      <input
+        {...inputProps}
+        ref={inputRef}
+        type="checkbox"
+        checked={checked}
+        disabled={disabled || loading}
+        onChange={handleChange}
+        className={cn(`${cls}checkbox-input`, inputProps?.className)}
+      />
+      <Spinner spinning={loading} icon={loadingIcon} delay={loadingDelay}>
+        <span className={`${cls}checkbox-indicator`}>
+          {checked && (
+            <span className={`${cls}checkbox-icon`}>
+              {indeterminate ? (
+                <MinusIcon strokeWidth="8" />
+              ) : (
+                <CheckIcon strokeWidth="8" />
+              )}
+            </span>
+          )}
+        </span>
       </Spinner>
       {isRenderableNode(children) && (
         <span className={`${cls}checkbox-label`}>{children}</span>

@@ -1,35 +1,34 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}checkbox {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  box-sizing: border-box;
   font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  vertical-align: -0.125em;
+  vertical-align: middle;
   cursor: pointer;
+
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    appearance: none;
+  }
+
+  & > .#{$cls-prefix}spinner {
+    flex: 0 0 auto;
+  }
 
   &-indicator {
     position: relative;
-    display: inline-block;
     flex: 0 0 auto;
+    box-sizing: content-box;
     width: 1em;
     height: 1em;
-  }
-
-  &-base {
-    display: inline-block;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color-1);
     border: 1px solid var(--border-color-base);
     border-radius: var(--border-radius-small);
-    cursor: pointer;
-    appearance: none;
-    user-select: none;
   }
 
   &-icon {
@@ -43,13 +42,12 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    font-size: 0.7em;
     line-height: 1;
+    transform: scale(0.75);
   }
 
   &-label {
-    display: block;
-    flex: 1 1 0;
+    flex: 1 1 auto;
     margin-left: 0.5em;
   }
 
@@ -62,22 +60,31 @@
   }
 
   &:hover {
-    & > .#{$cls-prefix}checkbox-indicator {
-      & .#{$cls-prefix}checkbox-base {
-        border-color: var(--major);
-      }
+    & .#{$cls-prefix}checkbox-indicator {
+      border-color: var(--background-color-solid-major-base);
     }
   }
 
   &.#{$cls-prefix}checked {
-    & > .#{$cls-prefix}checkbox-indicator {
-      & .#{$cls-prefix}checkbox-base {
-        background-color: var(--major);
-        border-color: var(--major);
-      }
+    & .#{$cls-prefix}checkbox-indicator {
+      color: var(--text-color-solid-base);
+      background-color: var(--background-color-solid-major-base);
+      border-color: var(--background-color-solid-major-base);
+    }
 
-      & .#{$cls-prefix}checkbox-icon {
+    &:hover {
+      & .#{$cls-prefix}checkbox-indicator {
+        color: var(--text-color-solid-hover);
+        background-color: var(--background-color-solid-major-hover);
+        border-color: var(--background-color-solid-major-hover);
+      }
+    }
+
+    &:active {
+      & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-active);
+        background-color: var(--background-color-solid-major-active);
+        border-color: var(--background-color-solid-major-active);
       }
     }
   }
@@ -90,25 +97,24 @@
     color: var(--text-color-disabled);
     cursor: not-allowed;
 
-    & > .#{$cls-prefix}checkbox-indicator {
-      & .#{$cls-prefix}checkbox-base {
-        background-color: var(--background-color-2);
-        border-color: var(--border-color-disabled);
-        cursor: not-allowed;
-      }
+    & .#{$cls-prefix}checkbox-indicator {
+      background-color: var(--background-color-2);
+      border-color: var(--border-color-inactive);
     }
 
     &.#{$cls-prefix}checked {
-      & > .#{$cls-prefix}checkbox-indicator {
-        & .#{$cls-prefix}checkbox-base {
-          background-color: var(--background-color-3);
-          border-color: var(--border-color-inactive);
-        }
-
-        & .#{$cls-prefix}checkbox-icon {
-          color: var(--text-color-disabled);
-        }
+      & .#{$cls-prefix}checkbox-indicator {
+        color: var(--text-color-solid-disabled);
+        background-color: var(--background-color-solid-major-disabled);
+        border-color: var(--background-color-solid-major-disabled);
       }
     }
+  }
+}
+
+.#{$cls-prefix}checkbox.#{$cls-prefix}rtl {
+  & .#{$cls-prefix}checkbox-label {
+    margin-right: 0.5em;
+    margin-left: 0;
   }
 }

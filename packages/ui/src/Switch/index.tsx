@@ -9,7 +9,7 @@ import React, {
   InputHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { useUpdate } from "@lilib/hooks";
+import { usePersist, useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Direction from "../Direction";
@@ -75,7 +75,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     }
   }, [checkedProp]);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
     if (disabled || loading) {
       return;
     }
@@ -85,7 +85,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     if (onChange) {
       onChange(event);
     }
-  }
+  });
 
   const classes = cn(
     `${cls}switch`,
