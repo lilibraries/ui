@@ -65,18 +65,19 @@ It accepts all props which the native `<div>` element supports.
 
 ### Loader.Config
 
-| Property  | Type        | Description                 |
-| --------- | ----------- | --------------------------- |
-| `icon`    | `ReactNode` | Custom loader icon          |
-| `message` | `ReactNode` | Tip message                 |
-| `delay`   | `number`    | Delay time, in milliseconds |
+| Property   | Type        | Description                 |
+| ---------- | ----------- | --------------------------- |
+| `children` | `ReactNode` | **Required** subcomponents  |
+| `icon`     | `ReactNode` | Custom loader icon          |
+| `delay`    | `number`    | Delay time, in milliseconds |
+| `message`  | `ReactNode` | Tip message                 |
 
 Loader.Config will inherit the upper configuration.
 
 ### Loader.Config.useConfig
 
 ```ts
-function useConfig(): { icon?: ReactNode; message?: ReactNode; delay?: number };
+function useConfig(): { icon?: ReactNode; delay?: number; message?: ReactNode };
 ```
 
 Get configuration.

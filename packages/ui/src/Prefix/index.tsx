@@ -6,13 +6,13 @@ export interface PrefixValue {
   var: string;
 }
 
-export interface PrefixProps extends Partial<PrefixValue> {
-  children?: ReactNode;
+export interface PrefixProps extends PrefixValue {
+  children: ReactNode;
 }
 
-const Prefix = createConfig<PrefixValue, PrefixProps>(["cls", "var"], {
-  cls: "li-",
-  var: "li-",
-});
+const Prefix = createConfig<PrefixValue, PrefixProps>(
+  { cls: "li-", var: "li-" },
+  ["cls", "var"]
+);
 
 export default Prefix;

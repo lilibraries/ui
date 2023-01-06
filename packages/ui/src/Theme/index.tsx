@@ -16,15 +16,15 @@ import mergeConfig from "../utils/mergeConfig";
 export type ThemeValue = null | "light" | "dark";
 
 export interface ThemeScopedProps {
-  value?: ThemeValue;
+  value: ThemeValue;
   scoped: true;
   children: ReactElement;
 }
 
 export interface ThemeUnscopedProps {
-  value?: ThemeValue;
+  value: ThemeValue;
   scoped?: false;
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const ThemeContext = createContext<ThemeValue>(null);
@@ -43,37 +43,46 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> & {
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {
-      const light = `${cls}light`;
       const dark = `${cls}dark`;
-      const classList = document.documentElement.classList;
+      const light = `${cls}light`;
+      const classes = document.documentElement.classList;
 
-      if (value === "light") {
-        if (classList.contains(dark)) {
-          classList.remove(dark);
+      switch (value) {
+        case "dark": {
+          if (!classes.contains(dark)) {
+            classes.add(dark);
+          }
+          if (classes.contains(light)) {
+            classes.remove(light);
+          }
+          break;
         }
-        if (!classList.contains(light)) {
-          classList.add(light);
+
+        case "light": {
+          if (!classes.contains(light)) {
+            classes.add(light);
+          }
+          if (classes.contains(dark)) {
+            classes.remove(dark);
+          }
+          break;
         }
-      } else if (value === "dark") {
-        if (classList.contains(light)) {
-          classList.remove(light);
-        }
-        if (!classList.contains(dark)) {
-          classList.add(dark);
-        }
-      } else {
-        if (classList.contains(light)) {
-          classList.remove(light);
-        }
-        if (classList.contains(dark)) {
-          classList.remove(dark);
+
+        default: {
+          if (classes.contains(dark)) {
+            classes.remove(dark);
+          }
+          if (classes.contains(light)) {
+            classes.remove(light);
+          }
+          break;
         }
       }
     }
-  }, [scoped, value, cls]);
+  }, [cls, scoped, value]);
 
   return (
-    <ThemeContext.Provider value={useThemeConfig(value)}>
+    <ThemeContext.Provider value={value}>
       {isValidElement(children)
         ? cloneElement(children, {
             ...rest,
@@ -83,7 +92,7 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> & {
               { [`${cls}${value}`]: scoped && value },
               children.props.className
             ),
-            style: Object.assign({}, (rest as any).style, children.props.style),
+            style: { ...(rest as any).style, ...children.props.style },
           })
         : children}
     </ThemeContext.Provider>

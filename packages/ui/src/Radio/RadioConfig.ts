@@ -8,12 +8,13 @@ export interface RadioConfigValue {
 }
 
 export interface RadioConfigValueProps extends RadioConfigValue {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
-const RadioConfig = createConfig<RadioConfigValue, RadioConfigValueProps>(
-  ["name", "value", "onChange"],
-  {}
-);
+const RadioConfig = createConfig<RadioConfigValue, RadioConfigValueProps>({}, [
+  "name",
+  "value",
+  "onChange",
+]);
 
 export default RadioConfig;

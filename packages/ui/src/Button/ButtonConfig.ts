@@ -17,22 +17,19 @@ export interface ButtonConfigValue {
 }
 
 export interface ButtonConfigProps extends ButtonConfigValue {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
-const ButtonConfig = createConfig<ButtonConfigValue, ButtonConfigProps>(
-  [
-    "variant",
-    "fluid",
-    "round",
-    "truncated",
-    "borderless",
-    "disabled",
-    "iconOnly",
-    "loading",
-    "loadingPosition",
-  ],
-  {}
-);
+const ButtonConfig = createConfig<ButtonConfigValue, ButtonConfigProps>({}, [
+  "variant",
+  "fluid",
+  "round",
+  "truncated",
+  "borderless",
+  "disabled",
+  "iconOnly",
+  "loading",
+  "loadingPosition",
+]);
 
 export default ButtonConfig;

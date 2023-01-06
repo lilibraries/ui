@@ -23,7 +23,7 @@ export const parameters = {
             <Theme value={isDarkMode ? "dark" : "light"}>
               <Size value={size}>
                 <Intent value={intent}>
-                  <Direction value={direction}>
+                  <Direction value={direction || "ltr"}>
                     <BaseContainer
                       context={{
                         ...context,
@@ -81,7 +81,7 @@ export const globalTypes = {
     name: "Direction",
     toolbar: {
       title: "Direction",
-      items: [{ value: null, title: "null" }, "ltr", "rtl"],
+      items: ["ltr", "rtl"],
     },
   },
 };
@@ -106,7 +106,7 @@ export const decorators = [
           <Theme value={useDarkMode() ? "dark" : "light"}>
             <Size value={size}>
               <Intent value={intent}>
-                <Direction value={direction}>
+                <Direction value={direction || "ltr"}>
                   <div ref={demoContainerRef}>{render()}</div>
                 </Direction>
               </Intent>

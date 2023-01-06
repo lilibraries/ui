@@ -8,12 +8,13 @@ export interface LoaderConfigValue {
 }
 
 export interface LoaderConfigProps extends LoaderConfigValue {
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const LoaderConfig = createConfig<LoaderConfigValue, LoaderConfigProps>(
+  {},
   ["icon", "delay", "message"],
-  {}
+  { inherit: true }
 );
 
 export default LoaderConfig;

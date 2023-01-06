@@ -35,26 +35,24 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
   <Story id="examples-direction--nested" />
 </Canvas>
 
-## Props
+## API
 
 ### Direction
 
-| Property   | Type                          | Description                  | Default |
-| ---------- | ----------------------------- | ---------------------------- | ------- |
-| `value`    | `null` \| `"ltr"` \| `"rtl"`  | Direction value              | `null`  |
-| `scoped`   | `boolean`                     | Scoped                       | `false` |
-| `children` | `ReactElement` \| `ReactNode` | Child element or child nodes | -       |
-
-Direction will inherit the upper configured value if you don't specify the `value` prop.
+| Property   | Type                          | Description                               |
+| ---------- | ----------------------------- | ----------------------------------------- |
+| `value`    | `"ltr"` \| `"rtl"`            | **Required** direction value              |
+| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes |
+| `scoped`   | `boolean`                     | Scoped                                    |
 
 ### Direction.useConfig
 
 ```ts
-function useConfig(): null | "ltr" | "rtl";
+function useConfig(): "ltr" | "rtl";
 ```
 
 Get configured direction.
 
 ### Direction.Context
 
-A context created by `React.createContext`. It's default value is `null`.
+A context created by `React.createContext`. It's default value is `"ltr"`.

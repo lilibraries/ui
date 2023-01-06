@@ -34,8 +34,8 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       className,
       vertical,
       variant,
-      intent,
-      size,
+      size: sizeProp,
+      intent: intentProp,
       fluid,
       round,
       truncated,
@@ -50,6 +50,8 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     } = props;
 
     const { cls } = Prefix.useConfig();
+    const size = Size.useConfig(sizeProp);
+    const intent = Intent.useConfig(intentProp);
     const isRTL = Direction.useConfig() === "rtl";
 
     const classes = cn(

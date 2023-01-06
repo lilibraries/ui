@@ -12,21 +12,21 @@ import { inBrowser } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import mergeConfig from "../utils/mergeConfig";
 
-export type DirectionValue = null | "ltr" | "rtl";
+export type DirectionValue = "ltr" | "rtl";
 
 export interface DirectionScopedProps {
-  value?: DirectionValue;
+  value: DirectionValue;
   scoped: true;
   children: ReactElement;
 }
 
 export interface DirectionUnscopedProps {
-  value?: DirectionValue;
+  value: DirectionValue;
   scoped?: false;
-  children?: ReactNode;
+  children: ReactNode;
 }
 
-const DirectionContext = createContext<DirectionValue>(null);
+const DirectionContext = createContext<DirectionValue>("ltr");
 
 function useDirectionConfig(override?: DirectionValue): DirectionValue {
   const base = useContext(DirectionContext);
@@ -41,25 +41,19 @@ const Direction: FC<DirectionScopedProps | DirectionUnscopedProps> & {
 
   useIsomorphicLayoutEffect(() => {
     if (inBrowser && !scoped) {
-      const doc = document.documentElement;
-
-      if (value) {
-        doc.setAttribute("dir", value);
-      } else {
-        doc.setAttribute("dir", "auto");
-      }
+      document.documentElement.setAttribute("dir", value);
     }
-  }, [scoped, value, value]);
+  }, [scoped, value]);
 
   return (
-    <DirectionContext.Provider value={useDirectionConfig(value)}>
+    <DirectionContext.Provider value={value}>
       {isValidElement(children)
         ? cloneElement(children, {
             ...rest,
             dir: scoped && value ? value : undefined,
             ...children.props,
+            style: { ...(rest as any).style, ...children.props.style },
             className: cn((rest as any).className, children.props.className),
-            style: Object.assign({}, (rest as any).style, children.props.style),
           })
         : children}
     </DirectionContext.Provider>

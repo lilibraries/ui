@@ -49,15 +49,11 @@ You can change the system theme mode to see the effect.
 
 ### Theme
 
-| Property   | Type                            | Description                  | Default |
-| ---------- | ------------------------------- | ---------------------------- | ------- |
-| `value`    | `null` \| `"light"` \| `"dark"` | Theme value                  | `null`  |
-| `scoped`   | `boolean`                       | Scoped theme                 | `false` |
-| `children` | `ReactElement` \| `ReactNode`   | Child element or child nodes | -       |
-
-Theme will inherit the upper configured value if you don't specify the `value` prop.
-
-The `scoped` prop is used to distinguish between different ways to change the theme. When `scoped` is `true`, the Theme component is scoped, and the `children` prop must be a React element. Otherwise, it is global, and the `children` can be any React nodes.
+| Property   | Type                            | Description                               |
+| ---------- | ------------------------------- | ----------------------------------------- |
+| `value`    | `null` \| `"light"` \| `"dark"` | **Required** theme value                  |
+| `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes |
+| `scoped`   | `boolean`                       | Scoped theme                              |
 
 The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` props is `null` or `undefined`, all theme class names added before will be cleared.
 

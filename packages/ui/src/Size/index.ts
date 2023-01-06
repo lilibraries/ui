@@ -4,10 +4,10 @@ import createConfig from "../utils/createConfig";
 export type SizeValue = null | "small" | "large";
 
 export interface SizeProps {
-  value?: SizeValue;
-  children?: ReactNode;
+  value: SizeValue;
+  children: ReactNode;
 }
 
-const Size = createConfig<SizeValue, SizeProps>("value", null);
+const Size = createConfig<SizeValue, SizeProps>(null, "value");
 
 export default Size;

@@ -1,9 +1,10 @@
-import { ReactChild, ReactFragment, ReactNode, ReactPortal } from "react";
+import { ReactNode } from "react";
+import isBoolean from "lodash/isBoolean";
 
-export type ReactRenderableNode = ReactChild | ReactFragment | ReactPortal;
-
-function isRenderableNode(node: ReactNode): node is ReactRenderableNode {
-  return node != null && typeof node !== "boolean";
+function isRenderableNode(
+  node: ReactNode
+): node is Exclude<ReactNode, null | undefined | boolean> {
+  return node != null && !isBoolean(node);
 }
 
 export default isRenderableNode;
