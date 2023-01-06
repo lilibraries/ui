@@ -3,19 +3,139 @@
 @import "../functions/light-color";
 @import "../functions/shade-color";
 
-$dark-base: $base !default;
+$dark-basis: $basis !default;
 $dark-major: light-color($major, 20%) !default;
 $dark-minor: light-color($minor, 20%) !default;
 $dark-positive: light-color($positive, 20%) !default;
 $dark-alertive: light-color($alertive, 20%) !default;
 $dark-negative: light-color($negative, 20%) !default;
 
-$dark-background-color-0: shade-color($dark-base, 80%) !default;
-$dark-background-color-1: shade-color($dark-base, 70%) !default;
-$dark-background-color-2: shade-color($dark-base, 60%) !default;
-$dark-background-color-3: shade-color($dark-base, 50%) !default;
-$dark-background-color-a1: rgba($dark-base, 0.2) !default;
-$dark-background-color-a2: rgba($dark-base, 0.3) !default;
+$dark-basis-1: shade-color($dark-basis, 80%) !default;
+$dark-basis-2: shade-color($dark-basis, 60%) !default;
+$dark-basis-3: shade-color($dark-basis, 40%) !default;
+$dark-basis-4: shade-color($dark-basis, 20%) !default;
+$dark-basis-5: $dark-basis !default;
+$dark-basis-6: light-color($dark-basis, 20%) !default;
+$dark-basis-7: light-color($dark-basis, 40%) !default;
+$dark-basis-8: light-color($dark-basis, 60%) !default;
+$dark-basis-9: light-color($dark-basis, 80%) !default;
+
+$dark-basis-a1: rgba($dark-basis, 0.1) !default;
+$dark-basis-a2: rgba($dark-basis, 0.2) !default;
+$dark-basis-a3: rgba($dark-basis, 0.3) !default;
+$dark-basis-a4: rgba($dark-basis, 0.4) !default;
+$dark-basis-a5: rgba($dark-basis, 0.5) !default;
+$dark-basis-a6: rgba($dark-basis, 0.6) !default;
+$dark-basis-a7: rgba($dark-basis, 0.7) !default;
+$dark-basis-a8: rgba($dark-basis, 0.8) !default;
+$dark-basis-a9: rgba($dark-basis, 0.9) !default;
+
+$dark-major-1: shade-color($dark-major, 80%) !default;
+$dark-major-2: shade-color($dark-major, 60%) !default;
+$dark-major-3: shade-color($dark-major, 40%) !default;
+$dark-major-4: shade-color($dark-major, 20%) !default;
+$dark-major-5: $dark-major !default;
+$dark-major-6: light-color($dark-major, 20%) !default;
+$dark-major-7: light-color($dark-major, 40%) !default;
+$dark-major-8: light-color($dark-major, 60%) !default;
+$dark-major-9: light-color($dark-major, 80%) !default;
+
+$dark-major-a1: rgba($dark-major, 0.1) !default;
+$dark-major-a2: rgba($dark-major, 0.2) !default;
+$dark-major-a3: rgba($dark-major, 0.3) !default;
+$dark-major-a4: rgba($dark-major, 0.4) !default;
+$dark-major-a5: rgba($dark-major, 0.5) !default;
+$dark-major-a6: rgba($dark-major, 0.6) !default;
+$dark-major-a7: rgba($dark-major, 0.7) !default;
+$dark-major-a8: rgba($dark-major, 0.8) !default;
+$dark-major-a9: rgba($dark-major, 0.9) !default;
+
+$dark-minor-1: shade-color($dark-minor, 80%) !default;
+$dark-minor-2: shade-color($dark-minor, 60%) !default;
+$dark-minor-3: shade-color($dark-minor, 40%) !default;
+$dark-minor-4: shade-color($dark-minor, 20%) !default;
+$dark-minor-5: $dark-minor !default;
+$dark-minor-6: light-color($dark-minor, 20%) !default;
+$dark-minor-7: light-color($dark-minor, 40%) !default;
+$dark-minor-8: light-color($dark-minor, 60%) !default;
+$dark-minor-9: light-color($dark-minor, 80%) !default;
+
+$dark-minor-a1: rgba($dark-minor, 0.1) !default;
+$dark-minor-a2: rgba($dark-minor, 0.2) !default;
+$dark-minor-a3: rgba($dark-minor, 0.3) !default;
+$dark-minor-a4: rgba($dark-minor, 0.4) !default;
+$dark-minor-a5: rgba($dark-minor, 0.5) !default;
+$dark-minor-a6: rgba($dark-minor, 0.6) !default;
+$dark-minor-a7: rgba($dark-minor, 0.7) !default;
+$dark-minor-a8: rgba($dark-minor, 0.8) !default;
+$dark-minor-a9: rgba($dark-minor, 0.9) !default;
+
+$dark-positive-1: shade-color($dark-positive, 80%) !default;
+$dark-positive-2: shade-color($dark-positive, 60%) !default;
+$dark-positive-3: shade-color($dark-positive, 40%) !default;
+$dark-positive-4: shade-color($dark-positive, 20%) !default;
+$dark-positive-5: $dark-positive !default;
+$dark-positive-6: light-color($dark-positive, 20%) !default;
+$dark-positive-7: light-color($dark-positive, 40%) !default;
+$dark-positive-8: light-color($dark-positive, 60%) !default;
+$dark-positive-9: light-color($dark-positive, 80%) !default;
+
+$dark-positive-a1: rgba($dark-positive, 0.1) !default;
+$dark-positive-a2: rgba($dark-positive, 0.2) !default;
+$dark-positive-a3: rgba($dark-positive, 0.3) !default;
+$dark-positive-a4: rgba($dark-positive, 0.4) !default;
+$dark-positive-a5: rgba($dark-positive, 0.5) !default;
+$dark-positive-a6: rgba($dark-positive, 0.6) !default;
+$dark-positive-a7: rgba($dark-positive, 0.7) !default;
+$dark-positive-a8: rgba($dark-positive, 0.8) !default;
+$dark-positive-a9: rgba($dark-positive, 0.9) !default;
+
+$dark-alertive-1: shade-color($dark-alertive, 80%) !default;
+$dark-alertive-2: shade-color($dark-alertive, 60%) !default;
+$dark-alertive-3: shade-color($dark-alertive, 40%) !default;
+$dark-alertive-4: shade-color($dark-alertive, 20%) !default;
+$dark-alertive-5: $dark-alertive !default;
+$dark-alertive-6: light-color($dark-alertive, 20%) !default;
+$dark-alertive-7: light-color($dark-alertive, 40%) !default;
+$dark-alertive-8: light-color($dark-alertive, 60%) !default;
+$dark-alertive-9: light-color($dark-alertive, 80%) !default;
+
+$dark-alertive-a1: rgba($dark-alertive, 0.1) !default;
+$dark-alertive-a2: rgba($dark-alertive, 0.2) !default;
+$dark-alertive-a3: rgba($dark-alertive, 0.3) !default;
+$dark-alertive-a4: rgba($dark-alertive, 0.4) !default;
+$dark-alertive-a5: rgba($dark-alertive, 0.5) !default;
+$dark-alertive-a6: rgba($dark-alertive, 0.6) !default;
+$dark-alertive-a7: rgba($dark-alertive, 0.7) !default;
+$dark-alertive-a8: rgba($dark-alertive, 0.8) !default;
+$dark-alertive-a9: rgba($dark-alertive, 0.9) !default;
+
+$dark-negative-1: shade-color($dark-negative, 80%) !default;
+$dark-negative-2: shade-color($dark-negative, 60%) !default;
+$dark-negative-3: shade-color($dark-negative, 40%) !default;
+$dark-negative-4: shade-color($dark-negative, 20%) !default;
+$dark-negative-5: $dark-negative !default;
+$dark-negative-6: light-color($dark-negative, 20%) !default;
+$dark-negative-7: light-color($dark-negative, 40%) !default;
+$dark-negative-8: light-color($dark-negative, 60%) !default;
+$dark-negative-9: light-color($dark-negative, 80%) !default;
+
+$dark-negative-a1: rgba($dark-negative, 0.1) !default;
+$dark-negative-a2: rgba($dark-negative, 0.2) !default;
+$dark-negative-a3: rgba($dark-negative, 0.3) !default;
+$dark-negative-a4: rgba($dark-negative, 0.4) !default;
+$dark-negative-a5: rgba($dark-negative, 0.5) !default;
+$dark-negative-a6: rgba($dark-negative, 0.6) !default;
+$dark-negative-a7: rgba($dark-negative, 0.7) !default;
+$dark-negative-a8: rgba($dark-negative, 0.8) !default;
+$dark-negative-a9: rgba($dark-negative, 0.9) !default;
+
+$dark-background-color-0: shade-color($dark-basis, 80%) !default;
+$dark-background-color-1: shade-color($dark-basis, 70%) !default;
+$dark-background-color-2: shade-color($dark-basis, 60%) !default;
+$dark-background-color-3: shade-color($dark-basis, 50%) !default;
+$dark-background-color-a1: rgba($dark-basis, 0.2) !default;
+$dark-background-color-a2: rgba($dark-basis, 0.3) !default;
 
 $dark-background-color-major-1: shade-color($dark-major, 70%) !default;
 $dark-background-color-major-2: shade-color($dark-major, 60%) !default;
@@ -47,17 +167,17 @@ $dark-background-color-negative-3: shade-color($dark-negative, 50%) !default;
 $dark-background-color-negative-a1: rgba($dark-negative, 0.2) !default;
 $dark-background-color-negative-a2: rgba($dark-negative, 0.3) !default;
 
-$dark-background-color-deep-base: shade-color($dark-base, 40%) !default;
-$dark-background-color-deep-hover: shade-color($dark-base, 30%) !default;
-$dark-background-color-deep-active: shade-color($dark-base, 20%) !default;
-$dark-background-color-deep-inactive: shade-color($dark-base, 50%) !default;
-$dark-background-color-deep-disabled: shade-color($dark-base, 60%) !default;
+$dark-background-color-deep-base: shade-color($dark-basis, 40%) !default;
+$dark-background-color-deep-hover: shade-color($dark-basis, 30%) !default;
+$dark-background-color-deep-active: shade-color($dark-basis, 20%) !default;
+$dark-background-color-deep-inactive: shade-color($dark-basis, 50%) !default;
+$dark-background-color-deep-disabled: shade-color($dark-basis, 60%) !default;
 
-$dark-background-color-solid-base: light-color($dark-base, 60%) !default;
-$dark-background-color-solid-hover: light-color($dark-base, 70%) !default;
-$dark-background-color-solid-active: light-color($dark-base, 80%) !default;
-$dark-background-color-solid-inactive: shade-color($dark-base, 15%) !default;
-$dark-background-color-solid-disabled: shade-color($dark-base, 30%) !default;
+$dark-background-color-solid-base: light-color($dark-basis, 60%) !default;
+$dark-background-color-solid-hover: light-color($dark-basis, 70%) !default;
+$dark-background-color-solid-active: light-color($dark-basis, 80%) !default;
+$dark-background-color-solid-inactive: shade-color($dark-basis, 15%) !default;
+$dark-background-color-solid-disabled: shade-color($dark-basis, 30%) !default;
 
 $dark-background-color-solid-major-base: $dark-major !default;
 $dark-background-color-solid-major-hover: light-color($dark-major, 10%) !default;
@@ -89,12 +209,12 @@ $dark-background-color-solid-negative-active: light-color($dark-negative, 20%) !
 $dark-background-color-solid-negative-inactive: shade-color($dark-negative, 20%) !default;
 $dark-background-color-solid-negative-disabled: shade-color($dark-negative, 40%) !default;
 
-$dark-text-color-base: light-color($dark-base, 70%) !default;
-$dark-text-color-muted: light-color($dark-base, 15%) !default;
-$dark-text-color-hover: light-color($dark-base, 85%) !default;
+$dark-text-color-base: light-color($dark-basis, 70%) !default;
+$dark-text-color-muted: light-color($dark-basis, 15%) !default;
+$dark-text-color-hover: light-color($dark-basis, 85%) !default;
 $dark-text-color-active: $white !default;
-$dark-text-color-inactive: shade-color($dark-base, 15%) !default;
-$dark-text-color-disabled: shade-color($dark-base, 30%) !default;
+$dark-text-color-inactive: shade-color($dark-basis, 15%) !default;
+$dark-text-color-disabled: shade-color($dark-basis, 30%) !default;
 
 $dark-text-color-solid-base: rgba($black, 0.8) !default;
 $dark-text-color-solid-hover: rgba($black, 0.9) !default;
@@ -138,17 +258,17 @@ $dark-text-color-negative-active: light-color($dark-negative, 40%) !default;
 $dark-text-color-negative-inactive: shade-color($dark-negative, 20%) !default;
 $dark-text-color-negative-disabled: shade-color($dark-negative, 40%) !default;
 
-$dark-border-color-base: shade-color($dark-base, 40%) !default;
-$dark-border-color-hover: shade-color($dark-base, 30%) !default;
-$dark-border-color-active: shade-color($dark-base, 20%) !default;
-$dark-border-color-inactive: shade-color($dark-base, 50%) !default;
-$dark-border-color-disabled: shade-color($dark-base, 60%) !default;
+$dark-border-color-base: shade-color($dark-basis, 40%) !default;
+$dark-border-color-hover: shade-color($dark-basis, 30%) !default;
+$dark-border-color-active: shade-color($dark-basis, 20%) !default;
+$dark-border-color-inactive: shade-color($dark-basis, 50%) !default;
+$dark-border-color-disabled: shade-color($dark-basis, 60%) !default;
 
-$dark-border-color-deep-base: shade-color($dark-base, 20%) !default;
-$dark-border-color-deep-hover: shade-color($dark-base, 10%) !default;
-$dark-border-color-deep-active: $dark-base !default;
-$dark-border-color-deep-inactive: shade-color($dark-base, 30%) !default;
-$dark-border-color-deep-disabled: shade-color($dark-base, 40%) !default;
+$dark-border-color-deep-base: shade-color($dark-basis, 20%) !default;
+$dark-border-color-deep-hover: shade-color($dark-basis, 10%) !default;
+$dark-border-color-deep-active: $dark-basis !default;
+$dark-border-color-deep-inactive: shade-color($dark-basis, 30%) !default;
+$dark-border-color-deep-disabled: shade-color($dark-basis, 40%) !default;
 
 $dark-border-color-major-base: shade-color($dark-major, 40%) !default;
 $dark-border-color-major-hover: shade-color($dark-major, 30%) !default;
@@ -180,11 +300,11 @@ $dark-border-color-negative-active: shade-color($dark-negative, 20%) !default;
 $dark-border-color-negative-inactive: shade-color($dark-negative, 50%) !default;
 $dark-border-color-negative-disabled: shade-color($dark-negative, 60%) !default;
 
-$dark-border-color-solid-base: light-color($dark-base, 80%) !default;
-$dark-border-color-solid-hover: light-color($dark-base, 90%) !default;
+$dark-border-color-solid-base: light-color($dark-basis, 80%) !default;
+$dark-border-color-solid-hover: light-color($dark-basis, 90%) !default;
 $dark-border-color-solid-active: $white !default;
-$dark-border-color-solid-inactive: $dark-base !default;
-$dark-border-color-solid-disabled: shade-color($dark-base, 15%) !default;
+$dark-border-color-solid-inactive: $dark-basis !default;
+$dark-border-color-solid-disabled: shade-color($dark-basis, 15%) !default;
 
 $dark-border-color-solid-major-base: light-color($dark-major, 30%) !default;
 $dark-border-color-solid-major-hover: light-color($dark-major, 40%) !default;
