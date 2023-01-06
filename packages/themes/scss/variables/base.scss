@@ -4,6 +4,22 @@ $var-prefix: "li-" !default;
 $enable-variables: true !default;
 $enable-fallbacks: true !default;
 
+$presets: (
+  "red",
+  "magenta",
+  "purple",
+  "indigo",
+  "navy",
+  "blue",
+  "cyan",
+  "teal",
+  "green",
+  "lime",
+  "yellow",
+  "orange",
+  "brown",
+  "gray"
+) !default;
 $intents: ("major", "minor", "positive", "alertive", "negative") !default;
 
 $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -12,8 +28,8 @@ $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 $font-family-mono: Menlo, Monaco, Consolas, "Courier New", Courier, monospace !default;
 
 $font-size-base: 16px !default;
-$font-size-small: $font-size-base - 4px !default;
-$font-size-large: $font-size-base + 4px !default;
+$font-size-small: 12px !default;
+$font-size-large: 20px !default;
 
 $font-size-h6: $font-size-base !default;
 $font-size-h5: $font-size-h6 + 2px !default;
