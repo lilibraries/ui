@@ -28,7 +28,7 @@ export interface DurationScopedProps extends Partial<DurationValue> {
 
 export interface DurationUnscopedProps extends Partial<DurationValue> {
   scoped?: false;
-  children?: ReactNode;
+  children: ReactNode;
 }
 
 const DurationContext = createContext<DurationValue>({

@@ -8,14 +8,17 @@ import React, {
 import cn from "classnames";
 import omit from "lodash/omit";
 import pick from "lodash/pick";
+import isString from "lodash/isString";
 import mergeConfig from "./mergeConfig";
 
 function createConfig<Value, Props>(
+  defaultValue: Value,
   configNames:
     | Exclude<keyof Props, "children">
     | Exclude<keyof Props, "children">[],
-  defaultValue: Value
+  options?: { inherit?: boolean }
 ) {
+  const inherit = !!options && !!options.inherit;
   const Context = createContext<Value>(defaultValue);
 
   function useConfig(override?: Partial<Value>): Value {
@@ -27,19 +30,21 @@ function createConfig<Value, Props>(
     Context: typeof Context;
     useConfig: typeof useConfig;
   } = (props) => {
-    const { children, ...rest } = props;
-    const ownProps: any = pick(rest, configNames);
-    const restProps: any = omit(rest, configNames);
-    let override: any;
+    const { children, ...other } = props;
+    const configProps: any = pick(other, configNames);
+    const restProps: any = omit(other, configNames);
+    let config: any;
 
-    if (typeof configNames === "string") {
-      override = ownProps[configNames];
+    if (isString(configNames)) {
+      config = configProps[configNames];
     } else {
-      override = ownProps;
+      config = configProps;
     }
 
+    const mergedConfig = useConfig(config);
+
     return (
-      <Context.Provider value={useConfig(override)}>
+      <Context.Provider value={inherit ? mergedConfig : config}>
         {isValidElement(children)
           ? cloneElement(children, {
               ...restProps,

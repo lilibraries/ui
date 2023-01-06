@@ -10,10 +10,10 @@ export type IntentValue =
   | "negative";
 
 export interface IntentProps {
-  value?: IntentValue;
-  children?: ReactNode;
+  value: IntentValue;
+  children: ReactNode;
 }
 
-const Intent = createConfig<IntentValue, IntentProps>("value", null);
+const Intent = createConfig<IntentValue, IntentProps>(null, "value");
 
 export default Intent;

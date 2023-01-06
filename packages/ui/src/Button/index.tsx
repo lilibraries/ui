@@ -59,7 +59,6 @@ export type ButtonProps<C extends ElementType = "button"> = C extends "button"
 export interface ButtonComponent {
   <C extends ElementType = "button">(props: ButtonProps<C>): ReactElement;
   Group: typeof ButtonGroup;
-  Config: typeof ButtonConfig;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -92,6 +91,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const intent = Intent.useConfig(intentProp);
   const { fast } = Duration.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
+
   const { icon: loadingIcon, delay: loadingDelay } = Spinner.Config.useConfig({
     icon: loadingIconProp,
     delay: loadingDelayProp,
@@ -309,6 +309,5 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 }) as any as ButtonComponent;
 
 Button.Group = ButtonGroup;
-Button.Config = ButtonConfig;
 
 export default Button;
