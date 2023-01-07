@@ -39,7 +39,7 @@
     height: var(--line-height-fixed-base);
     color: var(--text-color-base);
     vertical-align: middle;
-    background-color: var(--background-color-deep-base);
+    background-color: var(--bg-color-deep-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
   }
@@ -82,7 +82,7 @@
     width: calc(#{var(--line-height-fixed-base)} - 4px);
     height: calc(#{var(--line-height-fixed-base)} - 4px);
     color: var(--text-color-base);
-    background-color: var(--background-color-1);
+    background-color: var(--bg-color-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
     @include transition(fast, left);
@@ -91,7 +91,7 @@
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-base);
-      background-color: var(--background-color-solid-major-base);
+      background-color: var(--bg-color-solid-major-base);
       border-color: var(--border-color-solid-major-base);
     }
 
@@ -171,7 +171,7 @@
   &:hover {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-hover);
-      background-color: var(--background-color-deep-hover);
+      background-color: var(--bg-color-deep-hover);
       border-color: var(--border-color-deep-hover);
     }
 
@@ -184,7 +184,7 @@
   &:active {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-active);
-      background-color: var(--background-color-deep-active);
+      background-color: var(--bg-color-deep-active);
       border-color: var(--border-color-deep-active);
     }
 
@@ -197,7 +197,7 @@
   &.#{$cls-prefix}checked:hover {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-hover);
-      background-color: var(--background-color-solid-major-hover);
+      background-color: var(--bg-color-solid-major-hover);
       border-color: var(--border-color-solid-major-hover);
     }
 
@@ -210,7 +210,7 @@
   &.#{$cls-prefix}checked:active {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-active);
-      background-color: var(--background-color-solid-major-active);
+      background-color: var(--bg-color-solid-major-active);
       border-color: var(--border-color-solid-major-active);
     }
 
@@ -225,7 +225,7 @@
 
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-base);
-      background-color: var(--background-color-deep-base);
+      background-color: var(--bg-color-deep-base);
       border-color: var(--border-color-deep-base);
     }
 
@@ -237,7 +237,7 @@
     &.#{$cls-prefix}checked {
       & .#{$cls-prefix}switch-track {
         color: var(--text-color-solid-base);
-        background-color: var(--background-color-solid-major-base);
+        background-color: var(--bg-color-solid-major-base);
         border-color: var(--border-color-solid-major-base);
       }
 
@@ -253,7 +253,7 @@
 
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-disabled);
-      background-color: var(--background-color-deep-disabled);
+      background-color: var(--bg-color-deep-disabled);
       border-color: var(--border-color-deep-disabled);
     }
 
@@ -265,7 +265,7 @@
     &.#{$cls-prefix}checked {
       & .#{$cls-prefix}switch-track {
         color: var(--text-color-solid-disabled);
-        background-color: var(--background-color-solid-major-disabled);
+        background-color: var(--bg-color-solid-major-disabled);
         border-color: var(--border-color-solid-major-disabled);
       }
 
