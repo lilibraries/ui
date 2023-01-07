@@ -11,18 +11,18 @@ import React, {
 import cn from "classnames";
 import Icon from "../Icon";
 import Prefix from "../Prefix";
+import Duration from "../Duration";
+import Direction from "../Direction";
+import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
+import { IntentValue } from "../types";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
 import ButtonGroup from "./ButtonGroup";
-import Transition from "../Transition";
-import Duration from "../Duration";
-import Direction from "../Direction";
-import { IntentValue } from "../types";
 
 export * from "./ButtonGroup";
 export * from "./ButtonConfig";

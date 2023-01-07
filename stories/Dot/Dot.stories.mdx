@@ -20,10 +20,10 @@ Dispay a dot.
   <Story id="examples-dot--sizes" />
 </Canvas>
 
-### Intents
+### Preset colors
 
-<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
-  <Story id="examples-dot--intents" />
+<Canvas mdxSource={require("!!raw-loader!./PresetColors").default}>
+  <Story id="examples-dot--preset-colors" />
 </Canvas>
 
 ### Custom color
@@ -40,11 +40,10 @@ Dispay a dot.
 
 ## Props
 
-| Property   | Type                                                                             | Description                 |
-| ---------- | -------------------------------------------------------------------------------- | --------------------------- |
-| `size`     | `null` \| `"small"` \| `"large"`                                                 | Size                        |
-| `intent`   | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                      |
-| `color`    | `string`                                                                         | Custom color                |
-| `animated` | `boolean`                                                                        | Perform heartbeat animation |
+| Property   | Type                                                                                                                                                                                         | Description                 |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `size`     | `null` \| `"small"` \| `"large"`                                                                                                                                                             | Size                        |
+| `color`    | `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` \| `string` | Color                       |
+| `animated` | `boolean`                                                                                                                                                                                    | Perform heartbeat animation |
 
 It accepts all props which the native `<span>` element supports.

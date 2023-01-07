@@ -13,7 +13,7 @@
       z-index: 4;
     }
 
-    &:focus-visible {
+    &:focus {
       z-index: 5;
     }
 
@@ -24,7 +24,7 @@
     &.#{$cls-prefix}active {
       z-index: 4;
 
-      &:focus-visible {
+      &:focus {
         z-index: 5;
       }
     }

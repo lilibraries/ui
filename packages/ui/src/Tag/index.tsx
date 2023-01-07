@@ -1,6 +1,5 @@
 import React, {
   ReactNode,
-  MouseEvent,
   forwardRef,
   ElementType,
   ReactElement,
@@ -13,16 +12,17 @@ import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import CloseIcon from "../icons/CloseIcon";
+import { PresetColor } from "../types";
 import isRenderableNode from "../utils/isRenderableNode";
-import { IntentValue } from "../types";
 
 export type TagVariant = null | "solid" | "hollow";
 
 export interface TagCommonProps {
   variant?: TagVariant;
   size?: SizeValue;
-  intent?: IntentValue;
+  color?: PresetColor;
   round?: boolean;
+  square?: boolean;
   borderless?: boolean;
   clickable?: boolean;
   clearable?: boolean;
@@ -52,8 +52,9 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     as = "span",
     variant,
     size: sizeProp,
-    intent,
+    color,
     round,
+    square,
     borderless,
     clickable: clickableProp,
     clearable,
@@ -74,8 +75,9 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     {
       [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
-      [`${cls}${intent}`]: intent,
+      [`${cls}${color}`]: color,
       [`${cls}round`]: round,
+      [`${cls}square`]: square,
       [`${cls}borderless`]: borderless,
       [`${cls}clickable`]: clickable,
       [`${cls}clearable`]: clearable,
@@ -113,7 +115,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     <span
       tabIndex={!disabled && clickable ? 0 : undefined}
       className={`${cls}tag-content`}
-      onClick={(event: MouseEvent<HTMLSpanElement>) => {
+      onClick={(event) => {
         if (!disabled && onClick) {
           onClick(event);
         }
