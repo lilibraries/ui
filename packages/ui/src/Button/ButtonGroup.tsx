@@ -2,13 +2,13 @@ import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import Intent, { IntentValue } from "../Intent";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
 import Direction from "../Direction";
+import { IntentValue } from "../types";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   vertical?: boolean;
@@ -35,7 +35,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       vertical,
       variant,
       size: sizeProp,
-      intent: intentProp,
+      intent,
       fluid,
       round,
       truncated,
@@ -51,7 +51,6 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
 
     const { cls } = Prefix.useConfig();
     const size = Size.useConfig(sizeProp);
-    const intent = Intent.useConfig(intentProp);
     const isRTL = Direction.useConfig() === "rtl";
 
     const classes = cn(
@@ -69,23 +68,22 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     return (
       <div {...rest} ref={ref} className={classes}>
         <Size value={size}>
-          <Intent value={intent}>
-            <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
-              <ButtonConfig
-                variant={variant}
-                fluid={vertical}
-                round={round}
-                truncated={truncated}
-                borderless={borderless}
-                disabled={disabled}
-                iconOnly={iconOnly}
-                loading={loading}
-                loadingPosition={loadingPosition}
-              >
-                {children}
-              </ButtonConfig>
-            </SpinnerConfig>
-          </Intent>
+          <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
+            <ButtonConfig
+              variant={variant}
+              intent={intent}
+              fluid={vertical}
+              round={round}
+              truncated={truncated}
+              borderless={borderless}
+              disabled={disabled}
+              iconOnly={iconOnly}
+              loading={loading}
+              loadingPosition={loadingPosition}
+            >
+              {children}
+            </ButtonConfig>
+          </SpinnerConfig>
         </Size>
       </div>
     );

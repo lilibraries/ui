@@ -14,8 +14,8 @@ import Duration from "../Duration";
 import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import Intent, { IntentValue } from "../Intent";
 import isRenderableNode from "../utils/isRenderableNode";
+import { IntentValue } from "../types";
 
 export type BadgeVariant = null | "solid" | "dotted";
 
@@ -47,7 +47,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     className,
     variant,
     size: sizeProp,
-    intent: intentProp,
+    intent,
     round,
     borderless,
     animated,
@@ -67,7 +67,6 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const intent = Intent.useConfig(intentProp);
   const { fast } = Duration.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
 

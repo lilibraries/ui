@@ -12,9 +12,9 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import Intent, { IntentValue } from "../Intent";
 import CloseIcon from "../icons/CloseIcon";
 import isRenderableNode from "../utils/isRenderableNode";
+import { IntentValue } from "../types";
 
 export type TagVariant = null | "solid" | "hollow";
 
@@ -52,7 +52,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     as = "span",
     variant,
     size: sizeProp,
-    intent: intentProp,
+    intent,
     round,
     borderless,
     clickable: clickableProp,
@@ -66,7 +66,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const intent = Intent.useConfig(intentProp);
   const isRTL = Direction.useConfig() === "rtl";
   const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
 
