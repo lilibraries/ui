@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
 import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
-import { Root, Baseline, Theme, Size, Intent, Direction } from "@lilib/ui";
+import { Root, Baseline, Theme, Size, Direction } from "@lilib/ui";
 import order from "./order";
 import { light, dark } from "./themes";
 import "./preview.scss";
@@ -15,37 +15,35 @@ export const parameters = {
       const isDarkMode = useDarkMode();
       const story = context.storyById(context.id);
       const { globals } = context.getStoryContext(story);
-      const { size, intent, direction } = globals;
+      const { size, direction } = globals;
 
       return (
         <Root>
           <Baseline>
             <Theme value={isDarkMode ? "dark" : "light"}>
               <Size value={size}>
-                <Intent value={intent}>
-                  <Direction value={direction || "ltr"}>
-                    <BaseContainer
-                      context={{
-                        ...context,
-                        storyById: (id) => {
-                          const storyContext = context.storyById(id);
-                          return {
-                            ...storyContext,
-                            parameters: {
-                              ...storyContext?.parameters,
-                              docs: {
-                                ...storyContext?.parameters?.docs,
-                                theme: isDarkMode ? dark : light,
-                              },
+                <Direction value={direction || "ltr"}>
+                  <BaseContainer
+                    context={{
+                      ...context,
+                      storyById: (id) => {
+                        const storyContext = context.storyById(id);
+                        return {
+                          ...storyContext,
+                          parameters: {
+                            ...storyContext?.parameters,
+                            docs: {
+                              ...storyContext?.parameters?.docs,
+                              theme: isDarkMode ? dark : light,
                             },
-                          };
-                        },
-                      }}
-                    >
-                      {children}
-                    </BaseContainer>
-                  </Direction>
-                </Intent>
+                          },
+                        };
+                      },
+                    }}
+                  >
+                    {children}
+                  </BaseContainer>
+                </Direction>
               </Size>
             </Theme>
           </Baseline>
@@ -63,20 +61,6 @@ export const globalTypes = {
       items: [{ value: null, title: "null" }, "small", "large"],
     },
   },
-  intent: {
-    name: "Intent",
-    toolbar: {
-      title: "Intent",
-      items: [
-        { value: null, title: "null" },
-        "major",
-        "minor",
-        "positive",
-        "alertive",
-        "negative",
-      ],
-    },
-  },
   direction: {
     name: "Direction",
     toolbar: {
@@ -89,7 +73,7 @@ export const globalTypes = {
 export const decorators = [
   (render, context) => {
     const demoContainerRef = useRef();
-    const { size, intent, direction } = context.globals;
+    const { size, direction } = context.globals;
 
     useLayoutMount(() => {
       const wrapper = demoContainerRef.current?.closest(
@@ -105,11 +89,9 @@ export const decorators = [
         <Baseline>
           <Theme value={useDarkMode() ? "dark" : "light"}>
             <Size value={size}>
-              <Intent value={intent}>
-                <Direction value={direction || "ltr"}>
-                  <div ref={demoContainerRef}>{render()}</div>
-                </Direction>
-              </Intent>
+              <Direction value={direction || "ltr"}>
+                <div ref={demoContainerRef}>{render()}</div>
+              </Direction>
             </Size>
           </Theme>
         </Baseline>

@@ -12,7 +12,6 @@ import cn from "classnames";
 import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import Intent, { IntentValue } from "../Intent";
 import Spinner, { SpinnerProps } from "../Spinner";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
@@ -23,6 +22,7 @@ import ButtonGroup from "./ButtonGroup";
 import Transition from "../Transition";
 import Duration from "../Duration";
 import Direction from "../Direction";
+import { IntentValue } from "../types";
 
 export * from "./ButtonGroup";
 export * from "./ButtonConfig";
@@ -88,7 +88,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const intent = Intent.useConfig(intentProp);
   const { fast } = Duration.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
 
@@ -99,6 +98,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const {
     variant,
+    intent,
     fluid,
     round,
     truncated,
@@ -109,6 +109,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition,
   } = ButtonConfig.useConfig({
     variant: variantProp,
+    intent: intentProp,
     fluid: fluidProp,
     round: roundProp,
     truncated: truncatedProp,
