@@ -61,30 +61,30 @@
 
   &:hover {
     & .#{$cls-prefix}checkbox-indicator {
-      border-color: var(--background-color-solid-major-base);
+      border-color: var(--bg-color-solid-major-base);
     }
   }
 
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}checkbox-indicator {
       color: var(--text-color-solid-base);
-      background-color: var(--background-color-solid-major-base);
-      border-color: var(--background-color-solid-major-base);
+      background-color: var(--bg-color-solid-major-base);
+      border-color: var(--bg-color-solid-major-base);
     }
 
     &:hover {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-hover);
-        background-color: var(--background-color-solid-major-hover);
-        border-color: var(--background-color-solid-major-hover);
+        background-color: var(--bg-color-solid-major-hover);
+        border-color: var(--bg-color-solid-major-hover);
       }
     }
 
     &:active {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-active);
-        background-color: var(--background-color-solid-major-active);
-        border-color: var(--background-color-solid-major-active);
+        background-color: var(--bg-color-solid-major-active);
+        border-color: var(--bg-color-solid-major-active);
       }
     }
   }
@@ -98,15 +98,15 @@
     cursor: not-allowed;
 
     & .#{$cls-prefix}checkbox-indicator {
-      background-color: var(--background-color-2);
+      background-color: var(--bg-color-disabled);
       border-color: var(--border-color-inactive);
     }
 
     &.#{$cls-prefix}checked {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-disabled);
-        background-color: var(--background-color-solid-major-disabled);
-        border-color: var(--background-color-solid-major-disabled);
+        background-color: var(--bg-color-solid-major-disabled);
+        border-color: var(--bg-color-solid-major-disabled);
       }
     }
   }
