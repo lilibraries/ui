@@ -43,16 +43,16 @@ Many components in this library perform animation effects. The following example
 
 ### Duration
 
-| Property   | Type                          | Description                               |
-| ---------- | ----------------------------- | ----------------------------------------- |
-| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes |
-| `scoped`   | `boolean`                     | Scoped                                    |
-| `base`     | `number`                      | Base animation duration, in milliseconds  |
-| `fast`     | `number`                      | Fast animation duration, in milliseconds  |
-| `slow`     | `number`                      | Slow animation duration, in milliseconds  |
-| `lazy`     | `number`                      | Lazy animation duration, in milliseconds  |
+| Property   | Type                          | Description                               | Default |
+| ---------- | ----------------------------- | ----------------------------------------- | ------- |
+| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes | -       |
+| `scoped`   | `boolean`                     | Scoped                                    | -       |
+| `base`     | `number`                      | Base animation duration, in milliseconds  | `300`   |
+| `fast`     | `number`                      | Fast animation duration, in milliseconds  | `150`   |
+| `slow`     | `number`                      | Slow animation duration, in milliseconds  | `750`   |
+| `lazy`     | `number`                      | Lazy animation duration, in milliseconds  | `1250`  |
 
-Prefix will inherit the upper configuration.
+Duration will inherit the upper configuration.
 
 ### Duration.useConfig
 

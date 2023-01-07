@@ -77,12 +77,20 @@
     }
   }
 
-  @each $intent in $intents {
-    &.#{$cls-prefix}#{$intent} {
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
       & > .#{$cls-prefix}dot-indicator {
-        color: var(--text-color-#{$intent}-base);
-        background-color: var(--text-color-#{$intent}-base);
+        color: var(--#{$color});
+        background-color: var(--#{$color});
       }
+    }
+  }
+}
+
+.#{$cls-prefix}dot.#{$cls-prefix}rtl {
+  &.#{$cls-prefix}contained {
+    & > .#{$cls-prefix}dot-indicator {
+      margin-left: 0.375em;
     }
   }
 }
@@ -96,13 +104,5 @@
   to {
     transform: scale(2.5);
     opacity: 0;
-  }
-}
-
-.#{$cls-prefix}dot.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}contained {
-    & > .#{$cls-prefix}dot-indicator {
-      margin-left: 0.375em;
-    }
   }
 }

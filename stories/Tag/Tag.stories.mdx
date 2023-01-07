@@ -4,7 +4,7 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Tag
 
-Tag component.
+Tag components.
 
 ## Examples
 
@@ -40,6 +40,12 @@ When the `onClick` prop is specified, it is clickable by default. You can set `c
   <Story id="examples-tag--round" />
 </Canvas>
 
+### Square
+
+<Canvas mdxSource={require("!!raw-loader!./Square").default}>
+  <Story id="examples-tag--square" />
+</Canvas>
+
 ### Long tag
 
 <Canvas mdxSource={require("!!raw-loader!./LongTag").default}>
@@ -52,10 +58,10 @@ When the `onClick` prop is specified, it is clickable by default. You can set `c
   <Story id="examples-tag--sizes" />
 </Canvas>
 
-### Intents
+### Colors
 
-<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
-  <Story id="examples-tag--intents" />
+<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
+  <Story id="examples-tag--colors" />
 </Canvas>
 
 ### Solid
@@ -72,20 +78,21 @@ When the `onClick` prop is specified, it is clickable by default. You can set `c
 
 ## Props
 
-| Property     | Type                                                                             | Description                       |
-| ------------ | -------------------------------------------------------------------------------- | --------------------------------- |
-| `as`         | `ElementType`                                                                    | Element type, default is `"span"` |
-| `children`   | `ReactNode`                                                                      | Tag content                       |
-| `variant`    | `null` \| `"solid"` \| `"hollow"`                                                | Variant                           |
-| `size`       | `null` \| `"small"` \| `"large"`                                                 | Size                              |
-| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                            |
-| `round`      | `boolean`                                                                        | Make corners round                |
-| `borderless` | `boolean`                                                                        | Remove borders                    |
-| `clickable`  | `boolean`                                                                        | Only effect styles                |
-| `clearable`  | `boolean`                                                                        | Show clear icon                   |
-| `clearIcon`  | `boolean`                                                                        | Custom clear icon                 |
-| `disabled`   | `boolean`                                                                        | Disable clear and click evnets    |
-| `onClear`    | `MouseEventHandler`                                                              | Clear event                       |
-| `onClick`    | `MouseEventHandler`                                                              | Click event                       |
+| Property     | Type                                                                                                                                                                             | Description                       |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `as`         | `ElementType`                                                                                                                                                                    | Element type, default is `"span"` |
+| `children`   | `ReactNode`                                                                                                                                                                      | Tag content                       |
+| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                 | Size                              |
+| `variant`    | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                | Variant                           |
+| `color`      | `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                             |
+| `round`      | `boolean`                                                                                                                                                                        | Make corners round                |
+| `square`     | `boolean`                                                                                                                                                                        | Content width is equal to height  |
+| `borderless` | `boolean`                                                                                                                                                                        | Remove borders                    |
+| `clickable`  | `boolean`                                                                                                                                                                        | Only effect styles                |
+| `clearable`  | `boolean`                                                                                                                                                                        | Show clear icon                   |
+| `clearIcon`  | `boolean`                                                                                                                                                                        | Custom clear icon                 |
+| `disabled`   | `boolean`                                                                                                                                                                        | Disable clear and click evnets    |
+| `onClear`    | `MouseEventHandler`                                                                                                                                                              | Clear event                       |
+| `onClick`    | `MouseEventHandler`                                                                                                                                                              | Click event                       |
 
 It accepts all props which the `as` prop supports.

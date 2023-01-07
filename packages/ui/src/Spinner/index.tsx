@@ -11,13 +11,13 @@ import React, {
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
+import Direction from "../Direction";
 import Transition from "../Transition";
 import LoaderIcon from "../icons/LoaderIcon";
 import Icon, { IconProps } from "../Icon";
 import isRenderableNode from "../utils/isRenderableNode";
 import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 import SpinnerConfig from "./SpinnerConfig";
-import Direction from "../Direction";
 
 export * from "./SpinnerConfig";
 
@@ -52,7 +52,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
-  const direction = Direction.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
   const { icon: iconConfig, delay } = SpinnerConfig.useConfig({
     icon: iconProp,
     delay: delayProp,
@@ -83,7 +83,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
     const styles = Object.assign(
       {},
-      direction === "rtl"
+      isRTL
         ? { marginLeft: end, marginRight: start }
         : { marginLeft: start, marginRight: end },
       style
@@ -93,7 +93,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
       `${cls}spinner`,
       `${cls}contained`,
       {
-        [`${cls}rtl`]: direction === "rtl",
+        [`${cls}rtl`]: isRTL,
         [`${cls}start-spaced`]: hasStartSpaceClass,
         [`${cls}end-spaced`]: hasEndSpaceClass,
       },
@@ -162,7 +162,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
           const styles = Object.assign(
             {},
-            direction === "rtl"
+            isRTL
               ? { marginLeft: end, marginRight: start }
               : { marginLeft: start, marginRight: end },
             style
@@ -172,7 +172,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             `${cls}spinner`,
             `${cls}standalone`,
             {
-              [`${cls}rtl`]: direction === "rtl",
+              [`${cls}rtl`]: isRTL,
               [`${cls}start-spaced`]: enter && hasStartSpaceClass,
               [`${cls}end-spaced`]: enter && hasEndSpaceClass,
             },

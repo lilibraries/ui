@@ -7,7 +7,7 @@ function Solid(props: TagProps) {
 
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
-      <Flexbox gap="2x" align="center">
+      <Flexbox gap="2x" align="center" wrap>
         <Switch
           checkedLabel="Disabled"
           uncheckedLabel="Enabled"
@@ -22,11 +22,11 @@ function Solid(props: TagProps) {
         />
       </Flexbox>
 
-      <Flexbox gap="2x" align="center">
+      <Flexbox gap="2x" align="center" wrap>
         <Tag
           {...props}
           variant="solid"
-          intent={null}
+          color="red"
           clickable
           clearable
           disabled={disabled}
@@ -37,7 +37,7 @@ function Solid(props: TagProps) {
         <Tag
           {...props}
           variant="solid"
-          intent="major"
+          color="magenta"
           clickable
           clearable
           disabled={disabled}
@@ -48,7 +48,7 @@ function Solid(props: TagProps) {
         <Tag
           {...props}
           variant="solid"
-          intent="minor"
+          color="purple"
           clickable
           clearable
           disabled={disabled}
@@ -59,7 +59,7 @@ function Solid(props: TagProps) {
         <Tag
           {...props}
           variant="solid"
-          intent="positive"
+          color="indigo"
           clickable
           clearable
           disabled={disabled}
@@ -70,7 +70,7 @@ function Solid(props: TagProps) {
         <Tag
           {...props}
           variant="solid"
-          intent="alertive"
+          color="navy"
           clickable
           clearable
           disabled={disabled}
@@ -81,7 +81,106 @@ function Solid(props: TagProps) {
         <Tag
           {...props}
           variant="solid"
-          intent="negative"
+          color="blue"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="cyan"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="teal"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="green"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="lime"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="yellow"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="orange"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="brown"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color="gray"
+          clickable
+          clearable
+          disabled={disabled}
+          borderless={borderless}
+        >
+          Tag
+        </Tag>
+        <Tag
+          {...props}
+          variant="solid"
+          color={undefined}
           clickable
           clearable
           disabled={disabled}

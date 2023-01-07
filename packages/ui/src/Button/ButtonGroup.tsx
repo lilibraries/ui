@@ -1,14 +1,14 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
+import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
+import { IntentValue } from "../types";
+import SpinnerConfig from "../Spinner/SpinnerConfig";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPosition,
 } from "./ButtonConfig";
-import SpinnerConfig from "../Spinner/SpinnerConfig";
-import Direction from "../Direction";
-import { IntentValue } from "../types";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   vertical?: boolean;

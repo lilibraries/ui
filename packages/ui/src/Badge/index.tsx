@@ -99,13 +99,12 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     }
     if (isNumber(count)) {
       if (dotted) {
-        tag = <Dot size={size} intent={intent} animated={animated} />;
+        tag = <Dot size={size} animated={animated} />;
       } else {
         tag = (
           <Tag
             variant={solid ? "solid" : null}
             size={size}
-            intent={intent}
             round={round}
             borderless={borderless}
             className={cn({

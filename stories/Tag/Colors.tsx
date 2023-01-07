@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Flexbox, Tag, TagProps, Switch } from "@lilib/ui";
 
-function Hollow(props: TagProps) {
+function Colors(props: TagProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -25,7 +25,6 @@ function Hollow(props: TagProps) {
       <Flexbox gap="2x" align="center" wrap>
         <Tag
           {...props}
-          variant="hollow"
           color="red"
           clickable
           clearable
@@ -36,7 +35,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="magenta"
           clickable
           clearable
@@ -47,7 +45,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="purple"
           clickable
           clearable
@@ -58,7 +55,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="indigo"
           clickable
           clearable
@@ -69,7 +65,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="navy"
           clickable
           clearable
@@ -80,7 +75,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="blue"
           clickable
           clearable
@@ -91,7 +85,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="cyan"
           clickable
           clearable
@@ -102,7 +95,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="teal"
           clickable
           clearable
@@ -113,7 +105,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="green"
           clickable
           clearable
@@ -124,7 +115,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="lime"
           clickable
           clearable
@@ -135,7 +125,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="yellow"
           clickable
           clearable
@@ -146,7 +135,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="orange"
           clickable
           clearable
@@ -157,7 +145,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="brown"
           clickable
           clearable
@@ -168,7 +155,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color="gray"
           clickable
           clearable
@@ -179,7 +165,6 @@ function Hollow(props: TagProps) {
         </Tag>
         <Tag
           {...props}
-          variant="hollow"
           color={undefined}
           clickable
           clearable
@@ -193,4 +178,4 @@ function Hollow(props: TagProps) {
   );
 }
 
-export default Hollow;
+export default Colors;
