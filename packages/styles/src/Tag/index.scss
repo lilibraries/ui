@@ -189,38 +189,38 @@
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
       & > .#{$cls-prefix}tag-content {
-        color: var(--#{$color});
-        background-color: var(--#{$color}-l1);
-        border-color: var(--#{$color}-l4);
+        color: var(--text-color-#{$color}-base);
+        background-color: var(--bg-color-#{$color}-base);
+        border-color: var(--border-color-#{$color}-base);
       }
 
       & > .#{$cls-prefix}tag-clear {
-        color: var(--#{$color}-l6);
-        background-color: var(--#{$color}-l1);
-        border-color: var(--#{$color}-l4);
+        color: var(--text-color-#{$color}-inactive);
+        background-color: var(--bg-color-#{$color}-base);
+        border-color: var(--border-color-#{$color}-base);
       }
 
       & > .#{$cls-prefix}tag-clear,
       &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
         &:hover {
-          color: var(--#{$color}-s2);
-          background-color: var(--#{$color}-l2);
-          border-color: var(--#{$color}-l5);
+          color: var(--text-color-#{$color}-hover);
+          background-color: var(--bg-color-#{$color}-hover);
+          border-color: var(--border-color-#{$color}-hover);
         }
 
         &:active {
-          color: var(--#{$color}-s4);
-          background-color: var(--#{$color}-l3);
-          border-color: var(--#{$color}-l6);
+          color: var(--text-color-#{$color}-active);
+          background-color: var(--bg-color-#{$color}-active);
+          border-color: var(--border-color-#{$color}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
         & > .#{$cls-prefix}tag-clear,
         &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
-          color: var(--#{$color}-l4);
-          background-color: var(--#{$color}-l1);
-          border-color: var(--#{$color}-l2);
+          color: var(--text-color-#{$color}-disabled);
+          background-color: var(--bg-color-#{$color}-disabled);
+          border-color: var(--border-color-#{$color}-disabled);
         }
       }
     }
@@ -268,28 +268,28 @@
     &.#{$cls-prefix}#{$color} {
       & > .#{$cls-prefix}tag-content {
         color: var(--text-color-solid-base);
-        background-color: var(--#{$color});
-        border-color: var(--#{$color}-s3);
+        background-color: var(--bg-color-solid-#{$color}-base);
+        border-color: var(--border-color-solid-#{$color}-base);
       }
 
       & > .#{$cls-prefix}tag-clear {
         color: var(--text-color-solid-inactive);
-        background-color: var(--#{$color});
-        border-color: var(--#{$color}-s3);
+        background-color: var(--bg-color-solid-#{$color}-base);
+        border-color: var(--border-color-solid-#{$color}-base);
       }
 
       & > .#{$cls-prefix}tag-clear,
       &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
         &:hover {
           color: var(--text-color-solid-hover);
-          background-color: var(--#{$color}-s1);
-          border-color: var(--#{$color}-s4);
+          background-color: var(--bg-color-solid-#{$color}-hover);
+          border-color: var(--border-color-solid-#{$color}-hover);
         }
 
         &:active {
           color: var(--text-color-solid-active);
-          background-color: var(--#{$color}-s2);
-          border-color: var(--#{$color}-s5);
+          background-color: var(--bg-color-solid-#{$color}-active);
+          border-color: var(--border-color-solid-#{$color}-active);
         }
       }
 
@@ -297,8 +297,8 @@
         & > .#{$cls-prefix}tag-clear,
         &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
           color: var(--text-color-solid-disabled);
-          background-color: var(--#{$color}-l4);
-          border-color: var(--#{$color}-l6);
+          background-color: var(--bg-color-solid-#{$color}-disabled);
+          border-color: var(--border-color-solid-#{$color}-disabled);
         }
       }
     }
@@ -339,11 +339,11 @@
       & > .#{$cls-prefix}tag-clear,
       &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
         &:hover {
-          background-color: var(--#{$color}-a1);
+          background-color: var(--bg-color-hollow-#{$color}-soft);
         }
 
         &:active {
-          background-color: var(--#{$color}-a2);
+          background-color: var(--bg-color-hollow-#{$color}-deep);
         }
       }
 

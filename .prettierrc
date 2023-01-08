@@ -1,10 +1,1 @@
-{
-  "overrides": [
-    {
-      "files": ["packages/themes/scss/variables/properties.scss"],
-      "options": {
-        "printWidth": 120
-      }
-    }
-  ]
-}
+{}
