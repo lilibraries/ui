@@ -1,7 +1,7 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}light {
-  @each $name, $value in merge-maps($light-palettes, $light-properties) {
+  @each $name, $value in $light-properties {
     $property: str-insert($name, $var-prefix, 3);
 
     #{$property}: $value;
@@ -11,7 +11,7 @@
 }
 
 .#{$cls-prefix}dark {
-  @each $name, $value in merge-maps($dark-palettes, $dark-properties) {
+  @each $name, $value in $dark-properties {
     $property: str-insert($name, $var-prefix, 3);
 
     #{$property}: $value;
