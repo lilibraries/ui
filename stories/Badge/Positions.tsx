@@ -11,16 +11,16 @@ const block = {
 function Positions(props: BadgeProps) {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={9} {...props} position="top-start">
+      <Badge count={6} {...props} position="top-start">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} position="top-end">
+      <Badge count={6} {...props} position="top-end">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} position="bottom-start">
+      <Badge count={6} {...props} position="bottom-start">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} position="bottom-end">
+      <Badge count={6} {...props} position="bottom-end">
         <div style={block} />
       </Badge>
     </Flexbox>

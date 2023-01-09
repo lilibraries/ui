@@ -13,12 +13,7 @@ function CustomTag(props: BadgeProps) {
     <Badge
       {...props}
       count={
-        <Tag
-          variant="solid"
-          size="small"
-          intent="negative"
-          style={{ borderBottomLeftRadius: 0 }}
-        >
+        <Tag variant="solid" size="small" color="red">
           Hot
         </Tag>
       }

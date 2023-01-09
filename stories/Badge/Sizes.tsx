@@ -11,13 +11,13 @@ const block = {
 function Sizes(props: BadgeProps) {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={9} {...props} size="small">
+      <Badge count={6} {...props} size="small">
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} size={null}>
+      <Badge count={6} {...props} size={null}>
         <div style={block} />
       </Badge>
-      <Badge count={9} {...props} size="large">
+      <Badge count={6} {...props} size="large">
         <div style={block} />
       </Badge>
     </Flexbox>

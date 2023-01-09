@@ -11,10 +11,10 @@ const block = {
 function Outlined(props: BadgeProps) {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={9} variant="solid" intent="major" {...props} outlined>
+      <Badge count={6} variant="solid" color="blue" {...props} outlined>
         <div style={block} />
       </Badge>
-      <Badge count={9} variant="dotted" intent="positive" {...props} outlined>
+      <Badge count={6} variant="dotted" color="green" {...props} outlined>
         <div style={block} />
       </Badge>
     </Flexbox>

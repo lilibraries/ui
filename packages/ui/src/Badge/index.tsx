@@ -14,8 +14,8 @@ import Duration from "../Duration";
 import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
+import { PresetColor } from "../types";
 import isRenderableNode from "../utils/isRenderableNode";
-import { IntentValue } from "../types";
 
 export type BadgeVariant = null | "solid" | "dotted";
 
@@ -25,10 +25,11 @@ export type BadgePosition =
   | "bottom-start"
   | "bottom-end";
 
-export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: BadgeVariant;
+export interface BadgeProps
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   size?: SizeValue;
-  intent?: IntentValue;
+  variant?: BadgeVariant;
+  color?: PresetColor;
   round?: boolean;
   borderless?: boolean;
   animated?: boolean;
@@ -45,9 +46,9 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const {
     children,
     className,
-    variant,
     size: sizeProp,
-    intent,
+    variant,
+    color,
     round,
     borderless,
     animated,
@@ -99,17 +100,16 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     }
     if (isNumber(count)) {
       if (dotted) {
-        tag = <Dot size={size} animated={animated} />;
+        tag = <Dot size={size} color={color} animated={animated} />;
       } else {
         tag = (
           <Tag
-            variant={solid ? "solid" : null}
             size={size}
+            variant={solid ? "solid" : null}
+            color={color}
             round={round}
+            square={String(count).length === 1}
             borderless={borderless}
-            className={cn({
-              [`${cls}quadrate`]: String(count).length === 1,
-            })}
           >
             {tag}
           </Tag>
