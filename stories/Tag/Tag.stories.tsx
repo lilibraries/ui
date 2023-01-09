@@ -12,7 +12,7 @@ export default {
     color: {
       control: { type: "select" },
       options: [
-        undefined,
+        null,
         "red",
         "magenta",
         "purple",

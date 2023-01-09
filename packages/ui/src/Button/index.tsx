@@ -275,6 +275,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const button = createElement<ButtonProps>(
     as,
     {
+      tabIndex: 0,
       ...rest,
       ref,
       className: classes,
