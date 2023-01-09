@@ -12,7 +12,7 @@
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
-  line-height: var(--line-height-base);
+  line-height: var(--line-height-fixed-base);
   text-align: left;
   text-decoration: none;
   vertical-align: middle;
@@ -47,6 +47,7 @@
   &.#{$cls-prefix}small {
     padding: var(--space-1x) var(--space-2x);
     font-size: var(--font-size-small);
+    line-height: var(--line-height-fixed-small);
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}spinner {
@@ -63,6 +64,7 @@
   &.#{$cls-prefix}large {
     padding: var(--space-3x) var(--space-6x);
     font-size: var(--font-size-large);
+    line-height: var(--line-height-fixed-large);
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}spinner {
