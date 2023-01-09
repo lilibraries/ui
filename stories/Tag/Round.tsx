@@ -3,7 +3,16 @@ import { Tag, TagProps } from "@lilib/ui";
 
 function Round(props: TagProps) {
   return (
-    <Tag {...props} round clearable clickable>
+    <Tag
+      {...props}
+      round
+      onClear={() => {
+        alert("Clear");
+      }}
+      onClick={() => {
+        alert("Click");
+      }}
+    >
       Tag
     </Tag>
   );

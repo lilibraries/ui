@@ -1,5 +1,6 @@
 import React, {
   ReactNode,
+  MouseEvent,
   forwardRef,
   ElementType,
   ReactElement,
@@ -18,8 +19,8 @@ import isRenderableNode from "../utils/isRenderableNode";
 export type TagVariant = null | "solid" | "hollow";
 
 export interface TagCommonProps {
-  variant?: TagVariant;
   size?: SizeValue;
+  variant?: TagVariant;
   color?: PresetColor;
   round?: boolean;
   square?: boolean;
@@ -50,14 +51,14 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     children,
     className,
     as = "span",
-    variant,
     size: sizeProp,
+    variant,
     color,
     round,
     square,
     borderless,
     clickable: clickableProp,
-    clearable,
+    clearable: clearableProp,
     clearIcon,
     disabled,
     onClear,
@@ -69,18 +70,18 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
   const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
+  const clearable = clearableProp !== undefined ? !!clearableProp : !!onClear;
 
   const classes = cn(
     `${cls}tag`,
     {
-      [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
+      [`${cls}${variant}`]: variant,
       [`${cls}${color}`]: color,
       [`${cls}round`]: round,
       [`${cls}square`]: square,
       [`${cls}borderless`]: borderless,
       [`${cls}clickable`]: clickable,
-      [`${cls}clearable`]: clearable,
       [`${cls}disabled`]: disabled,
       [`${cls}rtl`]: isRTL,
     },
@@ -94,6 +95,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         tabIndex={!disabled ? 0 : undefined}
         className={`${cls}tag-clear`}
         onClick={(event) => {
+          event.stopPropagation();
           if (!disabled && onClear) {
             onClear(event);
           }
@@ -107,22 +109,18 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   return createElement(
     as,
     {
+      tabIndex: clickable && !disabled ? 0 : undefined,
       ...rest,
       ref,
       disabled,
       className: classes,
-    },
-    <span
-      tabIndex={!disabled && clickable ? 0 : undefined}
-      className={`${cls}tag-content`}
-      onClick={(event) => {
+      onClick: (event: MouseEvent<HTMLSpanElement>) => {
         if (!disabled && onClick) {
           onClick(event);
         }
-      }}
-    >
-      {children}
-    </span>,
+      },
+    },
+    <span className={`${cls}tag-content`}>{children}</span>,
     clear
   );
 }) as TagComponent;

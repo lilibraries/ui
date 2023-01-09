@@ -7,8 +7,8 @@ function Square(props: TagProps) {
       <Tag {...props} square>
         0
       </Tag>
-      <Tag {...props} square clickable clearable>
-        8
+      <Tag {...props} square>
+        88
       </Tag>
     </Flexbox>
   );

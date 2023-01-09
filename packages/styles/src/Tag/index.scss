@@ -2,19 +2,23 @@
 
 .#{$cls-prefix}tag {
   display: inline-flex;
-  align-items: stretch;
+  align-items: center;
+  box-sizing: border-box;
   max-width: 100%;
+  height: var(--line-height-fixed-base);
   margin: 0;
   padding: 0;
+  color: var(--text-color-base);
   font-weight: inherit;
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
-  line-height: var(--line-height-fixed-base);
+  line-height: var(--line-height-small);
   text-decoration: none;
   vertical-align: baseline;
   background: none;
-  border: 0;
+  background-color: var(--bg-color-base);
+  border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
   appearance: none;
 
@@ -24,16 +28,9 @@
   }
 
   &-content {
-    flex: 1 1 0;
-    box-sizing: content-box;
-    height: var(--line-height-fixed-base);
-    padding: 0
-      calc((#{var(--line-height-fixed-base)} - #{var(--font-size-base)}));
-    color: var(--text-color-base);
+    flex: 1 1 auto;
+    padding: 0 0.5em;
     text-align: center;
-    background: var(--bg-color-base);
-    border: 1px solid var(--border-color-base);
-    border-radius: var(--border-radius-small);
     @include text-overflow;
   }
 
@@ -42,13 +39,30 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    box-sizing: content-box;
-    width: var(--line-height-fixed-base);
-    height: var(--line-height-fixed-base);
+    width: calc(var(--line-height-fixed-base) - 4px);
+    height: calc(var(--line-height-fixed-base) - 4px);
+    margin-right: 1px;
     color: var(--text-color-inactive);
-    background: var(--bg-color-base);
-    border: 1px solid var(--border-color-base);
+    font-size: 0.875em;
     border-radius: var(--border-radius-small);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--text-color-hover);
+      background-color: var(--bg-color-hollow-soft);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+      background-color: var(--bg-color-hollow-deep);
+    }
+
+    &:focus {
+      @include focus-outline;
+    }
+  }
+
+  &.#{$cls-prefix}clickable {
     cursor: pointer;
 
     &:hover {
@@ -64,94 +78,35 @@
     }
 
     &:focus {
-      z-index: 1;
       @include focus-outline;
-    }
-  }
-
-  &.#{$cls-prefix}clickable {
-    & > .#{$cls-prefix}tag-content {
-      cursor: pointer;
-
-      &:hover {
-        color: var(--text-color-hover);
-        background-color: var(--bg-color-hover);
-        border-color: var(--border-color-hover);
-      }
-
-      &:active {
-        color: var(--text-color-active);
-        background-color: var(--bg-color-active);
-        border-color: var(--border-color-active);
-      }
-
-      &:focus {
-        z-index: 1;
-        @include focus-outline;
-      }
-    }
-  }
-
-  &.#{$cls-prefix}clearable {
-    & > .#{$cls-prefix}tag-content {
-      border-right-width: 0;
-      border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
-    }
-
-    & > .#{$cls-prefix}tag-clear {
-      margin-left: -1px;
-      border-left-width: 0;
-      border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     }
   }
 
   &.#{$cls-prefix}round {
     border-radius: var(--border-radius-round);
 
-    & > .#{$cls-prefix}tag-content {
+    & > .#{$cls-prefix}tag-clear {
       border-radius: var(--border-radius-round);
-    }
-
-    &.#{$cls-prefix}clearable {
-      & > .#{$cls-prefix}tag-content {
-        border-radius: var(--border-radius-round) 0 0 var(--border-radius-round);
-      }
-
-      & > .#{$cls-prefix}tag-clear {
-        border-radius: 0 var(--border-radius-round) var(--border-radius-round) 0;
-      }
     }
   }
 
   &.#{$cls-prefix}small {
+    height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
-    line-height: var(--line-height-fixed-small);
-
-    & > .#{$cls-prefix}tag-content {
-      height: var(--line-height-fixed-small);
-      padding: 0
-        calc((#{var(--line-height-fixed-small)} - #{var(--font-size-small)}));
-    }
 
     & > .#{$cls-prefix}tag-clear {
-      width: var(--line-height-fixed-small);
-      height: var(--line-height-fixed-small);
+      width: calc(var(--line-height-fixed-small) - 4px);
+      height: calc(var(--line-height-fixed-small) - 4px);
     }
   }
 
   &.#{$cls-prefix}large {
+    height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
-    line-height: var(--line-height-fixed-large);
-
-    & > .#{$cls-prefix}tag-content {
-      height: var(--line-height-fixed-large);
-      padding: 0
-        calc((#{var(--line-height-fixed-large)} - #{var(--font-size-large)}));
-    }
 
     & > .#{$cls-prefix}tag-clear {
-      width: var(--line-height-fixed-large);
-      height: var(--line-height-fixed-large);
+      width: calc(var(--line-height-fixed-large) - 4px);
+      height: calc(var(--line-height-fixed-large) - 4px);
     }
   }
 
@@ -159,49 +114,45 @@
     font-family: var(--font-family-mono);
 
     & > .#{$cls-prefix}tag-content {
-      width: var(--line-height-fixed-base);
-      padding: 0;
+      min-width: calc(var(--line-height-fixed-base) - 2px);
+      padding: 0 0.25em;
     }
 
     &.#{$cls-prefix}small {
       & > .#{$cls-prefix}tag-content {
-        width: var(--line-height-fixed-small);
+        min-width: calc(var(--line-height-fixed-small) - 2px);
       }
     }
 
     &.#{$cls-prefix}large {
       & > .#{$cls-prefix}tag-content {
-        width: var(--line-height-fixed-large);
+        min-width: calc(var(--line-height-fixed-large) - 2px);
       }
     }
   }
 
   &.#{$cls-prefix}disabled {
-    & > .#{$cls-prefix}tag-clear,
-    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &.#{$cls-prefix}clickable {
       color: var(--text-color-disabled);
       background-color: var(--bg-color-disabled);
       border-color: var(--border-color-disabled);
+      cursor: not-allowed;
+    }
+
+    & > .#{$cls-prefix}tag-clear {
+      color: var(--text-color-disabled);
+      background-color: transparent;
       cursor: not-allowed;
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      & > .#{$cls-prefix}tag-content {
-        color: var(--text-color-#{$color}-base);
-        background-color: var(--bg-color-#{$color}-base);
-        border-color: var(--border-color-#{$color}-base);
-      }
+      color: var(--text-color-#{$color}-base);
+      background-color: var(--bg-color-#{$color}-base);
+      border-color: var(--border-color-#{$color}-base);
 
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--text-color-#{$color}-inactive);
-        background-color: var(--bg-color-#{$color}-base);
-        border-color: var(--border-color-#{$color}-base);
-      }
-
-      & > .#{$cls-prefix}tag-clear,
-      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      &.#{$cls-prefix}clickable {
         &:hover {
           color: var(--text-color-#{$color}-hover);
           background-color: var(--bg-color-#{$color}-hover);
@@ -215,12 +166,30 @@
         }
       }
 
+      & > .#{$cls-prefix}tag-clear {
+        color: var(--text-color-#{$color}-inactive);
+
+        &:hover {
+          color: var(--text-color-#{$color}-hover);
+          background-color: var(--bg-color-hollow-#{$color}-soft);
+        }
+
+        &:active {
+          color: var(--text-color-#{$color}-active);
+          background-color: var(--bg-color-hollow-#{$color}-deep);
+        }
+      }
+
       &.#{$cls-prefix}disabled {
-        & > .#{$cls-prefix}tag-clear,
-        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &.#{$cls-prefix}clickable {
           color: var(--text-color-#{$color}-disabled);
           background-color: var(--bg-color-#{$color}-disabled);
           border-color: var(--border-color-#{$color}-disabled);
+        }
+
+        & > .#{$cls-prefix}tag-clear {
+          color: var(--text-color-#{$color}-disabled);
+          background-color: transparent;
         }
       }
     }
@@ -228,20 +197,11 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}solid {
-  & > .#{$cls-prefix}tag-content {
-    color: var(--text-color-reverse-base);
-    background-color: var(--bg-color-solid-base);
-    border-color: var(--border-color-solid-base);
-  }
+  color: var(--text-color-reverse-base);
+  background-color: var(--bg-color-solid-base);
+  border-color: var(--border-color-solid-base);
 
-  & > .#{$cls-prefix}tag-clear {
-    color: var(--text-color-reverse-inactive);
-    background-color: var(--bg-color-solid-base);
-    border-color: var(--border-color-solid-base);
-  }
-
-  & > .#{$cls-prefix}tag-clear,
-  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+  &.#{$cls-prefix}clickable {
     &:hover {
       color: var(--text-color-reverse-hover);
       background-color: var(--bg-color-solid-hover);
@@ -255,31 +215,37 @@
     }
   }
 
+  & > .#{$cls-prefix}tag-clear {
+    color: var(--text-color-reverse-inactive);
+
+    &:hover {
+      color: var(--text-color-reverse-hover);
+    }
+
+    &:active {
+      color: var(--text-color-reverse-active);
+    }
+  }
+
   &.#{$cls-prefix}disabled {
-    & > .#{$cls-prefix}tag-clear,
-    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &.#{$cls-prefix}clickable {
       color: var(--text-color-reverse-disabled);
       background-color: var(--bg-color-solid-disabled);
       border-color: var(--border-color-solid-disabled);
+    }
+
+    & > .#{$cls-prefix}tag-clear {
+      color: var(--text-color-reverse-disabled);
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      & > .#{$cls-prefix}tag-content {
-        color: var(--text-color-solid-base);
-        background-color: var(--bg-color-solid-#{$color}-base);
-        border-color: var(--border-color-solid-#{$color}-base);
-      }
+      color: var(--text-color-solid-base);
+      background-color: var(--bg-color-solid-#{$color}-base);
+      border-color: var(--border-color-solid-#{$color}-base);
 
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--text-color-solid-inactive);
-        background-color: var(--bg-color-solid-#{$color}-base);
-        border-color: var(--border-color-solid-#{$color}-base);
-      }
-
-      & > .#{$cls-prefix}tag-clear,
-      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      &.#{$cls-prefix}clickable {
         &:hover {
           color: var(--text-color-solid-hover);
           background-color: var(--bg-color-solid-#{$color}-hover);
@@ -293,12 +259,27 @@
         }
       }
 
+      & > .#{$cls-prefix}tag-clear {
+        color: var(--text-color-solid-inactive);
+
+        &:hover {
+          color: var(--text-color-solid-hover);
+        }
+
+        &:active {
+          color: var(--text-color-solid-active);
+        }
+      }
+
       &.#{$cls-prefix}disabled {
-        & > .#{$cls-prefix}tag-clear,
-        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &.#{$cls-prefix}clickable {
           color: var(--text-color-solid-disabled);
           background-color: var(--bg-color-solid-#{$color}-disabled);
           border-color: var(--border-color-solid-#{$color}-disabled);
+        }
+
+        & > .#{$cls-prefix}tag-clear {
+          color: var(--text-color-solid-disabled);
         }
       }
     }
@@ -306,13 +287,9 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}hollow {
-  & > .#{$cls-prefix}tag-clear,
-  & > .#{$cls-prefix}tag-content {
-    background-color: transparent;
-  }
+  background-color: transparent;
 
-  & > .#{$cls-prefix}tag-clear,
-  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+  &.#{$cls-prefix}clickable {
     &:hover {
       background-color: var(--bg-color-hollow-soft);
     }
@@ -323,21 +300,16 @@
   }
 
   &.#{$cls-prefix}disabled {
-    & > .#{$cls-prefix}tag-clear,
-    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &.#{$cls-prefix}clickable {
       background-color: transparent;
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      & > .#{$cls-prefix}tag-clear,
-      & > .#{$cls-prefix}tag-content {
-        background-color: transparent;
-      }
+      background-color: transparent;
 
-      & > .#{$cls-prefix}tag-clear,
-      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      &.#{$cls-prefix}clickable {
         &:hover {
           background-color: var(--bg-color-hollow-#{$color}-soft);
         }
@@ -348,8 +320,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        & > .#{$cls-prefix}tag-clear,
-        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &.#{$cls-prefix}clickable {
           background-color: transparent;
         }
       }
@@ -358,13 +329,9 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}borderless {
-  & > .#{$cls-prefix}tag-clear,
-  & > .#{$cls-prefix}tag-content {
-    border-color: transparent;
-  }
+  border-color: transparent;
 
-  & > .#{$cls-prefix}tag-clear,
-  &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+  &.#{$cls-prefix}clickable {
     &:hover {
       border-color: transparent;
     }
@@ -375,21 +342,16 @@
   }
 
   &.#{$cls-prefix}disabled {
-    & > .#{$cls-prefix}tag-clear,
-    &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+    &.#{$cls-prefix}clickable {
       border-color: transparent;
     }
   }
 
-  @each $intent in $intents {
-    &.#{$cls-prefix}#{$intent} {
-      & > .#{$cls-prefix}tag-clear,
-      & > .#{$cls-prefix}tag-content {
-        border-color: transparent;
-      }
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
+      border-color: transparent;
 
-      & > .#{$cls-prefix}tag-clear,
-      &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+      &.#{$cls-prefix}clickable {
         &:hover {
           border-color: transparent;
         }
@@ -400,8 +362,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        & > .#{$cls-prefix}tag-clear,
-        &.#{$cls-prefix}clickable > .#{$cls-prefix}tag-content {
+        &.#{$cls-prefix}clickable {
           border-color: transparent;
         }
       }
@@ -410,29 +371,8 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}clearable {
-    & > .#{$cls-prefix}tag-content {
-      border-right-width: 1px;
-      border-left-width: 0;
-      border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
-    }
-
-    & > .#{$cls-prefix}tag-clear {
-      margin-right: -1px;
-      margin-left: 0;
-      border-right-width: 0;
-      border-left-width: 1px;
-      border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
-    }
-
-    &.#{$cls-prefix}round {
-      & > .#{$cls-prefix}tag-content {
-        border-radius: 0 var(--border-radius-round) var(--border-radius-round) 0;
-      }
-
-      & > .#{$cls-prefix}tag-clear {
-        border-radius: var(--border-radius-round) 0 0 var(--border-radius-round);
-      }
-    }
+  & > .#{$cls-prefix}tag-clear {
+    margin-right: 0;
+    margin-left: 1px;
   }
 }
