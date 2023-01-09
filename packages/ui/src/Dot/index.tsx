@@ -28,8 +28,8 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
   const contained = isRenderableNode(children);
-  const usePreset = isPresetColor(color);
-  const useColorStyle = !!color && !usePreset;
+  const isPreseted = isPresetColor(color);
+  const isCustomColor = !!color && !isPreseted;
 
   const classes = cn(
     `${cls}dot`,
@@ -37,7 +37,7 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
       [`${cls}contained`]: contained,
       [`${cls}standalone`]: !contained,
       [`${cls}${size}`]: size,
-      [`${cls}${color}`]: usePreset,
+      [`${cls}${color}`]: isPreseted,
       [`${cls}animated`]: animated,
       [`${cls}rtl`]: isRTL,
     },
@@ -48,7 +48,7 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
     <span {...rest} ref={ref} className={classes}>
       <span
         className={`${cls}dot-indicator`}
-        style={useColorStyle ? { color, backgroundColor: color } : undefined}
+        style={isCustomColor ? { color, backgroundColor: color } : undefined}
       />
       {children}
     </span>

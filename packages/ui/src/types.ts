@@ -7,6 +7,7 @@ export type IntentValue =
   | "negative";
 
 export type PresetColor =
+  | null
   | "red"
   | "magenta"
   | "purple"
