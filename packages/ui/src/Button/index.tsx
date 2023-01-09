@@ -260,7 +260,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
           durations={fast}
           unmountOnExit
           enterDelay={loadingDelay}
-          classNames={{ enter: true, exit: true, exited: true, exiting: true }}
+          classNames={{
+            [Transition.ENTER]: true,
+            [Transition.EXIT]: true,
+            [Transition.EXITED]: true,
+            [Transition.EXITING]: true,
+          }}
         >
           <span className={`${cls}button-loader`}>
             <Spinner spinning delay={0} icon={loadingIcon} />
@@ -275,7 +280,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const button = createElement<ButtonProps>(
     as,
     {
-      tabIndex: 0,
+      tabIndex: !disabled && !loading ? 0 : undefined,
       ...rest,
       ref,
       className: classes,
@@ -300,7 +305,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         in={!loading}
         durations={fast}
         exitDelay={loadingDelay}
-        classNames={{ exit: true, exited: true, exiting: true }}
+        classNames={{
+          [Transition.EXIT]: true,
+          [Transition.EXITED]: true,
+          [Transition.EXITING]: true,
+        }}
       >
         {button}
       </Transition>

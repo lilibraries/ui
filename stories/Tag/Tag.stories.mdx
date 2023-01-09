@@ -30,6 +30,8 @@ When the `onClick` prop is specified, it is clickable by default. You can set `c
 
 ### Clearable
 
+When the `onClear` prop is specified, it is clearable by default. You can set `clearable` prop to `false` to disable it. Note that the `clearable` prop only effects component styles, not events. If you want to disable events, please use the `disabled` prop.
+
 <Canvas mdxSource={require("!!raw-loader!./Clearable").default}>
   <Story id="examples-tag--clearable" />
 </Canvas>
@@ -92,7 +94,7 @@ When the `onClick` prop is specified, it is clickable by default. You can set `c
 | `clearable`  | `boolean`                                                                                                                                                                                  | Show clear icon                   |
 | `clearIcon`  | `boolean`                                                                                                                                                                                  | Custom clear icon                 |
 | `disabled`   | `boolean`                                                                                                                                                                                  | Disable clear and click evnets    |
-| `onClear`    | `MouseEventHandler`                                                                                                                                                                        | Clear event                       |
 | `onClick`    | `MouseEventHandler`                                                                                                                                                                        | Click event                       |
+| `onClear`    | `MouseEventHandler`                                                                                                                                                                        | Clear event                       |
 
 It accepts all props which the `as` prop supports.

@@ -1,11 +1,16 @@
 import React from "react";
-import { Tag, TagProps } from "@lilib/ui";
+import { Tag, TagProps, Flexbox } from "@lilib/ui";
 
 function Clearable(props: TagProps) {
   return (
-    <Tag {...props} clearable onClear={() => alert("Clear")}>
-      Tag
-    </Tag>
+    <Flexbox gap="2x" align="center">
+      <Tag {...props} onClear={() => alert("Clear")}>
+        Clear
+      </Tag>
+      <Tag {...props} clearable>
+        Clearable
+      </Tag>
+    </Flexbox>
   );
 }
 
