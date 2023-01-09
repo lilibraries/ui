@@ -23,6 +23,7 @@ function Animated(props: DotProps) {
         <Dot {...props} animated color="orange" />
         <Dot {...props} animated color="brown" />
         <Dot {...props} animated color="gray" />
+        <Dot {...props} animated color={null} />
       </Flexbox>
     </Flexbox>
   );
