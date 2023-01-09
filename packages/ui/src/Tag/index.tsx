@@ -36,11 +36,11 @@ export type TagProps<C extends ElementType = "span"> = C extends "span"
   ? {
       as?: C;
     } & TagCommonProps &
-      ComponentProps<C>
+      Omit<ComponentProps<C>, "color">
   : {
       as: C;
     } & TagCommonProps &
-      ComponentProps<C>;
+      Omit<ComponentProps<C>, "color">;
 
 export interface TagComponent {
   <C extends ElementType = "span">(props: TagProps<C>): ReactElement;

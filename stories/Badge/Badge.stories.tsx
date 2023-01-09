@@ -1,17 +1,33 @@
 export default {
   title: "Examples/Badge",
   argTypes: {
-    variant: {
-      control: { type: "select" },
-      options: [null, "solid", "dotted"],
-    },
     size: {
       control: { type: "select" },
       options: [null, "small", "large"],
     },
-    intent: {
+    variant: {
       control: { type: "select" },
-      options: [null, "major", "minor", "positive", "alertive", "negative"],
+      options: [null, "solid", "dotted"],
+    },
+    color: {
+      control: { type: "select" },
+      options: [
+        null,
+        "red",
+        "magenta",
+        "purple",
+        "indigo",
+        "navy",
+        "blue",
+        "cyan",
+        "teal",
+        "green",
+        "lime",
+        "yellow",
+        "orange",
+        "brown",
+        "gray",
+      ],
     },
     round: {
       control: { type: "boolean" },
@@ -37,7 +53,7 @@ export default {
     invisible: {
       control: { type: "boolean" },
     },
-    placement: {
+    position: {
       control: { type: "select" },
       options: ["top-start", "top-end", "bottom-start", "bottom-end"],
     },
@@ -51,6 +67,6 @@ export { default as Positions } from "./Positions";
 export { default as Offset } from "./Offset";
 export { default as Outlined } from "./Outlined";
 export { default as Sizes } from "./Sizes";
-export { default as Intents } from "./Intents";
+export { default as Colors } from "./Colors";
 export { default as Solid } from "./Solid";
 export { default as Dotted } from "./Dotted";

@@ -8,35 +8,9 @@
     @include transition(fast, transform, opacity);
   }
 
-  & > .#{$cls-prefix}badge-switcher {
-    & > .#{$cls-prefix}tag {
-      font-family: var(--font-family-mono);
-
-      &.#{$cls-prefix}quadrate {
-        & > .#{$cls-prefix}tag-content {
-          width: var(--line-height-fixed-base);
-          padding: 0;
-        }
-
-        &.#{$cls-prefix}small {
-          & > .#{$cls-prefix}tag-content {
-            width: var(--line-height-fixed-small);
-          }
-        }
-
-        &.#{$cls-prefix}large {
-          & > .#{$cls-prefix}tag-content {
-            width: var(--line-height-fixed-large);
-          }
-        }
-      }
-    }
-  }
-
   &.#{$cls-prefix}outlined {
     & > .#{$cls-prefix}badge-switcher {
-      & > .#{$cls-prefix}dot,
-      & > .#{$cls-prefix}tag {
+      & > * {
         box-shadow: 0 0 0 2px var(--bg-color-page);
       }
     }

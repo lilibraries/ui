@@ -10,7 +10,7 @@ const block = {
 
 function Basic(props: BadgeProps) {
   return (
-    <Badge count={9} {...props}>
+    <Badge count={6} {...props}>
       <div style={block} />
     </Badge>
   );

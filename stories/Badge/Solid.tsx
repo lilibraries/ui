@@ -10,23 +10,50 @@ const block = {
 
 function Solid(props: BadgeProps) {
   return (
-    <Flexbox gap="8x" align="center">
-      <Badge count={9} outlined {...props} variant="solid" intent={null}>
+    <Flexbox gap="8x" align="center" wrap>
+      <Badge count={6} outlined {...props} variant="solid" color="red">
         <div style={block} />
       </Badge>
-      <Badge count={9} outlined {...props} variant="solid" intent="major">
+      <Badge count={6} outlined {...props} variant="solid" color="magenta">
         <div style={block} />
       </Badge>
-      <Badge count={9} outlined {...props} variant="solid" intent="minor">
+      <Badge count={6} outlined {...props} variant="solid" color="purple">
         <div style={block} />
       </Badge>
-      <Badge count={9} outlined {...props} variant="solid" intent="positive">
+      <Badge count={6} outlined {...props} variant="solid" color="indigo">
         <div style={block} />
       </Badge>
-      <Badge count={9} outlined {...props} variant="solid" intent="alertive">
+      <Badge count={6} outlined {...props} variant="solid" color="navy">
         <div style={block} />
       </Badge>
-      <Badge count={9} outlined {...props} variant="solid" intent="negative">
+      <Badge count={6} outlined {...props} variant="solid" color="blue">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="cyan">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="teal">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="green">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="lime">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="yellow">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="orange">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="brown">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color="gray">
+        <div style={block} />
+      </Badge>
+      <Badge count={6} outlined {...props} variant="solid" color={null}>
         <div style={block} />
       </Badge>
     </Flexbox>
