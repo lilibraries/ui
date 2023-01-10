@@ -41,10 +41,10 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
     name: nameProp,
     value,
     size: sizeProp,
-    loading,
-    loadingIcon,
-    loadingDelay,
-    disabled,
+    loading: loadingProp,
+    loadingIcon: loadingIconProp,
+    loadingDelay: loadingDelayProp,
+    disabled: disabledProp,
     checked: checkedProp,
     defaultChecked,
     onChange,
@@ -57,40 +57,50 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
 
+  const { icon: loadingIcon, delay: loadingDelay } = Spinner.Config.useConfig({
+    icon: loadingIconProp,
+    delay: loadingDelayProp,
+  });
+
   const {
     name,
-    value: configValue,
-    onChange: onConfigChange,
+    value: groupValue,
+    loading,
+    disabled,
+    controlled: isGroupControlled,
+    onChange: onGroupChange,
   } = RadioConfig.useConfig({
     name: nameProp,
+    loading: loadingProp,
+    disabled: disabledProp,
   });
 
   const [checked, setChecked] = useState(
-    configValue !== undefined && value !== undefined
-      ? configValue === value
+    isGroupControlled && "value" in props
+      ? groupValue === value
       : "checked" in props
       ? !!checkedProp
       : !!defaultChecked
   );
 
-  useUpdate(() => {
-    if (configValue !== undefined && value !== undefined) {
-      setChecked(configValue === value);
-    } else if (checkedProp != null) {
-      setChecked(!!checkedProp);
-    }
-  }, [checkedProp, configValue, value]);
+  // useUpdate(() => {
+  //   if (configValue !== undefined && value !== undefined) {
+  //     setChecked(configValue === value);
+  //   } else if (checkedProp != null) {
+  //     setChecked(!!checkedProp);
+  //   }
+  // }, [checkedProp, configValue, value]);
 
   const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
-    if ((configValue == null || value == null) && checkedProp == null) {
-      setChecked(event.target.checked);
-    }
-    if (onChange) {
-      onChange(event);
-    }
-    if (onConfigChange) {
-      onConfigChange(event);
-    }
+    // if ((configValue == null || value == null) && checkedProp == null) {
+    //   setChecked(event.target.checked);
+    // }
+    // if (onChange) {
+    //   onChange(event);
+    // }
+    // if (onConfigChange) {
+    //   onConfigChange(event);
+    // }
   });
 
   const classes = cn(
@@ -109,9 +119,10 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
     <label {...rest} ref={ref} className={classes}>
       <input
         {...inputProps}
-        name={name}
         ref={inputRef}
-        type="checkbox"
+        type="radio"
+        name={name}
+        value={value}
         checked={checked}
         disabled={disabled || loading}
         onChange={handleChange}
