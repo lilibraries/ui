@@ -13,7 +13,7 @@
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
-  line-height: var(--line-height-base);
+  line-height: var(--line-height-fixed-base);
   text-decoration: none;
   vertical-align: baseline;
   background: none;
@@ -93,6 +93,7 @@
   &.#{$cls-prefix}small {
     height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
+    line-height: var(--line-height-fixed-small);
 
     & > .#{$cls-prefix}tag-clear {
       width: calc(var(--line-height-fixed-small) - 4px);
@@ -103,6 +104,7 @@
   &.#{$cls-prefix}large {
     height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
+    line-height: var(--line-height-fixed-large);
 
     & > .#{$cls-prefix}tag-clear {
       width: calc(var(--line-height-fixed-large) - 4px);

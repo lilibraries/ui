@@ -14,6 +14,9 @@ export default {
     uncheckedLabel: {
       control: { type: "text" },
     },
+    borderless: {
+      control: { type: "boolean" },
+    },
     loading: {
       control: { type: "boolean" },
     },
