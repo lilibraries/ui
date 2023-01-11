@@ -1,9 +1,9 @@
 import React from "react";
-import { Tag, TagProps } from "@lilib/ui";
+import { Tag, TagCommonProps } from "@lilib/ui";
 
-function Link(props: TagProps) {
+function Link(props: TagCommonProps) {
   return (
-    <Tag
+    <Tag<"a">
       {...props}
       as="a"
       rel="noreferrer"

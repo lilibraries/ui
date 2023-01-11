@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, ButtonProps, Flexbox } from "@lilib/ui";
+import { Button, ButtonCommonProps, Flexbox } from "@lilib/ui";
 import { FiLogOut, FiThumbsUp, FiFileText, FiArrowRight } from "react-icons/fi";
 
-function Round(props: ButtonProps) {
+function Round(props: ButtonCommonProps) {
   return (
     <Flexbox gap="2x" align="center">
       <Button {...props} round>

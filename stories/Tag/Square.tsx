@@ -1,7 +1,7 @@
 import React from "react";
-import { Flexbox, Tag, TagProps } from "@lilib/ui";
+import { Flexbox, Tag, TagCommonProps } from "@lilib/ui";
 
-function Square(props: TagProps) {
+function Square(props: TagCommonProps) {
   return (
     <Flexbox gap="2x" align="center">
       <Tag {...props} square>

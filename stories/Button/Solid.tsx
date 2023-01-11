@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
 
-function Solid(props: ButtonProps) {
+function Solid(props: ButtonCommonProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 

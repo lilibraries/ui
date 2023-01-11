@@ -10,11 +10,11 @@ export interface RadioConfigValue {
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-export interface RadioConfigValueProps extends RadioConfigValue {
+export interface RadioConfigProps extends RadioConfigValue {
   children: ReactNode;
 }
 
-const RadioConfig = createConfig<RadioConfigValue, RadioConfigValueProps>({}, [
+const RadioConfig = createConfig<RadioConfigValue, RadioConfigProps>({}, [
   "name",
   "value",
   "loading",

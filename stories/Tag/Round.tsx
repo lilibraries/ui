@@ -1,7 +1,7 @@
 import React from "react";
-import { Tag, TagProps } from "@lilib/ui";
+import { Tag, TagCommonProps } from "@lilib/ui";
 
-function Round(props: TagProps) {
+function Round(props: TagCommonProps) {
   return (
     <Tag
       {...props}

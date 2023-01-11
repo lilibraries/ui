@@ -6,10 +6,12 @@ import React, {
   ChangeEventHandler,
 } from "react";
 import { usePersist, useUpdate } from "@lilib/hooks";
+import Size, { SizeValue } from "../Size";
 import RadioConfig from "./RadioConfig";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
 
 export interface RadioGroupProps {
+  size?: SizeValue;
   name?: string;
   value?: string;
   defaultValue?: string;
@@ -22,6 +24,7 @@ export interface RadioGroupProps {
 
 const RadioGroup: FC<RadioGroupProps> = (props) => {
   const {
+    size: sizeProp,
     name,
     value: valueProp,
     defaultValue,
@@ -34,6 +37,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   } = props;
 
   const isControlled = "value" in props;
+  const size = Size.useConfig(sizeProp);
   const [value, setValue] = useState<string | undefined>(
     isControlled ? valueProp : defaultValue
   );
@@ -54,18 +58,20 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   });
 
   return (
-    <RadioConfig
-      name={name}
-      value={value}
-      loading={loading}
-      disabled={disabled}
-      controlled={isControlled}
-      onChange={handleChange}
-    >
-      <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
-        {children}
-      </SpinnerConfig>
-    </RadioConfig>
+    <Size value={size}>
+      <RadioConfig
+        name={name}
+        value={value}
+        loading={loading}
+        disabled={disabled}
+        controlled={true}
+        onChange={handleChange}
+      >
+        <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
+          {children}
+        </SpinnerConfig>
+      </RadioConfig>
+    </Size>
   );
 };
 

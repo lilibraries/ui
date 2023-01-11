@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, ButtonProps } from "@lilib/ui";
+import { Button, ButtonCommonProps } from "@lilib/ui";
 
-function Basic(props: ButtonProps) {
+function Basic(props: ButtonCommonProps) {
   return <Button {...props}>Button</Button>;
 }
 

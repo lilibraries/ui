@@ -7,6 +7,7 @@ import React, {
   createElement,
   ComponentProps,
   MouseEventHandler,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
@@ -35,14 +36,15 @@ export interface TagCommonProps {
 export type TagProps<C extends ElementType = "span"> = C extends "span"
   ? {
       as?: C;
-    } & TagCommonProps &
-      Omit<ComponentProps<C>, "color">
+    } & Omit<ComponentProps<C>, "color"> &
+      TagCommonProps
   : {
       as: C;
-    } & TagCommonProps &
-      Omit<ComponentProps<C>, "color">;
+    } & Omit<ComponentProps<C>, "color"> &
+      TagCommonProps;
 
-export interface TagComponent {
+export interface TagComponent
+  extends ForwardRefExoticComponent<TagCommonProps> {
   <C extends ElementType = "span">(props: TagProps<C>): ReactElement;
 }
 
