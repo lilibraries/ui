@@ -43,7 +43,7 @@ export default {
     loadingDelay: {
       control: { type: "number" },
     },
-    loadingPosition: {
+    loadingPlacement: {
       control: { type: "select" },
       options: [null, "start", "center", "end"],
     },

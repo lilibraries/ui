@@ -7,7 +7,7 @@ import { IntentValue } from "../types";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
 import ButtonConfig, {
   ButtonVariant,
-  ButtonLoadingPosition,
+  ButtonLoadingPlacement,
 } from "./ButtonConfig";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
@@ -24,7 +24,7 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
-  loadingPosition?: ButtonLoadingPosition;
+  loadingPlacement?: ButtonLoadingPlacement;
 }
 
 const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
@@ -45,7 +45,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       loading,
       loadingIcon,
       loadingDelay,
-      loadingPosition,
+      loadingPlacement,
       ...rest
     } = props;
 
@@ -79,7 +79,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
               disabled={disabled}
               iconOnly={iconOnly}
               loading={loading}
-              loadingPosition={loadingPosition}
+              loadingPlacement={loadingPlacement}
             >
               {children}
             </ButtonConfig>
