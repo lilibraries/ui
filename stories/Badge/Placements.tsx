@@ -8,23 +8,23 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Positions(props: BadgeProps) {
+function Placements(props: BadgeProps) {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={6} {...props} position="top-start">
+      <Badge count={6} {...props} placement="top-start">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} position="top-end">
+      <Badge count={6} {...props} placement="top-end">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} position="bottom-start">
+      <Badge count={6} {...props} placement="bottom-start">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} position="bottom-end">
+      <Badge count={6} {...props} placement="bottom-end">
         <div style={block} />
       </Badge>
     </Flexbox>
   );
 }
 
-export default Positions;
+export default Placements;

@@ -21,7 +21,7 @@ import { IntentValue } from "../types";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
-  ButtonLoadingPosition,
+  ButtonLoadingPlacement,
 } from "./ButtonConfig";
 import ButtonGroup from "./ButtonGroup";
 
@@ -44,7 +44,7 @@ export interface ButtonCommonProps {
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
-  loadingPosition?: ButtonLoadingPosition;
+  loadingPlacement?: ButtonLoadingPlacement;
 }
 
 export type ButtonProps<C extends ElementType = "button"> = C extends "button"
@@ -83,7 +83,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loading: loadingProp,
     loadingIcon: loadingIconProp,
     loadingDelay: loadingDelayProp,
-    loadingPosition: loadingPositionProp,
+    loadingPlacement: loadingPlacementProp,
     onClick,
     ...rest
   } = props;
@@ -108,7 +108,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     disabled,
     iconOnly,
     loading,
-    loadingPosition,
+    loadingPlacement,
   } = ButtonConfig.useConfig({
     variant: variantProp,
     intent: intentProp,
@@ -119,7 +119,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     disabled: disabledProp,
     iconOnly: iconOnlyProp,
     loading: loadingProp,
-    loadingPosition: loadingPositionProp,
+    loadingPlacement: loadingPlacementProp,
   });
 
   const hasStartIcon = isRenderableNode(startIcon);
@@ -130,10 +130,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   let loadingCenter = false;
 
   if (!iconOnly) {
-    if (loadingPosition) {
-      if (loadingPosition === "start") {
+    if (loadingPlacement) {
+      if (loadingPlacement === "start") {
         loadingStart = true;
-      } else if (loadingPosition === "end") {
+      } else if (loadingPlacement === "end") {
         loadingEnd = true;
       } else {
         loadingCenter = true;

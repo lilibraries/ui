@@ -3,7 +3,7 @@ import { IntentValue } from "../types";
 import createConfig from "../utils/createConfig";
 
 export type ButtonVariant = null | "solid" | "hollow";
-export type ButtonLoadingPosition = null | "start" | "center" | "end";
+export type ButtonLoadingPlacement = null | "start" | "center" | "end";
 
 export interface ButtonConfigValue {
   variant?: ButtonVariant;
@@ -15,7 +15,7 @@ export interface ButtonConfigValue {
   disabled?: boolean;
   iconOnly?: boolean;
   loading?: boolean;
-  loadingPosition?: ButtonLoadingPosition;
+  loadingPlacement?: ButtonLoadingPlacement;
 }
 
 export interface ButtonConfigProps extends ButtonConfigValue {
@@ -32,7 +32,7 @@ const ButtonConfig = createConfig<ButtonConfigValue, ButtonConfigProps>({}, [
   "disabled",
   "iconOnly",
   "loading",
-  "loadingPosition",
+  "loadingPlacement",
 ]);
 
 export default ButtonConfig;

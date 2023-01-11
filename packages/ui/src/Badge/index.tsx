@@ -19,7 +19,7 @@ import isRenderableNode from "../utils/isRenderableNode";
 
 export type BadgeVariant = null | "solid" | "dotted";
 
-export type BadgePosition =
+export type BadgePlacement =
   | "top-start"
   | "top-end"
   | "bottom-start"
@@ -38,8 +38,8 @@ export interface BadgeProps
   maxCount?: number;
   showZero?: boolean;
   invisible?: boolean;
-  position?: BadgePosition;
-  offset?: [number | string, number | string];
+  placement?: BadgePlacement;
+  offset?: number | string | [number | string, number | string];
 }
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
@@ -57,14 +57,15 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     maxCount,
     showZero,
     invisible,
-    position = "top-end",
-    offset = [0, 0],
+    placement = "top-end",
+    offset = 0,
     ...rest
   } = props;
 
   const solid = variant === "solid";
   const dotted = variant === "dotted";
   const contained = isRenderableNode(children);
+  const offsets = Array.isArray(offset) ? offset : ([offset, offset] as const);
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
@@ -129,21 +130,21 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   }
 
   if (contained) {
-    const [horizontal, vertical] = offset;
+    const [horizontal, vertical] = offsets;
 
-    if (position.includes("top")) {
+    if (placement.includes("top")) {
       style.top = vertical;
-    } else if (position.includes("bottom")) {
+    } else if (placement.includes("bottom")) {
       style.bottom = vertical;
     }
 
-    if (position.includes("start")) {
+    if (placement.includes("start")) {
       if (isRTL) {
         style.right = horizontal;
       } else {
         style.left = horizontal;
       }
-    } else if (position.includes("end")) {
+    } else if (placement.includes("end")) {
       if (isRTL) {
         style.left = horizontal;
       } else {
@@ -169,7 +170,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
         <span
           style={style}
           className={cn(`${cls}badge-switcher`, {
-            [`${cls}badge-switcher-${position}`]: isString(position),
+            [`${cls}badge-switcher-${placement}`]: isString(placement),
           })}
         >
           {tag}
