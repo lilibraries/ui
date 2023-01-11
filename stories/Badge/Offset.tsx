@@ -10,7 +10,7 @@ const block = {
 
 function Offset(props: BadgeProps) {
   return (
-    <Badge count={6} round {...props} offset={["14.64%", "14.64%"]}>
+    <Badge count={6} round {...props} offset="14.64%">
       <div style={block} />
     </Badge>
   );
