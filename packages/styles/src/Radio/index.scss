@@ -1,0 +1,125 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-base);
+  vertical-align: -0.125em;
+  cursor: pointer;
+
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    appearance: none;
+
+    &:focus + .#{$cls-prefix}spinner .#{$cls-prefix}radio-indicator {
+      @include focus-outline;
+    }
+  }
+
+  & > .#{$cls-prefix}spinner {
+    flex: 0 0 auto;
+  }
+
+  &-indicator {
+    position: relative;
+    box-sizing: border-box;
+    width: 1em;
+    height: 1em;
+    background-color: var(--bg-color-base);
+    border: 1px solid var(--border-color-deep-base);
+    border-radius: 50%;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-label {
+    flex: 1 1 auto;
+    margin-left: 0.5em;
+  }
+
+  &.#{$cls-prefix}small {
+    font-size: var(--font-size-small);
+  }
+
+  &.#{$cls-prefix}large {
+    font-size: var(--font-size-large);
+  }
+
+  &:hover {
+    & .#{$cls-prefix}radio-indicator {
+      background-color: var(--bg-color-hover);
+      border-color: var(--border-color-deep-hover);
+    }
+  }
+
+  &:active {
+    & .#{$cls-prefix}radio-indicator {
+      background-color: var(--bg-color-active);
+      border-color: var(--border-color-deep-active);
+    }
+  }
+
+  &.#{$cls-prefix}checked {
+    & .#{$cls-prefix}radio-indicator {
+      color: var(--text-color-solid-base);
+      background-color: var(--bg-color-solid-major-base);
+      border-color: var(--border-color-solid-major-base);
+    }
+
+    &:hover {
+      & .#{$cls-prefix}radio-indicator {
+        color: var(--text-color-solid-hover);
+        background-color: var(--bg-color-solid-major-hover);
+        border-color: var(--border-color-solid-major-hover);
+      }
+    }
+
+    &:active {
+      & .#{$cls-prefix}radio-indicator {
+        color: var(--text-color-solid-active);
+        background-color: var(--bg-color-solid-major-active);
+        border-color: var(--border-color-solid-major-active);
+      }
+    }
+  }
+
+  &.#{$cls-prefix}loading {
+    cursor: auto;
+  }
+
+  &.#{$cls-prefix}disabled {
+    color: var(--text-color-disabled);
+    cursor: not-allowed;
+
+    & .#{$cls-prefix}radio-indicator {
+      background-color: var(--bg-color-inactive);
+      border-color: var(--border-color-deep-inactive);
+    }
+
+    &.#{$cls-prefix}checked {
+      & .#{$cls-prefix}radio-indicator {
+        color: var(--text-color-solid-disabled);
+        background-color: var(--bg-color-solid-major-disabled);
+        border-color: var(--border-color-solid-major-disabled);
+      }
+    }
+  }
+}
+
+.#{$cls-prefix}radio.#{$cls-prefix}rtl {
+  & .#{$cls-prefix}radio-label {
+    margin-right: 0.5em;
+    margin-left: 0;
+  }
+}

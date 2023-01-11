@@ -41,7 +41,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    transform: scale(0.8);
+    transform: scale(0.75);
   }
 
   &-label {
@@ -75,14 +75,14 @@
     & .#{$cls-prefix}checkbox-indicator {
       color: var(--text-color-solid-base);
       background-color: var(--bg-color-solid-major-base);
-      border-color: var(--bg-color-solid-major-base);
+      border-color: var(--border-color-solid-major-base);
     }
 
     &:hover {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-hover);
         background-color: var(--bg-color-solid-major-hover);
-        border-color: var(--bg-color-solid-major-hover);
+        border-color: var(--border-color-solid-major-hover);
       }
     }
 
@@ -90,7 +90,7 @@
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-active);
         background-color: var(--bg-color-solid-major-active);
-        border-color: var(--bg-color-solid-major-active);
+        border-color: var(--border-color-solid-major-active);
       }
     }
   }
@@ -112,7 +112,7 @@
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-disabled);
         background-color: var(--bg-color-solid-major-disabled);
-        border-color: var(--bg-color-solid-major-disabled);
+        border-color: var(--border-color-solid-major-disabled);
       }
     }
   }

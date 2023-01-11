@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Flexbox, Tag, TagProps, Switch } from "@lilib/ui";
+import { Flexbox, Tag, TagCommonProps, Switch } from "@lilib/ui";
 
-function Colors(props: TagProps) {
+function Colors(props: TagCommonProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 

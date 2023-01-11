@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
 
-function Hollow(props: ButtonProps) {
+function Hollow(props: ButtonCommonProps) {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 

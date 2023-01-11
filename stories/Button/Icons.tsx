@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonProps, Flexbox } from "@lilib/ui";
+import { Button, ButtonCommonProps, Flexbox } from "@lilib/ui";
 import {
   FiStar,
   FiHeart,
@@ -9,7 +9,7 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 
-function Icons(props: ButtonProps) {
+function Icons(props: ButtonCommonProps) {
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
       <Flexbox gap="2x" align="center">

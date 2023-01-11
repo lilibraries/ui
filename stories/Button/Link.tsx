@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, ButtonProps } from "@lilib/ui";
+import { Button, ButtonCommonProps } from "@lilib/ui";
 
-function Link(props: ButtonProps) {
+function Link(props: ButtonCommonProps) {
   return (
-    <Button
+    <Button<"a">
       {...props}
       as="a"
       rel="noreferrer noopener"

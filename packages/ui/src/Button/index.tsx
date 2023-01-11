@@ -7,6 +7,7 @@ import React, {
   createElement,
   ComponentProps,
   isValidElement,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import Icon from "../Icon";
@@ -49,14 +50,15 @@ export interface ButtonCommonProps {
 export type ButtonProps<C extends ElementType = "button"> = C extends "button"
   ? {
       as?: C;
-    } & ButtonCommonProps &
-      ComponentProps<C>
+    } & ComponentProps<C> &
+      ButtonCommonProps
   : {
       as: C;
-    } & ButtonCommonProps &
-      ComponentProps<C>;
+    } & ComponentProps<C> &
+      ButtonCommonProps;
 
-export interface ButtonComponent {
+export interface ButtonComponent
+  extends ForwardRefExoticComponent<ButtonCommonProps> {
   <C extends ElementType = "button">(props: ButtonProps<C>): ReactElement;
   Group: typeof ButtonGroup;
 }

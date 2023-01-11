@@ -1,0 +1,52 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Forms/Radio" />
+
+# Radio
+
+Based on `<input type="radio" />`.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-radio--basic" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-radio--sizes" />
+</Canvas>
+
+### Loading
+
+<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
+  <Story id="examples-radio--loading" />
+</Canvas>
+
+### Disabled
+
+<Canvas mdxSource={require("!!raw-loader!./Disabled").default}>
+  <Story id="examples-radio--disabled" />
+</Canvas>
+
+## Props
+
+| Property         | Type                                    | Description                              |
+| ---------------- | --------------------------------------- | ---------------------------------------- |
+| `children`       | `ReactNode`                             | Radio label                              |
+| `size`           | `null` \| `"small"` \| `"large"`        | Size                                     |
+| `loading`        | `boolean`                               | Show spinner                             |
+| `loadingIcon`    | `ReactNode`                             | Custom spinner icon                      |
+| `loadingDelay`   | `number`                                | Loading delay time, in milliseconds      |
+| `disabled`       | `boolean`                               | Disable change event                     |
+| `value`          | `string`                                | Radio value. **Required** in Radio.Group |
+| `checked`        | `boolean`                               | Controlled checked                       |
+| `defaultChecked` | `boolean`                               | Uncontrolled checked                     |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement>`  | Change event                             |
+| `inputRef`       | `Ref<HTMLInputElement>`                 | Ref to internal input element            |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props                     |
+
+It accepts all props which the native `<label>` element supports.

@@ -29,11 +29,12 @@ export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   loading?: boolean;
 }
 
-export type LoaderComponent = ForwardRefExoticComponent<
-  PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>
-> & {
+export interface LoaderComponent
+  extends ForwardRefExoticComponent<
+    PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>
+  > {
   Config: typeof LoaderConfig;
-};
+}
 
 const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const {

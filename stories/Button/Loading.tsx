@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
 import {
   FiStar,
   FiHeart,
@@ -9,7 +9,7 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 
-function Loading(props: ButtonProps) {
+function Loading(props: ButtonCommonProps) {
   const [loading, setLoading] = useState(true);
 
   return (

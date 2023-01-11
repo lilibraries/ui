@@ -30,11 +30,12 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   endSpace?: boolean | number | string;
 }
 
-export type SpinnerComponent = ForwardRefExoticComponent<
-  PropsWithoutRef<SpinnerProps> & RefAttributes<HTMLSpanElement>
-> & {
+export interface SpinnerComponent
+  extends ForwardRefExoticComponent<
+    PropsWithoutRef<SpinnerProps> & RefAttributes<HTMLSpanElement>
+  > {
   Config: typeof SpinnerConfig;
-};
+}
 
 const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   const {
