@@ -5,15 +5,15 @@ export default {
       control: { type: "select" },
       options: ["click", "hover", "focus", "contextmenu"],
     },
-    shift: {
+    offset: {
       control: { type: "number" },
     },
-    offset: {
+    arrowPadding: {
       control: { type: "number" },
     },
     strategy: {
       control: { type: "select" },
-      options: ["absolute", "fixed"],
+      options: ["fixed", "absolute"],
     },
     placement: {
       control: { type: "select" },
@@ -79,4 +79,4 @@ export { default as HoverMove } from "./HoverMove";
 export { default as Placements } from "./Placements";
 export { default as Nested } from "./Nested";
 export { default as Inline } from "./Inline";
-export { default as VirtualElement } from "./VirtualElement";
+export { default as TextSelection } from "./TextSelection";

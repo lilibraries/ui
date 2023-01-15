@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useEventListener, useTimeout } from "@lilib/hooks";
-import { Popper, PopperProps, PopperVirtualElement } from "@lilib/ui";
+import { PopperProps, PopperVirtualElement } from "@lilib/ui";
+import BasicPopper from "./Basic";
 
-function VirtualElement(props: PopperProps) {
+function TextSelection(props: PopperProps) {
   const [open, setOpen] = useState(false);
   const rangeRef = useRef<Range>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,41 +36,29 @@ function VirtualElement(props: PopperProps) {
     },
   };
 
-  const tooltip = (
-    <div
-      style={{
-        padding: 16,
-        borderRadius: 4,
-        color: "#fff",
-        backgroundColor: "#666",
-        boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-      }}
-    >
-      This is a tip message.
-    </div>
-  );
-
   return (
     <>
-      <div
-        ref={containerRef}
-        style={{ maxWidth: 400, margin: "0 auto", textAlign: "center" }}
-      >
-        React is a free and open-source front-end JavaScript library for
-        building user interfaces or UI components.
+      <div ref={containerRef}>
+        React (also known as React.js or ReactJS) is a free and open-source
+        front-end JavaScript library for building user interfaces or UI
+        components. It is maintained by Facebook and a community of individual
+        developers and companies. React can be used as a base in the development
+        of single-page or mobile applications. However, React is only concerned
+        with state management and rendering that state to the DOM, so creating
+        React applications usually requires the use of additional libraries for
+        routing, as well as certain client-side functionality.
       </div>
 
-      <Popper
+      <BasicPopper
         {...props}
         open={open}
         placement="top"
         onClose={() => setOpen(false)}
-        content={tooltip}
       >
         {() => virtualElement}
-      </Popper>
+      </BasicPopper>
     </>
   );
 }
 
-export default VirtualElement;
+export default TextSelection;

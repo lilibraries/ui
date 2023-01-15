@@ -1,34 +1,24 @@
 import React from "react";
-import { Popper, PopperProps } from "@lilib/ui";
+import { PopperProps } from "@lilib/ui";
+import BasicPopper from "./Basic";
 
 function Inline(props: PopperProps) {
-  const tooltip = (
-    <div
-      style={{
-        padding: 16,
-        borderRadius: 4,
-        color: "#fff",
-        backgroundColor: "#666",
-        boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-      }}
-    >
-      This is a tip message.
-    </div>
-  );
-
   return (
-    <div style={{ maxWidth: 400, margin: "0 auto", textAlign: "center" }}>
-      React is a free and{" "}
-      <Popper
-        {...props}
-        on="hover"
-        placement="top-start"
-        content={tooltip}
-        style={{ zIndex: 1000 }}
-      >
-        <a href="https://js.org/">open-source front-end JavaScript library</a>
-      </Popper>{" "}
-      for building user interfaces or UI components.
+    <div>
+      React (also known as React.js or ReactJS) is a free and open-source
+      front-end JavaScript library for building user interfaces or UI
+      components. It is maintained by Facebook and a community of individual
+      developers and companies.{" "}
+      <BasicPopper {...props} on="hover">
+        <a href="https://reactjs.org/" rel="noreferrer noopener">
+          React can be used as a base in the development of single-page or
+          mobile applications.
+        </a>
+      </BasicPopper>{" "}
+      However, React is only concerned with state management and rendering that
+      state to the DOM, so creating React applications usually requires the use
+      of additional libraries for routing, as well as certain client-side
+      functionality.
     </div>
   );
 }

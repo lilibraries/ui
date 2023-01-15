@@ -1,44 +1,28 @@
-import React from "react";
-import { Popper, PopperProps } from "@lilib/ui";
+import React, { CSSProperties } from "react";
+import { PopperProps } from "@lilib/ui";
+import BasicPopper from "./Basic";
+
+const contentStyle: CSSProperties = {
+  height: 100,
+  lineHeight: "100px",
+  borderRadius: 8,
+  textAlign: "center",
+  border: "1px solid rgba(128, 128, 128, 0.3)",
+};
 
 function HoverMove(props: PopperProps) {
-  const tooltip = (
-    <div
-      style={{
-        padding: 16,
-        borderRadius: 4,
-        color: "#fff",
-        backgroundColor: "#666",
-        boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-      }}
-    >
-      This is a tip message.
-    </div>
-  );
-
   return (
-    <div style={{ textAlign: "center" }}>
-      <Popper
-        {...props}
-        on="hover"
-        followPoint
-        offset={20}
-        placement="bottom-start"
-        content={tooltip}
-        style={{ zIndex: 1000 }}
-      >
-        <div
-          style={{
-            height: 100,
-            lineHeight: "100px",
-            borderRadius: 4,
-            border: "1px solid rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          Hover Move
-        </div>
-      </Popper>
-    </div>
+    <BasicPopper
+      {...props}
+      on="hover"
+      followPoint
+      offset={[20, 20]}
+      hoverEnterDelay={0}
+      hoverLeaveDelay={0}
+      placement="bottom-start"
+    >
+      <div style={contentStyle}>Hover Move</div>
+    </BasicPopper>
   );
 }
 
