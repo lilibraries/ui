@@ -16,7 +16,6 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import {
-  Side,
   Strategy,
   Placement,
   autoUpdate,
@@ -24,12 +23,11 @@ import {
   computePosition,
   ReferenceElement,
   flip as flipMiddleware,
-  shift as shiftMiddleware,
   arrow as arrowMiddleware,
   inline as inlineMiddleware,
   offset as offsetMiddleware,
 } from "@floating-ui/dom";
-import isNumber from "lodash/isNumber";
+import isBoolean from "lodash/isBoolean";
 import isFunction from "lodash/isFunction";
 import {
   useUpdate,
@@ -41,6 +39,7 @@ import {
   useComposedRef,
   useClickOutside,
   useEventListener,
+  useMemoizedValue,
   useIsomorphicLayoutEffect,
 } from "@lilib/hooks";
 import { inBrowser, composeRefs, EffectTarget } from "@lilib/utils";
@@ -52,7 +51,6 @@ import RenderAfterMount from "../utils/RenderAfterMount";
 export * from "./PopperConfig";
 
 export type PopperEvent = "click" | "hover" | "focus" | "contextmenu";
-export type PopperSide = Side;
 export type PopperStrategy = Strategy;
 export type PopperPlacement = Placement;
 export type PopperVirtualElement = VirtualElement;
@@ -71,9 +69,9 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactElement | (() => PopperVirtualElement);
   arrow?: ReactElement;
   container?: EffectTarget<HTMLElement>;
-  on?: PopperEvent;
-  shift?: number;
-  offset?: number;
+  on?: PopperEvent | PopperEvent[];
+  offset?: number | [number, number];
+  arrowPadding?: number;
   strategy?: PopperStrategy;
   placement?: PopperPlacement;
   open?: boolean;
@@ -108,8 +106,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     arrow,
     container: containerProp,
     on = "click",
-    shift,
     offset,
+    arrowPadding,
     strategy = "fixed",
     placement = "bottom",
     open: openProp,
@@ -131,10 +129,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     ...rest
   } = props;
 
-  const isClick = on === "click";
-  const isHover = on === "hover";
-  const isFocus = on === "focus";
-  const isContextMenu = on === "contextmenu";
+  const events = Array.isArray(on) ? on : [on];
+  const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
   const { container } = PopperConfig.useConfig({ container: containerProp });
 
   const isControlled = "open" in props;
@@ -145,7 +141,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const toggle = (value?: boolean) => {
     let newOpen: boolean;
-    if (value !== undefined) {
+    if (isBoolean(value)) {
       newOpen = value;
     } else {
       newOpen = !open;
@@ -187,22 +183,14 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     hoverLeaveDelay
   );
 
-  const [startBlurHideTimer, cancelBlurHideTimer] = useTimeout(toggleOff, 0);
-  const [preventBlurHideTimer, cancelPreventBlurTimer] = useTimeout(
-    cancelBlurHideTimer,
-    0
-  );
-
-  function cancelTimers() {
+  const cancelTimers = () => {
     cancelShowTimer();
     cancelHideTimer();
     cancelHoverEnterTimer();
     cancelHoverLeaveTimer();
-    cancelBlurHideTimer();
-    cancelPreventBlurTimer();
-  }
+  };
 
-  function changeState(open: boolean) {
+  const changeState = (open: boolean) => {
     cancelTimers();
     if (open) {
       if (delayOnOpen) {
@@ -217,7 +205,116 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         setState({ open: false, show: false });
       }
     }
-  }
+  };
+
+  const mountedRef = useMountedRef();
+  const arrowRef = useRef<HTMLElement>(null);
+  const anchorRef = useRef<Element>(null);
+  const popperRef = useRef<HTMLDivElement>(null);
+  const pointerRef = useRef<PopperVirtualElement>();
+  const createdPopperRef = useRef(false);
+  const composedPopperRef = useComposedRef(popperRef, ref);
+  const autoUpdateCleanupRef = useRef<() => void>();
+
+  const updatePosition = usePersist(() => {
+    let inline = false;
+    let refrence: ReferenceElement | undefined;
+
+    if (isFunction(children)) {
+      refrence = children();
+    } else if (pointerRef.current) {
+      refrence = pointerRef.current;
+    } else if (anchorRef.current) {
+      inline = true;
+      refrence = anchorRef.current;
+    }
+
+    if (refrence && popperRef.current) {
+      let mainAxisOffset: number | undefined;
+      let crossAxisOffset: number | undefined;
+
+      if (offset != null) {
+        [mainAxisOffset, crossAxisOffset] = offsets;
+      } else if (arrowRef.current) {
+        mainAxisOffset = Math.max(
+          arrowRef.current.offsetWidth,
+          arrowRef.current.offsetHeight
+        );
+      }
+
+      const middleware = [
+        offsetMiddleware({
+          mainAxis: mainAxisOffset || 0,
+          crossAxis: crossAxisOffset || 0,
+        }),
+        flipMiddleware(),
+      ];
+      if (inline) {
+        middleware.unshift(inlineMiddleware());
+      }
+      if (arrowRef.current) {
+        middleware.push(
+          arrowMiddleware({ element: arrowRef.current, padding: arrowPadding })
+        );
+      }
+
+      computePosition(refrence, popperRef.current, {
+        strategy,
+        placement,
+        middleware,
+      }).then(({ x, y, strategy, placement, middlewareData: { arrow } }) => {
+        if (mountedRef.current && onUpdate) {
+          onUpdate({
+            x,
+            y,
+            arrowX: arrow?.x,
+            arrowY: arrow?.y,
+            strategy,
+            placement,
+          });
+        }
+      });
+    }
+  });
+
+  const updatePointer = (event: MouseEvent) => {
+    if (followPoint) {
+      pointerRef.current = {
+        getBoundingClientRect() {
+          return {
+            width: 0,
+            height: 0,
+            x: event.clientX,
+            y: event.clientY,
+            top: event.clientY,
+            left: event.clientX,
+            right: event.clientX,
+            bottom: event.clientY,
+          };
+        },
+      };
+    }
+  };
+
+  const setAutoUpdate = () => {
+    if (!autoUpdateCleanupRef.current) {
+      if (inBrowser && anchorRef.current && popperRef.current) {
+        autoUpdateCleanupRef.current = autoUpdate(
+          anchorRef.current,
+          popperRef.current,
+          updatePosition,
+          { elementResize: !!window.ResizeObserver }
+        );
+      }
+    }
+  };
+
+  const clearAutoUpdate = () => {
+    if (autoUpdateCleanupRef.current) {
+      autoUpdateCleanupRef.current();
+      autoUpdateCleanupRef.current = undefined;
+    }
+  };
 
   useEffect(
     () => {
@@ -237,108 +334,20 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   }, [openProp]);
 
-  const mountedRef = useMountedRef();
-  const arrowRef = useRef<HTMLElement>(null);
-  const anchorRef = useRef<Element>(null);
-  const popperRef = useRef<HTMLDivElement>(null);
-  const pointerRef = useRef<PopperVirtualElement>();
-  const createPopperRef = useRef(false);
-  const composedPopperRef = useComposedRef(popperRef, ref);
-  const autoUpdateCleanupRef = useRef<() => void>();
-
-  const update = usePersist(() => {
-    let inline = false;
-    let refrence: ReferenceElement | undefined;
-
-    if (isFunction(children)) {
-      refrence = children();
-    } else if (pointerRef.current) {
-      refrence = pointerRef.current;
-    } else if (anchorRef.current) {
-      inline = true;
-      refrence = anchorRef.current;
-    }
-
-    if (refrence && popperRef.current) {
-      let offsetValue: number | undefined;
-
-      if (isNumber(offset)) {
-        offsetValue = offset;
-      } else if (arrowRef.current) {
-        offsetValue = Math.max(
-          arrowRef.current.offsetWidth,
-          arrowRef.current.offsetHeight
-        );
-      }
-
-      const middleware = [
-        offsetMiddleware(offsetValue),
-        flipMiddleware(),
-        shiftMiddleware({ padding: shift }),
-      ];
-
-      if (inline) {
-        middleware.unshift(inlineMiddleware());
-      }
-      if (arrowRef.current) {
-        middleware.push(arrowMiddleware({ element: arrowRef.current }));
-      }
-
-      computePosition(refrence, popperRef.current, {
-        strategy,
-        placement,
-        middleware,
-      }).then(({ x, y, strategy, placement, middlewareData: { arrow } }) => {
-        if (popperRef.current) {
-          Object.assign(popperRef.current.style, {
-            transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
-          });
-        }
-        if (mountedRef.current && onUpdate) {
-          onUpdate({
-            x,
-            y,
-            arrowX: arrow?.x,
-            arrowY: arrow?.y,
-            strategy,
-            placement,
-          });
-        }
-      });
-    }
-  });
-
-  function setAutoUpdate() {
-    if (!autoUpdateCleanupRef.current) {
-      if (inBrowser && anchorRef.current && popperRef.current) {
-        autoUpdateCleanupRef.current = autoUpdate(
-          anchorRef.current,
-          popperRef.current,
-          update,
-          { elementResize: !!window.ResizeObserver }
-        );
-      }
-    }
-  }
-
-  function clearAutoUpdate() {
-    if (autoUpdateCleanupRef.current) {
-      autoUpdateCleanupRef.current();
-      autoUpdateCleanupRef.current = undefined;
-    }
-  }
-
   useIsomorphicLayoutEffect(
     () => {
       if (show) {
-        update();
-        setAutoUpdate();
-        createPopperRef.current = true;
+        if (anchorRef.current && popperRef.current) {
+          setAutoUpdate();
+        } else {
+          updatePosition();
+        }
+        createdPopperRef.current = true;
       } else {
         clearAutoUpdate();
         pointerRef.current = undefined;
         if (unmountOnClose) {
-          createPopperRef.current = false;
+          createdPopperRef.current = false;
         }
       }
     },
@@ -347,51 +356,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   useUpdate(() => {
     if (show) {
-      update();
+      updatePosition();
     }
-  }, [shift, offset, strategy, placement, ...updateDeps]);
+  }, [offsets, strategy, placement, ...updateDeps]);
 
   useUnmount(clearAutoUpdate);
-
-  function updatePointer(event: MouseEvent) {
-    if (followPoint) {
-      pointerRef.current = {
-        getBoundingClientRect() {
-          return {
-            width: 0,
-            height: 0,
-            x: event.clientX,
-            y: event.clientY,
-            top: event.clientY,
-            left: event.clientX,
-            right: event.clientX,
-            bottom: event.clientY,
-          };
-        },
-      };
-      if (show) {
-        update();
-      }
-    }
-  }
-
-  const hoverShow = () => {
-    cancelTimers();
-    if (delayOnHoverEnter) {
-      startHoverEnterTimer();
-    } else {
-      toggleOn();
-    }
-  };
-
-  const hoverHide = () => {
-    cancelTimers();
-    if (delayOnHoverLeave) {
-      startHoverLeaveTimer();
-    } else {
-      toggleOff();
-    }
-  };
 
   let rawAnchorBlur: any;
   let rawAnchorFocus: any;
@@ -416,16 +385,43 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const rawPopperMouseLeave = rest.onMouseLeave;
   const rawPopperTouchStart = rest.onTouchStart;
 
+  const isClick = events.includes("click");
+  const isHover = events.includes("hover");
+  const isFocus = events.includes("focus");
+  const isContextMenu = events.includes("contextmenu");
+
+  const isClickClose = useRef(false);
+  const isHoverClose = useRef(false);
+  const isBlurClose = useRef(false);
+
+  useUpdate(() => {
+    if (!open) {
+      isClickClose.current = false;
+      isHoverClose.current = false;
+      isBlurClose.current = false;
+    }
+  }, [open]);
+
   const handleAnchorClick = usePersist((event: MouseEvent) => {
     if (rawAnchorClick) {
       rawAnchorClick(event);
     }
-    if (isClick) {
+    if (isClick && show && followPoint) {
       updatePointer(event);
-      toggle();
+      updatePosition();
     }
-    if (isContextMenu) {
+    if (!open && isClick) {
+      updatePointer(event);
+      toggleOn();
+    }
+    if (open && isClickClose.current) {
       toggleOff();
+      isClickClose.current = false;
+    }
+    if (isClick) {
+      isClickClose.current = true;
+      isHoverClose.current = false;
+      isBlurClose.current = false;
     }
   });
 
@@ -433,9 +429,22 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorMouseEnter) {
       rawAnchorMouseEnter(event);
     }
-    if (isHover) {
+    if (isHover && !isClickClose.current) {
       updatePointer(event);
-      hoverShow();
+      if (show) {
+        updatePosition();
+      }
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
+      if (!open) {
+        if (delayOnHoverEnter) {
+          startHoverEnterTimer();
+        } else {
+          toggleOn();
+        }
+      }
+      isHoverClose.current = true;
+      isBlurClose.current = false;
     }
   });
 
@@ -443,8 +452,17 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorMouseLeave) {
       rawAnchorMouseLeave(event);
     }
-    if (isHover) {
-      hoverHide();
+    if (isHover && isHoverClose.current) {
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
+      if (open) {
+        if (delayOnHoverLeave) {
+          startHoverLeaveTimer();
+        } else {
+          toggleOff();
+        }
+      }
+      isHoverClose.current = false;
     }
   });
 
@@ -452,8 +470,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorMouseMove) {
       rawAnchorMouseMove(event);
     }
-    if (isHover && followPoint) {
+    if (isHover && followPoint && isHoverClose.current) {
       updatePointer(event);
+      if (show) {
+        updatePosition();
+      }
     }
   });
 
@@ -462,9 +483,12 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       if (rawPopperMouseEnter) {
         rawPopperMouseEnter(event);
       }
-      if (isHover) {
-        cancelTimers();
+      if (isHover && !isClickClose.current) {
+        cancelHoverEnterTimer();
+        cancelHoverLeaveTimer();
         toggleOn();
+        isHoverClose.current = true;
+        isBlurClose.current = false;
       }
     }
   );
@@ -474,8 +498,17 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       if (rawPopperMouseLeave) {
         rawPopperMouseLeave(event);
       }
-      if (isHover) {
-        hoverHide();
+      if (isHover && isHoverClose.current) {
+        cancelHoverEnterTimer();
+        cancelHoverLeaveTimer();
+        if (open) {
+          if (delayOnHoverLeave) {
+            startHoverLeaveTimer();
+          } else {
+            toggleOff();
+          }
+        }
+        isHoverClose.current = false;
       }
     }
   );
@@ -484,8 +517,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorFocus) {
       rawAnchorFocus(event);
     }
-    if (isFocus) {
+    if (isFocus && !isClickClose.current && !isHoverClose.current) {
       toggleOn();
+      isBlurClose.current = true;
     }
   });
 
@@ -493,8 +527,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorBlur) {
       rawAnchorBlur(event);
     }
-    if (isFocus) {
-      startBlurHideTimer();
+    if (isFocus && isBlurClose.current) {
+      toggleOff();
+      isBlurClose.current = false;
     }
   });
 
@@ -505,7 +540,13 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
     if (isContextMenu) {
       updatePointer(event);
+      if (show) {
+        updatePosition();
+      }
       toggleOn();
+      isClickClose.current = true;
+      isHoverClose.current = false;
+      isBlurClose.current = false;
     }
   });
 
@@ -515,7 +556,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         rawPopperMouseDown(event);
       }
       if (isFocus) {
-        preventBlurHideTimer();
+        isBlurClose.current = false;
       }
     }
   );
@@ -526,7 +567,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         rawPopperTouchStart(event);
       }
       if (isFocus) {
-        preventBlurHideTimer();
+        isBlurClose.current = false;
       }
     }
   );
@@ -536,7 +577,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     "keydown",
     (event: KeyboardEvent) => {
       if (!event.repeat) {
-        if (event.key === "Esc" || event.key === "Escape") {
+        if (event.key === "Escape" || event.key === "Esc") {
           toggleOff();
         }
       }
@@ -550,7 +591,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   );
 
   useClickOutside(
-    closeOnDocumentClick && show ? [anchorRef, popperRef] : null,
+    closeOnDocumentClick && inBrowser && show ? [anchorRef, popperRef] : null,
     toggleOff
   );
 
@@ -559,7 +600,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     display = true;
   } else if (!mountedRef.current && mountOnInit) {
     display = true;
-  } else if (!unmountOnClose && createPopperRef.current) {
+  } else if (!unmountOnClose && createdPopperRef.current) {
     display = true;
   }
 
@@ -583,8 +624,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
             {...rest}
             ref={composedPopperRef}
             style={{
-              top: 0,
-              left: 0,
               ...rest.style,
               display: show ? rest.style?.display : "none",
               position: strategy === "fixed" ? "fixed" : "absolute",

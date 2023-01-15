@@ -1,134 +1,73 @@
 import React from "react";
-import { Button, Popper, PopperProps } from "@lilib/ui";
+import { Button, Flexbox, PopperProps } from "@lilib/ui";
+import ArrowPopper from "./Arrow";
+
+const content = (
+  <div>
+    <strong>Tooltip</strong>
+    <div>This is a tooltip message.</div>
+  </div>
+);
 
 function Placements(props: PopperProps) {
-  const tooltip = (
-    <div
-      style={{
-        padding: 16,
-        borderRadius: 4,
-        color: "#fff",
-        backgroundColor: "#666",
-        boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-      }}
-    >
-      This is a tip message.
-    </div>
-  );
-
   return (
-    <div style={{ textAlign: "center" }}>
-      <Button.Group style={{ marginBottom: 16 }}>
-        <Popper
-          {...props}
-          placement="top-start"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>top-start</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="top"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>top</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="top-end"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>top-end</Button>
-        </Popper>
-      </Button.Group>
-      <br />
-
-      <Button.Group style={{ marginBottom: 16 }}>
-        <Popper
-          {...props}
-          placement="bottom-start"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>bottom-start</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="bottom"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>bottom</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="bottom-end"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
-          <Button>bottom-end</Button>
-        </Popper>
-      </Button.Group>
-      <br />
-
-      <Button.Group style={{ marginBottom: 16 }}>
-        <Popper
-          {...props}
-          placement="left-start"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+    <Flexbox fluid align="center" justify="center">
+      <Button.Group vertical>
+        <ArrowPopper {...props} placement="left-start" content={content}>
           <Button>left-start</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="left"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+        </ArrowPopper>
+        <ArrowPopper {...props} placement="left" content={content}>
           <Button>left</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="left-end"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+        </ArrowPopper>
+        <ArrowPopper {...props} placement="left-end" content={content}>
           <Button>left-end</Button>
-        </Popper>
+        </ArrowPopper>
       </Button.Group>
-      <br />
 
-      <Button.Group>
-        <Popper
-          {...props}
-          placement="right-start"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+      <Flexbox direction="column">
+        <Button.Group fluid>
+          <ArrowPopper {...props} placement="top-start" content={content}>
+            <Button>top-start</Button>
+          </ArrowPopper>
+          <ArrowPopper {...props} placement="top" content={content}>
+            <Button>top</Button>
+          </ArrowPopper>
+          <ArrowPopper {...props} placement="top-end" content={content}>
+            <Button>top-end</Button>
+          </ArrowPopper>
+        </Button.Group>
+
+        <Button.Group vertical style={{ visibility: "hidden" }}>
+          <Button>left-start</Button>
+          <Button>left</Button>
+          <Button>left-end</Button>
+        </Button.Group>
+
+        <Button.Group fluid>
+          <ArrowPopper {...props} placement="bottom-start" content={content}>
+            <Button>bottom-start</Button>
+          </ArrowPopper>
+          <ArrowPopper {...props} placement="bottom" content={content}>
+            <Button>bottom</Button>
+          </ArrowPopper>
+          <ArrowPopper {...props} placement="bottom-end" content={content}>
+            <Button>bottom-end</Button>
+          </ArrowPopper>
+        </Button.Group>
+      </Flexbox>
+
+      <Button.Group vertical>
+        <ArrowPopper {...props} placement="right-start" content={content}>
           <Button>right-start</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="right"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+        </ArrowPopper>
+        <ArrowPopper {...props} placement="right" content={content}>
           <Button>right</Button>
-        </Popper>
-        <Popper
-          {...props}
-          placement="right-end"
-          content={tooltip}
-          style={{ zIndex: 1000 }}
-        >
+        </ArrowPopper>
+        <ArrowPopper {...props} placement="right-end" content={content}>
           <Button>right-end</Button>
-        </Popper>
+        </ArrowPopper>
       </Button.Group>
-    </div>
+    </Flexbox>
   );
 }
 

@@ -56,56 +56,77 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
   <Story id="examples-popper--inline" />
 </Canvas>
 
-### Virtual element
+### Text selection
 
-<Canvas mdxSource={require("!!raw-loader!./VirtualElement").default}>
-  <Story id="examples-popper--virtual-element" />
+<Canvas mdxSource={require("!!raw-loader!./TextSelection").default}>
+  <Story id="examples-popper--text-selection" />
 </Canvas>
 
 ## Props
 
-| Property               | Type                                                                                                                                                                                                                                   | Description                                                                                                                       |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `children`             | `ReactElement` &#124; `VirtualElement`                                                                                                                                                                                                 | A react element (must reference to a DOM element) or a virtual element                                                            |
-| `content`              | `ReactNode`                                                                                                                                                                                                                            | Popup content                                                                                                                     |
-| `arrow`                | `TargetCreator<HTMLElement>`                                                                                                                                                                                                           | Arrow element                                                                                                                     |
-| `container`            | `TargetCreator<HTMLElement>`                                                                                                                                                                                                           | Parent node of popup layer, default is `document.body`                                                                            |
-| `on`                   | `null` &#124; `"click"` &#124; `"hover"` &#124; `"focus"` &#124; `"contextmenu"`                                                                                                                                                       | Trigger event, default is `"click"`                                                                                               |
-| `strategy`             | `"absolute"` &#124; `"fixed"`                                                                                                                                                                                                          | Popup strategy, default is `"absolute"`                                                                                           |
-| `placement`            | `"top"` &#124; `"top-start"` &#124; `"top-end"` &#124; `"right"` &#124; `"right-start"` &#124; `"right-end"` &#124; `"bottom"` &#124; `"bottom-start"` &#124; `"bottom-end"` &#124; `"left"` &#124; `"left-start"` &#124; `"left-end"` | Popup placement, default is `"bottom"`                                                                                            |
-| `offset`               | `number`                                                                                                                                                                                                                               | Offset distance between popup layer and trigger element                                                                           |
-| `shift`                | `number`                                                                                                                                                                                                                               | Space between popup layer and document edge                                                                                       |
-| `open`                 | `boolean`                                                                                                                                                                                                                              | Show popup layer                                                                                                                  |
-| `defaultOpen`          | `boolean`                                                                                                                                                                                                                              | Uncontrolled open                                                                                                                 |
-| `delayOnOpen`          | `number`                                                                                                                                                                                                                               | Delay time on open, in milliseconds                                                                                               |
-| `delayOnClose`         | `number`                                                                                                                                                                                                                               | Delay time on close, in milliseconds                                                                                              |
-| `delayOnHoverEnter`    | `number`                                                                                                                                                                                                                               | Delay time on hover enter, in milliseconds, default is 100                                                                        |
-| `delayOnHoverLeave`    | `number`                                                                                                                                                                                                                               | Delay time on hover leave, in milliseconds, default is 100                                                                        |
-| `followPoint`          | `boolean`                                                                                                                                                                                                                              | The popup layer will follow the mouse point                                                                                       |
-| `initialMount`         | `boolean`                                                                                                                                                                                                                              | Mount on first time, no matter whether the component is opened                                                                    |
-| `unmountOnClose`       | `boolean`                                                                                                                                                                                                                              | Unmount popup content on close                                                                                                    |
-| `closeOnEscape`        | `boolean`                                                                                                                                                                                                                              | Close on press `ESC` key, default is `true`                                                                                       |
-| `closeOnWindowBlur`    | `boolean`                                                                                                                                                                                                                              | Close when the `window` loses focus                                                                                               |
-| `closeOnDocumentClick` | `boolean`                                                                                                                                                                                                                              | Close when clicking document, default is `true`                                                                                   |
-| `onOpen`               | `() => void`                                                                                                                                                                                                                           | Open event                                                                                                                        |
-| `onClose`              | `() => void`                                                                                                                                                                                                                           | Close event                                                                                                                       |
-| `onUpdate`             | `(data: PopperData) => void`                                                                                                                                                                                                           | Update event of popup layer position changing. It's useful when you build your own popup component based on the Popper component. |
+| Property               | Type                                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `content`              | `ReactNode`                                                                                                                                                                                | Popup content                                                                                                                                                                  |
+| `children`             | `ReactElement` \| [`() => PopperVirtualElement`](#poppervirtualelement)                                                                                                                    | A react element (must reference to a DOM element) or a function returns a virtual element                                                                                      |
+| `arrow`                | `ReactElement`                                                                                                                                                                             | Arrow element                                                                                                                                                                  |
+| `container`            | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react)                                                                                                | Parent node of popup layer. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
+| `on`                   | `"click"` \| `"hover"` \| `"focus"` \| `"contextmenu"` \| `string[]`                                                                                                                       | Trigger event, default is `"click"`                                                                                                                                            |
+| `offset`               | `number` \| `[number, number]`                                                                                                                                                             | Offset distance between popup layer and trigger element                                                                                                                        |
+| `arrowPadding`         | `number`                                                                                                                                                                                   | Arrow padding                                                                                                                                                                  |
+| `strategy`             | `"absolute"` \| `"fixed"`                                                                                                                                                                  | Popup strategy, default is `"fixed"`                                                                                                                                           |
+| `placement`            | `"top"` \| `"top-start"` \| `"top-end"` \| `"right"` \| `"right-start"` \| `"right-end"` \| `"bottom"` \| `"bottom-start"` \| `"bottom-end"` \| `"left"` \| `"left-start"` \| `"left-end"` | Popup placement, default is `"bottom"`                                                                                                                                         |
+| `open`                 | `boolean`                                                                                                                                                                                  | Show popup layer                                                                                                                                                               |
+| `defaultOpen`          | `boolean`                                                                                                                                                                                  | Uncontrolled open                                                                                                                                                              |
+| `openDelay`            | `number`                                                                                                                                                                                   | Delay time on open, in milliseconds                                                                                                                                            |
+| `closeDelay`           | `number`                                                                                                                                                                                   | Delay time on close, in milliseconds                                                                                                                                           |
+| `hoverEnterDelay`      | `number`                                                                                                                                                                                   | Delay time on hover enter, in milliseconds, default is 100                                                                                                                     |
+| `hoverLeaveDelay`      | `number`                                                                                                                                                                                   | Delay time on hover leave, in milliseconds, default is 100                                                                                                                     |
+| `updateDeps`           | `any[]`                                                                                                                                                                                    | A dependency array to auto update popup position                                                                                                                               |
+| `followPoint`          | `boolean`                                                                                                                                                                                  | The popup layer will follow the mouse point                                                                                                                                    |
+| `mountOnInit`          | `boolean`                                                                                                                                                                                  | Mount on first time, no matter whether the component is opened                                                                                                                 |
+| `unmountOnClose`       | `boolean`                                                                                                                                                                                  | Unmount popup content on close                                                                                                                                                 |
+| `closeOnEscape`        | `boolean`                                                                                                                                                                                  | Close when pressing the <kbd>ESC</kbd> key                                                                                                                                     |
+| `closeOnWindowBlur`    | `boolean`                                                                                                                                                                                  | Close when the `window` loses focus                                                                                                                                            |
+| `closeOnDocumentClick` | `boolean`                                                                                                                                                                                  | Close when clicking document, default is `true`                                                                                                                                |
+| `onOpen`               | `() => void`                                                                                                                                                                               | Open event                                                                                                                                                                     |
+| `onClose`              | `() => void`                                                                                                                                                                               | Close event                                                                                                                                                                    |
+| `onUpdate`             | [`(data: PopperUpdateData) => void`](#popperupdatedata)                                                                                                                                    | Update event of popup layer position changing. It's useful when you build your own popup component based on the Popper component                                               |
+
+### PopperVirtualElement
+
+A popper virtual element is an object contains a function named [`getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect).
 
 ```ts
-type Target<T> = T | undefined | null;
-type TargetCreator<T> =
-  | Target<T>
-  | (() => Target<T>)
-  | React.RefObject<Target<T>>
-  | React.MutableRefObject<Target<T>>;
+interface PopperVirtualElement {
+  getBoundingClientRect(): {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+    top: number;
+    left: number;
+    right: number;
+    bottom: number;
+  };
+}
+```
 
+For how to use it, please see the [text selection](#text-selection) example above.
+
+### PopperUpdateData
+
+```ts
 interface PopperData {
   // The x coordinate of popup layer.
   x: number;
   // The y coordinate of popup layer.
   y: number;
+  // The x coordinate of arrow element, if it exists.
+  arrowX?: number;
+  // The y coordinate of arrow element, if it exists.
+  arrowY?: number;
   // Popup strategy.
-  strategy: "absolute" | "fixed";
+  strategy: "fixed" | "absolute";
   // Actual placement. May be inconsistent with the passed property.
   placement:
     | "top"
@@ -120,9 +141,5 @@ interface PopperData {
     | "left"
     | "left-start"
     | "left-end";
-  // The x coordinate of arrow element, if it exists.
-  arrowX?: number;
-  // The y coordinate of arrow element, if it exists.
-  arrowY?: number;
 }
 ```
