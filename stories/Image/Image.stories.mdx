@@ -1,0 +1,42 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/Image" />
+
+# Image
+
+Image component extends the native `<img>` element, and supports error fallback and image placeholder, and improves lazy loading that some browsers don't support.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-image--basic" />
+</Canvas>
+
+### Fallback
+
+<Canvas mdxSource={require("!!raw-loader!./Fallback").default}>
+  <Story id="examples-image--fallback" />
+</Canvas>
+
+### Placeholder
+
+<Canvas mdxSource={require("!!raw-loader!./Placeholder").default}>
+  <Story id="examples-image--placeholder" />
+</Canvas>
+
+### Lazy load
+
+<Canvas mdxSource={require("!!raw-loader!./LazyLoad").default}>
+  <Story id="examples-image--lazy-load" />
+</Canvas>
+
+## Props
+
+| Property      | Type     | Description                  |
+| ------------- | -------- | ---------------------------- |
+| `fallback`    | `string` | Fallback image source url    |
+| `placeholder` | `string` | Placeholder image source url |
+
+It accepts all props which the native [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) element supports.
