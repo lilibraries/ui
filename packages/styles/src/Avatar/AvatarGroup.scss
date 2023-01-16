@@ -1,0 +1,17 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}avatar-group {
+  display: inline-block;
+  vertical-align: middle;
+
+  & .#{$cls-prefix}avatar:not(:first-child) {
+    margin-left: -0.5em;
+  }
+
+  &.#{$cls-prefix}rtl {
+    & .#{$cls-prefix}avatar:not(:first-child) {
+      margin-right: -0.5em;
+      margin-left: 0;
+    }
+  }
+}

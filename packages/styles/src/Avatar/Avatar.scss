@@ -1,0 +1,92 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}avatar {
+  position: relative;
+  display: inline-block;
+  width: calc(var(--line-height-fixed-base) * 2);
+  height: calc(var(--line-height-fixed-base) * 2);
+  overflow: hidden;
+  color: var(--text-color-base);
+  font-size: var(--line-height-fixed-base);
+  line-height: var(--line-height-small);
+  vertical-align: middle;
+  background-color: var(--bg-color-deep-base);
+  border-radius: var(--border-radius-small);
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+  }
+
+  &-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: keep-all;
+    transform: translate(-50%, -50%);
+    transform-origin: top left;
+  }
+
+  &.#{$cls-prefix}small {
+    width: calc(var(--line-height-fixed-small) * 2);
+    height: calc(var(--line-height-fixed-small) * 2);
+    font-size: var(--line-height-fixed-small);
+  }
+
+  &.#{$cls-prefix}large {
+    width: calc(var(--line-height-fixed-large) * 2);
+    height: calc(var(--line-height-fixed-large) * 2);
+    font-size: var(--line-height-fixed-large);
+  }
+
+  &.#{$cls-prefix}round {
+    border-radius: var(--border-radius-round);
+
+    & img {
+      border-radius: var(--border-radius-round);
+    }
+  }
+
+  &.#{$cls-prefix}outlined {
+    outline: 2px solid var(--bg-color-page);
+  }
+
+  &.#{$cls-prefix}clickable {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--text-color-hover);
+      background-color: var(--bg-color-deep-hover);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+      background-color: var(--bg-color-deep-active);
+    }
+  }
+
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
+      color: var(--text-color-#{$color}-base);
+      background-color: var(--bg-color-#{$color}-base);
+
+      &.#{$cls-prefix}clickable {
+        &:hover {
+          color: var(--text-color-#{$color}-hover);
+          background-color: var(--bg-color-#{$color}-hover);
+        }
+
+        &:active {
+          color: var(--text-color-#{$color}-active);
+          background-color: var(--bg-color-#{$color}-active);
+        }
+      }
+    }
+  }
+}
