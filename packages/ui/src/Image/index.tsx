@@ -22,7 +22,8 @@ interface ImageState {
   visibility?: "hidden";
 }
 
-const supportNativeLazyLoading = "loading" in HTMLImageElement.prototype;
+const supportNativeLazyLoading =
+  inBrowser && "loading" in HTMLImageElement.prototype;
 
 const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const {
@@ -42,9 +43,9 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     ...rest
   } = props;
 
-  const lazy = loadingProp === "lazy";
-  const useNativeLazyLoading = lazy && supportNativeLazyLoading && !placeholder;
-  const useCustomLazyLoading = lazy && inBrowser && !useNativeLazyLoading;
+  const isLazy = loadingProp === "lazy";
+  const isNativeLazy = isLazy && supportNativeLazyLoading && !placeholder;
+  const isCustomLazy = isLazy && inBrowser && !isNativeLazy;
   const hasSource = !!srcProp || !!srcSetProp;
 
   const [state, setState] = useState<ImageState>(() => {
@@ -52,7 +53,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     let src: string | undefined;
     let srcSet: string | undefined;
     let visibility: "hidden" | undefined;
-    if (useCustomLazyLoading) {
+    if (isCustomLazy) {
       visibility = "hidden";
     } else {
       alt = altProp;
@@ -103,22 +104,22 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     clearPreload();
     if (inBrowser && hasSource) {
       preloadRef.current = new window.Image();
-      if (sizes) {
+      if (sizes !== undefined) {
         preloadRef.current.sizes = sizes;
       }
-      if (decoding) {
+      if (decoding !== undefined) {
         preloadRef.current.decoding = decoding;
       }
-      if (crossOrigin) {
+      if (crossOrigin !== undefined) {
         preloadRef.current.crossOrigin = crossOrigin;
       }
-      if (referrerPolicy) {
+      if (referrerPolicy !== undefined) {
         preloadRef.current.referrerPolicy = referrerPolicy;
       }
-      if (srcProp) {
+      if (srcProp !== undefined) {
         preloadRef.current.src = srcProp;
       }
-      if (srcSetProp) {
+      if (srcSetProp !== undefined) {
         preloadRef.current.srcset = srcSetProp;
       }
       if (preloadRef.current.complete) {
@@ -151,8 +152,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   });
 
   const handleIntersect = usePersist((entries: IntersectionObserverEntry[]) => {
-    const entry = entries && entries[0];
-    if (entry && entry.isIntersecting) {
+    if (entries && entries[0] && entries[0].isIntersecting) {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
@@ -160,12 +160,12 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     }
   });
 
-  if (!observerRef.current && useCustomLazyLoading) {
+  if (!observerRef.current && isCustomLazy) {
     observerRef.current = new IntersectionObserver(handleIntersect);
   }
 
   useIsomorphicLayoutEffect(() => {
-    if (useCustomLazyLoading && imageRef.current && observerRef.current) {
+    if (isCustomLazy && imageRef.current && observerRef.current) {
       observerRef.current.observe(imageRef.current);
     } else if (src === placeholder && hasSource) {
       preloadSource();
@@ -174,19 +174,19 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
   useUpdate(() => {
     clearObserver();
-    if (useCustomLazyLoading) {
+    if (isCustomLazy) {
       observerRef.current = new IntersectionObserver(handleIntersect);
     }
-  }, [useCustomLazyLoading]);
+  }, [isCustomLazy]);
 
   useUpdate(() => {
-    if (useCustomLazyLoading && imageRef.current && observerRef.current) {
+    if (isCustomLazy && imageRef.current && observerRef.current) {
       observerRef.current.disconnect();
       observerRef.current.observe(imageRef.current);
     } else {
       updateSource();
     }
-  }, [srcProp, srcSetProp, fallback, placeholder, useCustomLazyLoading]);
+  }, [srcProp, srcSetProp, fallback, placeholder, isCustomLazy]);
 
   useUnmount(() => {
     clearPreload();
@@ -206,7 +206,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
       decoding={decoding}
       crossOrigin={crossOrigin}
       referrerPolicy={referrerPolicy}
-      loading={lazy ? (useNativeLazyLoading ? "lazy" : undefined) : loadingProp}
+      loading={isLazy ? (isNativeLazy ? "lazy" : undefined) : loadingProp}
       onError={handleError}
     />
   );
