@@ -75,3 +75,15 @@
     }
   }
 }
+
+.#{$cls-prefix}alert.#{$cls-prefix}rtl {
+  & > .#{$cls-prefix}alert-icon {
+    margin-right: 0;
+    margin-left: var(--space-4x);
+  }
+
+  & > .#{$cls-prefix}alert-close {
+    margin-right: var(--space-4x);
+    margin-left: 0;
+  }
+}
