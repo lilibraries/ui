@@ -1,0 +1,50 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}popup {
+  background-color: var(--bg-color-card);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-base);
+
+  &-arrow {
+    position: absolute;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-color-card);
+    border: 1px solid var(--border-color-base);
+    transform: rotate(45deg);
+
+    &[data-placement="top"] {
+      bottom: -8px;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-radius: 0 0 2px;
+      clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
+    }
+
+    &[data-placement="right"] {
+      left: -8px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-radius: 0 0 0 2px;
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+    }
+
+    &[data-placement="bottom"] {
+      top: -8px;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 2px 0 0;
+      clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
+    }
+
+    &[data-placement="left"] {
+      right: -8px;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-radius: 0 2px 0 0;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    }
+  }
+}
