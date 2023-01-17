@@ -699,3 +699,7 @@ $border-color-solid-gray-hover: shade-color($gray, 40%) !default;
 $border-color-solid-gray-active: shade-color($gray, 50%) !default;
 $border-color-solid-gray-inactive: light-color($gray, 20%) !default;
 $border-color-solid-gray-disabled: light-color($gray, 40%) !default;
+
+$box-shadow-base: 0 4px 12px rgba(0, 0, 0, 0.15) !default;
+$box-shadow-small: 0 2px 6px rgba(0, 0, 0, 0.3) !default;
+$box-shadow-large: 0 8px 24px rgba(0, 0, 0, 0.1) !default;

@@ -59,6 +59,16 @@ $base-properties: (
   "--motion-function-ease-in": $motion-function-ease-in,
   "--motion-function-ease-out": $motion-function-ease-out,
   "--motion-function-ease-in-out": $motion-function-ease-in-out,
+
+  "--z-index-affix": $z-index-affix,
+  "--z-index-backdrop": $z-index-backdrop,
+  "--z-index-drawer": $z-index-drawer,
+  "--z-index-modal": $z-index-modal,
+  "--z-index-popup": $z-index-popup,
+  "--z-index-popover": $z-index-popover,
+  "--z-index-tooltip": $z-index-tooltip,
+  "--z-index-notice": $z-index-notice,
+  "--z-index-toast": $z-index-toast,
 ) !default;
 
 $light-properties: (
@@ -760,6 +770,10 @@ $light-properties: (
   "--border-color-solid-gray-active": $border-color-solid-gray-active,
   "--border-color-solid-gray-inactive": $border-color-solid-gray-inactive,
   "--border-color-solid-gray-disabled": $border-color-solid-gray-disabled,
+
+  "--box-shadow-base": $box-shadow-base,
+  "--box-shadow-small": $box-shadow-small,
+  "--box-shadow-large": $box-shadow-large,
 ) !default;
 
 $dark-properties: (
@@ -1461,6 +1475,10 @@ $dark-properties: (
   "--border-color-solid-gray-active": $dark-border-color-solid-gray-active,
   "--border-color-solid-gray-inactive": $dark-border-color-solid-gray-inactive,
   "--border-color-solid-gray-disabled": $dark-border-color-solid-gray-disabled,
+
+  "--box-shadow-base": $dark-box-shadow-base,
+  "--box-shadow-small": $dark-box-shadow-small,
+  "--box-shadow-large": $dark-box-shadow-large,
 ) !default;
 
 $properties: merge-maps($base-properties, $light-properties) !default;
