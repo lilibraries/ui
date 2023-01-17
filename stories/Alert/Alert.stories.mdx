@@ -1,0 +1,53 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Feedbacks/Alert" />
+
+# Alert
+
+Alert feedback.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-alert--basic" />
+</Canvas>
+
+### Icon
+
+<Canvas mdxSource={require("!!raw-loader!./Icon").default}>
+  <Story id="examples-alert--icon" />
+</Canvas>
+
+### Closable
+
+<Canvas mdxSource={require("!!raw-loader!./Closable").default}>
+  <Story id="examples-alert--closable" />
+</Canvas>
+
+### Controlled
+
+<Canvas mdxSource={require("!!raw-loader!./Controlled").default}>
+  <Story id="examples-alert--controlled" />
+</Canvas>
+
+### Intents
+
+<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
+  <Story id="examples-alert--intents" />
+</Canvas>
+
+## Props
+
+| Property    | Type                                                                             | Description              |
+| ----------- | -------------------------------------------------------------------------------- | ------------------------ |
+| `children`  | `ReactNode`                                                                      | Content                  |
+| `intent`    | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                   |
+| `icon`      | `ReactNode`                                                                      | Icon                     |
+| `open`      | `boolean`                                                                        | Controlled open          |
+| `closable`  | `boolean`                                                                        | Whether it can be closed |
+| `closeIcon` | `boolean`                                                                        | Close icon               |
+| `onClose`   | `(event: MouseEvent<HTMLButtonElement>) => void`                                 | Close event              |
+
+It accepts all props which the native `<div>` element supports.
