@@ -700,3 +700,7 @@ $dark-border-color-solid-gray-hover: light-color($dark-gray, 40%) !default;
 $dark-border-color-solid-gray-active: light-color($dark-gray, 50%) !default;
 $dark-border-color-solid-gray-inactive: $dark-gray !default;
 $dark-border-color-solid-gray-disabled: shade-color($dark-gray, 20%) !default;
+
+$dark-box-shadow-base: 0 4px 12px rgba(0, 0, 0, 0.45) !default;
+$dark-box-shadow-small: 0 2px 6px rgba(0, 0, 0, 0.6) !default;
+$dark-box-shadow-large: 0 8px 24px rgba(0, 0, 0, 0.4) !default;

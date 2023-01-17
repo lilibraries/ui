@@ -79,3 +79,13 @@ $motion-function-linear: linear !default;
 $motion-function-ease-in: ease-in !default;
 $motion-function-ease-out: ease-out !default;
 $motion-function-ease-in-out: ease-in-out !default;
+
+$z-index-affix: 100 !default;
+$z-index-backdrop: 1000 !default;
+$z-index-drawer: 1010 !default;
+$z-index-modal: 1020 !default;
+$z-index-popup: 1030 !default;
+$z-index-popover: 1040 !default;
+$z-index-tooltip: 1050 !default;
+$z-index-notice: 1060 !default;
+$z-index-toast: 1070 !default;
