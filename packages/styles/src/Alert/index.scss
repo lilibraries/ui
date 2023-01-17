@@ -1,0 +1,77 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}alert {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-4x) var(--space-6x);
+  background-color: var(--bg-color-hollow-soft);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-fixed-base);
+
+  &-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: $line-height-base * 1em;
+    height: $line-height-base * 1em;
+    margin-right: var(--space-4x);
+    transform: scale(1.25);
+  }
+
+  &-content {
+    flex: 1 1 0;
+  }
+
+  &-close {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: $line-height-base * 1em;
+    height: $line-height-base * 1em;
+    margin: 0;
+    margin-left: var(--space-4x);
+    padding: 0;
+    color: var(--text-color-inactive);
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-style: normal;
+    line-height: inherit;
+    text-decoration: none;
+    vertical-align: middle;
+    background: none;
+    border: 0;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+
+    &:hover {
+      color: var(--text-color-hover);
+      background-color: var(--bg-color-hollow-soft);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+      background-color: var(--bg-color-hollow-deep);
+    }
+
+    &:focus {
+      @include focus-outline;
+    }
+  }
+
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      background-color: var(--bg-color-hollow-#{$intent}-soft);
+      border-color: var(--border-color-#{$intent}-base);
+
+      & > .#{$cls-prefix}alert-icon {
+        color: var(--text-color-#{$intent}-base);
+      }
+    }
+  }
+}
