@@ -3,7 +3,7 @@ import { Button, Theme } from "@lilib/ui";
 
 function Scoped() {
   return (
-    <Theme value="dark" scoped>
+    <Theme scoped value="dark">
       <Button>Always dark</Button>
     </Theme>
   );

@@ -3,11 +3,11 @@ import { Button, Flexbox, Theme } from "@lilib/ui";
 
 function Nested() {
   return (
-    <Theme value="dark" scoped>
-      <Flexbox gap="2x" align="center">
+    <Theme scoped value="dark">
+      <Flexbox gap="2x">
         <Button>Dark</Button>
 
-        <Theme value="light" scoped>
+        <Theme scoped value="light">
           <Button>Light</Button>
         </Theme>
       </Flexbox>
