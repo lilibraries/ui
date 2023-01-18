@@ -6,7 +6,7 @@ function InlineElements() {
       <p>
         <a
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer noopener"
           href="https://github.com/lilibraries/ui"
         >
           Link
