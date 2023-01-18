@@ -2,8 +2,8 @@
 @import "../variables/properties";
 
 @function var($name) {
-  $property: str-insert($name, $var-prefix, 3);
   $value: map-get($properties, $name);
+  $property: str-insert($name, $var-prefix, 3);
 
   @if not $value {
     @error "Can't find " + $name + " property";
@@ -16,6 +16,6 @@
       @return unquote("var(" + $property + ")");
     }
   } @else {
-    @return map-get($properties, $name);
+    @return $value;
   }
 }

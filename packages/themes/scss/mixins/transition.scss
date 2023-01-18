@@ -8,14 +8,14 @@ $-durations: (
 );
 
 @mixin transition($speed, $properties...) {
-  @if $speed != base and $speed != fast and $speed != slow and $speed != lazy {
+  $duration: map-get($-durations, $speed);
+
+  @if not $duration {
     @error "Mixin `transition`'s first param must be on of `base`, `fast`, `slow` or `lazy`.";
   }
 
-  $duration: map-get($-durations, $speed);
-
   @if length($properties) == 0 {
-    transition: all $duration var(--motion-function-base);
+    transition: all $duration var(--motion-function-basic);
   } @else {
     $transition: ();
 
