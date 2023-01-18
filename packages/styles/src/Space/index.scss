@@ -1,0 +1,25 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}space-basic {
+  @each $name, $value in $space-basic-properties {
+    $property: str-insert($name, $var-prefix, 3);
+
+    #{$property}: $value;
+  }
+}
+
+.#{$cls-prefix}space-small {
+  @each $name, $value in $space-small-properties {
+    $property: str-insert($name, $var-prefix, 3);
+
+    #{$property}: $value;
+  }
+}
+
+.#{$cls-prefix}space-large {
+  @each $name, $value in $space-large-properties {
+    $property: str-insert($name, $var-prefix, 3);
+
+    #{$property}: $value;
+  }
+}
