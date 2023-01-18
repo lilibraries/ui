@@ -1,7 +1,6 @@
 import React from "react";
 import { Icon, IconProps } from "@lilib/ui";
 import { FiStar } from "react-icons/fi";
-import star from "./Star.png";
 
 function Basic(props: IconProps) {
   return (
@@ -19,7 +18,10 @@ function Basic(props: IconProps) {
       <h6>Image</h6>
       <div>
         <Icon {...props}>
-          <img alt="Star" src={star} />
+          <img
+            alt="Star"
+            src="https://img.icons8.com/external-bearicons-outline-color-bearicons/2x/external-star-essential-collection-bearicons-outline-color-bearicons.png"
+          />
         </Icon>{" "}
         Star
       </div>

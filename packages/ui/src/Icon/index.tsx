@@ -6,10 +6,10 @@ import React, {
   HTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { composeRefs } from "@lilib/utils";
-import Prefix from "../Prefix";
 import isString from "lodash/isString";
 import isNumber from "lodash/isNumber";
+import { composeRefs } from "@lilib/utils";
+import Prefix from "../Prefix";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
