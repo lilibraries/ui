@@ -21,7 +21,7 @@ export const parameters = {
         <Root>
           <Baseline>
             <Theme value={isDarkMode ? "dark" : "light"}>
-              <Size value={size}>
+              <Size value={size || null}>
                 <Direction value={direction || "ltr"}>
                   <BaseContainer
                     context={{
@@ -88,7 +88,7 @@ export const decorators = [
       <Root>
         <Baseline>
           <Theme value={useDarkMode() ? "dark" : "light"}>
-            <Size value={size}>
+            <Size value={size || null}>
               <Direction value={direction || "ltr"}>
                 <div ref={demoContainerRef}>{render()}</div>
               </Direction>

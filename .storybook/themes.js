@@ -6,7 +6,7 @@ const common = {
   inputBorderRadius: 8,
   fontBase:
     'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  fontCode: 'Menlo, Monaco, Consolas, "Courier New", Courier, monospace',
+  fontCode: 'Monaco, Menlo, Consolas, "Courier New", Courier, monospace',
 };
 
 export const light = create({
