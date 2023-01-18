@@ -6,7 +6,7 @@ function SyncWithSystem() {
   const isDarkMode = useDarkMode();
 
   return (
-    <Theme value={isDarkMode ? "dark" : "light"} scoped>
+    <Theme scoped value={isDarkMode ? "dark" : "light"}>
       <Button>Sync with system</Button>
     </Theme>
   );

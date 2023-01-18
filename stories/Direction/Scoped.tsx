@@ -3,7 +3,7 @@ import { Direction } from "@lilib/ui";
 
 function Scoped() {
   return (
-    <Direction value="rtl" scoped>
+    <Direction scoped value="rtl">
       <p>
         React (also known as React.js or ReactJS) is a free and open-source
         front-end JavaScript library for building user interfaces or UI
