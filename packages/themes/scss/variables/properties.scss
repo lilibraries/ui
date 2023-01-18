@@ -26,16 +26,6 @@ $base-properties: (
   "--line-height-fixed-small": $line-height-fixed-small,
   "--line-height-fixed-large": $line-height-fixed-large,
 
-  "--space-1x": $space-1x,
-  "--space-2x": $space-2x,
-  "--space-3x": $space-3x,
-  "--space-4x": $space-4x,
-  "--space-5x": $space-5x,
-  "--space-6x": $space-6x,
-  "--space-7x": $space-7x,
-  "--space-8x": $space-8x,
-  "--space-9x": $space-9x,
-
   "--blur-base": $blur-base,
   "--blur-small": $blur-small,
   "--blur-large": $blur-large,
@@ -49,6 +39,16 @@ $base-properties: (
   "--border-radius-fixed-small": $border-radius-fixed-small,
   "--border-radius-fixed-large": $border-radius-fixed-large,
 
+  "--z-index-affix": $z-index-affix,
+  "--z-index-backdrop": $z-index-backdrop,
+  "--z-index-drawer": $z-index-drawer,
+  "--z-index-modal": $z-index-modal,
+  "--z-index-popup": $z-index-popup,
+  "--z-index-popover": $z-index-popover,
+  "--z-index-tooltip": $z-index-tooltip,
+  "--z-index-notice": $z-index-notice,
+  "--z-index-toast": $z-index-toast,
+
   "--motion-duration-base": $motion-duration-base,
   "--motion-duration-fast": $motion-duration-fast,
   "--motion-duration-slow": $motion-duration-slow,
@@ -59,16 +59,42 @@ $base-properties: (
   "--motion-function-ease-in": $motion-function-ease-in,
   "--motion-function-ease-out": $motion-function-ease-out,
   "--motion-function-ease-in-out": $motion-function-ease-in-out,
+) !default;
 
-  "--z-index-affix": $z-index-affix,
-  "--z-index-backdrop": $z-index-backdrop,
-  "--z-index-drawer": $z-index-drawer,
-  "--z-index-modal": $z-index-modal,
-  "--z-index-popup": $z-index-popup,
-  "--z-index-popover": $z-index-popover,
-  "--z-index-tooltip": $z-index-tooltip,
-  "--z-index-notice": $z-index-notice,
-  "--z-index-toast": $z-index-toast,
+$space-basic-properties: (
+  "--space-1x": $space-basic-1x,
+  "--space-2x": $space-basic-2x,
+  "--space-3x": $space-basic-3x,
+  "--space-4x": $space-basic-4x,
+  "--space-5x": $space-basic-5x,
+  "--space-6x": $space-basic-6x,
+  "--space-7x": $space-basic-7x,
+  "--space-8x": $space-basic-8x,
+  "--space-9x": $space-basic-9x,
+) !default;
+
+$space-small-properties: (
+  "--space-1x": $space-small-1x,
+  "--space-2x": $space-small-2x,
+  "--space-3x": $space-small-3x,
+  "--space-4x": $space-small-4x,
+  "--space-5x": $space-small-5x,
+  "--space-6x": $space-small-6x,
+  "--space-7x": $space-small-7x,
+  "--space-8x": $space-small-8x,
+  "--space-9x": $space-small-9x,
+) !default;
+
+$space-large-properties: (
+  "--space-1x": $space-large-1x,
+  "--space-2x": $space-large-2x,
+  "--space-3x": $space-large-3x,
+  "--space-4x": $space-large-4x,
+  "--space-5x": $space-large-5x,
+  "--space-6x": $space-large-6x,
+  "--space-7x": $space-large-7x,
+  "--space-8x": $space-large-8x,
+  "--space-9x": $space-large-9x,
 ) !default;
 
 $light-properties: (
@@ -1481,4 +1507,4 @@ $dark-properties: (
   "--box-shadow-large": $dark-box-shadow-large,
 ) !default;
 
-$properties: merge-maps($base-properties, $light-properties) !default;
+$properties: merge-maps($base-properties, $space-basic-properties, $light-properties) !default;

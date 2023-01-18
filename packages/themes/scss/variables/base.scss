@@ -46,16 +46,6 @@ $line-height-fixed-base: 24px !default;
 $line-height-fixed-small: 18px !default;
 $line-height-fixed-large: 30px !default;
 
-$space-1x: 4px !default;
-$space-2x: $space-1x * 2 !default;
-$space-3x: $space-1x * 3 !default;
-$space-4x: $space-1x * 4 !default;
-$space-5x: $space-1x * 5 !default;
-$space-6x: $space-1x * 6 !default;
-$space-7x: $space-1x * 7 !default;
-$space-8x: $space-1x * 8 !default;
-$space-9x: $space-1x * 9 !default;
-
 $blur-base: 12px !default;
 $blur-small: 4px !default;
 $blur-large: 20px !default;
@@ -69,6 +59,16 @@ $border-radius-fixed-base: 8px !default;
 $border-radius-fixed-small: 4px !default;
 $border-radius-fixed-large: 16px !default;
 
+$z-index-affix: 10 !default;
+$z-index-backdrop: 1000 !default;
+$z-index-drawer: 1010 !default;
+$z-index-modal: 1020 !default;
+$z-index-popup: 1030 !default;
+$z-index-popover: 1040 !default;
+$z-index-tooltip: 1050 !default;
+$z-index-notice: 1060 !default;
+$z-index-toast: 1070 !default;
+
 $motion-duration-base: 300ms !default;
 $motion-duration-fast: 150ms !default;
 $motion-duration-slow: 750ms !default;
@@ -80,12 +80,32 @@ $motion-function-ease-in: ease-in !default;
 $motion-function-ease-out: ease-out !default;
 $motion-function-ease-in-out: ease-in-out !default;
 
-$z-index-affix: 100 !default;
-$z-index-backdrop: 1000 !default;
-$z-index-drawer: 1010 !default;
-$z-index-modal: 1020 !default;
-$z-index-popup: 1030 !default;
-$z-index-popover: 1040 !default;
-$z-index-tooltip: 1050 !default;
-$z-index-notice: 1060 !default;
-$z-index-toast: 1070 !default;
+$space-basic-1x: 4px !default;
+$space-basic-2x: $space-basic-1x * 2 !default;
+$space-basic-3x: $space-basic-1x * 3 !default;
+$space-basic-4x: $space-basic-1x * 4 !default;
+$space-basic-5x: $space-basic-1x * 5 !default;
+$space-basic-6x: $space-basic-1x * 6 !default;
+$space-basic-7x: $space-basic-1x * 7 !default;
+$space-basic-8x: $space-basic-1x * 8 !default;
+$space-basic-9x: $space-basic-1x * 9 !default;
+
+$space-small-1x: 2px !default;
+$space-small-2x: $space-small-1x * 2 !default;
+$space-small-3x: $space-small-1x * 3 !default;
+$space-small-4x: $space-small-1x * 4 !default;
+$space-small-5x: $space-small-1x * 5 !default;
+$space-small-6x: $space-small-1x * 6 !default;
+$space-small-7x: $space-small-1x * 7 !default;
+$space-small-8x: $space-small-1x * 8 !default;
+$space-small-9x: $space-small-1x * 9 !default;
+
+$space-large-1x: 6px !default;
+$space-large-2x: $space-large-1x * 2 !default;
+$space-large-3x: $space-large-1x * 3 !default;
+$space-large-4x: $space-large-1x * 4 !default;
+$space-large-5x: $space-large-1x * 5 !default;
+$space-large-6x: $space-large-1x * 6 !default;
+$space-large-7x: $space-large-1x * 7 !default;
+$space-large-8x: $space-large-1x * 8 !default;
+$space-large-9x: $space-large-1x * 9 !default;

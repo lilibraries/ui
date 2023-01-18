@@ -1,0 +1,58 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Configs/Space" />
+
+# Space
+
+This component is used to set the spacing of elements by adding CSS class names.
+
+## Examples
+
+### Global
+
+The `Space` button in the document toolbar is used to set the spacing of elements, you can click it to try.
+
+```tsx
+import React from "react";
+import { Space } from "@lilib/ui";
+
+function App() {
+  return <Space value="small">...</Space>;
+}
+```
+
+### Scoped
+
+If the `scoped` prop is specified to `true`, the `children` prop must be a React element that accepts `className` prop.
+
+<Canvas mdxSource={require("!!raw-loader!./Scoped").default}>
+  <Story id="examples-space--scoped" />
+</Canvas>
+
+### Nested
+
+<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
+  <Story id="examples-space--nested" />
+</Canvas>
+
+## API
+
+### Space
+
+| Property   | Type                                          | Description                               |
+| ---------- | --------------------------------------------- | ----------------------------------------- |
+| `value`    | `null` \| `"small"` \| `"basic"` \| `"large"` | **Required** space size value             |
+| `children` | `ReactElement` \| `ReactNode`                 | **Required** child element or child nodes |
+| `scoped`   | `boolean`                                     | Scoped                                    |
+
+### Space.useConfig
+
+```ts
+function useConfig(): null | "small" | "basic" | "large";
+```
+
+Get configured space size.
+
+### Space.Context
+
+A context created by `React.createContext`. It's default value is `null`.
