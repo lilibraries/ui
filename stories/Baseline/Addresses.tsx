@@ -15,7 +15,7 @@ function Addresses() {
         <br />
         <a
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer noopener"
           href="https://github.com/lilibraries"
         >
           https://github.com/lilibraries

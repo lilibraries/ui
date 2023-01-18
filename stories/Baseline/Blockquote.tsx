@@ -2,7 +2,7 @@ import React from "react";
 
 function Blockquote() {
   return (
-    <blockquote cite="https://datatracker.ietf.org/doc/html/rfc1149">
+    <blockquote cite="https://en.wikipedia.org/wiki/React_(JavaScript_library)">
       <p>
         React (also known as React.js or ReactJS) is a free and open-source
         front-end JavaScript library for building user interfaces or UI

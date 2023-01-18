@@ -76,9 +76,8 @@ p {
 }
 
 a {
-  color: var(--text-color-major-base);
+  color: var(--text-color-major-basic);
   text-decoration: none;
-  background-color: transparent;
   cursor: pointer;
 
   &:hover {
@@ -415,4 +414,12 @@ iframe {
 
 [hidden] {
   display: none !important;
+}
+
+:focus {
+  @include focus-outline;
+}
+
+[data-focus-hidden] :focus {
+  outline: 0;
 }
