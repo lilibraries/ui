@@ -9,12 +9,12 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import Icon, { IconProps } from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Collapse from "../Collapse";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
+import Icon, { IconProps } from "../Icon";
 import LoaderIcon from "../icons/LoaderIcon";
 import isRenderableNode from "../utils/isRenderableNode";
 import LoaderConfig from "./LoaderConfig";
@@ -85,9 +85,9 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const classes = cn(
     `${cls}loader`,
     {
+      [`${cls}${size}`]: size,
       [`${cls}contained`]: contained,
       [`${cls}standalone`]: !contained,
-      [`${cls}${size}`]: size,
     },
     className
   );
@@ -129,23 +129,21 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
     );
   } else {
     return (
-      <Duration scoped base={fast}>
-        <Collapse
-          {...rest}
-          ref={ref}
-          className={classes}
-          open={loading}
-          openDelay={delay}
-          unmountOnClose
-        >
-          <div className={`${cls}loader-content`}>
-            {icon}
-            {isRenderableNode(message) && (
-              <div className={`${cls}loader-message`}>{message}</div>
-            )}
-          </div>
-        </Collapse>
-      </Duration>
+      <Collapse
+        {...rest}
+        ref={ref}
+        className={classes}
+        open={loading}
+        openDelay={delay}
+        unmountOnClose
+      >
+        <div className={`${cls}loader-content`}>
+          {icon}
+          {isRenderableNode(message) && (
+            <div className={`${cls}loader-message`}>{message}</div>
+          )}
+        </div>
+      </Collapse>
     );
   }
 }) as LoaderComponent;
