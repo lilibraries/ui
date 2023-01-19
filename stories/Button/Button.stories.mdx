@@ -26,16 +26,16 @@ Button components.
   <Story id="examples-button--icons" />
 </Canvas>
 
-### Fluid
-
-<Canvas mdxSource={require("!!raw-loader!./Fluid").default}>
-  <Story id="examples-button--fluid" />
-</Canvas>
-
 ### Round
 
 <Canvas mdxSource={require("!!raw-loader!./Round").default}>
   <Story id="examples-button--round" />
+</Canvas>
+
+### Fluid
+
+<Canvas mdxSource={require("!!raw-loader!./Fluid").default}>
+  <Story id="examples-button--fluid" />
 </Canvas>
 
 ### Truncated
@@ -74,7 +74,21 @@ Button components.
   <Story id="examples-button--hollow" />
 </Canvas>
 
+### Hollow
+
+<Canvas mdxSource={require("!!raw-loader!./Hollow").default}>
+  <Story id="examples-button--hollow" />
+</Canvas>
+
+### Groups
+
+<Canvas mdxSource={require("!!raw-loader!../Button.Group/Example").default}>
+  <Story id="examples-button-group--example" />
+</Canvas>
+
 ## Props
+
+### Button
 
 | Property           | Type                                                                             | Description                         |
 | ------------------ | -------------------------------------------------------------------------------- | ----------------------------------- |
@@ -98,3 +112,24 @@ Button components.
 | `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                     | Specify spinner placement           |
 
 It accepts all props which the `as` element type supports.
+
+### Button.Group
+
+| Property           | Type                                                                             | Description                         |
+| ------------------ | -------------------------------------------------------------------------------- | ----------------------------------- |
+| `vertical`         | `boolean`                                                                        | Vertical display                    |
+| `size`             | `null` \| `"small"` \| `"large"`                                                 | Size                                |
+| `variant`          | `null` \| `"solid"` \| `"hollow"`                                                | Variant                             |
+| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                              |
+| `fluid`            | `boolean`                                                                        | Display as a block element          |
+| `round`            | `boolean`                                                                        | Make corners round                  |
+| `truncated`        | `boolean`                                                                        | Truncate text                       |
+| `borderless`       | `boolean`                                                                        | Remove borders                      |
+| `disabled`         | `boolean`                                                                        | Disabled state                      |
+| `iconOnly`         | `boolean`                                                                        | Show icon only                      |
+| `loading`          | `boolean`                                                                        | Show spinner                        |
+| `loadingIcon`      | `ReactNode`                                                                      | Custom spinner icon                 |
+| `loadingDelay`     | `number`                                                                         | Loading delay time, in milliseconds |
+| `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                     | Specify spinner placement           |
+
+It accepts all props which the native `<div>` element supports.

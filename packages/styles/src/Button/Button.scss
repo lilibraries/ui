@@ -163,10 +163,6 @@
     border-color: var(--border-color-active);
   }
 
-  &:focus {
-    @include focus-outline;
-  }
-
   &[disabled] {
     color: var(--text-color-base);
     background-color: var(--bg-color-base);
