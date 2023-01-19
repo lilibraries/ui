@@ -30,8 +30,8 @@ export * from "./ButtonConfig";
 
 export interface ButtonCommonProps {
   variant?: ButtonVariant;
-  intent?: IntentValue;
   size?: SizeValue;
+  intent?: IntentValue;
   fluid?: boolean;
   round?: boolean;
   truncated?: boolean;
@@ -69,8 +69,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     className,
     as = "button",
     variant: variantProp,
-    intent: intentProp,
     size: sizeProp,
+    intent: intentProp,
     fluid: fluidProp,
     round: roundProp,
     truncated: truncatedProp,
@@ -159,8 +159,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     `${cls}button`,
     {
       [`${cls}${variant}`]: variant,
-      [`${cls}${intent}`]: intent,
       [`${cls}${size}`]: size,
+      [`${cls}${intent}`]: intent,
       [`${cls}fluid`]: fluid,
       [`${cls}round`]: round,
       [`${cls}truncated`]: truncated,
