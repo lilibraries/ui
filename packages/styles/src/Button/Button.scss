@@ -149,6 +149,14 @@
     }
   }
 
+  &:focus {
+    @include focus-outline;
+  }
+
+  [data-focus-hidden] &:focus {
+    outline: 0;
+  }
+
   &:hover {
     color: var(--text-color-hover);
     text-decoration: none;

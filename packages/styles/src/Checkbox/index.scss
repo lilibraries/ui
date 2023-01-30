@@ -19,6 +19,13 @@
     &:focus + .#{$cls-prefix}spinner .#{$cls-prefix}checkbox-indicator {
       @include focus-outline;
     }
+
+    [data-focus-hidden]
+      &:focus
+      + .#{$cls-prefix}spinner
+      .#{$cls-prefix}checkbox-indicator {
+      outline: 0;
+    }
   }
 
   & > .#{$cls-prefix}spinner {
