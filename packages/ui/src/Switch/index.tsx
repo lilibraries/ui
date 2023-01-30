@@ -22,7 +22,6 @@ export interface SwitchProps
   icon?: ReactNode;
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
-  borderless?: boolean;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
@@ -42,7 +41,6 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon: iconProp,
     checkedLabel,
     uncheckedLabel,
-    borderless,
     loading,
     loadingIcon,
     loadingDelay,
@@ -94,7 +92,6 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
       [`${cls}checked`]: checked,
       [`${cls}loading`]: loading,
       [`${cls}disabled`]: disabled,
-      [`${cls}borderless`]: borderless,
       [`${cls}rtl`]: isRTL,
     },
     className
