@@ -32,7 +32,15 @@ Based on `<input type="radio" />`.
   <Story id="examples-radio--disabled" />
 </Canvas>
 
+### Groups
+
+<Canvas mdxSource={require("!!raw-loader!../Radio.Group/Example").default}>
+  <Story id="examples-radio-group--example" />
+</Canvas>
+
 ## Props
+
+### Radio
 
 | Property         | Type                                    | Description                              |
 | ---------------- | --------------------------------------- | ---------------------------------------- |
@@ -50,3 +58,18 @@ Based on `<input type="radio" />`.
 | `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props                     |
 
 It accepts all props which the native `<label>` element supports.
+
+### Radio.Group
+
+| Property       | Type                                   | Description                         |
+| -------------- | -------------------------------------- | ----------------------------------- |
+| `children`     | `ReactNode`                            | Radios                              |
+| `size`         | `null` \| `"small"` \| `"large"`       | Size                                |
+| `name`         | `string`                               | Name of all radios                  |
+| `value`        | `string`                               | Controlled value                    |
+| `defaultValue` | `string`                               | Uncontrolled value                  |
+| `loading`      | `boolean`                              | Show spinner                        |
+| `loadingIcon`  | `ReactNode`                            | Custom spinner icon                 |
+| `loadingDelay` | `number`                               | Loading delay time, in milliseconds |
+| `disabled`     | `boolean`                              | Disable all radios                  |
+| `onChange`     | `ChangeEventHandler<HTMLInputElement>` | Change event                        |

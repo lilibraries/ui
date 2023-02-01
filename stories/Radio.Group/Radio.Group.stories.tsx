@@ -29,5 +29,4 @@ export default {
   },
 };
 
-export { default as Controlled } from "./Controlled";
-export { default as Uncontrolled } from "./Uncontrolled";
+export { default as Example } from "./Example";
