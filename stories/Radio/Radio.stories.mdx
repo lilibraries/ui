@@ -42,34 +42,34 @@ Based on `<input type="radio" />`.
 
 ### Radio
 
-| Property         | Type                                    | Description                              |
-| ---------------- | --------------------------------------- | ---------------------------------------- |
-| `children`       | `ReactNode`                             | Radio label                              |
-| `size`           | `null` \| `"small"` \| `"large"`        | Size                                     |
-| `loading`        | `boolean`                               | Show spinner                             |
-| `loadingIcon`    | `ReactNode`                             | Custom spinner icon                      |
-| `loadingDelay`   | `number`                                | Loading delay time, in milliseconds      |
-| `disabled`       | `boolean`                               | Disable change event                     |
-| `value`          | `string`                                | Radio value. **Required** in Radio.Group |
-| `checked`        | `boolean`                               | Controlled checked                       |
-| `defaultChecked` | `boolean`                               | Uncontrolled checked                     |
-| `onChange`       | `ChangeEventHandler<HTMLInputElement>`  | Change event                             |
-| `inputRef`       | `Ref<HTMLInputElement>`                 | Ref to internal input element            |
-| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props                     |
+| Property         | Type                                                    | Description                              |
+| ---------------- | ------------------------------------------------------- | ---------------------------------------- |
+| `children`       | `ReactNode`                                             | Radio label                              |
+| `size`           | `null` \| `"small"` \| `"large"`                        | Size                                     |
+| `loading`        | `boolean`                                               | Show spinner                             |
+| `loadingIcon`    | `ReactNode`                                             | Custom spinner icon                      |
+| `loadingDelay`   | `number`                                                | Loading delay time, in milliseconds      |
+| `disabled`       | `boolean`                                               | Disable change event                     |
+| `value`          | `any`                                                   | Radio value. **Required** in Radio.Group |
+| `checked`        | `boolean`                                               | Controlled checked                       |
+| `defaultChecked` | `boolean`                                               | Uncontrolled checked                     |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event                             |
+| `inputRef`       | `Ref<HTMLInputElement>`                                 | Ref to internal input element            |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`                 | Internal input props                     |
 
 It accepts all props which the native `<label>` element supports.
 
 ### Radio.Group
 
-| Property       | Type                                   | Description                         |
-| -------------- | -------------------------------------- | ----------------------------------- |
-| `children`     | `ReactNode`                            | Radios                              |
-| `size`         | `null` \| `"small"` \| `"large"`       | Size                                |
-| `name`         | `string`                               | Name of all radios                  |
-| `value`        | `string`                               | Controlled value                    |
-| `defaultValue` | `string`                               | Uncontrolled value                  |
-| `loading`      | `boolean`                              | Show spinner                        |
-| `loadingIcon`  | `ReactNode`                            | Custom spinner icon                 |
-| `loadingDelay` | `number`                               | Loading delay time, in milliseconds |
-| `disabled`     | `boolean`                              | Disable all radios                  |
-| `onChange`     | `ChangeEventHandler<HTMLInputElement>` | Change event                        |
+| Property       | Type                                                    | Description                         |
+| -------------- | ------------------------------------------------------- | ----------------------------------- |
+| `children`     | `ReactNode`                                             | Radios                              |
+| `size`         | `null` \| `"small"` \| `"large"`                        | Size                                |
+| `name`         | `string`                                                | Name of all radios                  |
+| `value`        | `any`                                                   | Controlled value                    |
+| `defaultValue` | `any`                                                   | Uncontrolled value                  |
+| `loading`      | `boolean`                                               | Show spinner                        |
+| `loadingIcon`  | `ReactNode`                                             | Custom spinner icon                 |
+| `loadingDelay` | `number`                                                | Loading delay time, in milliseconds |
+| `disabled`     | `boolean`                                               | Disable all radios                  |
+| `onChange`     | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event                        |
