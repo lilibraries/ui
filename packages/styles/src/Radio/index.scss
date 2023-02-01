@@ -19,6 +19,13 @@
     &:focus + .#{$cls-prefix}spinner .#{$cls-prefix}radio-indicator {
       @include focus-outline;
     }
+
+    [data-focus-hidden]
+      &:focus
+      + .#{$cls-prefix}spinner
+      .#{$cls-prefix}radio-indicator {
+      outline: 0;
+    }
   }
 
   & > .#{$cls-prefix}spinner {
