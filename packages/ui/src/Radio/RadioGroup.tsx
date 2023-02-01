@@ -7,19 +7,19 @@ import React, {
 } from "react";
 import { usePersist, useUpdate } from "@lilib/hooks";
 import Size, { SizeValue } from "../Size";
-import RadioConfig from "./RadioConfig";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
+import RadioConfig, { RadioElement } from "./RadioConfig";
 
 export interface RadioGroupProps {
   size?: SizeValue;
   name?: string;
-  value?: string;
-  defaultValue?: string;
+  value?: any;
+  defaultValue?: any;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
   disabled?: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<RadioElement>;
 }
 
 const RadioGroup: FC<RadioGroupProps> = (props) => {
@@ -38,7 +38,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
 
   const isControlled = "value" in props;
   const size = Size.useConfig(sizeProp);
-  const [value, setValue] = useState<string | undefined>(
+  const [value, setValue] = useState<any>(
     isControlled ? valueProp : defaultValue
   );
 
@@ -48,7 +48,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
     }
   }, [valueProp]);
 
-  const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = usePersist((event: ChangeEvent<RadioElement>) => {
     if (!isControlled) {
       setValue(event.target.value);
     }

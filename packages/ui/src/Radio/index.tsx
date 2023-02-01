@@ -21,7 +21,7 @@ import Size, { SizeValue } from "../Size";
 import DotIcon from "../icons/DotIcon";
 import isRenderableNode from "../utils/isRenderableNode";
 import RadioGroup from "./RadioGroup";
-import RadioConfig from "./RadioConfig";
+import RadioConfig, { RadioElement } from "./RadioConfig";
 
 export * from "./RadioGroup";
 export * from "./RadioConfig";
@@ -33,10 +33,10 @@ export interface RadioProps
   loadingIcon?: ReactNode;
   loadingDelay?: number;
   disabled?: boolean;
-  value?: string;
+  value?: any;
   checked?: boolean;
   defaultChecked?: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<RadioElement>;
   inputRef?: Ref<HTMLInputElement>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
 }
@@ -120,11 +120,15 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
     if (!isValueControlled && !isCheckedControlled) {
       setChecked(event.target.checked);
     }
+    const radioEvent: ChangeEvent<RadioElement> = {
+      ...event,
+      target: { ...event.target, value },
+    };
     if (onChange) {
-      onChange(event);
+      onChange(radioEvent);
     }
     if (onGroupChange) {
-      onGroupChange(event);
+      onGroupChange(radioEvent);
     }
   });
 
@@ -147,7 +151,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
         ref={inputRef}
         type="radio"
         name={name}
-        value={value}
+        value={String(value)}
         checked={checked}
         disabled={disabled || loading}
         onChange={handleChange}

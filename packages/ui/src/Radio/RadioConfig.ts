@@ -1,13 +1,17 @@
 import { ChangeEventHandler, ReactNode } from "react";
 import createConfig from "../utils/createConfig";
 
+export interface RadioElement extends HTMLInputElement {
+  value: any;
+}
+
 export interface RadioConfigValue {
   name?: string;
-  value?: string;
+  value?: any;
   loading?: boolean;
   disabled?: boolean;
   controlled?: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<RadioElement>;
 }
 
 export interface RadioConfigProps extends RadioConfigValue {
