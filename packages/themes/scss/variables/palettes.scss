@@ -1,0 +1,625 @@
+@import "../functions/light-color";
+@import "../functions/shade-color";
+
+$white: #fff !default;
+$black: #000 !default;
+
+$red: hsl(355deg, 70%, 55%) !default;
+$magenta: hsl(300deg, 75%, 45%) !default;
+$purple: hsl(280deg, 80%, 50%) !default;
+$indigo: hsl(255deg, 85%, 60%) !default;
+$navy: hsl(235deg, 90%, 60%) !default;
+$blue: hsl(215deg, 80%, 50%) !default;
+$cyan: hsl(190deg, 65%, 40%) !default;
+$teal: hsl(165deg, 65%, 35%) !default;
+$green: hsl(130deg, 45%, 40%) !default;
+$lime: hsl(80deg, 55%, 45%) !default;
+$yellow: hsl(45deg, 95%, 45%) !default;
+$orange: hsl(30deg, 85%, 50%) !default;
+$brown: hsl(355deg, 15%, 50%) !default;
+$gray: hsl(215deg, 5%, 50%) !default;
+
+$red-rgb: red($red), green($red), blue($red) !default;
+$magenta-rgb: red($magenta), green($magenta), blue($magenta) !default;
+$purple-rgb: red($purple), green($purple), blue($purple) !default;
+$indigo-rgb: red($indigo), green($indigo), blue($indigo) !default;
+$navy-rgb: red($navy), green($navy), blue($navy) !default;
+$blue-rgb: red($blue), green($blue), blue($blue) !default;
+$cyan-rgb: red($cyan), green($cyan), blue($cyan) !default;
+$teal-rgb: red($teal), green($teal), blue($teal) !default;
+$green-rgb: red($green), green($green), blue($green) !default;
+$lime-rgb: red($lime), green($lime), blue($lime) !default;
+$yellow-rgb: red($yellow), green($yellow), blue($yellow) !default;
+$orange-rgb: red($orange), green($orange), blue($orange) !default;
+$brown-rgb: red($brown), green($brown), blue($brown) !default;
+$gray-rgb: red($gray), green($gray), blue($gray) !default;
+
+$red-light-1: light-color($red, 90%) !default;
+$red-light-2: light-color($red, 80%) !default;
+$red-light-3: light-color($red, 70%) !default;
+$red-light-4: light-color($red, 60%) !default;
+$red-light-5: light-color($red, 50%) !default;
+$red-light-6: light-color($red, 40%) !default;
+$red-light-7: light-color($red, 30%) !default;
+$red-light-8: light-color($red, 20%) !default;
+$red-light-9: light-color($red, 10%) !default;
+
+$red-shade-1: shade-color($red, 10%) !default;
+$red-shade-2: shade-color($red, 20%) !default;
+$red-shade-3: shade-color($red, 30%) !default;
+$red-shade-4: shade-color($red, 40%) !default;
+$red-shade-5: shade-color($red, 50%) !default;
+$red-shade-6: shade-color($red, 60%) !default;
+$red-shade-7: shade-color($red, 70%) !default;
+$red-shade-8: shade-color($red, 80%) !default;
+$red-shade-9: shade-color($red, 90%) !default;
+
+$magenta-light-1: light-color($magenta, 90%) !default;
+$magenta-light-2: light-color($magenta, 80%) !default;
+$magenta-light-3: light-color($magenta, 70%) !default;
+$magenta-light-4: light-color($magenta, 60%) !default;
+$magenta-light-5: light-color($magenta, 50%) !default;
+$magenta-light-6: light-color($magenta, 40%) !default;
+$magenta-light-7: light-color($magenta, 30%) !default;
+$magenta-light-8: light-color($magenta, 20%) !default;
+$magenta-light-9: light-color($magenta, 10%) !default;
+
+$magenta-shade-1: shade-color($magenta, 10%) !default;
+$magenta-shade-2: shade-color($magenta, 20%) !default;
+$magenta-shade-3: shade-color($magenta, 30%) !default;
+$magenta-shade-4: shade-color($magenta, 40%) !default;
+$magenta-shade-5: shade-color($magenta, 50%) !default;
+$magenta-shade-6: shade-color($magenta, 60%) !default;
+$magenta-shade-7: shade-color($magenta, 70%) !default;
+$magenta-shade-8: shade-color($magenta, 80%) !default;
+$magenta-shade-9: shade-color($magenta, 90%) !default;
+
+$purple-light-1: light-color($purple, 90%) !default;
+$purple-light-2: light-color($purple, 80%) !default;
+$purple-light-3: light-color($purple, 70%) !default;
+$purple-light-4: light-color($purple, 60%) !default;
+$purple-light-5: light-color($purple, 50%) !default;
+$purple-light-6: light-color($purple, 40%) !default;
+$purple-light-7: light-color($purple, 30%) !default;
+$purple-light-8: light-color($purple, 20%) !default;
+$purple-light-9: light-color($purple, 10%) !default;
+
+$purple-shade-1: shade-color($purple, 10%) !default;
+$purple-shade-2: shade-color($purple, 20%) !default;
+$purple-shade-3: shade-color($purple, 30%) !default;
+$purple-shade-4: shade-color($purple, 40%) !default;
+$purple-shade-5: shade-color($purple, 50%) !default;
+$purple-shade-6: shade-color($purple, 60%) !default;
+$purple-shade-7: shade-color($purple, 70%) !default;
+$purple-shade-8: shade-color($purple, 80%) !default;
+$purple-shade-9: shade-color($purple, 90%) !default;
+
+$indigo-light-1: light-color($indigo, 90%) !default;
+$indigo-light-2: light-color($indigo, 80%) !default;
+$indigo-light-3: light-color($indigo, 70%) !default;
+$indigo-light-4: light-color($indigo, 60%) !default;
+$indigo-light-5: light-color($indigo, 50%) !default;
+$indigo-light-6: light-color($indigo, 40%) !default;
+$indigo-light-7: light-color($indigo, 30%) !default;
+$indigo-light-8: light-color($indigo, 20%) !default;
+$indigo-light-9: light-color($indigo, 10%) !default;
+
+$indigo-shade-1: shade-color($indigo, 10%) !default;
+$indigo-shade-2: shade-color($indigo, 20%) !default;
+$indigo-shade-3: shade-color($indigo, 30%) !default;
+$indigo-shade-4: shade-color($indigo, 40%) !default;
+$indigo-shade-5: shade-color($indigo, 50%) !default;
+$indigo-shade-6: shade-color($indigo, 60%) !default;
+$indigo-shade-7: shade-color($indigo, 70%) !default;
+$indigo-shade-8: shade-color($indigo, 80%) !default;
+$indigo-shade-9: shade-color($indigo, 90%) !default;
+
+$navy-light-1: light-color($navy, 90%) !default;
+$navy-light-2: light-color($navy, 80%) !default;
+$navy-light-3: light-color($navy, 70%) !default;
+$navy-light-4: light-color($navy, 60%) !default;
+$navy-light-5: light-color($navy, 50%) !default;
+$navy-light-6: light-color($navy, 40%) !default;
+$navy-light-7: light-color($navy, 30%) !default;
+$navy-light-8: light-color($navy, 20%) !default;
+$navy-light-9: light-color($navy, 10%) !default;
+
+$navy-shade-1: shade-color($navy, 10%) !default;
+$navy-shade-2: shade-color($navy, 20%) !default;
+$navy-shade-3: shade-color($navy, 30%) !default;
+$navy-shade-4: shade-color($navy, 40%) !default;
+$navy-shade-5: shade-color($navy, 50%) !default;
+$navy-shade-6: shade-color($navy, 60%) !default;
+$navy-shade-7: shade-color($navy, 70%) !default;
+$navy-shade-8: shade-color($navy, 80%) !default;
+$navy-shade-9: shade-color($navy, 90%) !default;
+
+$blue-light-1: light-color($blue, 90%) !default;
+$blue-light-2: light-color($blue, 80%) !default;
+$blue-light-3: light-color($blue, 70%) !default;
+$blue-light-4: light-color($blue, 60%) !default;
+$blue-light-5: light-color($blue, 50%) !default;
+$blue-light-6: light-color($blue, 40%) !default;
+$blue-light-7: light-color($blue, 30%) !default;
+$blue-light-8: light-color($blue, 20%) !default;
+$blue-light-9: light-color($blue, 10%) !default;
+
+$blue-shade-1: shade-color($blue, 10%) !default;
+$blue-shade-2: shade-color($blue, 20%) !default;
+$blue-shade-3: shade-color($blue, 30%) !default;
+$blue-shade-4: shade-color($blue, 40%) !default;
+$blue-shade-5: shade-color($blue, 50%) !default;
+$blue-shade-6: shade-color($blue, 60%) !default;
+$blue-shade-7: shade-color($blue, 70%) !default;
+$blue-shade-8: shade-color($blue, 80%) !default;
+$blue-shade-9: shade-color($blue, 90%) !default;
+
+$cyan-light-1: light-color($cyan, 90%) !default;
+$cyan-light-2: light-color($cyan, 80%) !default;
+$cyan-light-3: light-color($cyan, 70%) !default;
+$cyan-light-4: light-color($cyan, 60%) !default;
+$cyan-light-5: light-color($cyan, 50%) !default;
+$cyan-light-6: light-color($cyan, 40%) !default;
+$cyan-light-7: light-color($cyan, 30%) !default;
+$cyan-light-8: light-color($cyan, 20%) !default;
+$cyan-light-9: light-color($cyan, 10%) !default;
+
+$cyan-shade-1: shade-color($cyan, 10%) !default;
+$cyan-shade-2: shade-color($cyan, 20%) !default;
+$cyan-shade-3: shade-color($cyan, 30%) !default;
+$cyan-shade-4: shade-color($cyan, 40%) !default;
+$cyan-shade-5: shade-color($cyan, 50%) !default;
+$cyan-shade-6: shade-color($cyan, 60%) !default;
+$cyan-shade-7: shade-color($cyan, 70%) !default;
+$cyan-shade-8: shade-color($cyan, 80%) !default;
+$cyan-shade-9: shade-color($cyan, 90%) !default;
+
+$teal-light-1: light-color($teal, 90%) !default;
+$teal-light-2: light-color($teal, 80%) !default;
+$teal-light-3: light-color($teal, 70%) !default;
+$teal-light-4: light-color($teal, 60%) !default;
+$teal-light-5: light-color($teal, 50%) !default;
+$teal-light-6: light-color($teal, 40%) !default;
+$teal-light-7: light-color($teal, 30%) !default;
+$teal-light-8: light-color($teal, 20%) !default;
+$teal-light-9: light-color($teal, 10%) !default;
+
+$teal-shade-1: shade-color($teal, 10%) !default;
+$teal-shade-2: shade-color($teal, 20%) !default;
+$teal-shade-3: shade-color($teal, 30%) !default;
+$teal-shade-4: shade-color($teal, 40%) !default;
+$teal-shade-5: shade-color($teal, 50%) !default;
+$teal-shade-6: shade-color($teal, 60%) !default;
+$teal-shade-7: shade-color($teal, 70%) !default;
+$teal-shade-8: shade-color($teal, 80%) !default;
+$teal-shade-9: shade-color($teal, 90%) !default;
+
+$green-light-1: light-color($green, 90%) !default;
+$green-light-2: light-color($green, 80%) !default;
+$green-light-3: light-color($green, 70%) !default;
+$green-light-4: light-color($green, 60%) !default;
+$green-light-5: light-color($green, 50%) !default;
+$green-light-6: light-color($green, 40%) !default;
+$green-light-7: light-color($green, 30%) !default;
+$green-light-8: light-color($green, 20%) !default;
+$green-light-9: light-color($green, 10%) !default;
+
+$green-shade-1: shade-color($green, 10%) !default;
+$green-shade-2: shade-color($green, 20%) !default;
+$green-shade-3: shade-color($green, 30%) !default;
+$green-shade-4: shade-color($green, 40%) !default;
+$green-shade-5: shade-color($green, 50%) !default;
+$green-shade-6: shade-color($green, 60%) !default;
+$green-shade-7: shade-color($green, 70%) !default;
+$green-shade-8: shade-color($green, 80%) !default;
+$green-shade-9: shade-color($green, 90%) !default;
+
+$lime-light-1: light-color($lime, 90%) !default;
+$lime-light-2: light-color($lime, 80%) !default;
+$lime-light-3: light-color($lime, 70%) !default;
+$lime-light-4: light-color($lime, 60%) !default;
+$lime-light-5: light-color($lime, 50%) !default;
+$lime-light-6: light-color($lime, 40%) !default;
+$lime-light-7: light-color($lime, 30%) !default;
+$lime-light-8: light-color($lime, 20%) !default;
+$lime-light-9: light-color($lime, 10%) !default;
+
+$lime-shade-1: shade-color($lime, 10%) !default;
+$lime-shade-2: shade-color($lime, 20%) !default;
+$lime-shade-3: shade-color($lime, 30%) !default;
+$lime-shade-4: shade-color($lime, 40%) !default;
+$lime-shade-5: shade-color($lime, 50%) !default;
+$lime-shade-6: shade-color($lime, 60%) !default;
+$lime-shade-7: shade-color($lime, 70%) !default;
+$lime-shade-8: shade-color($lime, 80%) !default;
+$lime-shade-9: shade-color($lime, 90%) !default;
+
+$yellow-light-1: light-color($yellow, 90%) !default;
+$yellow-light-2: light-color($yellow, 80%) !default;
+$yellow-light-3: light-color($yellow, 70%) !default;
+$yellow-light-4: light-color($yellow, 60%) !default;
+$yellow-light-5: light-color($yellow, 50%) !default;
+$yellow-light-6: light-color($yellow, 40%) !default;
+$yellow-light-7: light-color($yellow, 30%) !default;
+$yellow-light-8: light-color($yellow, 20%) !default;
+$yellow-light-9: light-color($yellow, 10%) !default;
+
+$yellow-shade-1: shade-color($yellow, 10%) !default;
+$yellow-shade-2: shade-color($yellow, 20%) !default;
+$yellow-shade-3: shade-color($yellow, 30%) !default;
+$yellow-shade-4: shade-color($yellow, 40%) !default;
+$yellow-shade-5: shade-color($yellow, 50%) !default;
+$yellow-shade-6: shade-color($yellow, 60%) !default;
+$yellow-shade-7: shade-color($yellow, 70%) !default;
+$yellow-shade-8: shade-color($yellow, 80%) !default;
+$yellow-shade-9: shade-color($yellow, 90%) !default;
+
+$orange-light-1: light-color($orange, 90%) !default;
+$orange-light-2: light-color($orange, 80%) !default;
+$orange-light-3: light-color($orange, 70%) !default;
+$orange-light-4: light-color($orange, 60%) !default;
+$orange-light-5: light-color($orange, 50%) !default;
+$orange-light-6: light-color($orange, 40%) !default;
+$orange-light-7: light-color($orange, 30%) !default;
+$orange-light-8: light-color($orange, 20%) !default;
+$orange-light-9: light-color($orange, 10%) !default;
+
+$orange-shade-1: shade-color($orange, 10%) !default;
+$orange-shade-2: shade-color($orange, 20%) !default;
+$orange-shade-3: shade-color($orange, 30%) !default;
+$orange-shade-4: shade-color($orange, 40%) !default;
+$orange-shade-5: shade-color($orange, 50%) !default;
+$orange-shade-6: shade-color($orange, 60%) !default;
+$orange-shade-7: shade-color($orange, 70%) !default;
+$orange-shade-8: shade-color($orange, 80%) !default;
+$orange-shade-9: shade-color($orange, 90%) !default;
+
+$brown-light-1: light-color($brown, 90%) !default;
+$brown-light-2: light-color($brown, 80%) !default;
+$brown-light-3: light-color($brown, 70%) !default;
+$brown-light-4: light-color($brown, 60%) !default;
+$brown-light-5: light-color($brown, 50%) !default;
+$brown-light-6: light-color($brown, 40%) !default;
+$brown-light-7: light-color($brown, 30%) !default;
+$brown-light-8: light-color($brown, 20%) !default;
+$brown-light-9: light-color($brown, 10%) !default;
+
+$brown-shade-1: shade-color($brown, 10%) !default;
+$brown-shade-2: shade-color($brown, 20%) !default;
+$brown-shade-3: shade-color($brown, 30%) !default;
+$brown-shade-4: shade-color($brown, 40%) !default;
+$brown-shade-5: shade-color($brown, 50%) !default;
+$brown-shade-6: shade-color($brown, 60%) !default;
+$brown-shade-7: shade-color($brown, 70%) !default;
+$brown-shade-8: shade-color($brown, 80%) !default;
+$brown-shade-9: shade-color($brown, 90%) !default;
+
+$gray-light-1: light-color($gray, 90%) !default;
+$gray-light-2: light-color($gray, 80%) !default;
+$gray-light-3: light-color($gray, 70%) !default;
+$gray-light-4: light-color($gray, 60%) !default;
+$gray-light-5: light-color($gray, 50%) !default;
+$gray-light-6: light-color($gray, 40%) !default;
+$gray-light-7: light-color($gray, 30%) !default;
+$gray-light-8: light-color($gray, 20%) !default;
+$gray-light-9: light-color($gray, 10%) !default;
+
+$gray-shade-1: shade-color($gray, 10%) !default;
+$gray-shade-2: shade-color($gray, 20%) !default;
+$gray-shade-3: shade-color($gray, 30%) !default;
+$gray-shade-4: shade-color($gray, 40%) !default;
+$gray-shade-5: shade-color($gray, 50%) !default;
+$gray-shade-6: shade-color($gray, 60%) !default;
+$gray-shade-7: shade-color($gray, 70%) !default;
+$gray-shade-8: shade-color($gray, 80%) !default;
+$gray-shade-9: shade-color($gray, 90%) !default;
+
+$dark-red: light-color($red, 20%) !default;
+$dark-magenta: light-color($magenta, 20%) !default;
+$dark-purple: light-color($purple, 25%) !default;
+$dark-indigo: light-color($indigo, 30%) !default;
+$dark-navy: light-color($navy, 30%) !default;
+$dark-blue: light-color($blue, 20%) !default;
+$dark-cyan: light-color($cyan, 20%) !default;
+$dark-teal: light-color($teal, 20%) !default;
+$dark-green: light-color($green, 20%) !default;
+$dark-lime: light-color($lime, 10%) !default;
+$dark-yellow: $yellow !default;
+$dark-orange: light-color($orange, 10%) !default;
+$dark-brown: light-color($brown, 20%) !default;
+$dark-gray: light-color($gray, 20%) !default;
+
+$dark-red-rgb: red($dark-red), green($dark-red), blue($dark-red) !default;
+$dark-magenta-rgb: red($dark-magenta), green($dark-magenta), blue($dark-magenta) !default;
+$dark-purple-rgb: red($dark-purple), green($dark-purple), blue($dark-purple) !default;
+$dark-indigo-rgb: red($dark-indigo), green($dark-indigo), blue($dark-indigo) !default;
+$dark-navy-rgb: red($dark-navy), green($dark-navy), blue($dark-navy) !default;
+$dark-blue-rgb: red($dark-blue), green($dark-blue), blue($dark-blue) !default;
+$dark-cyan-rgb: red($dark-cyan), green($dark-cyan), blue($dark-cyan) !default;
+$dark-teal-rgb: red($dark-teal), green($dark-teal), blue($dark-teal) !default;
+$dark-green-rgb: red($dark-green), green($dark-green), blue($dark-green) !default;
+$dark-lime-rgb: red($dark-lime), green($dark-lime), blue($dark-lime) !default;
+$dark-yellow-rgb: red($dark-yellow), green($dark-yellow), blue($dark-yellow) !default;
+$dark-orange-rgb: red($dark-orange), green($dark-orange), blue($dark-orange) !default;
+$dark-brown-rgb: red($dark-brown), green($dark-brown), blue($dark-brown) !default;
+$dark-gray-rgb: red($dark-gray), green($dark-gray), blue($dark-gray) !default;
+
+$dark-red-light-1: shade-color($dark-red, 90%) !default;
+$dark-red-light-2: shade-color($dark-red, 80%) !default;
+$dark-red-light-3: shade-color($dark-red, 70%) !default;
+$dark-red-light-4: shade-color($dark-red, 60%) !default;
+$dark-red-light-5: shade-color($dark-red, 50%) !default;
+$dark-red-light-6: shade-color($dark-red, 40%) !default;
+$dark-red-light-7: shade-color($dark-red, 30%) !default;
+$dark-red-light-8: shade-color($dark-red, 20%) !default;
+$dark-red-light-9: shade-color($dark-red, 10%) !default;
+
+$dark-red-shade-1: light-color($dark-red, 10%) !default;
+$dark-red-shade-2: light-color($dark-red, 20%) !default;
+$dark-red-shade-3: light-color($dark-red, 30%) !default;
+$dark-red-shade-4: light-color($dark-red, 40%) !default;
+$dark-red-shade-5: light-color($dark-red, 50%) !default;
+$dark-red-shade-6: light-color($dark-red, 60%) !default;
+$dark-red-shade-7: light-color($dark-red, 70%) !default;
+$dark-red-shade-8: light-color($dark-red, 80%) !default;
+$dark-red-shade-9: light-color($dark-red, 90%) !default;
+
+$dark-magenta-light-1: shade-color($dark-magenta, 90%) !default;
+$dark-magenta-light-2: shade-color($dark-magenta, 80%) !default;
+$dark-magenta-light-3: shade-color($dark-magenta, 70%) !default;
+$dark-magenta-light-4: shade-color($dark-magenta, 60%) !default;
+$dark-magenta-light-5: shade-color($dark-magenta, 50%) !default;
+$dark-magenta-light-6: shade-color($dark-magenta, 40%) !default;
+$dark-magenta-light-7: shade-color($dark-magenta, 30%) !default;
+$dark-magenta-light-8: shade-color($dark-magenta, 20%) !default;
+$dark-magenta-light-9: shade-color($dark-magenta, 10%) !default;
+
+$dark-magenta-shade-1: light-color($dark-magenta, 10%) !default;
+$dark-magenta-shade-2: light-color($dark-magenta, 20%) !default;
+$dark-magenta-shade-3: light-color($dark-magenta, 30%) !default;
+$dark-magenta-shade-4: light-color($dark-magenta, 40%) !default;
+$dark-magenta-shade-5: light-color($dark-magenta, 50%) !default;
+$dark-magenta-shade-6: light-color($dark-magenta, 60%) !default;
+$dark-magenta-shade-7: light-color($dark-magenta, 70%) !default;
+$dark-magenta-shade-8: light-color($dark-magenta, 80%) !default;
+$dark-magenta-shade-9: light-color($dark-magenta, 90%) !default;
+
+$dark-purple-light-1: shade-color($dark-purple, 90%) !default;
+$dark-purple-light-2: shade-color($dark-purple, 80%) !default;
+$dark-purple-light-3: shade-color($dark-purple, 70%) !default;
+$dark-purple-light-4: shade-color($dark-purple, 60%) !default;
+$dark-purple-light-5: shade-color($dark-purple, 50%) !default;
+$dark-purple-light-6: shade-color($dark-purple, 40%) !default;
+$dark-purple-light-7: shade-color($dark-purple, 30%) !default;
+$dark-purple-light-8: shade-color($dark-purple, 20%) !default;
+$dark-purple-light-9: shade-color($dark-purple, 10%) !default;
+
+$dark-purple-shade-1: light-color($dark-purple, 10%) !default;
+$dark-purple-shade-2: light-color($dark-purple, 20%) !default;
+$dark-purple-shade-3: light-color($dark-purple, 30%) !default;
+$dark-purple-shade-4: light-color($dark-purple, 40%) !default;
+$dark-purple-shade-5: light-color($dark-purple, 50%) !default;
+$dark-purple-shade-6: light-color($dark-purple, 60%) !default;
+$dark-purple-shade-7: light-color($dark-purple, 70%) !default;
+$dark-purple-shade-8: light-color($dark-purple, 80%) !default;
+$dark-purple-shade-9: light-color($dark-purple, 90%) !default;
+
+$dark-indigo-light-1: shade-color($dark-indigo, 90%) !default;
+$dark-indigo-light-2: shade-color($dark-indigo, 80%) !default;
+$dark-indigo-light-3: shade-color($dark-indigo, 70%) !default;
+$dark-indigo-light-4: shade-color($dark-indigo, 60%) !default;
+$dark-indigo-light-5: shade-color($dark-indigo, 50%) !default;
+$dark-indigo-light-6: shade-color($dark-indigo, 40%) !default;
+$dark-indigo-light-7: shade-color($dark-indigo, 30%) !default;
+$dark-indigo-light-8: shade-color($dark-indigo, 20%) !default;
+$dark-indigo-light-9: shade-color($dark-indigo, 10%) !default;
+
+$dark-indigo-shade-1: light-color($dark-indigo, 10%) !default;
+$dark-indigo-shade-2: light-color($dark-indigo, 20%) !default;
+$dark-indigo-shade-3: light-color($dark-indigo, 30%) !default;
+$dark-indigo-shade-4: light-color($dark-indigo, 40%) !default;
+$dark-indigo-shade-5: light-color($dark-indigo, 50%) !default;
+$dark-indigo-shade-6: light-color($dark-indigo, 60%) !default;
+$dark-indigo-shade-7: light-color($dark-indigo, 70%) !default;
+$dark-indigo-shade-8: light-color($dark-indigo, 80%) !default;
+$dark-indigo-shade-9: light-color($dark-indigo, 90%) !default;
+
+$dark-navy-light-1: shade-color($dark-navy, 90%) !default;
+$dark-navy-light-2: shade-color($dark-navy, 80%) !default;
+$dark-navy-light-3: shade-color($dark-navy, 70%) !default;
+$dark-navy-light-4: shade-color($dark-navy, 60%) !default;
+$dark-navy-light-5: shade-color($dark-navy, 50%) !default;
+$dark-navy-light-6: shade-color($dark-navy, 40%) !default;
+$dark-navy-light-7: shade-color($dark-navy, 30%) !default;
+$dark-navy-light-8: shade-color($dark-navy, 20%) !default;
+$dark-navy-light-9: shade-color($dark-navy, 10%) !default;
+
+$dark-navy-shade-1: light-color($dark-navy, 10%) !default;
+$dark-navy-shade-2: light-color($dark-navy, 20%) !default;
+$dark-navy-shade-3: light-color($dark-navy, 30%) !default;
+$dark-navy-shade-4: light-color($dark-navy, 40%) !default;
+$dark-navy-shade-5: light-color($dark-navy, 50%) !default;
+$dark-navy-shade-6: light-color($dark-navy, 60%) !default;
+$dark-navy-shade-7: light-color($dark-navy, 70%) !default;
+$dark-navy-shade-8: light-color($dark-navy, 80%) !default;
+$dark-navy-shade-9: light-color($dark-navy, 90%) !default;
+
+$dark-blue-light-1: shade-color($dark-blue, 90%) !default;
+$dark-blue-light-2: shade-color($dark-blue, 80%) !default;
+$dark-blue-light-3: shade-color($dark-blue, 70%) !default;
+$dark-blue-light-4: shade-color($dark-blue, 60%) !default;
+$dark-blue-light-5: shade-color($dark-blue, 50%) !default;
+$dark-blue-light-6: shade-color($dark-blue, 40%) !default;
+$dark-blue-light-7: shade-color($dark-blue, 30%) !default;
+$dark-blue-light-8: shade-color($dark-blue, 20%) !default;
+$dark-blue-light-9: shade-color($dark-blue, 10%) !default;
+
+$dark-blue-shade-1: light-color($dark-blue, 10%) !default;
+$dark-blue-shade-2: light-color($dark-blue, 20%) !default;
+$dark-blue-shade-3: light-color($dark-blue, 30%) !default;
+$dark-blue-shade-4: light-color($dark-blue, 40%) !default;
+$dark-blue-shade-5: light-color($dark-blue, 50%) !default;
+$dark-blue-shade-6: light-color($dark-blue, 60%) !default;
+$dark-blue-shade-7: light-color($dark-blue, 70%) !default;
+$dark-blue-shade-8: light-color($dark-blue, 80%) !default;
+$dark-blue-shade-9: light-color($dark-blue, 90%) !default;
+
+$dark-cyan-light-1: shade-color($dark-cyan, 90%) !default;
+$dark-cyan-light-2: shade-color($dark-cyan, 80%) !default;
+$dark-cyan-light-3: shade-color($dark-cyan, 70%) !default;
+$dark-cyan-light-4: shade-color($dark-cyan, 60%) !default;
+$dark-cyan-light-5: shade-color($dark-cyan, 50%) !default;
+$dark-cyan-light-6: shade-color($dark-cyan, 40%) !default;
+$dark-cyan-light-7: shade-color($dark-cyan, 30%) !default;
+$dark-cyan-light-8: shade-color($dark-cyan, 20%) !default;
+$dark-cyan-light-9: shade-color($dark-cyan, 10%) !default;
+
+$dark-cyan-shade-1: light-color($dark-cyan, 10%) !default;
+$dark-cyan-shade-2: light-color($dark-cyan, 20%) !default;
+$dark-cyan-shade-3: light-color($dark-cyan, 30%) !default;
+$dark-cyan-shade-4: light-color($dark-cyan, 40%) !default;
+$dark-cyan-shade-5: light-color($dark-cyan, 50%) !default;
+$dark-cyan-shade-6: light-color($dark-cyan, 60%) !default;
+$dark-cyan-shade-7: light-color($dark-cyan, 70%) !default;
+$dark-cyan-shade-8: light-color($dark-cyan, 80%) !default;
+$dark-cyan-shade-9: light-color($dark-cyan, 90%) !default;
+
+$dark-teal-light-1: shade-color($dark-teal, 90%) !default;
+$dark-teal-light-2: shade-color($dark-teal, 80%) !default;
+$dark-teal-light-3: shade-color($dark-teal, 70%) !default;
+$dark-teal-light-4: shade-color($dark-teal, 60%) !default;
+$dark-teal-light-5: shade-color($dark-teal, 50%) !default;
+$dark-teal-light-6: shade-color($dark-teal, 40%) !default;
+$dark-teal-light-7: shade-color($dark-teal, 30%) !default;
+$dark-teal-light-8: shade-color($dark-teal, 20%) !default;
+$dark-teal-light-9: shade-color($dark-teal, 10%) !default;
+
+$dark-teal-shade-1: light-color($dark-teal, 10%) !default;
+$dark-teal-shade-2: light-color($dark-teal, 20%) !default;
+$dark-teal-shade-3: light-color($dark-teal, 30%) !default;
+$dark-teal-shade-4: light-color($dark-teal, 40%) !default;
+$dark-teal-shade-5: light-color($dark-teal, 50%) !default;
+$dark-teal-shade-6: light-color($dark-teal, 60%) !default;
+$dark-teal-shade-7: light-color($dark-teal, 70%) !default;
+$dark-teal-shade-8: light-color($dark-teal, 80%) !default;
+$dark-teal-shade-9: light-color($dark-teal, 90%) !default;
+
+$dark-green-light-1: shade-color($dark-green, 90%) !default;
+$dark-green-light-2: shade-color($dark-green, 80%) !default;
+$dark-green-light-3: shade-color($dark-green, 70%) !default;
+$dark-green-light-4: shade-color($dark-green, 60%) !default;
+$dark-green-light-5: shade-color($dark-green, 50%) !default;
+$dark-green-light-6: shade-color($dark-green, 40%) !default;
+$dark-green-light-7: shade-color($dark-green, 30%) !default;
+$dark-green-light-8: shade-color($dark-green, 20%) !default;
+$dark-green-light-9: shade-color($dark-green, 10%) !default;
+
+$dark-green-shade-1: light-color($dark-green, 10%) !default;
+$dark-green-shade-2: light-color($dark-green, 20%) !default;
+$dark-green-shade-3: light-color($dark-green, 30%) !default;
+$dark-green-shade-4: light-color($dark-green, 40%) !default;
+$dark-green-shade-5: light-color($dark-green, 50%) !default;
+$dark-green-shade-6: light-color($dark-green, 60%) !default;
+$dark-green-shade-7: light-color($dark-green, 70%) !default;
+$dark-green-shade-8: light-color($dark-green, 80%) !default;
+$dark-green-shade-9: light-color($dark-green, 90%) !default;
+
+$dark-lime-light-1: shade-color($dark-lime, 90%) !default;
+$dark-lime-light-2: shade-color($dark-lime, 80%) !default;
+$dark-lime-light-3: shade-color($dark-lime, 70%) !default;
+$dark-lime-light-4: shade-color($dark-lime, 60%) !default;
+$dark-lime-light-5: shade-color($dark-lime, 50%) !default;
+$dark-lime-light-6: shade-color($dark-lime, 40%) !default;
+$dark-lime-light-7: shade-color($dark-lime, 30%) !default;
+$dark-lime-light-8: shade-color($dark-lime, 20%) !default;
+$dark-lime-light-9: shade-color($dark-lime, 10%) !default;
+
+$dark-lime-shade-1: light-color($dark-lime, 10%) !default;
+$dark-lime-shade-2: light-color($dark-lime, 20%) !default;
+$dark-lime-shade-3: light-color($dark-lime, 30%) !default;
+$dark-lime-shade-4: light-color($dark-lime, 40%) !default;
+$dark-lime-shade-5: light-color($dark-lime, 50%) !default;
+$dark-lime-shade-6: light-color($dark-lime, 60%) !default;
+$dark-lime-shade-7: light-color($dark-lime, 70%) !default;
+$dark-lime-shade-8: light-color($dark-lime, 80%) !default;
+$dark-lime-shade-9: light-color($dark-lime, 90%) !default;
+
+$dark-yellow-light-1: shade-color($dark-yellow, 90%) !default;
+$dark-yellow-light-2: shade-color($dark-yellow, 80%) !default;
+$dark-yellow-light-3: shade-color($dark-yellow, 70%) !default;
+$dark-yellow-light-4: shade-color($dark-yellow, 60%) !default;
+$dark-yellow-light-5: shade-color($dark-yellow, 50%) !default;
+$dark-yellow-light-6: shade-color($dark-yellow, 40%) !default;
+$dark-yellow-light-7: shade-color($dark-yellow, 30%) !default;
+$dark-yellow-light-8: shade-color($dark-yellow, 20%) !default;
+$dark-yellow-light-9: shade-color($dark-yellow, 10%) !default;
+
+$dark-yellow-shade-1: light-color($dark-yellow, 10%) !default;
+$dark-yellow-shade-2: light-color($dark-yellow, 20%) !default;
+$dark-yellow-shade-3: light-color($dark-yellow, 30%) !default;
+$dark-yellow-shade-4: light-color($dark-yellow, 40%) !default;
+$dark-yellow-shade-5: light-color($dark-yellow, 50%) !default;
+$dark-yellow-shade-6: light-color($dark-yellow, 60%) !default;
+$dark-yellow-shade-7: light-color($dark-yellow, 70%) !default;
+$dark-yellow-shade-8: light-color($dark-yellow, 80%) !default;
+$dark-yellow-shade-9: light-color($dark-yellow, 90%) !default;
+
+$dark-orange-light-1: shade-color($dark-orange, 90%) !default;
+$dark-orange-light-2: shade-color($dark-orange, 80%) !default;
+$dark-orange-light-3: shade-color($dark-orange, 70%) !default;
+$dark-orange-light-4: shade-color($dark-orange, 60%) !default;
+$dark-orange-light-5: shade-color($dark-orange, 50%) !default;
+$dark-orange-light-6: shade-color($dark-orange, 40%) !default;
+$dark-orange-light-7: shade-color($dark-orange, 30%) !default;
+$dark-orange-light-8: shade-color($dark-orange, 20%) !default;
+$dark-orange-light-9: shade-color($dark-orange, 10%) !default;
+
+$dark-orange-shade-1: light-color($dark-orange, 10%) !default;
+$dark-orange-shade-2: light-color($dark-orange, 20%) !default;
+$dark-orange-shade-3: light-color($dark-orange, 30%) !default;
+$dark-orange-shade-4: light-color($dark-orange, 40%) !default;
+$dark-orange-shade-5: light-color($dark-orange, 50%) !default;
+$dark-orange-shade-6: light-color($dark-orange, 60%) !default;
+$dark-orange-shade-7: light-color($dark-orange, 70%) !default;
+$dark-orange-shade-8: light-color($dark-orange, 80%) !default;
+$dark-orange-shade-9: light-color($dark-orange, 90%) !default;
+
+$dark-brown-light-1: shade-color($dark-brown, 90%) !default;
+$dark-brown-light-2: shade-color($dark-brown, 80%) !default;
+$dark-brown-light-3: shade-color($dark-brown, 70%) !default;
+$dark-brown-light-4: shade-color($dark-brown, 60%) !default;
+$dark-brown-light-5: shade-color($dark-brown, 50%) !default;
+$dark-brown-light-6: shade-color($dark-brown, 40%) !default;
+$dark-brown-light-7: shade-color($dark-brown, 30%) !default;
+$dark-brown-light-8: shade-color($dark-brown, 20%) !default;
+$dark-brown-light-9: shade-color($dark-brown, 10%) !default;
+
+$dark-brown-shade-1: light-color($dark-brown, 10%) !default;
+$dark-brown-shade-2: light-color($dark-brown, 20%) !default;
+$dark-brown-shade-3: light-color($dark-brown, 30%) !default;
+$dark-brown-shade-4: light-color($dark-brown, 40%) !default;
+$dark-brown-shade-5: light-color($dark-brown, 50%) !default;
+$dark-brown-shade-6: light-color($dark-brown, 60%) !default;
+$dark-brown-shade-7: light-color($dark-brown, 70%) !default;
+$dark-brown-shade-8: light-color($dark-brown, 80%) !default;
+$dark-brown-shade-9: light-color($dark-brown, 90%) !default;
+
+$dark-gray-light-1: shade-color($dark-gray, 90%) !default;
+$dark-gray-light-2: shade-color($dark-gray, 80%) !default;
+$dark-gray-light-3: shade-color($dark-gray, 70%) !default;
+$dark-gray-light-4: shade-color($dark-gray, 60%) !default;
+$dark-gray-light-5: shade-color($dark-gray, 50%) !default;
+$dark-gray-light-6: shade-color($dark-gray, 40%) !default;
+$dark-gray-light-7: shade-color($dark-gray, 30%) !default;
+$dark-gray-light-8: shade-color($dark-gray, 20%) !default;
+$dark-gray-light-9: shade-color($dark-gray, 10%) !default;
+
+$dark-gray-shade-1: light-color($dark-gray, 10%) !default;
+$dark-gray-shade-2: light-color($dark-gray, 20%) !default;
+$dark-gray-shade-3: light-color($dark-gray, 30%) !default;
+$dark-gray-shade-4: light-color($dark-gray, 40%) !default;
+$dark-gray-shade-5: light-color($dark-gray, 50%) !default;
+$dark-gray-shade-6: light-color($dark-gray, 60%) !default;
+$dark-gray-shade-7: light-color($dark-gray, 70%) !default;
+$dark-gray-shade-8: light-color($dark-gray, 80%) !default;
+$dark-gray-shade-9: light-color($dark-gray, 90%) !default;

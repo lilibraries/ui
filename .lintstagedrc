@@ -12,7 +12,7 @@
     "git add --patch"
   ],
   "*.scss": [
-    "stylelint --fix",
+    "stylelint **/*.scss --fix",
     "prettier --write",
     "git add --patch"
   ],
