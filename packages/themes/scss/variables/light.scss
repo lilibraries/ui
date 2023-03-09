@@ -1,20 +1,6 @@
+@import "./palettes";
 @import "../functions/light-color";
 @import "../functions/shade-color";
-
-$red: hsl(355deg, 70%, 55%) !default;
-$magenta: hsl(300deg, 75%, 45%) !default;
-$purple: hsl(280deg, 80%, 50%) !default;
-$indigo: hsl(255deg, 85%, 60%) !default;
-$navy: hsl(235deg, 90%, 60%) !default;
-$blue: hsl(215deg, 80%, 50%) !default;
-$cyan: hsl(190deg, 65%, 40%) !default;
-$teal: hsl(165deg, 65%, 35%) !default;
-$green: hsl(130deg, 45%, 40%) !default;
-$lime: hsl(80deg, 55%, 45%) !default;
-$yellow: hsl(45deg, 95%, 45%) !default;
-$orange: hsl(30deg, 85%, 50%) !default;
-$brown: hsl(355deg, 15%, 50%) !default;
-$gray: hsl(215deg, 5%, 50%) !default;
 
 $basis: $gray !default;
 $major: $blue !default;
