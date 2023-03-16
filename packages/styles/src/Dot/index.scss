@@ -79,8 +79,8 @@
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
       & > .#{$cls-prefix}dot-indicator {
-        color: var(--#{$color});
-        background-color: var(--#{$color});
+        color: rgb(var(--#{$color}-rgb));
+        background-color: rgb(var(--#{$color}-rgb));
       }
     }
   }
