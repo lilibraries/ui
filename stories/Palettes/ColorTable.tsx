@@ -1,57 +1,41 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC } from "react";
 import { Prefix } from "@lilib/ui";
-import hex from "rgb-hex";
+import rgb2hex from "rgb-hex";
 import { useDarkMode } from "storybook-dark-mode";
-
-const Row: FC<{ name: string }> = ({ name }) => {
-  const { var: prefix } = Prefix.useConfig();
-  const valueRef = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState("");
-  const isDarkMode = useDarkMode();
-
-  useEffect(() => {
-    setValue(window.getComputedStyle(valueRef.current!).color);
-  }, [isDarkMode]);
-
-  return (
-    <tr>
-      <td>
-        <div
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: 1000,
-            background: `var(--${prefix}${name})`,
-          }}
-        />
-      </td>
-      <td>
-        <div style={{ fontFamily: `var(--${prefix}font-family-mono)` }}>
-          {name}
-        </div>
-      </td>
-      <td>
-        <div style={{ fontFamily: `var(--${prefix}font-family-mono)` }}>
-          {value && "#" + hex(value).toUpperCase()}
-        </div>
-      </td>
-      <td>
-        <div style={{ fontFamily: `var(--${prefix}font-family-mono)` }}>
-          {value}
-          <span
-            ref={valueRef}
-            style={{ display: "none", color: `var(--${prefix}${name})` }}
-          />
-        </div>
-      </td>
-    </tr>
-  );
-};
+import ColorPreview from "../components/ColorPreview";
+import Monospace from "../components/Monospace";
+import CSSValue from "../components/CSSValue";
 
 const ColorTable: FC<{ name: string }> = ({ name }) => {
+  const { var: prefix } = Prefix.useConfig();
+  const isDarkMode = useDarkMode();
+
   let rows = [];
   for (let i = 0; i <= 9; i++) {
-    rows.push(<Row key={`${name}-${i}`} name={`${name}-${i}`} />);
+    rows.push(
+      <tr key={`${name}-${i}`}>
+        <td>
+          <ColorPreview
+            style={{ background: `var(--${prefix}${name}-${i})` }}
+          />
+        </td>
+        <td>
+          <Monospace>{`$${isDarkMode ? "dark-" : ""}${name}-${i}`}</Monospace>
+        </td>
+        <td>
+          <Monospace>{`var(--${prefix}${name}-${i})`}</Monospace>
+        </td>
+        <td>
+          <CSSValue
+            valueName="color"
+            valueStyle={{ color: `var(--${prefix}${name}-${i})` }}
+            transform={(value) =>
+              /rgb/.test(value) ? `#${rgb2hex(value).toUpperCase()}` : value
+            }
+          />
+        </td>
+      </tr>
+    );
   }
 
   return (
@@ -59,9 +43,9 @@ const ColorTable: FC<{ name: string }> = ({ name }) => {
       <thead>
         <tr>
           <th>Color</th>
-          <th>Name</th>
-          <th>Hex</th>
-          <th>RGB</th>
+          <th>SCSS</th>
+          <th>CSS</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
