@@ -54,7 +54,7 @@ p.sbdocs.sbdocs-p {
     font-size: inherit;
     font-family: var(--font-family-mono);
     line-height: inherit;
-    background-color: var(--bg-color-hollow-soft);
+    background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
     border: 0;
     border-radius: var(--border-radius-small);
   }

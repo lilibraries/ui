@@ -11,8 +11,9 @@ const ColorPreview = forwardRef<
       {...rest}
       ref={ref}
       style={{
-        display: "inline-flex",
+        display: "inline-block",
         boxSizing: "border-box",
+        verticalAlign: "middle",
         width: 32,
         height: 32,
         borderRadius: 1000,
