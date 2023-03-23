@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   framework: "@storybook/react",
   features: { babelModeV7: true },
-  stories: ["../stories/Palettes/stories.*"],
+  stories: ["../stories/**/stories.*"],
 
   addons: [
     "storybook-dark-mode",

@@ -10,7 +10,10 @@ const Monospace = forwardRef<HTMLSpanElement, HTMLAttributes<HTMLSpanElement>>(
       <span
         {...rest}
         ref={ref}
-        style={{ fontFamily: `var(--${prefix}font-family-mono)`, ...style }}
+        style={{
+          fontFamily: `var(--${prefix}font-family-mono)`,
+          ...style,
+        }}
       />
     );
   }

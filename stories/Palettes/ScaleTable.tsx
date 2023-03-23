@@ -2,34 +2,33 @@ import React, { FC } from "react";
 import { Prefix } from "@lilib/ui";
 import rgb2hex from "rgb-hex";
 import { useDarkMode } from "storybook-dark-mode";
-import colors from "./colors";
 import ColorPreview from "../components/ColorPreview";
 import Monospace from "../components/Monospace";
 import CSSValue from "../components/CSSValue";
 
-const BaseTable: FC = () => {
+const ScaleTable: FC<{ name: string }> = ({ name }) => {
   const { var: prefix } = Prefix.useConfig();
   const isDarkMode = useDarkMode();
 
   let rows = [];
-  for (const name of colors) {
+  for (let i = 0; i <= 9; i++) {
     rows.push(
-      <tr key={name}>
+      <tr key={`${name}-${i}`}>
         <td>
           <ColorPreview
-            style={{ background: `rgb(var(--${prefix}${name}-rgb))` }}
+            style={{ background: `var(--${prefix}${name}-${i})` }}
           />
         </td>
         <td>
-          <Monospace>{`$${isDarkMode ? "dark-" : ""}${name}`}</Monospace>
+          <Monospace>{`$${isDarkMode ? "dark-" : ""}${name}-${i}`}</Monospace>
         </td>
         <td>
-          <Monospace>{`var(--${prefix}${name})`}</Monospace>
+          <Monospace>{`var(--${prefix}${name}-${i})`}</Monospace>
         </td>
         <td>
           <CSSValue
             valueName="color"
-            valueStyle={{ color: `rgb(var(--${prefix}${name}-rgb))` }}
+            valueStyle={{ color: `var(--${prefix}${name}-${i})` }}
             transform={(value) =>
               /rgb/.test(value) ? `#${rgb2hex(value).toUpperCase()}` : value
             }
@@ -54,4 +53,4 @@ const BaseTable: FC = () => {
   );
 };
 
-export default BaseTable;
+export default ScaleTable;
