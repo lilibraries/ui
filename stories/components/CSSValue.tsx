@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useTimeout } from "@lilib/hooks";
 import { useDarkMode } from "storybook-dark-mode";
 import Monospace from "./Monospace";
 
@@ -21,12 +22,18 @@ const CSSValue = forwardRef<HTMLSpanElement, CSSValueProps>((props, ref) => {
   const isDarkMode = useDarkMode();
   const [value, setValue] = useState("");
 
-  useEffect(
-    () => {
+  const [updateValue] = useTimeout(() => {
+    if (valueNodeRef.current) {
       const value = String(
         window.getComputedStyle(valueNodeRef.current!)[valueName]
       );
       setValue(transform ? transform(value) : value);
+    }
+  }, 1);
+
+  useEffect(
+    () => {
+      updateValue();
     },
     [isDarkMode, valueName] // eslint-disable-line
   );

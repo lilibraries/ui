@@ -33,12 +33,6 @@ $dark-text-color-solid-active: $black !default;
 $dark-text-color-solid-inactive: rgba($black, 0.6) !default;
 $dark-text-color-solid-disabled: rgba($black, 0.5) !default;
 
-$dark-text-color-reverse-base: $black !default;
-$dark-text-color-reverse-hover: $black !default;
-$dark-text-color-reverse-active: $black !default;
-$dark-text-color-reverse-inactive: rgba($black, 0.6) !default;
-$dark-text-color-reverse-disabled: rgba($black, 0.5) !default;
-
 $dark-text-color-major-base: $dark-major !default;
 $dark-text-color-major-hover: light-color($dark-major, 20%) !default;
 $dark-text-color-major-active: light-color($dark-major, 40%) !default;

@@ -1,6 +1,6 @@
 const order = [
   "Designs",
-  ["Palettes"],
+  ["Tokens", "Palettes"],
   "Configs",
   [
     "Root",
