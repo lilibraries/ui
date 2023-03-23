@@ -24,6 +24,9 @@ const BaseTable: FC = () => {
           <Monospace>{`$${isDarkMode ? "dark-" : ""}${name}`}</Monospace>
         </td>
         <td>
+          <Monospace>{`var(--${prefix}${name})`}</Monospace>
+        </td>
+        <td>
           <CSSValue
             valueName="color"
             valueStyle={{ color: `rgb(var(--${prefix}${name}-rgb))` }}
@@ -42,6 +45,7 @@ const BaseTable: FC = () => {
         <tr>
           <th>Color</th>
           <th>SCSS</th>
+          <th>CSS</th>
           <th>Value</th>
         </tr>
       </thead>

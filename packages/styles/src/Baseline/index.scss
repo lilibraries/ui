@@ -23,7 +23,7 @@ body {
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
-  background-color: var(--bg-color-body);
+  background-color: var(--background-color-page);
 }
 
 main {
@@ -140,17 +140,17 @@ kbd {
 
 mark {
   color: inherit;
-  background-color: var(--bg-color-hollow-major-soft);
+  background-color: rgba(var(--major-rgb) / var(--alpha-soft));
 }
 
 ins {
   text-decoration: none;
-  background-color: var(--bg-color-hollow-positive-soft);
+  background-color: rgba(var(--positive-rgb) / var(--alpha-soft));
 }
 
 del {
   text-decoration: none;
-  background-color: var(--bg-color-hollow-negative-soft);
+  background-color: rgba(var(--negative-rgb) / var(--alpha-soft));
 }
 
 code,
@@ -164,7 +164,7 @@ output {
 
 code,
 kbd {
-  background-color: var(--bg-color-hollow-soft);
+  background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
 }
 
 kbd {
@@ -212,7 +212,7 @@ pre {
 blockquote {
   margin: 0 0 var(--space-4x);
   padding: var(--space-4x) var(--space-6x);
-  background-color: var(--bg-color-hollow-soft);
+  background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
   border-radius: var(--border-radius-fixed-base);
 
   & p:last-child {
