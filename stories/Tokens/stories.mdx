@@ -1,65 +1,114 @@
 import { Meta } from "@storybook/addon-docs";
-import FeaturesTable from "./FeaturesTable";
-import SpacesTable from "./SpacesTable";
-import FontSizesTable from "./FontSizesTable";
-import FontFamiliesTable from "./FontFamiliesTable";
-import LineHeightsTable from "./LineHeightsTable";
-import BorderRadiiTable from "./BorderRadiiTable";
-import MotionDurationsTable from "./MotionDurationsTable";
-import MotionFunctionsTable from "./MotionFunctionsTable";
-import ColorAlphasTable from "./ColorAlphasTable";
-import BasicColorsTable from "./BasicColorsTable";
-import BasicRGBsTable from "./BasicRGBsTable";
-import TextColorsTable from "./TextColorsTable";
+import Prefixes from "./Prefixes";
+import Features from "./Features";
+import Spaces from "./Spaces";
+import FontSizes from "./FontSizes";
+import FontFamilies from "./FontFamilies";
+import LineHeights from "./LineHeights";
+import BorderRadii from "./BorderRadii";
+import MotionDurations from "./MotionDurations";
+import MotionFunctions from "./MotionFunctions";
+import Colors from "./Colors";
+import RGBs from "./RGBs";
+import Alphas from "./Alphas";
+import TextColors from "./TextColors";
+import BorderColors from "./BorderColors";
+import BackgroundColors from "./BackgroundColors";
 
 <Meta title="Designs/Tokens" />
 
 # Tokens
 
-## Features
+## Basic
 
-<FeaturesTable />
+### Prefixes
 
-## Spaces
+<Prefixes />
 
-<SpacesTable />
+### Features
 
-## Font Sizes
+<Features />
 
-<FontSizesTable />
+### Spaces
 
-## Font Families
+<Spaces />
 
-<FontFamiliesTable />
+### Font Sizes
 
-## Line Heights
+<FontSizes />
 
-<LineHeightsTable />
+### Font Families
 
-## Border Radii
+<FontFamilies />
 
-<BorderRadiiTable />
+### Line Heights
 
-## Motion Durations
+<LineHeights />
 
-<MotionDurationsTable />
+### Border Radii
 
-## Motion Functions
+<BorderRadii />
 
-<MotionFunctionsTable />
+### Motion Durations
 
-## Color Alphas
+<MotionDurations />
 
-<ColorAlphasTable />
+### Motion Functions
 
-## Basic Colors
+<MotionFunctions />
 
-<BasicColorsTable />
+## Colors
 
-## Basic RGBs
+<Colors />
 
-<BasicRGBsTable />
+### RGBs
 
-## Text Colors
+<RGBs />
 
-<TextColorsTable />
+### Alphas
+
+<Alphas />
+
+### Text Colors
+
+<TextColors />
+<TextColors variant="solid" />
+<TextColors intent="major" />
+<TextColors intent="minor" />
+<TextColors intent="positive" />
+<TextColors intent="alertive" />
+<TextColors intent="negative" />
+
+### Border Colors
+
+<BorderColors />
+<BorderColors variant="deep" />
+<BorderColors variant="solid" />
+<BorderColors intent="major" />
+<BorderColors intent="minor" />
+<BorderColors intent="positive" />
+<BorderColors intent="alertive" />
+<BorderColors intent="negative" />
+<BorderColors variant="solid" intent="major" />
+<BorderColors variant="solid" intent="minor" />
+<BorderColors variant="solid" intent="positive" />
+<BorderColors variant="solid" intent="alertive" />
+<BorderColors variant="solid" intent="negative" />
+
+### Background Colors
+
+<BackgroundColors
+  statuses={["base", "page", "card", "hover", "active", "inactive", "disabled"]}
+/>
+<BackgroundColors variant="deep" />
+<BackgroundColors variant="solid" />
+<BackgroundColors intent="major" />
+<BackgroundColors intent="minor" />
+<BackgroundColors intent="positive" />
+<BackgroundColors intent="alertive" />
+<BackgroundColors intent="negative" />
+<BackgroundColors variant="solid" intent="major" />
+<BackgroundColors variant="solid" intent="minor" />
+<BackgroundColors variant="solid" intent="positive" />
+<BackgroundColors variant="solid" intent="alertive" />
+<BackgroundColors variant="solid" intent="negative" />
