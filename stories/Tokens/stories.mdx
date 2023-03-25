@@ -8,9 +8,10 @@ import LineHeights from "./LineHeights";
 import BorderRadii from "./BorderRadii";
 import MotionDurations from "./MotionDurations";
 import MotionFunctions from "./MotionFunctions";
-import Colors from "./Colors";
-import RGBs from "./RGBs";
+import Colors from "../Palettes/Colors";
+import RGBs from "../Palettes/RGBs";
 import Alphas from "./Alphas";
+import Scales from "../Palettes/Scales";
 import TextColors from "./TextColors";
 import BorderColors from "./BorderColors";
 import BackgroundColors from "./BackgroundColors";
@@ -59,56 +60,53 @@ import BackgroundColors from "./BackgroundColors";
 
 ## Colors
 
-<Colors />
+<Colors
+  names={["basis", "major", "minor", "positive", "alertive", "negative"]}
+/>
 
 ### RGBs
 
-<RGBs />
+<RGBs names={["basis", "major", "minor", "positive", "alertive", "negative"]} />
 
 ### Alphas
 
 <Alphas />
 
+### Major
+
+<Scales name="major" />
+
+### Minor
+
+<Scales name="minor" />
+
+### Positive
+
+<Scales name="positive" />
+
+### Alertive
+
+<Scales name="alertive" />
+
+### Negative
+
+<Scales name="negative" />
+
 ### Text Colors
 
 <TextColors />
 <TextColors variant="solid" />
-<TextColors intent="major" />
-<TextColors intent="minor" />
-<TextColors intent="positive" />
-<TextColors intent="alertive" />
-<TextColors intent="negative" />
+<TextColors variant="reverse" />
 
 ### Border Colors
 
 <BorderColors />
 <BorderColors variant="deep" />
 <BorderColors variant="solid" />
-<BorderColors intent="major" />
-<BorderColors intent="minor" />
-<BorderColors intent="positive" />
-<BorderColors intent="alertive" />
-<BorderColors intent="negative" />
-<BorderColors variant="solid" intent="major" />
-<BorderColors variant="solid" intent="minor" />
-<BorderColors variant="solid" intent="positive" />
-<BorderColors variant="solid" intent="alertive" />
-<BorderColors variant="solid" intent="negative" />
 
 ### Background Colors
 
-<BackgroundColors
-  statuses={["base", "page", "card", "hover", "active", "inactive", "disabled"]}
-/>
+<BackgroundColors statuses={["page", "card", "over"]} />
+<BackgroundColors />
 <BackgroundColors variant="deep" />
 <BackgroundColors variant="solid" />
-<BackgroundColors intent="major" />
-<BackgroundColors intent="minor" />
-<BackgroundColors intent="positive" />
-<BackgroundColors intent="alertive" />
-<BackgroundColors intent="negative" />
-<BackgroundColors variant="solid" intent="major" />
-<BackgroundColors variant="solid" intent="minor" />
-<BackgroundColors variant="solid" intent="positive" />
-<BackgroundColors variant="solid" intent="alertive" />
-<BackgroundColors variant="solid" intent="negative" />
