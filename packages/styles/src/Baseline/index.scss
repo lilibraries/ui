@@ -36,57 +36,57 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: var(--space-4x);
+  margin-bottom: var(--space-4);
   font-weight: 700;
 }
 
 h1 {
-  margin-top: var(--space-9x);
+  margin-top: var(--space-9);
   font-size: var(--font-size-h1);
 }
 
 h2 {
-  margin-top: var(--space-8x);
+  margin-top: var(--space-8);
   font-size: var(--font-size-h2);
 }
 
 h3 {
-  margin-top: var(--space-7x);
+  margin-top: var(--space-7);
   font-size: var(--font-size-h3);
 }
 
 h4 {
-  margin-top: var(--space-6x);
+  margin-top: var(--space-6);
   font-size: var(--font-size-h4);
 }
 
 h5 {
-  margin-top: var(--space-5x);
+  margin-top: var(--space-5);
   font-size: var(--font-size-h5);
 }
 
 h6 {
-  margin-top: var(--space-4x);
+  margin-top: var(--space-4);
   font-size: var(--font-size-h6);
 }
 
 p {
   margin-top: 0;
-  margin-bottom: var(--space-4x);
+  margin-bottom: var(--space-4);
 }
 
 a {
-  color: var(--text-color-major-base);
+  color: var(--major-5);
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--text-color-major-hover);
+    color: var(--major-6);
     text-decoration: underline;
   }
 
   &:active {
-    color: var(--text-color-major-active);
+    color: var(--major-7);
     text-decoration: underline;
   }
 }
@@ -189,14 +189,14 @@ abbr[title] {
 hr {
   box-sizing: content-box;
   height: 0;
-  margin: var(--space-1x) 0;
+  margin: var(--space-1) 0;
   overflow: visible;
   border: 0;
   border-top: 1px solid var(--border-color-base);
 }
 
 pre {
-  margin: 0 0 var(--space-4x);
+  margin: 0 0 var(--space-4);
   overflow: auto;
   font-size: 0.875em;
   font-family: var(--font-family-mono);
@@ -210,8 +210,8 @@ pre {
 }
 
 blockquote {
-  margin: 0 0 var(--space-4x);
-  padding: var(--space-4x) var(--space-6x);
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4) var(--space-6);
   background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
   border-radius: var(--border-radius-fixed-base);
 
@@ -222,7 +222,7 @@ blockquote {
 
 ol,
 ul {
-  margin: 0 0 var(--space-4x);
+  margin: 0 0 var(--space-4);
   padding-left: 2em;
 
   ol,
@@ -241,7 +241,7 @@ ul[dir="rtl"],
 
 details {
   display: block;
-  margin-bottom: var(--space-4x);
+  margin-bottom: var(--space-4);
 }
 
 summary {
@@ -250,7 +250,7 @@ summary {
   cursor: pointer;
 
   & + * {
-    margin-top: var(--space-1x);
+    margin-top: var(--space-1);
   }
 }
 
@@ -259,11 +259,11 @@ dt {
 }
 
 dd {
-  margin: 0 0 var(--space-2x);
+  margin: 0 0 var(--space-2);
 }
 
 dl {
-  margin: 0 0 var(--space-4x);
+  margin: 0 0 var(--space-4);
 
   & dd:last-child {
     margin-bottom: 0;
@@ -271,7 +271,7 @@ dl {
 }
 
 address {
-  margin-bottom: var(--space-4x);
+  margin-bottom: var(--space-4);
   font-style: normal;
 }
 
@@ -298,7 +298,7 @@ tr {
 
 th,
 td {
-  padding: var(--space-2x) var(--space-4x);
+  padding: var(--space-2) var(--space-4);
 }
 
 th {
@@ -307,7 +307,7 @@ th {
 }
 
 caption {
-  padding: var(--space-2x) var(--space-4x);
+  padding: var(--space-2) var(--space-4);
   text-align: inherit;
 }
 
