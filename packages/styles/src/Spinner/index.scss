@@ -9,11 +9,11 @@
   line-height: 1;
   vertical-align: -0.125em;
 
-  &.#{$cls-prefix}start-spaced {
+  &.#{$cls-prefix}left-spaced {
     margin-left: 0.375em;
   }
 
-  &.#{$cls-prefix}end-spaced {
+  &.#{$cls-prefix}right-spaced {
     margin-right: 0.375em;
   }
 
@@ -65,15 +65,5 @@
         opacity: 0;
       }
     }
-  }
-}
-
-.#{$cls-prefix}spinner.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}start-spaced {
-    margin-right: 0.375em;
-  }
-
-  &.#{$cls-prefix}end-spaced {
-    margin-left: 0.375em;
   }
 }

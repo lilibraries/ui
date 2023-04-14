@@ -3,14 +3,14 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import { PresetColor } from "../types";
+import { ColorValue } from "../utils/types";
 import isPresetColor from "../utils/isPresetColor";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export interface DotProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   size?: SizeValue;
-  color?: PresetColor | string;
+  color?: ColorValue | string;
   animated?: boolean;
 }
 
@@ -34,12 +34,12 @@ const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
   const classes = cn(
     `${cls}dot`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}contained`]: contained,
       [`${cls}standalone`]: !contained,
       [`${cls}${size}`]: size,
       [`${cls}${color}`]: isPreseted,
       [`${cls}animated`]: animated,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );

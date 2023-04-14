@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
+import { Badge, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -8,56 +8,56 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Colors(props: BadgeProps) {
+function Example() {
   return (
     <Flexbox gap="8x" align="center" wrap>
-      <Badge count={6} {...props} color="red">
+      <Badge count={6} color="red">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="magenta">
+      <Badge count={6} color="magenta">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="purple">
+      <Badge count={6} color="purple">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="indigo">
+      <Badge count={6} color="indigo">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="navy">
+      <Badge count={6} color="navy">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="blue">
+      <Badge count={6} color="blue">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="cyan">
+      <Badge count={6} color="cyan">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="teal">
+      <Badge count={6} color="teal">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="green">
+      <Badge count={6} color="green">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="lime">
+      <Badge count={6} color="lime">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="yellow">
+      <Badge count={6} color="yellow">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="orange">
+      <Badge count={6} color="orange">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="brown">
+      <Badge count={6} color="brown">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color="gray">
+      <Badge count={6} color="gray">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} color={null}>
+      <Badge count={6} color={null}>
         <div style={block} />
       </Badge>
     </Flexbox>
   );
 }
 
-export default Colors;
+export default Example;

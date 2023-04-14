@@ -1,7 +1,7 @@
 import React from "react";
 import { Duration, Spinner } from "@lilib/ui";
 
-function Scoped() {
+function Example() {
   return (
     <Duration scoped slow={3000}>
       <Spinner spinning />
@@ -9,4 +9,4 @@ function Scoped() {
   );
 }
 
-export default Scoped;
+export default Example;

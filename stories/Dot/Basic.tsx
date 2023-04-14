@@ -1,8 +1,8 @@
 import React from "react";
-import { Dot, DotProps } from "@lilib/ui";
+import { Dot } from "@lilib/ui";
 
-function Basic(props: DotProps) {
-  return <Dot {...props}>Dot</Dot>;
+function Example() {
+  return <Dot>Dot</Dot>;
 }
 
-export default Basic;
+export default Example;

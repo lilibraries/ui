@@ -1,8 +1,8 @@
 import React from "react";
-import { Switch, SwitchProps } from "@lilib/ui";
+import { Switch } from "@lilib/ui";
 
-function Loading(props: SwitchProps) {
-  return <Switch {...props} loading />;
+function Example() {
+  return <Switch loading />;
 }
 
-export default Loading;
+export default Example;

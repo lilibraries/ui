@@ -1,20 +1,15 @@
 import React from "react";
-import { Flexbox, Switch, SwitchProps } from "@lilib/ui";
+import { Flexbox, Switch } from "@lilib/ui";
 import { FiCheck, FiX } from "react-icons/fi";
 
-function Sizes(props: SwitchProps) {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Switch checkedLabel="🌛" uncheckedLabel="☀️" {...props} size="small" />
-      <Switch
-        checkedLabel={<FiCheck />}
-        uncheckedLabel={<FiX />}
-        {...props}
-        size={null}
-      />
-      <Switch checkedLabel="On" uncheckedLabel="Off" {...props} size="large" />
+      <Switch checkedLabel="🌛" uncheckedLabel="☀️" size="small" />
+      <Switch checkedLabel={<FiCheck />} uncheckedLabel={<FiX />} size={null} />
+      <Switch checkedLabel="On" uncheckedLabel="Off" size="large" />
     </Flexbox>
   );
 }
 
-export default Sizes;
+export default Example;

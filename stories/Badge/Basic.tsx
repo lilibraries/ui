@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -8,12 +8,12 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Basic(props: BadgeProps) {
+function Example() {
   return (
-    <Badge count={6} {...props}>
+    <Badge count={6}>
       <div style={block} />
     </Badge>
   );
 }
 
-export default Basic;
+export default Example;

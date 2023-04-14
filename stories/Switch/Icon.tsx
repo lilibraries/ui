@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { Switch, SwitchProps } from "@lilib/ui";
+import { Switch } from "@lilib/ui";
 import { FiCheck, FiX } from "react-icons/fi";
 
-function Icon(props: SwitchProps) {
+function Example() {
   const [checked, setChecked] = useState(false);
 
   return (
     <Switch
-      {...props}
+      icon={checked ? <FiCheck /> : <FiX />}
       checked={checked}
       onChange={(event) => setChecked(event.target.checked)}
-      icon={checked ? <FiCheck /> : <FiX />}
     />
   );
 }
 
-export default Icon;
+export default Example;

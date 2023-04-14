@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Flexbox, Radio, RadioGroupProps } from "@lilib/ui";
+import { Flexbox, Radio } from "@lilib/ui";
 
-function Controlled(props: RadioGroupProps) {
+function Controlled() {
   const [value, setValue] = useState<any>(1);
 
   return (
     <Radio.Group
-      {...props}
       value={value}
       onChange={(event) => {
         setValue(event.target.value);
@@ -21,9 +20,9 @@ function Controlled(props: RadioGroupProps) {
   );
 }
 
-function Uncontrolled(props: RadioGroupProps) {
+function Uncontrolled() {
   return (
-    <Radio.Group defaultValue="1" {...props}>
+    <Radio.Group defaultValue="1">
       <Flexbox gap="4x">
         <Radio value="1">Radio 1</Radio>
         <Radio value="2">Radio 2</Radio>
@@ -33,15 +32,15 @@ function Uncontrolled(props: RadioGroupProps) {
   );
 }
 
-function Example(props: RadioGroupProps) {
+function Example() {
   return (
-    <div>
+    <>
       <h6>Controlled</h6>
-      <Controlled {...props} />
+      <Controlled />
 
       <h6>Uncontrolled</h6>
-      <Uncontrolled {...props} />
-    </div>
+      <Uncontrolled />
+    </>
   );
 }
 

@@ -1,25 +1,25 @@
 import React from "react";
-import { Dot, DotProps, Flexbox } from "@lilib/ui";
+import { Dot, Flexbox } from "@lilib/ui";
 
-function PresetColors(props: DotProps) {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Dot {...props} color="red" />
-      <Dot {...props} color="magenta" />
-      <Dot {...props} color="purple" />
-      <Dot {...props} color="indigo" />
-      <Dot {...props} color="navy" />
-      <Dot {...props} color="blue" />
-      <Dot {...props} color="cyan" />
-      <Dot {...props} color="teal" />
-      <Dot {...props} color="green" />
-      <Dot {...props} color="lime" />
-      <Dot {...props} color="yellow" />
-      <Dot {...props} color="orange" />
-      <Dot {...props} color="brown" />
-      <Dot {...props} color="gray" />
+      <Dot color="red" />
+      <Dot color="magenta" />
+      <Dot color="purple" />
+      <Dot color="indigo" />
+      <Dot color="navy" />
+      <Dot color="blue" />
+      <Dot color="cyan" />
+      <Dot color="teal" />
+      <Dot color="green" />
+      <Dot color="lime" />
+      <Dot color="yellow" />
+      <Dot color="orange" />
+      <Dot color="brown" />
+      <Dot color="gray" />
     </Flexbox>
   );
 }
 
-export default PresetColors;
+export default Example;

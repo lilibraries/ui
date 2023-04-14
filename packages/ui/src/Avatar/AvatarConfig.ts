@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
-import { PresetColor } from "../types";
 import createConfig from "../utils/createConfig";
+import { ColorValue } from "../utils/types";
 
 export interface AvatarConfigValue {
   round?: boolean;
-  color?: PresetColor;
+  color?: ColorValue;
   outlined?: boolean;
   clickable?: boolean;
 }

@@ -1,10 +1,9 @@
 import React from "react";
-import { Tag, TagCommonProps } from "@lilib/ui";
+import { Tag } from "@lilib/ui";
 
-function Link(props: TagCommonProps) {
+function Example() {
   return (
-    <Tag<"a">
-      {...props}
+    <Tag
       as="a"
       rel="noreferrer"
       href="https://github.com/lilibraries/ui"
@@ -16,4 +15,4 @@ function Link(props: TagCommonProps) {
   );
 }
 
-export default Link;
+export default Example;

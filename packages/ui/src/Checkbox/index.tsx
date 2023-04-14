@@ -79,11 +79,11 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const classes = cn(
     `${cls}checkbox`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}loading`]: loading,
       [`${cls}checked`]: checked,
       [`${cls}disabled`]: disabled,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );

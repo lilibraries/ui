@@ -37,9 +37,9 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
   <Story id="examples-theme--nested" />
 </Canvas>
 
-### Sync with system
+### Sync with System
 
-You can change the system theme mode to see the effect.
+You can change the operating system theme mode to see the effect.
 
 <Canvas mdxSource={require("!!raw-loader!./SyncWithSystem").default}>
   <Story id="examples-theme--sync-with-system" />
@@ -55,7 +55,7 @@ You can change the system theme mode to see the effect.
 | `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes |
 | `scoped`   | `boolean`                       | Scoped theme                              |
 
-The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` props is `null` or `undefined`, all theme class names added before will be cleared.
+The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` props is `null`, all theme class names added before will be cleared.
 
 ### Theme.useConfig
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Direction } from "@lilib/ui";
 
-function Scoped() {
+function Example() {
   return (
     <Direction scoped value="rtl">
       <p>
@@ -18,4 +18,4 @@ function Scoped() {
   );
 }
 
-export default Scoped;
+export default Example;

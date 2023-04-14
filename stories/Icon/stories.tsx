@@ -1,10 +1,5 @@
 export default {
   title: "Examples/Icon",
-  argTypes: {
-    spinning: {
-      control: { type: "boolean" },
-    },
-  },
 };
 
 export { default as Basic } from "./Basic";

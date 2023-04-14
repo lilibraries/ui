@@ -3,8 +3,8 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import { IntentValue } from "../types";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
+import { IntentValue } from "../utils/types";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPlacement,
@@ -13,8 +13,8 @@ import ButtonConfig, {
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   vertical?: boolean;
   variant?: ButtonVariant;
-  intent?: IntentValue;
   size?: SizeValue;
+  intent?: IntentValue;
   fluid?: boolean;
   round?: boolean;
   truncated?: boolean;
@@ -56,11 +56,11 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     const classes = cn(
       `${cls}button-group`,
       {
-        [`${cls}vertical`]: vertical,
-        [`${cls}horizontal`]: !vertical,
-        [`${cls}fluid`]: fluid,
         [`${cls}rtl`]: isRTL,
         [`${cls}ltr`]: !isRTL,
+        [`${cls}fluid`]: fluid,
+        [`${cls}vertical`]: vertical,
+        [`${cls}horizontal`]: !vertical,
       },
       className
     );

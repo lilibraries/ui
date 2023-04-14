@@ -73,7 +73,7 @@ const Duration: FC<DurationScopedProps | DurationUnscopedProps> & {
         document.documentElement.style.setProperty(key, styles[key]);
       }
     }
-  }, [scoped, styles]);
+  }, [styles]);
 
   return (
     <DurationContext.Provider

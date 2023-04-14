@@ -1,20 +1,20 @@
 import React from "react";
-import { Flexbox, Tag, TagCommonProps } from "@lilib/ui";
+import { Flexbox, Tag } from "@lilib/ui";
 
-function Sizes(props: TagCommonProps) {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Tag {...props} clickable clearable size="small">
+      <Tag clickable clearable size="small">
         Tag
       </Tag>
-      <Tag {...props} clickable clearable size={null}>
+      <Tag clickable clearable size={null}>
         Tag
       </Tag>
-      <Tag {...props} clickable clearable size="large">
+      <Tag clickable clearable size="large">
         Tag
       </Tag>
     </Flexbox>
   );
 }
 
-export default Sizes;
+export default Example;

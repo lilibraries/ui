@@ -5,7 +5,7 @@ import Usage from "../components/Usage";
 import Value from "../components/Value";
 
 interface TextColorsProps {
-  variant?: "solid" | "reverse";
+  variant?: "solid";
 }
 
 const TextColors: FC<TextColorsProps> = (props) => {

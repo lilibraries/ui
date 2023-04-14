@@ -3,14 +3,14 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import { PresetColor } from "../types";
+import { ColorValue } from "../utils/types";
 import AvatarConfig from "./AvatarConfig";
 
 export interface AvatarGroupProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
   size?: SizeValue;
   round?: boolean;
-  color?: PresetColor;
+  color?: ColorValue;
   outlined?: boolean;
   clickable?: boolean;
 }

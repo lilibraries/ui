@@ -94,9 +94,8 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
       `${cls}spinner`,
       `${cls}contained`,
       {
-        [`${cls}rtl`]: isRTL,
-        [`${cls}start-spaced`]: hasStartSpaceClass,
-        [`${cls}end-spaced`]: hasEndSpaceClass,
+        [`${cls}left-spaced`]: isRTL ? hasEndSpaceClass : hasStartSpaceClass,
+        [`${cls}right-spaced`]: isRTL ? hasStartSpaceClass : hasEndSpaceClass,
       },
       className
     );
@@ -173,9 +172,12 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             `${cls}spinner`,
             `${cls}standalone`,
             {
-              [`${cls}rtl`]: isRTL,
-              [`${cls}start-spaced`]: enter && hasStartSpaceClass,
-              [`${cls}end-spaced`]: enter && hasEndSpaceClass,
+              [`${cls}left-spaced`]: isRTL
+                ? hasEndSpaceClass
+                : hasStartSpaceClass,
+              [`${cls}right-spaced`]: isRTL
+                ? hasStartSpaceClass
+                : hasEndSpaceClass,
             },
             className
           );

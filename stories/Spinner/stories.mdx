@@ -22,7 +22,7 @@ It is contained when the `children` prop is renderable or the `contained` prop i
   <Story id="examples-spinner--contained" />
 </Canvas>
 
-### Custom icon
+### Custom Icon
 
 <Canvas mdxSource={require("!!raw-loader!./CustomIcon").default}>
   <Story id="examples-spinner--custom-icon" />
@@ -48,15 +48,15 @@ The following example will show spinner after 500ms when the switch is on.
 
 ### Spinner
 
-| Property     | Type                                      | Description                          |
-| ------------ | ----------------------------------------- | ------------------------------------ |
-| `icon`       | `ReactNode`                               | Custom spinner icon                  |
-| `delay`      | `number`                                  | Spinning delay time, in milliseconds |
-| `spinning`   | `boolean`                                 | Whether the Spinner is spinning      |
-| `contained`  | `boolean`                                 | Assume the `children` is renderable  |
-| `startSpace` | `boolean` &#124; `number` &#124; `string` | Start space from other elements      |
-| `endSpace`   | `boolean` &#124; `number` &#124; `string` | End space from other elements        |
-| `children`   | `ReactNode`                               | Element wrapped by Spinner component |
+| Property     | Type                              | Description                          |
+| ------------ | --------------------------------- | ------------------------------------ |
+| `icon`       | `ReactNode`                       | Custom spinner icon                  |
+| `delay`      | `number`                          | Spinning delay time, in milliseconds |
+| `spinning`   | `boolean`                         | Whether the Spinner is spinning      |
+| `contained`  | `boolean`                         | Assume the `children` is renderable  |
+| `startSpace` | `boolean` \| `number` \| `string` | Start space from other elements      |
+| `endSpace`   | `boolean` \| `number` \| `string` | End space from other elements        |
+| `children`   | `ReactNode`                       | Element wrapped by Spinner component |
 
 It accepts all props which the native `<span>` element supports.
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Flexbox, Theme } from "@lilib/ui";
 
-function Nested() {
+function Example() {
   return (
     <Theme scoped value="dark">
       <Flexbox gap="2x">
@@ -15,4 +15,4 @@ function Nested() {
   );
 }
 
-export default Nested;
+export default Example;

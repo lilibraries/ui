@@ -1,20 +1,14 @@
 import React from "react";
-import { Button, ButtonCommonProps, Flexbox } from "@lilib/ui";
+import { Button, Flexbox } from "@lilib/ui";
 
-function Sizes(props: ButtonCommonProps) {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Button {...props} size="small">
-        Button
-      </Button>
-      <Button {...props} size={null}>
-        Button
-      </Button>
-      <Button {...props} size="large">
-        Button
-      </Button>
+      <Button size="small">Button</Button>
+      <Button size={null}>Button</Button>
+      <Button size="large">Button</Button>
     </Flexbox>
   );
 }
 
-export default Sizes;
+export default Example;

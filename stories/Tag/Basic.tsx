@@ -1,8 +1,8 @@
 import React from "react";
-import { Tag, TagCommonProps } from "@lilib/ui";
+import { Tag } from "@lilib/ui";
 
-function Basic(props: TagCommonProps) {
-  return <Tag {...props}>Tag</Tag>;
+function Example() {
+  return <Tag>Tag</Tag>;
 }
 
-export default Basic;
+export default Example;

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Portal, Switch } from "@lilib/ui";
 
-function Basic() {
+function Example() {
   const [enable, setEnable] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -20,4 +20,4 @@ function Basic() {
   );
 }
 
-export default Basic;
+export default Example;

@@ -4,7 +4,7 @@ import Color from "../components/Color";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
 
-export const colors = [
+export const COLORS = [
   "red",
   "magenta",
   "purple",
@@ -19,10 +19,10 @@ export const colors = [
   "orange",
   "brown",
   "gray",
-];
+] as const;
 
 const Colors: FC<{ names?: string[] }> = (props) => {
-  const { names = colors } = props;
+  const { names = COLORS } = props;
 
   return (
     <Table

@@ -37,7 +37,7 @@
     box-sizing: border-box;
     width: 1em;
     height: 1em;
-    background-color: var(--bg-color-base);
+    background-color: var(--background-color-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-small);
   }
@@ -66,14 +66,14 @@
 
   &:hover {
     & .#{$cls-prefix}checkbox-indicator {
-      background-color: var(--bg-color-hover);
+      background-color: var(--background-color-hover);
       border-color: var(--border-color-deep-hover);
     }
   }
 
   &:active {
     & .#{$cls-prefix}checkbox-indicator {
-      background-color: var(--bg-color-active);
+      background-color: var(--background-color-active);
       border-color: var(--border-color-deep-active);
     }
   }
@@ -81,23 +81,23 @@
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}checkbox-indicator {
       color: var(--text-color-solid-base);
-      background-color: var(--bg-color-solid-major-base);
-      border-color: var(--border-color-solid-major-base);
+      background-color: var(--major-5);
+      border-color: var(--major-7);
     }
 
     &:hover {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-hover);
-        background-color: var(--bg-color-solid-major-hover);
-        border-color: var(--border-color-solid-major-hover);
+        background-color: var(--major-6);
+        border-color: var(--major-8);
       }
     }
 
     &:active {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-active);
-        background-color: var(--bg-color-solid-major-active);
-        border-color: var(--border-color-solid-major-active);
+        background-color: var(--major-7);
+        border-color: var(--major-9);
       }
     }
   }
@@ -111,15 +111,15 @@
     cursor: not-allowed;
 
     & .#{$cls-prefix}checkbox-indicator {
-      background-color: var(--bg-color-inactive);
-      border-color: var(--border-color-deep-inactive);
+      background-color: var(--background-color-deep-disabled);
+      border-color: var(--border-color-deep-disabled);
     }
 
     &.#{$cls-prefix}checked {
       & .#{$cls-prefix}checkbox-indicator {
-        color: var(--text-color-solid-disabled);
-        background-color: var(--bg-color-solid-major-disabled);
-        border-color: var(--border-color-solid-major-disabled);
+        color: var(--text-color-disabled);
+        background-color: var(--background-color-deep-disabled);
+        border-color: var(--border-color-deep-disabled);
       }
     }
   }

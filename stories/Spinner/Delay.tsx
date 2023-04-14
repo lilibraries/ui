@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Flexbox, Spinner, SpinnerProps, Switch } from "@lilib/ui";
+import { Flexbox, Spinner, Switch } from "@lilib/ui";
 
-function Delay(props: SpinnerProps) {
+function Example() {
   const [spinning, setSpinning] = useState(false);
 
   return (
@@ -11,11 +11,11 @@ function Delay(props: SpinnerProps) {
         onChange={(event) => setSpinning(event.target.checked)}
       />
       <div>
-        <Spinner {...props} spinning={spinning} delay={500} endSpace />
+        <Spinner spinning={spinning} delay={500} endSpace />
         Spinner
       </div>
     </Flexbox>
   );
 }
 
-export default Delay;
+export default Example;

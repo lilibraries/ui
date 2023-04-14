@@ -1,19 +1,13 @@
 import React from "react";
-import { Flexbox, Switch, SwitchProps } from "@lilib/ui";
+import { Flexbox, Switch } from "@lilib/ui";
 
-function Disabled(props: SwitchProps) {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Switch checkedLabel="On" uncheckedLabel="Off" {...props} disabled />
-      <Switch
-        defaultChecked
-        checkedLabel="On"
-        uncheckedLabel="Off"
-        {...props}
-        disabled
-      />
+      <Switch checkedLabel="On" uncheckedLabel="Off" disabled />
+      <Switch checkedLabel="On" uncheckedLabel="Off" disabled defaultChecked />
     </Flexbox>
   );
 }
 
-export default Disabled;
+export default Example;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Flexbox, Tag, TagCommonProps, Switch } from "@lilib/ui";
+import { Flexbox, Tag, Switch } from "@lilib/ui";
 
-function Solid(props: TagCommonProps) {
+function Example() {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -24,7 +24,6 @@ function Solid(props: TagCommonProps) {
 
       <Flexbox gap="2x" align="center" wrap>
         <Tag
-          {...props}
           variant="solid"
           color="red"
           clickable
@@ -35,7 +34,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="magenta"
           clickable
@@ -46,7 +44,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="purple"
           clickable
@@ -57,7 +54,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="indigo"
           clickable
@@ -68,7 +64,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="navy"
           clickable
@@ -79,7 +74,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="blue"
           clickable
@@ -90,7 +84,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="cyan"
           clickable
@@ -101,7 +94,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="teal"
           clickable
@@ -112,7 +104,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="green"
           clickable
@@ -123,7 +114,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="lime"
           clickable
@@ -134,7 +124,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="yellow"
           clickable
@@ -145,7 +134,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="orange"
           clickable
@@ -156,7 +144,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="brown"
           clickable
@@ -167,7 +154,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color="gray"
           clickable
@@ -178,7 +164,6 @@ function Solid(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           variant="solid"
           color={undefined}
           clickable
@@ -193,4 +178,4 @@ function Solid(props: TagCommonProps) {
   );
 }
 
-export default Solid;
+export default Example;

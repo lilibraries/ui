@@ -1,17 +1,15 @@
 import React from "react";
-import { Radio, RadioProps, Flexbox } from "@lilib/ui";
+import { Radio, Flexbox } from "@lilib/ui";
 
-function Disabled(props: RadioProps) {
+function Example() {
   return (
     <Flexbox gap="4x" align="center">
-      <Radio {...props} disabled>
-        Radio
-      </Radio>
-      <Radio {...props} disabled defaultChecked>
+      <Radio disabled>Radio</Radio>
+      <Radio disabled defaultChecked>
         Radio
       </Radio>
     </Flexbox>
   );
 }
 
-export default Disabled;
+export default Example;

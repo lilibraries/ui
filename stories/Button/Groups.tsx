@@ -1,26 +1,26 @@
 import React from "react";
-import { Button, ButtonGroupProps } from "@lilib/ui";
+import { Button } from "@lilib/ui";
 import { FiStar, FiThumbsUp, FiHeart, FiChevronDown } from "react-icons/fi";
 
-function Groups(props: ButtonGroupProps) {
+function Example() {
   return (
-    <div>
+    <>
       <h6>Basic</h6>
-      <Button.Group {...props}>
+      <Button.Group>
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </Button.Group>
 
       <h6>Vertical</h6>
-      <Button.Group {...props} vertical>
+      <Button.Group vertical>
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </Button.Group>
 
       <h6>Icon only</h6>
-      <Button.Group {...props} iconOnly>
+      <Button.Group iconOnly>
         <Button>
           <FiHeart />
         </Button>
@@ -29,7 +29,7 @@ function Groups(props: ButtonGroupProps) {
       </Button.Group>
 
       <h6>Mixed</h6>
-      <Button.Group {...props}>
+      <Button.Group>
         <Button>Dropdown</Button>
         <Button iconOnly>
           <FiChevronDown />
@@ -37,20 +37,20 @@ function Groups(props: ButtonGroupProps) {
       </Button.Group>
 
       <h6>Round</h6>
-      <Button.Group {...props} round>
+      <Button.Group round>
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </Button.Group>
 
       <h6>Fluid</h6>
-      <Button.Group {...props} fluid>
+      <Button.Group fluid>
         <Button>One</Button>
         <Button>Two</Button>
         <Button>Three</Button>
       </Button.Group>
-    </div>
+    </>
   );
 }
 
-export default Groups;
+export default Example;

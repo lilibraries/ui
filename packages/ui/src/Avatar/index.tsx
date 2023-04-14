@@ -19,7 +19,7 @@ import { inBrowser } from "@lilib/utils";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import Image, { ImageProps } from "../Image";
-import { PresetColor } from "../types";
+import { ColorValue } from "../utils/types";
 import AvatarGroup from "./AvatarGroup";
 import AvatarConfig from "./AvatarConfig";
 
@@ -31,7 +31,7 @@ export interface AvatarProps
   size?: SizeValue;
   image?: string | ImageProps;
   round?: boolean;
-  color?: PresetColor;
+  color?: ColorValue;
   outlined?: boolean;
   clickable?: boolean;
 }

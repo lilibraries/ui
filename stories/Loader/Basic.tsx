@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Loader, LoaderProps, Switch } from "@lilib/ui";
+import { Loader, Switch } from "@lilib/ui";
 
-function Basic(props: LoaderProps) {
+function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
@@ -10,8 +10,7 @@ function Basic(props: LoaderProps) {
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />
-
-      <Loader {...props} loading={loading} message="Loading...">
+      <Loader loading={loading} message="Loading...">
         React (also known as React.js or ReactJS) is a free and open-source
         front-end JavaScript library for building user interfaces or UI
         components. It is maintained by Facebook and a community of individual
@@ -25,4 +24,4 @@ function Basic(props: LoaderProps) {
   );
 }
 
-export default Basic;
+export default Example;

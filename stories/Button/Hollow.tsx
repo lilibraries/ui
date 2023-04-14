@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, Flexbox, Switch } from "@lilib/ui";
 
-function Hollow(props: ButtonCommonProps) {
+function Example() {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -24,7 +24,6 @@ function Hollow(props: ButtonCommonProps) {
 
       <Flexbox gap="2x" align="center">
         <Button
-          {...props}
           variant="hollow"
           intent={null}
           disabled={disabled}
@@ -33,7 +32,6 @@ function Hollow(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="hollow"
           intent="major"
           disabled={disabled}
@@ -42,7 +40,6 @@ function Hollow(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="hollow"
           intent="minor"
           disabled={disabled}
@@ -51,7 +48,6 @@ function Hollow(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="hollow"
           intent="positive"
           disabled={disabled}
@@ -60,7 +56,6 @@ function Hollow(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="hollow"
           intent="alertive"
           disabled={disabled}
@@ -69,7 +64,6 @@ function Hollow(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="hollow"
           intent="negative"
           disabled={disabled}
@@ -82,4 +76,4 @@ function Hollow(props: ButtonCommonProps) {
   );
 }
 
-export default Hollow;
+export default Example;

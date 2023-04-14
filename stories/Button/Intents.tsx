@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, Flexbox, Switch } from "@lilib/ui";
 
-function Intents(props: ButtonCommonProps) {
+function Example() {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -23,52 +23,22 @@ function Intents(props: ButtonCommonProps) {
       </Flexbox>
 
       <Flexbox gap="2x" align="center">
-        <Button
-          {...props}
-          intent={null}
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent={null} disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          {...props}
-          intent="major"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent="major" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          {...props}
-          intent="minor"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent="minor" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          {...props}
-          intent="positive"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent="positive" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          {...props}
-          intent="alertive"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent="alertive" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          {...props}
-          intent="negative"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button intent="negative" disabled={disabled} borderless={borderless}>
           Button
         </Button>
       </Flexbox>
@@ -76,4 +46,4 @@ function Intents(props: ButtonCommonProps) {
   );
 }
 
-export default Intents;
+export default Example;

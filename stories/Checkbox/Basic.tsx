@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Checkbox, CheckboxProps } from "@lilib/ui";
+import { Checkbox } from "@lilib/ui";
 
-function Basic(props: CheckboxProps) {
+function Example() {
   const [checked, setChecked] = useState(false);
 
   return (
     <Checkbox
-      {...props}
       checked={checked}
       onChange={(event) => setChecked(event.target.checked)}
     >
@@ -15,4 +14,4 @@ function Basic(props: CheckboxProps) {
   );
 }
 
-export default Basic;
+export default Example;

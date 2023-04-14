@@ -1,7 +1,7 @@
 import React from "react";
 import { Duration, Flexbox, Spinner } from "@lilib/ui";
 
-function Nested() {
+function Example() {
   return (
     <Duration scoped slow={3000}>
       <Flexbox gap="2x" align="center">
@@ -15,4 +15,4 @@ function Nested() {
   );
 }
 
-export default Nested;
+export default Example;

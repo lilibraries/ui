@@ -135,11 +135,11 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const classes = cn(
     `${cls}radio`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}loading`]: loading,
       [`${cls}checked`]: checked,
       [`${cls}disabled`]: disabled,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );

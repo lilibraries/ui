@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Flexbox, Tag, TagCommonProps, Switch } from "@lilib/ui";
+import { Flexbox, Tag, Switch } from "@lilib/ui";
 
-function Colors(props: TagCommonProps) {
+function Example() {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -24,7 +24,6 @@ function Colors(props: TagCommonProps) {
 
       <Flexbox gap="2x" align="center" wrap>
         <Tag
-          {...props}
           color="red"
           clickable
           clearable
@@ -34,7 +33,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="magenta"
           clickable
           clearable
@@ -44,7 +42,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="purple"
           clickable
           clearable
@@ -54,7 +51,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="indigo"
           clickable
           clearable
@@ -64,7 +60,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="navy"
           clickable
           clearable
@@ -74,7 +69,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="blue"
           clickable
           clearable
@@ -84,7 +78,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="cyan"
           clickable
           clearable
@@ -94,7 +87,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="teal"
           clickable
           clearable
@@ -104,7 +96,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="green"
           clickable
           clearable
@@ -114,7 +105,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="lime"
           clickable
           clearable
@@ -124,7 +114,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="yellow"
           clickable
           clearable
@@ -134,7 +123,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="orange"
           clickable
           clearable
@@ -144,7 +132,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="brown"
           clickable
           clearable
@@ -154,7 +141,6 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
           color="gray"
           clickable
           clearable
@@ -164,8 +150,7 @@ function Colors(props: TagCommonProps) {
           Tag
         </Tag>
         <Tag
-          {...props}
-          color={undefined}
+          color={null}
           clickable
           clearable
           disabled={disabled}
@@ -178,4 +163,4 @@ function Colors(props: TagCommonProps) {
   );
 }
 
-export default Colors;
+export default Example;

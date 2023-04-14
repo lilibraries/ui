@@ -1,17 +1,15 @@
 import React from "react";
-import { Checkbox, CheckboxProps, Flexbox } from "@lilib/ui";
+import { Checkbox, Flexbox } from "@lilib/ui";
 
-function Disabled(props: CheckboxProps) {
+function Example() {
   return (
     <Flexbox gap="4x" align="center">
-      <Checkbox {...props} disabled>
-        Checkbox
-      </Checkbox>
-      <Checkbox {...props} disabled defaultChecked>
+      <Checkbox disabled>Checkbox</Checkbox>
+      <Checkbox disabled defaultChecked>
         Checkbox
       </Checkbox>
     </Flexbox>
   );
 }
 
-export default Disabled;
+export default Example;

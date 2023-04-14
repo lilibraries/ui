@@ -88,11 +88,11 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const classes = cn(
     `${cls}switch`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}checked`]: checked,
       [`${cls}loading`]: loading,
       [`${cls}disabled`]: disabled,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );
