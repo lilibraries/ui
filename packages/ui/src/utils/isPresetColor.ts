@@ -1,8 +1,7 @@
-import { PresetColor } from "../types";
-import { PRESET_COLORS } from "./constans";
+import { COLORS } from "./constants";
 
-function isPresetColor(value: any): value is NonNullable<PresetColor> {
-  return PRESET_COLORS.includes(value);
+function isPresetColor(value: any): value is typeof COLORS[number] {
+  return COLORS.includes(value);
 }
 
 export default isPresetColor;

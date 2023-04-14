@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Flexbox, Spinner, SpinnerProps, Switch } from "@lilib/ui";
+import { Flexbox, Spinner, Switch } from "@lilib/ui";
 import { FiStar } from "react-icons/fi";
 
-function Contained(props: SpinnerProps) {
+function Example() {
   const [spinning, setSpinning] = useState(true);
 
   return (
@@ -12,8 +12,8 @@ function Contained(props: SpinnerProps) {
         onChange={(event) => setSpinning(event.target.checked)}
       />
       <div>
-        <Spinner {...props} spinning={spinning} endSpace contained />
-        <Spinner {...props} spinning={spinning} endSpace>
+        <Spinner spinning={spinning} endSpace contained />
+        <Spinner spinning={spinning} endSpace>
           <FiStar />
         </Spinner>
         Star
@@ -22,4 +22,4 @@ function Contained(props: SpinnerProps) {
   );
 }
 
-export default Contained;
+export default Example;

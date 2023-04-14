@@ -11,10 +11,9 @@ import React, {
 } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import CloseIcon from "../icons/CloseIcon";
-import { PresetColor } from "../types";
+import { ColorValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export type TagVariant = null | "solid" | "hollow";
@@ -22,7 +21,7 @@ export type TagVariant = null | "solid" | "hollow";
 export interface TagCommonProps {
   size?: SizeValue;
   variant?: TagVariant;
-  color?: PresetColor;
+  color?: ColorValue;
   round?: boolean;
   square?: boolean;
   borderless?: boolean;
@@ -70,7 +69,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
   const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
   const clearable = clearableProp !== undefined ? !!clearableProp : !!onClear;
 
@@ -85,7 +83,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       [`${cls}borderless`]: borderless,
       [`${cls}clickable`]: clickable,
       [`${cls}disabled`]: disabled,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Collapse, CollapseProps, Switch } from "@lilib/ui";
+import { Collapse, Switch } from "@lilib/ui";
 
-function Basic(props: CollapseProps) {
+function Example() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function Basic(props: CollapseProps) {
         onChange={(event) => setOpen(event.target.checked)}
       />
 
-      <Collapse {...props} open={open}>
+      <Collapse open={open}>
         React (also known as React.js or ReactJS) is a free and open-source
         front-end JavaScript library for building user interfaces or UI
         components. It is maintained by Facebook and a community of individual
@@ -25,4 +25,4 @@ function Basic(props: CollapseProps) {
   );
 }
 
-export default Basic;
+export default Example;

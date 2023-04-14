@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, ButtonCommonProps } from "@lilib/ui";
+import { Button } from "@lilib/ui";
 
-function Link(props: ButtonCommonProps) {
+function Example() {
   return (
-    <Button<"a">
-      {...props}
+    <Button
       as="a"
       rel="noreferrer noopener"
       href="https://github.com/lilibraries/ui"
@@ -15,4 +14,4 @@ function Link(props: ButtonCommonProps) {
   );
 }
 
-export default Link;
+export default Example;

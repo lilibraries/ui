@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Switch, SwitchProps } from "@lilib/ui";
+import { Switch } from "@lilib/ui";
 
-function Basic(props: SwitchProps) {
+function Example() {
   const [checked, setChecked] = useState(false);
 
   return (
     <Switch
-      {...props}
       checked={checked}
       onChange={(event) => setChecked(event.target.checked)}
     />
   );
 }
 
-export default Basic;
+export default Example;

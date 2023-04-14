@@ -1,4 +1,4 @@
-export const PRESET_COLORS = [
+export const COLORS = [
   "red",
   "magenta",
   "purple",
@@ -13,4 +13,12 @@ export const PRESET_COLORS = [
   "orange",
   "brown",
   "gray",
-];
+] as const;
+
+export const INTENTS = [
+  "major",
+  "minor",
+  "positive",
+  "alertive",
+  "negative",
+] as const;

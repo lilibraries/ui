@@ -1,10 +1,9 @@
 import React from "react";
-import { Tag, TagCommonProps } from "@lilib/ui";
+import { Tag } from "@lilib/ui";
 
-function Round(props: TagCommonProps) {
+function Example() {
   return (
     <Tag
-      {...props}
       round
       onClear={() => {
         alert("Clear");
@@ -18,4 +17,4 @@ function Round(props: TagCommonProps) {
   );
 }
 
-export default Round;
+export default Example;

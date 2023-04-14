@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Collapse, CollapseProps, Switch } from "@lilib/ui";
+import { Collapse, Switch } from "@lilib/ui";
 
-function ScrollElement(props: CollapseProps) {
+function Example() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function ScrollElement(props: CollapseProps) {
         onChange={(event) => setOpen(event.target.checked)}
       />
 
-      <Collapse {...props} open={open}>
+      <Collapse open={open}>
         <div style={{ maxHeight: 100, overflow: "auto" }}>
           <p>
             React (also known as React.js or ReactJS) is a free and open-source
@@ -41,4 +41,4 @@ function ScrollElement(props: CollapseProps) {
   );
 }
 
-export default ScrollElement;
+export default Example;

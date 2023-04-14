@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, Flexbox, Switch } from "@lilib/ui";
 
-function Solid(props: ButtonCommonProps) {
+function Example() {
   const [disabled, setDisabled] = useState(false);
   const [borderless, setBorderless] = useState(false);
 
@@ -24,7 +24,6 @@ function Solid(props: ButtonCommonProps) {
 
       <Flexbox gap="2x" align="center">
         <Button
-          {...props}
           variant="solid"
           intent={null}
           disabled={disabled}
@@ -33,7 +32,6 @@ function Solid(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="solid"
           intent="major"
           disabled={disabled}
@@ -42,7 +40,6 @@ function Solid(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="solid"
           intent="minor"
           disabled={disabled}
@@ -51,7 +48,6 @@ function Solid(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="solid"
           intent="positive"
           disabled={disabled}
@@ -60,7 +56,6 @@ function Solid(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="solid"
           intent="alertive"
           disabled={disabled}
@@ -69,7 +64,6 @@ function Solid(props: ButtonCommonProps) {
           Button
         </Button>
         <Button
-          {...props}
           variant="solid"
           intent="negative"
           disabled={disabled}
@@ -82,4 +76,4 @@ function Solid(props: ButtonCommonProps) {
   );
 }
 
-export default Solid;
+export default Example;

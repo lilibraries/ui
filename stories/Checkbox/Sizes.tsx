@@ -1,20 +1,14 @@
 import React from "react";
-import { Checkbox, CheckboxProps, Flexbox } from "@lilib/ui";
+import { Checkbox, Flexbox } from "@lilib/ui";
 
-function Sizes(props: CheckboxProps) {
+function Example() {
   return (
     <Flexbox direction="column" gap="2x" align="flex-start">
-      <Checkbox {...props} size="small">
-        Small
-      </Checkbox>
-      <Checkbox {...props} size={null}>
-        Normal
-      </Checkbox>
-      <Checkbox {...props} size="large">
-        Large
-      </Checkbox>
+      <Checkbox size="small">Small</Checkbox>
+      <Checkbox size={null}>Basic</Checkbox>
+      <Checkbox size="large">Large</Checkbox>
     </Flexbox>
   );
 }
 
-export default Sizes;
+export default Example;

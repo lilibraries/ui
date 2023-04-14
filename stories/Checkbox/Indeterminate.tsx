@@ -1,8 +1,8 @@
 import React from "react";
-import { Checkbox, CheckboxProps } from "@lilib/ui";
+import { Checkbox } from "@lilib/ui";
 
-function Indeterminate(props: CheckboxProps) {
-  return <Checkbox {...props} indeterminate defaultChecked />;
+function Example() {
+  return <Checkbox indeterminate defaultChecked />;
 }
 
-export default Indeterminate;
+export default Example;

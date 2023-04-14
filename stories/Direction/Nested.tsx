@@ -1,7 +1,7 @@
 import React from "react";
 import { Direction } from "@lilib/ui";
 
-function Nested() {
+function Example() {
   return (
     <Direction scoped value="rtl">
       <div>
@@ -35,4 +35,4 @@ function Nested() {
   );
 }
 
-export default Nested;
+export default Example;

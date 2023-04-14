@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -8,12 +8,12 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Offset(props: BadgeProps) {
+function Example() {
   return (
-    <Badge count={6} round {...props} offset="14.64%">
+    <Badge count={6} round offset="14.64%">
       <div style={block} />
     </Badge>
   );
 }
 
-export default Offset;
+export default Example;

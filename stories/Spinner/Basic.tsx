@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Flexbox, Spinner, SpinnerProps, Switch } from "@lilib/ui";
+import { Flexbox, Spinner, Switch } from "@lilib/ui";
 
-function Basic(props: SpinnerProps) {
+function Example() {
   const [spinning, setSpinning] = useState(true);
 
   return (
@@ -11,11 +11,11 @@ function Basic(props: SpinnerProps) {
         onChange={(event) => setSpinning(event.target.checked)}
       />
       <div>
-        <Spinner {...props} spinning={spinning} endSpace />
+        <Spinner spinning={spinning} endSpace />
         Spinner
       </div>
     </Flexbox>
   );
 }
 
-export default Basic;
+export default Example;

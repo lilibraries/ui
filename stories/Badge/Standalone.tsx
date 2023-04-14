@@ -1,12 +1,12 @@
 import React from "react";
-import { Badge, BadgeProps } from "@lilib/ui";
+import { Badge } from "@lilib/ui";
 
-function Standalone(props: BadgeProps) {
+function Example() {
   return (
     <>
-      <Badge count={6} {...props} /> Badge
+      <Badge count={6} /> Badge
     </>
   );
 }
 
-export default Standalone;
+export default Example;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, Theme } from "@lilib/ui";
 
-function Scoped() {
+function Example() {
   return (
     <Theme scoped value="dark">
-      <Button>Always dark</Button>
+      <Button>Always Dark</Button>
     </Theme>
   );
 }
 
-export default Scoped;
+export default Example;

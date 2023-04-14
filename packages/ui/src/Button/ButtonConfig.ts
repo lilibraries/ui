@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { IntentValue } from "../types";
 import createConfig from "../utils/createConfig";
+import { IntentValue } from "../utils/types";
 
 export type ButtonVariant = null | "solid" | "hollow";
 export type ButtonLoadingPlacement = null | "start" | "center" | "end";

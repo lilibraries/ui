@@ -79,7 +79,7 @@ const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> & {
         }
       }
     }
-  }, [cls, scoped, value]);
+  }, [cls, value]);
 
   return (
     <ThemeContext.Provider value={value}>

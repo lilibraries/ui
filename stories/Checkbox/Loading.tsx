@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Checkbox, CheckboxProps, Flexbox, Switch } from "@lilib/ui";
+import { Checkbox, Flexbox, Switch } from "@lilib/ui";
 
-function Loading(props: CheckboxProps) {
+function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
@@ -10,11 +10,9 @@ function Loading(props: CheckboxProps) {
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />
-      <Checkbox {...props} loading={loading}>
-        Checkbox
-      </Checkbox>
+      <Checkbox loading={loading}>Checkbox</Checkbox>
     </Flexbox>
   );
 }
 
-export default Loading;
+export default Example;

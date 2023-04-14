@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { colors } from "./Colors";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
+import { COLORS } from "./Colors";
 
 const RGBs: FC<{ names?: string[] }> = (props) => {
-  const { names = colors } = props;
+  const { names = COLORS } = props;
 
   return (
     <Table

@@ -9,15 +9,13 @@
   margin: 0;
   padding: 0;
   color: var(--text-color-base);
-  font-weight: inherit;
+  font-weight: 400;
   font-size: var(--font-size-base);
   font-family: inherit;
   font-style: normal;
-  line-height: var(--line-height-fixed-base);
   text-decoration: none;
   vertical-align: baseline;
-  background: none;
-  background-color: var(--bg-color-base);
+  background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
   appearance: none;
@@ -39,9 +37,8 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: calc(var(--line-height-fixed-base) - 4px);
-    height: calc(var(--line-height-fixed-base) - 4px);
-    margin-right: 1px;
+    width: calc(var(--line-height-fixed-base) - 2px);
+    height: calc(var(--line-height-fixed-base) - 2px);
     color: var(--text-color-inactive);
     font-size: 0.875em;
     border-radius: var(--border-radius-small);
@@ -49,16 +46,18 @@
 
     &:hover {
       color: var(--text-color-hover);
-      background-color: var(--bg-color-hollow-soft);
     }
 
     &:active {
       color: var(--text-color-active);
-      background-color: var(--bg-color-hollow-deep);
     }
 
     &:focus {
       @include focus-outline;
+    }
+
+    [data-focus-hidden] &:focus {
+      outline: 0;
     }
   }
 
@@ -67,18 +66,22 @@
 
     &:hover {
       color: var(--text-color-hover);
-      background-color: var(--bg-color-hover);
+      background-color: var(--background-color-hover);
       border-color: var(--border-color-hover);
     }
 
     &:active {
       color: var(--text-color-active);
-      background-color: var(--bg-color-active);
+      background-color: var(--background-color-active);
       border-color: var(--border-color-active);
     }
 
     &:focus {
       @include focus-outline;
+    }
+
+    [data-focus-hidden] &:focus {
+      outline: 0;
     }
   }
 
@@ -93,22 +96,20 @@
   &.#{$cls-prefix}small {
     height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
-    line-height: var(--line-height-fixed-small);
 
     & > .#{$cls-prefix}tag-clear {
-      width: calc(var(--line-height-fixed-small) - 4px);
-      height: calc(var(--line-height-fixed-small) - 4px);
+      width: calc(var(--line-height-fixed-small) - 2px);
+      height: calc(var(--line-height-fixed-small) - 2px);
     }
   }
 
   &.#{$cls-prefix}large {
     height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
-    line-height: var(--line-height-fixed-large);
 
     & > .#{$cls-prefix}tag-clear {
-      width: calc(var(--line-height-fixed-large) - 4px);
-      height: calc(var(--line-height-fixed-large) - 4px);
+      width: calc(var(--line-height-fixed-large) - 2px);
+      height: calc(var(--line-height-fixed-large) - 2px);
     }
   }
 
@@ -136,62 +137,38 @@
   &.#{$cls-prefix}disabled {
     &.#{$cls-prefix}clickable {
       color: var(--text-color-disabled);
-      background-color: var(--bg-color-disabled);
+      background-color: var(--background-color-disabled);
       border-color: var(--border-color-disabled);
       cursor: not-allowed;
     }
 
     & > .#{$cls-prefix}tag-clear {
       color: var(--text-color-disabled);
-      background-color: transparent;
       cursor: not-allowed;
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      color: var(--text-color-#{$color}-base);
-      background-color: var(--bg-color-#{$color}-base);
-      border-color: var(--border-color-#{$color}-base);
+      background-color: var(--#{$color}-0);
+      border-color: var(--#{$color}-3);
 
       &.#{$cls-prefix}clickable {
         &:hover {
-          color: var(--text-color-#{$color}-hover);
-          background-color: var(--bg-color-#{$color}-hover);
-          border-color: var(--border-color-#{$color}-hover);
+          background-color: var(--#{$color}-1);
+          border-color: var(--#{$color}-4);
         }
 
         &:active {
-          color: var(--text-color-#{$color}-active);
-          background-color: var(--bg-color-#{$color}-active);
-          border-color: var(--border-color-#{$color}-active);
-        }
-      }
-
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--text-color-#{$color}-inactive);
-
-        &:hover {
-          color: var(--text-color-#{$color}-hover);
-          background-color: var(--bg-color-hollow-#{$color}-soft);
-        }
-
-        &:active {
-          color: var(--text-color-#{$color}-active);
-          background-color: var(--bg-color-hollow-#{$color}-deep);
+          background-color: var(--#{$color}-2);
+          border-color: var(--#{$color}-5);
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}clickable {
-          color: var(--text-color-#{$color}-disabled);
-          background-color: var(--bg-color-#{$color}-disabled);
-          border-color: var(--border-color-#{$color}-disabled);
-        }
-
-        & > .#{$cls-prefix}tag-clear {
-          color: var(--text-color-#{$color}-disabled);
-          background-color: transparent;
+          background-color: var(--#{$color}-0);
+          border-color: var(--#{$color}-1);
         }
       }
     }
@@ -199,89 +176,69 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}solid {
-  color: var(--text-color-reverse-base);
-  background-color: var(--bg-color-solid-base);
+  color: var(--text-color-solid-base);
+  background-color: var(--background-color-solid-base);
   border-color: var(--border-color-solid-base);
 
   &.#{$cls-prefix}clickable {
     &:hover {
-      color: var(--text-color-reverse-hover);
-      background-color: var(--bg-color-solid-hover);
+      color: var(--text-color-solid-hover);
+      background-color: var(--background-color-solid-hover);
       border-color: var(--border-color-solid-hover);
     }
 
     &:active {
-      color: var(--text-color-reverse-active);
-      background-color: var(--bg-color-solid-active);
+      color: var(--text-color-solid-active);
+      background-color: var(--background-color-solid-active);
       border-color: var(--border-color-solid-active);
     }
   }
 
   & > .#{$cls-prefix}tag-clear {
-    color: var(--text-color-reverse-inactive);
+    color: var(--text-color-solid-inactive);
 
     &:hover {
-      color: var(--text-color-reverse-hover);
+      color: var(--text-color-solid-hover);
     }
 
     &:active {
-      color: var(--text-color-reverse-active);
+      color: var(--text-color-solid-active);
     }
   }
 
   &.#{$cls-prefix}disabled {
     &.#{$cls-prefix}clickable {
-      color: var(--text-color-reverse-disabled);
-      background-color: var(--bg-color-solid-disabled);
+      color: var(--text-color-solid-disabled);
+      background-color: var(--background-color-solid-disabled);
       border-color: var(--border-color-solid-disabled);
     }
 
     & > .#{$cls-prefix}tag-clear {
-      color: var(--text-color-reverse-disabled);
+      color: var(--text-color-solid-disabled);
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      color: var(--text-color-solid-base);
-      background-color: var(--bg-color-solid-#{$color}-base);
-      border-color: var(--border-color-solid-#{$color}-base);
+      background-color: var(--#{$color}-5);
+      border-color: var(--#{$color}-7);
 
       &.#{$cls-prefix}clickable {
         &:hover {
-          color: var(--text-color-solid-hover);
-          background-color: var(--bg-color-solid-#{$color}-hover);
-          border-color: var(--border-color-solid-#{$color}-hover);
+          background-color: var(--#{$color}-6);
+          border-color: var(--#{$color}-8);
         }
 
         &:active {
-          color: var(--text-color-solid-active);
-          background-color: var(--bg-color-solid-#{$color}-active);
-          border-color: var(--border-color-solid-#{$color}-active);
-        }
-      }
-
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--text-color-solid-inactive);
-
-        &:hover {
-          color: var(--text-color-solid-hover);
-        }
-
-        &:active {
-          color: var(--text-color-solid-active);
+          background-color: var(--#{$color}-7);
+          border-color: var(--#{$color}-9);
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}clickable {
-          color: var(--text-color-solid-disabled);
-          background-color: var(--bg-color-solid-#{$color}-disabled);
-          border-color: var(--border-color-solid-#{$color}-disabled);
-        }
-
-        & > .#{$cls-prefix}tag-clear {
-          color: var(--text-color-solid-disabled);
+          background-color: var(--#{$color}-2);
+          border-color: var(--#{$color}-3);
         }
       }
     }
@@ -293,11 +250,11 @@
 
   &.#{$cls-prefix}clickable {
     &:hover {
-      background-color: var(--bg-color-hollow-soft);
+      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
     }
 
     &:active {
-      background-color: var(--bg-color-hollow-deep);
+      background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
     }
   }
 
@@ -309,21 +266,40 @@
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      background-color: transparent;
+      color: var(--#{$color}-5);
 
       &.#{$cls-prefix}clickable {
         &:hover {
-          background-color: var(--bg-color-hollow-#{$color}-soft);
+          color: var(--#{$color}-6);
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-soft));
         }
 
         &:active {
-          background-color: var(--bg-color-hollow-#{$color}-deep);
+          color: var(--#{$color}-7);
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
+        }
+      }
+
+      & > .#{$cls-prefix}tag-clear {
+        color: var(--#{$color}-3);
+
+        &:hover {
+          color: var(--#{$color}-6);
+        }
+
+        &:active {
+          color: var(--#{$color}-7);
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}clickable {
+          color: var(--#{$color}-2);
           background-color: transparent;
+        }
+
+        & > .#{$cls-prefix}tag-clear {
+          color: var(--#{$color}-2);
         }
       }
     }
@@ -369,12 +345,5 @@
         }
       }
     }
-  }
-}
-
-.#{$cls-prefix}tag.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}tag-clear {
-    margin-right: 0;
-    margin-left: 1px;
   }
 }

@@ -1,14 +1,14 @@
 import React from "react";
 import { Size, Button, Flexbox } from "@lilib/ui";
 
-function Nested() {
+function Example() {
   return (
     <Flexbox gap="2x" align="center">
       <Size value="small">
         <Button>Small</Button>
 
         <Size value={null}>
-          <Button>Default</Button>
+          <Button>Basic</Button>
 
           <Size value="large">
             <Button>Large</Button>
@@ -19,4 +19,4 @@ function Nested() {
   );
 }
 
-export default Nested;
+export default Example;

@@ -1,23 +1,5 @@
 export default {
   title: "Examples/Loader",
-  argTypes: {
-    size: {
-      control: { type: "select" },
-      options: [null, "small", "large"],
-    },
-    icon: {
-      control: { type: "text" },
-    },
-    message: {
-      control: { type: "text" },
-    },
-    delay: {
-      control: { type: "number" },
-    },
-    loading: {
-      control: { type: "boolean" },
-    },
-  },
 };
 
 export { default as Basic } from "./Basic";

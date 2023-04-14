@@ -17,7 +17,7 @@ import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
-import { IntentValue } from "../types";
+import { IntentValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
@@ -158,6 +158,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const classes = cn(
     `${cls}button`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
       [`${cls}${intent}`]: intent,
@@ -169,7 +170,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       [`${cls}disabled`]: disabled,
       [`${cls}loading`]: loading && loadingCenter,
       [`${cls}icon-only`]: iconOnly,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );
@@ -198,17 +198,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
     if (isValidElement(node)) {
       if (node.type === Icon) {
-        return cloneElement<SpinnerProps>(node as any, {
+        return cloneElement(node as any, {
           className: cn(
             {
-              [`${cls}start-spaced`]: startSpace,
-              [`${cls}end-spaced`]: endSpace,
+              [`${cls}left-spaced`]: isRTL ? endSpace : startSpace,
+              [`${cls}right-spaced`]: isRTL ? startSpace : endSpace,
             },
             node.props.className
           ),
         });
       } else if (node.type === Spinner) {
-        return cloneElement<SpinnerProps>(node as any, {
+        return cloneElement(node as any, {
           ...spinnerProps,
           startSpace: startSpace,
           endSpace: endSpace,
@@ -220,8 +220,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       return (
         <Icon
           className={cn({
-            [`${cls}start-spaced`]: startSpace,
-            [`${cls}end-spaced`]: endSpace,
+            [`${cls}left-spaced`]: isRTL ? endSpace : startSpace,
+            [`${cls}right-spaced`]: isRTL ? startSpace : endSpace,
           })}
         >
           {node}

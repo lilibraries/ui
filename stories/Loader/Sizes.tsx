@@ -1,14 +1,14 @@
 import React from "react";
-import { Loader, LoaderProps } from "@lilib/ui";
+import { Loader } from "@lilib/ui";
 
-function Sizes(props: LoaderProps) {
+function Example() {
   return (
     <>
-      <Loader {...props} loading message="Loading..." size="small" />
-      <Loader {...props} loading message="Loading..." size={null} />
-      <Loader {...props} loading message="Loading..." size="large" />
+      <Loader loading message="Loading..." size="small" />
+      <Loader loading message="Loading..." size={null} />
+      <Loader loading message="Loading..." size="large" />
     </>
   );
 }
 
-export default Sizes;
+export default Example;

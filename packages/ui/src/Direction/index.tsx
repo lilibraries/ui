@@ -43,7 +43,7 @@ const Direction: FC<DirectionScopedProps | DirectionUnscopedProps> & {
     if (inBrowser && !scoped) {
       document.documentElement.setAttribute("dir", value);
     }
-  }, [scoped, value]);
+  }, [value]);
 
   return (
     <DirectionContext.Provider value={value}>

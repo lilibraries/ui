@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, ButtonCommonProps } from "@lilib/ui";
+import { Button } from "@lilib/ui";
 
-function Truncated(props: ButtonCommonProps) {
+function Example() {
   return (
-    <Button {...props} truncated style={{ width: 240 }}>
+    <Button truncated style={{ width: 240 }}>
       This is a very long button which may be truncated
     </Button>
   );
 }
 
-export default Truncated;
+export default Example;

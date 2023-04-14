@@ -11,7 +11,7 @@ import Prefix from "../Prefix";
 import Collapse from "../Collapse";
 import Direction from "../Direction";
 import CloseIcon from "../icons/CloseIcon";
-import { IntentValue } from "../types";
+import { IntentValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {

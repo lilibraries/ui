@@ -14,7 +14,7 @@ import Duration from "../Duration";
 import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
-import { PresetColor } from "../types";
+import { ColorValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export type BadgeVariant = null | "solid" | "dotted";
@@ -29,7 +29,7 @@ export interface BadgeProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   size?: SizeValue;
   variant?: BadgeVariant;
-  color?: PresetColor;
+  color?: ColorValue;
   round?: boolean;
   borderless?: boolean;
   animated?: boolean;

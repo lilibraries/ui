@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonCommonProps, Flexbox, Switch } from "@lilib/ui";
+import { Button, Flexbox, Switch } from "@lilib/ui";
 import {
   FiStar,
   FiHeart,
@@ -9,7 +9,7 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 
-function Loading(props: ButtonCommonProps) {
+function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
@@ -20,30 +20,22 @@ function Loading(props: ButtonCommonProps) {
       />
 
       <Flexbox gap="2x" align="center">
-        <Button
-          {...props}
-          iconOnly
-          loading={loading}
-          startIcon={<FiThumbsUp />}
-        />
-        <Button {...props} iconOnly loading={loading}>
+        <Button iconOnly loading={loading} startIcon={<FiThumbsUp />} />
+        <Button iconOnly loading={loading}>
           <FiStar />
         </Button>
-        <Button {...props} iconOnly loading={loading} endIcon={<FiHeart />} />
+        <Button iconOnly loading={loading} endIcon={<FiHeart />} />
       </Flexbox>
 
       <Flexbox gap="2x" align="center">
-        <Button {...props} loading={loading}>
-          Button
-        </Button>
-        <Button {...props} loading={loading} startIcon={<FiThumbsUp />}>
+        <Button loading={loading}>Button</Button>
+        <Button loading={loading} startIcon={<FiThumbsUp />}>
           Like
         </Button>
-        <Button {...props} loading={loading} endIcon={<FiLogOut />}>
+        <Button loading={loading} endIcon={<FiLogOut />}>
           Logout
         </Button>
         <Button
-          {...props}
           loading={loading}
           startIcon={<FiFileText />}
           endIcon={<FiArrowRight />}
@@ -55,4 +47,4 @@ function Loading(props: ButtonCommonProps) {
   );
 }
 
-export default Loading;
+export default Example;

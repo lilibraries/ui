@@ -2,7 +2,7 @@
   "extends": ["react-app", "react-app/jest", "prettier"],
   "overrides": [
     {
-      "files": ["*.stories.ts", "*.stories.tsx"],
+      "files": ["stories.ts", "stories.tsx"],
       "rules": {
         "import/no-anonymous-default-export": "off"
       }

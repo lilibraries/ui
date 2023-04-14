@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Transition, TransitionProps, Switch } from "@lilib/ui";
+import { Transition, Switch } from "@lilib/ui";
 
 /**
 .css-transition-example {
@@ -20,7 +20,7 @@ import { Transition, TransitionProps, Switch } from "@lilib/ui";
 */
 import "./CSSTransition.scss";
 
-function CSSTransition(props: TransitionProps) {
+function Example() {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -31,7 +31,6 @@ function CSSTransition(props: TransitionProps) {
       />
 
       <Transition
-        {...props}
         in={visible}
         durations={300}
         classNames="css-transition-example"
@@ -52,4 +51,4 @@ function CSSTransition(props: TransitionProps) {
   );
 }
 
-export default CSSTransition;
+export default Example;

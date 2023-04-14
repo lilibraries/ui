@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Loader, LoaderProps, Switch } from "@lilib/ui";
+import { Loader, Switch } from "@lilib/ui";
 
-function Standalone(props: LoaderProps) {
+function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
@@ -10,10 +10,9 @@ function Standalone(props: LoaderProps) {
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />
-
-      <Loader {...props} loading={loading} />
+      <Loader loading={loading} />
     </>
   );
 }
 
-export default Standalone;
+export default Example;

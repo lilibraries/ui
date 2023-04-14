@@ -11,7 +11,7 @@
   &.#{$cls-prefix}outlined {
     & > .#{$cls-prefix}badge-switcher {
       & > * {
-        box-shadow: 0 0 0 2px var(--bg-color-page);
+        box-shadow: 0 0 0 2px var(--background-color-page);
       }
     }
   }

@@ -1,8 +1,8 @@
 import React from "react";
-import { Radio, RadioProps } from "@lilib/ui";
+import { Radio } from "@lilib/ui";
 
-function Basic(props: RadioProps) {
-  return <Radio {...props}>Radio</Radio>;
+function Example() {
+  return <Radio>Radio</Radio>;
 }
 
-export default Basic;
+export default Example;

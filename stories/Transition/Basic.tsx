@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Transition, TransitionProps, Switch } from "@lilib/ui";
+import { Transition, Switch } from "@lilib/ui";
 
-function Basic(props: TransitionProps) {
+function Example() {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function Basic(props: TransitionProps) {
         onChange={(event) => setVisible(event.target.checked)}
       />
 
-      <Transition {...props} in={visible} durations={300} enterDelay={500}>
+      <Transition in={visible} durations={300} enterDelay={500}>
         {(state) => {
           let opacity: number = 0;
           if (state === Transition.ENTERING || state === Transition.ENTERED) {
@@ -42,4 +42,4 @@ function Basic(props: TransitionProps) {
   );
 }
 
-export default Basic;
+export default Example;

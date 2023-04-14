@@ -85,14 +85,8 @@ $text-color-disabled: rgba($black, 0.3) !default;
 $text-color-solid-base: $white !default;
 $text-color-solid-hover: $white !default;
 $text-color-solid-active: $white !default;
-$text-color-solid-inactive: rgba($white, 0.7) !default;
-$text-color-solid-disabled: rgba($white, 0.6) !default;
-
-$text-color-reverse-base: $white !default;
-$text-color-reverse-hover: $white !default;
-$text-color-reverse-active: $white !default;
-$text-color-reverse-inactive: rgba($white, 0.7) !default;
-$text-color-reverse-disabled: rgba($white, 0.6) !default;
+$text-color-solid-inactive: rgba($white, 0.6) !default;
+$text-color-solid-disabled: rgba($white, 0.5) !default;
 
 $border-color-base: light-color($basis, 60%) !default;
 $border-color-hover: light-color($basis, 50%) !default;

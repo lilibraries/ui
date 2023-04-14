@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Flexbox, Spinner, SpinnerProps, Switch } from "@lilib/ui";
+import { Flexbox, Spinner, Switch } from "@lilib/ui";
 import { FiLoader } from "react-icons/fi";
 
-function Config(props: SpinnerProps) {
+function Example() {
   const [spinning, setSpinning] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function Config(props: SpinnerProps) {
       />
       <div>
         <Spinner.Config icon={<FiLoader />} delay={500}>
-          <Spinner {...props} spinning={spinning} endSpace />
+          <Spinner spinning={spinning} endSpace />
           Spinner
         </Spinner.Config>
       </div>
@@ -21,4 +21,4 @@ function Config(props: SpinnerProps) {
   );
 }
 
-export default Config;
+export default Example;

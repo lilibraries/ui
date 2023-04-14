@@ -1,5 +1,5 @@
 import React from "react";
-import { Tag, Badge, BadgeProps } from "@lilib/ui";
+import { Tag, Badge } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -8,10 +8,9 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function CustomTag(props: BadgeProps) {
+function Example() {
   return (
     <Badge
-      {...props}
       count={
         <Tag variant="solid" size="small" color="red">
           Hot
@@ -23,4 +22,4 @@ function CustomTag(props: BadgeProps) {
   );
 }
 
-export default CustomTag;
+export default Example;

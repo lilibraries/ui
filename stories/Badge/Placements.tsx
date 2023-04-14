@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, BadgeProps, Flexbox } from "@lilib/ui";
+import { Badge, Flexbox } from "@lilib/ui";
 
 const block = {
   width: 50,
@@ -8,23 +8,23 @@ const block = {
   backgroundColor: "#808080",
 };
 
-function Placements(props: BadgeProps) {
+function Example() {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={6} {...props} placement="top-start">
+      <Badge count={6} placement="top-start">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} placement="top-end">
+      <Badge count={6} placement="top-end">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} placement="bottom-start">
+      <Badge count={6} placement="bottom-start">
         <div style={block} />
       </Badge>
-      <Badge count={6} {...props} placement="bottom-end">
+      <Badge count={6} placement="bottom-end">
         <div style={block} />
       </Badge>
     </Flexbox>
   );
 }
 
-export default Placements;
+export default Example;

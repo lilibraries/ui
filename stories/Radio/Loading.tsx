@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Radio, RadioProps, Flexbox, Switch } from "@lilib/ui";
+import { Radio, Flexbox, Switch } from "@lilib/ui";
 
-function Loading(props: RadioProps) {
+function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
@@ -10,11 +10,9 @@ function Loading(props: RadioProps) {
         checked={loading}
         onChange={(event) => setLoading(event.target.checked)}
       />
-      <Radio {...props} loading={loading}>
-        Radio
-      </Radio>
+      <Radio loading={loading}>Radio</Radio>
     </Flexbox>
   );
 }
 
-export default Loading;
+export default Example;

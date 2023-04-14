@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonCommonProps, Flexbox } from "@lilib/ui";
+import { Button, Flexbox } from "@lilib/ui";
 import {
   FiStar,
   FiHeart,
@@ -9,28 +9,20 @@ import {
   FiArrowRight,
 } from "react-icons/fi";
 
-function Icons(props: ButtonCommonProps) {
+function Example() {
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
       <Flexbox gap="2x" align="center">
-        <Button {...props} iconOnly startIcon={<FiThumbsUp />} />
-        <Button {...props} iconOnly>
+        <Button iconOnly startIcon={<FiThumbsUp />} />
+        <Button iconOnly>
           <FiStar />
         </Button>
-        <Button {...props} iconOnly endIcon={<FiHeart />} />
+        <Button iconOnly endIcon={<FiHeart />} />
       </Flexbox>
       <Flexbox gap="2x" align="center">
-        <Button {...props} startIcon={<FiThumbsUp />}>
-          Like
-        </Button>
-        <Button {...props} endIcon={<FiLogOut />}>
-          Logout
-        </Button>
-        <Button
-          {...props}
-          startIcon={<FiFileText />}
-          endIcon={<FiArrowRight />}
-        >
+        <Button startIcon={<FiThumbsUp />}>Like</Button>
+        <Button endIcon={<FiLogOut />}>Logout</Button>
+        <Button startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
           Next page
         </Button>
       </Flexbox>
@@ -38,4 +30,4 @@ function Icons(props: ButtonCommonProps) {
   );
 }
 
-export default Icons;
+export default Example;
