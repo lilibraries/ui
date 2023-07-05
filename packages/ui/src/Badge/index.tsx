@@ -75,10 +75,10 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const classes = cn(
     `${cls}badge`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}contained`]: contained,
       [`${cls}standalone`]: !contained,
       [`${cls}outlined`]: outlined,
-      [`${cls}rtl`]: isRTL,
     },
     className
   );
@@ -109,7 +109,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
             variant={solid ? "solid" : null}
             color={color}
             round={round}
-            square={String(count).length === 1}
+            square
             borderless={borderless}
           >
             {tag}
