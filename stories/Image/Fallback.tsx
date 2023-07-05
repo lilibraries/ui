@@ -1,16 +1,15 @@
 import React from "react";
-import { Image, ImageProps } from "@lilib/ui";
+import { Image } from "@lilib/ui";
 
-function Fallback(props: ImageProps) {
+function Example() {
   return (
     <Image
-      {...props}
-      alt="Landscape"
-      style={{ width: 200, height: 113, objectFit: "cover" }}
+      alt="Image"
       src="error"
-      fallback="https://via.placeholder.com/200x113.png?text=Fallback"
+      style={{ width: 200, height: 200, objectFit: "cover" }}
+      fallback="https://via.placeholder.com/200x200.png?text=Fallback"
     />
   );
 }
 
-export default Fallback;
+export default Example;

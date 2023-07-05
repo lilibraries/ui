@@ -1,16 +1,15 @@
 import React from "react";
-import { Image, ImageProps } from "@lilib/ui";
+import { Image } from "@lilib/ui";
 
-function Placeholder(props: ImageProps) {
+function Example() {
   return (
     <Image
-      {...props}
-      alt="Landscape"
-      style={{ width: 200, height: 113, objectFit: "cover" }}
-      placeholder="https://via.placeholder.com/200x113.png?text=Placeholder"
-      src="https://images.unsplash.com/photo-1547534601-862c877b1923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1640&q=80"
+      alt="Image"
+      src="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5"
+      style={{ width: 200, height: 200, objectFit: "cover" }}
+      placeholder="https://via.placeholder.com/200x200.png?text=Placeholder"
     />
   );
 }
 
-export default Placeholder;
+export default Example;
