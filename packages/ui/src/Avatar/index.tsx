@@ -134,6 +134,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   return createElement<AvatarProps>(
     as,
     {
+      tabIndex: clickable ? 0 : undefined,
       ...rest,
       ref: useComposedRef(wrapperRef, ref),
       onClick: onClick,

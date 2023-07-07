@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Alert, AlertProps, Switch } from "@lilib/ui";
+import { Alert, Switch } from "@lilib/ui";
 
-function Controlled(props: AlertProps) {
+function Example() {
   const [open, setOpen] = useState(true);
 
   return (
@@ -11,11 +11,11 @@ function Controlled(props: AlertProps) {
         onChange={(event) => setOpen(event.target.checked)}
         style={{ marginBottom: 8 }}
       />
-      <Alert {...props} open={open} closable onClose={() => setOpen(false)}>
+      <Alert open={open} closable onClose={() => setOpen(false)}>
         This is an example alert.
       </Alert>
     </>
   );
 }
 
-export default Controlled;
+export default Example;

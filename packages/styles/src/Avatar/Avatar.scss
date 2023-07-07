@@ -68,7 +68,7 @@
   }
 
   &.#{$cls-prefix}outlined {
-    outline: 2px solid var(--background-color-page);
+    box-shadow: 0 0 0 2px var(--background-color-page);
   }
 
   &.#{$cls-prefix}clickable {
@@ -82,6 +82,14 @@
     &:active {
       color: var(--text-color-active);
       background-color: var(--background-color-deep-active);
+    }
+
+    &:focus {
+      @include focus-outline;
+    }
+
+    [data-focus-hidden] &:focus {
+      outline: 0;
     }
   }
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { Alert, AlertProps } from "@lilib/ui";
+import { Alert } from "@lilib/ui";
 
-function Basic(props: AlertProps) {
-  return <Alert {...props}>This is an example alert.</Alert>;
+function Example() {
+  return <Alert>This is an example alert.</Alert>;
 }
 
-export default Basic;
+export default Example;
