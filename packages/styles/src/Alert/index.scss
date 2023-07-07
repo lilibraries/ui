@@ -3,8 +3,9 @@
 .#{$cls-prefix}alert {
   display: flex;
   align-items: flex-start;
-  padding: var(--space-4x) var(--space-6x);
-  background-color: var(--bg-color-hollow-soft);
+  padding: var(--space-4) var(--space-6);
+
+  // background-color: var(--background-color-hollow-soft);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
 
@@ -15,7 +16,7 @@
     justify-content: center;
     width: $line-height-base * 1em;
     height: $line-height-base * 1em;
-    margin-right: var(--space-4x);
+    margin-right: var(--space-4);
     transform: scale(1.25);
   }
 
@@ -32,7 +33,7 @@
     width: $line-height-base * 1em;
     height: $line-height-base * 1em;
     margin: 0;
-    margin-left: var(--space-4x);
+    margin-left: var(--space-4);
     padding: 0;
     color: var(--text-color-inactive);
     font-weight: inherit;
@@ -51,12 +52,14 @@
 
     &:hover {
       color: var(--text-color-hover);
-      background-color: var(--bg-color-hollow-soft);
+
+      // background-color: var(--background-color-hollow-soft);
     }
 
     &:active {
       color: var(--text-color-active);
-      background-color: var(--bg-color-hollow-deep);
+
+      // background-color: var(--background-color-hollow-deep);
     }
 
     &:focus {
@@ -66,11 +69,11 @@
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
-      background-color: var(--bg-color-hollow-#{$intent}-soft);
-      border-color: var(--border-color-#{$intent}-base);
+      // background-color: var(--background-color-hollow-#{$intent}-soft);
+      // border-color: var(--border-color-#{$intent}-base);
 
       & > .#{$cls-prefix}alert-icon {
-        color: var(--text-color-#{$intent}-base);
+        // color: var(--text-color-#{$intent}-base);
       }
     }
   }
@@ -79,11 +82,11 @@
 .#{$cls-prefix}alert.#{$cls-prefix}rtl {
   & > .#{$cls-prefix}alert-icon {
     margin-right: 0;
-    margin-left: var(--space-4x);
+    margin-left: var(--space-4);
   }
 
   & > .#{$cls-prefix}alert-close {
-    margin-right: var(--space-4x);
+    margin-right: var(--space-4);
     margin-left: 0;
   }
 }
