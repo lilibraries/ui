@@ -1,13 +1,13 @@
 import React from "react";
-import { Avatar, AvatarProps } from "@lilib/ui";
+import { Avatar } from "@lilib/ui";
 import { FiStar } from "react-icons/fi";
 
-function Icon(props: AvatarProps) {
+function Example() {
   return (
-    <Avatar {...props}>
+    <Avatar>
       <FiStar />
     </Avatar>
   );
 }
 
-export default Icon;
+export default Example;

@@ -1,9 +1,10 @@
 import React, {
   useRef,
   forwardRef,
-  RefAttributes,
-  HTMLAttributes,
-  PropsWithoutRef,
+  ElementType,
+  ReactElement,
+  createElement,
+  ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
@@ -26,8 +27,7 @@ import AvatarConfig from "./AvatarConfig";
 export * from "./AvatarGroup";
 export * from "./AvatarConfig";
 
-export interface AvatarProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
+export interface AvatarCommonProps {
   size?: SizeValue;
   image?: string | ImageProps;
   round?: boolean;
@@ -36,10 +36,19 @@ export interface AvatarProps
   clickable?: boolean;
 }
 
+export type AvatarProps<C extends ElementType = "span"> = C extends "span"
+  ? {
+      as?: C;
+    } & ComponentProps<C> &
+      AvatarCommonProps
+  : {
+      as: C;
+    } & ComponentProps<C> &
+      AvatarCommonProps;
+
 export interface AvatarComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<AvatarProps> & RefAttributes<HTMLSpanElement>
-  > {
+  extends ForwardRefExoticComponent<AvatarCommonProps> {
+  <C extends ElementType = "span">(props: AvatarProps<C>): ReactElement;
   Group: typeof AvatarGroup;
 }
 
@@ -47,6 +56,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const {
     children,
     className,
+    as = "span",
     size: sizeProp,
     image,
     round: roundProp,
@@ -121,25 +131,25 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
 
   useUnmount(clearObserver);
 
-  return (
-    <span
-      {...rest}
-      ref={useComposedRef(wrapperRef, ref)}
-      className={classes}
-      onClick={onClick}
-    >
-      {!!image ? (
-        isString(image) ? (
-          <Image src={image} />
-        ) : (
-          <Image {...image} />
-        )
+  return createElement<AvatarProps>(
+    as,
+    {
+      ...rest,
+      ref: useComposedRef(wrapperRef, ref),
+      onClick: onClick,
+      className: classes,
+    },
+    !!image ? (
+      isString(image) ? (
+        <Image src={image} />
       ) : (
-        <span ref={contentRef} className={`${cls}avatar-content`}>
-          {children}
-        </span>
-      )}
-    </span>
+        <Image {...image} />
+      )
+    ) : (
+      <span ref={contentRef} className={`${cls}avatar-content`}>
+        {children}
+      </span>
+    )
   );
 }) as AvatarComponent;
 

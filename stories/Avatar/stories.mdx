@@ -1,0 +1,91 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/Avatar" />
+
+# Avatar
+
+Avatar component.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-avatar--basic" />
+</Canvas>
+
+### Icon
+
+<Canvas mdxSource={require("!!raw-loader!./Icon").default}>
+  <Story id="examples-avatar--icon" />
+</Canvas>
+
+### Link
+
+<Canvas mdxSource={require("!!raw-loader!./Link").default}>
+  <Story id="examples-avatar--link" />
+</Canvas>
+
+### Text
+
+<Canvas mdxSource={require("!!raw-loader!./Text").default}>
+  <Story id="examples-avatar--text" />
+</Canvas>
+
+### Round
+
+<Canvas mdxSource={require("!!raw-loader!./Round").default}>
+  <Story id="examples-avatar--round" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-avatar--sizes" />
+</Canvas>
+
+### Custom Size
+
+<Canvas mdxSource={require("!!raw-loader!./CustomSize").default}>
+  <Story id="examples-avatar--custom-size" />
+</Canvas>
+
+### Colors
+
+<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
+  <Story id="examples-avatar--colors" />
+</Canvas>
+
+### Groups
+
+<Canvas mdxSource={require("!!raw-loader!./Groups").default}>
+  <Story id="examples-avatar--groups" />
+</Canvas>
+
+## Props
+
+### Avatar
+
+| Property    | Type                                                                                                                                                                                       | Description                                                                   |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `as`        | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`                                             |
+| `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                                          |
+| `image`     | `string` \| [`ImageProps`](?path=/story/views-image--page#props)                                                                                                                           | Image url or props of the [`Image`](?path=/story/views-image--page) component |
+| `round`     | `boolean`                                                                                                                                                                                  | Make corners round                                                            |
+| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                                                         |
+| `outlined`  | `boolean`                                                                                                                                                                                  | Add outline                                                                   |
+| `clickable` | `boolean`                                                                                                                                                                                  | Show hover and active styles. It only effects styles                          |
+
+It accepts all props which the `as` element type supports.
+
+### Avatar.Group
+
+| Property    | Type                                                                                                                                                                                       | Description                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                |
+| `round`     | `boolean`                                                                                                                                                                                  | Make corners round                                  |
+| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                               |
+| `outlined`  | `boolean`                                                                                                                                                                                  | Add outline                                         |
+| `clickable` | `boolean`                                                                                                                                                                                  | Show hover and active styles. It only effect styles |
+
+It accepts all props which the native `<div>` element supports.

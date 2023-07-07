@@ -1,14 +1,14 @@
 import React from "react";
-import { Avatar, AvatarProps, Flexbox } from "@lilib/ui";
+import { Avatar, Flexbox } from "@lilib/ui";
 
-function Text(props: AvatarProps) {
+function Example() {
   return (
     <Flexbox gap="4x">
-      <Avatar {...props}>X</Avatar>
-      <Avatar {...props}>小明</Avatar>
-      <Avatar {...props}>User Name</Avatar>
+      <Avatar>X</Avatar>
+      <Avatar>小明</Avatar>
+      <Avatar>User Name</Avatar>
     </Flexbox>
   );
 }
 
-export default Text;
+export default Example;

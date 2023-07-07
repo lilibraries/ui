@@ -1,14 +1,13 @@
 import React from "react";
-import { Avatar, AvatarProps } from "@lilib/ui";
+import { Avatar } from "@lilib/ui";
 
-function Round(props: AvatarProps) {
+function Example() {
   return (
     <Avatar
-      {...props}
       round
-      image="https://images.freeimages.com/images/previews/962/avatar-man-with-mustages-1632966.jpg"
+      image="https://images.unsplash.com/photo-1671600936716-67fa7df9e68d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIwfEpwZzZLaWRsLUhrfHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
     />
   );
 }
 
-export default Round;
+export default Example;
