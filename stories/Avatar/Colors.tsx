@@ -1,53 +1,53 @@
 import React from "react";
-import { Avatar, AvatarProps, Flexbox } from "@lilib/ui";
+import { Avatar, Flexbox } from "@lilib/ui";
 
-function Colors(props: AvatarProps) {
+function Example() {
   return (
     <Flexbox gap="4x" align="center" wrap>
-      <Avatar {...props} color="red" clickable>
+      <Avatar color="red" clickable>
         Red
       </Avatar>
-      <Avatar {...props} color="magenta" clickable>
+      <Avatar color="magenta" clickable>
         Magenta
       </Avatar>
-      <Avatar {...props} color="purple" clickable>
+      <Avatar color="purple" clickable>
         Purple
       </Avatar>
-      <Avatar {...props} color="indigo" clickable>
+      <Avatar color="indigo" clickable>
         Indigo
       </Avatar>
-      <Avatar {...props} color="navy" clickable>
+      <Avatar color="navy" clickable>
         Navy
       </Avatar>
-      <Avatar {...props} color="blue" clickable>
+      <Avatar color="blue" clickable>
         Blue
       </Avatar>
-      <Avatar {...props} color="cyan" clickable>
+      <Avatar color="cyan" clickable>
         Cyan
       </Avatar>
-      <Avatar {...props} color="teal" clickable>
+      <Avatar color="teal" clickable>
         Teal
       </Avatar>
-      <Avatar {...props} color="green" clickable>
+      <Avatar color="green" clickable>
         Green
       </Avatar>
-      <Avatar {...props} color="lime" clickable>
+      <Avatar color="lime" clickable>
         Lime
       </Avatar>
-      <Avatar {...props} color="yellow" clickable>
+      <Avatar color="yellow" clickable>
         Yellow
       </Avatar>
-      <Avatar {...props} color="orange" clickable>
+      <Avatar color="orange" clickable>
         Orange
       </Avatar>
-      <Avatar {...props} color="brown" clickable>
+      <Avatar color="brown" clickable>
         Brown
       </Avatar>
-      <Avatar {...props} color="gray" clickable>
+      <Avatar color="gray" clickable>
         Gray
       </Avatar>
     </Flexbox>
   );
 }
 
-export default Colors;
+export default Example;
