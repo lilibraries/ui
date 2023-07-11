@@ -3,7 +3,10 @@ import React, {
   ReactNode,
   MouseEvent,
   forwardRef,
+  RefAttributes,
   HTMLAttributes,
+  PropsWithoutRef,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import { usePersist, useUpdate } from "@lilib/hooks";
@@ -13,6 +16,8 @@ import Direction from "../Direction";
 import CloseIcon from "../icons/CloseIcon";
 import { IntentValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
+import AlertTitle from "./AlertTitle";
+import AlertDescription from "./AlertDescription";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   intent?: IntentValue;
@@ -23,16 +28,24 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
+export interface AlertComponent
+  extends ForwardRefExoticComponent<
+    PropsWithoutRef<AlertProps> & RefAttributes<HTMLDivElement>
+  > {
+  Title: typeof AlertTitle;
+  Description: typeof AlertDescription;
+}
+
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const {
+    children,
+    className,
     intent,
-    icon,
+    icon: iconProp,
     open: openProp = true,
     closable,
     closeIcon,
     onClose,
-    children,
-    className,
     ...rest
   } = props;
 
@@ -51,8 +64,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const classes = cn(
     `${cls}alert`,
     {
-      [`${cls}${intent}`]: intent,
       [`${cls}rtl`]: isRTL,
+      [`${cls}${intent}`]: intent,
     },
     className
   );
@@ -66,29 +79,32 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     }
   });
 
-  let iconNode: ReactNode = null;
-  if (isRenderableNode(icon)) {
-    iconNode = <span className={`${cls}alert-icon`}>{icon}</span>;
+  let icon: ReactNode = null;
+  if (isRenderableNode(iconProp)) {
+    icon = <span className={`${cls}alert-icon`}>{iconProp}</span>;
   }
 
   let closeButton: ReactNode = null;
   if (closable) {
     closeButton = (
       <button onClick={handleClose} className={`${cls}alert-close`}>
-        {closeIcon || <CloseIcon />}
+        {isRenderableNode(closeIcon) ? closeIcon : <CloseIcon />}
       </button>
     );
   }
 
   return (
-    <Collapse ref={ref} open={open} unmountOnClose>
-      <div {...rest} className={classes}>
-        {iconNode}
+    <Collapse open={open} unmountOnClose>
+      <div {...rest} ref={ref} className={classes}>
+        {icon}
         <div className={`${cls}alert-content`}>{children}</div>
         {closeButton}
       </div>
     </Collapse>
   );
-});
+}) as AlertComponent;
+
+Alert.Title = AlertTitle;
+Alert.Description = AlertDescription;
 
 export default Alert;

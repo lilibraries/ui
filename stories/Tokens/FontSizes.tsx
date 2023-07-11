@@ -3,6 +3,7 @@ import { Prefix } from "@lilib/ui";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
+import Monospace from "../components/Monospace";
 
 const FontSizes: FC = () => {
   const { var: prefix } = Prefix.useConfig();
@@ -116,6 +117,24 @@ const FontSizes: FC = () => {
           />,
           <span style={{ fontSize: `var(--${prefix}font-size-large` }}>
             Large
+          </span>,
+        ],
+
+        [
+          <Usage type="scss" name="font-size-smaller" />,
+          <Usage type="css" name="font-size-smaller" />,
+          <Monospace>0.875em</Monospace>,
+          <span style={{ fontSize: `var(--${prefix}font-size-smaller` }}>
+            Smaller
+          </span>,
+        ],
+
+        [
+          <Usage type="scss" name="font-size-larger" />,
+          <Usage type="css" name="font-size-larger" />,
+          <Monospace>1.125em</Monospace>,
+          <span style={{ fontSize: `var(--${prefix}font-size-larger` }}>
+            Larger
           </span>,
         ],
       ]}

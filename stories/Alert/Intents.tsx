@@ -10,31 +10,39 @@ import {
 function Example() {
   return (
     <>
-      <Alert intent="major" icon={<FiInfo />} style={{ marginBottom: 16 }}>
+      <Alert
+        icon={<FiInfo />}
+        intent="major"
+        closable
+        style={{ marginBottom: 16 }}
+      >
         This is a major alert.
       </Alert>
-      <Alert intent="minor" icon={<FiInfo />} style={{ marginBottom: 16 }}>
+      <Alert
+        icon={<FiInfo />}
+        intent="minor"
+        closable
+        style={{ marginBottom: 16 }}
+      >
         This is a minor alert.
       </Alert>
       <Alert
-        intent="positive"
         icon={<FiCheckCircle />}
+        intent="positive"
+        closable
         style={{ marginBottom: 16 }}
       >
         This is a positive alert.
       </Alert>
       <Alert
-        intent="alertive"
         icon={<FiAlertTriangle />}
+        intent="alertive"
+        closable
         style={{ marginBottom: 16 }}
       >
-        This is a alertive alert.
+        This is an alertive alert.
       </Alert>
-      <Alert
-        intent="negative"
-        icon={<FiAlertCircle />}
-        style={{ marginBottom: 16 }}
-      >
+      <Alert icon={<FiAlertCircle />} intent="negative" closable>
         This is a negative alert.
       </Alert>
     </>

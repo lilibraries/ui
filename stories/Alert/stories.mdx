@@ -20,16 +20,16 @@ Alert feedback.
   <Story id="examples-alert--icon" />
 </Canvas>
 
+### Description
+
+<Canvas mdxSource={require("!!raw-loader!./Description").default}>
+  <Story id="examples-alert--description" />
+</Canvas>
+
 ### Closable
 
 <Canvas mdxSource={require("!!raw-loader!./Closable").default}>
   <Story id="examples-alert--closable" />
-</Canvas>
-
-### Controlled
-
-<Canvas mdxSource={require("!!raw-loader!./Controlled").default}>
-  <Story id="examples-alert--controlled" />
 </Canvas>
 
 ### Intents
@@ -40,6 +40,8 @@ Alert feedback.
 
 ## Props
 
+### Alert
+
 | Property    | Type                                                                             | Description              |
 | ----------- | -------------------------------------------------------------------------------- | ------------------------ |
 | `children`  | `ReactNode`                                                                      | Content                  |
@@ -49,5 +51,13 @@ Alert feedback.
 | `closable`  | `boolean`                                                                        | Whether it can be closed |
 | `closeIcon` | `boolean`                                                                        | Close icon               |
 | `onClose`   | `(event: MouseEvent<HTMLButtonElement>) => void`                                 | Close event              |
+
+It accepts all props which the native `<div>` element supports.
+
+### Alert.Title
+
+It accepts all props which the native `<div>` element supports.
+
+### Alert.Description
 
 It accepts all props which the native `<div>` element supports.
