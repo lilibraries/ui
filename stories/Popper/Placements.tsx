@@ -1,74 +1,67 @@
 import React from "react";
-import { Button, Flexbox, PopperProps } from "@lilib/ui";
+import { Button, Flexbox } from "@lilib/ui";
 import ArrowPopper from "./Arrow";
 
-const content = (
-  <div>
-    <strong>Tooltip</strong>
-    <div>This is a tooltip message.</div>
-  </div>
-);
-
-function Placements(props: PopperProps) {
+function Example() {
   return (
     <Flexbox fluid align="center" justify="center">
       <Button.Group vertical>
-        <ArrowPopper {...props} placement="left-start" content={content}>
-          <Button>left-start</Button>
+        <ArrowPopper placement="left-start">
+          <Button style={{ borderStyle: "dashed" }}>left-start</Button>
         </ArrowPopper>
-        <ArrowPopper {...props} placement="left" content={content}>
-          <Button>left</Button>
+        <ArrowPopper placement="left">
+          <Button style={{ borderStyle: "dashed" }}>left</Button>
         </ArrowPopper>
-        <ArrowPopper {...props} placement="left-end" content={content}>
-          <Button>left-end</Button>
+        <ArrowPopper placement="left-end">
+          <Button style={{ borderStyle: "dashed" }}>left-end</Button>
         </ArrowPopper>
       </Button.Group>
 
       <Flexbox direction="column">
         <Button.Group fluid>
-          <ArrowPopper {...props} placement="top-start" content={content}>
-            <Button>top-start</Button>
+          <ArrowPopper placement="top-start">
+            <Button style={{ borderStyle: "dashed" }}>top-start</Button>
           </ArrowPopper>
-          <ArrowPopper {...props} placement="top" content={content}>
-            <Button>top</Button>
+          <ArrowPopper placement="top">
+            <Button style={{ borderStyle: "dashed" }}>top</Button>
           </ArrowPopper>
-          <ArrowPopper {...props} placement="top-end" content={content}>
-            <Button>top-end</Button>
+          <ArrowPopper placement="top-end">
+            <Button style={{ borderStyle: "dashed" }}>top-end</Button>
           </ArrowPopper>
         </Button.Group>
 
         <Button.Group vertical style={{ visibility: "hidden" }}>
-          <Button>left-start</Button>
-          <Button>left</Button>
-          <Button>left-end</Button>
+          <Button style={{ borderStyle: "dashed" }}>left-start</Button>
+          <Button style={{ borderStyle: "dashed" }}>left</Button>
+          <Button style={{ borderStyle: "dashed" }}>left-end</Button>
         </Button.Group>
 
         <Button.Group fluid>
-          <ArrowPopper {...props} placement="bottom-start" content={content}>
-            <Button>bottom-start</Button>
+          <ArrowPopper placement="bottom-start">
+            <Button style={{ borderStyle: "dashed" }}>bottom-start</Button>
           </ArrowPopper>
-          <ArrowPopper {...props} placement="bottom" content={content}>
-            <Button>bottom</Button>
+          <ArrowPopper placement="bottom">
+            <Button style={{ borderStyle: "dashed" }}>bottom</Button>
           </ArrowPopper>
-          <ArrowPopper {...props} placement="bottom-end" content={content}>
-            <Button>bottom-end</Button>
+          <ArrowPopper placement="bottom-end">
+            <Button style={{ borderStyle: "dashed" }}>bottom-end</Button>
           </ArrowPopper>
         </Button.Group>
       </Flexbox>
 
       <Button.Group vertical>
-        <ArrowPopper {...props} placement="right-start" content={content}>
-          <Button>right-start</Button>
+        <ArrowPopper placement="right-start">
+          <Button style={{ borderStyle: "dashed" }}>right-start</Button>
         </ArrowPopper>
-        <ArrowPopper {...props} placement="right" content={content}>
-          <Button>right</Button>
+        <ArrowPopper placement="right">
+          <Button style={{ borderStyle: "dashed" }}>right</Button>
         </ArrowPopper>
-        <ArrowPopper {...props} placement="right-end" content={content}>
-          <Button>right-end</Button>
+        <ArrowPopper placement="right-end">
+          <Button style={{ borderStyle: "dashed" }}>right-end</Button>
         </ArrowPopper>
       </Button.Group>
     </Flexbox>
   );
 }
 
-export default Placements;
+export default Example;

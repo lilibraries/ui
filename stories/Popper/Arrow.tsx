@@ -4,10 +4,11 @@ import { Button, Popper, PopperProps, PopperUpdateData } from "@lilib/ui";
 
 const popperStyle: CSSProperties = {
   zIndex: 1000,
-  padding: "8px 16px",
+  width: "max-content",
+  padding: 16,
   borderRadius: 8,
   color: "#fff",
-  backgroundColor: "#666",
+  backgroundColor: "#797E86",
   boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
 };
 
@@ -15,11 +16,11 @@ const arrowStyle: CSSProperties = {
   position: "absolute",
   width: 12,
   height: 12,
-  backgroundColor: "#666",
+  backgroundColor: "#797E86",
   transform: "rotate(45deg)",
 };
 
-function Arrow(props: PopperProps) {
+function ArrowPopper(props: PopperProps) {
   const arrowRef = useRef<HTMLSpanElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
 
@@ -59,14 +60,15 @@ function Arrow(props: PopperProps) {
       ref={popperRef}
       style={popperStyle}
       arrow={<span ref={arrowRef} style={arrowStyle} />}
-      arrowPadding={8}
       content="This is a tooltip message."
       onUpdate={handleUpdate}
       {...props}
     >
-      {props.children || <Button>Click</Button>}
+      {props.children || (
+        <Button style={{ borderStyle: "dashed" }}>Click</Button>
+      )}
     </Popper>
   );
 }
 
-export default Arrow;
+export default ArrowPopper;

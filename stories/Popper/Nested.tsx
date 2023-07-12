@@ -1,30 +1,32 @@
 import React from "react";
-import { Button, PopperProps } from "@lilib/ui";
-import { FiChevronRight } from "react-icons/fi";
+import { Button } from "@lilib/ui";
+import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import BasicPopper from "./Basic";
 
-function Nested(props: PopperProps) {
+function Example() {
   const layer2 = (
-    <div style={{ padding: 50 }}>
-      <BasicPopper {...props} placement="right">
-        <Button endIcon={<FiChevronRight />}>Dropright</Button>
-      </BasicPopper>
-    </div>
+    <BasicPopper placement="right" content="This is a tooltip message.">
+      <Button endIcon={<FiChevronRight />} style={{ borderStyle: "dashed" }}>
+        Dropright
+      </Button>
+    </BasicPopper>
   );
 
   const layer1 = (
-    <div style={{ padding: 50 }}>
-      <BasicPopper {...props} placement="right" content={layer2}>
-        <Button endIcon={<FiChevronRight />}>Dropright</Button>
-      </BasicPopper>
-    </div>
+    <BasicPopper placement="right" content={layer2}>
+      <Button endIcon={<FiChevronRight />} style={{ borderStyle: "dashed" }}>
+        Dropright
+      </Button>
+    </BasicPopper>
   );
 
   return (
-    <BasicPopper {...props} placement="bottom-start" content={layer1}>
-      <Button>Click</Button>
+    <BasicPopper placement="bottom-start" content={layer1}>
+      <Button endIcon={<FiChevronDown />} style={{ borderStyle: "dashed" }}>
+        Dropdown
+      </Button>
     </BasicPopper>
   );
 }
 
-export default Nested;
+export default Example;

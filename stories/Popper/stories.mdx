@@ -20,19 +20,19 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
   <Story id="examples-popper--arrow" />
 </Canvas>
 
-### Events
+### Trigger Events
 
-<Canvas mdxSource={require("!!raw-loader!./Events").default}>
-  <Story id="examples-popper--events" />
+<Canvas mdxSource={require("!!raw-loader!./TriggerEvents").default}>
+  <Story id="examples-popper--trigger-events" />
 </Canvas>
 
-### Right click
+### Right Click
 
 <Canvas mdxSource={require("!!raw-loader!./RightClick").default}>
   <Story id="examples-popper--right-click" />
 </Canvas>
 
-### Hover move
+### Hover Move
 
 <Canvas mdxSource={require("!!raw-loader!./HoverMove").default}>
   <Story id="examples-popper--hover-move" />
@@ -56,13 +56,15 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
   <Story id="examples-popper--inline" />
 </Canvas>
 
-### Text selection
+### Text Selection
 
 <Canvas mdxSource={require("!!raw-loader!./TextSelection").default}>
   <Story id="examples-popper--text-selection" />
 </Canvas>
 
-## Props
+## API
+
+### Popper
 
 | Property               | Type                                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -79,8 +81,8 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
 | `defaultOpen`          | `boolean`                                                                                                                                                                                  | Uncontrolled open                                                                                                                                                              |
 | `openDelay`            | `number`                                                                                                                                                                                   | Delay time on open, in milliseconds                                                                                                                                            |
 | `closeDelay`           | `number`                                                                                                                                                                                   | Delay time on close, in milliseconds                                                                                                                                           |
-| `hoverEnterDelay`      | `number`                                                                                                                                                                                   | Delay time on hover enter, in milliseconds, default is 100                                                                                                                     |
-| `hoverLeaveDelay`      | `number`                                                                                                                                                                                   | Delay time on hover leave, in milliseconds, default is 100                                                                                                                     |
+| `hoverEnterDelay`      | `number`                                                                                                                                                                                   | Delay time on hover enter, in milliseconds, default is `100`                                                                                                                   |
+| `hoverLeaveDelay`      | `number`                                                                                                                                                                                   | Delay time on hover leave, in milliseconds, default is `100`                                                                                                                   |
 | `updateDeps`           | `any[]`                                                                                                                                                                                    | A dependency array to auto update popup position                                                                                                                               |
 | `followPoint`          | `boolean`                                                                                                                                                                                  | The popup layer will follow the mouse point                                                                                                                                    |
 | `mountOnInit`          | `boolean`                                                                                                                                                                                  | Mount on first time, no matter whether the component is opened                                                                                                                 |
@@ -92,7 +94,7 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
 | `onClose`              | `() => void`                                                                                                                                                                               | Close event                                                                                                                                                                    |
 | `onUpdate`             | [`(data: PopperUpdateData) => void`](#popperupdatedata)                                                                                                                                    | Update event of popup layer position changing. It's useful when you build your own popup component based on the Popper component                                               |
 
-### PopperVirtualElement
+#### PopperVirtualElement
 
 A popper virtual element is an object contains a function named [`getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect).
 
@@ -113,7 +115,7 @@ interface PopperVirtualElement {
 
 For how to use it, please see the [text selection](#text-selection) example above.
 
-### PopperUpdateData
+#### PopperUpdateData
 
 ```ts
 interface PopperData {
@@ -143,3 +145,23 @@ interface PopperData {
     | "left-end";
 }
 ```
+
+### Popper.Config
+
+| Property    | Type                                                                                        | Description                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | Parent node of popup layer. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
+
+Popper.Config will inherit the upper configuration.
+
+### Popper.Config.useConfig
+
+```ts
+function useConfig(): { container?: EffectTarget<HTMLElement> };
+```
+
+Get configuration.
+
+### Popper.Config.Context
+
+A context created by `React.createContext`. It's default value is an empty object `{}`.
