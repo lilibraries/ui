@@ -4,14 +4,15 @@ import { Button, Popper, PopperProps, PopperUpdateData } from "@lilib/ui";
 
 const popperStyle = {
   zIndex: 1000,
-  padding: "8px 16px",
+  width: "max-content",
+  padding: 16,
   borderRadius: 8,
   color: "#fff",
-  backgroundColor: "#666",
+  backgroundColor: "#797E86",
   boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
 };
 
-function Basic(props: PopperProps) {
+function BasicPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
   const handleUpdate = usePersist(({ x, y }: PopperUpdateData) => {
@@ -30,9 +31,11 @@ function Basic(props: PopperProps) {
       onUpdate={handleUpdate}
       {...props}
     >
-      {props.children || <Button>Click</Button>}
+      {props.children || (
+        <Button style={{ borderStyle: "dashed" }}>Click</Button>
+      )}
     </Popper>
   );
 }
 
-export default Basic;
+export default BasicPopper;

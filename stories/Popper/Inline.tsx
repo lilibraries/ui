@@ -1,15 +1,14 @@
 import React from "react";
-import { PopperProps } from "@lilib/ui";
 import BasicPopper from "./Basic";
 
-function Inline(props: PopperProps) {
+function Example() {
   return (
     <div>
       React (also known as React.js or ReactJS) is a free and open-source
       front-end JavaScript library for building user interfaces or UI
       components. It is maintained by Facebook and a community of individual
       developers and companies.{" "}
-      <BasicPopper {...props} on="hover">
+      <BasicPopper on="hover" placement="top-start">
         <a href="https://reactjs.org/" rel="noreferrer noopener">
           React can be used as a base in the development of single-page or
           mobile applications.
@@ -23,4 +22,4 @@ function Inline(props: PopperProps) {
   );
 }
 
-export default Inline;
+export default Example;

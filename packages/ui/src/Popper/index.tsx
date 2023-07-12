@@ -23,6 +23,7 @@ import {
   computePosition,
   ReferenceElement,
   flip as flipMiddleware,
+  shift as shiftMiddleware,
   arrow as arrowMiddleware,
   inline as inlineMiddleware,
   offset as offsetMiddleware,
@@ -236,10 +237,11 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       if (offset != null) {
         [mainAxisOffset, crossAxisOffset] = offsets;
       } else if (arrowRef.current) {
-        mainAxisOffset = Math.max(
-          arrowRef.current.offsetWidth,
-          arrowRef.current.offsetHeight
-        );
+        mainAxisOffset =
+          Math.max(
+            arrowRef.current.offsetWidth,
+            arrowRef.current.offsetHeight
+          ) * 0.707106781187;
       }
 
       const middleware = [
@@ -248,6 +250,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           crossAxis: crossAxisOffset || 0,
         }),
         flipMiddleware(),
+        shiftMiddleware(),
       ];
       if (inline) {
         middleware.unshift(inlineMiddleware());

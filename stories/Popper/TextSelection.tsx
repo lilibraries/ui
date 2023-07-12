@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useEventListener, useTimeout } from "@lilib/hooks";
-import { PopperProps, PopperVirtualElement } from "@lilib/ui";
+import { PopperVirtualElement } from "@lilib/ui";
 import BasicPopper from "./Basic";
 
-function TextSelection(props: PopperProps) {
+function Example() {
   const [open, setOpen] = useState(false);
   const rangeRef = useRef<Range>();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,9 +50,8 @@ function TextSelection(props: PopperProps) {
       </div>
 
       <BasicPopper
-        {...props}
         open={open}
-        placement="top"
+        placement="top-start"
         onClose={() => setOpen(false)}
       >
         {() => virtualElement}
@@ -61,4 +60,4 @@ function TextSelection(props: PopperProps) {
   );
 }
 
-export default TextSelection;
+export default Example;
