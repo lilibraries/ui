@@ -22,6 +22,7 @@ import {
   VirtualElement,
   computePosition,
   ReferenceElement,
+  hide as hideMiddleware,
   flip as flipMiddleware,
   shift as shiftMiddleware,
   arrow as arrowMiddleware,
@@ -38,6 +39,7 @@ import {
   useSetState,
   useMountedRef,
   useComposedRef,
+  useLayoutUpdate,
   useClickOutside,
   useEventListener,
   useMemoizedValue,
@@ -63,6 +65,7 @@ export interface PopperUpdateData {
   arrowY?: number;
   strategy: PopperStrategy;
   placement: PopperPlacement;
+  referenceHidden: boolean;
 }
 
 export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
@@ -90,6 +93,8 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   closeOnDocumentClick?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
+  onShow?: () => void;
+  onHide?: () => void;
   onUpdate?: (data: PopperUpdateData) => void;
 }
 
@@ -126,6 +131,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     closeOnDocumentClick = true,
     onOpen,
     onClose,
+    onShow,
+    onHide,
     onUpdate,
     ...rest
   } = props;
@@ -134,7 +141,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
   const { container } = PopperConfig.useConfig({ container: containerProp });
 
-  const isControlled = "open" in props;
+  const isControlled = openProp != null;
   const [{ open, show }, setState] = useSetState(() => {
     const open = isControlled ? !!openProp : !!defaultOpen;
     return { open, show: open };
@@ -260,23 +267,27 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           arrowMiddleware({ element: arrowRef.current, padding: arrowPadding })
         );
       }
+      middleware.push(hideMiddleware());
 
       computePosition(refrence, popperRef.current, {
         strategy,
         placement,
         middleware,
-      }).then(({ x, y, strategy, placement, middlewareData: { arrow } }) => {
-        if (mountedRef.current && onUpdate) {
-          onUpdate({
-            x,
-            y,
-            arrowX: arrow?.x,
-            arrowY: arrow?.y,
-            strategy,
-            placement,
-          });
+      }).then(
+        ({ x, y, strategy, placement, middlewareData: { arrow, hide } }) => {
+          if (mountedRef.current && onUpdate) {
+            onUpdate({
+              x,
+              y,
+              arrowX: arrow?.x,
+              arrowY: arrow?.y,
+              strategy,
+              placement,
+              referenceHidden: hide!.referenceHidden!,
+            });
+          }
         }
-      });
+      );
     }
   });
 
@@ -337,25 +348,31 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   }, [openProp]);
 
-  useIsomorphicLayoutEffect(
-    () => {
-      if (show) {
-        if (anchorRef.current && popperRef.current) {
-          setAutoUpdate();
-        } else {
-          updatePosition();
-        }
-        createdPopperRef.current = true;
+  useIsomorphicLayoutEffect(() => {
+    if (show) {
+      if (anchorRef.current && popperRef.current) {
+        setAutoUpdate();
       } else {
-        clearAutoUpdate();
-        pointerRef.current = undefined;
-        if (unmountOnClose) {
-          createdPopperRef.current = false;
-        }
+        updatePosition();
       }
-    },
-    [show] // eslint-disable-line
-  );
+      createdPopperRef.current = true;
+    } else {
+      clearAutoUpdate();
+      pointerRef.current = undefined;
+      if (unmountOnClose) {
+        createdPopperRef.current = false;
+      }
+    }
+  }, [show]);
+
+  useLayoutUpdate(() => {
+    if (show && onShow) {
+      onShow();
+    }
+    if (!show && onHide) {
+      onHide();
+    }
+  }, [show]);
 
   useUpdate(() => {
     if (show) {
@@ -580,7 +597,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     "keydown",
     (event: KeyboardEvent) => {
       if (!event.repeat) {
-        if (event.key === "Escape" || event.key === "Esc") {
+        if (event.key === "Escape") {
           toggleOff();
         }
       }

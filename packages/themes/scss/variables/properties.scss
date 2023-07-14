@@ -48,6 +48,8 @@ $base-properties: (
   "--border-radius-fixed-small": $border-radius-fixed-small,
   "--border-radius-fixed-large": $border-radius-fixed-large,
 
+  "--z-index-popup": $z-index-popup,
+
   "--motion-duration-base": $motion-duration-base,
   "--motion-duration-fast": $motion-duration-fast,
   "--motion-duration-slow": $motion-duration-slow,
@@ -367,6 +369,12 @@ $light-properties: (
   "--background-color-solid-active": $background-color-solid-active,
   "--background-color-solid-inactive": $background-color-solid-inactive,
   "--background-color-solid-disabled": $background-color-solid-disabled,
+
+  "--box-shadow-1": $box-shadow-1,
+  "--box-shadow-2": $box-shadow-2,
+  "--box-shadow-3": $box-shadow-3,
+  "--box-shadow-4": $box-shadow-4,
+  "--box-shadow-5": $box-shadow-5,
 ) !default;
 
 $dark-properties: (
@@ -679,6 +687,12 @@ $dark-properties: (
   "--background-color-solid-active": $dark-background-color-solid-active,
   "--background-color-solid-inactive": $dark-background-color-solid-inactive,
   "--background-color-solid-disabled": $dark-background-color-solid-disabled,
+
+  "--box-shadow-1": $dark-box-shadow-1,
+  "--box-shadow-2": $dark-box-shadow-2,
+  "--box-shadow-3": $dark-box-shadow-3,
+  "--box-shadow-4": $dark-box-shadow-4,
+  "--box-shadow-5": $dark-box-shadow-5,
 ) !default;
 
 $properties: merge-maps($base-properties, $light-properties) !default;

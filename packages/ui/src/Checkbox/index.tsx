@@ -55,8 +55,10 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
 
-  const isControlled = "checked" in props;
-  const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
+  const isControlled = checkedProp != null;
+  const [checked, setChecked] = useState(
+    isControlled ? !!checkedProp : !!defaultChecked
+  );
 
   useUpdate(() => {
     if (isControlled) {

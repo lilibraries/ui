@@ -1,14 +1,16 @@
 import React, {
-  FC,
   ReactNode,
   useContext,
+  forwardRef,
   cloneElement,
   ReactElement,
   createContext,
   isValidElement,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import { inBrowser } from "@lilib/utils";
+import isFunction from "lodash/isFunction";
+import { inBrowser, composeRefs } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import mergeConfig from "../utils/mergeConfig";
@@ -27,6 +29,12 @@ export interface ThemeUnscopedProps {
   children: ReactNode;
 }
 
+export interface ThemeComponent
+  extends ForwardRefExoticComponent<ThemeScopedProps | ThemeUnscopedProps> {
+  Context: typeof ThemeContext;
+  useConfig: typeof useThemeConfig;
+}
+
 const ThemeContext = createContext<ThemeValue>(null);
 
 function useThemeConfig(override?: ThemeValue): ThemeValue {
@@ -34,70 +42,72 @@ function useThemeConfig(override?: ThemeValue): ThemeValue {
   return mergeConfig(base, override);
 }
 
-const Theme: FC<ThemeScopedProps | ThemeUnscopedProps> & {
-  Context: typeof ThemeContext;
-  useConfig: typeof useThemeConfig;
-} = (props) => {
-  const { value, scoped, children, ...rest } = props;
-  const { cls } = Prefix.useConfig();
+const Theme = forwardRef<any, ThemeScopedProps | ThemeUnscopedProps>(
+  (props, ref) => {
+    const { value, scoped, children, ...rest } = props;
+    const { cls } = Prefix.useConfig();
 
-  useIsomorphicLayoutEffect(() => {
-    if (inBrowser && !scoped) {
-      const dark = `${cls}dark`;
-      const light = `${cls}light`;
-      const classes = document.documentElement.classList;
+    useIsomorphicLayoutEffect(() => {
+      if (inBrowser && !scoped) {
+        const dark = `${cls}dark`;
+        const light = `${cls}light`;
+        const classes = document.documentElement.classList;
 
-      switch (value) {
-        case "dark": {
-          if (!classes.contains(dark)) {
-            classes.add(dark);
+        switch (value) {
+          case "dark": {
+            if (!classes.contains(dark)) {
+              classes.add(dark);
+            }
+            if (classes.contains(light)) {
+              classes.remove(light);
+            }
+            break;
           }
-          if (classes.contains(light)) {
-            classes.remove(light);
-          }
-          break;
-        }
 
-        case "light": {
-          if (!classes.contains(light)) {
-            classes.add(light);
+          case "light": {
+            if (!classes.contains(light)) {
+              classes.add(light);
+            }
+            if (classes.contains(dark)) {
+              classes.remove(dark);
+            }
+            break;
           }
-          if (classes.contains(dark)) {
-            classes.remove(dark);
-          }
-          break;
-        }
 
-        default: {
-          if (classes.contains(dark)) {
-            classes.remove(dark);
+          default: {
+            if (classes.contains(dark)) {
+              classes.remove(dark);
+            }
+            if (classes.contains(light)) {
+              classes.remove(light);
+            }
+            break;
           }
-          if (classes.contains(light)) {
-            classes.remove(light);
-          }
-          break;
         }
       }
-    }
-  }, [cls, value]);
+    }, [cls, value]);
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {isValidElement(children)
-        ? cloneElement(children, {
-            ...rest,
-            ...children.props,
-            className: cn(
-              (rest as any).className,
-              { [`${cls}${value}`]: scoped && value },
-              children.props.className
-            ),
-            style: { ...(rest as any).style, ...children.props.style },
-          })
-        : children}
-    </ThemeContext.Provider>
-  );
-};
+    return (
+      <ThemeContext.Provider value={value}>
+        {isValidElement(children)
+          ? cloneElement(children, {
+              ...rest,
+              ...children.props,
+              ref: isFunction(children.type)
+                ? undefined
+                : composeRefs((children as any).ref, ref),
+              className: cn(
+                (rest as any).className,
+                { [`${cls}${value}`]: scoped && value },
+                children.props.className
+              ),
+              style: { ...(rest as any).style, ...children.props.style },
+            })
+          : children}
+      </ThemeContext.Provider>
+    );
+  }
+) as ThemeComponent;
 
 Theme.Context = ThemeContext;
 Theme.useConfig = useThemeConfig;

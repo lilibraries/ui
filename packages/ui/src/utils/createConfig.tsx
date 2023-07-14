@@ -1,14 +1,17 @@
 import React, {
-  FC,
+  forwardRef,
   useContext,
   cloneElement,
   createContext,
   isValidElement,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import omit from "lodash/omit";
 import pick from "lodash/pick";
 import isString from "lodash/isString";
+import isFunction from "lodash/isFunction";
+import { composeRefs } from "@lilib/utils";
 import mergeConfig from "./mergeConfig";
 
 function createConfig<Value, Props>(
@@ -26,10 +29,12 @@ function createConfig<Value, Props>(
     return mergeConfig(base, override);
   }
 
-  const Config: FC<Props> & {
+  interface ConfigComponent extends ForwardRefExoticComponent<Props> {
     Context: typeof Context;
     useConfig: typeof useConfig;
-  } = (props) => {
+  }
+
+  const Config = forwardRef<any, Props>((props, ref) => {
     const { children, ...other } = props;
     const configProps: any = pick(other, configNames);
     const restProps: any = omit(other, configNames);
@@ -49,13 +54,16 @@ function createConfig<Value, Props>(
           ? cloneElement(children, {
               ...restProps,
               ...children.props,
+              ref: isFunction(children.type)
+                ? undefined
+                : composeRefs((children as any).ref, ref),
               style: { ...restProps.style, ...children.props.style },
               className: cn(restProps.className, children.props.className),
             })
           : children}
       </Context.Provider>
     );
-  };
+  }) as ConfigComponent;
 
   Config.Context = Context;
   Config.useConfig = useConfig;

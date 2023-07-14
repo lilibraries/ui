@@ -25,12 +25,13 @@ function ArrowPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
   const handleUpdate = usePersist((data: PopperUpdateData) => {
-    const { x, y, arrowX, arrowY, placement } = data;
+    const { x, y, arrowX, arrowY, placement, referenceHidden } = data;
 
     Object.assign(popperRef.current!.style, {
       top: "0",
       left: "0",
       transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
+      visibility: referenceHidden ? "hidden" : "visible",
     });
 
     if (arrowX) {
@@ -58,11 +59,12 @@ function ArrowPopper(props: PopperProps) {
   return (
     <Popper
       ref={popperRef}
-      style={popperStyle}
       arrow={<span ref={arrowRef} style={arrowStyle} />}
+      arrowPadding={8}
       content="This is a tooltip message."
       onUpdate={handleUpdate}
       {...props}
+      style={{ ...popperStyle, ...props.style }}
     >
       {props.children || (
         <Button style={{ borderStyle: "dashed" }}>Click</Button>

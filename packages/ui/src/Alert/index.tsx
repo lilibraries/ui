@@ -42,7 +42,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     className,
     intent,
     icon: iconProp,
-    open: openProp = true,
+    open: openProp,
     closable,
     closeIcon,
     onClose,
@@ -52,8 +52,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
 
-  const isControlled = "open" in props;
-  const [open, setOpen] = useState(!!openProp);
+  const isControlled = openProp != null;
+  const [open, setOpen] = useState(isControlled ? !!openProp : true);
 
   useUpdate(() => {
     if (isControlled) {

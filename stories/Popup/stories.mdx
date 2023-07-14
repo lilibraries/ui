@@ -1,29 +1,35 @@
 import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
-<Meta title="Overlays/Popper" />
+<Meta title="Overlays/Popup" />
 
-# Popper
+# Popup
 
-Popper is built on [floating-ui](https://floating-ui.com/), and it's the base component of popup components in this library, like Popup, Tooltip, Dropdown, etc. You can build your own popup components based on this component.
+Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It adds simple styles and animation effects. You can use the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) to configure the `container` prop of Popup components.
 
 ## Examples
 
 ### Basic
 
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-popper--basic" />
+  <Story id="examples-popup--basic" />
 </Canvas>
 
-### Arrow
+### Hide Arrow
 
-<Canvas mdxSource={require("!!raw-loader!./Arrow").default}>
-  <Story id="examples-popper--arrow" />
+<Canvas mdxSource={require("!!raw-loader!./HideArrow").default}>
+  <Story id="examples-popup--hide-arrow" />
+</Canvas>
+
+### Disable Animation
+
+<Canvas mdxSource={require("!!raw-loader!./DisableAnimation").default}>
+  <Story id="examples-popup--disable-animation" />
 </Canvas>
 
 ### Trigger Events
 
 <Canvas mdxSource={require("!!raw-loader!./TriggerEvents").default}>
-  <Story id="examples-popper--trigger-events" />
+  <Story id="examples-popup--trigger-events" />
 </Canvas>
 
 ### Close Events
@@ -31,86 +37,85 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
 Default to close when document is clicked.
 
 <Canvas mdxSource={require("!!raw-loader!./CloseEvents").default}>
-  <Story id="examples-popper--close-events" />
+  <Story id="examples-popup--close-events" />
 </Canvas>
 
 ### Controlled
 
 <Canvas mdxSource={require("!!raw-loader!./Controlled").default}>
-  <Story id="examples-popper--controlled" />
+  <Story id="examples-popup--controlled" />
 </Canvas>
 
 ### Trigger Delay
 
 <Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
-  <Story id="examples-popper--trigger-delay" />
+  <Story id="examples-popup--trigger-delay" />
 </Canvas>
 
 ### Hover Delay
 
 <Canvas mdxSource={require("!!raw-loader!./HoverDelay").default}>
-  <Story id="examples-popper--hover-delay" />
+  <Story id="examples-popup--hover-delay" />
 </Canvas>
 
 ### Placements
 
 <Canvas mdxSource={require("!!raw-loader!./Placements").default}>
-  <Story id="examples-popper--placements" />
+  <Story id="examples-popup--placements" />
 </Canvas>
 
 ### Right Click
 
 <Canvas mdxSource={require("!!raw-loader!./RightClick").default}>
-  <Story id="examples-popper--right-click" />
+  <Story id="examples-popup--right-click" />
 </Canvas>
 
 ### Hover Move
 
 <Canvas mdxSource={require("!!raw-loader!./HoverMove").default}>
-  <Story id="examples-popper--hover-move" />
+  <Story id="examples-popup--hover-move" />
 </Canvas>
 
 ### Inline
 
 <Canvas mdxSource={require("!!raw-loader!./Inline").default}>
-  <Story id="examples-popper--inline" />
+  <Story id="examples-popup--inline" />
 </Canvas>
 
 ### Text Selection
 
 <Canvas mdxSource={require("!!raw-loader!./TextSelection").default}>
-  <Story id="examples-popper--text-selection" />
+  <Story id="examples-popup--text-selection" />
 </Canvas>
 
 ### Nested
 
-The Popper can be nested by default.
+The Popup can be nested by default.
 
 <Canvas mdxSource={require("!!raw-loader!./Nested").default}>
-  <Story id="examples-popper--nested" />
+  <Story id="examples-popup--nested" />
 </Canvas>
 
 ### Config
 
-You can use the `Popper.Config` to configure the `container` prop of all subcomponents those based on the Popper component. It is very useful when building nested popup layers.
+You can use the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) to configure the `container` prop of Popup components. It is very useful when building nested popup layers.
 
 <Canvas mdxSource={require("!!raw-loader!./Config").default}>
-  <Story id="examples-popper--config" />
+  <Story id="examples-popup--config" />
 </Canvas>
 
-## API
-
-### Popper
+## Props
 
 | Property               | Type                                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `content`              | `ReactNode`                                                                                                                                                                                | Popup content                                                                                                                                                                  |
-| `children`             | `ReactElement` \| [`() => PopperVirtualElement`](#poppervirtualelement)                                                                                                                    | Trigger element, it should be a react element (must reference to a DOM element) or a function returns a virtual element                                                        |
-| `arrow`                | `ReactElement`                                                                                                                                                                             | Arrow element, must reference to a DOM element                                                                                                                                 |
+| `children`             | `ReactElement` \| [`() => PopperVirtualElement`](?path=/story/overlays-popper--page#poppervirtualelement)                                                                                  | Trigger element, it should be a react element (must reference to a DOM element) or a function returns a virtual element                                                        |
+| `hideArrow`            | `boolean`                                                                                                                                                                                  | Hide arrow                                                                                                                                                                     |
+| `disableAnimation`     | `boolean`                                                                                                                                                                                  | Disable animation                                                                                                                                                              |
 | `container`            | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react)                                                                                                | Parent node of popup layer. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
 | `on`                   | `"click"` \| `"hover"` \| `"focus"` \| `"contextmenu"` \| `string[]`                                                                                                                       | Trigger event, default is `"click"`                                                                                                                                            |
 | `offset`               | `number` \| `[number, number]`                                                                                                                                                             | Offset distance between popup layer and trigger element                                                                                                                        |
-| `arrowPadding`         | `number`                                                                                                                                                                                   | Min padding space between arrow element and popup layer edge                                                                                                                   |
+| `arrowPadding`         | `number`                                                                                                                                                                                   | Min padding space between arrow element and popup layer edge, default is `8`                                                                                                   |
 | `strategy`             | `"absolute"` \| `"fixed"`                                                                                                                                                                  | Popup strategy, default is `"fixed"`                                                                                                                                           |
 | `placement`            | `"top"` \| `"top-start"` \| `"top-end"` \| `"right"` \| `"right-start"` \| `"right-end"` \| `"bottom"` \| `"bottom-start"` \| `"bottom-end"` \| `"left"` \| `"left-start"` \| `"left-end"` | Popup placement, default is `"bottom"`                                                                                                                                         |
 | `open`                 | `boolean`                                                                                                                                                                                  | Show popup layer                                                                                                                                                               |
@@ -130,80 +135,6 @@ You can use the `Popper.Config` to configure the `container` prop of all subcomp
 | `onClose`              | `() => void`                                                                                                                                                                               | Event of the `open` state change to `false`                                                                                                                                    |
 | `onShow`               | `() => void`                                                                                                                                                                               | Popup layer show event                                                                                                                                                         |
 | `onHide`               | `() => void`                                                                                                                                                                               | Popup layer hide event                                                                                                                                                         |
-| `onUpdate`             | [`(data: PopperUpdateData) => void`](#popperupdatedata)                                                                                                                                    | Update event of popup layer position changing. It's useful when you build your own popup component based on the Popper component                                               |
+| `onUpdate`             | [`(data: PopperUpdateData) => void`](?path=/story/overlays-popper--page#popperupdatedata)                                                                                                  | Update event of popup layer position changing                                                                                                                                  |
 
 It accepts all props which the native `<div>` element supports.
-
-#### PopperVirtualElement
-
-A popper virtual element is an object contains a function named [`getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect).
-
-```ts
-interface PopperVirtualElement {
-  getBoundingClientRect(): {
-    width: number;
-    height: number;
-    x: number;
-    y: number;
-    top: number;
-    left: number;
-    right: number;
-    bottom: number;
-  };
-}
-```
-
-For how to use it, please see the [text selection](#text-selection) example above.
-
-#### PopperUpdateData
-
-```ts
-interface PopperData {
-  // The x coordinate of popup layer.
-  x: number;
-  // The y coordinate of popup layer.
-  y: number;
-  // The x coordinate of arrow element, if it exists.
-  arrowX?: number;
-  // The y coordinate of arrow element, if it exists.
-  arrowY?: number;
-  // Popup strategy.
-  strategy: "fixed" | "absolute";
-  // Actual placement. May be inconsistent with the passed property.
-  placement:
-    | "top"
-    | "top-start"
-    | "top-end"
-    | "right"
-    | "right-start"
-    | "right-end"
-    | "bottom"
-    | "bottom-start"
-    | "bottom-end"
-    | "left"
-    | "left-start"
-    | "left-end";
-  // Whether the trigger element is not in the viewport.
-  referenceHidden: boolean;
-}
-```
-
-### Popper.Config
-
-| Property    | Type                                                                                        | Description                                                                                                                                                                    |
-| ----------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | Parent node of popup layer. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
-
-Popper.Config will inherit the upper configuration.
-
-### Popper.Config.useConfig
-
-```ts
-function useConfig(): { container?: EffectTarget<HTMLElement> };
-```
-
-Get configuration.
-
-### Popper.Config.Context
-
-A context created by `React.createContext`. It's default value is an empty object `{}`.

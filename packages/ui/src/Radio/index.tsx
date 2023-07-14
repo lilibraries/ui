@@ -96,7 +96,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   }
 
   const isValueControlled = groupControlled && value !== undefined;
-  const isCheckedControlled = "checked" in props;
+  const isCheckedControlled = checkedProp != null;
 
   const [checked, setChecked] = useState(() => {
     if (isValueControlled) {

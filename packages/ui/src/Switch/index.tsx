@@ -64,8 +64,10 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon = children;
   }
 
-  const isControlled = "checked" in props;
-  const [checked, setChecked] = useState(!!checkedProp || !!defaultChecked);
+  const isControlled = checkedProp != null;
+  const [checked, setChecked] = useState(
+    isControlled ? !!checkedProp : !!defaultChecked
+  );
 
   useUpdate(() => {
     if (isControlled) {
