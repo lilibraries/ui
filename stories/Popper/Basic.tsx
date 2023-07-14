@@ -15,21 +15,24 @@ const popperStyle = {
 function BasicPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
-  const handleUpdate = usePersist(({ x, y }: PopperUpdateData) => {
-    Object.assign(popperRef.current!.style, {
-      top: "0",
-      left: "0",
-      transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
-    });
-  });
+  const handleUpdate = usePersist(
+    ({ x, y, referenceHidden }: PopperUpdateData) => {
+      Object.assign(popperRef.current!.style, {
+        top: "0",
+        left: "0",
+        transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
+        visibility: referenceHidden ? "hidden" : "visible",
+      });
+    }
+  );
 
   return (
     <Popper
       ref={popperRef}
-      style={popperStyle}
       content="This is a tooltip message."
       onUpdate={handleUpdate}
       {...props}
+      style={{ ...popperStyle, ...props.style }}
     >
       {props.children || (
         <Button style={{ borderStyle: "dashed" }}>Click</Button>

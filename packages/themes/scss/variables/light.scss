@@ -127,3 +127,9 @@ $background-color-solid-hover: shade-color($basis, 70%) !default;
 $background-color-solid-active: shade-color($basis, 80%) !default;
 $background-color-solid-inactive: light-color($basis, 20%) !default;
 $background-color-solid-disabled: light-color($basis, 40%) !default;
+
+$box-shadow-1: 0 1px 3px rgba($basis, 0.25) !default;
+$box-shadow-2: 0 2px 6px rgba($basis, 0.25) !default;
+$box-shadow-3: 0 3px 9px rgba($basis, 0.25) !default;
+$box-shadow-4: 0 5px 15px rgba($basis, 0.25) !default;
+$box-shadow-5: 0 8px 24px rgba($basis, 0.25) !default;

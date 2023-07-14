@@ -1,14 +1,16 @@
 import React, {
-  FC,
   ReactNode,
   useContext,
+  forwardRef,
   cloneElement,
   ReactElement,
   createContext,
   isValidElement,
+  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import { inBrowser } from "@lilib/utils";
+import isFunction from "lodash/isFunction";
+import { inBrowser, composeRefs } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 import mergeConfig from "../utils/mergeConfig";
 
@@ -26,6 +28,14 @@ export interface DirectionUnscopedProps {
   children: ReactNode;
 }
 
+export interface DirectionComponent
+  extends ForwardRefExoticComponent<
+    DirectionScopedProps | DirectionUnscopedProps
+  > {
+  Context: typeof DirectionContext;
+  useConfig: typeof useDirectionConfig;
+}
+
 const DirectionContext = createContext<DirectionValue>("ltr");
 
 function useDirectionConfig(override?: DirectionValue): DirectionValue {
@@ -33,10 +43,10 @@ function useDirectionConfig(override?: DirectionValue): DirectionValue {
   return mergeConfig(base, override);
 }
 
-const Direction: FC<DirectionScopedProps | DirectionUnscopedProps> & {
-  Context: typeof DirectionContext;
-  useConfig: typeof useDirectionConfig;
-} = (props) => {
+const Direction = forwardRef<
+  any,
+  DirectionScopedProps | DirectionUnscopedProps
+>((props, ref) => {
   const { value, scoped, children, ...rest } = props;
 
   useIsomorphicLayoutEffect(() => {
@@ -52,13 +62,16 @@ const Direction: FC<DirectionScopedProps | DirectionUnscopedProps> & {
             ...rest,
             dir: scoped && value ? value : undefined,
             ...children.props,
+            ref: isFunction(children.type)
+              ? undefined
+              : composeRefs((children as any).ref, ref),
             style: { ...(rest as any).style, ...children.props.style },
             className: cn((rest as any).className, children.props.className),
           })
         : children}
     </DirectionContext.Provider>
   );
-};
+}) as DirectionComponent;
 
 Direction.Context = DirectionContext;
 Direction.useConfig = useDirectionConfig;

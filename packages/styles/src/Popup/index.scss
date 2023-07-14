@@ -3,10 +3,12 @@
 .#{$cls-prefix}popup {
   z-index: var(--z-index-popup);
   box-sizing: border-box;
-  background-color: var(--bg-color-card);
+  width: max-content;
+  background-color: var(--background-color-over);
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-base);
-  box-shadow: var(--box-shadow-base);
+  border-radius: var(--border-radius-fixed-base);
+  box-shadow: var(--box-shadow-3);
+  @include transition(fast, transform, opacity);
 
   &-arrow {
     position: absolute;
@@ -14,11 +16,11 @@
     box-sizing: border-box;
     width: 16px;
     height: 16px;
-    background-color: var(--bg-color-card);
+    background-color: var(--background-color-over);
     border: 1px solid var(--border-color-base);
     transform: rotate(45deg);
 
-    &[data-placement="top"] {
+    &[data-placement^="top"] {
       bottom: -8px;
       border-top-color: transparent;
       border-left-color: transparent;
@@ -26,15 +28,7 @@
       clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
     }
 
-    &[data-placement="right"] {
-      left: -8px;
-      border-top-color: transparent;
-      border-right-color: transparent;
-      border-radius: 0 0 0 2px;
-      clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
-    }
-
-    &[data-placement="bottom"] {
+    &[data-placement^="bottom"] {
       top: -8px;
       border-right-color: transparent;
       border-bottom-color: transparent;
@@ -42,12 +36,51 @@
       clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
     }
 
-    &[data-placement="left"] {
+    &[data-placement^="left"] {
       right: -8px;
       border-bottom-color: transparent;
       border-left-color: transparent;
       border-radius: 0 2px 0 0;
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    }
+
+    &[data-placement^="right"] {
+      left: -8px;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-radius: 0 0 0 2px;
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+    }
+  }
+
+  &.#{$cls-prefix}transition {
+    &-enter,
+    &-exiting,
+    &-exited {
+      opacity: 0;
+
+      &[data-placement^="top"] {
+        transform: translateY(4px);
+      }
+
+      &[data-placement^="bottom"] {
+        transform: translateY(-4px);
+      }
+
+      &[data-placement^="left"] {
+        transform: translateX(4px);
+      }
+
+      &[data-placement^="right"] {
+        transform: translateX(-4px);
+      }
+    }
+
+    &-entering,
+    &-entered,
+    &-exit {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
     }
   }
 }

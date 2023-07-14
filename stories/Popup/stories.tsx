@@ -1,9 +1,10 @@
 export default {
-  title: "Examples/Popper",
+  title: "Examples/Popup",
 };
 
 export { default as Basic } from "./Basic";
-export { default as Arrow } from "./Arrow";
+export { default as HideArrow } from "./HideArrow";
+export { default as DisableAnimation } from "./DisableAnimation";
 export { default as TriggerEvents } from "./TriggerEvents";
 export { default as CloseEvents } from "./CloseEvents";
 export { default as Controlled } from "./Controlled";
