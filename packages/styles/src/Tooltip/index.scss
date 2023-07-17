@@ -1,0 +1,40 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}popup.#{$cls-prefix}tooltip {
+  z-index: var(--z-index-tooltip);
+  max-width: 300px;
+  padding: var(--space-2);
+  color: var(--text-color-active);
+  box-shadow: var(--box-shadow-1);
+
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      background-color: var(--#{$intent}-5);
+      border-color: var(--#{$intent}-7);
+
+      & .#{$cls-prefix}popup-arrow {
+        background-color: var(--#{$intent}-5);
+
+        &[data-placement^="top"] {
+          border-right-color: var(--#{$intent}-7);
+          border-bottom-color: var(--#{$intent}-7);
+        }
+
+        &[data-placement^="bottom"] {
+          border-top-color: var(--#{$intent}-7);
+          border-left-color: var(--#{$intent}-7);
+        }
+
+        &[data-placement^="left"] {
+          border-top-color: var(--#{$intent}-7);
+          border-right-color: var(--#{$intent}-7);
+        }
+
+        &[data-placement^="right"] {
+          border-bottom-color: var(--#{$intent}-7);
+          border-left-color: var(--#{$intent}-7);
+        }
+      }
+    }
+  }
+}

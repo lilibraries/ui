@@ -39,7 +39,6 @@ import {
   useSetState,
   useMountedRef,
   useComposedRef,
-  useLayoutUpdate,
   useClickOutside,
   useEventListener,
   useMemoizedValue,
@@ -177,9 +176,15 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const [startShowTimer, cancelShowTimer] = useTimeout(() => {
     setState({ show: true });
+    if (onShow) {
+      onShow();
+    }
   }, openDelay);
   const [startHideTimer, cancelHideTimer] = useTimeout(() => {
     setState({ show: false });
+    if (onHide) {
+      onHide();
+    }
   }, closeDelay);
 
   const [startHoverEnterTimer, cancelHoverEnterTimer] = useTimeout(
@@ -205,12 +210,18 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         setState({ open: true });
       } else {
         setState({ open: true, show: true });
+        if (onShow) {
+          onShow();
+        }
       }
     } else {
       if (delayOnClose) {
         setState({ open: false });
       } else {
         setState({ open: false, show: false });
+        if (onHide) {
+          onHide();
+        }
       }
     }
   };
@@ -362,15 +373,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       if (unmountOnClose) {
         createdPopperRef.current = false;
       }
-    }
-  }, [show]);
-
-  useLayoutUpdate(() => {
-    if (show && onShow) {
-      onShow();
-    }
-    if (!show && onHide) {
-      onHide();
     }
   }, [show]);
 
