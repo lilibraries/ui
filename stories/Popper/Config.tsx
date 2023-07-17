@@ -8,7 +8,7 @@ function Example() {
   return (
     <div ref={containerRef}>
       <Popper.Config container={containerRef}>
-        <BasicPopper />
+        <BasicPopper strategy="fixed" />
       </Popper.Config>
     </div>
   );

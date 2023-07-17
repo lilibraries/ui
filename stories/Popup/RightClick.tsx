@@ -13,6 +13,7 @@ function Example() {
   return (
     <Popup
       on="contextmenu"
+      offset={0}
       hideArrow
       followPoint
       placement="bottom-start"

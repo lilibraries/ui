@@ -8,6 +8,7 @@ function Example() {
     <div ref={containerRef}>
       <Popper.Config container={containerRef}>
         <Popup
+          strategy="fixed"
           content={<div style={{ padding: 16 }}>This is a popup message.</div>}
         >
           <Button style={{ borderStyle: "dashed" }}>Click</Button>
