@@ -25,13 +25,12 @@ function ArrowPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
   const handleUpdate = usePersist((data: PopperUpdateData) => {
-    const { x, y, arrowX, arrowY, placement, referenceHidden } = data;
+    const { x, y, arrowX, arrowY, placement } = data;
 
     Object.assign(popperRef.current!.style, {
       top: "0",
       left: "0",
       transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
-      visibility: referenceHidden ? "hidden" : "visible",
     });
 
     if (arrowX) {

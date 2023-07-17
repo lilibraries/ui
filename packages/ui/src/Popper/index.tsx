@@ -19,10 +19,10 @@ import {
   Strategy,
   Placement,
   autoUpdate,
+  limitShift,
   VirtualElement,
   computePosition,
   ReferenceElement,
-  hide as hideMiddleware,
   flip as flipMiddleware,
   shift as shiftMiddleware,
   arrow as arrowMiddleware,
@@ -64,7 +64,6 @@ export interface PopperUpdateData {
   arrowY?: number;
   strategy: PopperStrategy;
   placement: PopperPlacement;
-  referenceHidden: boolean;
 }
 
 export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
@@ -268,7 +267,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           crossAxis: crossAxisOffset || 0,
         }),
         flipMiddleware(),
-        shiftMiddleware(),
+        shiftMiddleware({
+          limiter: limitShift(),
+        }),
       ];
       if (inline) {
         middleware.unshift(inlineMiddleware());
@@ -278,27 +279,23 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           arrowMiddleware({ element: arrowRef.current, padding: arrowPadding })
         );
       }
-      middleware.push(hideMiddleware());
 
       computePosition(refrence, popperRef.current, {
         strategy,
         placement,
         middleware,
-      }).then(
-        ({ x, y, strategy, placement, middlewareData: { arrow, hide } }) => {
-          if (mountedRef.current && onUpdate) {
-            onUpdate({
-              x,
-              y,
-              arrowX: arrow?.x,
-              arrowY: arrow?.y,
-              strategy,
-              placement,
-              referenceHidden: hide!.referenceHidden!,
-            });
-          }
+      }).then(({ x, y, strategy, placement, middlewareData: { arrow } }) => {
+        if (mountedRef.current && onUpdate) {
+          onUpdate({
+            x,
+            y,
+            arrowX: arrow?.x,
+            arrowY: arrow?.y,
+            strategy,
+            placement,
+          });
         }
-      );
+      });
     }
   });
 
