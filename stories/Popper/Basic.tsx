@@ -15,16 +15,13 @@ const popperStyle = {
 function BasicPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
-  const handleUpdate = usePersist(
-    ({ x, y, referenceHidden }: PopperUpdateData) => {
-      Object.assign(popperRef.current!.style, {
-        top: "0",
-        left: "0",
-        transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
-        visibility: referenceHidden ? "hidden" : "visible",
-      });
-    }
-  );
+  const handleUpdate = usePersist(({ x, y }: PopperUpdateData) => {
+    Object.assign(popperRef.current!.style, {
+      top: "0",
+      left: "0",
+      transform: `translate(${Math.round(x)}px, ${Math.round(y)}px)`,
+    });
+  });
 
   return (
     <Popper

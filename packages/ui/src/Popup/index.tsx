@@ -66,25 +66,24 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   });
 
   const handleUpdate = usePersist((data: PopperUpdateData) => {
-    const { x, y, arrowX, arrowY, placement, referenceHidden } = data;
+    const { x, y, arrowX, arrowY, placement } = data;
 
     Object.assign(popperRef.current!.style, {
       top: `${y}px`,
       left: `${x}px`,
-      visibility:
-        referenceHidden &&
-        (placement.startsWith("left") || placement.startsWith("right"))
-          ? "hidden"
-          : "visible",
     });
     popperRef.current!.dataset.placement = placement;
 
     if (arrowRef.current) {
       if (arrowX) {
         arrowRef.current.style.left = `${arrowX}px`;
+      } else {
+        arrowRef.current.style.left = "";
       }
       if (arrowY) {
         arrowRef.current.style.top = `${arrowY}px`;
+      } else {
+        arrowRef.current.style.top = "";
       }
       arrowRef.current.dataset.placement = placement;
     }
