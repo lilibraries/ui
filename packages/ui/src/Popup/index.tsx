@@ -97,6 +97,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   if (disableAnimation) {
     return (
       <Popper
+        offset={hideArrow ? 4 : 14}
         arrowPadding={8}
         {...rest}
         ref={composedRef}
@@ -119,6 +120,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         exitDelay={closeDelay}
       >
         <Popper
+          offset={hideArrow ? 4 : 14}
           arrowPadding={8}
           {...rest}
           ref={composedRef}

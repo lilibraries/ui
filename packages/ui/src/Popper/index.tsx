@@ -114,7 +114,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     on = "click",
     offset,
     arrowPadding,
-    strategy = "fixed",
+    strategy = "absolute",
     placement = "bottom",
     open: openProp,
     defaultOpen,
