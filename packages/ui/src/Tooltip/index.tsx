@@ -1,43 +1,36 @@
-import { useComposedRef } from "@lilib/hooks";
-import React, { forwardRef, ReactElement, useRef } from "react";
-import Popper, { PopperProps } from "../Popper";
+import React, { forwardRef } from "react";
+import cn from "classnames";
+import Theme from "../Theme";
 import Prefix from "../Prefix";
+import Popup, { PopupProps } from "../Popup";
+import { IntentValue } from "../utils/types";
 
-export interface TooltipProps
-  extends Omit<
-    PopperProps,
-    | "arrow"
-    | "arrowPadding"
-    | "openDelay"
-    | "closeDelay"
-    | "hoverEnterDelay"
-    | "hoverLeaveDelay"
-    | "updateDeps"
-    | "onUpdate"
-  > {
-  hideArrow?: boolean;
+export interface TooltipProps extends PopupProps {
+  intent?: IntentValue;
 }
 
 const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { hideArrow, on = "hover", placement = "top", ...rest } = props;
+  const { className, intent, on = "hover", placement = "top", ...rest } = props;
 
   const { cls } = Prefix.useConfig();
-  const arrowRef = useRef<HTMLSpanElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  let arrow: ReactElement | undefined;
-  if (!hideArrow) {
-    arrow = <span ref={arrowRef} className={`${cls}tooltip-arrow`} />;
-  }
+  const classes = cn(
+    `${cls}tooltip`,
+    {
+      [`${cls}${intent}`]: intent,
+    },
+    className
+  );
 
   return (
-    <Popper
-      {...rest}
-      ref={useComposedRef(contentRef, ref)}
-      on={on}
-      arrow={arrow}
-      placement={placement}
-    />
+    <Theme scoped value="dark">
+      <Popup
+        {...rest}
+        ref={ref}
+        on={on}
+        className={classes}
+        placement={placement}
+      />
+    </Theme>
   );
 });
 

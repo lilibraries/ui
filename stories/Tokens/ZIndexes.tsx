@@ -19,6 +19,14 @@ const ZIndexes: FC = () => {
             styleValue={`var(--${prefix}z-index-popup`}
           />,
         ],
+        [
+          <Usage type="scss" name="z-index-tooltip" />,
+          <Usage type="css" name="z-index-tooltip" />,
+          <Value
+            styleName="zIndex"
+            styleValue={`var(--${prefix}z-index-tooltip`}
+          />,
+        ],
       ]}
     />
   );
