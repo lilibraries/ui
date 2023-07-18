@@ -27,6 +27,8 @@
   }
 
   &-close {
+    @include reset;
+
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
@@ -34,22 +36,11 @@
     box-sizing: border-box;
     width: calc(var(--line-height-base) * 1em);
     height: calc(var(--line-height-base) * 1em);
-    margin: 0;
     margin-left: var(--space-2);
-    padding: 0;
     color: var(--text-color-inactive);
-    font-weight: inherit;
-    font-size: inherit;
-    font-family: inherit;
-    font-style: normal;
-    line-height: inherit;
-    text-decoration: none;
     vertical-align: middle;
-    background: none;
-    border: 0;
     border-radius: var(--border-radius-round);
     cursor: pointer;
-    appearance: none;
     user-select: none;
 
     &:hover {
