@@ -1,7 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC, ReactNode, useState } from "react";
 import { useLayoutMount } from "@lilib/hooks";
 
-const RenderAfterMount: FC = ({ children }) => {
+const RenderAfterMount: FC<{ children: ReactNode }> = ({ children }) => {
   const [mounted, setMounted] = useState(false);
 
   useLayoutMount(() => {

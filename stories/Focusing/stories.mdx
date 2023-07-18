@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Configs/Focusing" />
+
+# Focusing
+
+This component is used to configure all components when to show the focusing outline. It adds an attribute (`"data-focusing"` by default) to the `<html>` element according to the `attr` prop, then the attribute can be used in CSS to show the focusing outline.
+
+Once you use the Focusing component, it defaults to showing the focusing outline when pressing the <kbd>Tab</kbd> key and hiding it when clicking on the document. You can set the `type` prop to `"always"` to change the default behavior.
+
+## Usage
+
+```tsx
+import React from "react";
+import { Focusing } from "@lilib/ui";
+
+function App() {
+  return <Focusing />;
+}
+// Or
+function App() {
+  return <Focusing>...</Focusing>;
+}
+```
+
+## API
+
+| Property   | Type                  | Description                                                                                                                                                                        | Default           |
+| ---------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `type`     | `"tab"` \| `"always"` | When the `type` is `"tab"`, the outline is showed by pressing <kbd>Tab</kbd> key to focus. When the `type` is `"always"`, once the element is focused, the outline will be showed. | `"tab"`           |
+| `attr`     | `string`              | Attribute added to the `<html>` element                                                                                                                                            | `"data-focusing"` |
+| `children` | `ReactNode`           | Subcomponents                                                                                                                                                                      | -                 |

@@ -4,7 +4,7 @@ export interface RootProps {
   children?: ReactNode;
 }
 
-const Root: FC = ({ children }) => {
+const Root: FC<RootProps> = ({ children }) => {
   return <>{children}</>;
 };
 
