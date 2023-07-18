@@ -52,12 +52,8 @@
       color: var(--text-color-active);
     }
 
-    &:focus {
+    [data-focusing] &:focus {
       @include focus-outline;
-    }
-
-    [data-focus-hidden] &:focus {
-      outline: 0;
     }
   }
 
@@ -76,12 +72,8 @@
       border-color: var(--border-color-active);
     }
 
-    &:focus {
+    [data-focusing] &:focus {
       @include focus-outline;
-    }
-
-    [data-focus-hidden] &:focus {
-      outline: 0;
     }
   }
 

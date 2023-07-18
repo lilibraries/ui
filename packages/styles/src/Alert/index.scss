@@ -62,12 +62,8 @@
       background-color: rgba(var(--basis-rgb) / var(--alpha-dark));
     }
 
-    &:focus {
+    [data-focusing] &:focus {
       @include focus-outline;
-    }
-
-    [data-focus-hidden] &:focus {
-      outline: 0;
     }
   }
 

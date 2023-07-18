@@ -19,12 +19,8 @@
     opacity: 0;
     appearance: none;
 
-    &:focus + .#{$cls-prefix}switch-track {
+    [data-focusing] &:focus + .#{$cls-prefix}switch-track {
       @include focus-outline;
-    }
-
-    [data-focus-hidden] &:focus + .#{$cls-prefix}switch-track {
-      outline: 0;
     }
   }
 

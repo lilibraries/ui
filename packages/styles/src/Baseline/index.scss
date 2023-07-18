@@ -417,9 +417,9 @@ iframe {
 }
 
 :focus {
-  @include focus-outline;
+  outline: 0;
 }
 
-[data-focus-hidden] :focus {
-  outline: 0;
+[data-focusing] :focus {
+  @include focus-outline;
 }

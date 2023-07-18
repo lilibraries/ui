@@ -16,15 +16,11 @@
     opacity: 0;
     appearance: none;
 
-    &:focus + .#{$cls-prefix}spinner .#{$cls-prefix}radio-indicator {
-      @include focus-outline;
-    }
-
-    [data-focus-hidden]
+    [data-focusing]
       &:focus
       + .#{$cls-prefix}spinner
       .#{$cls-prefix}radio-indicator {
-      outline: 0;
+      @include focus-outline;
     }
   }
 

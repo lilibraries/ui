@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
 import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
-import { Root, Baseline, Theme, Direction } from "@lilib/ui";
+import { Root, Baseline, Focusing, Theme, Direction } from "@lilib/ui";
 import order from "./order";
 import { light, dark } from "./themes";
 import "./preview.scss";
@@ -20,30 +20,32 @@ export const parameters = {
       return (
         <Root>
           <Baseline>
-            <Theme value={isDarkMode ? "dark" : "light"}>
-              <Direction value={direction || "ltr"}>
-                <BaseContainer
-                  context={{
-                    ...context,
-                    storyById: (id) => {
-                      const storyContext = context.storyById(id);
-                      return {
-                        ...storyContext,
-                        parameters: {
-                          ...storyContext?.parameters,
-                          docs: {
-                            ...storyContext?.parameters?.docs,
-                            theme: isDarkMode ? dark : light,
+            <Focusing>
+              <Theme value={isDarkMode ? "dark" : "light"}>
+                <Direction value={direction || "ltr"}>
+                  <BaseContainer
+                    context={{
+                      ...context,
+                      storyById: (id) => {
+                        const storyContext = context.storyById(id);
+                        return {
+                          ...storyContext,
+                          parameters: {
+                            ...storyContext?.parameters,
+                            docs: {
+                              ...storyContext?.parameters?.docs,
+                              theme: isDarkMode ? dark : light,
+                            },
                           },
-                        },
-                      };
-                    },
-                  }}
-                >
-                  {children}
-                </BaseContainer>
-              </Direction>
-            </Theme>
+                        };
+                      },
+                    }}
+                  >
+                    {children}
+                  </BaseContainer>
+                </Direction>
+              </Theme>
+            </Focusing>
           </Baseline>
         </Root>
       );
@@ -78,11 +80,13 @@ export const decorators = [
     return (
       <Root>
         <Baseline>
-          <Theme value={useDarkMode() ? "dark" : "light"}>
-            <Direction value={direction || "ltr"}>
-              <div ref={demoContainerRef}>{render()}</div>
-            </Direction>
-          </Theme>
+          <Focusing>
+            <Theme value={useDarkMode() ? "dark" : "light"}>
+              <Direction value={direction || "ltr"}>
+                <div ref={demoContainerRef}>{render()}</div>
+              </Direction>
+            </Theme>
+          </Focusing>
         </Baseline>
       </Root>
     );
