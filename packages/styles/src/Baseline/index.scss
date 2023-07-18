@@ -140,17 +140,17 @@ kbd {
 
 mark {
   color: inherit;
-  background-color: rgba(var(--major-rgb) / var(--alpha-soft));
+  background-color: rgba(var(--major-rgb) / var(--alpha-deep));
 }
 
 ins {
   text-decoration: none;
-  background-color: rgba(var(--positive-rgb) / var(--alpha-soft));
+  background-color: rgba(var(--positive-rgb) / var(--alpha-deep));
 }
 
 del {
   text-decoration: none;
-  background-color: rgba(var(--negative-rgb) / var(--alpha-soft));
+  background-color: rgba(var(--negative-rgb) / var(--alpha-deep));
 }
 
 code,
@@ -164,7 +164,7 @@ output {
 
 code,
 kbd {
-  background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+  background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
 }
 
 kbd {
@@ -198,7 +198,7 @@ hr {
 pre {
   margin: 0 0 var(--space-4);
   overflow: auto;
-  font-size: 0.875em;
+  font-size: var(--font-size-smaller);
   font-family: var(--font-family-mono);
 
   code {
@@ -211,7 +211,7 @@ pre {
 
 blockquote {
   margin: 0 0 var(--space-4);
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-4);
   background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
   border-radius: var(--border-radius-fixed-base);
 
@@ -246,7 +246,7 @@ details {
 
 summary {
   display: list-item;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
 
   & + * {
@@ -255,7 +255,7 @@ summary {
 }
 
 dt {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 dd {
@@ -302,7 +302,7 @@ td {
 }
 
 th {
-  font-weight: 600;
+  font-weight: 700;
   text-align: inherit;
 }
 
