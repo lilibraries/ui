@@ -1,29 +1,19 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}tag {
+  @include reset;
+
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
   height: var(--line-height-fixed-base);
-  margin: 0;
-  padding: 0;
   color: var(--text-color-base);
   font-weight: 400;
   font-size: var(--font-size-base);
-  font-family: inherit;
-  font-style: normal;
-  text-decoration: none;
-  vertical-align: baseline;
   background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
-  appearance: none;
-
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
 
   &-content {
     flex: 1 1 auto;
@@ -33,16 +23,20 @@
   }
 
   &-clear {
+    @include reset;
+
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     width: calc(var(--line-height-fixed-base) - 2px);
     height: calc(var(--line-height-fixed-base) - 2px);
     color: var(--text-color-inactive);
     font-size: 0.875em;
     border-radius: var(--border-radius-small);
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       color: var(--text-color-hover);

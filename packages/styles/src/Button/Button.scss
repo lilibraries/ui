@@ -1,26 +1,23 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}button {
+  @include reset;
+
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
-  margin: 0;
   padding: var(--space-2) var(--space-4);
   color: var(--text-color-base);
   font-weight: 400;
   font-size: var(--font-size-base);
-  font-family: inherit;
-  font-style: normal;
   line-height: var(--line-height-fixed-base);
   text-align: left;
-  text-decoration: none;
   vertical-align: middle;
   background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-base);
   cursor: pointer;
-  appearance: none;
   user-select: none;
 
   &-content {
@@ -155,14 +152,12 @@
 
   &:hover {
     color: var(--text-color-hover);
-    text-decoration: none;
     background-color: var(--background-color-hover);
     border-color: var(--border-color-hover);
   }
 
   &:active {
     color: var(--text-color-active);
-    text-decoration: none;
     background-color: var(--background-color-active);
     border-color: var(--border-color-active);
   }

@@ -90,7 +90,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   let clear: ReactNode = null;
   if (clearable) {
     clear = (
-      <span
+      <button
         tabIndex={!disabled ? 0 : undefined}
         className={`${cls}tag-clear`}
         onClick={(event) => {
@@ -101,7 +101,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         }}
       >
         {isRenderableNode(clearIcon) ? clearIcon : <CloseIcon />}
-      </span>
+      </button>
     );
   }
 

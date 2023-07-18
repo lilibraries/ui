@@ -1,26 +1,21 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}avatar {
+  @include reset;
+
   position: relative;
   display: inline-block;
   width: calc(var(--line-height-fixed-base) * 2);
   height: calc(var(--line-height-fixed-base) * 2);
-  margin: 0;
-  padding: 0;
   overflow: hidden;
   color: var(--text-color-base);
   font-weight: 400;
   font-size: var(--line-height-fixed-base);
-  font-family: inherit;
-  font-style: normal;
   line-height: var(--line-height-small);
-  text-decoration: none;
   vertical-align: middle;
   background-color: var(--background-color-deep-base);
-  border: 0;
   border-radius: var(--border-radius-base);
   cursor: auto;
-  appearance: none;
 
   &:hover,
   &:active {
