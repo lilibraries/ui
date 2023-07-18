@@ -237,11 +237,13 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const updatePosition = usePersist(() => {
     let inline = false;
     let refrence: ReferenceElement | undefined;
+    let disableLimitShift = false;
 
     if (isFunction(children)) {
       refrence = children();
     } else if (pointerRef.current) {
       refrence = pointerRef.current;
+      disableLimitShift = true;
     } else if (anchorRef.current) {
       inline = true;
       refrence = anchorRef.current;
@@ -268,7 +270,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         }),
         flipMiddleware(),
         shiftMiddleware({
-          limiter: limitShift(),
+          limiter: disableLimitShift ? undefined : limitShift(),
         }),
       ];
       if (inline) {
@@ -315,6 +317,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           };
         },
       };
+    } else {
+      pointerRef.current = undefined;
     }
   };
 
