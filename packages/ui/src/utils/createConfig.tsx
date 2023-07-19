@@ -29,12 +29,10 @@ function createConfig<Value, Props>(
     return mergeConfig(base, override);
   }
 
-  interface ConfigComponent extends ForwardRefExoticComponent<Props> {
+  const Config: ForwardRefExoticComponent<Props> & {
     Context: typeof Context;
     useConfig: typeof useConfig;
-  }
-
-  const Config = forwardRef<any, Props>((props, ref) => {
+  } = forwardRef<any, Props>((props, ref) => {
     const { children, ...other } = props;
     const configProps: any = pick(other, configNames);
     const restProps: any = omit(other, configNames);
@@ -63,7 +61,7 @@ function createConfig<Value, Props>(
           : children}
       </Context.Provider>
     );
-  }) as ConfigComponent;
+  }) as any;
 
   Config.Context = Context;
   Config.useConfig = useConfig;
