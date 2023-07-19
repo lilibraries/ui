@@ -4,7 +4,7 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Popup
 
-Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It adds simple styles and animation effects. You can use the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) to configure the `container` prop of Popup components.
+Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It adds simple styles and animation effects.
 
 ## Examples
 
@@ -137,4 +137,4 @@ You can use the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfi
 | `onHide`               | `() => void`                                                                                                                                                                               | Popup layer hide event                                                                                                                                                                                                                                             |
 | `onUpdate`             | [`(data: PopperUpdateData) => void`](?path=/story/overlays-popper--page#popperupdatedata)                                                                                                  | Update event of popup layer position changing                                                                                                                                                                                                                      |
 
-It accepts all props which the native `<div>` element supports.
+It accepts all props which the native `<div>` element supports. The `container` prop can be configured by the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) component.

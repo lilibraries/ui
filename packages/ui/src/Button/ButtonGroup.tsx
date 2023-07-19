@@ -4,17 +4,19 @@ import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
-import { IntentValue } from "../utils/types";
+import { ColorValue, IntentValue } from "../utils/types";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPlacement,
 } from "./ButtonConfig";
 
-export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
+export interface ButtonGroupProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
   vertical?: boolean;
   variant?: ButtonVariant;
   size?: SizeValue;
   intent?: IntentValue;
+  color?: ColorValue;
   fluid?: boolean;
   round?: boolean;
   truncated?: boolean;
@@ -36,6 +38,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       variant,
       size: sizeProp,
       intent,
+      color,
       fluid,
       round,
       truncated,
@@ -72,6 +75,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
             <ButtonConfig
               variant={variant}
               intent={intent}
+              color={color}
               fluid={vertical}
               round={round}
               truncated={truncated}
