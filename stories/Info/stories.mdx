@@ -1,0 +1,47 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/Info" />
+
+# Info
+
+Info component.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-info--basic" />
+</Canvas>
+
+### Padding
+
+<Canvas mdxSource={require("!!raw-loader!./Padding").default}>
+  <Story id="examples-info--padding" />
+</Canvas>
+
+### Indicators
+
+<Canvas mdxSource={require("!!raw-loader!./Indicators").default}>
+  <Story id="examples-info--indicators" />
+</Canvas>
+
+## API
+
+### Info
+
+| Property    | Type                              | Description       |
+| ----------- | --------------------------------- | ----------------- |
+| `padding`   | `boolean` \| `number` \| `string` | Add padding space |
+| `indicator` | `ReactNode`                       | Specify indicator |
+| `children`  | `ReactNode`                       | Content           |
+
+It accepts all props which the native `<div>` element supports.
+
+### Info.Title
+
+It accepts all props which the native `<div>` element supports.
+
+### Info.Detail
+
+It accepts all props which the native `<div>` element supports.
