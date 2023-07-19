@@ -228,6 +228,43 @@
       }
     }
   }
+
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
+      background-color: var(--#{$color}-0);
+      border-color: var(--#{$color}-3);
+
+      &:hover {
+        background-color: var(--#{$color}-1);
+        border-color: var(--#{$color}-4);
+      }
+
+      &:active {
+        background-color: var(--#{$color}-2);
+        border-color: var(--#{$color}-5);
+      }
+
+      &[disabled] {
+        background-color: var(--#{$color}-0);
+        border-color: var(--#{$color}-3);
+      }
+
+      &.#{$cls-prefix}active {
+        background-color: var(--#{$color}-2);
+        border-color: var(--#{$color}-5);
+      }
+
+      &.#{$cls-prefix}disabled {
+        background-color: var(--#{$color}-0);
+        border-color: var(--#{$color}-1);
+
+        &.#{$cls-prefix}active {
+          background-color: var(--#{$color}-1);
+          border-color: var(--#{$color}-2);
+        }
+      }
+    }
+  }
 }
 
 .#{$cls-prefix}button.#{$cls-prefix}solid {
@@ -314,6 +351,50 @@
       }
     }
   }
+
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
+      color: var(--text-color-solid-base);
+      background-color: var(--#{$color}-5);
+      border-color: var(--#{$color}-7);
+
+      &:hover {
+        color: var(--text-color-solid-hover);
+        background-color: var(--#{$color}-6);
+        border-color: var(--#{$color}-8);
+      }
+
+      &:active {
+        color: var(--text-color-solid-active);
+        background-color: var(--#{$color}-7);
+        border-color: var(--#{$color}-9);
+      }
+
+      &[disabled] {
+        color: var(--text-color-solid-base);
+        background-color: var(--#{$color}-5);
+        border-color: var(--#{$color}-7);
+      }
+
+      &.#{$cls-prefix}active {
+        color: var(--text-color-solid-active);
+        background-color: var(--#{$color}-7);
+        border-color: var(--#{$color}-9);
+      }
+
+      &.#{$cls-prefix}disabled {
+        color: var(--text-color-solid-disabled);
+        background-color: var(--#{$color}-2);
+        border-color: var(--#{$color}-3);
+
+        &.#{$cls-prefix}active {
+          color: var(--text-color-solid-inactive);
+          background-color: var(--#{$color}-3);
+          border-color: var(--#{$color}-4);
+        }
+      }
+    }
+  }
 }
 
 .#{$cls-prefix}button.#{$cls-prefix}hollow {
@@ -375,6 +456,43 @@
         &.#{$cls-prefix}active {
           color: var(--#{$intent}-3);
           background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+        }
+      }
+    }
+  }
+
+  @each $color in $colors {
+    &.#{$cls-prefix}#{$color} {
+      color: var(--#{$color}-5);
+      background-color: transparent;
+
+      &:hover {
+        color: var(--#{$color}-6);
+        background-color: rgba(var(--#{$color}-rgb) / var(--alpha-soft));
+      }
+
+      &:active {
+        color: var(--#{$color}-7);
+        background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
+      }
+
+      &[disabled] {
+        color: var(--#{$color}-5);
+        background-color: transparent;
+      }
+
+      &.#{$cls-prefix}active {
+        color: var(--#{$color}-7);
+        background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
+      }
+
+      &.#{$cls-prefix}disabled {
+        color: var(--#{$color}-2);
+        background-color: transparent;
+
+        &.#{$cls-prefix}active {
+          color: var(--#{$color}-3);
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-soft));
         }
       }
     }

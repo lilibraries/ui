@@ -4,7 +4,7 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Tooltip
 
-This component is based on the [Popup](?path=/story/overlays-popup--page) component. You can use the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) to configure the `container` prop of Tooltip components.
+This component is based on the [Popup](?path=/story/overlays-popup--page) component.
 
 ## Examples
 
@@ -68,4 +68,4 @@ More examples are presented in [Popup document](?path=/story/overlays-popup--pag
 | `onHide`               | `() => void`                                                                                                                                                                               | Popup layer hide event                                                                                                                                                                                                                                             |
 | `onUpdate`             | [`(data: PopperUpdateData) => void`](?path=/story/overlays-popper--page#popperupdatedata)                                                                                                  | Update event of popup layer position changing                                                                                                                                                                                                                      |
 
-It accepts all props which the native `<div>` element supports.
+It accepts all props which the native `<div>` element supports. The `container` prop can be configured by the [`Popper.Config`](?path=/story/overlays-popper--page#popperconfig) component.

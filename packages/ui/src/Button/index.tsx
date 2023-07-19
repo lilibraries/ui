@@ -17,7 +17,7 @@ import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
-import { IntentValue } from "../utils/types";
+import { ColorValue, IntentValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
@@ -32,6 +32,7 @@ export interface ButtonCommonProps {
   variant?: ButtonVariant;
   size?: SizeValue;
   intent?: IntentValue;
+  color?: ColorValue;
   fluid?: boolean;
   round?: boolean;
   truncated?: boolean;
@@ -71,6 +72,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     variant: variantProp,
     size: sizeProp,
     intent: intentProp,
+    color,
     fluid: fluidProp,
     round: roundProp,
     truncated: truncatedProp,
@@ -162,6 +164,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
       [`${cls}${intent}`]: intent,
+      [`${cls}${color}`]: color,
       [`${cls}fluid`]: fluid,
       [`${cls}round`]: round,
       [`${cls}truncated`]: truncated,
