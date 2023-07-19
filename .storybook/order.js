@@ -28,7 +28,7 @@ const order = [
     "Rate",
     "Switch",
     "Slider",
-    "Segments",
+    "Segmenter",
     "TimePicker",
     "DatePicker",
     "ColorPicker",
