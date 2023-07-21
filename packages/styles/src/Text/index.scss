@@ -3,8 +3,6 @@
 .#{$cls-prefix}text {
   @include reset;
 
-  display: inline-flex;
-
   &.#{$cls-prefix}muted {
     color: var(--text-color-muted);
   }
