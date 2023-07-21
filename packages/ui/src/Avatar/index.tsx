@@ -22,12 +22,13 @@ import Size, { SizeValue } from "../Size";
 import Image, { ImageProps } from "../Image";
 import { ColorValue } from "../utils/types";
 import AvatarGroup from "./AvatarGroup";
-import AvatarConfig from "./AvatarConfig";
+import AvatarConfig, { AvatarVariant } from "./AvatarConfig";
 
 export * from "./AvatarGroup";
 export * from "./AvatarConfig";
 
 export interface AvatarCommonProps {
+  variant?: AvatarVariant;
   size?: SizeValue;
   image?: string | ImageProps;
   round?: boolean;
@@ -57,6 +58,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     children,
     className,
     as = "span",
+    variant: variantProp,
     size: sizeProp,
     image,
     round: roundProp,
@@ -70,17 +72,21 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
-  const { round, color, outlined, clickable } = AvatarConfig.useConfig({
-    round: roundProp,
-    color: colorProp,
-    outlined: outlinedProp,
-    clickable: clickableProp,
-  });
+  const { variant, round, color, outlined, clickable } = AvatarConfig.useConfig(
+    {
+      variant: variantProp,
+      round: roundProp,
+      color: colorProp,
+      outlined: outlinedProp,
+      clickable: clickableProp,
+    }
+  );
 
   const classes = cn(
     `${cls}avatar`,
     {
       [`${cls}${size}`]: size,
+      [`${cls}${variant}`]: variant,
       [`${cls}round`]: round,
       [`${cls}${color}`]: color,
       [`${cls}outlined`]: outlined,

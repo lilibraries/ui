@@ -4,10 +4,11 @@ import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import { ColorValue } from "../utils/types";
-import AvatarConfig from "./AvatarConfig";
+import AvatarConfig, { AvatarVariant } from "./AvatarConfig";
 
 export interface AvatarGroupProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
+  variant?: AvatarVariant;
   size?: SizeValue;
   round?: boolean;
   color?: ColorValue;
@@ -18,6 +19,7 @@ export interface AvatarGroupProps
 const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
   (props, ref) => {
     const {
+      variant,
       size: sizeProp,
       round,
       color,
@@ -44,6 +46,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
       <div {...rest} ref={ref} className={classes}>
         <Size value={size}>
           <AvatarConfig
+            variant={variant}
             round={round}
             color={color}
             outlined={outlined}

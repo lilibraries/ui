@@ -10,4 +10,5 @@ export { default as Round } from "./Round";
 export { default as Sizes } from "./Sizes";
 export { default as CustomSize } from "./CustomSize";
 export { default as Colors } from "./Colors";
+export { default as Solid } from "./Solid";
 export { default as Groups } from "./Groups";
