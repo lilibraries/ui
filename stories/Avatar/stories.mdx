@@ -56,6 +56,12 @@ Avatar component.
   <Story id="examples-avatar--colors" />
 </Canvas>
 
+### Solid
+
+<Canvas mdxSource={require("!!raw-loader!./Solid").default}>
+  <Story id="examples-avatar--solid" />
+</Canvas>
+
 ### Groups
 
 <Canvas mdxSource={require("!!raw-loader!./Groups").default}>
@@ -70,6 +76,7 @@ Avatar component.
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
 | `as`        | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`                                             |
 | `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                                          |
+| `variant`   | `null` \| `"solid"`                                                                                                                                                                        | Variant                                                                       |
 | `image`     | `string` \| [`ImageProps`](?path=/story/views-image--page#props)                                                                                                                           | Image url or props of the [`Image`](?path=/story/views-image--page) component |
 | `round`     | `boolean`                                                                                                                                                                                  | Make corners round                                                            |
 | `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                                                         |
@@ -83,6 +90,7 @@ It accepts all props which the `as` element type supports.
 | Property    | Type                                                                                                                                                                                       | Description                                         |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                |
+| `variant`   | `null` \| `"solid"`                                                                                                                                                                        | Variant                                             |
 | `round`     | `boolean`                                                                                                                                                                                  | Make corners round                                  |
 | `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                               |
 | `outlined`  | `boolean`                                                                                                                                                                                  | Add outline                                         |

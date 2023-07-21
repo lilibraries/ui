@@ -1,6 +1,6 @@
 import React from "react";
 import { Flexbox, Tag, Icon, Spinner, Avatar, Text } from "@lilib/ui";
-import { FiStar } from "react-icons/fi";
+import { FiStar, FiUser } from "react-icons/fi";
 
 function Example() {
   return (
@@ -23,14 +23,6 @@ function Example() {
       <Tag
         round
         indicator={
-          <Avatar image="https://images.unsplash.com/photo-1684837955373-dd25d9e1c3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE5OHxKcGc2S2lkbC1Ia3x8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60" />
-        }
-      >
-        Avatar
-      </Tag>
-      <Tag
-        round
-        indicator={
           <img
             alt="Avatar"
             src="https://images.unsplash.com/photo-1688014681090-6ede1e757262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDh8SnBnNktpZGwtSGt8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
@@ -38,6 +30,26 @@ function Example() {
         }
       >
         Image
+      </Tag>
+      <Tag
+        round
+        indicator={
+          <Avatar image="https://images.unsplash.com/photo-1684837955373-dd25d9e1c3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE5OHxKcGc2S2lkbC1Ia3x8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60" />
+        }
+      >
+        Avatar
+      </Tag>
+      <Tag
+        round
+        color="purple"
+        variant="hollow"
+        indicator={
+          <Avatar variant="solid" color="purple">
+            <FiUser />
+          </Avatar>
+        }
+      >
+        Avatar
       </Tag>
     </Flexbox>
   );

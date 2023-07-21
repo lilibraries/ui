@@ -106,4 +106,25 @@
       }
     }
   }
+
+  &.#{$cls-prefix}solid {
+    @each $color in $colors {
+      &.#{$cls-prefix}#{$color} {
+        color: var(--text-color-solid-base);
+        background-color: var(--#{$color}-5);
+
+        &.#{$cls-prefix}clickable {
+          &:hover {
+            color: var(--text-color-solid-base);
+            background-color: var(--#{$color}-6);
+          }
+
+          &:active {
+            color: var(--text-color-solid-base);
+            background-color: var(--#{$color}-7);
+          }
+        }
+      }
+    }
+  }
 }
