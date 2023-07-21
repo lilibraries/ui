@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Info, Text } from "@lilib/ui";
+import { Alert, Icon, Info, Text } from "@lilib/ui";
 import {
   FiInfo,
   FiCheckCircle,
@@ -13,7 +13,7 @@ function Example() {
       <Alert intent="major" closable style={{ marginBottom: 16 }}>
         <Info
           indicator={
-            <Text intent="major">
+            <Text as={Icon} intent="major">
               <FiInfo />
             </Text>
           }
@@ -24,7 +24,7 @@ function Example() {
       <Alert intent="minor" closable style={{ marginBottom: 16 }}>
         <Info
           indicator={
-            <Text intent="minor">
+            <Text as={Icon} intent="minor">
               <FiInfo />
             </Text>
           }
@@ -35,7 +35,7 @@ function Example() {
       <Alert intent="positive" closable style={{ marginBottom: 16 }}>
         <Info
           indicator={
-            <Text intent="positive">
+            <Text as={Icon} intent="positive">
               <FiCheckCircle />
             </Text>
           }
@@ -46,7 +46,7 @@ function Example() {
       <Alert intent="alertive" closable style={{ marginBottom: 16 }}>
         <Info
           indicator={
-            <Text intent="alertive">
+            <Text as={Icon} intent="alertive">
               <FiAlertTriangle />
             </Text>
           }
@@ -57,7 +57,7 @@ function Example() {
       <Alert intent="negative" closable style={{ marginBottom: 16 }}>
         <Info
           indicator={
-            <Text intent="negative">
+            <Text as={Icon} intent="negative">
               <FiAlertCircle />
             </Text>
           }

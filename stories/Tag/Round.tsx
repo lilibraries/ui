@@ -9,11 +9,9 @@ function Example() {
         Tag
       </Tag>
       <Tag round>
-        <Icon>
-          <Text color="yellow">
-            <FiStar />
-          </Text>
-        </Icon>{" "}
+        <Text as={Icon} color="yellow">
+          <FiStar />
+        </Text>{" "}
         Icon
       </Tag>
       <Tag round>
@@ -41,10 +39,10 @@ function Example() {
       </Tag>
       <Tag
         round
-        color="purple"
+        color="red"
         variant="hollow"
         indicator={
-          <Avatar variant="solid" color="purple">
+          <Avatar variant="solid" color="red">
             <FiUser />
           </Avatar>
         }

@@ -6,11 +6,9 @@ function Example() {
   return (
     <Flexbox gap="2x" fluid>
       <Tag>
-        <Icon>
-          <Text color="yellow">
-            <FiStar />
-          </Text>
-        </Icon>{" "}
+        <Text as={Icon} color="yellow">
+          <FiStar />
+        </Text>{" "}
         Icon
       </Tag>
       <Tag>
@@ -35,10 +33,10 @@ function Example() {
         Avatar
       </Tag>
       <Tag
-        color="purple"
+        color="red"
         variant="hollow"
         indicator={
-          <Avatar variant="solid" color="purple">
+          <Avatar variant="solid" color="red">
             <FiUser />
           </Avatar>
         }
