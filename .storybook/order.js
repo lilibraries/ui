@@ -12,6 +12,8 @@ const order = [
     "Duration",
     "Direction",
   ],
+  "General",
+  ["Icon", "Text", "Image", "Button"],
   "Layouts",
   ["Grid", "Layout", "Divider", "Flexbox"],
   "Navigations",
@@ -19,7 +21,6 @@ const order = [
   "Forms",
   [
     "Form",
-    "Button",
     "Input",
     "Select",
     "Textarea",
@@ -37,8 +38,6 @@ const order = [
   [
     "Dot",
     "Tag",
-    "Icon",
-    "Image",
     "Avatar",
     "Badge",
     "Info",

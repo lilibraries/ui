@@ -121,6 +121,10 @@
   }
 
   &.#{$cls-prefix}disabled {
+    &[href] {
+      pointer-events: none;
+    }
+
     &.#{$cls-prefix}clickable {
       color: var(--text-color-disabled);
       background-color: var(--background-color-disabled);

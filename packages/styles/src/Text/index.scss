@@ -1,0 +1,116 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}text {
+  @include reset;
+
+  &.#{$cls-prefix}muted {
+    color: var(--text-color-muted);
+  }
+
+  &.#{$cls-prefix}hoverable {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--text-color-hover);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+    }
+  }
+
+  &.#{$cls-prefix}active {
+    color: var(--text-color-active);
+
+    &:hover {
+      color: var(--text-color-active);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+    }
+  }
+
+  &.#{$cls-prefix}disabled {
+    color: var(--text-color-disabled);
+
+    &[href] {
+      pointer-events: none;
+    }
+
+    &.#{$cls-prefix}hoverable {
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      color: var(--text-color-disabled);
+      text-decoration: none;
+    }
+
+    &:active {
+      color: var(--text-color-disabled);
+      text-decoration: none;
+    }
+  }
+
+  @each $item in join($intents, $colors) {
+    &.#{$cls-prefix}#{$item} {
+      color: var(--#{$item}-5);
+
+      &.#{$cls-prefix}muted {
+        color: var(--#{$item}-4);
+      }
+
+      &.#{$cls-prefix}hoverable {
+        &:hover {
+          color: var(--#{$item}-6);
+        }
+
+        &:active {
+          color: var(--#{$item}-7);
+        }
+      }
+
+      &.#{$cls-prefix}active {
+        color: var(--#{$item}-7);
+
+        &:hover {
+          color: var(--#{$item}-7);
+        }
+
+        &:active {
+          color: var(--#{$item}-7);
+        }
+      }
+
+      &.#{$cls-prefix}disabled {
+        color: var(--#{$item}-2);
+
+        &:hover {
+          color: var(--#{$item}-2);
+        }
+
+        &:active {
+          color: var(--#{$item}-2);
+        }
+      }
+    }
+  }
+}
+
+a.#{$cls-prefix}text {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+
+  &[disabled] {
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+}
