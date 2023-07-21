@@ -4,6 +4,8 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Text
 
+Display text with different intents and colors.
+
 ## Examples
 
 ### Basic
@@ -29,3 +31,17 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 <Canvas mdxSource={require("!!raw-loader!./Colors").default}>
   <Story id="examples-text--colors" />
 </Canvas>
+
+## API
+
+| Property    | Type                                                                                                                                                                                       | Description                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `as`        | `ElementType`                                                                                                                                                                              | Element type, default is `"span"` |
+| `intent`    | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                            |
+| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                             |
+| `muted`     | `boolean`                                                                                                                                                                                  | Muted                             |
+| `active`    | `boolean`                                                                                                                                                                                  | Active                            |
+| `disabled`  | `boolean`                                                                                                                                                                                  | Disabled                          |
+| `hoverable` | `boolean`                                                                                                                                                                                  | Hoverable                         |
+
+It accepts all props which the `as` element type supports.

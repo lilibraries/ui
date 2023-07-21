@@ -3,7 +3,7 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
-export { default as Icon } from "./Icon";
-export { default as Description } from "./Description";
 export { default as Closable } from "./Closable";
+export { default as Loading } from "./Loading";
+export { default as Info } from "./Info";
 export { default as Intents } from "./Intents";

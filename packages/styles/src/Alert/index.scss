@@ -10,113 +10,31 @@
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
 
-  &-icon {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    width: calc(var(--line-height-base) * 1em);
-    height: calc(var(--line-height-base) * 1em);
-    margin-right: var(--space-2);
-    transform: scale(var(--line-height-base));
-    transform-origin: center center;
-  }
-
   &-content {
     flex: 1 1 0;
   }
 
-  &-close {
-    @include reset;
-
+  &-closer.#{$cls-prefix}button {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: calc(var(--line-height-base) * 1em);
     height: calc(var(--line-height-base) * 1em);
     margin-left: var(--space-2);
-    color: var(--text-color-inactive);
-    vertical-align: middle;
-    border-radius: var(--border-radius-round);
-    cursor: pointer;
-    user-select: none;
-
-    &:hover {
-      color: var(--text-color-hover);
-      background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
-    }
-
-    &:active {
-      color: var(--text-color-active);
-      background-color: rgba(var(--basis-rgb) / var(--alpha-dark));
-    }
-
-    [data-focusing] &:focus {
-      @include focus-outline;
-    }
-  }
-
-  &-title {
-    color: var(--text-color-base);
-    font-weight: 700;
-
-    & + * {
-      margin-top: var(--space-2);
-    }
-  }
-
-  &-description {
-    color: var(--text-color-muted);
-    font-size: var(--font-size-smaller);
-
-    & + * {
-      margin-top: var(--space-2);
-    }
-
-    & p {
-      margin-bottom: var(--space-2);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
+    padding: 0;
   }
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
       background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
       border-color: var(--#{$intent}-3);
-
-      & > .#{$cls-prefix}alert-icon {
-        color: var(--#{$intent}-5);
-      }
-
-      & > .#{$cls-prefix}alert-close {
-        color: var(--#{$intent}-4);
-
-        &:hover {
-          color: var(--#{$intent}-6);
-          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
-        }
-
-        &:active {
-          color: var(--#{$intent}-7);
-          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-dark));
-        }
-      }
     }
   }
 }
 
 .#{$cls-prefix}alert.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}alert-icon {
-    margin-right: 0;
-    margin-left: var(--space-2);
-  }
-
-  & > .#{$cls-prefix}alert-close {
+  & > .#{$cls-prefix}alert-closer.#{$cls-prefix}button {
     margin-right: var(--space-2);
     margin-left: 0;
   }

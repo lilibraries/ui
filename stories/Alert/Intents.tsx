@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert } from "@lilib/ui";
+import { Alert, Info, Text } from "@lilib/ui";
 import {
   FiInfo,
   FiCheckCircle,
@@ -10,40 +10,60 @@ import {
 function Example() {
   return (
     <>
-      <Alert
-        icon={<FiInfo />}
-        intent="major"
-        closable
-        style={{ marginBottom: 16 }}
-      >
-        This is a major alert.
+      <Alert intent="major" closable style={{ marginBottom: 16 }}>
+        <Info
+          indicator={
+            <Text intent="major">
+              <FiInfo />
+            </Text>
+          }
+        >
+          This is a major alert.
+        </Info>
       </Alert>
-      <Alert
-        icon={<FiInfo />}
-        intent="minor"
-        closable
-        style={{ marginBottom: 16 }}
-      >
-        This is a minor alert.
+      <Alert intent="minor" closable style={{ marginBottom: 16 }}>
+        <Info
+          indicator={
+            <Text intent="minor">
+              <FiInfo />
+            </Text>
+          }
+        >
+          This is a minor alert.
+        </Info>
       </Alert>
-      <Alert
-        icon={<FiCheckCircle />}
-        intent="positive"
-        closable
-        style={{ marginBottom: 16 }}
-      >
-        This is a positive alert.
+      <Alert intent="positive" closable style={{ marginBottom: 16 }}>
+        <Info
+          indicator={
+            <Text intent="positive">
+              <FiCheckCircle />
+            </Text>
+          }
+        >
+          This is a positive alert.
+        </Info>
       </Alert>
-      <Alert
-        icon={<FiAlertTriangle />}
-        intent="alertive"
-        closable
-        style={{ marginBottom: 16 }}
-      >
-        This is an alertive alert.
+      <Alert intent="alertive" closable style={{ marginBottom: 16 }}>
+        <Info
+          indicator={
+            <Text intent="alertive">
+              <FiAlertTriangle />
+            </Text>
+          }
+        >
+          This is an alertive alert.
+        </Info>
       </Alert>
-      <Alert icon={<FiAlertCircle />} intent="negative" closable>
-        This is a negative alert.
+      <Alert intent="negative" closable style={{ marginBottom: 16 }}>
+        <Info
+          indicator={
+            <Text intent="negative">
+              <FiAlertCircle />
+            </Text>
+          }
+        >
+          This is a negative alert.
+        </Info>
       </Alert>
     </>
   );

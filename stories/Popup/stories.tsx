@@ -3,6 +3,7 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
+export { default as WithInfo } from "./WithInfo";
 export { default as HideArrow } from "./HideArrow";
 export { default as DisableAnimation } from "./DisableAnimation";
 export { default as TriggerEvents } from "./TriggerEvents";

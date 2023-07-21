@@ -3,37 +3,23 @@ import React, {
   ReactNode,
   MouseEvent,
   forwardRef,
-  RefAttributes,
   HTMLAttributes,
-  PropsWithoutRef,
-  ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import { usePersist, useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Collapse from "../Collapse";
 import Direction from "../Direction";
+import Button, { ButtonProps } from "../Button";
 import CloseIcon from "../icons/CloseIcon";
 import { IntentValue } from "../utils/types";
-import isRenderableNode from "../utils/isRenderableNode";
-import AlertTitle from "./AlertTitle";
-import AlertDescription from "./AlertDescription";
 
 export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   intent?: IntentValue;
-  icon?: ReactNode;
   open?: boolean;
   closable?: boolean;
-  closeIcon?: ReactNode;
+  closeProps?: ButtonProps;
   onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
-}
-
-export interface AlertComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<AlertProps> & RefAttributes<HTMLDivElement>
-  > {
-  Title: typeof AlertTitle;
-  Description: typeof AlertDescription;
 }
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
@@ -41,10 +27,9 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     children,
     className,
     intent,
-    icon: iconProp,
     open: openProp,
     closable,
-    closeIcon,
+    closeProps,
     onClose,
     ...rest
   } = props;
@@ -77,34 +62,36 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     if (onClose) {
       onClose(event);
     }
+    if (closeProps?.onClick) {
+      closeProps?.onClick(event);
+    }
   });
 
-  let icon: ReactNode = null;
-  if (isRenderableNode(iconProp)) {
-    icon = <span className={`${cls}alert-icon`}>{iconProp}</span>;
-  }
-
-  let closeButton: ReactNode = null;
+  let closer: ReactNode = null;
   if (closable) {
-    closeButton = (
-      <button onClick={handleClose} className={`${cls}alert-close`}>
-        {isRenderableNode(closeIcon) ? closeIcon : <CloseIcon />}
-      </button>
+    closer = (
+      <Button
+        children={<CloseIcon />}
+        round
+        iconOnly
+        borderless
+        intent={intent}
+        variant="hollow"
+        {...closeProps}
+        onClick={handleClose}
+        className={cn(`${cls}alert-closer`, closeProps?.className)}
+      />
     );
   }
 
   return (
     <Collapse open={open} unmountOnClose>
       <div {...rest} ref={ref} className={classes}>
-        {icon}
         <div className={`${cls}alert-content`}>{children}</div>
-        {closeButton}
+        {closer}
       </div>
     </Collapse>
   );
-}) as AlertComponent;
-
-Alert.Title = AlertTitle;
-Alert.Description = AlertDescription;
+});
 
 export default Alert;
