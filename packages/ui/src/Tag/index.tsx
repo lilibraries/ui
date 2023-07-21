@@ -11,9 +11,12 @@ import React, {
 } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
+import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
+import Button, { ButtonProps } from "../Button";
 import CloseIcon from "../icons/CloseIcon";
 import { ColorValue } from "../utils/types";
+import { usePersist } from "@lilib/hooks";
 import isRenderableNode from "../utils/isRenderableNode";
 
 export type TagVariant = null | "solid" | "hollow";
@@ -25,10 +28,11 @@ export interface TagCommonProps {
   round?: boolean;
   square?: boolean;
   borderless?: boolean;
+  indicator?: ReactNode;
   clickable?: boolean;
-  clearable?: boolean;
-  clearIcon?: ReactNode;
   disabled?: boolean;
+  clearable?: boolean;
+  clearProps?: ButtonProps;
   onClear?: MouseEventHandler<HTMLSpanElement>;
 }
 
@@ -58,9 +62,10 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     round,
     square,
     borderless,
+    indicator,
     clickable: clickableProp,
     clearable: clearableProp,
-    clearIcon,
+    clearProps,
     disabled,
     onClear,
     onClick,
@@ -68,6 +73,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
   const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
   const clearable = clearableProp !== undefined ? !!clearableProp : !!onClear;
@@ -75,6 +81,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   const classes = cn(
     `${cls}tag`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}${variant}`]: variant,
       [`${cls}${color}`]: color,
@@ -87,21 +94,38 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     className
   );
 
+  const handleClick = usePersist((event: MouseEvent<HTMLSpanElement>) => {
+    if (!disabled && onClick) {
+      onClick(event);
+    }
+  });
+
+  const handleClear = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    if (clearProps?.onClick) {
+      clearProps?.onClick(event);
+    }
+    if (onClear) {
+      onClear(event);
+    }
+  });
+
   let clear: ReactNode = null;
   if (clearable) {
     clear = (
-      <button
-        tabIndex={!disabled ? 0 : undefined}
-        className={`${cls}tag-clear`}
-        onClick={(event) => {
-          event.stopPropagation();
-          if (!disabled && onClear) {
-            onClear(event);
-          }
-        }}
-      >
-        {isRenderableNode(clearIcon) ? clearIcon : <CloseIcon />}
-      </button>
+      <Button
+        children={<CloseIcon />}
+        iconOnly
+        borderless
+        size={size}
+        color={color}
+        round={round}
+        variant={variant}
+        disabled={disabled}
+        {...clearProps}
+        onClick={handleClear}
+        className={cn(`${cls}tag-clear`, clearProps?.className)}
+      />
     );
   }
 
@@ -112,13 +136,12 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       ...rest,
       ref,
       disabled,
+      onClick: handleClick,
       className: classes,
-      onClick: (event: MouseEvent<HTMLSpanElement>) => {
-        if (!disabled && onClick) {
-          onClick(event);
-        }
-      },
     },
+    isRenderableNode(indicator) ? (
+      <span className={`${cls}tag-indicator`}>{indicator}</span>
+    ) : null,
     <span className={`${cls}tag-content`}>{children}</span>,
     clear
   );
