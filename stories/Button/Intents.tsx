@@ -22,7 +22,7 @@ function Example() {
         />
       </Flexbox>
 
-      <Flexbox gap="2x" align="center">
+      <Flexbox gap="2x" align="center" wrap>
         <Button intent={null} disabled={disabled} borderless={borderless}>
           Button
         </Button>

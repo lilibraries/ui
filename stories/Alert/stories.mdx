@@ -14,22 +14,22 @@ Alert feedback.
   <Story id="examples-alert--basic" />
 </Canvas>
 
-### Icon
-
-<Canvas mdxSource={require("!!raw-loader!./Icon").default}>
-  <Story id="examples-alert--icon" />
-</Canvas>
-
-### Description
-
-<Canvas mdxSource={require("!!raw-loader!./Description").default}>
-  <Story id="examples-alert--description" />
-</Canvas>
-
 ### Closable
 
 <Canvas mdxSource={require("!!raw-loader!./Closable").default}>
   <Story id="examples-alert--closable" />
+</Canvas>
+
+### Loading
+
+<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
+  <Story id="examples-alert--loading" />
+</Canvas>
+
+### Info
+
+<Canvas mdxSource={require("!!raw-loader!./Info").default}>
+  <Story id="examples-alert--info" />
 </Canvas>
 
 ### Intents
@@ -40,24 +40,13 @@ Alert feedback.
 
 ## API
 
-### Alert
-
-| Property    | Type                                                                             | Description              |
-| ----------- | -------------------------------------------------------------------------------- | ------------------------ |
-| `children`  | `ReactNode`                                                                      | Content                  |
-| `intent`    | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                   |
-| `icon`      | `ReactNode`                                                                      | Icon                     |
-| `open`      | `boolean`                                                                        | Controlled open          |
-| `closable`  | `boolean`                                                                        | Whether it can be closed |
-| `closeIcon` | `boolean`                                                                        | Close icon               |
-| `onClose`   | `(event: MouseEvent<HTMLButtonElement>) => void`                                 | Close event              |
-
-It accepts all props which the native `<div>` element supports.
-
-### Alert.Title
-
-It accepts all props which the native `<div>` element supports.
-
-### Alert.Description
+| Property     | Type                                                                             | Description              |
+| ------------ | -------------------------------------------------------------------------------- | ------------------------ |
+| `children`   | `ReactNode`                                                                      | Content                  |
+| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                   |
+| `open`       | `boolean`                                                                        | Controlled open          |
+| `closable`   | `boolean`                                                                        | Whether it can be closed |
+| `closeProps` | [`ButtonProps`](?path=/story/general-button--page#api)                           | Close button props       |
+| `onClose`    | `(event: MouseEvent<HTMLButtonElement>) => void`                                 | Close event              |
 
 It accepts all props which the native `<div>` element supports.

@@ -3,6 +3,8 @@
 .#{$cls-prefix}text {
   @include reset;
 
+  display: inline-flex;
+
   &.#{$cls-prefix}muted {
     color: var(--text-color-muted);
   }
@@ -58,7 +60,7 @@
       color: var(--#{$item}-5);
 
       &.#{$cls-prefix}muted {
-        color: var(--#{$item}-4);
+        color: var(--#{$item}-3);
       }
 
       &.#{$cls-prefix}hoverable {

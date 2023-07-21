@@ -2,7 +2,6 @@
 
 .#{$cls-prefix}popup.#{$cls-prefix}tooltip {
   z-index: var(--z-index-tooltip);
-  max-width: 300px;
   padding: var(--space-2);
   color: var(--text-color-active);
   box-shadow: var(--box-shadow-1);
