@@ -15,39 +15,75 @@
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
 
+  &-indicator {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: var(--line-height-fixed-base);
+    height: var(--line-height-fixed-base);
+    margin-left: -1px;
+    overflow: hidden;
+    border-top-left-radius: var(--border-radius-small);
+    border-bottom-left-radius: var(--border-radius-small);
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    & > .#{$cls-prefix}avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+
+      & img {
+        border-radius: 0;
+      }
+    }
+  }
+
   &-content {
     flex: 1 1 auto;
     padding: 0 0.5em;
     text-align: center;
     @include text-overflow;
+
+    & + .#{$cls-prefix}tag-clear {
+      margin-left: -0.25em;
+    }
   }
 
-  &-clear {
-    @include reset;
-
+  &-clear.#{$cls-prefix}button {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: calc(var(--line-height-fixed-base) - 2px);
     height: calc(var(--line-height-fixed-base) - 2px);
-    color: var(--text-color-inactive);
-    font-size: 0.875em;
+    padding: 0;
+    font-size: var(--font-size-smaller);
+    background-color: transparent;
     border-radius: var(--border-radius-small);
-    cursor: pointer;
-    user-select: none;
 
-    &:hover {
-      color: var(--text-color-hover);
+    &:hover,
+    &:active,
+    &[disabled],
+    &.#{$cls-prefix}disabled {
+      background-color: transparent;
     }
 
-    &:active {
-      color: var(--text-color-active);
-    }
+    &.#{$cls-prefix}solid,
+    &.#{$cls-prefix}hollow {
+      background-color: transparent;
 
-    [data-focusing] &:focus {
-      @include focus-outline;
+      &:hover,
+      &:active,
+      &[disabled],
+      &.#{$cls-prefix}disabled {
+        background-color: transparent;
+      }
     }
   }
 
@@ -74,7 +110,11 @@
   &.#{$cls-prefix}round {
     border-radius: var(--border-radius-round);
 
-    & > .#{$cls-prefix}tag-clear {
+    & > .#{$cls-prefix}tag-indicator {
+      border-radius: var(--border-radius-round);
+    }
+
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
       border-radius: var(--border-radius-round);
     }
   }
@@ -83,7 +123,12 @@
     height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
 
-    & > .#{$cls-prefix}tag-clear {
+    & > .#{$cls-prefix}tag-indicator {
+      width: calc(var(--line-height-fixed-small) - 2px);
+      height: calc(var(--line-height-fixed-small) - 2px);
+    }
+
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
       width: calc(var(--line-height-fixed-small) - 2px);
       height: calc(var(--line-height-fixed-small) - 2px);
     }
@@ -93,7 +138,12 @@
     height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
 
-    & > .#{$cls-prefix}tag-clear {
+    & > .#{$cls-prefix}tag-indicator {
+      width: calc(var(--line-height-fixed-large) - 2px);
+      height: calc(var(--line-height-fixed-large) - 2px);
+    }
+
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
       width: calc(var(--line-height-fixed-large) - 2px);
       height: calc(var(--line-height-fixed-large) - 2px);
     }
@@ -129,11 +179,6 @@
       color: var(--text-color-disabled);
       background-color: var(--background-color-disabled);
       border-color: var(--border-color-disabled);
-      cursor: not-allowed;
-    }
-
-    & > .#{$cls-prefix}tag-clear {
-      color: var(--text-color-disabled);
       cursor: not-allowed;
     }
   }
@@ -184,27 +229,11 @@
     }
   }
 
-  & > .#{$cls-prefix}tag-clear {
-    color: var(--text-color-solid-inactive);
-
-    &:hover {
-      color: var(--text-color-solid-hover);
-    }
-
-    &:active {
-      color: var(--text-color-solid-active);
-    }
-  }
-
   &.#{$cls-prefix}disabled {
     &.#{$cls-prefix}clickable {
       color: var(--text-color-solid-disabled);
       background-color: var(--background-color-solid-disabled);
       border-color: var(--border-color-solid-disabled);
-    }
-
-    & > .#{$cls-prefix}tag-clear {
-      color: var(--text-color-solid-disabled);
     }
   }
 
@@ -270,26 +299,10 @@
         }
       }
 
-      & > .#{$cls-prefix}tag-clear {
-        color: var(--#{$color}-3);
-
-        &:hover {
-          color: var(--#{$color}-6);
-        }
-
-        &:active {
-          color: var(--#{$color}-7);
-        }
-      }
-
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}clickable {
           color: var(--#{$color}-2);
           background-color: transparent;
-        }
-
-        & > .#{$cls-prefix}tag-clear {
-          color: var(--#{$color}-2);
         }
       }
     }
@@ -335,5 +348,24 @@
         }
       }
     }
+  }
+}
+
+.#{$cls-prefix}tag.#{$cls-prefix}rtl {
+  & > .#{$cls-prefix}tag-indicator {
+    margin-right: -1px;
+    margin-left: 0;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+  }
+
+  &.#{$cls-prefix}round {
+    & > .#{$cls-prefix}tag-indicator {
+      border-radius: var(--border-radius-round);
+    }
+  }
+
+  & > .#{$cls-prefix}tag-content + .#{$cls-prefix}tag-clear {
+    margin-right: -0.25em;
+    margin-left: 0;
   }
 }

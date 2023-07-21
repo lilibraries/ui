@@ -36,6 +36,12 @@ When the `onClear` prop is specified, it is clearable by default.
   <Story id="examples-tag--clearable" />
 </Canvas>
 
+### Indicators
+
+<Canvas mdxSource={require("!!raw-loader!./Indicators").default}>
+  <Story id="examples-tag--indicators" />
+</Canvas>
+
 ### Round
 
 <Canvas mdxSource={require("!!raw-loader!./Round").default}>
@@ -52,6 +58,12 @@ When the `onClear` prop is specified, it is clearable by default.
 
 <Canvas mdxSource={require("!!raw-loader!./LongTag").default}>
   <Story id="examples-tag--long-tag" />
+</Canvas>
+
+### Loading
+
+<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
+  <Story id="examples-tag--loading" />
 </Canvas>
 
 ### Sizes
@@ -90,10 +102,11 @@ When the `onClear` prop is specified, it is clearable by default.
 | `round`      | `boolean`                                                                                                                                                                                  | Make corners round                |
 | `square`     | `boolean`                                                                                                                                                                                  | Square style                      |
 | `borderless` | `boolean`                                                                                                                                                                                  | Remove borders                    |
+| `indicator`  | `ReactNode`                                                                                                                                                                                | Specify indicator                 |
 | `clickable`  | `boolean`                                                                                                                                                                                  | Only effect styles                |
-| `clearable`  | `boolean`                                                                                                                                                                                  | Show clear icon                   |
-| `clearIcon`  | `boolean`                                                                                                                                                                                  | Custom clear icon                 |
 | `disabled`   | `boolean`                                                                                                                                                                                  | Disable clear and click evnets    |
+| `clearable`  | `boolean`                                                                                                                                                                                  | Show clear button                 |
+| `clearProps` | [`ButtonProps`](?path=/story/general-button--page#api)                                                                                                                                     | Clear button props                |
 | `onClick`    | `MouseEventHandler`                                                                                                                                                                        | Click event                       |
 | `onClear`    | `MouseEventHandler`                                                                                                                                                                        | Clear event                       |
 

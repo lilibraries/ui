@@ -56,14 +56,14 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   );
 
   const handleClose = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    if (!isControlled) {
-      setOpen(false);
+    if (closeProps?.onClick) {
+      closeProps?.onClick(event);
     }
     if (onClose) {
       onClose(event);
     }
-    if (closeProps?.onClick) {
-      closeProps?.onClick(event);
+    if (!isControlled) {
+      setOpen(false);
     }
   });
 
