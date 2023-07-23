@@ -99,12 +99,14 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     if (isPromise(result)) {
       setState({ confirming: true });
       result.then(
-        () => {
+        (value) => {
           setState({ confirming: false });
           close();
+          return value;
         },
-        () => {
+        (reason) => {
           setState({ confirming: false });
+          throw reason;
         }
       );
     } else {
