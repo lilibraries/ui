@@ -10,21 +10,21 @@ function Example() {
         content={content}
         placement="top"
         closeOnEscape
-        closeOnDocumentClick={false}
+        closeOnClickOutside={false}
       >
         <Button style={{ borderStyle: "dashed" }}>Escape Key</Button>
       </Popup>
-      <Popup content={content} closeOnWindowBlur closeOnDocumentClick={false}>
+      <Popup content={content} closeOnWindowBlur closeOnClickOutside={false}>
         <Button style={{ borderStyle: "dashed" }}>Window Blur</Button>
       </Popup>
-      <Popup content={content} placement="top" closeOnDocumentClick>
+      <Popup content={content} placement="top" closeOnClickOutside>
         <Button style={{ borderStyle: "dashed" }}>Document Click</Button>
       </Popup>
       <Popup
         content={content}
         closeOnEscape
         closeOnWindowBlur
-        closeOnDocumentClick
+        closeOnClickOutside
       >
         <Button style={{ borderStyle: "dashed" }}>All</Button>
       </Popup>
