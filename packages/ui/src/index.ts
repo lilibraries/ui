@@ -1,5 +1,6 @@
 export * from "./Alert";
 export * from "./Avatar";
+export * from "./Backdrop";
 export * from "./Badge";
 export * from "./Baseline";
 export * from "./Button";
@@ -33,6 +34,7 @@ export * from "./utils/types";
 
 export { default as Alert } from "./Alert";
 export { default as Avatar } from "./Avatar";
+export { default as Backdrop } from "./Backdrop";
 export { default as Badge } from "./Badge";
 export { default as Baseline } from "./Baseline";
 export { default as Button } from "./Button";
