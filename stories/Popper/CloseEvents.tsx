@@ -5,16 +5,16 @@ import ArrowPopper from "./Arrow";
 function Example() {
   return (
     <Flexbox gap="2x">
-      <ArrowPopper closeOnEscape closeOnDocumentClick={false} placement="top">
+      <ArrowPopper closeOnEscape closeOnClickOutside={false} placement="top">
         <Button style={{ borderStyle: "dashed" }}>Escape Key</Button>
       </ArrowPopper>
-      <ArrowPopper closeOnWindowBlur closeOnDocumentClick={false}>
+      <ArrowPopper closeOnWindowBlur closeOnClickOutside={false}>
         <Button style={{ borderStyle: "dashed" }}>Window Blur</Button>
       </ArrowPopper>
-      <ArrowPopper closeOnDocumentClick placement="top">
+      <ArrowPopper closeOnClickOutside placement="top">
         <Button style={{ borderStyle: "dashed" }}>Document Click</Button>
       </ArrowPopper>
-      <ArrowPopper closeOnEscape closeOnWindowBlur closeOnDocumentClick>
+      <ArrowPopper closeOnEscape closeOnWindowBlur closeOnClickOutside>
         <Button style={{ borderStyle: "dashed" }}>All</Button>
       </ArrowPopper>
     </Flexbox>

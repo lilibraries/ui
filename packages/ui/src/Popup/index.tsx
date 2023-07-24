@@ -20,8 +20,8 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     open,
     defaultOpen,
     closeDelay,
-    onShow,
     onClose,
+    onOpened,
     onUpdate,
     ...rest
   } = props;
@@ -47,12 +47,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     arrow = <span ref={arrowRef} className={`${cls}popup-arrow`} />;
   }
 
-  const handleShow = usePersist(() => {
+  const handleOpened = usePersist(() => {
     if (!disableAnimation) {
       setInState(true);
     }
-    if (onShow) {
-      onShow();
+    if (onOpened) {
+      onOpened();
     }
   });
 
@@ -105,8 +105,8 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         defaultOpen={defaultOpen}
         className={cn(`${cls}popup`, className)}
         closeDelay={closeDelay}
-        onShow={handleShow}
         onClose={handleClose}
+        onOpened={handleOpened}
         onUpdate={handleUpdate}
       />
     );
@@ -128,8 +128,8 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           defaultOpen={defaultOpen}
           className={cn(`${cls}popup`, className)}
           closeDelay={isPositiveNumber(closeDelay) ? closeDelay + fast : fast}
-          onShow={handleShow}
           onClose={handleClose}
+          onOpened={handleOpened}
           onUpdate={handleUpdate}
         />
       </Transition>

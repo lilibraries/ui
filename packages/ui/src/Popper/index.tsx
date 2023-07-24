@@ -60,15 +60,15 @@ export interface PopperUpdateData {
 }
 
 export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
-  content?: ReactNode;
   children?: ReactElement | (() => PopperVirtualElement);
+  content?: ReactNode;
   arrow?: ReactElement;
-  container?: EffectTarget<HTMLElement>;
+  arrowPadding?: number;
   on?: PopperEvent | PopperEvent[];
   offset?: number | [number, number];
-  arrowPadding?: number;
   strategy?: PopperStrategy;
   placement?: PopperPlacement;
+  container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
   openDelay?: number;
@@ -77,29 +77,30 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   hoverLeaveDelay?: number;
   updateDeps?: DependencyList;
   followPoint?: boolean;
-  mountOnInit?: boolean;
-  unmountOnClose?: boolean;
+  keepAlive?: boolean;
+  initialized?: boolean;
   closeOnEscape?: boolean;
+  closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
-  closeOnDocumentClick?: boolean;
+  closeOnClickOutside?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  onShow?: () => void;
-  onHide?: () => void;
+  onOpened?: () => void;
+  onClosed?: () => void;
   onUpdate?: (data: PopperUpdateData) => void;
 }
 
 const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
-    content,
     children,
+    content,
     arrow,
-    container,
+    arrowPadding,
     on = "click",
     offset,
-    arrowPadding,
     strategy = "absolute",
     placement = "bottom",
+    container,
     open: openProp,
     defaultOpen,
     openDelay,
@@ -108,15 +109,16 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     hoverLeaveDelay = 100,
     updateDeps = [],
     followPoint,
-    mountOnInit,
-    unmountOnClose,
+    keepAlive,
+    initialized,
     closeOnEscape,
+    closeOnPageHide,
     closeOnWindowBlur,
-    closeOnDocumentClick = true,
+    closeOnClickOutside = true,
     onOpen,
     onClose,
-    onShow,
-    onHide,
+    onOpened,
+    onClosed,
     onUpdate,
     ...rest
   } = props;
@@ -160,14 +162,14 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const [startShowTimer, cancelShowTimer] = useTimeout(() => {
     setState({ show: true });
-    if (onShow) {
-      onShow();
+    if (onOpened) {
+      onOpened();
     }
   }, openDelay);
   const [startHideTimer, cancelHideTimer] = useTimeout(() => {
     setState({ show: false });
-    if (onHide) {
-      onHide();
+    if (onClosed) {
+      onClosed();
     }
   }, closeDelay);
 
@@ -194,8 +196,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         setState({ open: true });
       } else {
         setState({ open: true, show: true });
-        if (onShow) {
-          onShow();
+        if (onOpened) {
+          onOpened();
         }
       }
     } else {
@@ -203,8 +205,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         setState({ open: false });
       } else {
         setState({ open: false, show: false });
-        if (onHide) {
-          onHide();
+        if (onClosed) {
+          onClosed();
         }
       }
     }
@@ -356,7 +358,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     } else {
       clearAutoUpdate();
       pointerRef.current = undefined;
-      if (unmountOnClose) {
+      if (!keepAlive) {
         createdPopperRef.current = false;
       }
     }
@@ -599,16 +601,16 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   );
 
   useClickOutside(
-    closeOnDocumentClick && inBrowser && show ? [anchorRef, popperRef] : null,
+    closeOnClickOutside && inBrowser && show ? [anchorRef, popperRef] : null,
     toggleOff
   );
 
   let display = false;
   if (show) {
     display = true;
-  } else if (!mountedRef.current && mountOnInit) {
+  } else if (!mountedRef.current && initialized) {
     display = true;
-  } else if (!unmountOnClose && createdPopperRef.current) {
+  } else if (keepAlive && createdPopperRef.current) {
     display = true;
   }
 
