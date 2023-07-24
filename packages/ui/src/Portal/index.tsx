@@ -2,14 +2,20 @@ import { FC, ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useOnce, useUnmount, useLayoutMount } from "@lilib/hooks";
 import { inBrowser, getEffectTarget, EffectTarget } from "@lilib/utils";
+import PortalConfig from "./PortalConfig";
+
+export * from "./PortalConfig";
 
 export interface PortalProps {
   children?: ReactNode;
   container?: EffectTarget<HTMLElement>;
 }
 
-const Portal: FC<PortalProps> = (props) => {
-  const { children, container } = props;
+const Portal: FC<PortalProps> & {
+  Config: typeof PortalConfig;
+} = (props) => {
+  const { children, container: containerProp } = props;
+  const { container } = PortalConfig.useConfig({ container: containerProp });
 
   const rootRef = useRef<HTMLDivElement>();
   const containerRef = useRef<HTMLElement>();
@@ -50,5 +56,7 @@ const Portal: FC<PortalProps> = (props) => {
     return null;
   }
 };
+
+Portal.Config = PortalConfig;
 
 export default Portal;

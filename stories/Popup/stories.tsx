@@ -17,4 +17,3 @@ export { default as HoverMove } from "./HoverMove";
 export { default as Inline } from "./Inline";
 export { default as TextSelection } from "./TextSelection";
 export { default as Nested } from "./Nested";
-export { default as Config } from "./Config";

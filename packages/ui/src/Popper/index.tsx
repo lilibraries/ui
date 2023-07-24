@@ -8,12 +8,9 @@ import React, {
   forwardRef,
   ReactElement,
   cloneElement,
-  RefAttributes,
   HTMLAttributes,
   isValidElement,
   DependencyList,
-  PropsWithoutRef,
-  ForwardRefExoticComponent,
 } from "react";
 import {
   Strategy,
@@ -46,11 +43,7 @@ import {
 } from "@lilib/hooks";
 import { inBrowser, composeRefs, EffectTarget } from "@lilib/utils";
 import Portal from "../Portal";
-import PopperConfig from "./PopperConfig";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import RenderAfterMount from "../utils/RenderAfterMount";
-
-export * from "./PopperConfig";
 
 export type PopperEvent = "click" | "hover" | "focus" | "contextmenu";
 export type PopperStrategy = Strategy;
@@ -96,19 +89,12 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   onUpdate?: (data: PopperUpdateData) => void;
 }
 
-export interface PopperComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<PopperProps> & RefAttributes<HTMLDivElement>
-  > {
-  Config: typeof PopperConfig;
-}
-
 const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
     content,
     children,
     arrow,
-    container: containerProp,
+    container,
     on = "click",
     offset,
     arrowPadding,
@@ -137,7 +123,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const events = Array.isArray(on) ? on : [on];
   const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
-  const { container } = PopperConfig.useConfig({ container: containerProp });
 
   const isControlled = openProp != null;
   const [{ open, show }, setState] = useSetState(() => {
@@ -661,16 +646,12 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
                 // @ts-ignore
                 ref: composeRefs(arrowRef, arrow.ref),
               })}
-            <PopperConfig container={popperRef}>
-              <RenderAfterMount>{content}</RenderAfterMount>
-            </PopperConfig>
+            <Portal.Config container={popperRef}>{content}</Portal.Config>
           </div>
         </Portal>
       )}
     </>
   );
-}) as PopperComponent;
-
-Popper.Config = PopperConfig;
+});
 
 export default Popper;

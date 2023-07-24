@@ -23,8 +23,8 @@ function App() {
 
 function Subcomponent() {
   const {
-    cls, // => "hello-"
-    var, // => "hello-"
+    cls: clsPrefix, // => "hello-"
+    var: varPrefix, // => "hello-"
   } = Prefix.useConfig();
   ...
 }

@@ -2,18 +2,18 @@ import { ReactNode } from "react";
 import { EffectTarget } from "@lilib/utils";
 import createConfig from "../utils/createConfig";
 
-export interface PopperConfigValue {
+export interface PortalConfigValue {
   container?: EffectTarget<HTMLElement>;
 }
 
-export interface PopperConfigProps extends PopperConfigValue {
+export interface PortalConfigProps extends PortalConfigValue {
   children: ReactNode;
 }
 
-const PopperConfig = createConfig<PopperConfigValue, PopperConfigProps>(
+const PortalConfig = createConfig<PortalConfigValue, PortalConfigProps>(
   {},
   ["container"],
   { inherit: true }
 );
 
-export default PopperConfig;
+export default PortalConfig;
