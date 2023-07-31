@@ -1,10 +1,5 @@
 import React, { FC, ReactNode, useRef, useState } from "react";
-import {
-  useUpdate,
-  useTimeout,
-  useMountedRef,
-  useIsomorphicLayoutEffect,
-} from "@lilib/hooks";
+import { useUpdate, useTimeout, useIsomorphicLayoutEffect } from "@lilib/hooks";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useCloseEvent, { CloseEventOptions } from "./useCloseEvent";
 
@@ -13,8 +8,8 @@ export interface DisplayProps extends CloseEventOptions {
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
+  prepared?: boolean;
   keepAlive?: boolean;
-  initialized?: boolean;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
@@ -28,8 +23,8 @@ const Display: FC<DisplayProps> & {
     open,
     openDelay,
     closeDelay,
+    prepared,
     keepAlive,
-    initialized,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -44,7 +39,7 @@ const Display: FC<DisplayProps> & {
   const delayOnClose = isPositiveNumber(closeDelay);
 
   const openedRef = useRef(false);
-  const mountedRef = useMountedRef();
+  const renderedRef = useRef(false);
   const [display, setDisplay] = useState(!!open);
 
   const setOpened = () => {
@@ -93,6 +88,7 @@ const Display: FC<DisplayProps> & {
   useIsomorphicLayoutEffect(() => {
     if (display) {
       openedRef.current = true;
+      renderedRef.current = true;
     } else {
       if (!keepAlive) {
         openedRef.current = false;
@@ -118,7 +114,7 @@ const Display: FC<DisplayProps> & {
   let renderable = false;
   if (display) {
     renderable = true;
-  } else if (initialized && !mountedRef.current) {
+  } else if (prepared && !renderedRef.current) {
     renderable = true;
   } else if (keepAlive && openedRef.current) {
     renderable = true;

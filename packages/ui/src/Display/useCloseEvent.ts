@@ -53,7 +53,7 @@ function useCloseEvent(listener: () => void, options: CloseEventOptions) {
 
   useEventListener(
     inBrowser && closeOnDocumentClick ? document : null,
-    "click",
+    "mousedown",
     listener
   );
 }

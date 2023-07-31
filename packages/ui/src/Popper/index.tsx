@@ -36,13 +36,12 @@ import {
   useSetState,
   useMountedRef,
   useComposedRef,
-  useClickOutside,
-  useEventListener,
   useMemoizedValue,
   useIsomorphicLayoutEffect,
 } from "@lilib/hooks";
 import { inBrowser, composeRefs, EffectTarget } from "@lilib/utils";
 import Portal from "../Portal";
+import Display from "../Display";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
 export type PopperEvent = "click" | "hover" | "focus" | "contextmenu";
@@ -77,8 +76,8 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   hoverLeaveDelay?: number;
   updateDeps?: DependencyList;
   followPoint?: boolean;
+  prepared?: boolean;
   keepAlive?: boolean;
-  initialized?: boolean;
   closeOnEscape?: boolean;
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
@@ -109,8 +108,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     hoverLeaveDelay = 100,
     updateDeps = [],
     followPoint,
+    prepared,
     keepAlive,
-    initialized,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -125,12 +124,22 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
 
   const events = Array.isArray(on) ? on : [on];
   const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
+  const delayOnHoverEnter = isPositiveNumber(hoverEnterDelay);
+  const delayOnHoverLeave = isPositiveNumber(hoverLeaveDelay);
 
   const isControlled = openProp != null;
-  const [{ open, show }, setState] = useSetState(() => {
+  const [{ open, opened }, setState] = useSetState(() => {
     const open = isControlled ? !!openProp : !!defaultOpen;
-    return { open, show: open };
+    return { open, opened: open };
   });
+
+  const mountedRef = useMountedRef();
+  const arrowRef = useRef<HTMLElement>(null);
+  const anchorRef = useRef<Element>(null);
+  const popperRef = useRef<HTMLDivElement>(null);
+  const pointerRef = useRef<PopperVirtualElement>();
+  const composedPopperRef = useComposedRef(popperRef, ref);
+  const autoUpdateCleanupRef = useRef<() => void>();
 
   const toggle = (value?: boolean) => {
     let newOpen: boolean;
@@ -140,38 +149,19 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       newOpen = !open;
     }
     if (newOpen !== open) {
-      if (!isControlled) {
-        changeState(newOpen);
-      }
       if (newOpen && onOpen) {
         onOpen();
       }
       if (!newOpen && onClose) {
         onClose();
       }
+      if (!isControlled) {
+        setState({ open: newOpen });
+      }
     }
   };
-
   const toggleOn = () => toggle(true);
   const toggleOff = () => toggle(false);
-
-  const delayOnOpen = isPositiveNumber(openDelay);
-  const delayOnClose = isPositiveNumber(closeDelay);
-  const delayOnHoverEnter = isPositiveNumber(hoverEnterDelay);
-  const delayOnHoverLeave = isPositiveNumber(hoverLeaveDelay);
-
-  const [startShowTimer, cancelShowTimer] = useTimeout(() => {
-    setState({ show: true });
-    if (onOpened) {
-      onOpened();
-    }
-  }, openDelay);
-  const [startHideTimer, cancelHideTimer] = useTimeout(() => {
-    setState({ show: false });
-    if (onClosed) {
-      onClosed();
-    }
-  }, closeDelay);
 
   const [startHoverEnterTimer, cancelHoverEnterTimer] = useTimeout(
     toggleOn,
@@ -182,44 +172,28 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     hoverLeaveDelay
   );
 
-  const cancelTimers = () => {
-    cancelShowTimer();
-    cancelHideTimer();
-    cancelHoverEnterTimer();
-    cancelHoverLeaveTimer();
-  };
-
-  const changeState = (open: boolean) => {
-    cancelTimers();
-    if (open) {
-      if (delayOnOpen) {
-        setState({ open: true });
-      } else {
-        setState({ open: true, show: true });
-        if (onOpened) {
-          onOpened();
-        }
-      }
-    } else {
-      if (delayOnClose) {
-        setState({ open: false });
-      } else {
-        setState({ open: false, show: false });
-        if (onClosed) {
-          onClosed();
-        }
-      }
+  const handleClose = usePersist(() => {
+    if (onClose) {
+      onClose();
     }
-  };
+    if (!isControlled) {
+      setState({ open: false });
+    }
+  });
 
-  const mountedRef = useMountedRef();
-  const arrowRef = useRef<HTMLElement>(null);
-  const anchorRef = useRef<Element>(null);
-  const popperRef = useRef<HTMLDivElement>(null);
-  const pointerRef = useRef<PopperVirtualElement>();
-  const createdPopperRef = useRef(false);
-  const composedPopperRef = useComposedRef(popperRef, ref);
-  const autoUpdateCleanupRef = useRef<() => void>();
+  const handleOpened = usePersist(() => {
+    if (onOpened) {
+      onOpened();
+    }
+    setState({ opened: true });
+  });
+
+  const handleClosed = usePersist(() => {
+    if (onClosed) {
+      onClosed();
+    }
+    setState({ opened: false });
+  });
 
   const updatePosition = usePersist(() => {
     let inline = false;
@@ -329,43 +303,37 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   };
 
+  useUpdate(() => {
+    if (isControlled) {
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
+      setState({ open: !!openProp });
+    }
+  }, [openProp]);
+
   useEffect(
     () => {
-      cancelTimers();
-      if (open && delayOnOpen) {
-        startShowTimer();
-      } else if (!open && delayOnClose) {
-        startHideTimer();
-      }
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
     },
     [open] // eslint-disable-line
   );
 
-  useUpdate(() => {
-    if (isControlled) {
-      changeState(!!openProp);
-    }
-  }, [openProp]);
-
   useIsomorphicLayoutEffect(() => {
-    if (show) {
+    if (opened) {
       if (anchorRef.current && popperRef.current) {
         setAutoUpdate();
       } else {
         updatePosition();
       }
-      createdPopperRef.current = true;
     } else {
       clearAutoUpdate();
       pointerRef.current = undefined;
-      if (!keepAlive) {
-        createdPopperRef.current = false;
-      }
     }
-  }, [show]);
+  }, [opened]);
 
   useUpdate(() => {
-    if (show) {
+    if (opened) {
       updatePosition();
     }
   }, [offsets, strategy, placement, ...updateDeps]);
@@ -416,7 +384,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     if (rawAnchorClick) {
       rawAnchorClick(event);
     }
-    if (isClick && show && followPoint) {
+    if (isClick && opened && followPoint) {
       updatePointer(event);
       updatePosition();
     }
@@ -441,7 +409,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
     if (isHover && !isClickClose.current) {
       updatePointer(event);
-      if (show) {
+      if (opened) {
         updatePosition();
       }
       cancelHoverEnterTimer();
@@ -482,7 +450,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
     if (isHover && followPoint && isHoverClose.current) {
       updatePointer(event);
-      if (show) {
+      if (opened) {
         updatePosition();
       }
     }
@@ -550,7 +518,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
     if (isContextMenu) {
       updatePointer(event);
-      if (show) {
+      if (opened) {
         updatePosition();
       }
       toggleOn();
@@ -582,38 +550,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   );
 
-  useEventListener(
-    closeOnEscape && inBrowser && show ? document : null,
-    "keydown",
-    (event: KeyboardEvent) => {
-      if (!event.repeat) {
-        if (event.key === "Escape") {
-          toggleOff();
-        }
-      }
-    }
-  );
-
-  useEventListener(
-    closeOnWindowBlur && inBrowser && show ? window : null,
-    "blur",
-    toggleOff
-  );
-
-  useClickOutside(
-    closeOnClickOutside && inBrowser && show ? [anchorRef, popperRef] : null,
-    toggleOff
-  );
-
-  let display = false;
-  if (show) {
-    display = true;
-  } else if (!mountedRef.current && initialized) {
-    display = true;
-  } else if (keepAlive && createdPopperRef.current) {
-    display = true;
-  }
-
   return (
     <>
       {isValidElement(children) &&
@@ -628,14 +564,29 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           onBlur: handleAnchorBlur,
           onContextMenu: handleAnchorContextMenu,
         })}
-      {display && (
+      <Display
+        open={open}
+        openDelay={openDelay}
+        closeDelay={closeDelay}
+        prepared={prepared}
+        keepAlive={keepAlive}
+        closeOnEscape={opened && closeOnEscape}
+        closeOnPageHide={opened && closeOnPageHide}
+        closeOnWindowBlur={opened && closeOnWindowBlur}
+        closeOnClickOutside={
+          opened && closeOnClickOutside ? [anchorRef, popperRef] : null
+        }
+        onClose={handleClose}
+        onOpened={handleOpened}
+        onClosed={handleClosed}
+      >
         <Portal container={container}>
           <div
             {...rest}
             ref={composedPopperRef}
             style={{
               ...rest.style,
-              display: show ? rest.style?.display : "none",
+              display: opened ? rest.style?.display : "none",
               position: strategy === "fixed" ? "fixed" : "absolute",
             }}
             onMouseEnter={handlePopperMouseEnter}
@@ -651,7 +602,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
             <Portal.Config container={popperRef}>{content}</Portal.Config>
           </div>
         </Portal>
-      )}
+      </Display>
     </>
   );
 });
