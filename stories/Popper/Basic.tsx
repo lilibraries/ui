@@ -12,11 +12,6 @@ const popperStyle = {
   boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
 };
 
-function Content() {
-  console.log("popper");
-  return <div>This is a tooltip message.</div>;
-}
-
 function BasicPopper(props: PopperProps) {
   const popperRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +26,7 @@ function BasicPopper(props: PopperProps) {
   return (
     <Popper
       ref={popperRef}
-      content={<Content />}
+      content="This is a tooltip message."
       onUpdate={handleUpdate}
       {...props}
       style={{ ...popperStyle, ...props.style }}
