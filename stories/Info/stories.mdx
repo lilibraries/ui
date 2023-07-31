@@ -14,12 +14,6 @@ Info component.
   <Story id="examples-info--basic" />
 </Canvas>
 
-### Padding
-
-<Canvas mdxSource={require("!!raw-loader!./Padding").default}>
-  <Story id="examples-info--padding" />
-</Canvas>
-
 ### Indicators
 
 <Canvas mdxSource={require("!!raw-loader!./Indicators").default}>
@@ -30,11 +24,10 @@ Info component.
 
 ### Info
 
-| Property    | Type                              | Description       |
-| ----------- | --------------------------------- | ----------------- |
-| `padding`   | `boolean` \| `number` \| `string` | Add padding space |
-| `indicator` | `ReactNode`                       | Specify indicator |
-| `children`  | `ReactNode`                       | Content           |
+| Property    | Type        | Description       |
+| ----------- | ----------- | ----------------- |
+| `children`  | `ReactNode` | Content           |
+| `indicator` | `ReactNode` | Specify indicator |
 
 It accepts all props which the native `<div>` element supports.
 

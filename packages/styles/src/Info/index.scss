@@ -6,10 +6,6 @@
   box-sizing: border-box;
   line-height: var(--line-height-base);
 
-  &.#{$cls-prefix}padding {
-    padding: var(--space-4);
-  }
-
   &-indicator {
     display: flex;
     flex: 0 0 auto;
