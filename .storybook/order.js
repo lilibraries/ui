@@ -12,7 +12,7 @@ const order = [
     "Duration",
     "Direction",
   ],
-  "General",
+  "Generics",
   ["Icon", "Text", "Image", "Button"],
   "Layouts",
   ["Grid", "Layout", "Divider", "Flexbox"],
@@ -68,8 +68,8 @@ const order = [
   ],
   "Animations",
   ["Collapse", "Transition"],
-  "Others",
-  ["Portal"],
+  "Utilities",
+  ["Portal", "Display"],
   "Examples",
 ];
 
