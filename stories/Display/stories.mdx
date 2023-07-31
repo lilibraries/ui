@@ -1,0 +1,85 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Utilities/Display" />
+
+# Display
+
+Display content.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-display--basic" />
+</Canvas>
+
+### Delay
+
+<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
+  <Story id="examples-display--delay" />
+</Canvas>
+
+### Close Events
+
+<Canvas mdxSource={require("!!raw-loader!./CloseEvents").default}>
+  <Story id="examples-display--close-events" />
+</Canvas>
+
+### Keep Alive
+
+<Canvas mdxSource={require("!!raw-loader!./KeepAlive").default}>
+  <Story id="examples-display--keep-alive" />
+</Canvas>
+
+## API
+
+### Display
+
+| Property               | Type                                           | Description                                                    |
+| ---------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
+| `children`             | `ReactNode`                                    | Content to display                                             |
+| `open`                 | `boolean`                                      | Control content to display                                     |
+| `openDelay`            | `number`                                       | Open delay, in milliseconds                                    |
+| `closeDelay`           | `number`                                       | Close delay, in milliseconds                                   |
+| `prepared`             | `boolean`                                      | Mount on first time, no matter whether the component is opened |
+| `keepAlive`            | `boolean`                                      | Don't unmount popup content on close                           |
+| `closeOnEscape`        | `boolean`                                      | Close when pressing the <kbd>ESC</kbd> key                     |
+| `closeOnPageHide`      | `boolean`                                      | Close when the page is hidden                                  |
+| `closeOnWindowBlur`    | `boolean`                                      | Close when the `window` loses focus                            |
+| `closeOnClickOutside`  | `EffectTarget<Node>` \| `EffectTarget<Node>[]` | Close when clicking outside the input targets                  |
+| `closeOnDocumentClick` | `boolean`                                      | Close when the `document` is clicked                           |
+| `onClose`              | `() => void`                                   | Close event                                                    |
+| `onOpened`             | `() => void`                                   | Opened event                                                   |
+| `onClosed`             | `() => void`                                   | Closed event                                                   |
+
+### Display.useCloseEvent
+
+```ts
+function useCloseEvent(
+  listener: () => void,
+  options: {
+    closeOnEscape?: boolean;
+    closeOnPageHide?: boolean;
+    closeOnWindowBlur?: boolean;
+    closeOnClickOutside?: EffectTarget<Node> | EffectTarget<Node>[];
+    closeOnDocumentClick?: boolean;
+  }
+): void;
+
+type Nullable<T> = T | undefined | null;
+type EffectTarget<T> =
+  | Nullable<T>
+  | (() => Nullable<T>)
+  | { current: Nullable<T> };
+```
+
+Params:
+
+- **`listener`:** Event listener.
+- **`options`:** Options object.
+  - **`options.closeOnEscape`:** Close when pressing the <kbd>ESC</kbd> key.
+  - **`options.closeOnPageHide`:** Close when the page is hidden.
+  - **`options.closeOnWindowBlur`:** Close when the `window` loses focus.
+  - **`options.closeOnClickOutside`:** Close when clicking outside the input targets.
+  - **`options.closeOnDocumentClick`:** Close when the `document` is clicked.
