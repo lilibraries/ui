@@ -1,32 +1,30 @@
 import React from "react";
 import { Button, Flexbox, Popup } from "@lilib/ui";
 
-const content = <div style={{ padding: 16 }}>This is a popup content.</div>;
-
 function Example() {
   return (
     <Flexbox fluid align="center" justify="center">
       <Button.Group vertical>
-        <Popup placement="left-start" content={content}>
+        <Popup placement="left-start" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>left-start</Button>
         </Popup>
-        <Popup placement="left" content={content}>
+        <Popup placement="left" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>left</Button>
         </Popup>
-        <Popup placement="left-end" content={content}>
+        <Popup placement="left-end" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>left-end</Button>
         </Popup>
       </Button.Group>
 
       <Flexbox direction="column">
         <Button.Group fluid>
-          <Popup placement="top-start" content={content}>
+          <Popup placement="top-start" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>top-start</Button>
           </Popup>
-          <Popup placement="top" content={content}>
+          <Popup placement="top" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>top</Button>
           </Popup>
-          <Popup placement="top-end" content={content}>
+          <Popup placement="top-end" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>top-end</Button>
           </Popup>
         </Button.Group>
@@ -38,26 +36,26 @@ function Example() {
         </Button.Group>
 
         <Button.Group fluid>
-          <Popup placement="bottom-start" content={content}>
+          <Popup placement="bottom-start" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>bottom-start</Button>
           </Popup>
-          <Popup placement="bottom" content={content}>
+          <Popup placement="bottom" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>bottom</Button>
           </Popup>
-          <Popup placement="bottom-end" content={content}>
+          <Popup placement="bottom-end" content="This is a popup content.">
             <Button style={{ borderStyle: "dashed" }}>bottom-end</Button>
           </Popup>
         </Button.Group>
       </Flexbox>
 
       <Button.Group vertical>
-        <Popup placement="right-start" content={content}>
+        <Popup placement="right-start" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>right-start</Button>
         </Popup>
-        <Popup placement="right" content={content}>
+        <Popup placement="right" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>right</Button>
         </Popup>
-        <Popup placement="right-end" content={content}>
+        <Popup placement="right-end" content="This is a popup content.">
           <Button style={{ borderStyle: "dashed" }}>right-end</Button>
         </Popup>
       </Button.Group>

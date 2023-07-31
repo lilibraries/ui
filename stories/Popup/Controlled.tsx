@@ -13,7 +13,7 @@ function Example() {
       <Popup
         open={open}
         placement="top-start"
-        content={<div style={{ padding: 16 }}>This is a popup message.</div>}
+        content="This is a popup message."
       >
         <Button style={{ borderStyle: "dashed" }}>Trigger</Button>
       </Popup>

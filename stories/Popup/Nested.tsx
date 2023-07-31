@@ -5,9 +5,11 @@ import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 function Example() {
   return (
     <Popup
+      padding={false}
       placement="bottom-start"
       content={
         <Popup
+          padding={false}
           placement="right"
           content={
             <Button style={{ borderColor: "transparent" }}>Button</Button>

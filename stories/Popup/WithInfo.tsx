@@ -7,7 +7,7 @@ function Example() {
     <Popup
       placement="top-start"
       content={
-        <Info padding indicator={<FiInfo />} style={{ maxWidth: 600 }}>
+        <Info indicator={<FiInfo />} style={{ maxWidth: 600 }}>
           <Info.Title>What is React ?</Info.Title>
           <Info.Detail>
             <p>

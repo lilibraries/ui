@@ -7,16 +7,19 @@ import Transition from "../Transition";
 import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
-export interface PopupProps extends Omit<PopperProps, "arrow"> {
-  hideArrow?: boolean;
-  disableAnimation?: boolean;
+export interface PopupProps
+  extends Omit<PopperProps, "arrow" | "arrowPadding"> {
+  padding?: boolean;
+  arrowed?: boolean;
+  animated?: boolean;
 }
 
 const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const {
     className,
-    hideArrow,
-    disableAnimation,
+    padding = true,
+    arrowed = true,
+    animated = true,
     open,
     defaultOpen,
     closeDelay,
@@ -27,10 +30,10 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   } = props;
 
   const isControlled = open != null;
-  const [inState, setInState] = useState(!!open || !!defaultOpen);
+  const [inState, setInState] = useState(isControlled ? !!open : !!defaultOpen);
 
   useUpdate(() => {
-    if (!disableAnimation && isControlled && !open) {
+    if (animated && isControlled && !open) {
       setInState(false);
     }
   }, [open]);
@@ -42,13 +45,21 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const popperRef = useRef<HTMLDivElement>(null);
   const composedRef = useComposedRef(popperRef, ref);
 
+  const classes = cn(
+    `${cls}popup`,
+    {
+      [`${cls}padding`]: padding,
+    },
+    className
+  );
+
   let arrow: ReactElement | undefined;
-  if (!hideArrow) {
+  if (arrowed) {
     arrow = <span ref={arrowRef} className={`${cls}popup-arrow`} />;
   }
 
   const handleOpened = usePersist(() => {
-    if (!disableAnimation) {
+    if (animated) {
       setInState(true);
     }
     if (onOpened) {
@@ -57,7 +68,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   });
 
   const handleClose = usePersist(() => {
-    if (!disableAnimation && !isControlled) {
+    if (animated && !isControlled) {
       setInState(false);
     }
     if (onClose) {
@@ -93,24 +104,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     }
   });
 
-  if (disableAnimation) {
-    return (
-      <Popper
-        offset={hideArrow ? 4 : 14}
-        arrowPadding={8}
-        {...rest}
-        ref={composedRef}
-        arrow={arrow}
-        open={open}
-        defaultOpen={defaultOpen}
-        className={cn(`${cls}popup`, className)}
-        closeDelay={closeDelay}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onUpdate={handleUpdate}
-      />
-    );
-  } else {
+  if (animated) {
     return (
       <Transition
         in={inState}
@@ -119,20 +113,37 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         exitDelay={closeDelay}
       >
         <Popper
-          offset={hideArrow ? 4 : 14}
-          arrowPadding={8}
+          offset={arrowed ? 14 : 4}
           {...rest}
           ref={composedRef}
           arrow={arrow}
+          arrowPadding={8}
           open={open}
           defaultOpen={defaultOpen}
-          className={cn(`${cls}popup`, className)}
+          className={classes}
           closeDelay={isPositiveNumber(closeDelay) ? closeDelay + fast : fast}
           onClose={handleClose}
           onOpened={handleOpened}
           onUpdate={handleUpdate}
         />
       </Transition>
+    );
+  } else {
+    return (
+      <Popper
+        offset={arrowed ? 14 : 4}
+        {...rest}
+        ref={composedRef}
+        arrow={arrow}
+        arrowPadding={8}
+        open={open}
+        defaultOpen={defaultOpen}
+        className={classes}
+        closeDelay={closeDelay}
+        onClose={handleClose}
+        onOpened={handleOpened}
+        onUpdate={handleUpdate}
+      />
     );
   }
 });
