@@ -3,10 +3,7 @@ import { Button, Popup } from "@lilib/ui";
 
 function Example() {
   return (
-    <Popup
-      hideArrow
-      content={<div style={{ padding: 16 }}>This is a popup message.</div>}
-    >
+    <Popup content="This is a popup message." arrowed={false}>
       <Button style={{ borderStyle: "dashed" }}>Click</Button>
     </Popup>
   );

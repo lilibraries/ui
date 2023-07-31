@@ -8,11 +8,7 @@ function Example() {
       front-end JavaScript library for building user interfaces or UI
       components. It is maintained by Facebook and a community of individual
       developers and companies.{" "}
-      <Popup
-        on="hover"
-        placement="top"
-        content={<div style={{ padding: 16 }}>This is a popup message.</div>}
-      >
+      <Popup content="This is a popup message." on="hover" placement="top">
         <a href="https://reactjs.org/" rel="noreferrer noopener">
           React can be used as a base in the development of single-page or
           mobile applications.

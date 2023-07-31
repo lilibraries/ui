@@ -12,15 +12,15 @@ const triggerStyle: CSSProperties = {
 function Example() {
   return (
     <Popup
+      content="This is a popup content."
       on="hover"
-      hideArrow
+      arrowed={false}
+      animated={false}
       followPoint
-      disableAnimation
       offset={[20, 20]}
       hoverEnterDelay={0}
       hoverLeaveDelay={0}
       placement="bottom-start"
-      content={<div style={{ padding: 16 }}>This is a popup content.</div>}
     >
       <div style={triggerStyle}>Hover Move</div>
     </Popup>

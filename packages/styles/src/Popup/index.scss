@@ -9,6 +9,10 @@
   box-shadow: var(--box-shadow-3);
   @include transition(fast, transform, opacity);
 
+  &.#{$cls-prefix}padding {
+    padding: var(--space-4);
+  }
+
   &-arrow {
     position: absolute;
     display: inline-block;

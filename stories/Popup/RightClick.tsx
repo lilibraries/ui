@@ -12,12 +12,12 @@ const triggerStyle: CSSProperties = {
 function Example() {
   return (
     <Popup
+      content="This is a popup message."
       on="contextmenu"
       offset={0}
-      hideArrow
+      arrowed={false}
       followPoint
       placement="bottom-start"
-      content={<div style={{ padding: 16 }}>This is a popup message.</div>}
     >
       <div style={triggerStyle}>Right Click</div>
     </Popup>

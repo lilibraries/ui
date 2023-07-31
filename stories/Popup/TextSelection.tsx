@@ -48,10 +48,10 @@ function Example() {
         routing, as well as certain client-side functionality.
       </div>
       <Popup
+        content="This is a popup message."
         open={open}
         placement="top"
         onClose={() => setOpen(false)}
-        content={<div style={{ padding: 16 }}>This is a popup message.</div>}
       >
         {() => virtualElement}
       </Popup>
