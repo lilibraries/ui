@@ -52,8 +52,8 @@ export interface TransitionProps {
   in?: boolean;
   enterDelay?: number;
   exitDelay?: number;
-  appearOnEnter?: boolean;
-  unmountOnExit?: boolean;
+  appeared?: boolean;
+  keepAlive?: boolean;
   classNames?: boolean | string | TransitionClassNames;
   onEnter?: () => void;
   onEntering?: () => void;
@@ -77,8 +77,8 @@ const Transition: FC<TransitionProps> & {
     in: inProp,
     enterDelay,
     exitDelay,
-    appearOnEnter,
-    unmountOnExit,
+    appeared,
+    keepAlive,
     classNames,
     onEnter,
     onEntering,
@@ -112,7 +112,7 @@ const Transition: FC<TransitionProps> & {
 
   const [state, setState] = useState<TransitionState>(() => {
     if (inProp) {
-      if (appearOnEnter) {
+      if (appeared) {
         if (shouldDelayOnEnter) {
           return EXITED;
         } else {
@@ -181,7 +181,6 @@ const Transition: FC<TransitionProps> & {
   const [startEnterTimer, cancelEnterTimer] = useTimeout(() => {
     changeState(ENTER);
   }, enterDelay);
-
   const [startExitTimer, cancelExitTimer] = useTimeout(() => {
     changeState(EXIT);
   }, exitDelay);
@@ -191,7 +190,6 @@ const Transition: FC<TransitionProps> & {
       changeState(ENTERED);
     }
   }, enteringDuration);
-
   const [startExitedTimer, cancelExitedTimer] = useTimeout(() => {
     if (state === EXIT || state === EXITING) {
       changeState(EXITED);
@@ -199,7 +197,7 @@ const Transition: FC<TransitionProps> & {
   }, exitingDuration);
 
   useMount(() => {
-    if (inProp && shouldDelayOnEnter && appearOnEnter) {
+    if (inProp && appeared && shouldDelayOnEnter) {
       startEnterTimer();
     } else if (state === ENTER) {
       changeState(ENTERING);
@@ -248,7 +246,7 @@ const Transition: FC<TransitionProps> & {
     }
   }, [state]);
 
-  if (state === EXITED && unmountOnExit) {
+  if (state === EXITED && !keepAlive) {
     return null;
   }
 

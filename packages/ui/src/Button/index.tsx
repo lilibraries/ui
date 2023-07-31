@@ -263,7 +263,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         <Transition
           in={loading}
           durations={fast}
-          unmountOnExit
           enterDelay={loadingDelay}
           classNames={{
             [Transition.ENTER]: true,
@@ -310,6 +309,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         in={!loading}
         durations={fast}
         exitDelay={loadingDelay}
+        keepAlive
         classNames={{
           [Transition.EXIT]: true,
           [Transition.EXITED]: true,

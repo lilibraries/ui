@@ -149,14 +149,14 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       newOpen = !open;
     }
     if (newOpen !== open) {
+      if (!isControlled) {
+        setState({ open: newOpen });
+      }
       if (newOpen && onOpen) {
         onOpen();
       }
       if (!newOpen && onClose) {
         onClose();
-      }
-      if (!isControlled) {
-        setState({ open: newOpen });
       }
     }
   };
@@ -173,26 +173,26 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   );
 
   const handleClose = usePersist(() => {
-    if (onClose) {
-      onClose();
-    }
     if (!isControlled) {
       setState({ open: false });
+    }
+    if (onClose) {
+      onClose();
     }
   });
 
   const handleOpened = usePersist(() => {
+    setState({ opened: true });
     if (onOpened) {
       onOpened();
     }
-    setState({ opened: true });
   });
 
   const handleClosed = usePersist(() => {
+    setState({ opened: false });
     if (onClosed) {
       onClosed();
     }
-    setState({ opened: false });
   });
 
   const updatePosition = usePersist(() => {

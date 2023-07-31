@@ -99,6 +99,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
           in={loading}
           durations={fast}
           enterDelay={delay}
+          keepAlive
           classNames={{
             [Transition.ENTER]: true,
             [Transition.ENTERING]: true,
@@ -108,7 +109,6 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
           <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
         <Transition
-          unmountOnExit
           in={loading}
           durations={fast}
           enterDelay={delay}
@@ -135,7 +135,6 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
         className={classes}
         open={loading}
         openDelay={delay}
-        unmountOnClose
       >
         <div className={`${cls}loader-content`}>
           {icon}

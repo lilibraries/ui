@@ -157,7 +157,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     <Transition
       in={visible}
       durations={fast}
-      unmountOnExit={!contained}
+      keepAlive={contained}
       classNames={{
         [Transition.ENTER]: true,
         [Transition.EXIT]: true,

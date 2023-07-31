@@ -85,7 +85,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   }
 
   return (
-    <Collapse open={open} unmountOnClose>
+    <Collapse open={open}>
       <div {...rest} ref={ref} className={classes}>
         <div className={`${cls}alert-content`}>{children}</div>
         {closer}
