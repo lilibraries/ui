@@ -1,10 +1,6 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}confirm {
-  &.#{$cls-prefix}popup {
-    padding: var(--space-4);
-  }
-
   &-actions {
     margin-top: var(--space-3);
   }
