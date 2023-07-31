@@ -10,12 +10,10 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import isRenderableNode from "../utils/isRenderableNode";
-import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 import InfoTitle from "./InfoTitle";
 import InfoDetail from "./InfoDetail";
 
 export interface InfoProps extends HTMLAttributes<HTMLDivElement> {
-  padding?: boolean | number | string;
   indicator?: ReactNode;
 }
 
@@ -28,7 +26,7 @@ export interface InfoComponent
 }
 
 const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
-  const { children, style, className, padding, indicator, ...rest } = props;
+  const { children, style, className, indicator, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
@@ -37,18 +35,12 @@ const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
     `${cls}info`,
     {
       [`${cls}rtl`]: isRTL,
-      [`${cls}padding`]: padding === true,
     },
     className
   );
 
   return (
-    <div
-      {...rest}
-      ref={ref}
-      className={classes}
-      style={isCSSPropertyValue(padding) ? { ...style, padding } : style}
-    >
+    <div {...rest} ref={ref} className={classes}>
       {isRenderableNode(indicator) && (
         <span className={`${cls}info-indicator`}>{indicator}</span>
       )}
