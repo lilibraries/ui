@@ -109,6 +109,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
       <Transition
         in={inState}
         durations={fast}
+        keepAlive
         classNames
         exitDelay={closeDelay}
       >

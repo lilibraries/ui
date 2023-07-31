@@ -78,7 +78,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   }
 
   return (
-    <Transition in={open} durations={base} classNames unmountOnExit>
+    <Transition in={open} durations={base} classNames>
       <div {...rest} ref={ref} className={classes} onClick={handleClick} />
     </Transition>
   );

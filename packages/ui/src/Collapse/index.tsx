@@ -9,8 +9,8 @@ export interface CollapseProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
-  appearOnOpen?: boolean;
-  unmountOnClose?: boolean;
+  appeared?: boolean;
+  keepAlive?: boolean;
   onOpen?: () => void;
   onOpened?: () => void;
   onClose?: () => void;
@@ -25,8 +25,8 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
     open,
     openDelay,
     closeDelay,
-    appearOnOpen,
-    unmountOnClose,
+    appeared,
+    keepAlive,
     onOpen,
     onOpened,
     onClose,
@@ -52,8 +52,8 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
       }}
       enterDelay={openDelay}
       exitDelay={closeDelay}
-      appearOnEnter={appearOnOpen}
-      unmountOnExit={unmountOnClose}
+      appeared={appeared}
+      keepAlive={keepAlive}
       onEnter={onOpen}
       onEntered={onOpened}
       onExit={onClose}

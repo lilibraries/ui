@@ -34,6 +34,7 @@ function Example() {
         in={visible}
         durations={300}
         classNames="css-transition-example"
+        keepAlive
       >
         <div className="css-transition-example">
           React (also known as React.js or ReactJS) is a free and open-source

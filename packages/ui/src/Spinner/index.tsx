@@ -116,6 +116,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             in={!spinning}
             durations={fast}
             exitDelay={delay}
+            keepAlive
             classNames={{
               [Transition.ENTER]: true,
               [Transition.EXIT]: true,
@@ -130,6 +131,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
           in={spinning}
           durations={fast}
           enterDelay={delay}
+          keepAlive
           classNames={{
             [Transition.ENTER]: true,
             [Transition.EXIT]: true,
@@ -144,7 +146,6 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   } else {
     return (
       <Transition
-        unmountOnExit
         in={spinning}
         durations={fast}
         enterDelay={delay}
