@@ -12,6 +12,14 @@ const ZIndexes: FC = () => {
       head={["SCSS", "CSS", "Value"]}
       body={[
         [
+          <Usage type="scss" name="z-index-backdrop" />,
+          <Usage type="css" name="z-index-backdrop" />,
+          <Value
+            styleName="zIndex"
+            styleValue={`var(--${prefix}z-index-backdrop`}
+          />,
+        ],
+        [
           <Usage type="scss" name="z-index-popup" />,
           <Usage type="css" name="z-index-popup" />,
           <Value

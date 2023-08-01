@@ -3,3 +3,35 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 <Meta title="Overlays/Backdrop" />
 
 # Backdrop
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-backdrop--basic" />
+</Canvas>
+
+### Blurred
+
+<Canvas mdxSource={require("!!raw-loader!./Blurred").default}>
+  <Story id="examples-backdrop--blurred" />
+</Canvas>
+
+### Transparent
+
+<Canvas mdxSource={require("!!raw-loader!./Transparent").default}>
+  <Story id="examples-backdrop--transparent" />
+</Canvas>
+
+### Disable Animation
+
+<Canvas mdxSource={require("!!raw-loader!./DisableAnimation").default}>
+  <Story id="examples-backdrop--disable-animation" />
+</Canvas>
+
+### Delay
+
+<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
+  <Story id="examples-backdrop--delay" />
+</Canvas>

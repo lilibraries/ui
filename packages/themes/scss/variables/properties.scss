@@ -48,6 +48,7 @@ $base-properties: (
   "--border-radius-fixed-small": $border-radius-fixed-small,
   "--border-radius-fixed-large": $border-radius-fixed-large,
 
+  "--z-index-backdrop": $z-index-backdrop,
   "--z-index-popup": $z-index-popup,
   "--z-index-tooltip": $z-index-tooltip,
 
@@ -351,7 +352,8 @@ $light-properties: (
 
   "--background-color-page": $background-color-page,
   "--background-color-card": $background-color-card,
-  "--background-color-over": $background-color-over,
+  "--background-color-popup": $background-color-popup,
+  "--background-color-backdrop": $background-color-backdrop,
 
   "--background-color-base": $background-color-base,
   "--background-color-hover": $background-color-hover,
@@ -669,7 +671,8 @@ $dark-properties: (
 
   "--background-color-page": $dark-background-color-page,
   "--background-color-card": $dark-background-color-card,
-  "--background-color-over": $dark-background-color-over,
+  "--background-color-popup": $dark-background-color-popup,
+  "--background-color-backdrop": $dark-background-color-backdrop,
 
   "--background-color-base": $dark-background-color-base,
   "--background-color-hover": $dark-background-color-hover,
