@@ -8,6 +8,7 @@ import Display from "../Display";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
+import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
@@ -125,10 +126,12 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   }, [openProp]);
 
   useUpdate(() => {
-    if (opened) {
+    if (opened && animated) {
       setState({ enter: true });
     }
   }, [opened]);
+
+  useSuppressBodyScrollbar(opened);
 
   if (animated) {
     return (
@@ -176,7 +179,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
         closeOnWindowBlur={closeOnWindowBlur}
         onClose={handleClose}
         onOpened={handleOpened}
-        onClosed={onClosed}
+        onClosed={handleClosed}
       >
         <Portal container={container}>
           <div {...rest} ref={ref} className={classes} onClick={handleClick} />

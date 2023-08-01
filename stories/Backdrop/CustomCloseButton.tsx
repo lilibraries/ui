@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Backdrop, Button, Spinner } from "@lilib/ui";
+import { Alert, Backdrop, Button, Theme } from "@lilib/ui";
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -9,15 +9,18 @@ function Example() {
       <Button onClick={() => setOpen(true)}>Open</Button>
       <Backdrop
         open={open}
-        transparent
-        onClose={() => setOpen(false)}
+        closeOnBackdropClick={false}
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Spinner spinning style={{ fontSize: 30 }} />
+        <Theme value="dark" scoped>
+          <Alert intent="alertive" open closable onClose={() => setOpen(false)}>
+            Alert message.
+          </Alert>
+        </Theme>
       </Backdrop>
     </>
   );
