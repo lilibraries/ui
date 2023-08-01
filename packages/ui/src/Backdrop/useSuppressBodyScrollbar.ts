@@ -20,12 +20,13 @@ function useSuppressBodyScrollbar(enable: boolean) {
       if (inBrowser) {
         if (hasScrollbar()) {
           el = document.createElement("style");
-          el.textContent = `
-            body {
-              overflow-y: hidden !important;
-              width: calc(100% - ${getScrollbarWidth()}px) !important;
-            }
-          `;
+          const width = getScrollbarWidth();
+          let content = "body { overflow-y: hidden !important;";
+          if (width) {
+            content = content + `width: calc(100% - ${width}px) !important;`;
+          }
+          content = content + "}";
+          el.textContent = content;
           document.head.append(el);
         }
       }
