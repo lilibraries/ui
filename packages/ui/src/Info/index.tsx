@@ -26,7 +26,7 @@ export interface InfoComponent
 }
 
 const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
-  const { children, style, className, indicator, ...rest } = props;
+  const { children, className, indicator, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";

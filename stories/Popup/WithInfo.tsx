@@ -7,8 +7,8 @@ function Example() {
     <Popup
       placement="top-start"
       content={
-        <Info indicator={<FiInfo />} style={{ maxWidth: 600 }}>
-          <Info.Title>What is React ?</Info.Title>
+        <Info indicator={<FiInfo />} style={{ width: 600 }}>
+          <Info.Title>What is React?</Info.Title>
           <Info.Detail>
             <p>
               React (also known as React.js or ReactJS) is a free and
