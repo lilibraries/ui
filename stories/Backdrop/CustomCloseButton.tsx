@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { useToggle } from "@lilib/hooks";
 import { Alert, Backdrop, Button, Theme } from "@lilib/ui";
 
 function Example() {
-  const [open, setOpen] = useState(false);
+  const [open, { toggleOn, toggleOff }] = useToggle(false);
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Button onClick={toggleOn}>Open</Button>
       <Backdrop
         open={open}
         closeOnBackdropClick={false}
@@ -17,7 +18,7 @@ function Example() {
         }}
       >
         <Theme value="dark" scoped>
-          <Alert intent="alertive" open closable onClose={() => setOpen(false)}>
+          <Alert intent="alertive" open closable onClose={toggleOff}>
             Alert message.
           </Alert>
         </Theme>

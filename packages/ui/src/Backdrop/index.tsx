@@ -1,7 +1,19 @@
-import React, { HTMLAttributes, MouseEvent, forwardRef } from "react";
+import React, {
+  useRef,
+  forwardRef,
+  MouseEvent,
+  RefAttributes,
+  HTMLAttributes,
+  ForwardRefExoticComponent,
+} from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
-import { usePersist, useSetState, useUpdate } from "@lilib/hooks";
+import {
+  useUpdate,
+  usePersist,
+  useSetState,
+  useComposedRef,
+} from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Portal from "../Portal";
 import Display from "../Display";
@@ -9,6 +21,7 @@ import Duration from "../Duration";
 import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
+import createProvider from "../utils/createProvider";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
@@ -30,8 +43,17 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   onClosed?: () => void;
 }
 
+export interface BackdropComponent
+  extends ForwardRefExoticComponent<
+    BackdropProps & RefAttributes<HTMLDivElement>
+  > {
+  Provider: typeof addons.Provider;
+  useBackdrop: typeof addons.useHook;
+}
+
 const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   const {
+    children,
     className,
     blurred,
     transparent,
@@ -56,6 +78,8 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
+  const backdropRef = useRef(null);
+  const composedRef = useComposedRef(backdropRef, ref);
 
   const isControlled = openProp != null;
   const [{ open, opened, enter }, setState] = useSetState(() => {
@@ -158,10 +182,12 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
           >
             <div
               {...rest}
-              ref={ref}
+              ref={composedRef}
               className={classes}
               onClick={handleClick}
-            />
+            >
+              <Portal.Config container={backdropRef}>{children}</Portal.Config>
+            </div>
           </Transition>
         </Portal>
       </Display>
@@ -182,11 +208,23 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
         onClosed={handleClosed}
       >
         <Portal container={container}>
-          <div {...rest} ref={ref} className={classes} onClick={handleClick} />
+          <div
+            {...rest}
+            ref={composedRef}
+            className={classes}
+            onClick={handleClick}
+          >
+            <Portal.Config container={backdropRef}>{children}</Portal.Config>
+          </div>
         </Portal>
       </Display>
     );
   }
-});
+}) as BackdropComponent;
+
+const addons = createProvider(Backdrop);
+
+Backdrop.Provider = addons.Provider;
+Backdrop.useBackdrop = addons.useHook;
 
 export default Backdrop;
