@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { useToggle } from "@lilib/hooks";
 import { Backdrop, Button, Spinner } from "@lilib/ui";
 
 function Example() {
-  const [open, setOpen] = useState(false);
+  const [open, { toggleOn, toggleOff }] = useToggle(false);
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Button onClick={toggleOn}>Open</Button>
       <Backdrop
         open={open}
         transparent
-        onClose={() => setOpen(false)}
+        onClose={toggleOff}
         style={{
           display: "flex",
           alignItems: "center",
