@@ -1,11 +1,4 @@
-import React, {
-  useRef,
-  forwardRef,
-  MouseEvent,
-  RefAttributes,
-  HTMLAttributes,
-  ForwardRefExoticComponent,
-} from "react";
+import React, { useRef, forwardRef, MouseEvent, HTMLAttributes } from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
 import {
@@ -21,7 +14,6 @@ import Duration from "../Duration";
 import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
-import createProvider from "../utils/createProvider";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
@@ -41,14 +33,6 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
-}
-
-export interface BackdropComponent
-  extends ForwardRefExoticComponent<
-    BackdropProps & RefAttributes<HTMLDivElement>
-  > {
-  Provider: typeof addons.Provider;
-  useBackdrop: typeof addons.useHook;
 }
 
 const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
@@ -220,11 +204,6 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       </Display>
     );
   }
-}) as BackdropComponent;
-
-const addons = createProvider(Backdrop);
-
-Backdrop.Provider = addons.Provider;
-Backdrop.useBackdrop = addons.useHook;
+});
 
 export default Backdrop;
