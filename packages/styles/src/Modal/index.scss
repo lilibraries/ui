@@ -1,0 +1,14 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  padding: var(--space-4);
+  background-color: var(--background-color-popup);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-fixed-large);
+  box-shadow: var(--box-shadow-5);
+  transform: translate(-50%, -50%);
+}

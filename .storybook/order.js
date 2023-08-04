@@ -55,8 +55,8 @@ const order = [
   "Overlays",
   [
     "Affix",
+    "Modal",
     "Dialog",
-    "Prompt",
     "Drawer",
     "Toast",
     "Notice",
