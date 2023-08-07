@@ -1,13 +1,42 @@
-import { EffectTarget } from "@lilib/utils";
-import React, { HTMLAttributes, forwardRef, useRef } from "react";
-import Backdrop from "../Backdrop";
-import Prefix from "../Prefix";
+import React, {
+  useRef,
+  ReactNode,
+  forwardRef,
+  MouseEvent,
+  HTMLAttributes,
+} from "react";
 import cn from "classnames";
-import { useClickOutside, useComposedRef } from "@lilib/hooks";
+import { EffectTarget } from "@lilib/utils";
+import {
+  useClickOutside,
+  useComposedRef,
+  useSetState,
+  useUpdate,
+} from "@lilib/hooks";
+import Prefix from "../Prefix";
+import { ButtonProps } from "../Button";
+import Backdrop, { BackdropProps } from "../Backdrop";
+import Portal from "../Portal";
+import Transition from "../Transition";
+import Duration from "../Duration";
 
-export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  centered?: boolean;
+export interface ModalProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+  width?: "small" | "medium" | "large" | string | number;
+  unpadding?: boolean;
   animeless?: boolean;
+  icon?: ReactNode;
+  title?: ReactNode;
+  headnote?: ReactNode;
+  footnote?: ReactNode;
+  showClose?: boolean;
+  closeProps?: ButtonProps;
+  hideBackdrop?: boolean;
+  backdropProps?: BackdropProps;
+  confirmLabel?: ReactNode;
+  confirmProps?: ButtonProps;
+  cancelLabel?: ReactNode;
+  cancelProps?: ButtonProps;
   container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
@@ -18,19 +47,37 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   closeOnEscape?: boolean;
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
-  closeOnBackdropClick?: boolean;
+  closeOnClickOutside?: boolean;
+  disableCloseWhenConfirming?: boolean;
+  disableCancelWhenConfirming?: boolean;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
+  onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
+  onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     children,
     className,
+    width,
+    unpadding,
     animeless,
+    icon,
+    title,
+    headnote,
+    footnote,
+    showClose,
+    closeProps,
+    hideBackdrop,
+    backdropProps,
+    confirmLabel,
+    confirmProps,
+    cancelLabel,
+    cancelProps,
     container,
-    open,
+    open: openProp,
     defaultOpen,
     openDelay,
     closeDelay,
@@ -39,19 +86,52 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
-    closeOnBackdropClick,
+    closeOnClickOutside,
+    disableCloseWhenConfirming,
+    disableCancelWhenConfirming,
     onClose,
     onOpened,
     onClosed,
+    onConfirm,
+    onCancel,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const { base } = Duration.useConfig();
+
+  const controlled = openProp != null;
+  const [{ open, opened, enter }, setState] = useSetState(() => {
+    const open = controlled ? !!openProp : !!defaultOpen;
+    return { open, opened: open, enter: open };
+  });
+
   const classes = cn(`${cls}modal`, className);
 
   const modalRef = useRef(null);
-  const composedRef = useComposedRef(modalRef, ref);
   const backdropRef = useRef(null);
+  const modalComposedRef = useComposedRef(modalRef, ref);
+
+  useUpdate(() => {
+    if (controlled) {
+      const newState: {
+        open: boolean;
+        enter?: boolean;
+      } = {
+        open: !!openProp,
+      };
+      if (!openProp) {
+        newState.enter = false;
+      }
+      setState(newState);
+    }
+  }, [openProp]);
+
+  useUpdate(() => {
+    if (opened && !animeless) {
+      setState({ enter: true });
+    }
+  }, [opened]);
 
   useClickOutside(
     modalRef,
@@ -60,10 +140,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         onClose();
       }
     },
-    {
-      container: backdropRef,
-    }
+    { container: backdropRef }
   );
+
+  if (hideBackdrop) {
+    return null;
+  }
 
   return (
     <Backdrop
@@ -84,9 +166,17 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       onOpened={onOpened}
       onClosed={onClosed}
     >
-      <div {...rest} ref={composedRef} className={classes}>
-        {children}
-      </div>
+      <Transition
+        in={enter}
+        classes
+        durations={base}
+        exitDelay={closeDelay}
+        keepMounted
+      >
+        <div {...rest} ref={modalComposedRef} className={classes}>
+          <Portal.Config container={modalRef}>{children}</Portal.Config>
+        </div>
+      </Transition>
     </Backdrop>
   );
 });

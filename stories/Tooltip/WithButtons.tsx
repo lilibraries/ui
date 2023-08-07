@@ -9,25 +9,25 @@ function Example() {
       content={
         <Flexbox gap="1x">
           <Button
-            iconOnly
+            color="blue"
             variant="hollow"
-            intent="major"
-            borderless
             startIcon={<FiThumbsUp />}
+            iconOnly
+            borderless
           />
           <Button
-            iconOnly
+            color="orange"
             variant="hollow"
-            intent="alertive"
-            borderless
             startIcon={<FiStar />}
+            iconOnly
+            borderless
           />
           <Button
-            iconOnly
+            color="red"
             variant="hollow"
-            intent="negative"
-            borderless
             startIcon={<FiHeart />}
+            iconOnly
+            borderless
           />
         </Flexbox>
       }

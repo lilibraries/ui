@@ -1,6 +1,6 @@
 import React from "react";
 import { useToggle } from "@lilib/hooks";
-import { Alert, Backdrop, Button } from "@lilib/ui";
+import { Backdrop, Button } from "@lilib/ui";
 
 function Example() {
   const [open, { toggleOn, toggleOff }] = useToggle(false);
@@ -17,9 +17,7 @@ function Example() {
           justifyContent: "center",
         }}
       >
-        <Alert intent="alertive" open closable onClose={toggleOff}>
-          Alert message.
-        </Alert>
+        <Button onClick={toggleOff}>Close</Button>
       </Backdrop>
     </>
   );

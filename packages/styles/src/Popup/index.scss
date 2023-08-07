@@ -4,7 +4,7 @@
   z-index: var(--z-index-popup);
   box-sizing: border-box;
   padding: var(--space-4);
-  background-color: var(--background-color-popup);
+  background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
   box-shadow: var(--box-shadow-3);
@@ -20,7 +20,7 @@
     box-sizing: border-box;
     width: 16px;
     height: 16px;
-    background-color: var(--background-color-popup);
+    background-color: var(--background-color-overlay);
     border: 1px solid var(--border-color-base);
     transform: rotate(45deg);
 

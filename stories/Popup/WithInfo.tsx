@@ -28,7 +28,7 @@ function Example() {
         </Info>
       }
     >
-      <Button style={{ borderStyle: "dashed" }}>Click</Button>
+      <Button>Click</Button>
     </Popup>
   );
 }

@@ -4,7 +4,7 @@
   z-index: var(--z-index-tooltip);
   padding: var(--space-2);
   color: var(--text-color-active);
-  box-shadow: var(--box-shadow-2);
+  box-shadow: var(--box-shadow-1);
 
   &.#{$cls-prefix}unpadding {
     padding: 0;
