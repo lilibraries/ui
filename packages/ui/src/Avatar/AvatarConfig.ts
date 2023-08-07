@@ -9,7 +9,7 @@ export interface AvatarConfigValue {
   round?: boolean;
   color?: ColorValue;
   outlined?: boolean;
-  clickable?: boolean;
+  hoverable?: boolean;
 }
 
 export interface AvatarConfigProps extends AvatarConfigValue {
@@ -21,7 +21,7 @@ const AvatarConfig = createConfig<AvatarConfigValue, AvatarConfigProps>({}, [
   "round",
   "color",
   "outlined",
-  "clickable",
+  "hoverable",
 ]);
 
 export default AvatarConfig;

@@ -13,7 +13,7 @@ export interface AvatarGroupProps
   round?: boolean;
   color?: ColorValue;
   outlined?: boolean;
-  clickable?: boolean;
+  hoverable?: boolean;
 }
 
 const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
@@ -24,7 +24,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
       round,
       color,
       outlined,
-      clickable,
+      hoverable,
       children,
       className,
       ...rest
@@ -50,7 +50,7 @@ const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
             round={round}
             color={color}
             outlined={outlined}
-            clickable={clickable}
+            hoverable={hoverable}
           >
             {children}
           </AvatarConfig>

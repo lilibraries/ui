@@ -70,7 +70,7 @@
     box-shadow: 0 0 0 2px var(--background-color-page);
   }
 
-  &.#{$cls-prefix}clickable {
+  &.#{$cls-prefix}hoverable {
     cursor: pointer;
 
     &:hover {
@@ -93,7 +93,7 @@
       color: var(--#{$color}-5);
       background-color: var(--#{$color}-0);
 
-      &.#{$cls-prefix}clickable {
+      &.#{$cls-prefix}hoverable {
         &:hover {
           color: var(--#{$color}-6);
           background-color: var(--#{$color}-1);
@@ -113,7 +113,7 @@
         color: var(--text-color-solid-base);
         background-color: var(--#{$color}-5);
 
-        &.#{$cls-prefix}clickable {
+        &.#{$cls-prefix}hoverable {
           &:hover {
             color: var(--text-color-solid-base);
             background-color: var(--#{$color}-6);
