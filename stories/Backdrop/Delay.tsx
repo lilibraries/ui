@@ -1,6 +1,6 @@
 import React from "react";
 import { useToggle } from "@lilib/hooks";
-import { Backdrop, Button, Spinner, Theme } from "@lilib/ui";
+import { Backdrop, Button, Spinner } from "@lilib/ui";
 
 function Example() {
   const [open, { toggleOn, toggleOff }] = useToggle(false);
@@ -21,9 +21,7 @@ function Example() {
           justifyContent: "center",
         }}
       >
-        <Theme value="dark" scoped>
-          <Spinner spinning style={{ fontSize: 30 }} />
-        </Theme>
+        <Spinner spinning style={{ fontSize: 30 }} />
       </Backdrop>
     </>
   );
