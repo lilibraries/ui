@@ -16,17 +16,17 @@ This component renders children into a DOM node by using `ReactDOM.createPortal`
 
 ## Portal
 
-| Property    | Type                                                                                        | Description                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`  | `ReactNode`                                                                                 | The content to be rendered into the `container`                                                                                                    |
-| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
+| Property    | Type                                                                                        | Description                                                                                                                                                                                           |
+| ----------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`  | `ReactNode`                                                                                 | The content to be rendered into the `container`                                                                                                                                                       |
+| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the content should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
 
 ### Portal.Config
 
-| Property    | Type                                                                                        | Description                                                                                                                                        |
-| ----------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`  | `ReactNode`                                                                                 | **Required** subcomponents                                                                                                                         |
-| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body` |
+| Property    | Type                                                                                        | Description                                                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`  | `ReactNode`                                                                                 | **Required** subcomponents                                                                                                                                                        |
+| `container` | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the portal content should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. |
 
 Portal.Config will inherit the upper configuration.
 

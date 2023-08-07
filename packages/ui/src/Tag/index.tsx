@@ -22,6 +22,7 @@ import isRenderableNode from "../utils/isRenderableNode";
 export type TagVariant = null | "solid" | "hollow";
 
 export interface TagCommonProps {
+  icon?: ReactNode;
   size?: SizeValue;
   variant?: TagVariant;
   color?: ColorValue;
@@ -29,7 +30,6 @@ export interface TagCommonProps {
   square?: boolean;
   hoverable?: boolean;
   borderless?: boolean;
-  indicator?: ReactNode;
   disabled?: boolean;
   clearable?: boolean;
   clearProps?: ButtonProps;
@@ -56,6 +56,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     children,
     className,
     as = "span",
+    icon,
     size: sizeProp,
     variant,
     color,
@@ -63,7 +64,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     square,
     hoverable: hoverableProp,
     borderless,
-    indicator,
     clearable: clearableProp,
     clearProps,
     disabled,
@@ -139,8 +139,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       onClick: handleClick,
       className: classes,
     },
-    isRenderableNode(indicator) ? (
-      <span className={`${cls}tag-indicator`}>{indicator}</span>
+    isRenderableNode(icon) ? (
+      <span className={`${cls}tag-icon`}>{icon}</span>
     ) : null,
     <span className={`${cls}tag-content`}>{children}</span>,
     clear

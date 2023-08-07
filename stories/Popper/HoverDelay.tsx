@@ -5,9 +5,7 @@ import ArrowPopper from "./Arrow";
 function Example() {
   return (
     <ArrowPopper on="hover" hoverEnterDelay={500} hoverLeaveDelay={500}>
-      <Button style={{ borderStyle: "dashed" }}>
-        Hover to show or hide after 500ms
-      </Button>
+      <Button>Hover to show or hide after 500ms</Button>
     </ArrowPopper>
   );
 }

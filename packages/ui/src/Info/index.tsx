@@ -14,7 +14,7 @@ import InfoTitle from "./InfoTitle";
 import InfoDetail from "./InfoDetail";
 
 export interface InfoProps extends HTMLAttributes<HTMLDivElement> {
-  indicator?: ReactNode;
+  icon?: ReactNode;
 }
 
 export interface InfoComponent
@@ -26,7 +26,7 @@ export interface InfoComponent
 }
 
 const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
-  const { children, className, indicator, ...rest } = props;
+  const { children, className, icon, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
@@ -41,8 +41,8 @@ const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
 
   return (
     <div {...rest} ref={ref} className={classes}>
-      {isRenderableNode(indicator) && (
-        <span className={`${cls}info-indicator`}>{indicator}</span>
+      {isRenderableNode(icon) && (
+        <span className={`${cls}info-icon`}>{icon}</span>
       )}
       <div className={`${cls}info-content`}>{children}</div>
     </div>

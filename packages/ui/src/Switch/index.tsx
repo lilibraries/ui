@@ -64,13 +64,13 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon = children;
   }
 
-  const isControlled = checkedProp != null;
+  const controlled = checkedProp != null;
   const [checked, setChecked] = useState(
-    isControlled ? !!checkedProp : !!defaultChecked
+    controlled ? !!checkedProp : !!defaultChecked
   );
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       setChecked(!!checkedProp);
     }
   }, [checkedProp]);
@@ -79,7 +79,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     if (disabled || loading) {
       return;
     }
-    if (!isControlled) {
+    if (!controlled) {
       setChecked(event.target.checked);
     }
     if (onChange) {

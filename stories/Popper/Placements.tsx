@@ -7,57 +7,57 @@ function Example() {
     <Flexbox fluid align="center" justify="center">
       <Button.Group vertical>
         <ArrowPopper placement="left-start">
-          <Button style={{ borderStyle: "dashed" }}>left-start</Button>
+          <Button>left-start</Button>
         </ArrowPopper>
         <ArrowPopper placement="left">
-          <Button style={{ borderStyle: "dashed" }}>left</Button>
+          <Button>left</Button>
         </ArrowPopper>
         <ArrowPopper placement="left-end">
-          <Button style={{ borderStyle: "dashed" }}>left-end</Button>
+          <Button>left-end</Button>
         </ArrowPopper>
       </Button.Group>
 
       <Flexbox direction="column">
         <Button.Group fluid>
           <ArrowPopper placement="top-start">
-            <Button style={{ borderStyle: "dashed" }}>top-start</Button>
+            <Button>top-start</Button>
           </ArrowPopper>
           <ArrowPopper placement="top">
-            <Button style={{ borderStyle: "dashed" }}>top</Button>
+            <Button>top</Button>
           </ArrowPopper>
           <ArrowPopper placement="top-end">
-            <Button style={{ borderStyle: "dashed" }}>top-end</Button>
+            <Button>top-end</Button>
           </ArrowPopper>
         </Button.Group>
 
         <Button.Group vertical style={{ visibility: "hidden" }}>
-          <Button style={{ borderStyle: "dashed" }}>left-start</Button>
-          <Button style={{ borderStyle: "dashed" }}>left</Button>
-          <Button style={{ borderStyle: "dashed" }}>left-end</Button>
+          <Button>left-start</Button>
+          <Button>left</Button>
+          <Button>left-end</Button>
         </Button.Group>
 
         <Button.Group fluid>
           <ArrowPopper placement="bottom-start">
-            <Button style={{ borderStyle: "dashed" }}>bottom-start</Button>
+            <Button>bottom-start</Button>
           </ArrowPopper>
           <ArrowPopper placement="bottom">
-            <Button style={{ borderStyle: "dashed" }}>bottom</Button>
+            <Button>bottom</Button>
           </ArrowPopper>
           <ArrowPopper placement="bottom-end">
-            <Button style={{ borderStyle: "dashed" }}>bottom-end</Button>
+            <Button>bottom-end</Button>
           </ArrowPopper>
         </Button.Group>
       </Flexbox>
 
       <Button.Group vertical>
         <ArrowPopper placement="right-start">
-          <Button style={{ borderStyle: "dashed" }}>right-start</Button>
+          <Button>right-start</Button>
         </ArrowPopper>
         <ArrowPopper placement="right">
-          <Button style={{ borderStyle: "dashed" }}>right</Button>
+          <Button>right</Button>
         </ArrowPopper>
         <ArrowPopper placement="right-end">
-          <Button style={{ borderStyle: "dashed" }}>right-end</Button>
+          <Button>right-end</Button>
         </ArrowPopper>
       </Button.Group>
     </Flexbox>

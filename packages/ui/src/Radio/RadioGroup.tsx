@@ -36,20 +36,20 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
     children,
   } = props;
 
-  const isControlled = valueProp !== undefined;
+  const controlled = valueProp !== undefined;
   const size = Size.useConfig(sizeProp);
   const [value, setValue] = useState<any>(
-    isControlled ? valueProp : defaultValue
+    controlled ? valueProp : defaultValue
   );
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       setValue(valueProp);
     }
   }, [valueProp]);
 
   const handleChange = usePersist((event: ChangeEvent<RadioElement>) => {
-    if (!isControlled) {
+    if (!controlled) {
       setValue(event.target.value);
     }
     if (onChange) {

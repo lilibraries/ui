@@ -65,9 +65,7 @@ function ArrowPopper(props: PopperProps) {
       {...props}
       style={{ ...popperStyle, ...props.style }}
     >
-      {props.children || (
-        <Button style={{ borderStyle: "dashed" }}>Click</Button>
-      )}
+      {props.children || <Button>Click</Button>}
     </Popper>
   );
 }

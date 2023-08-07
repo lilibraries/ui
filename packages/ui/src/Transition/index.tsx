@@ -37,7 +37,7 @@ export interface TransitionDurations {
   [EXITING]: number;
 }
 
-export interface TransitionClassNames {
+export interface TransitionClasses {
   [ENTER]?: string | boolean;
   [ENTERING]?: string | boolean;
   [ENTERED]?: string | boolean;
@@ -49,12 +49,12 @@ export interface TransitionClassNames {
 export interface TransitionProps {
   children: ReactElement | ((state: TransitionState) => ReactElement);
   durations: number | TransitionDurations;
+  classes?: boolean | string | TransitionClasses;
   in?: boolean;
   enterDelay?: number;
   exitDelay?: number;
-  appeared?: boolean;
-  keepAlive?: boolean;
-  classNames?: boolean | string | TransitionClassNames;
+  firstAppear?: boolean;
+  keepMounted?: boolean;
   onEnter?: () => void;
   onEntering?: () => void;
   onEntered?: () => void;
@@ -74,12 +74,12 @@ const Transition: FC<TransitionProps> & {
   const {
     children,
     durations,
+    classes,
     in: inProp,
     enterDelay,
     exitDelay,
-    appeared,
-    keepAlive,
-    classNames,
+    firstAppear,
+    keepMounted,
     onEnter,
     onEntering,
     onEntered,
@@ -88,8 +88,8 @@ const Transition: FC<TransitionProps> & {
     onExited,
   } = props;
 
-  const shouldDelayOnEnter = isPositiveNumber(enterDelay);
-  const shouldDelayOnExit = isPositiveNumber(exitDelay);
+  const delayOnEnter = isPositiveNumber(enterDelay);
+  const delayOnExit = isPositiveNumber(exitDelay);
   const enteringDuration = isNumber(durations)
     ? durations
     : durations[ENTERING];
@@ -112,8 +112,8 @@ const Transition: FC<TransitionProps> & {
 
   const [state, setState] = useState<TransitionState>(() => {
     if (inProp) {
-      if (appeared) {
-        if (shouldDelayOnEnter) {
+      if (firstAppear) {
+        if (delayOnEnter) {
           return EXITED;
         } else {
           return ENTER;
@@ -126,21 +126,21 @@ const Transition: FC<TransitionProps> & {
     }
   });
 
-  const classNamesMapping: {
+  const classesMapping: {
     [key in TransitionState]?: string;
   } = {};
 
-  if (classNames) {
+  if (classes) {
     states.forEach((state) => {
-      if (classNames === true) {
-        classNamesMapping[state] = `${cls}transition-${state}`;
-      } else if (isString(classNames)) {
-        classNamesMapping[state] = `${classNames}-${state}`;
-      } else if (isObject(classNames)) {
-        if (isString(classNames[state])) {
-          classNamesMapping[state] = classNames[state] as string;
-        } else if (classNames[state]) {
-          classNamesMapping[state] = `${cls}transition-${state}`;
+      if (classes === true) {
+        classesMapping[state] = `${cls}transition-${state}`;
+      } else if (isString(classes)) {
+        classesMapping[state] = `${classes}-${state}`;
+      } else if (isObject(classes)) {
+        if (isString(classes[state])) {
+          classesMapping[state] = classes[state] as string;
+        } else if (classes[state]) {
+          classesMapping[state] = `${cls}transition-${state}`;
         }
       }
     });
@@ -197,7 +197,7 @@ const Transition: FC<TransitionProps> & {
   }, exitingDuration);
 
   useMount(() => {
-    if (inProp && appeared && shouldDelayOnEnter) {
+    if (inProp && firstAppear && delayOnEnter) {
       startEnterTimer();
     } else if (state === ENTER) {
       changeState(ENTERING);
@@ -211,7 +211,7 @@ const Transition: FC<TransitionProps> & {
     if (inProp) {
       if (state !== ENTER && state !== ENTERING && state !== ENTERED) {
         cancelExitedTimer();
-        if (shouldDelayOnEnter) {
+        if (delayOnEnter) {
           startEnterTimer();
         } else {
           changeState(ENTER);
@@ -220,7 +220,7 @@ const Transition: FC<TransitionProps> & {
     } else {
       if (state !== EXIT && state !== EXITING && state !== EXITED) {
         cancelEnteredTimer();
-        if (shouldDelayOnExit) {
+        if (delayOnExit) {
           startExitTimer();
         } else {
           changeState(EXIT);
@@ -246,7 +246,7 @@ const Transition: FC<TransitionProps> & {
     }
   }, [state]);
 
-  if (state === EXITED && !keepAlive) {
+  if (state === EXITED && !keepMounted) {
     return null;
   }
 
@@ -254,7 +254,7 @@ const Transition: FC<TransitionProps> & {
 
   return cloneElement(Children.only(element), {
     ref: composeRefs(element.ref, domRef),
-    className: cn(element.props.className, classNamesMapping[state]),
+    className: cn(element.props.className, classesMapping[state]),
   });
 };
 

@@ -97,27 +97,14 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
       <div {...rest} ref={ref} className={classes}>
         <Transition
           in={loading}
+          classes
           durations={fast}
           enterDelay={delay}
-          keepAlive
-          classNames={{
-            [Transition.ENTER]: true,
-            [Transition.ENTERING]: true,
-            [Transition.ENTERED]: true,
-          }}
+          keepMounted
         >
           <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
-        <Transition
-          in={loading}
-          durations={fast}
-          enterDelay={delay}
-          classNames={{
-            [Transition.ENTER]: true,
-            [Transition.EXIT]: true,
-            [Transition.EXITING]: true,
-          }}
-        >
+        <Transition in={loading} classes durations={fast} enterDelay={delay}>
           <div className={`${cls}loader-mask`}>
             {icon}
             {isRenderableNode(message) && (

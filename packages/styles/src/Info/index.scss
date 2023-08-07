@@ -6,7 +6,7 @@
   box-sizing: border-box;
   line-height: var(--line-height-base);
 
-  &-indicator {
+  &-icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
@@ -58,7 +58,7 @@
 }
 
 .#{$cls-prefix}info.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}info-indicator {
+  & > .#{$cls-prefix}info-icon {
     margin-right: 0;
     margin-left: var(--space-2);
   }

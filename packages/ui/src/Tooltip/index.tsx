@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import cn from "classnames";
-import Theme from "../Theme";
 import Prefix from "../Prefix";
 import Popup, { PopupProps } from "../Popup";
 import { IntentValue } from "../utils/types";
@@ -22,15 +21,13 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
   );
 
   return (
-    <Theme scoped value="dark">
-      <Popup
-        {...rest}
-        ref={ref}
-        on={on}
-        className={classes}
-        placement={placement}
-      />
-    </Theme>
+    <Popup
+      {...rest}
+      ref={ref}
+      on={on}
+      className={classes}
+      placement={placement}
+    />
   );
 });
 

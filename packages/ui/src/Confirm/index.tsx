@@ -51,20 +51,20 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const classes = cn(`${cls}confirm`, className);
 
-  const isControlled = openProp != null;
+  const controlled = openProp != null;
   const [{ open, confirming }, setState] = useSetState({
-    open: isControlled ? !!openProp : !!defaultOpen,
+    open: controlled ? !!openProp : !!defaultOpen,
     confirming: false,
   });
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       setState({ open: !!openProp });
     }
   }, [openProp]);
 
   const handleOpen = usePersist(() => {
-    if (!isControlled) {
+    if (!controlled) {
       setState({ open: true });
     }
     if (onOpen) {
@@ -73,7 +73,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
   });
 
   const close = () => {
-    if (!isControlled) {
+    if (!controlled) {
       setState({ open: false });
     }
     if (onClose) {
@@ -118,11 +118,11 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     if (cancelProps?.onClick) {
       cancelProps?.onClick(event);
     }
-    if (onCancel) {
-      onCancel(event);
-    }
     if (confirming && disableCancelWhenConfirming) {
       return;
+    }
+    if (onCancel) {
+      onCancel(event);
     }
     close();
   });
@@ -133,7 +133,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
         contentProp
       ) : (
         <Info
-          indicator={
+          icon={
             isRenderableNode(icon) ? (
               icon
             ) : (
@@ -156,8 +156,8 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
         {isRenderableNode(cancelLabel) && (
           <Button
             size="small"
-            variant="hollow"
             color="gray"
+            variant="hollow"
             borderless
             disabled={confirming && disableCancelWhenConfirming}
             {...cancelProps}
@@ -168,8 +168,8 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
         )}
         <Button
           size="small"
-          variant="solid"
           intent="major"
+          variant="solid"
           borderless
           loading={confirming}
           loadingPlacement="start"

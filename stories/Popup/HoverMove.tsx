@@ -13,14 +13,14 @@ function Example() {
   return (
     <Popup
       content="This is a popup content."
-      on="hover"
-      arrowed={false}
-      animated={false}
-      followPoint
       offset={[20, 20]}
+      placement="bottom-start"
+      on="hover"
+      arrowless
+      animeless
+      followPoint
       hoverEnterDelay={0}
       hoverLeaveDelay={0}
-      placement="bottom-start"
     >
       <div style={triggerStyle}>Hover Move</div>
     </Popup>

@@ -3,14 +3,15 @@
 .#{$cls-prefix}popup {
   z-index: var(--z-index-popup);
   box-sizing: border-box;
+  padding: var(--space-4);
   background-color: var(--background-color-popup);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
   box-shadow: var(--box-shadow-3);
   @include transition(fast, transform, opacity);
 
-  &.#{$cls-prefix}padding {
-    padding: var(--space-4);
+  &.#{$cls-prefix}unpadding {
+    padding: 0;
   }
 
   &-arrow {

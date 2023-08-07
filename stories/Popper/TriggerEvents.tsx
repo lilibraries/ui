@@ -6,22 +6,22 @@ function Example() {
   return (
     <Flexbox gap="2x">
       <ArrowPopper on="click" placement="top">
-        <Button style={{ borderStyle: "dashed" }}>Click</Button>
+        <Button>Click</Button>
       </ArrowPopper>
       <ArrowPopper on="hover">
-        <Button style={{ borderStyle: "dashed" }}>Hover</Button>
+        <Button>Hover</Button>
       </ArrowPopper>
       <ArrowPopper on="focus" placement="top">
-        <Button style={{ borderStyle: "dashed" }}>Focus</Button>
+        <Button>Focus</Button>
       </ArrowPopper>
       <ArrowPopper on="contextmenu">
-        <Button style={{ borderStyle: "dashed" }}>ContextMenu</Button>
+        <Button>ContextMenu</Button>
       </ArrowPopper>
       <ArrowPopper
         on={["click", "hover", "focus", "contextmenu"]}
         placement="top"
       >
-        <Button style={{ borderStyle: "dashed" }}>All</Button>
+        <Button>All</Button>
       </ArrowPopper>
     </Flexbox>
   );

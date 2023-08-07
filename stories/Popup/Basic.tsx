@@ -4,7 +4,7 @@ import { Button, Popup } from "@lilib/ui";
 function Example() {
   return (
     <Popup content="This is a popup message.">
-      <Button style={{ borderStyle: "dashed" }}>Click</Button>
+      <Button>Click</Button>
     </Popup>
   );
 }

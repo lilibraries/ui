@@ -32,11 +32,7 @@ function Example() {
         </Flexbox>
       }
     >
-      <Button
-        style={{ borderStyle: "dashed" }}
-        iconOnly
-        startIcon={<FiMoreVertical />}
-      />
+      <Button iconOnly startIcon={<FiMoreVertical />} />
     </Tooltip>
   );
 }

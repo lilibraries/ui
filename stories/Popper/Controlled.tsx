@@ -12,7 +12,7 @@ function Example() {
         onChange={(event) => setOpen(event.target.checked)}
       />
       <ArrowPopper open={open} placement="top-start">
-        <Button style={{ borderStyle: "dashed" }}>Trigger</Button>
+        <Button>Trigger</Button>
       </ArrowPopper>
     </Flexbox>
   );

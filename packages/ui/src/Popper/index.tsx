@@ -59,10 +59,10 @@ export interface PopperUpdateData {
 }
 
 export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactElement | (() => PopperVirtualElement);
-  content?: ReactNode;
   arrow?: ReactElement;
   arrowPadding?: number;
+  content?: ReactNode;
+  children?: ReactElement | (() => PopperVirtualElement);
   on?: PopperEvent | PopperEvent[];
   offset?: number | [number, number];
   strategy?: PopperStrategy;
@@ -76,8 +76,8 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   hoverLeaveDelay?: number;
   updateDeps?: DependencyList;
   followPoint?: boolean;
-  prepared?: boolean;
-  keepAlive?: boolean;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   closeOnEscape?: boolean;
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
@@ -91,10 +91,10 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
 
 const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
-    children,
-    content,
     arrow,
     arrowPadding,
+    content,
+    children,
     on = "click",
     offset,
     strategy = "absolute",
@@ -108,8 +108,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     hoverLeaveDelay = 100,
     updateDeps = [],
     followPoint,
-    prepared,
-    keepAlive,
+    firstMount,
+    keepMounted,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -127,9 +127,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const delayOnHoverEnter = isPositiveNumber(hoverEnterDelay);
   const delayOnHoverLeave = isPositiveNumber(hoverLeaveDelay);
 
-  const isControlled = openProp != null;
+  const controlled = openProp != null;
   const [{ open, opened }, setState] = useSetState(() => {
-    const open = isControlled ? !!openProp : !!defaultOpen;
+    const open = controlled ? !!openProp : !!defaultOpen;
     return { open, opened: open };
   });
 
@@ -149,7 +149,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       newOpen = !open;
     }
     if (newOpen !== open) {
-      if (!isControlled) {
+      if (!controlled) {
         setState({ open: newOpen });
       }
       if (newOpen && onOpen) {
@@ -173,7 +173,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   );
 
   const handleClose = usePersist(() => {
-    if (!isControlled) {
+    if (!controlled) {
       setState({ open: false });
     }
     if (onClose) {
@@ -304,7 +304,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   };
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       cancelHoverEnterTimer();
       cancelHoverLeaveTimer();
       setState({ open: !!openProp });
@@ -568,8 +568,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         open={open}
         openDelay={openDelay}
         closeDelay={closeDelay}
-        prepared={prepared}
-        keepAlive={keepAlive}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
         closeOnEscape={opened && closeOnEscape}
         closeOnPageHide={opened && closeOnPageHide}
         closeOnWindowBlur={opened && closeOnWindowBlur}

@@ -11,7 +11,7 @@ function Example() {
         onChange={(event) => setVisible(event.target.checked)}
       />
 
-      <Transition in={visible} durations={300} enterDelay={500} keepAlive>
+      <Transition in={visible} durations={300} enterDelay={500} keepMounted>
         {(state) => {
           let opacity: number = 0;
           if (state === Transition.ENTERING || state === Transition.ENTERED) {

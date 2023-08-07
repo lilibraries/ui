@@ -3,4 +3,4 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
-export { default as Indicators } from "./Indicators";
+export { default as Icons } from "./Icons";

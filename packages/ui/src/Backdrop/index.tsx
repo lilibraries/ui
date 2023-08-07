@@ -18,14 +18,14 @@ import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
   transparent?: boolean;
-  animated?: boolean;
+  animeless?: boolean;
   container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
   openDelay?: number;
   closeDelay?: number;
-  prepared?: boolean;
-  keepAlive?: boolean;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   closeOnEscape?: boolean;
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
@@ -41,14 +41,14 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     className,
     blurred,
     transparent,
-    animated = true,
+    animeless,
     container,
     open: openProp,
     defaultOpen,
     openDelay,
     closeDelay,
-    prepared,
-    keepAlive,
+    firstMount,
+    keepMounted,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -65,9 +65,9 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   const backdropRef = useRef(null);
   const composedRef = useComposedRef(backdropRef, ref);
 
-  const isControlled = openProp != null;
+  const controlled = openProp != null;
   const [{ open, opened, enter }, setState] = useSetState(() => {
-    const open = isControlled ? !!openProp : !!defaultOpen;
+    const open = controlled ? !!openProp : !!defaultOpen;
     return { open, opened: open, enter: open };
   });
 
@@ -82,7 +82,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   );
 
   const handleClose = usePersist(() => {
-    if (!isControlled) {
+    if (!controlled) {
       setState({ open: false, enter: false });
     }
     if (onClose) {
@@ -109,7 +109,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       onClick(event);
     }
     if (closeOnBackdropClick) {
-      if (!isControlled) {
+      if (!controlled) {
         setState({ open: false, enter: false });
       }
       if (onClose) {
@@ -119,7 +119,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   });
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       const newState: {
         open: boolean;
         enter?: boolean;
@@ -134,56 +134,21 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   }, [openProp]);
 
   useUpdate(() => {
-    if (opened && animated) {
+    if (opened && !animeless) {
       setState({ enter: true });
     }
   }, [opened]);
 
   useSuppressBodyScrollbar(opened);
 
-  if (animated) {
-    return (
-      <Display
-        open={open}
-        openDelay={openDelay}
-        closeDelay={isPositiveNumber(closeDelay) ? closeDelay + base : base}
-        prepared={prepared}
-        keepAlive={keepAlive}
-        closeOnEscape={closeOnEscape}
-        closeOnPageHide={closeOnPageHide}
-        closeOnWindowBlur={closeOnWindowBlur}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onClosed={handleClosed}
-      >
-        <Portal container={container}>
-          <Transition
-            in={enter}
-            durations={base}
-            keepAlive
-            classNames
-            exitDelay={closeDelay}
-          >
-            <div
-              {...rest}
-              ref={composedRef}
-              className={classes}
-              onClick={handleClick}
-            >
-              <Portal.Config container={backdropRef}>{children}</Portal.Config>
-            </div>
-          </Transition>
-        </Portal>
-      </Display>
-    );
-  } else {
+  if (animeless) {
     return (
       <Display
         open={open}
         openDelay={openDelay}
         closeDelay={closeDelay}
-        prepared={prepared}
-        keepAlive={keepAlive}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
         closeOnEscape={closeOnEscape}
         closeOnPageHide={closeOnPageHide}
         closeOnWindowBlur={closeOnWindowBlur}
@@ -204,6 +169,41 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       </Display>
     );
   }
+
+  return (
+    <Display
+      open={open}
+      openDelay={openDelay}
+      closeDelay={isPositiveNumber(closeDelay) ? closeDelay + base : base}
+      firstMount={firstMount}
+      keepMounted={keepMounted}
+      closeOnEscape={closeOnEscape}
+      closeOnPageHide={closeOnPageHide}
+      closeOnWindowBlur={closeOnWindowBlur}
+      onClose={handleClose}
+      onOpened={handleOpened}
+      onClosed={handleClosed}
+    >
+      <Portal container={container}>
+        <Transition
+          classes
+          durations={base}
+          in={enter}
+          exitDelay={closeDelay}
+          keepMounted
+        >
+          <div
+            {...rest}
+            ref={composedRef}
+            className={classes}
+            onClick={handleClick}
+          >
+            <Portal.Config container={backdropRef}>{children}</Portal.Config>
+          </div>
+        </Transition>
+      </Portal>
+    </Display>
+  );
 });
 
 export default Backdrop;

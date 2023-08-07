@@ -5,9 +5,7 @@ import ArrowPopper from "./Arrow";
 function Example() {
   return (
     <ArrowPopper openDelay={500} closeDelay={500}>
-      <Button style={{ borderStyle: "dashed" }}>
-        Open after 500ms, and close after 500ms
-      </Button>
+      <Button>Open after 500ms, and close after 500ms</Button>
     </ArrowPopper>
   );
 }

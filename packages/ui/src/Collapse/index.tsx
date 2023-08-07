@@ -9,11 +9,13 @@ export interface CollapseProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
-  appeared?: boolean;
-  keepAlive?: boolean;
+  firstAppear?: boolean;
+  keepMounted?: boolean;
   onOpen?: () => void;
+  onOpening?: () => void;
   onOpened?: () => void;
   onClose?: () => void;
+  onClosing?: () => void;
   onClosed?: () => void;
 }
 
@@ -25,11 +27,13 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
     open,
     openDelay,
     closeDelay,
-    appeared,
-    keepAlive,
+    firstAppear,
+    keepMounted,
     onOpen,
+    onOpening,
     onOpened,
     onClose,
+    onClosing,
     onClosed,
     ...rest
   } = props;
@@ -42,21 +46,17 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
   return (
     <Transition
       in={open}
+      classes
       durations={fast}
-      classNames={{
-        [Transition.ENTER]: true,
-        [Transition.ENTERING]: true,
-        [Transition.EXIT]: true,
-        [Transition.EXITING]: true,
-        [Transition.EXITED]: true,
-      }}
       enterDelay={openDelay}
       exitDelay={closeDelay}
-      appeared={appeared}
-      keepAlive={keepAlive}
+      firstAppear={firstAppear}
+      keepMounted={keepMounted}
       onEnter={onOpen}
+      onEntering={onOpening}
       onEntered={onOpened}
       onExit={onClose}
+      onExiting={onClosing}
       onExited={onClosed}
     >
       {(state) => {
