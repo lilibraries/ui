@@ -352,7 +352,7 @@ $light-properties: (
 
   "--background-color-page": $background-color-page,
   "--background-color-card": $background-color-card,
-  "--background-color-popup": $background-color-popup,
+  "--background-color-overlay": $background-color-overlay,
   "--background-color-backdrop": $background-color-backdrop,
 
   "--background-color-base": $background-color-base,
@@ -671,7 +671,7 @@ $dark-properties: (
 
   "--background-color-page": $dark-background-color-page,
   "--background-color-card": $dark-background-color-card,
-  "--background-color-popup": $dark-background-color-popup,
+  "--background-color-overlay": $dark-background-color-overlay,
   "--background-color-backdrop": $dark-background-color-backdrop,
 
   "--background-color-base": $dark-background-color-base,
