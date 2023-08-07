@@ -87,7 +87,7 @@
     }
   }
 
-  &.#{$cls-prefix}clickable {
+  &.#{$cls-prefix}hoverable {
     cursor: pointer;
 
     &:hover {
@@ -175,7 +175,7 @@
       pointer-events: none;
     }
 
-    &.#{$cls-prefix}clickable {
+    &.#{$cls-prefix}hoverable {
       color: var(--text-color-disabled);
       background-color: var(--background-color-disabled);
       border-color: var(--border-color-disabled);
@@ -188,7 +188,7 @@
       background-color: var(--#{$color}-0);
       border-color: var(--#{$color}-3);
 
-      &.#{$cls-prefix}clickable {
+      &.#{$cls-prefix}hoverable {
         &:hover {
           background-color: var(--#{$color}-1);
           border-color: var(--#{$color}-4);
@@ -201,7 +201,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}clickable {
+        &.#{$cls-prefix}hoverable {
           background-color: var(--#{$color}-0);
           border-color: var(--#{$color}-1);
         }
@@ -215,7 +215,7 @@
   background-color: var(--background-color-solid-base);
   border-color: var(--border-color-solid-base);
 
-  &.#{$cls-prefix}clickable {
+  &.#{$cls-prefix}hoverable {
     &:hover {
       color: var(--text-color-solid-hover);
       background-color: var(--background-color-solid-hover);
@@ -230,7 +230,7 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}clickable {
+    &.#{$cls-prefix}hoverable {
       color: var(--text-color-solid-disabled);
       background-color: var(--background-color-solid-disabled);
       border-color: var(--border-color-solid-disabled);
@@ -242,7 +242,7 @@
       background-color: var(--#{$color}-5);
       border-color: var(--#{$color}-7);
 
-      &.#{$cls-prefix}clickable {
+      &.#{$cls-prefix}hoverable {
         &:hover {
           background-color: var(--#{$color}-6);
           border-color: var(--#{$color}-8);
@@ -255,7 +255,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}clickable {
+        &.#{$cls-prefix}hoverable {
           background-color: var(--#{$color}-2);
           border-color: var(--#{$color}-3);
         }
@@ -267,7 +267,7 @@
 .#{$cls-prefix}tag.#{$cls-prefix}hollow {
   background-color: transparent;
 
-  &.#{$cls-prefix}clickable {
+  &.#{$cls-prefix}hoverable {
     &:hover {
       background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
     }
@@ -278,7 +278,7 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}clickable {
+    &.#{$cls-prefix}hoverable {
       background-color: transparent;
     }
   }
@@ -287,7 +287,7 @@
     &.#{$cls-prefix}#{$color} {
       color: var(--#{$color}-5);
 
-      &.#{$cls-prefix}clickable {
+      &.#{$cls-prefix}hoverable {
         &:hover {
           color: var(--#{$color}-6);
           background-color: rgba(var(--#{$color}-rgb) / var(--alpha-soft));
@@ -300,7 +300,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}clickable {
+        &.#{$cls-prefix}hoverable {
           color: var(--#{$color}-2);
           background-color: transparent;
         }
@@ -312,7 +312,7 @@
 .#{$cls-prefix}tag.#{$cls-prefix}borderless {
   border-color: transparent;
 
-  &.#{$cls-prefix}clickable {
+  &.#{$cls-prefix}hoverable {
     &:hover {
       border-color: transparent;
     }
@@ -323,7 +323,7 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}clickable {
+    &.#{$cls-prefix}hoverable {
       border-color: transparent;
     }
   }
@@ -332,7 +332,7 @@
     &.#{$cls-prefix}#{$color} {
       border-color: transparent;
 
-      &.#{$cls-prefix}clickable {
+      &.#{$cls-prefix}hoverable {
         &:hover {
           border-color: transparent;
         }
@@ -343,7 +343,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}clickable {
+        &.#{$cls-prefix}hoverable {
           border-color: transparent;
         }
       }

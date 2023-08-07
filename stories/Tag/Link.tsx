@@ -8,7 +8,7 @@ function Example() {
       rel="noreferrer"
       href="https://github.com/lilibraries/ui"
       target="_blank"
-      clickable
+      hoverable
     >
       Github
     </Tag>

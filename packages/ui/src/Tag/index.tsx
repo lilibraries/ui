@@ -27,9 +27,9 @@ export interface TagCommonProps {
   color?: ColorValue;
   round?: boolean;
   square?: boolean;
+  hoverable?: boolean;
   borderless?: boolean;
   indicator?: ReactNode;
-  clickable?: boolean;
   disabled?: boolean;
   clearable?: boolean;
   clearProps?: ButtonProps;
@@ -61,9 +61,9 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     color,
     round,
     square,
+    hoverable: hoverableProp,
     borderless,
     indicator,
-    clickable: clickableProp,
     clearable: clearableProp,
     clearProps,
     disabled,
@@ -75,7 +75,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
-  const clickable = clickableProp !== undefined ? !!clickableProp : !!onClick;
+  const hoverable = hoverableProp !== undefined ? !!hoverableProp : !!onClick;
   const clearable = clearableProp !== undefined ? !!clearableProp : !!onClear;
 
   const classes = cn(
@@ -87,8 +87,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       [`${cls}${color}`]: color,
       [`${cls}round`]: round,
       [`${cls}square`]: square,
+      [`${cls}hoverable`]: hoverable,
       [`${cls}borderless`]: borderless,
-      [`${cls}clickable`]: clickable,
       [`${cls}disabled`]: disabled,
     },
     className
@@ -132,7 +132,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   return createElement(
     as,
     {
-      tabIndex: clickable && !disabled ? 0 : undefined,
+      tabIndex: hoverable && !disabled ? 0 : undefined,
       ...rest,
       ref,
       disabled,
