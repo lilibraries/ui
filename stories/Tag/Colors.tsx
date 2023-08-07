@@ -25,7 +25,7 @@ function Example() {
       <Flexbox gap="2x" align="center" wrap>
         <Tag
           color="red"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -34,7 +34,7 @@ function Example() {
         </Tag>
         <Tag
           color="magenta"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -43,7 +43,7 @@ function Example() {
         </Tag>
         <Tag
           color="purple"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -52,7 +52,7 @@ function Example() {
         </Tag>
         <Tag
           color="indigo"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -61,7 +61,7 @@ function Example() {
         </Tag>
         <Tag
           color="navy"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -70,7 +70,7 @@ function Example() {
         </Tag>
         <Tag
           color="blue"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -79,7 +79,7 @@ function Example() {
         </Tag>
         <Tag
           color="cyan"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -88,7 +88,7 @@ function Example() {
         </Tag>
         <Tag
           color="teal"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -97,7 +97,7 @@ function Example() {
         </Tag>
         <Tag
           color="green"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -106,7 +106,7 @@ function Example() {
         </Tag>
         <Tag
           color="lime"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -115,7 +115,7 @@ function Example() {
         </Tag>
         <Tag
           color="yellow"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -124,7 +124,7 @@ function Example() {
         </Tag>
         <Tag
           color="orange"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -133,7 +133,7 @@ function Example() {
         </Tag>
         <Tag
           color="brown"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -142,7 +142,7 @@ function Example() {
         </Tag>
         <Tag
           color="gray"
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
@@ -151,7 +151,7 @@ function Example() {
         </Tag>
         <Tag
           color={null}
-          clickable
+          hoverable
           clearable
           disabled={disabled}
           borderless={borderless}
