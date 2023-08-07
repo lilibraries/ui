@@ -34,7 +34,7 @@ export interface AvatarCommonProps {
   round?: boolean;
   color?: ColorValue;
   outlined?: boolean;
-  clickable?: boolean;
+  hoverable?: boolean;
 }
 
 export type AvatarProps<C extends ElementType = "span"> = C extends "span"
@@ -64,7 +64,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     round: roundProp,
     color: colorProp,
     outlined: outlinedProp,
-    clickable: clickableProp,
+    hoverable: hoverableProp,
     onClick,
     ...rest
   } = props;
@@ -72,13 +72,13 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
-  const { variant, round, color, outlined, clickable } = AvatarConfig.useConfig(
+  const { variant, round, color, outlined, hoverable } = AvatarConfig.useConfig(
     {
       variant: variantProp,
       round: roundProp,
       color: colorProp,
       outlined: outlinedProp,
-      clickable: clickableProp,
+      hoverable: hoverableProp,
     }
   );
 
@@ -90,7 +90,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       [`${cls}round`]: round,
       [`${cls}${color}`]: color,
       [`${cls}outlined`]: outlined,
-      [`${cls}clickable`]: clickable !== undefined ? !!clickable : !!onClick,
+      [`${cls}hoverable`]: hoverable !== undefined ? !!hoverable : !!onClick,
     },
     className
   );
@@ -140,7 +140,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   return createElement<AvatarProps>(
     as,
     {
-      tabIndex: clickable ? 0 : undefined,
+      tabIndex: hoverable ? 0 : undefined,
       ...rest,
       ref: useComposedRef(wrapperRef, ref),
       onClick: onClick,

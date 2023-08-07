@@ -9,7 +9,7 @@ function Example() {
       rel="noreferrer noopener"
       href="https://github.com/lilibraries/ui"
       target="_blank"
-      clickable
+      hoverable
     >
       <FiGithub />
     </Avatar>

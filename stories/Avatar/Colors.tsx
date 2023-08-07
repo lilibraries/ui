@@ -4,46 +4,46 @@ import { Avatar, Flexbox } from "@lilib/ui";
 function Example() {
   return (
     <Flexbox gap="4x" align="center" wrap>
-      <Avatar color="red" clickable>
+      <Avatar color="red" hoverable>
         Red
       </Avatar>
-      <Avatar color="magenta" clickable>
+      <Avatar color="magenta" hoverable>
         Magenta
       </Avatar>
-      <Avatar color="purple" clickable>
+      <Avatar color="purple" hoverable>
         Purple
       </Avatar>
-      <Avatar color="indigo" clickable>
+      <Avatar color="indigo" hoverable>
         Indigo
       </Avatar>
-      <Avatar color="navy" clickable>
+      <Avatar color="navy" hoverable>
         Navy
       </Avatar>
-      <Avatar color="blue" clickable>
+      <Avatar color="blue" hoverable>
         Blue
       </Avatar>
-      <Avatar color="cyan" clickable>
+      <Avatar color="cyan" hoverable>
         Cyan
       </Avatar>
-      <Avatar color="teal" clickable>
+      <Avatar color="teal" hoverable>
         Teal
       </Avatar>
-      <Avatar color="green" clickable>
+      <Avatar color="green" hoverable>
         Green
       </Avatar>
-      <Avatar color="lime" clickable>
+      <Avatar color="lime" hoverable>
         Lime
       </Avatar>
-      <Avatar color="yellow" clickable>
+      <Avatar color="yellow" hoverable>
         Yellow
       </Avatar>
-      <Avatar color="orange" clickable>
+      <Avatar color="orange" hoverable>
         Orange
       </Avatar>
-      <Avatar color="brown" clickable>
+      <Avatar color="brown" hoverable>
         Brown
       </Avatar>
-      <Avatar color="gray" clickable>
+      <Avatar color="gray" hoverable>
         Gray
       </Avatar>
     </Flexbox>
