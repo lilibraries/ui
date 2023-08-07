@@ -10,7 +10,7 @@ function Example() {
       <Button onClick={toggleOn}>Open</Button>
       <Backdrop
         open={open}
-        animated={false}
+        animeless
         onClose={toggleOff}
         style={{
           display: "flex",

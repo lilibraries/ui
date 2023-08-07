@@ -114,46 +114,22 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
         {hasContent && (
           <Transition
             in={!spinning}
+            classes
             durations={fast}
             exitDelay={delay}
-            keepAlive
-            classNames={{
-              [Transition.ENTER]: true,
-              [Transition.EXIT]: true,
-              [Transition.EXITING]: true,
-              [Transition.EXITED]: true,
-            }}
+            keepMounted
           >
             <span className={`${cls}spinner-switcher`}>{content}</span>
           </Transition>
         )}
-        <Transition
-          in={spinning}
-          durations={fast}
-          enterDelay={delay}
-          classNames={{
-            [Transition.ENTER]: true,
-            [Transition.EXIT]: true,
-            [Transition.EXITING]: true,
-            [Transition.EXITED]: true,
-          }}
-        >
+        <Transition in={spinning} classes durations={fast} enterDelay={delay}>
           <span className={`${cls}spinner-switcher`}>{icon}</span>
         </Transition>
       </span>
     );
   } else {
     return (
-      <Transition
-        in={spinning}
-        durations={fast}
-        enterDelay={delay}
-        classNames={{
-          [Transition.ENTER]: true,
-          [Transition.EXIT]: true,
-          [Transition.EXITING]: true,
-        }}
-      >
+      <Transition in={spinning} classes durations={fast} enterDelay={delay}>
         {(status) => {
           const enter =
             status === Transition.ENTERING || status === Transition.ENTERED;

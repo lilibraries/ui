@@ -37,11 +37,11 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
 
-  const isControlled = openProp != null;
-  const [open, setOpen] = useState(isControlled ? !!openProp : true);
+  const controlled = openProp != null;
+  const [open, setOpen] = useState(controlled ? !!openProp : true);
 
   useUpdate(() => {
-    if (isControlled) {
+    if (controlled) {
       setOpen(!!openProp);
     }
   }, [openProp]);
@@ -62,7 +62,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     if (onClose) {
       onClose(event);
     }
-    if (!isControlled) {
+    if (!controlled) {
       setOpen(false);
     }
   });

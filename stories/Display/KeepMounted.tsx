@@ -18,8 +18,8 @@ function Example() {
         open={open}
         openDelay={300}
         closeDelay={300}
-        prepared
-        keepAlive
+        firstMount
+        keepMounted
         closeOnEscape
         closeOnPageHide
         closeOnWindowBlur

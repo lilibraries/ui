@@ -15,7 +15,7 @@ function Example() {
         placement="top-start"
         content="This is a popup message."
       >
-        <Button style={{ borderStyle: "dashed" }}>Trigger</Button>
+        <Button>Trigger</Button>
       </Popup>
     </Flexbox>
   );

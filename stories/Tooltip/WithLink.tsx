@@ -14,7 +14,7 @@ function Example() {
         </a>
       }
     >
-      <Button style={{ borderStyle: "dashed" }}>Github</Button>
+      <Button>Github</Button>
     </Tooltip>
   );
 }

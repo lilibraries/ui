@@ -2,14 +2,14 @@ import {
   forwardRef,
   ElementType,
   ReactElement,
+  createElement,
   ComponentProps,
   ForwardRefExoticComponent,
-  createElement,
 } from "react";
 import cn from "classnames";
+import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import { ColorValue, IntentValue } from "../utils/types";
-import { usePersist } from "@lilib/hooks";
 
 export interface TextCommonProps {
   intent?: IntentValue;
@@ -76,6 +76,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   return createElement<TextProps>(
     as,
     {
+      tabIndex: hoverable && !disabled ? 0 : undefined,
       ...rest,
       ref,
       disabled,

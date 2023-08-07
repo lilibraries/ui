@@ -15,7 +15,7 @@
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
 
-  &-indicator {
+  &-icon {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
@@ -110,7 +110,7 @@
   &.#{$cls-prefix}round {
     border-radius: var(--border-radius-round);
 
-    & > .#{$cls-prefix}tag-indicator {
+    & > .#{$cls-prefix}tag-icon {
       border-radius: var(--border-radius-round);
     }
 
@@ -123,7 +123,7 @@
     height: var(--line-height-fixed-small);
     font-size: var(--font-size-small);
 
-    & > .#{$cls-prefix}tag-indicator {
+    & > .#{$cls-prefix}tag-icon {
       width: calc(var(--line-height-fixed-small) - 2px);
       height: calc(var(--line-height-fixed-small) - 2px);
     }
@@ -138,7 +138,7 @@
     height: var(--line-height-fixed-large);
     font-size: var(--font-size-large);
 
-    & > .#{$cls-prefix}tag-indicator {
+    & > .#{$cls-prefix}tag-icon {
       width: calc(var(--line-height-fixed-large) - 2px);
       height: calc(var(--line-height-fixed-large) - 2px);
     }
@@ -352,14 +352,14 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}tag-indicator {
+  & > .#{$cls-prefix}tag-icon {
     margin-right: -1px;
     margin-left: 0;
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
   }
 
   &.#{$cls-prefix}round {
-    & > .#{$cls-prefix}tag-indicator {
+    & > .#{$cls-prefix}tag-icon {
       border-radius: var(--border-radius-round);
     }
   }

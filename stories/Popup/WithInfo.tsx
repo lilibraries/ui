@@ -5,9 +5,10 @@ import { FiInfo } from "react-icons/fi";
 function Example() {
   return (
     <Popup
+      style={{ maxWidth: 600 }}
       placement="top-start"
       content={
-        <Info indicator={<FiInfo />} style={{ width: 600 }}>
+        <Info icon={<FiInfo />}>
           <Info.Title>What is React?</Info.Title>
           <Info.Detail>
             <p>

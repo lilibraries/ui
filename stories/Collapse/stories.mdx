@@ -24,17 +24,19 @@ Do not set `height` or `max-height` to the Collapse component. It's recommended 
 
 ## API
 
-| Property     | Type         | Description                                                       |
-| ------------ | ------------ | ----------------------------------------------------------------- |
-| `children`   | `ReactNode`  | Content                                                           |
-| `open`       | `boolean`    | Show content                                                      |
-| `openDelay`  | `number`     | Delay time on open, in milliseconds                               |
-| `closeDelay` | `number`     | Delay time on close, in milliseconds                              |
-| `appeared`   | `boolean`    | Perform collapse animation when the `open` prop is initially true |
-| `keepAlive`  | `boolean`    | Don't unmount when the component is closed                        |
-| `onOpen`     | `() => void` | Trigger on open                                                   |
-| `onOpened`   | `() => void` | Trigger on opened                                                 |
-| `onClose`    | `() => void` | Trigger on close                                                  |
-| `onClosed`   | `() => void` | Trigger on closed                                                 |
+| Property      | Type         | Description                                                       |
+| ------------- | ------------ | ----------------------------------------------------------------- |
+| `children`    | `ReactNode`  | Content                                                           |
+| `open`        | `boolean`    | Show content                                                      |
+| `openDelay`   | `number`     | Delay time on open, in milliseconds                               |
+| `closeDelay`  | `number`     | Delay time on close, in milliseconds                              |
+| `firstAppear` | `boolean`    | Perform collapse animation when the `open` prop is initially true |
+| `keepMounted` | `boolean`    | Keep mounted after the component is closed                        |
+| `onOpen`      | `() => void` | Trigger on open                                                   |
+| `onOpening`   | `() => void` | Trigger on opening                                                |
+| `onOpened`    | `() => void` | Trigger on opened                                                 |
+| `onClose`     | `() => void` | Trigger on close                                                  |
+| `onClosing`   | `() => void` | Trigger on closing                                                |
+| `onClosed`    | `() => void` | Trigger on closed                                                 |
 
 It accepts all props which the native `<div>` element supports.

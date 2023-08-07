@@ -5,7 +5,7 @@ import { FiInfo } from "react-icons/fi";
 function Example() {
   return (
     <Alert closable>
-      <Info indicator={<FiInfo />}>
+      <Info icon={<FiInfo />}>
         <Info.Title>What is React ?</Info.Title>
         <Info.Detail>
           <p>

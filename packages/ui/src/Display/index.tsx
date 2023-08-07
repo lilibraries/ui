@@ -8,8 +8,8 @@ export interface DisplayProps extends CloseEventOptions {
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
-  prepared?: boolean;
-  keepAlive?: boolean;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
@@ -23,8 +23,8 @@ const Display: FC<DisplayProps> & {
     open,
     openDelay,
     closeDelay,
-    prepared,
-    keepAlive,
+    firstMount,
+    keepMounted,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -90,7 +90,7 @@ const Display: FC<DisplayProps> & {
       openedRef.current = true;
       renderedRef.current = true;
     } else {
-      if (!keepAlive) {
+      if (!keepMounted) {
         openedRef.current = false;
       }
     }
@@ -114,9 +114,9 @@ const Display: FC<DisplayProps> & {
   let renderable = false;
   if (display) {
     renderable = true;
-  } else if (prepared && !renderedRef.current) {
+  } else if (firstMount && !renderedRef.current) {
     renderable = true;
-  } else if (keepAlive && openedRef.current) {
+  } else if (keepMounted && openedRef.current) {
     renderable = true;
   }
 

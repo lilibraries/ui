@@ -2,15 +2,17 @@
 
 .#{$cls-prefix}popup.#{$cls-prefix}tooltip {
   z-index: var(--z-index-tooltip);
+  padding: var(--space-2);
   color: var(--text-color-active);
-  box-shadow: var(--box-shadow-1);
+  box-shadow: var(--box-shadow-2);
 
-  &.#{$cls-prefix}padding {
-    padding: var(--space-2);
+  &.#{$cls-prefix}unpadding {
+    padding: 0;
   }
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
+      color: var(--text-color-solid-active);
       background-color: var(--#{$intent}-5);
       border-color: var(--#{$intent}-7);
 

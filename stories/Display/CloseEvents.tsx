@@ -21,7 +21,7 @@ function Example() {
         closeOnClickOutside={[switchRef, contentRef]}
         onClose={() => setOpen(false)}
       >
-        <div ref={contentRef}>Display content. Click outside to close.</div>
+        <div ref={contentRef}>Click outside to close.</div>
       </Display>
     </>
   );

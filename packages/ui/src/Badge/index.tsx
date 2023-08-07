@@ -154,17 +154,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   }
 
   return (
-    <Transition
-      in={visible}
-      durations={fast}
-      keepAlive={contained}
-      classNames={{
-        [Transition.ENTER]: true,
-        [Transition.EXIT]: true,
-        [Transition.EXITING]: true,
-        [Transition.EXITED]: true,
-      }}
-    >
+    <Transition in={visible} classes durations={fast} keepMounted={contained}>
       <span {...rest} ref={ref} className={classes}>
         {children}
         <span

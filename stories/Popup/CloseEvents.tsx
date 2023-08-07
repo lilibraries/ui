@@ -6,33 +6,27 @@ function Example() {
     <Flexbox gap="2x">
       <Popup
         content="This is a popup message."
-        placement="top"
         closeOnEscape
         closeOnClickOutside={false}
       >
-        <Button style={{ borderStyle: "dashed" }}>Escape Key</Button>
+        <Button>Escape Key</Button>
       </Popup>
       <Popup
         content="This is a popup message."
-        placement="top"
         closeOnPageHide
         closeOnClickOutside={false}
       >
-        <Button style={{ borderStyle: "dashed" }}>Page Hide</Button>
+        <Button>Page Hide</Button>
       </Popup>
       <Popup
         content="This is a popup message."
         closeOnWindowBlur
         closeOnClickOutside={false}
       >
-        <Button style={{ borderStyle: "dashed" }}>Window Blur</Button>
+        <Button>Window Blur</Button>
       </Popup>
-      <Popup
-        content="This is a popup message."
-        placement="top"
-        closeOnClickOutside
-      >
-        <Button style={{ borderStyle: "dashed" }}>Document Click</Button>
+      <Popup content="This is a popup message." closeOnClickOutside>
+        <Button>Document Click</Button>
       </Popup>
       <Popup
         content="This is a popup message."
@@ -41,7 +35,7 @@ function Example() {
         closeOnWindowBlur
         closeOnClickOutside
       >
-        <Button style={{ borderStyle: "dashed" }}>All</Button>
+        <Button>All</Button>
       </Popup>
     </Flexbox>
   );

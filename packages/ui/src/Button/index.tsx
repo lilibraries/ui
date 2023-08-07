@@ -262,14 +262,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       loader = (
         <Transition
           in={loading}
+          classes
           durations={fast}
           enterDelay={loadingDelay}
-          classNames={{
-            [Transition.ENTER]: true,
-            [Transition.EXIT]: true,
-            [Transition.EXITED]: true,
-            [Transition.EXITING]: true,
-          }}
         >
           <span className={`${cls}button-loader`}>
             <Spinner spinning delay={0} icon={loadingIcon} />
@@ -307,14 +302,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     return (
       <Transition
         in={!loading}
+        classes
         durations={fast}
         exitDelay={loadingDelay}
-        keepAlive
-        classNames={{
-          [Transition.EXIT]: true,
-          [Transition.EXITED]: true,
-          [Transition.EXITING]: true,
-        }}
+        keepMounted
       >
         {button}
       </Transition>

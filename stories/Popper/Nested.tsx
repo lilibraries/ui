@@ -9,18 +9,11 @@ function Example() {
       placement="bottom-start"
       content={
         <ArrowPopper placement="right" content={<Button>Button</Button>}>
-          <Button
-            endIcon={<FiChevronRight />}
-            style={{ borderStyle: "dashed" }}
-          >
-            Dropright
-          </Button>
+          <Button endIcon={<FiChevronRight />}>Dropright</Button>
         </ArrowPopper>
       }
     >
-      <Button endIcon={<FiChevronDown />} style={{ borderStyle: "dashed" }}>
-        Dropdown
-      </Button>
+      <Button endIcon={<FiChevronDown />}>Dropdown</Button>
     </ArrowPopper>
   );
 }

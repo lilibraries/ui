@@ -12,7 +12,7 @@ function Example() {
     <>
       <Alert intent="major" closable style={{ marginBottom: 16 }}>
         <Info
-          indicator={
+          icon={
             <Text as={Icon} intent="major">
               <FiInfo />
             </Text>
@@ -23,7 +23,7 @@ function Example() {
       </Alert>
       <Alert intent="minor" closable style={{ marginBottom: 16 }}>
         <Info
-          indicator={
+          icon={
             <Text as={Icon} intent="minor">
               <FiInfo />
             </Text>
@@ -34,7 +34,7 @@ function Example() {
       </Alert>
       <Alert intent="positive" closable style={{ marginBottom: 16 }}>
         <Info
-          indicator={
+          icon={
             <Text as={Icon} intent="positive">
               <FiCheckCircle />
             </Text>
@@ -45,7 +45,7 @@ function Example() {
       </Alert>
       <Alert intent="alertive" closable style={{ marginBottom: 16 }}>
         <Info
-          indicator={
+          icon={
             <Text as={Icon} intent="alertive">
               <FiAlertTriangle />
             </Text>
@@ -56,7 +56,7 @@ function Example() {
       </Alert>
       <Alert intent="negative" closable style={{ marginBottom: 16 }}>
         <Info
-          indicator={
+          icon={
             <Text as={Icon} intent="negative">
               <FiAlertCircle />
             </Text>

@@ -13,11 +13,11 @@ function Example() {
   return (
     <Popup
       content="This is a popup message."
-      on="contextmenu"
       offset={0}
-      arrowed={false}
-      followPoint
       placement="bottom-start"
+      on="contextmenu"
+      arrowless
+      followPoint
     >
       <div style={triggerStyle}>Right Click</div>
     </Popup>

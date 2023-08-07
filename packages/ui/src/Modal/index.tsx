@@ -6,15 +6,15 @@ import cn from "classnames";
 import { useClickOutside, useComposedRef } from "@lilib/hooks";
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  animated?: boolean;
   centered?: boolean;
+  animeless?: boolean;
   container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
   openDelay?: number;
   closeDelay?: number;
-  prepared?: boolean;
-  keepAlive?: boolean;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   closeOnEscape?: boolean;
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
@@ -28,14 +28,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     children,
     className,
-    animated,
+    animeless,
     container,
     open,
     defaultOpen,
     openDelay,
     closeDelay,
-    prepared,
-    keepAlive,
+    firstMount,
+    keepMounted,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
@@ -68,14 +68,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   return (
     <Backdrop
       ref={backdropRef}
-      animated={animated}
+      animeless={animeless}
       container={container}
       open={open}
       defaultOpen={defaultOpen}
       openDelay={openDelay}
       closeDelay={closeDelay}
-      prepared={prepared}
-      keepAlive={keepAlive}
+      firstMount={firstMount}
+      keepMounted={keepMounted}
       closeOnEscape={closeOnEscape}
       closeOnPageHide={closeOnPageHide}
       closeOnWindowBlur={closeOnWindowBlur}
