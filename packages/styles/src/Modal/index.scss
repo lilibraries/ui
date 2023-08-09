@@ -11,4 +11,22 @@
   border-radius: var(--border-radius-fixed-large);
   box-shadow: var(--box-shadow-5);
   transform: translate(-50%, -50%);
+  transform-origin: top left;
+  @include transition(base, opacity, transform);
+
+  &.#{$cls-prefix}transition {
+    &-enter,
+    &-exit,
+    &-exiting,
+    &-exited {
+      transform: scale(0.8) translate(-50%, -50%);
+      opacity: 0;
+    }
+
+    &-entering,
+    &-entered {
+      transform: scale(1) translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
 }

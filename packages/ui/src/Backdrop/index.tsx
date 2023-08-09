@@ -83,7 +83,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const handleClose = usePersist(() => {
     if (!controlled) {
-      setState({ open: false, enter: false });
+      setState({ open: false });
     }
     if (onClose) {
       onClose();
@@ -108,9 +108,9 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     if (onClick) {
       onClick(event);
     }
-    if (closeOnBackdropClick) {
+    if (closeOnBackdropClick && open) {
       if (!controlled) {
-        setState({ open: false, enter: false });
+        setState({ open: false });
       }
       if (onClose) {
         onClose();
@@ -120,24 +120,21 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   useUpdate(() => {
     if (controlled) {
-      const newState: {
-        open: boolean;
-        enter?: boolean;
-      } = {
-        open: !!openProp,
-      };
-      if (!openProp) {
-        newState.enter = false;
-      }
-      setState(newState);
+      setState({ open: !!openProp });
     }
   }, [openProp]);
 
   useUpdate(() => {
-    if (opened && !animeless) {
-      setState({ enter: true });
+    if (!animeless) {
+      if (open) {
+        if (opened) {
+          setState({ enter: true });
+        }
+      } else {
+        setState({ enter: false });
+      }
     }
-  }, [opened]);
+  }, [open, opened]);
 
   useSuppressBodyScrollbar(opened);
 
@@ -186,9 +183,9 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     >
       <Portal container={container}>
         <Transition
+          in={enter}
           classes
           durations={base}
-          in={enter}
           exitDelay={closeDelay}
           keepMounted
         >
