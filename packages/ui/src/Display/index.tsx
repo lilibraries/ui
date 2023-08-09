@@ -48,6 +48,7 @@ const Display: FC<DisplayProps> & {
       onOpened();
     }
   };
+
   const setClosed = () => {
     setDisplay(false);
     if (onClosed) {
@@ -55,28 +56,22 @@ const Display: FC<DisplayProps> & {
     }
   };
 
-  const [startOpenedTimer, cancelOpenedTimer] = useTimeout(
-    setOpened,
-    openDelay
-  );
-  const [startClosedTimer, cancelClosedTimer] = useTimeout(
-    setClosed,
-    closeDelay
-  );
+  const [startShowTimer, cancelShowTimer] = useTimeout(setOpened, openDelay);
+  const [startHideTimer, cancelHideTimer] = useTimeout(setClosed, closeDelay);
 
   useUpdate(
     () => {
-      cancelOpenedTimer();
-      cancelClosedTimer();
+      cancelShowTimer();
+      cancelHideTimer();
       if (open) {
         if (delayOnOpen) {
-          startOpenedTimer();
+          startShowTimer();
         } else {
           setOpened();
         }
       } else {
         if (delayOnClose) {
-          startClosedTimer();
+          startHideTimer();
         } else {
           setClosed();
         }
@@ -102,13 +97,15 @@ const Display: FC<DisplayProps> & {
         onClose();
       }
     },
-    {
-      closeOnEscape,
-      closeOnPageHide,
-      closeOnWindowBlur,
-      closeOnClickOutside,
-      closeOnDocumentClick,
-    }
+    open && display && onClose
+      ? {
+          closeOnEscape,
+          closeOnPageHide,
+          closeOnWindowBlur,
+          closeOnClickOutside,
+          closeOnDocumentClick,
+        }
+      : {}
   );
 
   let renderable = false;

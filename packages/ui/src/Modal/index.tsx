@@ -8,17 +8,20 @@ import React, {
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
 import {
-  useClickOutside,
-  useComposedRef,
-  useSetState,
   useUpdate,
+  usePersist,
+  useSetState,
+  useComposedRef,
+  useClickOutside,
 } from "@lilib/hooks";
 import Prefix from "../Prefix";
+import Portal from "../Portal";
+import Display from "../Display";
+import Duration from "../Duration";
+import Transition from "../Transition";
 import { ButtonProps } from "../Button";
 import Backdrop, { BackdropProps } from "../Backdrop";
-import Portal from "../Portal";
-import Transition from "../Transition";
-import Duration from "../Duration";
+import isPositiveNumber from "../utils/isPositiveNumber";
 
 export interface ModalProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
@@ -80,13 +83,13 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     open: openProp,
     defaultOpen,
     openDelay,
-    closeDelay,
+    closeDelay: exitDelay,
     firstMount,
     keepMounted,
     closeOnEscape,
     closeOnPageHide,
     closeOnWindowBlur,
-    closeOnClickOutside,
+    closeOnClickOutside = true,
     disableCloseWhenConfirming,
     disableCancelWhenConfirming,
     onClose,
@@ -100,85 +103,140 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
 
+  const modalRef = useRef(null);
+  const backdropRef = useRef(null);
+  const modalComposedRef = useComposedRef(modalRef, ref);
+
   const controlled = openProp != null;
   const [{ open, opened, enter }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
     return { open, opened: open, enter: open };
   });
 
-  const classes = cn(`${cls}modal`, className);
+  const handleClose = usePersist(() => {
+    if (!controlled) {
+      setState({ open: false });
+    }
+    if (onClose) {
+      onClose();
+    }
+  });
 
-  const modalRef = useRef(null);
-  const backdropRef = useRef(null);
-  const modalComposedRef = useComposedRef(modalRef, ref);
+  const handleOpened = usePersist(() => {
+    setState({ opened: true });
+    if (onOpened) {
+      onOpened();
+    }
+  });
+
+  const handleClosed = usePersist(() => {
+    setState({ opened: false });
+    if (onClosed) {
+      onClosed();
+    }
+  });
+
+  const classes = cn(
+    `${cls}modal`,
+    {
+      [`${cls}unpadding`]: unpadding,
+    },
+    className
+  );
+
+  useClickOutside(
+    closeOnClickOutside && open && opened ? modalRef : null,
+    handleClose,
+    { container: backdropRef }
+  );
 
   useUpdate(() => {
     if (controlled) {
-      const newState: {
-        open: boolean;
-        enter?: boolean;
-      } = {
-        open: !!openProp,
-      };
-      if (!openProp) {
-        newState.enter = false;
-      }
-      setState(newState);
+      setState({ open: !!openProp });
     }
   }, [openProp]);
 
   useUpdate(() => {
-    if (opened && !animeless) {
-      setState({ enter: true });
-    }
-  }, [opened]);
-
-  useClickOutside(
-    modalRef,
-    () => {
-      if (onClose) {
-        onClose();
+    if (!animeless) {
+      if (open) {
+        if (opened) {
+          setState({ enter: true });
+        }
+      } else {
+        setState({ enter: false });
       }
-    },
-    { container: backdropRef }
+    }
+  }, [open, opened]);
+
+  let closeDelay = exitDelay;
+  let result = (
+    <div {...rest} ref={modalComposedRef} className={classes}>
+      <Portal.Config container={modalRef}>{children}</Portal.Config>
+    </div>
   );
 
-  if (hideBackdrop) {
-    return null;
-  }
-
-  return (
-    <Backdrop
-      ref={backdropRef}
-      animeless={animeless}
-      container={container}
-      open={open}
-      defaultOpen={defaultOpen}
-      openDelay={openDelay}
-      closeDelay={closeDelay}
-      firstMount={firstMount}
-      keepMounted={keepMounted}
-      closeOnEscape={closeOnEscape}
-      closeOnPageHide={closeOnPageHide}
-      closeOnWindowBlur={closeOnWindowBlur}
-      closeOnBackdropClick={false}
-      onClose={onClose}
-      onOpened={onOpened}
-      onClosed={onClosed}
-    >
+  if (!animeless) {
+    if (isPositiveNumber(exitDelay)) {
+      closeDelay = exitDelay + base;
+    } else {
+      closeDelay = base;
+    }
+    result = (
       <Transition
         in={enter}
         classes
         durations={base}
-        exitDelay={closeDelay}
+        exitDelay={exitDelay}
         keepMounted
       >
-        <div {...rest} ref={modalComposedRef} className={classes}>
-          <Portal.Config container={modalRef}>{children}</Portal.Config>
-        </div>
+        {result}
       </Transition>
-    </Backdrop>
-  );
+    );
+  }
+
+  if (hideBackdrop) {
+    result = (
+      <Display
+        open={open}
+        openDelay={openDelay}
+        closeDelay={closeDelay}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
+        closeOnEscape={closeOnEscape}
+        closeOnPageHide={closeOnPageHide}
+        closeOnWindowBlur={closeOnWindowBlur}
+        onClose={handleClose}
+        onOpened={handleOpened}
+        onClosed={handleClosed}
+      >
+        <Portal container={container}>{result}</Portal>
+      </Display>
+    );
+  } else {
+    result = (
+      <Backdrop
+        ref={backdropRef}
+        animeless={animeless}
+        container={container}
+        open={open}
+        openDelay={openDelay}
+        closeDelay={closeDelay}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
+        closeOnEscape={closeOnEscape}
+        closeOnPageHide={closeOnPageHide}
+        closeOnWindowBlur={closeOnWindowBlur}
+        closeOnBackdropClick={false}
+        onClose={handleClose}
+        onOpened={handleOpened}
+        onClosed={handleClosed}
+      >
+        {result}
+      </Backdrop>
+    );
+  }
+
+  return result;
 });
 
 export default Modal;

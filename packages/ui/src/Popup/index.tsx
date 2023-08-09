@@ -1,6 +1,11 @@
-import React, { ReactElement, forwardRef, useRef, useState } from "react";
+import React, { ReactElement, forwardRef, useRef } from "react";
 import cn from "classnames";
-import { useComposedRef, usePersist, useUpdate } from "@lilib/hooks";
+import {
+  useUpdate,
+  usePersist,
+  useSetState,
+  useComposedRef,
+} from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
@@ -20,23 +25,72 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     unpadding,
     arrowless,
     animeless,
-    open,
+    open: openProp,
     defaultOpen,
     closeDelay,
+    onOpen,
     onClose,
     onOpened,
+    onClosed,
     onUpdate,
     ...rest
   } = props;
 
-  const controlled = open != null;
-  const [enter, setEnter] = useState(controlled ? !!open : !!defaultOpen);
+  const controlled = openProp != null;
+  const [{ open, opened, enter }, setState] = useSetState(() => {
+    const open = controlled ? !!openProp : !!defaultOpen;
+    return { open, opened: open, enter: open };
+  });
+
+  const handleOpen = usePersist(() => {
+    if (!controlled) {
+      setState({ open: true });
+    }
+    if (onOpen) {
+      onOpen();
+    }
+  });
+
+  const handleClose = usePersist(() => {
+    if (!controlled) {
+      setState({ open: false });
+    }
+    if (onClose) {
+      onClose();
+    }
+  });
+
+  const handleOpened = usePersist(() => {
+    setState({ opened: true });
+    if (onOpened) {
+      onOpened();
+    }
+  });
+
+  const handleClosed = usePersist(() => {
+    setState({ opened: false });
+    if (onClosed) {
+      onClosed();
+    }
+  });
 
   useUpdate(() => {
-    if (!animeless && controlled && !open) {
-      setEnter(false);
+    if (controlled) {
+      setState({ open: !!openProp });
     }
-  }, [open]);
+  }, [openProp]);
+
+  useUpdate(() => {
+    if (!animeless) {
+      if (open) {
+        if (opened) {
+          setState({ enter: true });
+        }
+      } else {
+        setState({ enter: false });
+      }
+    }
+  }, [open, opened]);
 
   const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
@@ -57,24 +111,6 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   if (!arrowless) {
     arrow = <span ref={arrowRef} className={`${cls}popup-arrow`} />;
   }
-
-  const handleOpened = usePersist(() => {
-    if (!animeless) {
-      setEnter(true);
-    }
-    if (onOpened) {
-      onOpened();
-    }
-  });
-
-  const handleClose = usePersist(() => {
-    if (!animeless && !controlled) {
-      setEnter(false);
-    }
-    if (onClose) {
-      onClose();
-    }
-  });
 
   const handleUpdate = usePersist((data: PopperUpdateData) => {
     const { x, y, arrowX, arrowY, placement } = data;
@@ -113,11 +149,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         arrow={arrow}
         arrowPadding={8}
         open={open}
-        defaultOpen={defaultOpen}
         className={classes}
         closeDelay={closeDelay}
+        onOpen={handleOpen}
         onClose={handleClose}
         onOpened={handleOpened}
+        onClosed={handleClosed}
         onUpdate={handleUpdate}
       />
     );
@@ -138,11 +175,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         arrow={arrow}
         arrowPadding={8}
         open={open}
-        defaultOpen={defaultOpen}
         className={classes}
         closeDelay={isPositiveNumber(closeDelay) ? closeDelay + fast : fast}
+        onOpen={handleOpen}
         onClose={handleClose}
         onOpened={handleOpened}
+        onClosed={handleClosed}
         onUpdate={handleUpdate}
       />
     </Transition>
