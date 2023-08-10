@@ -13,7 +13,7 @@ import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
 export interface PopupProps
-  extends Omit<PopperProps, "arrow" | "arrowPadding"> {
+  extends Omit<PopperProps, "arrow" | "arrowPadding" | "render"> {
   unpadding?: boolean;
   arrowless?: boolean;
   animeless?: boolean;
@@ -27,7 +27,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     animeless,
     open: openProp,
     defaultOpen,
-    closeDelay,
+    closeDelay: exitDelay,
     onOpen,
     onClose,
     onOpened,
@@ -140,50 +140,47 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     }
   });
 
-  if (animeless) {
-    return (
-      <Popper
-        offset={arrowless ? 4 : 14}
-        {...rest}
-        ref={composedRef}
-        arrow={arrow}
-        arrowPadding={8}
-        open={open}
-        className={classes}
-        closeDelay={closeDelay}
-        onOpen={handleOpen}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onClosed={handleClosed}
-        onUpdate={handleUpdate}
-      />
-    );
+  let render: ((popper: ReactElement) => ReactElement) | undefined;
+  let closeDelay = exitDelay;
+
+  if (!animeless) {
+    render = (popper) => {
+      return (
+        <Transition
+          in={enter}
+          classes
+          durations={fast}
+          exitDelay={exitDelay}
+          keepMounted
+        >
+          {popper}
+        </Transition>
+      );
+    };
+    if (isPositiveNumber(exitDelay)) {
+      closeDelay = exitDelay + fast;
+    } else {
+      closeDelay = fast;
+    }
   }
 
   return (
-    <Transition
-      in={enter}
-      classes
-      durations={fast}
-      exitDelay={closeDelay}
-      keepMounted
-    >
-      <Popper
-        offset={arrowless ? 4 : 14}
-        {...rest}
-        ref={composedRef}
-        arrow={arrow}
-        arrowPadding={8}
-        open={open}
-        className={classes}
-        closeDelay={isPositiveNumber(closeDelay) ? closeDelay + fast : fast}
-        onOpen={handleOpen}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onClosed={handleClosed}
-        onUpdate={handleUpdate}
-      />
-    </Transition>
+    <Popper
+      offset={arrowless ? 4 : 14}
+      {...rest}
+      ref={composedRef}
+      arrow={arrow}
+      arrowPadding={8}
+      open={open}
+      className={classes}
+      closeDelay={closeDelay}
+      render={render}
+      onOpen={handleOpen}
+      onClose={handleClose}
+      onOpened={handleOpened}
+      onClosed={handleClosed}
+      onUpdate={handleUpdate}
+    />
   );
 });
 

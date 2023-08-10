@@ -82,6 +82,7 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   closeOnPageHide?: boolean;
   closeOnWindowBlur?: boolean;
   closeOnClickOutside?: boolean;
+  render?: (popper: ReactElement) => ReactElement;
   onOpen?: () => void;
   onClose?: () => void;
   onOpened?: () => void;
@@ -114,6 +115,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     closeOnPageHide,
     closeOnWindowBlur,
     closeOnClickOutside = true,
+    render,
     onOpen,
     onClose,
     onOpened,
@@ -550,6 +552,33 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   );
 
+  let popper = (
+    <div
+      {...rest}
+      ref={composedPopperRef}
+      style={{
+        ...rest.style,
+        display: opened ? rest.style?.display : "none",
+        position: strategy === "fixed" ? "fixed" : "absolute",
+      }}
+      onMouseEnter={handlePopperMouseEnter}
+      onMouseLeave={handlePopperMouseLeave}
+      onMouseDown={handlePopperMouseDown}
+      onTouchStart={handlePopperTouchStart}
+    >
+      {isValidElement(arrow) &&
+        cloneElement(arrow, {
+          // @ts-ignore
+          ref: composeRefs(arrowRef, arrow.ref),
+        })}
+      <Portal.Config container={popperRef}>{content}</Portal.Config>
+    </div>
+  );
+
+  if (render) {
+    popper = render(popper);
+  }
+
   return (
     <>
       {isValidElement(children) &&
@@ -580,28 +609,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         onOpened={handleOpened}
         onClosed={handleClosed}
       >
-        <Portal container={container}>
-          <div
-            {...rest}
-            ref={composedPopperRef}
-            style={{
-              ...rest.style,
-              display: opened ? rest.style?.display : "none",
-              position: strategy === "fixed" ? "fixed" : "absolute",
-            }}
-            onMouseEnter={handlePopperMouseEnter}
-            onMouseLeave={handlePopperMouseLeave}
-            onMouseDown={handlePopperMouseDown}
-            onTouchStart={handlePopperTouchStart}
-          >
-            {isValidElement(arrow) &&
-              cloneElement(arrow, {
-                // @ts-ignore
-                ref: composeRefs(arrowRef, arrow.ref),
-              })}
-            <Portal.Config container={popperRef}>{content}</Portal.Config>
-          </div>
-        </Portal>
+        <Portal container={container}>{popper}</Portal>
       </Display>
     </>
   );
