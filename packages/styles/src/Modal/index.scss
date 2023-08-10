@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 9999;
+  z-index: var(--z-index-modal);
   padding: var(--space-4);
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
@@ -13,6 +13,10 @@
   transform: translate(-50%, -50%);
   transform-origin: top left;
   @include transition(base, opacity, transform);
+
+  &.#{$cls-prefix}fixed {
+    position: fixed;
+  }
 
   &.#{$cls-prefix}transition {
     &-enter,

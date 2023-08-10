@@ -20,6 +20,17 @@ $alpha-soft: 0.1 !default;
 $alpha-deep: 0.2 !default;
 $alpha-dark: 0.3 !default;
 
+$basis-0: light-color($basis, 90%) !default;
+$basis-1: light-color($basis, 80%) !default;
+$basis-2: light-color($basis, 60%) !default;
+$basis-3: light-color($basis, 40%) !default;
+$basis-4: light-color($basis, 20%) !default;
+$basis-5: $basis !default;
+$basis-6: shade-color($basis, 15%) !default;
+$basis-7: shade-color($basis, 30%) !default;
+$basis-8: shade-color($basis, 45%) !default;
+$basis-9: shade-color($basis, 60%) !default;
+
 $major-0: light-color($major, 90%) !default;
 $major-1: light-color($major, 80%) !default;
 $major-2: light-color($major, 60%) !default;
