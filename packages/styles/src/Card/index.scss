@@ -1,0 +1,97 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}card {
+  @include reset;
+
+  box-sizing: border-box;
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-fixed-base);
+
+  &-image {
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: var(--space-4);
+  }
+
+  &-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 1em;
+    min-height: 1em;
+    margin-right: var(--space-2);
+    font-size: calc(var(--line-height-base) * 1em);
+    line-height: 1;
+
+    & > img {
+      width: 1em;
+      height: 1em;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+
+  &-title {
+    flex: 1 1 0;
+    font-weight: 700;
+  }
+
+  &-headnote {
+    margin-left: var(--space-2);
+    color: var(--text-color-muted);
+  }
+
+  &-headmark {
+    margin-left: var(--space-2);
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4);
+  }
+
+  &-footnote {
+    margin-right: var(--space-2);
+    color: var(--text-color-muted);
+  }
+
+  // &-footmark {
+  // }
+
+  &-content {
+    box-sizing: border-box;
+    padding: var(--space-4);
+    overflow: auto;
+  }
+
+  &.#{$cls-prefix}has-header {
+    & > .#{$cls-prefix}card-content {
+      padding-top: 0;
+    }
+  }
+
+  &.#{$cls-prefix}has-footer {
+    & > .#{$cls-prefix}card-content {
+      padding-bottom: 0;
+    }
+  }
+
+  &.#{$cls-prefix}unpadding {
+    & > .#{$cls-prefix}card-content {
+      padding: 0;
+    }
+  }
+}
