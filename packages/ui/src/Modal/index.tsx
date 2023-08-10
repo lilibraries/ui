@@ -136,14 +136,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   });
 
-  const classes = cn(
-    `${cls}modal`,
-    {
-      [`${cls}unpadding`]: unpadding,
-    },
-    className
-  );
-
   useClickOutside(
     closeOnClickOutside && open && opened ? modalRef : null,
     handleClose,
@@ -167,6 +159,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       }
     }
   }, [open, opened]);
+
+  const classes = cn(
+    `${cls}modal`,
+    {
+      [`${cls}fixed`]: hideBackdrop,
+      [`${cls}unpadding`]: unpadding,
+    },
+    className
+  );
 
   let closeDelay = exitDelay;
   let result = (

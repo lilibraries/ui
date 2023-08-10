@@ -49,6 +49,7 @@ $base-properties: (
   "--border-radius-fixed-large": $border-radius-fixed-large,
 
   "--z-index-backdrop": $z-index-backdrop,
+  "--z-index-modal": $z-index-modal,
   "--z-index-popup": $z-index-popup,
   "--z-index-tooltip": $z-index-tooltip,
 
@@ -263,6 +264,17 @@ $light-properties: (
   "--alpha-soft": $alpha-soft,
   "--alpha-deep": $alpha-deep,
   "--alpha-dark": $alpha-dark,
+
+  "--basis-0": $basis-0,
+  "--basis-1": $basis-1,
+  "--basis-2": $basis-2,
+  "--basis-3": $basis-3,
+  "--basis-4": $basis-4,
+  "--basis-5": $basis-5,
+  "--basis-6": $basis-6,
+  "--basis-7": $basis-7,
+  "--basis-8": $basis-8,
+  "--basis-9": $basis-9,
 
   "--major-0": $major-0,
   "--major-1": $major-1,
@@ -582,6 +594,17 @@ $dark-properties: (
   "--alpha-soft": $dark-alpha-soft,
   "--alpha-deep": $dark-alpha-deep,
   "--alpha-dark": $dark-alpha-dark,
+
+  "--basis-0": $dark-basis-0,
+  "--basis-1": $dark-basis-1,
+  "--basis-2": $dark-basis-2,
+  "--basis-3": $dark-basis-3,
+  "--basis-4": $dark-basis-4,
+  "--basis-5": $dark-basis-5,
+  "--basis-6": $dark-basis-6,
+  "--basis-7": $dark-basis-7,
+  "--basis-8": $dark-basis-8,
+  "--basis-9": $dark-basis-9,
 
   "--major-0": $dark-major-0,
   "--major-1": $dark-major-1,

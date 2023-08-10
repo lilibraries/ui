@@ -20,6 +20,14 @@ const ZIndexes: FC = () => {
           />,
         ],
         [
+          <Usage type="scss" name="z-index-modal" />,
+          <Usage type="css" name="z-index-modal" />,
+          <Value
+            styleName="zIndex"
+            styleValue={`var(--${prefix}z-index-modal`}
+          />,
+        ],
+        [
           <Usage type="scss" name="z-index-popup" />,
           <Usage type="css" name="z-index-popup" />,
           <Value
