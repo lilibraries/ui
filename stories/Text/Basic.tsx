@@ -8,7 +8,6 @@ function Example() {
       <Text muted>Muted</Text>
       <Text active>Active</Text>
       <Text disabled>Disabled</Text>
-      <Text hoverable>Hoverable</Text>
     </Flexbox>
   );
 }

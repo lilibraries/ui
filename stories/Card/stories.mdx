@@ -4,6 +4,8 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Card
 
+Display a card.
+
 ## Examples
 
 ### Basic
@@ -11,3 +13,39 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
   <Story id="examples-card--basic" />
 </Canvas>
+
+### As Link
+
+<Canvas mdxSource={require("!!raw-loader!./AsLink").default}>
+  <Story id="examples-card--as-link" />
+</Canvas>
+
+### Complex
+
+<Canvas mdxSource={require("!!raw-loader!./Complex").default}>
+  <Story id="examples-card--complex" />
+</Canvas>
+
+## API
+
+| Property         | Type                                          | Description                                                                                                                                                       |
+| ---------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`       | `ReactNode`                                   | Content                                                                                                                                                           |
+| `icon`           | `ReactNode`                                   | Header icon                                                                                                                                                       |
+| `title`          | `ReactNode`                                   | Header title                                                                                                                                                      |
+| `headnote`       | `ReactNode`                                   | Header note                                                                                                                                                       |
+| `headmark`       | `ReactNode`                                   | Header mark                                                                                                                                                       |
+| `footnote`       | `ReactNode`                                   | Footer note                                                                                                                                                       |
+| `footmark`       | `ReactNode`                                   | Footer mark                                                                                                                                                       |
+| `image`          | `ReactNode`                                   | Image                                                                                                                                                             |
+| `imageSize`      | `string` \| `number`                          | Image size. It set the image height when the `imagePlacement` is `"top"` or `"bottom"`. It set the image width when the `imagePlacement` is `"start"` or `"end"`. |
+| `imagePlacement` | `"top"` \| `"bottom"` \| `"start"` \| `"end"` | Image placement, default is `"top"`                                                                                                                               |
+| `splited`        | `boolean`                                     | Split header and footer by border and background color                                                                                                            |
+| `shadowed`       | `boolean`                                     | Show shadow                                                                                                                                                       |
+| `hoverable`      | `boolean`                                     | Show hover shadow and active shadow                                                                                                                               |
+| `unpadding`      | `boolean`                                     | Remove content padding                                                                                                                                            |
+| `borderless`     | `boolean`                                     | Remove borders                                                                                                                                                    |
+| `renderHeader`   | `(header: ReactNode) => ReactNode`            | Custom header render                                                                                                                                              |
+| `renderFooter`   | `(footer: ReactNode) => ReactNode`            | Custom footer render                                                                                                                                              |
+
+It accepts all props which the `as` element type supports.

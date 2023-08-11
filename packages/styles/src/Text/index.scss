@@ -3,20 +3,24 @@
 .#{$cls-prefix}text {
   @include reset;
 
-  &.#{$cls-prefix}muted {
-    color: var(--text-color-muted);
+  &.#{$cls-prefix}small {
+    font-size: var(--font-size-small);
   }
 
-  &.#{$cls-prefix}hoverable {
-    cursor: pointer;
+  &.#{$cls-prefix}smaller {
+    font-size: var(--font-size-smaller);
+  }
 
-    &:hover {
-      color: var(--text-color-hover);
-    }
+  &.#{$cls-prefix}large {
+    font-size: var(--font-size-large);
+  }
 
-    &:active {
-      color: var(--text-color-active);
-    }
+  &.#{$cls-prefix}larger {
+    font-size: var(--font-size-larger);
+  }
+
+  &.#{$cls-prefix}muted {
+    color: var(--text-color-muted);
   }
 
   &.#{$cls-prefix}active {
@@ -28,6 +32,20 @@
 
     &:active {
       color: var(--text-color-active);
+    }
+  }
+
+  &.#{$cls-prefix}hoverable {
+    cursor: pointer;
+
+    &:hover {
+      color: var(--major-6);
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: var(--major-7);
+      text-decoration: underline;
     }
   }
 
@@ -95,22 +113,5 @@
         }
       }
     }
-  }
-}
-
-a.#{$cls-prefix}text {
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &:active {
-    text-decoration: underline;
-  }
-
-  &[disabled] {
-    text-decoration: none;
-    cursor: not-allowed;
   }
 }
