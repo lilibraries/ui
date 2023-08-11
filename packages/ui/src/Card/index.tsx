@@ -1,17 +1,18 @@
 import React, {
+  ReactNode,
   forwardRef,
   ElementType,
   ReactElement,
   createElement,
+  CSSProperties,
   ComponentProps,
   ForwardRefExoticComponent,
-  ReactNode,
 } from "react";
 import cn from "classnames";
-import isString from "lodash/isString";
 import Prefix from "../Prefix";
-import Image, { ImageProps } from "../Image";
+import Direction from "../Direction";
 import isRenderableNode from "../utils/isRenderableNode";
+import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 
 export interface CardCommonProps {
   icon?: ReactNode;
@@ -20,7 +21,8 @@ export interface CardCommonProps {
   headmark?: ReactNode;
   footnote?: ReactNode;
   footmark?: ReactNode;
-  image?: string | ImageProps;
+  image?: ReactNode;
+  imageSize?: string | number;
   imagePlacement?: "top" | "bottom" | "start" | "end";
   splited?: boolean;
   shadowed?: boolean;
@@ -34,11 +36,11 @@ export interface CardCommonProps {
 export type CardProps<C extends ElementType = "div"> = C extends "div"
   ? {
       as?: C;
-    } & ComponentProps<C> &
+    } & Omit<ComponentProps<C>, "title"> &
       CardCommonProps
   : {
       as: C;
-    } & ComponentProps<C> &
+    } & Omit<ComponentProps<C>, "title"> &
       CardCommonProps;
 
 export interface CardComponent
@@ -57,8 +59,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     headmark,
     footnote,
     footmark,
-    image: imageProp,
-    imagePlacement,
+    image: img,
+    imageSize,
+    imagePlacement = "top",
     splited,
     shadowed,
     hoverable,
@@ -70,6 +73,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
 
   const hasIcon = isRenderableNode(icon);
   const hasTitle = isRenderableNode(title);
@@ -85,15 +89,21 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   let hasHeader = hasIcon || hasTitle || hasHeadnote || hasHeadmark;
   let hasFooter = hasFootnote || hasFootmark;
 
-  if (!!imageProp) {
-    if (isString(imageProp)) {
-      image = <Image src={imageProp} />;
-    } else {
-      image = <Image {...imageProp} />;
+  if (isRenderableNode(img)) {
+    let style: CSSProperties | undefined;
+    if (isCSSPropertyValue(imageSize)) {
+      if (imagePlacement === "top" || imagePlacement === "bottom") {
+        style = { height: imageSize };
+      }
+      if (imagePlacement === "start" || imagePlacement === "end") {
+        style = { width: imageSize };
+      }
     }
-  }
-  if (image) {
-    image = <div className={`${cls}card-image`}>{image}</div>;
+    image = (
+      <div style={style} className={`${cls}card-image`}>
+        {img}
+      </div>
+    );
     hasImage = true;
   }
 
@@ -113,11 +123,14 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
       </div>
     );
   }
+
   if (hasFooter) {
     footer = (
       <div className={`${cls}card-footer`}>
         <span className={`${cls}card-footnote`}>{footnote}</span>
-        <span className={`${cls}card-footmark`}>{footmark}</span>
+        {hasFootmark && (
+          <span className={`${cls}card-footmark`}>{footmark}</span>
+        )}
       </div>
     );
   }
@@ -134,14 +147,15 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const classes = cn(
     `${cls}card`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}splited`]: splited,
       [`${cls}shadowed`]: shadowed,
       [`${cls}hoverable`]: hoverable,
       [`${cls}unpadding`]: unpadding,
       [`${cls}borderless`]: borderless,
-      [`${cls}has-image`]: hasImage,
       [`${cls}has-header`]: hasHeader,
       [`${cls}has-footer`]: hasFooter,
+      [`${cls}image-placement-${imagePlacement}`]: hasImage,
     },
     className
   );
@@ -149,6 +163,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   return createElement(
     as,
     {
+      tabIndex: hoverable ? 0 : undefined,
       ...rest,
       ref,
       className: classes,
@@ -156,7 +171,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     image,
     <div className={`${cls}card-main`}>
       {header}
-      <div className={`${cls}card-content`}>{children}</div>
+      {isRenderableNode(children) && (
+        <div className={`${cls}card-content`}>{children}</div>
+      )}
       {footer}
     </div>
   );

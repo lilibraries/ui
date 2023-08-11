@@ -11,9 +11,12 @@ import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import { ColorValue, IntentValue } from "../utils/types";
 
+export type TextSize = "small" | "large" | "smaller" | "larger";
+
 export interface TextCommonProps {
   intent?: IntentValue;
   color?: ColorValue;
+  size?: TextSize;
   muted?: boolean;
   active?: boolean;
   disabled?: boolean;
@@ -42,6 +45,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     as = "span",
     intent,
     color,
+    size,
     muted,
     active,
     disabled,
@@ -56,6 +60,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     {
       [`${cls}${intent}`]: intent,
       [`${cls}${color}`]: color,
+      [`${cls}${size}`]: size,
       [`${cls}muted`]: muted,
       [`${cls}active`]: active,
       [`${cls}disabled`]: disabled,

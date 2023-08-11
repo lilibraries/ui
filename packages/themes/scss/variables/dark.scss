@@ -141,8 +141,8 @@ $dark-background-color-solid-active: light-color($basis, 80%) !default;
 $dark-background-color-solid-inactive: $dark-basis !default;
 $dark-background-color-solid-disabled: shade-color($basis, 20%) !default;
 
-$dark-box-shadow-1: 0 1px 3px rgba($black, 0.75) !default;
-$dark-box-shadow-2: 0 2px 6px rgba($black, 0.75) !default;
-$dark-box-shadow-3: 0 3px 9px rgba($black, 0.75) !default;
-$dark-box-shadow-4: 0 5px 15px rgba($black, 0.75) !default;
-$dark-box-shadow-5: 0 8px 24px rgba($black, 0.75) !default;
+$dark-box-shadow-1: 0 1px 3px rgba($black, 0.85) !default;
+$dark-box-shadow-2: 0 2px 6px rgba($black, 0.85) !default;
+$dark-box-shadow-3: 0 3px 9px rgba($black, 0.85) !default;
+$dark-box-shadow-4: 0 5px 15px rgba($black, 0.85) !default;
+$dark-box-shadow-5: 0 8px 24px rgba($black, 0.85) !default;

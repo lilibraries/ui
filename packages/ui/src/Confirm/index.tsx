@@ -157,7 +157,6 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
           <Button
             size="small"
             color="gray"
-            variant="hollow"
             borderless
             disabled={confirming && disableCancelWhenConfirming}
             {...cancelProps}
