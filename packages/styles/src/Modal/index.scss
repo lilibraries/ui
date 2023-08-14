@@ -2,17 +2,22 @@
 
 .#{$cls-prefix}modal {
   position: absolute;
-  top: 50%;
+  top: 32px;
   left: 50%;
   z-index: var(--z-index-modal);
-  padding: var(--space-4);
-  background-color: var(--background-color-overlay);
-  border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-large);
-  box-shadow: var(--box-shadow-5);
-  transform: translate(-50%, -50%);
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  transform: translateX(-50%);
   transform-origin: top left;
   @include transition(base, opacity, transform);
+
+  &.#{$cls-prefix}card {
+    border-radius: var(--border-radius-fixed-large);
+
+    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
+      font-size: var(--font-size-larger);
+    }
+  }
 
   &.#{$cls-prefix}fixed {
     position: fixed;
@@ -23,14 +28,49 @@
     &-exit,
     &-exiting,
     &-exited {
-      transform: scale(0.8) translate(-50%, -50%);
+      transform: translateX(-50%) translateY(-32px);
       opacity: 0;
     }
 
     &-entering,
     &-entered {
-      transform: scale(1) translate(-50%, -50%);
+      transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+  }
+
+  &.#{$cls-prefix}centered {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: top left;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting,
+      &-exited {
+        transform: scale(0.8) translate(-50%, -50%);
+        opacity: 0;
+      }
+
+      &-entering,
+      &-entered {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+  }
+
+  &.#{$cls-prefix}small {
+    width: 300px;
+  }
+
+  &.#{$cls-prefix}medium {
+    width: 600px;
+  }
+
+  &.#{$cls-prefix}large {
+    width: 900px;
   }
 }

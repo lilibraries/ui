@@ -14,20 +14,24 @@ import {
   useComposedRef,
   useClickOutside,
 } from "@lilib/hooks";
+import Card from "../Card";
 import Prefix from "../Prefix";
 import Portal from "../Portal";
+import Flexbox from "../Flexbox";
 import Display from "../Display";
 import Duration from "../Duration";
 import Transition from "../Transition";
-import { ButtonProps } from "../Button";
+import Button, { ButtonProps } from "../Button";
 import Backdrop, { BackdropProps } from "../Backdrop";
+import CloseIcon from "../icons/CloseIcon";
 import isPositiveNumber from "../utils/isPositiveNumber";
+import isRenderableNode from "../utils/isRenderableNode";
+import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 
 export interface ModalProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   width?: "small" | "medium" | "large" | string | number;
-  unpadding?: boolean;
-  animeless?: boolean;
+  centered?: boolean;
   icon?: ReactNode;
   title?: ReactNode;
   headnote?: ReactNode;
@@ -40,6 +44,10 @@ export interface ModalProps
   confirmProps?: ButtonProps;
   cancelLabel?: ReactNode;
   cancelProps?: ButtonProps;
+  splited?: boolean;
+  unpadding?: boolean;
+  borderless?: boolean;
+  animeless?: boolean;
   container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
@@ -58,15 +66,17 @@ export interface ModalProps
   onClosed?: () => void;
   onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
   onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
+  renderHeader?: (header: ReactNode) => ReactNode;
+  renderFooter?: (footer: ReactNode) => ReactNode;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     children,
+    style,
     className,
     width,
-    unpadding,
-    animeless,
+    centered,
     icon,
     title,
     headnote,
@@ -79,6 +89,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     confirmProps,
     cancelLabel,
     cancelProps,
+    splited,
+    unpadding,
+    borderless,
+    animeless,
     container,
     open: openProp,
     defaultOpen,
@@ -97,6 +111,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     onClosed,
     onConfirm,
     onCancel,
+    renderHeader,
+    renderFooter,
     ...rest
   } = props;
 
@@ -160,20 +176,94 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   }, [open, opened]);
 
+  const isPresetSize = ["small", "medium", "large"].includes(String(width));
+  const isCustomSize = !isPresetSize && isCSSPropertyValue(width);
+
   const classes = cn(
     `${cls}modal`,
     {
       [`${cls}fixed`]: hideBackdrop,
-      [`${cls}unpadding`]: unpadding,
+      [`${cls}centered`]: centered,
+      [`${cls}${width}`]: isPresetSize,
     },
     className
   );
 
+  let headmark: ReactNode;
+  let footmark: ReactNode;
   let closeDelay = exitDelay;
+
+  if (showClose) {
+    headmark = (
+      <Button
+        round
+        iconOnly
+        borderless
+        variant="hollow"
+        {...closeProps}
+        // onClick={handleClose}
+        // className={cn(`${cls}modal-closer`, closeProps?.className)}
+      >
+        <CloseIcon />
+      </Button>
+    );
+  }
+
+  const hasConfirmLabel = isRenderableNode(confirmLabel);
+  const hasCancelLabel = isRenderableNode(cancelLabel);
+
+  if (hasConfirmLabel || hasCancelLabel) {
+    footmark = (
+      <Flexbox gap="1x">
+        {hasCancelLabel && (
+          <Button
+            color="gray"
+            variant="hollow"
+            borderless
+            // disabled={confirming && disableCancelWhenConfirming}
+            {...cancelProps}
+            // onClick={handleCancel}
+          >
+            {cancelLabel}
+          </Button>
+        )}
+        {hasConfirmLabel && (
+          <Button
+            intent="major"
+            variant="solid"
+            borderless
+            // loading={confirming}
+            loadingPlacement="start"
+            {...confirmProps}
+            // onClick={handleConfirm}
+          >
+            {confirmLabel}
+          </Button>
+        )}
+      </Flexbox>
+    );
+  }
+
   let result = (
-    <div {...rest} ref={modalComposedRef} className={classes}>
+    <Card
+      {...rest}
+      ref={modalComposedRef}
+      style={isCustomSize ? { ...style, width } : style}
+      className={classes}
+      icon={icon}
+      title={title}
+      headnote={headnote}
+      headmark={headmark}
+      footnote={footnote}
+      footmark={footmark}
+      splited={splited}
+      unpadding={unpadding}
+      borderless={borderless}
+      renderHeader={renderHeader}
+      renderFooter={renderFooter}
+    >
       <Portal.Config container={modalRef}>{children}</Portal.Config>
-    </div>
+    </Card>
   );
 
   if (!animeless) {
