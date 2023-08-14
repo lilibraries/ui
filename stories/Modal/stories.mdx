@@ -4,6 +4,8 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Modal
 
+Modal components.
+
 ## Examples
 
 ### Basic
@@ -11,3 +13,93 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
   <Story id="examples-modal--basic" />
 </Canvas>
+
+### Centered
+
+<Canvas mdxSource={require("!!raw-loader!./Centered").default}>
+  <Story id="examples-modal--centered" />
+</Canvas>
+
+### Blurred
+
+<Canvas mdxSource={require("!!raw-loader!./Blurred").default}>
+  <Story id="examples-modal--blurred" />
+</Canvas>
+
+### Dialog
+
+<Canvas mdxSource={require("!!raw-loader!./Dialog").default}>
+  <Story id="examples-modal--dialog" />
+</Canvas>
+
+### Complex
+
+<Canvas mdxSource={require("!!raw-loader!./Complex").default}>
+  <Story id="examples-modal--complex" />
+</Canvas>
+
+### Long Content
+
+<Canvas mdxSource={require("!!raw-loader!./LongContent").default}>
+  <Story id="examples-modal--long-content" />
+</Canvas>
+
+### Sizes
+
+<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
+  <Story id="examples-modal--sizes" />
+</Canvas>
+
+### Confirming
+
+The `onConfirm` event handler can return a Promise object to show loading spinner of confirm button.
+
+<Canvas mdxSource={require("!!raw-loader!./Confirming").default}>
+  <Story id="examples-modal--confirming" />
+</Canvas>
+
+## API
+
+| Property                      | Type                                                                                        | Description                                                                                                                                                                                                                                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`                    | `ReactNode`                                                                                 | Content                                                                                                                                                                                                                                                                                              |
+| `width`                       | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Width                                                                                                                                                                                                                                                                                                |
+| `centered`                    | `boolean`                                                                                   | Display modal in the middle of the screen                                                                                                                                                                                                                                                            |
+| `icon`                        | `ReactNode`                                                                                 | Header icon                                                                                                                                                                                                                                                                                          |
+| `title`                       | `ReactNode`                                                                                 | Header title                                                                                                                                                                                                                                                                                         |
+| `headnote`                    | `ReactNode`                                                                                 | Header note                                                                                                                                                                                                                                                                                          |
+| `footnote`                    | `ReactNode`                                                                                 | Footer note                                                                                                                                                                                                                                                                                          |
+| `showClose`                   | `boolean`                                                                                   | Show close button                                                                                                                                                                                                                                                                                    |
+| `closeProps`                  | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom close button props                                                                                                                                                                                                                                                                            |
+| `hideBackdrop`                | `boolean`                                                                                   | Hide backdrop                                                                                                                                                                                                                                                                                        |
+| `backdropProps`               | [`BackdropProps`](?path=/story/overlays-backdrop--page#api)                                 | Custom backdrop props                                                                                                                                                                                                                                                                                |
+| `confirmLabel`                | `ReactNode`                                                                                 | Confirm button label                                                                                                                                                                                                                                                                                 |
+| `confirmProps`                | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom confirm button props                                                                                                                                                                                                                                                                          |
+| `cancelLabel`                 | `ReactNode`                                                                                 | Cancel button label                                                                                                                                                                                                                                                                                  |
+| `cancelProps`                 | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom cancel button props                                                                                                                                                                                                                                                                           |
+| `splited`                     | `boolean`                                                                                   | Split header and footer by border and background color                                                                                                                                                                                                                                               |
+| `unpadding`                   | `boolean`                                                                                   | Remove content padding                                                                                                                                                                                                                                                                               |
+| `borderless`                  | `boolean`                                                                                   | Remove borders                                                                                                                                                                                                                                                                                       |
+| `animeless`                   | `boolean`                                                                                   | Disable animation                                                                                                                                                                                                                                                                                    |
+| `container`                   | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the Modal should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object refrences a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig) |
+| `open`                        | `boolean`                                                                                   | Controlled open                                                                                                                                                                                                                                                                                      |
+| `defaultOpen`                 | `boolean`                                                                                   | Uncontrolled open                                                                                                                                                                                                                                                                                    |
+| `openDelay`                   | `number`                                                                                    | Open delay, in milliseconds                                                                                                                                                                                                                                                                          |
+| `closeDelay`                  | `number`                                                                                    | Close delay, in milliseconds                                                                                                                                                                                                                                                                         |
+| `firstMount`                  | `boolean`                                                                                   | Mount on first time, no matter whether the component is opened                                                                                                                                                                                                                                       |
+| `keepMounted`                 | `boolean`                                                                                   | Keep mounted after the component is closed                                                                                                                                                                                                                                                           |
+| `closeOnEscape`               | `boolean`                                                                                   | Close when pressing the <kbd>ESC</kbd> key                                                                                                                                                                                                                                                           |
+| `closeOnPageHide`             | `boolean`                                                                                   | Close when the page is hidden                                                                                                                                                                                                                                                                        |
+| `closeOnWindowBlur`           | `boolean`                                                                                   | Close when the `window` loses focus                                                                                                                                                                                                                                                                  |
+| `closeOnClickOutside`         | `boolean`                                                                                   | Close when clicking outside the modal layer, default is `true`                                                                                                                                                                                                                                       |
+| `disableCloseWhenConfirming`  | `boolean`                                                                                   | Disable close event when confirming                                                                                                                                                                                                                                                                  |
+| `disableCancelWhenConfirming` | `boolean`                                                                                   | Disable cancel button when confirming                                                                                                                                                                                                                                                                |
+| `onClose`                     | `() => void`                                                                                | Close event                                                                                                                                                                                                                                                                                          |
+| `onOpened`                    | `() => void`                                                                                | Opened event                                                                                                                                                                                                                                                                                         |
+| `onClosed`                    | `() => void`                                                                                | Closed event                                                                                                                                                                                                                                                                                         |
+| `onConfirm`                   | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code>               | Confirm event                                                                                                                                                                                                                                                                                        |
+| `onCancel`                    | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                                | Cancel event                                                                                                                                                                                                                                                                                         |
+| `renderHeader`                | `(header: ReactNode) => ReactNode`                                                          | Custom header render                                                                                                                                                                                                                                                                                 |
+| `renderFooter`                | `(footer: ReactNode) => ReactNode`                                                          | Custom footer render                                                                                                                                                                                                                                                                                 |
+
+It accepts all props which the native `<div>` element supports.

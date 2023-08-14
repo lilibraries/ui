@@ -43,7 +43,7 @@
     flex: 0 0 auto;
     align-items: center;
     box-sizing: border-box;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-4);
   }
 
   &-icon {
@@ -91,7 +91,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-4);
   }
 
   &-footnote {
@@ -185,6 +185,7 @@
 
   &.#{$cls-prefix}splited {
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
+      padding: var(--space-2) var(--space-4);
       background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
       border-bottom: 1px solid var(--border-color-inactive);
       border-top-left-radius: var(--border-radius-fixed-base);
@@ -192,6 +193,7 @@
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
+      padding: var(--space-2) var(--space-4);
       background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
       border-top: 1px solid var(--border-color-inactive);
       border-bottom-right-radius: var(--border-radius-fixed-base);

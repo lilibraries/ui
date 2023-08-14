@@ -24,6 +24,7 @@ import Transition from "../Transition";
 import Button, { ButtonProps } from "../Button";
 import Backdrop, { BackdropProps } from "../Backdrop";
 import CloseIcon from "../icons/CloseIcon";
+import isPromise from "../utils/isPromise";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import isRenderableNode from "../utils/isRenderableNode";
 import isCSSPropertyValue from "../utils/isCSSPropertyValue";
@@ -124,12 +125,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const modalComposedRef = useComposedRef(modalRef, ref);
 
   const controlled = openProp != null;
-  const [{ open, opened, enter }, setState] = useSetState(() => {
+  const [{ open, opened, enter, confirming }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open };
+    return { open, opened: open, enter: open, confirming: false };
   });
 
   const handleClose = usePersist(() => {
+    if (confirming && disableCloseWhenConfirming) {
+      return;
+    }
     if (!controlled) {
       setState({ open: false });
     }
@@ -137,6 +141,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       onClose();
     }
   });
+
+  const handleButtonClose = usePersist(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      if (closeProps?.onClick) {
+        closeProps?.onClick(event);
+      }
+      handleClose();
+    }
+  );
 
   const handleOpened = usePersist(() => {
     setState({ opened: true });
@@ -149,6 +162,45 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     setState({ opened: false });
     if (onClosed) {
       onClosed();
+    }
+  });
+
+  const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    if (cancelProps?.onClick) {
+      cancelProps?.onClick(event);
+    }
+    if (confirming && disableCancelWhenConfirming) {
+      return;
+    }
+    if (onCancel) {
+      onCancel(event);
+    }
+    handleClose();
+  });
+
+  const handleConfirm = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    if (confirmProps?.onClick) {
+      confirmProps?.onClick(event);
+    }
+    let result: Promise<any> | void = undefined;
+    if (onConfirm) {
+      result = onConfirm(event);
+    }
+    if (isPromise(result)) {
+      setState({ confirming: true });
+      result.then(
+        (value) => {
+          setState({ confirming: false });
+          handleClose();
+          return value;
+        },
+        (reason) => {
+          setState({ confirming: false });
+          throw reason;
+        }
+      );
+    } else {
+      handleClose();
     }
   });
 
@@ -199,10 +251,11 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         round
         iconOnly
         borderless
+        size="large"
         variant="hollow"
+        disabled={confirming && disableCloseWhenConfirming}
         {...closeProps}
-        // onClick={handleClose}
-        // className={cn(`${cls}modal-closer`, closeProps?.className)}
+        onClick={handleButtonClose}
       >
         <CloseIcon />
       </Button>
@@ -214,15 +267,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   if (hasConfirmLabel || hasCancelLabel) {
     footmark = (
-      <Flexbox gap="1x">
+      <Flexbox gap="2x">
         {hasCancelLabel && (
           <Button
             color="gray"
             variant="hollow"
             borderless
-            // disabled={confirming && disableCancelWhenConfirming}
+            disabled={confirming && disableCancelWhenConfirming}
             {...cancelProps}
-            // onClick={handleCancel}
+            onClick={handleCancel}
           >
             {cancelLabel}
           </Button>
@@ -232,10 +285,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             intent="major"
             variant="solid"
             borderless
-            // loading={confirming}
+            loading={confirming}
             loadingPlacement="start"
             {...confirmProps}
-            // onClick={handleConfirm}
+            onClick={handleConfirm}
           >
             {confirmLabel}
           </Button>
@@ -306,6 +359,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   } else {
     result = (
       <Backdrop
+        {...backdropProps}
         ref={backdropRef}
         animeless={animeless}
         container={container}

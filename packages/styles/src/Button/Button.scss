@@ -7,7 +7,7 @@
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
-  padding: var(--space-2) var(--space-4);
+  padding: calc(var(--space-1) + 2px) calc((var(--space-1) + 2px) * 2);
   color: var(--text-color-base);
   font-weight: 400;
   font-size: var(--font-size-base);
@@ -42,7 +42,7 @@
   }
 
   &.#{$cls-prefix}small {
-    padding: var(--space-1) var(--space-2);
+    padding: var(--space-1) calc(var(--space-1) * 2);
     font-size: var(--font-size-small);
     line-height: var(--line-height-fixed-small);
 
@@ -59,7 +59,7 @@
   }
 
   &.#{$cls-prefix}large {
-    padding: var(--space-3) var(--space-6);
+    padding: calc(var(--space-1) + 4px) calc((var(--space-1) + 4px) * 2);
     font-size: var(--font-size-large);
     line-height: var(--line-height-fixed-large);
 
@@ -93,7 +93,7 @@
   }
 
   &.#{$cls-prefix}icon-only {
-    padding: var(--space-2);
+    padding: calc(var(--space-1) + 2px);
     line-height: 1;
 
     &.#{$cls-prefix}small {
@@ -101,7 +101,7 @@
     }
 
     &.#{$cls-prefix}large {
-      padding: var(--space-3);
+      padding: calc(var(--space-1) + 4px);
     }
   }
 
