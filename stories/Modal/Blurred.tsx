@@ -8,7 +8,12 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Modal open={open} onClose={toggleOff}>
+      <Modal
+        open={open}
+        onClose={toggleOff}
+        centered
+        backdropProps={{ blurred: true }}
+      >
         <Spinner spinning /> Loading...
       </Modal>
     </>

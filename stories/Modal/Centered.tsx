@@ -8,7 +8,7 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Modal open={open} onClose={toggleOff}>
+      <Modal centered open={open} onClose={toggleOff}>
         <Spinner spinning /> Loading...
       </Modal>
     </>

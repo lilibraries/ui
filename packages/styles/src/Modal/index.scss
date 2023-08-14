@@ -5,7 +5,7 @@
   top: 32px;
   left: 50%;
   z-index: var(--z-index-modal);
-  max-width: calc(100vw - 32px);
+  max-width: calc(100vw - 64px);
   max-height: calc(100vh - 64px);
   transform: translateX(-50%);
   transform-origin: top left;
@@ -13,9 +13,22 @@
 
   &.#{$cls-prefix}card {
     border-radius: var(--border-radius-fixed-large);
+    box-shadow: var(--box-shadow-5);
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      font-size: var(--font-size-larger);
+      font-size: var(--font-size-large);
+    }
+
+    &.#{$cls-prefix}splited {
+      & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
+        border-top-left-radius: var(--border-radius-fixed-large);
+        border-top-right-radius: var(--border-radius-fixed-large);
+      }
+
+      & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
+        border-bottom-right-radius: var(--border-radius-fixed-large);
+        border-bottom-left-radius: var(--border-radius-fixed-large);
+      }
     }
   }
 
