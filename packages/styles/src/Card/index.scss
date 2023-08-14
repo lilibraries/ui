@@ -43,7 +43,7 @@
     flex: 0 0 auto;
     align-items: center;
     box-sizing: border-box;
-    padding: var(--space-4);
+    padding: var(--space-2) var(--space-4);
   }
 
   &-icon {
@@ -72,12 +72,16 @@
   }
 
   &-headnote {
+    display: flex;
     flex: 0 0 auto;
+    align-items: center;
     margin-left: var(--space-2);
   }
 
   &-headmark {
+    display: flex;
     flex: 0 0 auto;
+    align-items: center;
     margin-left: var(--space-2);
   }
 
@@ -87,12 +91,13 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: var(--space-4);
+    padding: var(--space-2) var(--space-4);
   }
 
   &-footnote {
+    display: flex;
     flex: 1 1 0;
-    @include text-overflow;
+    align-items: center;
 
     & + .#{$cls-prefix}card-footmark {
       margin-left: var(--space-2);
@@ -100,7 +105,9 @@
   }
 
   &-footmark {
+    display: flex;
     flex: 0 0 auto;
+    align-items: center;
   }
 
   &-content {
