@@ -26,7 +26,7 @@ function Example() {
         <Button>Window Blur</Button>
       </Popup>
       <Popup content="This is a popup message." closeOnClickOutside>
-        <Button>Document Click</Button>
+        <Button>Click Outside</Button>
       </Popup>
       <Popup
         content="This is a popup message."
