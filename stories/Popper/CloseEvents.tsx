@@ -15,7 +15,7 @@ function Example() {
         <Button>Window Blur</Button>
       </ArrowPopper>
       <ArrowPopper closeOnClickOutside>
-        <Button>Document Click</Button>
+        <Button>Click Outside</Button>
       </ArrowPopper>
       <ArrowPopper
         closeOnEscape
