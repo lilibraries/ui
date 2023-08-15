@@ -1,0 +1,6 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}divider {
+  margin: var(--space-4) 0;
+  border-top: thin solid var(--border-color-inactive);
+}

@@ -2,8 +2,10 @@ import React, { FC, ReactNode, useLayoutEffect } from "react";
 import { inBrowser } from "@lilib/utils";
 import { usePersist } from "@lilib/hooks";
 
+export type FocusingType = "tab" | "always";
+
 export interface FocusingProps {
-  type?: "tab" | "always";
+  type?: FocusingType;
   attr?: string;
   children?: ReactNode;
 }
