@@ -14,6 +14,8 @@ import Direction from "../Direction";
 import isRenderableNode from "../utils/isRenderableNode";
 import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 
+export type CardImagePlacement = "top" | "bottom" | "start" | "end";
+
 export interface CardCommonProps {
   icon?: ReactNode;
   title?: ReactNode;
@@ -23,7 +25,7 @@ export interface CardCommonProps {
   footmark?: ReactNode;
   image?: ReactNode;
   imageSize?: string | number;
-  imagePlacement?: "top" | "bottom" | "start" | "end";
+  imagePlacement?: CardImagePlacement;
   splited?: boolean;
   shadowed?: boolean;
   hoverable?: boolean;

@@ -29,9 +29,11 @@ import isPositiveNumber from "../utils/isPositiveNumber";
 import isRenderableNode from "../utils/isRenderableNode";
 import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 
+export type ModalWidthSize = "small" | "medium" | "large";
+
 export interface ModalProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
-  width?: "small" | "medium" | "large" | string | number;
+  width?: ModalWidthSize | string | number;
   centered?: boolean;
   icon?: ReactNode;
   title?: ReactNode;
