@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxProps, FlexboxWrap } from "@lilib/ui";
+import { Button, Flexbox, FlexboxWrap } from "@lilib/ui";
 
-function Wrap(props: FlexboxProps) {
+function Example() {
   const [wrap, setWrap] = useState<FlexboxWrap>("wrap");
 
   const buttons = [];
@@ -22,11 +22,11 @@ function Wrap(props: FlexboxProps) {
         <option value="wrap-reverse">wrap-reverse</option>
       </select>
 
-      <Flexbox gap="4x" {...props} wrap={wrap}>
+      <Flexbox gap="4x" wrap={wrap}>
         {buttons}
       </Flexbox>
     </Flexbox>
   );
 }
 
-export default Wrap;
+export default Example;

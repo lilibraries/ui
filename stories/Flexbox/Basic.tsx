@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Flexbox, FlexboxProps } from "@lilib/ui";
+import { Button, Flexbox } from "@lilib/ui";
 
-function Basic(props: FlexboxProps) {
+function Example() {
   return (
-    <Flexbox gap="4x" {...props}>
+    <Flexbox gap="4x">
       <Button>1</Button>
       <Button>2</Button>
       <Button>3</Button>
@@ -11,4 +11,4 @@ function Basic(props: FlexboxProps) {
   );
 }
 
-export default Basic;
+export default Example;
