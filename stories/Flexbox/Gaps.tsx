@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxGap, FlexboxProps } from "@lilib/ui";
+import { Button, Flexbox, FlexboxGap } from "@lilib/ui";
 
-function Gaps(props: FlexboxProps) {
+function Example() {
   const [gap, setGap] = useState<FlexboxGap>("4x");
 
   return (
@@ -23,7 +23,7 @@ function Gaps(props: FlexboxProps) {
         <option value="9x">9x</option>
       </select>
 
-      <Flexbox {...props} gap={gap}>
+      <Flexbox gap={gap}>
         <Button>1</Button>
         <Button>2</Button>
         <Button>3</Button>
@@ -32,4 +32,4 @@ function Gaps(props: FlexboxProps) {
   );
 }
 
-export default Gaps;
+export default Example;

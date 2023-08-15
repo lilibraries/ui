@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxProps, FlexboxDirection } from "@lilib/ui";
+import { Button, Flexbox, FlexboxDirection } from "@lilib/ui";
 
-function Directions(props: FlexboxProps) {
+function Example() {
   const [direction, setDirection] = useState<FlexboxDirection>("row");
 
   return (
@@ -18,7 +18,7 @@ function Directions(props: FlexboxProps) {
         <option value="column-reverse">column-reverse</option>
       </select>
 
-      <Flexbox gap="4x" {...props} direction={direction}>
+      <Flexbox gap="4x" direction={direction}>
         <Button>1</Button>
         <Button>2</Button>
         <Button>3</Button>
@@ -27,4 +27,4 @@ function Directions(props: FlexboxProps) {
   );
 }
 
-export default Directions;
+export default Example;

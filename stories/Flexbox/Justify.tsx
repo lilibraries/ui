@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxJustify, FlexboxProps } from "@lilib/ui";
+import { Button, Flexbox, FlexboxJustify } from "@lilib/ui";
 
-function Justify(props: FlexboxProps) {
+function Example() {
   const [justify, setJustify] = useState<FlexboxJustify>("center");
 
   return (
@@ -20,13 +20,7 @@ function Justify(props: FlexboxProps) {
         <option value="space-between">space-between</option>
       </select>
 
-      <Flexbox
-        gap="4x"
-        {...props}
-        fluid
-        justify={justify}
-        style={{ width: "100%" }}
-      >
+      <Flexbox gap="4x" fluid justify={justify} style={{ width: "100%" }}>
         <Button>1</Button>
         <Button>2</Button>
         <Button>3</Button>
@@ -35,4 +29,4 @@ function Justify(props: FlexboxProps) {
   );
 }
 
-export default Justify;
+export default Example;

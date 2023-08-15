@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxAlign, FlexboxProps } from "@lilib/ui";
+import { Button, Flexbox, FlexboxAlign } from "@lilib/ui";
 
-function Align(props: FlexboxProps) {
+function Example() {
   const [align, setAlign] = useState<FlexboxAlign>("center");
 
   return (
@@ -19,7 +19,7 @@ function Align(props: FlexboxProps) {
         <option value="flex-start">flex-start</option>
       </select>
 
-      <Flexbox gap="4x" {...props} align={align}>
+      <Flexbox gap="4x" align={align}>
         Buttons:
         <Button size="small">Button</Button>
         <Button size={null}>Button</Button>
@@ -29,4 +29,4 @@ function Align(props: FlexboxProps) {
   );
 }
 
-export default Align;
+export default Example;
