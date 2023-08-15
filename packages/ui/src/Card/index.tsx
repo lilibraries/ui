@@ -29,8 +29,8 @@ export interface CardCommonProps {
   hoverable?: boolean;
   unpadding?: boolean;
   borderless?: boolean;
-  renderHeader?: (header: ReactNode) => ReactNode;
-  renderFooter?: (footer: ReactNode) => ReactNode;
+  renderHeader?: (header: ReactElement | null) => ReactNode;
+  renderFooter?: (footer: ReactElement | null) => ReactNode;
 }
 
 export type CardProps<C extends ElementType = "div"> = C extends "div"
@@ -136,10 +136,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   }
 
   if (renderHeader) {
-    header = renderHeader(header);
+    header = renderHeader(header as ReactElement | null);
   }
   if (renderFooter) {
-    footer = renderFooter(footer);
+    footer = renderFooter(footer as ReactElement | null);
   }
   hasHeader = isRenderableNode(header);
   hasFooter = isRenderableNode(footer);

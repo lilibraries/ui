@@ -81,10 +81,13 @@
     }
 
     &-entering,
-    &-entered,
     &-exit {
       transform: translateX(0) translateY(0);
       opacity: 1;
+    }
+
+    &-exited {
+      display: none;
     }
   }
 }

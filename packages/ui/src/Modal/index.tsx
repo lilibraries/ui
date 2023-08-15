@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   forwardRef,
   MouseEvent,
+  ReactElement,
   HTMLAttributes,
 } from "react";
 import cn from "classnames";
@@ -11,7 +12,6 @@ import {
   useUpdate,
   usePersist,
   useSetState,
-  useComposedRef,
   useClickOutside,
 } from "@lilib/hooks";
 import Card from "../Card";
@@ -67,8 +67,12 @@ export interface ModalProps
   onClosed?: () => void;
   onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
   onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
-  renderHeader?: (header: ReactNode) => ReactNode;
-  renderFooter?: (footer: ReactNode) => ReactNode;
+  renderHeader?: (header: ReactElement | null) => ReactNode;
+  renderFooter?: (footer: ReactElement | null) => ReactNode;
+  renderActions?: (
+    actions: ReactElement | null,
+    close: () => void
+  ) => ReactNode;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
@@ -114,15 +118,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     onCancel,
     renderHeader,
     renderFooter,
+    renderActions,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
 
-  const modalRef = useRef(null);
   const backdropRef = useRef(null);
-  const modalComposedRef = useComposedRef(modalRef, ref);
+  const containerRef = useRef(null);
 
   const controlled = openProp != null;
   const [{ open, opened, enter, confirming }, setState] = useSetState(() => {
@@ -205,7 +209,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   });
 
   useClickOutside(
-    closeOnClickOutside && open && opened ? modalRef : null,
+    closeOnClickOutside && open && opened ? containerRef : null,
     handleClose,
     { container: backdropRef }
   );
@@ -234,15 +238,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const classes = cn(
     `${cls}modal`,
     {
-      [`${cls}fixed`]: hideBackdrop,
+      [`${cls}opened`]: opened,
       [`${cls}centered`]: centered,
       [`${cls}${width}`]: isPresetSize,
     },
     className
   );
 
-  let headmark: ReactNode;
-  let footmark: ReactNode;
+  let headmark: ReactNode = null;
+  let footmark: ReactNode = null;
   let closeDelay = exitDelay;
 
   if (showClose) {
@@ -297,10 +301,14 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     );
   }
 
+  if (renderActions) {
+    footmark = renderActions(footmark as ReactElement | null, handleClose);
+  }
+
   let result = (
     <Card
       {...rest}
-      ref={modalComposedRef}
+      ref={ref}
       style={isCustomSize ? { ...style, width } : style}
       className={classes}
       icon={icon}
@@ -315,7 +323,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       renderHeader={renderHeader}
       renderFooter={renderFooter}
     >
-      <Portal.Config container={modalRef}>{children}</Portal.Config>
+      <Portal.Config container={containerRef}>{children}</Portal.Config>
     </Card>
   );
 
@@ -337,6 +345,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       </Transition>
     );
   }
+
+  result = (
+    <div ref={containerRef} className={`${cls}modal-container`}>
+      {result}
+    </div>
+  );
 
   if (hideBackdrop) {
     result = (

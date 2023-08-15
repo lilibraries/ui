@@ -32,9 +32,12 @@
     }
 
     &-entering,
-    &-entered,
     &-exit {
       opacity: 1;
+    }
+
+    &-exited {
+      display: none;
     }
   }
 }
