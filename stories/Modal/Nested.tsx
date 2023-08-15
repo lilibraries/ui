@@ -1,8 +1,8 @@
 import React from "react";
 import { useToggle } from "@lilib/hooks";
-import { Button, Modal, Spinner } from "@lilib/ui";
+import { Button, Modal, Popup, Spinner } from "@lilib/ui";
 
-function Content() {
+function NestedModal() {
   const [open, { toggleOn, toggleOff }] = useToggle(false);
 
   return (
@@ -28,7 +28,16 @@ function Example() {
         showClose
         title="Nested Modal"
       >
-        <Content />
+        <Popup
+          content={<NestedModal />}
+          placement="right"
+          style={{ width: "max-content" }}
+        >
+          <Button>Popup</Button>
+        </Popup>
+        <br />
+        <br />
+        <NestedModal />
       </Modal>
     </>
   );

@@ -1,22 +1,24 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}modal {
-  position: absolute;
+  position: fixed;
   top: 32px;
   left: 50%;
-  z-index: var(--z-index-modal);
+  display: none;
   max-width: calc(100vw - 64px);
   max-height: calc(100vh - 64px);
   transform: translateX(-50%);
   transform-origin: top left;
-  @include transition(base, opacity, transform);
 
   &.#{$cls-prefix}card {
     border-radius: var(--border-radius-fixed-large);
     box-shadow: var(--box-shadow-5);
 
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      font-size: var(--font-size-large);
+    &
+      > .#{$cls-prefix}card-main
+      > .#{$cls-prefix}card-header
+      > .#{$cls-prefix}card-title {
+      font-size: var(--font-size-larger);
     }
 
     &.#{$cls-prefix}splited {
@@ -32,23 +34,34 @@
     }
   }
 
-  &.#{$cls-prefix}fixed {
+  &-container {
     position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-modal);
+  }
+
+  &.#{$cls-prefix}opened {
+    display: flex;
   }
 
   &.#{$cls-prefix}transition {
     &-enter,
     &-exit,
-    &-exiting,
-    &-exited {
+    &-exiting {
       transform: translateX(-50%) translateY(-32px);
       opacity: 0;
+      @include transition(base, opacity, transform);
     }
 
-    &-entering,
-    &-entered {
+    &-entering {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
+      @include transition(base, opacity, transform);
+    }
+
+    &-exited {
+      display: none;
     }
   }
 
@@ -61,16 +74,12 @@
     &.#{$cls-prefix}transition {
       &-enter,
       &-exit,
-      &-exiting,
-      &-exited {
+      &-exiting {
         transform: scale(0.8) translate(-50%, -50%);
-        opacity: 0;
       }
 
-      &-entering,
-      &-entered {
+      &-entering {
         transform: scale(1) translate(-50%, -50%);
-        opacity: 1;
       }
     }
   }

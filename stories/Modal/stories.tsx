@@ -15,3 +15,5 @@ export { default as LongContent } from "./LongContent";
 export { default as Sizes } from "./Sizes";
 export { default as CloseEvents } from "./CloseEvents";
 export { default as Confirming } from "./Confirming";
+export { default as Draggable } from "./Draggable";
+export { default as CustomActions } from "./CustomActions";

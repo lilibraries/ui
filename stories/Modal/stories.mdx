@@ -76,6 +76,8 @@ Modal components.
 
 ### Close Events
 
+You can close the modal by pressing the <kbd>ESC</kbd> key, hidding the page, losing focus on the window, or clicking outside the modal.
+
 <Canvas mdxSource={require("!!raw-loader!./CloseEvents").default}>
   <Story id="examples-modal--close-events" />
 </Canvas>
@@ -86,6 +88,18 @@ The `onConfirm` event handler can return a Promise object to show loading spinne
 
 <Canvas mdxSource={require("!!raw-loader!./Confirming").default}>
   <Story id="examples-modal--confirming" />
+</Canvas>
+
+### Draggable
+
+<Canvas mdxSource={require("!!raw-loader!./Draggable").default}>
+  <Story id="examples-modal--draggable" />
+</Canvas>
+
+### Custom Actions
+
+<Canvas mdxSource={require("!!raw-loader!./CustomActions").default}>
+  <Story id="examples-modal--custom-actions" />
 </Canvas>
 
 ## API
@@ -129,7 +143,8 @@ The `onConfirm` event handler can return a Promise object to show loading spinne
 | `onClosed`                    | `() => void`                                                                                | Closed event                                                                                                                                                                                                                                                                                         |
 | `onConfirm`                   | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code>               | Confirm event                                                                                                                                                                                                                                                                                        |
 | `onCancel`                    | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                                | Cancel event                                                                                                                                                                                                                                                                                         |
-| `renderHeader`                | `(header: ReactNode) => ReactNode`                                                          | Custom header render                                                                                                                                                                                                                                                                                 |
-| `renderFooter`                | `(footer: ReactNode) => ReactNode`                                                          | Custom footer render                                                                                                                                                                                                                                                                                 |
+| `renderHeader`                | <code>(header: ReactElement \| null) => ReactNode</code>                                    | Custom header render                                                                                                                                                                                                                                                                                 |
+| `renderFooter`                | <code>(footer: ReactElement \| null) => ReactNode</code>                                    | Custom footer render                                                                                                                                                                                                                                                                                 |
+| `renderActions`               | <code>(actions: ReactElement \| null, close: () => void) => ReactNode</code>                | Custom actions render                                                                                                                                                                                                                                                                                |
 
 It accepts all props which the native `<div>` element supports.
