@@ -1,6 +1,106 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}divider {
-  margin: var(--space-4) 0;
-  border-top: thin solid var(--border-color-inactive);
+  @include reset;
+
+  flex: 0 0 auto;
+  border-color: var(--border-color-inactive);
+  border-style: solid;
+  @include clearfix;
+
+  &:not(.#{$cls-prefix}inline) {
+    align-self: stretch;
+  }
+
+  &.#{$cls-prefix}horizontal {
+    border-top-width: 1px;
+
+    &.#{$cls-prefix}inline {
+      width: 1em;
+    }
+
+    &.#{$cls-prefix}spacing-1x {
+      margin: var(--space-1) 0;
+    }
+
+    &.#{$cls-prefix}spacing-2x {
+      margin: var(--space-2) 0;
+    }
+
+    &.#{$cls-prefix}spacing-3x {
+      margin: var(--space-3) 0;
+    }
+
+    &.#{$cls-prefix}spacing-4x {
+      margin: var(--space-4) 0;
+    }
+
+    &.#{$cls-prefix}spacing-5x {
+      margin: var(--space-5) 0;
+    }
+
+    &.#{$cls-prefix}spacing-6x {
+      margin: var(--space-6) 0;
+    }
+
+    &.#{$cls-prefix}spacing-7x {
+      margin: var(--space-7) 0;
+    }
+
+    &.#{$cls-prefix}spacing-8x {
+      margin: var(--space-8) 0;
+    }
+
+    &.#{$cls-prefix}spacing-9x {
+      margin: var(--space-9) 0;
+    }
+  }
+
+  &.#{$cls-prefix}vertical {
+    display: inline-block;
+    height: auto;
+    min-height: 1em;
+    vertical-align: middle;
+    border-left-width: 1px;
+
+    &.#{$cls-prefix}inline {
+      height: 1em;
+    }
+
+    &.#{$cls-prefix}spacing-1x {
+      margin: 0 var(--space-1);
+    }
+
+    &.#{$cls-prefix}spacing-2x {
+      margin: 0 var(--space-2);
+    }
+
+    &.#{$cls-prefix}spacing-3x {
+      margin: 0 var(--space-3);
+    }
+
+    &.#{$cls-prefix}spacing-4x {
+      margin: 0 var(--space-4);
+    }
+
+    &.#{$cls-prefix}spacing-5x {
+      margin: 0 var(--space-5);
+    }
+
+    &.#{$cls-prefix}spacing-6x {
+      margin: 0 var(--space-6);
+    }
+
+    &.#{$cls-prefix}spacing-7x {
+      margin: 0 var(--space-7);
+    }
+
+    &.#{$cls-prefix}spacing-8x {
+      margin: 0 var(--space-8);
+    }
+
+    &.#{$cls-prefix}spacing-9x {
+      margin: 0 var(--space-9);
+    }
+  }
 }

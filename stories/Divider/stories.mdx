@@ -4,6 +4,8 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Divider
 
+The Divider component is used to separate content.
+
 ## Examples
 
 ### Basic
@@ -11,3 +13,26 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
   <Story id="examples-divider--basic" />
 </Canvas>
+
+### Vertical
+
+<Canvas mdxSource={require("!!raw-loader!./Vertical").default}>
+  <Story id="examples-divider--vertical" />
+</Canvas>
+
+### Inline
+
+<Canvas mdxSource={require("!!raw-loader!./Inline").default}>
+  <Story id="examples-divider--inline" />
+</Canvas>
+
+## API
+
+| Property   | Type                                                                                                           | Description                                  |
+| ---------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `as`       | `ElementType`                                                                                                  | Element type, default is `"hr"`              |
+| `vertical` | `boolean`                                                                                                      | Display vertical Line                        |
+| `inline`   | `boolean`                                                                                                      | The `width` or `height` equals the font size |
+| `spacing`  | `"1x"` \| `"2x"` \| `"3x"` \| `"4x"` \| `"5x"` \| `"6x"` \| `"7x"` \| `"8x"` \| `"9x"` \| `string` \| `number` | Spacing with other elements                  |
+
+It accepts all props which the `as` element type supports.
