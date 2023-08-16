@@ -1,14 +1,18 @@
-import React, {
+import {
   forwardRef,
   ElementType,
   ReactElement,
+  createElement,
+  CSSProperties,
   ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
+import isString from "lodash/isString";
 import Prefix from "../Prefix";
+import isCSSPropertyValue from "../utils/isCSSPropertyValue";
 
-export type DividerMarginSize =
+export type DividerPresetSpacing =
   | "1x"
   | "2x"
   | "3x"
@@ -19,17 +23,13 @@ export type DividerMarginSize =
   | "8x"
   | "9x";
 
-export type DividerLabelAlign = "start" | "center" | "end";
-
 export interface DividerCommonProps {
   vertical?: boolean;
-  margin?: DividerMarginSize | string | number;
-  labelAlign?: DividerLabelAlign;
-  labelMargin?: string | number;
-  labelPadding?: string | number;
+  inline?: boolean;
+  spacing?: DividerPresetSpacing | string | number;
 }
 
-export type DividerProps<C extends ElementType = "div"> = C extends "div"
+export type DividerProps<C extends ElementType = "hr"> = C extends "hr"
   ? {
       as?: C;
     } & ComponentProps<C> &
@@ -41,20 +41,53 @@ export type DividerProps<C extends ElementType = "div"> = C extends "div"
 
 export interface DividerComponent
   extends ForwardRefExoticComponent<DividerCommonProps> {
-  <C extends ElementType = "div">(props: DividerProps<C>): ReactElement;
+  <C extends ElementType = "hr">(props: DividerProps<C>): ReactElement;
 }
 
-const Divider = forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
-  const { children, className, ...rest } = props;
+const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
+  const {
+    as = "hr",
+    style,
+    children,
+    className,
+    vertical,
+    inline,
+    spacing,
+    ...rest
+  } = props;
+
+  const isPresetSpacing = isString(spacing) && /^\dx$/.test(spacing);
+  const isCustomSpacing = !isPresetSpacing && isCSSPropertyValue(spacing);
 
   const { cls } = Prefix.useConfig();
-  const classes = cn(`${cls}divider`, className);
-
-  return (
-    <div {...rest} ref={ref} className={classes}>
-      {children}
-    </div>
+  const classes = cn(
+    `${cls}divider`,
+    {
+      [`${cls}vertical`]: vertical,
+      [`${cls}horizontal`]: !vertical,
+      [`${cls}inline`]: inline,
+      [`${cls}spacing-${spacing}`]: isPresetSpacing,
+    },
+    className
   );
+
+  const customStyle: CSSProperties = {};
+  if (isCustomSpacing) {
+    if (vertical) {
+      customStyle.marginLeft = spacing;
+      customStyle.marginRight = spacing;
+    } else {
+      customStyle.marginTop = spacing;
+      customStyle.marginBottom = spacing;
+    }
+  }
+
+  return createElement(as, {
+    ...rest,
+    ref,
+    className: classes,
+    style: isCustomSpacing ? { ...customStyle, ...style } : style,
+  });
 }) as DividerComponent;
 
 export default Divider;
