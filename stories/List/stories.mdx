@@ -1,0 +1,82 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Views/List" />
+
+# List
+
+List components.
+
+## Examples
+
+### Basic
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-list--basic" />
+</Canvas>
+
+### Ordered List
+
+<Canvas mdxSource={require("!!raw-loader!./OrderedList").default}>
+  <Story id="examples-list--ordered-list" />
+</Canvas>
+
+### Settings
+
+<Canvas mdxSource={require("!!raw-loader!./Settings").default}>
+  <Story id="examples-list--settings" />
+</Canvas>
+
+### Statuses
+
+<Canvas mdxSource={require("!!raw-loader!./Statuses").default}>
+  <Story id="examples-list--statuses" />
+</Canvas>
+
+### Contacts
+
+<Canvas mdxSource={require("!!raw-loader!./Contacts").default}>
+  <Story id="examples-list--contacts" />
+</Canvas>
+
+### Messages
+
+<Canvas mdxSource={require("!!raw-loader!./Messages").default}>
+  <Story id="examples-list--messages" />
+</Canvas>
+
+## API
+
+### List
+
+| Property    | Type      | Description                 |
+| ----------- | --------- | --------------------------- |
+| `filled`    | `boolean` | Show background             |
+| `splited`   | `boolean` | Show dividers               |
+| `indented`  | `boolean` | Dividers have indent        |
+| `bounded`   | `boolean` | Show top and bottom borders |
+| `bordered`  | `boolean` | Show borders and radii      |
+| `arrowed`   | `boolean` | Show arrow for every items  |
+| `hoverable` | `boolean` | Make every items hoverable  |
+| `active`    | `boolean` | All items are active        |
+| `disabled`  | `boolean` | All items are disabled      |
+| `children`  | `boolean` | List items                  |
+
+It accepts all props which the native `<div>` element supports.
+
+### List.Item
+
+| Property    | Type          | Description                      |
+| ----------- | ------------- | -------------------------------- |
+| `as`        | `ElementType` | Element type, default is `"div"` |
+| `icon`      | `ReactNode`   | Icon                             |
+| `prefix`    | `ReactNode`   | Prefix                           |
+| `suffix`    | `ReactNode`   | Suffix                           |
+| `title`     | `ReactNode`   | Title                            |
+| `detail`    | `ReactNode`   | Detail                           |
+| `children`  | `ReactNode`   | Content                          |
+| `arrowed`   | `boolean`     | Show arrow                       |
+| `hoverable` | `boolean`     | Make item hoverable              |
+| `active`    | `boolean`     | Active status                    |
+| `disabled`  | `boolean`     | Disabled status                  |
+
+It accepts all props which the `as` element type supports.
