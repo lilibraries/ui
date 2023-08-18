@@ -1,10 +1,8 @@
 import React, {
   ReactNode,
-  MouseEvent,
   forwardRef,
   ElementType,
   ReactElement,
-  createElement,
   ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
@@ -14,6 +12,8 @@ import { IntentValue } from "../utils/types";
 export interface MenuItemCommonProps {
   icon?: ReactNode;
   label?: ReactNode;
+  title?: ReactNode;
+  detail?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
   intent?: IntentValue;
@@ -25,11 +25,11 @@ export interface MenuItemCommonProps {
 export type MenuItemProps<C extends ElementType = "div"> = C extends "div"
   ? {
       as?: C;
-    } & Omit<ComponentProps<C>, "prefix"> &
+    } & Omit<ComponentProps<C>, "prefix" | "title"> &
       MenuItemCommonProps
   : {
       as: C;
-    } & Omit<ComponentProps<C>, "prefix"> &
+    } & Omit<ComponentProps<C>, "prefix" | "title"> &
       MenuItemCommonProps;
 
 export interface MenuItemComponent
@@ -44,6 +44,8 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
     className,
     icon,
     label,
+    title,
+    detail,
     prefix,
     suffix,
     intent,
@@ -54,8 +56,20 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
   } = props;
 
   return (
-    <List.Item as={as} icon={icon} prefix={prefix} suffix={suffix}>
-      {label}
+    <List.Item
+      {...rest}
+      ref={ref}
+      as={as}
+      icon={icon}
+      label={label}
+      title={title}
+      detail={detail}
+      prefix={prefix}
+      suffix={suffix}
+      active={active}
+      disabled={disabled}
+    >
+      {children}
     </List.Item>
   );
 });
