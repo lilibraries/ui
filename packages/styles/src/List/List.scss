@@ -22,12 +22,14 @@
 
     &.#{$cls-prefix}indented {
       & > .#{$cls-prefix}list-item:not(:first-child) {
-        & > .#{$cls-prefix}list-item-icon {
-          margin-top: 1px;
-        }
+        & > .#{$cls-prefix}list-item-inner {
+          & > .#{$cls-prefix}list-item-icon {
+            margin-top: 1px;
+          }
 
-        & > .#{$cls-prefix}list-item-main {
-          border-top: 1px solid var(--border-color-inactive);
+          & > .#{$cls-prefix}list-item-main {
+            border-top: 1px solid var(--border-color-inactive);
+          }
         }
       }
     }

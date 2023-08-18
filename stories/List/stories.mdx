@@ -44,6 +44,12 @@ List components.
   <Story id="examples-list--messages" />
 </Canvas>
 
+### Nested List
+
+<Canvas mdxSource={require("!!raw-loader!./NestedList").default}>
+  <Story id="examples-list--nested-list" />
+</Canvas>
+
 ## API
 
 ### List
@@ -72,12 +78,13 @@ It accepts all props which the native `<div>` element supports.
 | `prefix`    | `ReactNode`   | Prefix                           |
 | `suffix`    | `ReactNode`   | Suffix                           |
 | `title`     | `ReactNode`   | Title                            |
+| `label`     | `ReactNode`   | Label                            |
 | `detail`    | `ReactNode`   | Detail                           |
-| `children`  | `ReactNode`   | Content                          |
 | `arrowed`   | `boolean`     | Show arrow                       |
 | `arrowIcon` | `ReactNode`   | Specify arrow icon               |
 | `hoverable` | `boolean`     | Make item hoverable              |
 | `active`    | `boolean`     | Active status                    |
 | `disabled`  | `boolean`     | Disabled status                  |
+| `children`  | `ReactNode`   | Nested list                      |
 
 It accepts all props which the `as` element type supports.

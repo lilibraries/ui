@@ -1,4 +1,5 @@
 import React, {
+  useRef,
   ReactNode,
   MouseEvent,
   forwardRef,
@@ -6,21 +7,28 @@ import React, {
   ReactElement,
   createElement,
   ComponentProps,
+  isValidElement,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import { usePersist } from "@lilib/hooks";
+import {
+  usePersist,
+  useSafeState,
+  useIsomorphicLayoutEffect,
+} from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import LeftChevronIcon from "../icons/LeftChevronIcon";
 import RightChevronIcon from "../icons/RightChevronIcon";
 import isRenderableNode from "../utils/isRenderableNode";
+import List from "./List";
 import ListConfig, { ListConfigValue } from "./ListConfig";
 
 export interface ListItemCommonProps extends ListConfigValue {
   icon?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
+  label?: ReactNode;
   title?: ReactNode;
   detail?: ReactNode;
   active?: boolean;
@@ -45,10 +53,12 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
   const {
     as = "div",
     children,
+    style,
     className,
     icon,
     prefix,
     suffix,
+    label,
     title,
     detail,
     active,
@@ -64,6 +74,7 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   const {
+    indent = 0,
     arrowed,
     arrowIcon,
     disabled,
@@ -90,29 +101,53 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
     }
   });
 
-  const content = (
-    <>
+  const iconRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [increasedIndent, setIncreasedIndent] = useSafeState(0);
+
+  useIsomorphicLayoutEffect(() => {
+    if (isRenderableNode(children)) {
+      let newIncreasedIndent = 0;
+      if (iconRef.current) {
+        newIncreasedIndent = iconRef.current.clientWidth;
+      } else if (innerRef.current) {
+        const style = window.getComputedStyle(innerRef.current);
+        const padding = isRTL ? style.paddingRight : style.paddingLeft;
+        if (padding) {
+          newIncreasedIndent = window.parseInt(padding, 10);
+        }
+      }
+      if (newIncreasedIndent !== increasedIndent) {
+        setIncreasedIndent(newIncreasedIndent);
+      }
+    }
+  });
+
+  const inner = (
+    <div ref={innerRef} className={`${cls}list-item-inner`}>
       {isRenderableNode(icon) && (
-        <span className={`${cls}list-item-icon`}>{icon}</span>
+        <div ref={iconRef} className={`${cls}list-item-icon`}>
+          {icon}
+        </div>
       )}
-      <span className={`${cls}list-item-main`}>
+      <div className={`${cls}list-item-main`}>
         {isRenderableNode(prefix) && (
-          <span className={`${cls}list-item-prefix`}>{prefix}</span>
+          <div className={`${cls}list-item-prefix`}>{prefix}</div>
         )}
-        <span className={`${cls}list-item-body`}>
+        <div className={`${cls}list-item-info`}>
           {isRenderableNode(title) && (
-            <span className={`${cls}list-item-title`}>{title}</span>
+            <div className={`${cls}list-item-title`}>{title}</div>
           )}
-          <span className={`${cls}list-item-content`}>{children}</span>
+          <div className={`${cls}list-item-label`}>{label}</div>
           {isRenderableNode(detail) && (
-            <span className={`${cls}list-item-detail`}>{detail}</span>
+            <div className={`${cls}list-item-detail`}>{detail}</div>
           )}
-        </span>
+        </div>
         {isRenderableNode(suffix) && (
-          <span className={`${cls}list-item-suffix`}>{suffix}</span>
+          <div className={`${cls}list-item-suffix`}>{suffix}</div>
         )}
         {!!arrowed && (
-          <span className={`${cls}list-item-arrow`}>
+          <div className={`${cls}list-item-arrow`}>
             {isRenderableNode(arrowIcon) ? (
               arrowIcon
             ) : isRTL ? (
@@ -120,23 +155,44 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
             ) : (
               <RightChevronIcon />
             )}
-          </span>
+          </div>
         )}
-      </span>
-    </>
+      </div>
+    </div>
   );
 
-  return createElement(
-    as,
-    {
-      tabIndex: hoverable && !disabled ? 0 : undefined,
-      ...rest,
-      ref,
-      disabled,
-      className: classes,
-      onClick: handleClick,
-    },
-    content
+  return (
+    <>
+      {createElement(
+        as,
+        {
+          tabIndex: hoverable && !disabled ? 0 : undefined,
+          ...rest,
+          ref,
+          disabled,
+          style:
+            indent > 0
+              ? {
+                  paddingLeft: !isRTL ? indent : undefined,
+                  paddingRight: isRTL ? indent : undefined,
+                  ...style,
+                }
+              : style,
+          className: classes,
+          onClick: handleClick,
+        },
+        inner
+      )}
+      {isRenderableNode(children) && (
+        <ListConfig indent={indent + increasedIndent}>
+          {isValidElement(children) && children.type === List ? (
+            children
+          ) : (
+            <List>{children}</List>
+          )}
+        </ListConfig>
+      )}
+    </>
   );
 });
 

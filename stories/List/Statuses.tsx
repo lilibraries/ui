@@ -59,9 +59,8 @@ function Example() {
             onChange={(event) => setState({ filled: event.target.checked })}
           />
         }
-      >
-        Filled
-      </List.Item>
+        label="Filled"
+      />
       <List.Item
         icon={<VscSplitVertical />}
         suffix={
@@ -71,9 +70,8 @@ function Example() {
             onChange={(event) => setState({ splited: event.target.checked })}
           />
         }
-      >
-        Splited
-      </List.Item>
+        label="Splited"
+      />
       <List.Item
         icon={<BsTextIndentLeft />}
         suffix={
@@ -83,9 +81,8 @@ function Example() {
             onChange={(event) => setState({ indented: event.target.checked })}
           />
         }
-      >
-        Indented
-      </List.Item>
+        label="Indented"
+      />
       <List.Item
         icon={<AiOutlinePicCenter />}
         suffix={
@@ -95,9 +92,8 @@ function Example() {
             onChange={(event) => setState({ bounded: event.target.checked })}
           />
         }
-      >
-        Bounded
-      </List.Item>
+        label="Bounded"
+      />
       <List.Item
         icon={<AiOutlineBorderOuter />}
         suffix={
@@ -107,9 +103,8 @@ function Example() {
             onChange={(event) => setState({ bordered: event.target.checked })}
           />
         }
-      >
-        Bordered
-      </List.Item>
+        label="Bordered"
+      />
       <List.Item
         icon={<BsArrowRightSquare />}
         suffix={
@@ -119,9 +114,8 @@ function Example() {
             onChange={(event) => setState({ arrowed: event.target.checked })}
           />
         }
-      >
-        Arrowed
-      </List.Item>
+        label="Arrowed"
+      />
       <List.Item
         icon={<BsHandIndexThumb />}
         suffix={
@@ -131,9 +125,8 @@ function Example() {
             onChange={(event) => setState({ hoverable: event.target.checked })}
           />
         }
-      >
-        Hoverable
-      </List.Item>
+        label="Hoverable"
+      />
       <List.Item
         icon={<MdOutlineNearMeDisabled />}
         suffix={
@@ -143,9 +136,8 @@ function Example() {
             onChange={(event) => setState({ disabled: event.target.checked })}
           />
         }
-      >
-        Disabled
-      </List.Item>
+        label="Disabled"
+      />
     </List>
   );
 }
