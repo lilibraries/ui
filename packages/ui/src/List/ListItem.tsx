@@ -7,7 +7,6 @@ import React, {
   ReactElement,
   createElement,
   ComponentProps,
-  isValidElement,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
@@ -21,17 +20,20 @@ import Direction from "../Direction";
 import LeftChevronIcon from "../icons/LeftChevronIcon";
 import RightChevronIcon from "../icons/RightChevronIcon";
 import isRenderableNode from "../utils/isRenderableNode";
-import List from "./List";
-import ListConfig, { ListConfigValue } from "./ListConfig";
+import ListConfig from "./ListConfig";
 
-export interface ListItemCommonProps extends ListConfigValue {
+export interface ListItemCommonProps {
   icon?: ReactNode;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
   label?: ReactNode;
   title?: ReactNode;
   detail?: ReactNode;
+  prefix?: ReactNode;
+  suffix?: ReactNode;
+  arrowed?: boolean;
+  arrowIcon?: ReactNode;
+  hoverable?: boolean;
   active?: boolean;
+  disabled?: boolean;
 }
 
 export type ListItemProps<C extends ElementType = "div"> = C extends "div"
@@ -56,11 +58,11 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
     style,
     className,
     icon,
-    prefix,
-    suffix,
     label,
     title,
     detail,
+    prefix,
+    suffix,
     active,
     arrowed: arrowedProp,
     arrowIcon: arrowIconProp,
@@ -184,13 +186,7 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
         inner
       )}
       {isRenderableNode(children) && (
-        <ListConfig indent={indent + increasedIndent}>
-          {isValidElement(children) && children.type === List ? (
-            children
-          ) : (
-            <List>{children}</List>
-          )}
-        </ListConfig>
+        <ListConfig indent={indent + increasedIndent}>{children}</ListConfig>
       )}
     </>
   );
