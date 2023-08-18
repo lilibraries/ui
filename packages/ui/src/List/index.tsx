@@ -38,8 +38,8 @@ const List = forwardRef<HTMLDivElement, ListProps>((props, ref) => {
     bounded,
     indented,
     bordered,
-    active,
     arrowed,
+    arrowIcon,
     disabled,
     hoverable,
     ...rest
@@ -61,8 +61,8 @@ const List = forwardRef<HTMLDivElement, ListProps>((props, ref) => {
   return (
     <div {...rest} ref={ref} className={classes}>
       <ListConfig
-        active={active}
         arrowed={arrowed}
+        arrowIcon={arrowIcon}
         disabled={disabled}
         hoverable={hoverable}
       >
