@@ -11,11 +11,8 @@ import {
   BsHandIndexThumb,
   BsArrowRightSquare,
 } from "react-icons/bs";
-import {
-  MdOutlineNearMeDisabled,
-  MdOutlineDisabledVisible,
-} from "react-icons/md";
 import { VscSplitVertical } from "react-icons/vsc";
+import { MdOutlineNearMeDisabled } from "react-icons/md";
 
 function Example() {
   const [
@@ -27,7 +24,6 @@ function Example() {
       bordered,
       arrowed,
       hoverable,
-      active,
       disabled,
     },
     setState,
@@ -39,7 +35,6 @@ function Example() {
     bordered: false,
     arrowed: false,
     hoverable: false,
-    active: false,
     disabled: false,
   });
 
@@ -53,7 +48,6 @@ function Example() {
       bordered={bordered}
       arrowed={arrowed}
       hoverable={hoverable}
-      active={active}
       disabled={disabled}
     >
       <List.Item
@@ -139,18 +133,6 @@ function Example() {
         }
       >
         Hoverable
-      </List.Item>
-      <List.Item
-        icon={<MdOutlineDisabledVisible />}
-        suffix={
-          <Switch
-            size="small"
-            checked={active}
-            onChange={(event) => setState({ active: event.target.checked })}
-          />
-        }
-      >
-        Active
       </List.Item>
       <List.Item
         icon={<MdOutlineNearMeDisabled />}

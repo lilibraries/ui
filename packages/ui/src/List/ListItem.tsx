@@ -23,6 +23,7 @@ export interface ListItemCommonProps extends ListConfigValue {
   suffix?: ReactNode;
   title?: ReactNode;
   detail?: ReactNode;
+  active?: boolean;
 }
 
 export type ListItemProps<C extends ElementType = "div"> = C extends "div"
@@ -50,9 +51,10 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
     suffix,
     title,
     detail,
+    active,
     arrowed: arrowedProp,
+    arrowIcon: arrowIconProp,
     hoverable: hoverableProp,
-    active: activeProp,
     disabled: disabledProp,
     onClick,
     ...rest
@@ -62,13 +64,13 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   const {
-    active,
     arrowed,
+    arrowIcon,
     disabled,
     hoverable: hoverableConfig,
   } = ListConfig.useConfig({
-    active: activeProp,
     arrowed: arrowedProp,
+    arrowIcon: arrowIconProp,
     disabled: disabledProp,
     hoverable: hoverableProp,
   });
@@ -111,7 +113,13 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
         )}
         {!!arrowed && (
           <span className={`${cls}list-item-arrow`}>
-            {isRTL ? <LeftChevronIcon /> : <RightChevronIcon />}
+            {isRenderableNode(arrowIcon) ? (
+              arrowIcon
+            ) : isRTL ? (
+              <LeftChevronIcon />
+            ) : (
+              <RightChevronIcon />
+            )}
           </span>
         )}
       </span>

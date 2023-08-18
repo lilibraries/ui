@@ -3,8 +3,8 @@ import createConfig from "../utils/createConfig";
 
 export interface ListConfigValue {
   arrowed?: boolean;
+  arrowIcon?: ReactNode;
   hoverable?: boolean;
-  active?: boolean;
   disabled?: boolean;
 }
 
@@ -14,8 +14,8 @@ export interface ListConfigProps extends ListConfigValue {
 
 const ListConfig = createConfig<ListConfigValue, ListConfigProps>({}, [
   "arrowed",
+  "arrowIcon",
   "hoverable",
-  "active",
   "disabled",
 ]);
 

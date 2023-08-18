@@ -87,22 +87,37 @@
     line-height: 1;
   }
 
+  &[disabled] {
+    &[href] {
+      pointer-events: none;
+    }
+  }
+
   &.#{$cls-prefix}hoverable {
     cursor: pointer;
 
+    &:not(.#{$cls-prefix}disabled) {
+      [data-focusing] &:focus {
+        @include focus-outline;
+      }
+    }
+
     &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
       &:hover {
+        color: var(--text-color-hover);
         background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
       }
 
       &:active {
+        color: var(--text-color-active);
         background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
       }
     }
   }
 
   &.#{$cls-prefix}active {
-    background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+    color: var(--text-color-active);
+    background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
 
     &.#{$cls-prefix}hoverable {
       cursor: default;
