@@ -3,20 +3,23 @@
 .#{$cls-prefix}list-item {
   @include reset;
 
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  padding-left: var(--space-4);
+  display: block;
+  box-sizing: border-box;
+
+  &-inner {
+    display: flex;
+    align-items: stretch;
+    box-sizing: border-box;
+    padding-left: var(--space-4);
+  }
 
   &-icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    min-width: 1em;
-    min-height: 1em;
-    margin-right: var(--space-4);
-    padding: var(--space-2) 0;
+    box-sizing: border-box;
+    padding: var(--space-2) var(--space-4) var(--space-2) 0;
     font-size: var(--font-size-larger);
     line-height: 1;
 
@@ -32,17 +35,18 @@
     display: flex;
     flex: 1 1;
     align-items: center;
+    box-sizing: border-box;
     padding: var(--space-2) var(--space-4) var(--space-2) 0;
     overflow: auto;
   }
 
-  &-body {
+  &-info {
     flex: 1 1;
     overflow: auto;
   }
 
   &-title,
-  &-content,
+  &-label,
   &-detail {
     display: block;
     @include text-overflow;
@@ -127,8 +131,8 @@
   &.#{$cls-prefix}disabled {
     color: var(--text-color-disabled);
 
-    & > .#{$cls-prefix}list-item-main {
-      & > .#{$cls-prefix}list-item-body {
+    & > .#{$cls-prefix}list-item-inner > .#{$cls-prefix}list-item-main {
+      & > .#{$cls-prefix}list-item-info {
         & > .#{$cls-prefix}list-item-title,
         & > .#{$cls-prefix}list-item-detail {
           color: var(--text-color-disabled);
@@ -149,31 +153,33 @@
 }
 
 .#{$cls-prefix}list-item.#{$cls-prefix}rtl {
-  padding-right: var(--space-4);
-  padding-left: 0;
+  & > .#{$cls-prefix}list-item-inner {
+    padding-right: var(--space-4);
+    padding-left: 0;
 
-  & > .#{$cls-prefix}list-item-icon {
-    margin-right: 0;
-    margin-left: var(--space-4);
-  }
-
-  & > .#{$cls-prefix}list-item-main {
-    padding-right: 0;
-    padding-left: var(--space-4);
-
-    & > .#{$cls-prefix}list-item-prefix {
-      margin-right: 0;
-      margin-left: var(--space-2);
+    & > .#{$cls-prefix}list-item-icon {
+      padding-right: 0;
+      padding-left: var(--space-4);
     }
 
-    & > .#{$cls-prefix}list-item-suffix {
-      margin-right: var(--space-2);
-      margin-left: 0;
-    }
+    & > .#{$cls-prefix}list-item-main {
+      padding-right: 0;
+      padding-left: var(--space-4);
 
-    & > .#{$cls-prefix}list-item-arrow {
-      margin-right: var(--space-1);
-      margin-left: 0;
+      & > .#{$cls-prefix}list-item-prefix {
+        margin-right: 0;
+        margin-left: var(--space-2);
+      }
+
+      & > .#{$cls-prefix}list-item-suffix {
+        margin-right: var(--space-2);
+        margin-left: 0;
+      }
+
+      & > .#{$cls-prefix}list-item-arrow {
+        margin-right: var(--space-1);
+        margin-left: 0;
+      }
     }
   }
 }

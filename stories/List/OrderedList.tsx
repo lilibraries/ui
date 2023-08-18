@@ -15,19 +15,17 @@ function Example() {
             <PiNumberOneBold />
           </Text>
         }
-      >
-        List item one.
-      </List.Item>
+        label="List item one."
+      />
       <List.Item
         prefix={
           <Text as={Icon} color="orange">
             <PiNumberTwoBold />
           </Text>
         }
-      >
-        List item two.
-      </List.Item>
-      <List.Item prefix={<PiNumberThreeBold />}>List item three.</List.Item>
+        label="List item two."
+      />
+      <List.Item prefix={<PiNumberThreeBold />} label="List item three." />
     </List>
   );
 }
