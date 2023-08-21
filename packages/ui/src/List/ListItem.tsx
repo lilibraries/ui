@@ -36,7 +36,7 @@ export interface ListItemCommonProps {
   disabled?: boolean;
 }
 
-export type ListItemProps<C extends ElementType = "div"> = C extends "div"
+export type ListItemProps<C extends ElementType = "li"> = C extends "li"
   ? {
       as?: C;
     } & Omit<ComponentProps<C>, "prefix" | "title"> &
@@ -48,12 +48,12 @@ export type ListItemProps<C extends ElementType = "div"> = C extends "div"
 
 export interface ListItemComponent
   extends ForwardRefExoticComponent<ListItemCommonProps> {
-  <C extends ElementType = "div">(props: ListItemProps<C>): ReactElement;
+  <C extends ElementType = "li">(props: ListItemProps<C>): ReactElement;
 }
 
-const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
+const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const {
-    as = "div",
+    as = "li",
     children,
     style,
     className,
@@ -97,7 +97,7 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
     [`${cls}disabled`]: disabled,
   });
 
-  const handleClick = usePersist((event: MouseEvent<HTMLDivElement>) => {
+  const handleClick = usePersist((event: MouseEvent<HTMLLIElement>) => {
     if (!disabled && onClick) {
       onClick(event);
     }
@@ -190,6 +190,6 @@ const ListItem = forwardRef<HTMLDivElement, ListItemProps>((props, ref) => {
       )}
     </>
   );
-});
+}) as ListItemComponent;
 
 export default ListItem;

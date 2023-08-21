@@ -54,20 +54,21 @@ List components.
 
 ### List
 
-| Property    | Type        | Description                        |
-| ----------- | ----------- | ---------------------------------- |
-| `filled`    | `boolean`   | Show background                    |
-| `splited`   | `boolean`   | Show dividers                      |
-| `indented`  | `boolean`   | Dividers have indent               |
-| `bounded`   | `boolean`   | Show top and bottom borders        |
-| `bordered`  | `boolean`   | Show borders and radii             |
-| `arrowed`   | `boolean`   | Show arrow for every items         |
-| `arrowIcon` | `ReactNode` | Specify arrow icon for every items |
-| `hoverable` | `boolean`   | Make every items hoverable         |
-| `disabled`  | `boolean`   | All items are disabled             |
-| `children`  | `boolean`   | List items                         |
+| Property    | Type          | Description                        |
+| ----------- | ------------- | ---------------------------------- |
+| `as`        | `ElementType` | Element type, default is `"ul"`    |
+| `filled`    | `boolean`     | Show background                    |
+| `splited`   | `boolean`     | Show dividers                      |
+| `indented`  | `boolean`     | Dividers have indent               |
+| `bounded`   | `boolean`     | Show top and bottom borders        |
+| `bordered`  | `boolean`     | Show borders and radii             |
+| `arrowed`   | `boolean`     | Show arrow for every items         |
+| `arrowIcon` | `ReactNode`   | Specify arrow icon for every items |
+| `hoverable` | `boolean`     | Make every items hoverable         |
+| `disabled`  | `boolean`     | All items are disabled             |
+| `children`  | `boolean`     | List items                         |
 
-It accepts all props which the native `<div>` element supports.
+It accepts all props which the `as` element type supports.
 
 ### List.Item
 

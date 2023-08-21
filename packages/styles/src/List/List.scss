@@ -1,6 +1,10 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}list {
+  @include reset;
+
+  display: block;
+  box-sizing: border-box;
   color: var(--text-color-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);

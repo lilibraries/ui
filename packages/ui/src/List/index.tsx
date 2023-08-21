@@ -1,9 +1,10 @@
 import React, {
   ReactNode,
   forwardRef,
-  RefAttributes,
-  HTMLAttributes,
-  PropsWithoutRef,
+  ElementType,
+  ReactElement,
+  createElement,
+  ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
@@ -13,7 +14,7 @@ import ListConfig from "./ListConfig";
 
 export * from "./ListItem";
 
-export interface ListProps extends HTMLAttributes<HTMLDivElement> {
+export interface ListCommonProps {
   filled?: boolean;
   splited?: boolean;
   bounded?: boolean;
@@ -25,15 +26,25 @@ export interface ListProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
+export type ListProps<C extends ElementType = "ul"> = C extends "ul"
+  ? {
+      as?: C;
+    } & ComponentProps<C> &
+      ListCommonProps
+  : {
+      as: C;
+    } & ComponentProps<C> &
+      ListCommonProps;
+
 export interface ListComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<ListProps> & RefAttributes<HTMLDivElement>
-  > {
+  extends ForwardRefExoticComponent<ListCommonProps> {
+  <C extends ElementType = "ul">(props: ListProps<C>): ReactElement;
   Item: typeof ListItem;
 }
 
-const List = forwardRef<HTMLDivElement, ListProps>((props, ref) => {
+const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
   const {
+    as = "ul",
     children,
     className,
     filled,
@@ -66,19 +77,23 @@ const List = forwardRef<HTMLDivElement, ListProps>((props, ref) => {
     className
   );
 
-  return (
-    <div {...rest} ref={ref} className={classes}>
-      <ListConfig
-        splited={splited}
-        indented={indented}
-        arrowed={arrowed}
-        arrowIcon={arrowIcon}
-        disabled={disabled}
-        hoverable={hoverable}
-      >
-        {children}
-      </ListConfig>
-    </div>
+  return createElement(
+    as,
+    {
+      ...rest,
+      ref,
+      className: classes,
+    },
+    <ListConfig
+      splited={splited}
+      indented={indented}
+      arrowed={arrowed}
+      arrowIcon={arrowIcon}
+      disabled={disabled}
+      hoverable={hoverable}
+    >
+      {children}
+    </ListConfig>
   );
 }) as ListComponent;
 

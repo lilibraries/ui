@@ -8,7 +8,7 @@ import {
 
 function Example() {
   return (
-    <List splited bordered style={{ width: 300 }}>
+    <List as="ol" splited bordered style={{ width: 300 }}>
       <List.Item
         prefix={
           <Text as={Icon} color="red">
