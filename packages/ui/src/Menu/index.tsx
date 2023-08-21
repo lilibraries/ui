@@ -13,9 +13,7 @@ import MenuItem from "./MenuItem";
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   intent?: IntentValue;
-  activeIndent?: IntentValue;
-  iconOnly?: boolean;
-  collapsible?: boolean;
+  disabled?: boolean;
 }
 
 export interface MenuComponent
@@ -26,21 +24,13 @@ export interface MenuComponent
 }
 
 const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
-  const {
-    children,
-    className,
-    intent,
-    activeIndent,
-    iconOnly,
-    collapsible,
-    ...rest
-  } = props;
+  const { children, className, intent, disabled, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const classes = cn(`${cls}menu`, className);
 
   return (
-    <List {...rest} ref={ref} className={classes}>
+    <List {...rest} as="div" ref={ref} className={classes}>
       {children}
     </List>
   );

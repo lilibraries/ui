@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Menu, Divider } from "@lilib/ui";
+import { Menu, Card } from "@lilib/ui";
 import { GiOrganigram } from "react-icons/gi";
 import {
   FiCode,
@@ -16,15 +16,28 @@ function Example() {
       <Menu>
         <Menu.Item icon={<FiUser />} label="Your profile">
           <Menu.Item icon={<FiHeart />} label="Your likes" />
-          <Menu.Item icon={<FiStar />} label="Your stars" />
+          <Menu.Item icon={<FiStar />} label="Your stars" openMode="collapse">
+            <Menu.Item icon={<FiHeart />} label="Your likes" />
+            <Menu.Item icon={<FiStar />} label="Your stars" />
+          </Menu.Item>
         </Menu.Item>
-        <Divider spacing="1x" />
-        <Menu.Item icon={<AiOutlineProject />} label="Your projects">
-          <Menu.Item icon={<FiCode />} label="Your codespaces" />
+        <Menu.Item
+          icon={<AiOutlineProject />}
+          label="Your projects"
+          openMode="collapse"
+        >
+          <Menu.Item
+            icon={<FiCode />}
+            label="Your codespaces"
+            openMode="collapse"
+          >
+            <Menu.Item icon={<FiCode />} label="Your codespaces" />
+            <Menu.Item icon={<FiGitPullRequest />} label="Your repositories" />
+            <Menu.Item icon={<GiOrganigram />} label="Your organizations" />
+          </Menu.Item>
           <Menu.Item icon={<FiGitPullRequest />} label="Your repositories" />
           <Menu.Item icon={<GiOrganigram />} label="Your organizations" />
         </Menu.Item>
-        <Divider spacing="1x" />
         <Menu.Item
           icon={<AiOutlineBgColors />}
           suffix="Dark"
