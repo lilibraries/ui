@@ -1,5 +1,13 @@
 @import "@lilib/themes";
 
+ol,
+ul {
+  &.#{$cls-prefix}list {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .#{$cls-prefix}list {
   @include reset;
 

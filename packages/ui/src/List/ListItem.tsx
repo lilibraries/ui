@@ -91,13 +91,17 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const hoverable =
     hoverableConfig !== undefined ? !!hoverableConfig : !!onClick;
 
-  const classes = cn(`${cls}list-item`, {
-    [`${cls}rtl`]: isRTL,
-    [`${cls}${size}`]: size,
-    [`${cls}hoverable`]: hoverable,
-    [`${cls}active`]: active,
-    [`${cls}disabled`]: disabled,
-  });
+  const classes = cn(
+    `${cls}list-item`,
+    {
+      [`${cls}rtl`]: isRTL,
+      [`${cls}${size}`]: size,
+      [`${cls}hoverable`]: hoverable,
+      [`${cls}active`]: active,
+      [`${cls}disabled`]: disabled,
+    },
+    className
+  );
 
   const handleClick = usePersist((event: MouseEvent<HTMLLIElement>) => {
     if (!disabled && onClick) {

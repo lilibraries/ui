@@ -1,23 +1,28 @@
 import React, {
+  useState,
   ReactNode,
   forwardRef,
+  MouseEvent,
   ElementType,
   ReactElement,
   ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
+import { usePersist } from "@lilib/hooks";
 import List from "../List";
-import ListItem from "../List/ListItem";
-import { IntentValue } from "../utils/types";
 import Prefix from "../Prefix";
-import isRenderableNode from "../utils/isRenderableNode";
-import Collapse, { CollapseProps } from "../Collapse";
+import Direction from "../Direction";
+import ListConfig from "../List/ListConfig";
+import { SizeValue } from "../Size";
 import Popup, { PopupProps } from "../Popup";
-
-export type MenuOpenMode = "popup" | "collapse";
+import Collapse, { CollapseProps } from "../Collapse";
+import { IntentValue } from "../utils/types";
+import isRenderableNode from "../utils/isRenderableNode";
+import OpenIcon from "./OpenIcon";
 
 export interface MenuItemCommonProps {
+  size?: SizeValue;
   icon?: ReactNode;
   label?: ReactNode;
   title?: ReactNode;
@@ -30,8 +35,8 @@ export interface MenuItemCommonProps {
   disabled?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
-  openMode?: MenuOpenMode;
   openByIcon?: boolean;
+  collapsible?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
   onOpen?: () => void;
@@ -58,80 +63,146 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     as = "button",
     children,
     className,
+    size,
     icon,
     label,
     title,
     detail,
     prefix,
     suffix,
-    intent,
+    intent: intentProp,
     activeIntent,
     active,
     disabled,
-    open,
+    open: openProp,
     defaultOpen,
-    openMode,
     openByIcon,
+    collapsible,
     popupProps,
     collapseProps,
     onOpen,
     onClose,
+    onClick,
     ...rest
   } = props;
 
-  const openable = isRenderableNode(children);
-  const collapsible = openMode === "collapse";
+  const controlled = openProp != null;
+  const [open, setOpen] = useState(controlled ? !!openProp : !!defaultOpen);
+
+  const handlePopupOpen = usePersist(() => {
+    if (!controlled) {
+      setOpen(true);
+    }
+    if (popupProps?.onOpen) {
+      popupProps?.onOpen();
+    }
+    if (onOpen) {
+      onOpen();
+    }
+  });
+
+  const handlePopupClose = usePersist(() => {
+    if (!controlled) {
+      setOpen(false);
+    }
+    if (popupProps?.onClose) {
+      popupProps?.onClose();
+    }
+    if (onClose) {
+      onClose();
+    }
+  });
+
+  const handleItemClick = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) {
+      onClick(event);
+    }
+    if (collapsible) {
+      if (!controlled) {
+        setOpen(!open);
+      }
+      if (!open && onOpen) {
+        onOpen();
+      }
+      if (open && onClose) {
+        onClose();
+      }
+    }
+  });
 
   const { cls } = Prefix.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
+
+  let intent = intentProp;
+  if (active) {
+    intent = activeIntent || intentProp;
+  }
+
   const classes = cn(
     `${cls}menu-item`,
     {
-      [`${cls}${intent}}`]: active ? activeIntent || intent : intent,
+      [`${cls}${intent}`]: intent,
+      [`${cls}hovered`]: open && !collapsible,
     },
     className
   );
 
   let submenu: ReactNode = null;
-  if (openable) {
+  const hasSubmenu = isRenderableNode(children);
+
+  if (hasSubmenu) {
     if (collapsible) {
-      submenu = <Collapse open>{children}</Collapse>;
+      submenu = (
+        <Collapse open={open} {...collapseProps}>
+          {children}
+        </Collapse>
+      );
     } else {
-      submenu = <List as="div">{children}</List>;
+      submenu = (
+        <List as="div">
+          <ListConfig indent={0}>{children}</ListConfig>
+        </List>
+      );
     }
   }
 
   const item = (
-    <ListItem
+    <List.Item
       {...rest}
       ref={ref}
       as={as}
       className={classes}
+      size={size}
       icon={icon}
       label={label}
       title={title}
       detail={detail}
       prefix={prefix}
       suffix={suffix}
+      hoverable
       active={active}
       disabled={disabled}
-      arrowed={openable}
-      hoverable
+      arrowed={hasSubmenu}
+      arrowIcon={<OpenIcon opened={open} collapsible={collapsible} />}
+      onClick={handleItemClick}
     >
       {collapsible && submenu}
-    </ListItem>
+    </List.Item>
   );
 
-  if (openable && !collapsible) {
+  if (hasSubmenu && !collapsible) {
     return (
       <Popup
-        style={{ width: 300 }}
-        unpadding
         arrowless
-        open
         offset={0}
-        content={submenu}
         on="hover"
-        placement="right-start"
+        placement={isRTL ? "left-start" : "right-start"}
+        open={open}
+        {...popupProps}
+        content={submenu}
+        className={cn(`${cls}menu-item-popup`, popupProps?.className)}
+        onOpen={handlePopupOpen}
+        onClose={handlePopupClose}
       >
         {item}
       </Popup>

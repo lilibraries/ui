@@ -9,9 +9,9 @@ import React, {
 } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
+import Size, { SizeValue } from "../Size";
 import ListItem from "./ListItem";
 import ListConfig from "./ListConfig";
-import Size, { SizeValue } from "../Size";
 
 export * from "./ListItem";
 
