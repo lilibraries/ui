@@ -54,38 +54,40 @@ List components.
 
 ### List
 
-| Property    | Type          | Description                        |
-| ----------- | ------------- | ---------------------------------- |
-| `as`        | `ElementType` | Element type, default is `"ul"`    |
-| `filled`    | `boolean`     | Show background                    |
-| `splited`   | `boolean`     | Show dividers                      |
-| `indented`  | `boolean`     | Dividers have indent               |
-| `bounded`   | `boolean`     | Show top and bottom borders        |
-| `bordered`  | `boolean`     | Show borders and radii             |
-| `arrowed`   | `boolean`     | Show arrow for every items         |
-| `arrowIcon` | `ReactNode`   | Specify arrow icon for every items |
-| `hoverable` | `boolean`     | Make every items hoverable         |
-| `disabled`  | `boolean`     | All items are disabled             |
-| `children`  | `boolean`     | List items                         |
+| Property    | Type                             | Description                        |
+| ----------- | -------------------------------- | ---------------------------------- |
+| `as`        | `ElementType`                    | Element type, default is `"ul"`    |
+| `size`      | `null` \| `"small"` \| `"large"` | Size value                         |
+| `filled`    | `boolean`                        | Show background                    |
+| `splited`   | `boolean`                        | Show dividers                      |
+| `indented`  | `boolean`                        | Dividers have indent               |
+| `bounded`   | `boolean`                        | Show top and bottom borders        |
+| `bordered`  | `boolean`                        | Show borders and radii             |
+| `arrowed`   | `boolean`                        | Show arrow for every items         |
+| `arrowIcon` | `ReactNode`                      | Specify arrow icon for every items |
+| `hoverable` | `boolean`                        | Make every items hoverable         |
+| `disabled`  | `boolean`                        | All items are disabled             |
+| `children`  | `boolean`                        | List items                         |
 
 It accepts all props which the `as` element type supports.
 
 ### List.Item
 
-| Property    | Type          | Description                      |
-| ----------- | ------------- | -------------------------------- |
-| `as`        | `ElementType` | Element type, default is `"div"` |
-| `icon`      | `ReactNode`   | Icon                             |
-| `title`     | `ReactNode`   | Title                            |
-| `label`     | `ReactNode`   | Label                            |
-| `detail`    | `ReactNode`   | Detail                           |
-| `prefix`    | `ReactNode`   | Prefix                           |
-| `suffix`    | `ReactNode`   | Suffix                           |
-| `arrowed`   | `boolean`     | Show arrow                       |
-| `arrowIcon` | `ReactNode`   | Specify arrow icon               |
-| `hoverable` | `boolean`     | Make item hoverable              |
-| `active`    | `boolean`     | Active status                    |
-| `disabled`  | `boolean`     | Disabled status                  |
-| `children`  | `ReactNode`   | Nested list                      |
+| Property    | Type                             | Description                      |
+| ----------- | -------------------------------- | -------------------------------- |
+| `as`        | `ElementType`                    | Element type, default is `"div"` |
+| `size`      | `null` \| `"small"` \| `"large"` | Size value                       |
+| `icon`      | `ReactNode`                      | Icon                             |
+| `title`     | `ReactNode`                      | Title                            |
+| `label`     | `ReactNode`                      | Label                            |
+| `detail`    | `ReactNode`                      | Detail                           |
+| `prefix`    | `ReactNode`                      | Prefix                           |
+| `suffix`    | `ReactNode`                      | Suffix                           |
+| `arrowed`   | `boolean`                        | Show arrow                       |
+| `arrowIcon` | `ReactNode`                      | Specify arrow icon               |
+| `hoverable` | `boolean`                        | Make item hoverable              |
+| `active`    | `boolean`                        | Active status                    |
+| `disabled`  | `boolean`                        | Disabled status                  |
+| `children`  | `ReactNode`                      | Nested list                      |
 
 It accepts all props which the `as` element type supports.

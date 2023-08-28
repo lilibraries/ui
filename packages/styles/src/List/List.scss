@@ -5,9 +5,18 @@
 
   display: block;
   box-sizing: border-box;
+  width: 100%;
   color: var(--text-color-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+
+  &.#{$cls-prefix}small {
+    font-size: var(--font-size-small);
+  }
+
+  &.#{$cls-prefix}large {
+    font-size: var(--font-size-large);
+  }
 
   &.#{$cls-prefix}filled {
     background-color: var(--background-color-card);

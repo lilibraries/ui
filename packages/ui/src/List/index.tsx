@@ -11,10 +11,12 @@ import cn from "classnames";
 import Prefix from "../Prefix";
 import ListItem from "./ListItem";
 import ListConfig from "./ListConfig";
+import Size, { SizeValue } from "../Size";
 
 export * from "./ListItem";
 
 export interface ListCommonProps {
+  size?: SizeValue;
   filled?: boolean;
   splited?: boolean;
   bounded?: boolean;
@@ -47,6 +49,7 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
     as = "ul",
     children,
     className,
+    size: sizeProp,
     filled,
     splited: splitedProp,
     indented: indentedProp,
@@ -60,6 +63,7 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const size = Size.useConfig(sizeProp);
   const { splited, indented } = ListConfig.useConfig({
     splited: splitedProp,
     indented: indentedProp,
@@ -68,6 +72,7 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
   const classes = cn(
     `${cls}list`,
     {
+      [`${cls}${size}`]: size,
       [`${cls}filled`]: filled,
       [`${cls}splited`]: splited,
       [`${cls}bounded`]: bounded,
@@ -84,16 +89,18 @@ const List = forwardRef<HTMLUListElement, ListProps>((props, ref) => {
       ref,
       className: classes,
     },
-    <ListConfig
-      splited={splited}
-      indented={indented}
-      arrowed={arrowed}
-      arrowIcon={arrowIcon}
-      disabled={disabled}
-      hoverable={hoverable}
-    >
-      {children}
-    </ListConfig>
+    <Size value={size}>
+      <ListConfig
+        splited={splited}
+        indented={indented}
+        arrowed={arrowed}
+        arrowIcon={arrowIcon}
+        disabled={disabled}
+        hoverable={hoverable}
+      >
+        {children}
+      </ListConfig>
+    </Size>
   );
 }) as ListComponent;
 

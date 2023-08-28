@@ -6,6 +6,9 @@
   display: block;
   box-sizing: border-box;
   width: 100%;
+  color: var(--text-color-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
 
   &-inner {
     display: flex;
@@ -95,6 +98,30 @@
   &[disabled] {
     &[href] {
       pointer-events: none;
+    }
+  }
+
+  &.#{$cls-prefix}small {
+    font-size: var(--font-size-small);
+
+    & > .#{$cls-prefix}list-item-inner {
+      & > .#{$cls-prefix}list-item-icon,
+      & > .#{$cls-prefix}list-item-main {
+        padding-top: var(--space-1);
+        padding-bottom: var(--space-1);
+      }
+    }
+  }
+
+  &.#{$cls-prefix}large {
+    font-size: var(--font-size-large);
+
+    & > .#{$cls-prefix}list-item-inner {
+      & > .#{$cls-prefix}list-item-icon,
+      & > .#{$cls-prefix}list-item-main {
+        padding-top: var(--space-3);
+        padding-bottom: var(--space-3);
+      }
     }
   }
 
