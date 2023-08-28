@@ -1,0 +1,58 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}menu-item {
+  &-open-icon {
+    @include transition(fast, transform);
+
+    &.#{$cls-prefix}reverse {
+      transform: rotate3d(1, 0, 0, 180deg);
+    }
+  }
+
+  &-popup {
+    &.#{$cls-prefix}popup {
+      padding: var(--space-1) 0;
+    }
+  }
+
+  &.#{$cls-prefix}list-item {
+    &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
+      color: var(--text-color-hover);
+      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+    }
+
+    @each $intent in $intents {
+      &.#{$cls-prefix}#{$intent} {
+        color: var(--#{$intent}-5);
+
+        &.#{$cls-prefix}hoverable {
+          &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
+            &:hover {
+              color: var(--#{$intent}-6);
+              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+            }
+
+            &:active {
+              color: var(--#{$intent}-7);
+              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
+            }
+          }
+        }
+
+        &.#{$cls-prefix}active {
+          color: var(--#{$intent}-7);
+          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
+        }
+
+        &.#{$cls-prefix}disabled {
+          color: var(--#{$intent}-2);
+        }
+
+        &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
+          color: var(--#{$intent}-6);
+          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React, { forwardRef, SVGAttributes } from "react";
 
-const LeftChevronIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>(
+const DownChevronIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>(
   (props, ref) => {
     return (
       <svg
@@ -16,10 +16,10 @@ const LeftChevronIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>(
         xmlns="http://www.w3.org/2000/svg"
         {...props}
       >
-        <polyline points="34 4 14 24 34 44" />
+        <polyline points="4 14 24 34 44 14" />
       </svg>
     );
   }
 );
 
-export default LeftChevronIcon;
+export default DownChevronIcon;

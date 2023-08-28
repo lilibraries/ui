@@ -47,6 +47,11 @@
   &-info {
     flex: 1 1;
     overflow: auto;
+
+    & + .#{$cls-prefix}list-item-suffix,
+    & + .#{$cls-prefix}list-item-arrow {
+      margin-left: var(--space-4);
+    }
   }
 
   &-title,
@@ -150,10 +155,6 @@
   &.#{$cls-prefix}active {
     color: var(--text-color-active);
     background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
-
-    &.#{$cls-prefix}hoverable {
-      cursor: default;
-    }
   }
 
   &.#{$cls-prefix}disabled {
@@ -207,6 +208,13 @@
       & > .#{$cls-prefix}list-item-arrow {
         margin-right: var(--space-1);
         margin-left: 0;
+      }
+
+      & > .#{$cls-prefix}list-item-info {
+        & + .#{$cls-prefix}list-item-suffix,
+        & + .#{$cls-prefix}list-item-arrow {
+          margin-right: var(--space-4);
+        }
       }
     }
   }
