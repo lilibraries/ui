@@ -1,5 +1,6 @@
 import React, {
   useRef,
+  useEffect,
   ReactNode,
   MouseEvent,
   forwardRef,
@@ -10,19 +11,17 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import {
-  usePersist,
-  useSafeState,
-  useIsomorphicLayoutEffect,
-} from "@lilib/hooks";
+import { usePersist, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
+import Size, { SizeValue } from "../Size";
 import LeftChevronIcon from "../icons/LeftChevronIcon";
 import RightChevronIcon from "../icons/RightChevronIcon";
 import isRenderableNode from "../utils/isRenderableNode";
 import ListConfig from "./ListConfig";
 
 export interface ListItemCommonProps {
+  size?: SizeValue;
   icon?: ReactNode;
   label?: ReactNode;
   title?: ReactNode;
@@ -57,6 +56,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
     children,
     style,
     className,
+    size: sizeProp,
     icon,
     label,
     title,
@@ -73,6 +73,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
 
   const {
@@ -92,6 +93,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
 
   const classes = cn(`${cls}list-item`, {
     [`${cls}rtl`]: isRTL,
+    [`${cls}${size}`]: size,
     [`${cls}hoverable`]: hoverable,
     [`${cls}active`]: active,
     [`${cls}disabled`]: disabled,
@@ -107,7 +109,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const innerRef = useRef<HTMLDivElement>(null);
   const [increasedIndent, setIncreasedIndent] = useSafeState(0);
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     if (isRenderableNode(children)) {
       let newIncreasedIndent = 0;
       if (iconRef.current) {
