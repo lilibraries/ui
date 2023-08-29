@@ -18,7 +18,7 @@ import Spinner from "../Spinner";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import DotIcon from "../icons/DotIcon";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 import RadioGroup from "./RadioGroup";
 import RadioConfig, { RadioElement } from "./RadioConfig";
 
@@ -165,7 +165,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
           )}
         </span>
       </Spinner>
-      {isRenderableNode(children) && (
+      {isRenderable(children) && (
         <span className={`${cls}radio-label`}>{children}</span>
       )}
     </label>

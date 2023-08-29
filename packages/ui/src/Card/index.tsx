@@ -11,8 +11,8 @@ import React, {
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
-import isRenderableNode from "../utils/isRenderableNode";
-import isCSSPropertyValue from "../utils/isCSSPropertyValue";
+import isCSSValue from "../utils/isCSSValue";
+import isRenderable from "../utils/isRenderable";
 
 export type CardImagePlacement = "top" | "bottom" | "start" | "end";
 
@@ -77,12 +77,12 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
 
-  const hasIcon = isRenderableNode(icon);
-  const hasTitle = isRenderableNode(title);
-  const hasHeadnote = isRenderableNode(headnote);
-  const hasHeadmark = isRenderableNode(headmark);
-  const hasFootnote = isRenderableNode(footnote);
-  const hasFootmark = isRenderableNode(footmark);
+  const hasIcon = isRenderable(icon);
+  const hasTitle = isRenderable(title);
+  const hasHeadnote = isRenderable(headnote);
+  const hasHeadmark = isRenderable(headmark);
+  const hasFootnote = isRenderable(footnote);
+  const hasFootmark = isRenderable(footmark);
 
   let image: ReactNode = null;
   let header: ReactNode = null;
@@ -91,9 +91,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   let hasHeader = hasIcon || hasTitle || hasHeadnote || hasHeadmark;
   let hasFooter = hasFootnote || hasFootmark;
 
-  if (isRenderableNode(img)) {
+  if (isRenderable(img)) {
     let style: CSSProperties | undefined;
-    if (isCSSPropertyValue(imageSize)) {
+    if (isCSSValue(imageSize)) {
       if (imagePlacement === "top" || imagePlacement === "bottom") {
         style = { height: imageSize };
       }
@@ -112,14 +112,14 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   if (hasHeader) {
     header = (
       <div className={`${cls}card-header`}>
-        {isRenderableNode(icon) && (
+        {isRenderable(icon) && (
           <span className={`${cls}card-icon`}>{icon}</span>
         )}
         <span className={`${cls}card-title`}>{title}</span>
-        {isRenderableNode(headnote) && (
+        {isRenderable(headnote) && (
           <span className={`${cls}card-headnote`}>{headnote}</span>
         )}
-        {isRenderableNode(headmark) && (
+        {isRenderable(headmark) && (
           <span className={`${cls}card-headmark`}>{headmark}</span>
         )}
       </div>
@@ -143,8 +143,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   if (renderFooter) {
     footer = renderFooter(footer as ReactElement | null);
   }
-  hasHeader = isRenderableNode(header);
-  hasFooter = isRenderableNode(footer);
+  hasHeader = isRenderable(header);
+  hasFooter = isRenderable(footer);
 
   const classes = cn(
     `${cls}card`,
@@ -173,7 +173,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     image,
     <div className={`${cls}card-main`}>
       {header}
-      {isRenderableNode(children) && (
+      {isRenderable(children) && (
         <div className={`${cls}card-content`}>{children}</div>
       )}
       {footer}

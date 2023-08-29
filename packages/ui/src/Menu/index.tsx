@@ -1,4 +1,6 @@
 import React, {
+  Key,
+  ReactNode,
   forwardRef,
   RefAttributes,
   HTMLAttributes,
@@ -13,7 +15,10 @@ import { PopupProps } from "../Popup";
 import { CollapseProps } from "../Collapse";
 import { IntentValue } from "../utils/types";
 import MenuItem from "./MenuItem";
-import MenuConfig from "./MenuConfig";
+import MenuConfig, { MenuRenderExpandIconOptions } from "./MenuConfig";
+
+export * from "./MenuItem";
+export { MenuRenderExpandIconOptions } from "./MenuConfig";
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
@@ -26,8 +31,16 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   activeIntent?: IntentValue;
   disabled?: boolean;
   collapsible?: boolean;
+  collapseByIcon?: boolean;
+  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
+  openKeys?: Key[];
+  defaultOpenKeys?: Key[];
+  activeKeys?: Key[];
+  defaultActiveKeys?: Key[];
 }
 
 export interface MenuComponent
@@ -51,6 +64,10 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     activeIntent,
     disabled,
     collapsible,
+    collapseByIcon,
+    renderExpandIcon,
+    firstMount,
+    keepMounted,
     popupProps,
     collapseProps,
     ...rest
@@ -75,8 +92,13 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     >
       <MenuConfig
         intent={intent}
+        disabled={disabled}
         activeIntent={activeIntent}
         collapsible={collapsible}
+        collapseByIcon={collapseByIcon}
+        renderExpandIcon={renderExpandIcon}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
         popupProps={popupProps}
         collapseProps={collapseProps}
       >

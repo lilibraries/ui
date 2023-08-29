@@ -17,7 +17,7 @@ import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import LeftChevronIcon from "../icons/LeftChevronIcon";
 import RightChevronIcon from "../icons/RightChevronIcon";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 import ListConfig from "./ListConfig";
 
 export interface ListItemCommonProps {
@@ -114,7 +114,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const [increasedIndent, setIncreasedIndent] = useSafeState(0);
 
   useEffect(() => {
-    if (isRenderableNode(children)) {
+    if (isRenderable(children)) {
       let newIncreasedIndent = 0;
       if (iconRef.current) {
         newIncreasedIndent = iconRef.current.clientWidth;
@@ -133,30 +133,30 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
 
   const inner = (
     <div ref={innerRef} className={`${cls}list-item-inner`}>
-      {isRenderableNode(icon) && (
+      {isRenderable(icon) && (
         <div ref={iconRef} className={`${cls}list-item-icon`}>
           {icon}
         </div>
       )}
       <div className={`${cls}list-item-main`}>
-        {isRenderableNode(prefix) && (
+        {isRenderable(prefix) && (
           <div className={`${cls}list-item-prefix`}>{prefix}</div>
         )}
         <div className={`${cls}list-item-info`}>
-          {isRenderableNode(title) && (
+          {isRenderable(title) && (
             <div className={`${cls}list-item-title`}>{title}</div>
           )}
           <div className={`${cls}list-item-label`}>{label}</div>
-          {isRenderableNode(detail) && (
+          {isRenderable(detail) && (
             <div className={`${cls}list-item-detail`}>{detail}</div>
           )}
         </div>
-        {isRenderableNode(suffix) && (
+        {isRenderable(suffix) && (
           <div className={`${cls}list-item-suffix`}>{suffix}</div>
         )}
         {!!arrowed && (
           <div className={`${cls}list-item-arrow`}>
-            {isRenderableNode(arrowIcon) ? (
+            {isRenderable(arrowIcon) ? (
               arrowIcon
             ) : isRTL ? (
               <LeftChevronIcon />
@@ -191,7 +191,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         },
         inner
       )}
-      {isRenderableNode(children) && (
+      {isRenderable(children) && (
         <ListConfig indent={indent + increasedIndent}>{children}</ListConfig>
       )}
     </>

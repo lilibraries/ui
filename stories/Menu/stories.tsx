@@ -5,3 +5,4 @@ export default {
 export { default as Basic } from "./Basic";
 export { default as Collapsible } from "./Collapsible";
 export { default as Intents } from "./Intents";
+export { default as Statuses } from "./Statuses";

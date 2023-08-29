@@ -151,6 +151,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           classes
           durations={fast}
           exitDelay={exitDelay}
+          firstMount
           keepMounted
         >
           {popper}

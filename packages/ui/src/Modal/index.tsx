@@ -25,9 +25,10 @@ import Button, { ButtonProps } from "../Button";
 import Backdrop, { BackdropProps } from "../Backdrop";
 import CloseIcon from "../icons/CloseIcon";
 import isPromise from "../utils/isPromise";
+import isCSSValue from "../utils/isCSSValue";
+import isRenderable from "../utils/isRenderable";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import isRenderableNode from "../utils/isRenderableNode";
-import isCSSPropertyValue from "../utils/isCSSPropertyValue";
+import RenderAfterMounted from "../utils/RenderAfterMounted";
 
 export type ModalWidthSize = "small" | "medium" | "large";
 
@@ -235,7 +236,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [open, opened]);
 
   const isPresetSize = ["small", "medium", "large"].includes(String(width));
-  const isCustomSize = !isPresetSize && isCSSPropertyValue(width);
+  const isCustomSize = !isPresetSize && isCSSValue(width);
 
   const classes = cn(
     `${cls}modal`,
@@ -268,8 +269,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     );
   }
 
-  const hasConfirmLabel = isRenderableNode(confirmLabel);
-  const hasCancelLabel = isRenderableNode(cancelLabel);
+  const hasConfirmLabel = isRenderable(confirmLabel);
+  const hasCancelLabel = isRenderable(cancelLabel);
 
   if (hasConfirmLabel || hasCancelLabel) {
     footmark = (
@@ -325,7 +326,13 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       renderHeader={renderHeader}
       renderFooter={renderFooter}
     >
-      <Portal.Config container={containerRef}>{children}</Portal.Config>
+      <Portal.Config container={containerRef}>
+        {firstMount ? (
+          <RenderAfterMounted>{children}</RenderAfterMounted>
+        ) : (
+          children
+        )}
+      </Portal.Config>
     </Card>
   );
 
@@ -341,6 +348,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         classes
         durations={base}
         exitDelay={exitDelay}
+        firstMount
         keepMounted
       >
         {result}

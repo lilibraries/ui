@@ -14,8 +14,8 @@ import Duration from "../Duration";
 import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
+import isRenderable from "../utils/isRenderable";
 import { ColorValue } from "../utils/types";
-import isRenderableNode from "../utils/isRenderableNode";
 
 export type BadgeVariant = null | "solid" | "dotted";
 
@@ -64,7 +64,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const solid = variant === "solid";
   const dotted = variant === "dotted";
-  const contained = isRenderableNode(children);
+  const contained = isRenderable(children);
   const offsets = Array.isArray(offset) ? offset : ([offset, offset] as const);
 
   const { cls } = Prefix.useConfig();
@@ -87,7 +87,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   let visible: boolean = true;
   let style: CSSProperties = {};
 
-  if (isRenderableNode(count)) {
+  if (isRenderable(count)) {
     if (
       isNumber(count) &&
       !isNaN(count) &&
@@ -125,7 +125,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     if (isNaN(count) || (count === 0 && !showZero)) {
       visible = false;
     }
-  } else if (!isRenderableNode(count)) {
+  } else if (!isRenderable(count)) {
     visible = false;
   }
 
@@ -154,7 +154,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   }
 
   return (
-    <Transition in={visible} classes durations={fast} keepMounted={contained}>
+    <Transition
+      in={visible}
+      classes
+      durations={fast}
+      firstMount={contained}
+      keepMounted={contained}
+    >
       <span {...rest} ref={ref} className={classes}>
         {children}
         <span

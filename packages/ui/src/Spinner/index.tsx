@@ -15,8 +15,8 @@ import Direction from "../Direction";
 import Transition from "../Transition";
 import LoaderIcon from "../icons/LoaderIcon";
 import Icon, { IconProps } from "../Icon";
-import isRenderableNode from "../utils/isRenderableNode";
-import isCSSPropertyValue from "../utils/isCSSPropertyValue";
+import isCSSValue from "../utils/isCSSValue";
+import isRenderable from "../utils/isRenderable";
 import SpinnerConfig from "./SpinnerConfig";
 
 export * from "./SpinnerConfig";
@@ -59,15 +59,15 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     delay: delayProp,
   });
 
-  const hasContent = isRenderableNode(children);
+  const hasContent = isRenderable(children);
   const contained = !!containedProp || hasContent;
-  const hasStartSpaceStyle = isCSSPropertyValue(startSpace);
-  const hasEndSpaceStyle = isCSSPropertyValue(endSpace);
+  const hasStartSpaceStyle = isCSSValue(startSpace);
+  const hasEndSpaceStyle = isCSSValue(endSpace);
   const hasStartSpaceClass = !!startSpace && !hasStartSpaceStyle;
   const hasEndSpaceClass = !!endSpace && !hasEndSpaceStyle;
 
   let icon: ReactNode;
-  if (isRenderableNode(iconConfig)) {
+  if (isRenderable(iconConfig)) {
     icon = iconConfig;
   } else {
     icon = <LoaderIcon />;
@@ -117,6 +117,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             classes
             durations={fast}
             exitDelay={delay}
+            firstMount
             keepMounted
           >
             <span className={`${cls}spinner-switcher`}>{content}</span>

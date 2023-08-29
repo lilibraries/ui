@@ -15,7 +15,7 @@ import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import CheckIcon from "../icons/CheckIcon";
 import MinusIcon from "../icons/MinusIcon";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 
 export interface CheckboxProps
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
@@ -113,7 +113,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
           )}
         </span>
       </Spinner>
-      {isRenderableNode(children) && (
+      {isRenderable(children) && (
         <span className={`${cls}checkbox-label`}>{children}</span>
       )}
     </label>

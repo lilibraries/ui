@@ -30,12 +30,7 @@ function Example() {
         onChange={(event) => setVisible(event.target.checked)}
       />
 
-      <Transition
-        durations={300}
-        classes="css-transition-example"
-        in={visible}
-        keepMounted
-      >
+      <Transition durations={300} classes="css-transition-example" in={visible}>
         <div className="css-transition-example">
           React (also known as React.js or ReactJS) is a free and open-source
           front-end JavaScript library for building user interfaces or UI

@@ -9,6 +9,7 @@ export interface CollapseProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
+  firstMount?: boolean;
   firstAppear?: boolean;
   keepMounted?: boolean;
   onOpen?: () => void;
@@ -27,6 +28,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
     open,
     openDelay,
     closeDelay,
+    firstMount,
     firstAppear,
     keepMounted,
     onOpen,
@@ -50,6 +52,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
       durations={fast}
       enterDelay={openDelay}
       exitDelay={closeDelay}
+      firstMount={firstMount}
       firstAppear={firstAppear}
       keepMounted={keepMounted}
       onEnter={onOpen}
@@ -65,7 +68,8 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
 
         switch (state) {
           case Transition.ENTER:
-          case Transition.EXITING: {
+          case Transition.EXITING:
+          case Transition.EXITED: {
             height = 0;
             break;
           }

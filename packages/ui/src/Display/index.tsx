@@ -1,10 +1,5 @@
-import React, { FC, ReactNode, useRef } from "react";
-import {
-  useUpdate,
-  useTimeout,
-  useSafeState,
-  useIsomorphicLayoutEffect,
-} from "@lilib/hooks";
+import React, { FC, ReactNode, useEffect, useRef } from "react";
+import { useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useCloseEvent, { CloseEventOptions } from "./useCloseEvent";
 
@@ -20,9 +15,7 @@ export interface DisplayProps extends CloseEventOptions {
   onClosed?: () => void;
 }
 
-const Display: FC<DisplayProps> & {
-  useCloseEvent: typeof useCloseEvent;
-} = (props) => {
+const Display: FC<DisplayProps> = (props) => {
   const {
     children,
     open,
@@ -85,16 +78,19 @@ const Display: FC<DisplayProps> & {
     [open] // eslint-disable-line
   );
 
-  useIsomorphicLayoutEffect(() => {
-    if (display) {
-      openedRef.current = true;
-      renderedRef.current = true;
-    } else {
-      if (!keepMounted) {
-        openedRef.current = false;
+  useEffect(
+    () => {
+      if (display) {
+        openedRef.current = true;
+        renderedRef.current = true;
+      } else {
+        if (!keepMounted) {
+          openedRef.current = false;
+        }
       }
-    }
-  }, [display]);
+    },
+    [display] // eslint-disable-line
+  );
 
   useCloseEvent(
     () => {
@@ -124,7 +120,5 @@ const Display: FC<DisplayProps> & {
 
   return renderable ? <>{children}</> : null;
 };
-
-Display.useCloseEvent = useCloseEvent;
 
 export default Display;
