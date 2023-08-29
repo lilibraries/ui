@@ -12,7 +12,7 @@ import { AiOutlineProject, AiOutlineBgColors } from "react-icons/ai";
 
 function Example() {
   return (
-    <Menu style={{ width: 300 }}>
+    <Menu collapsible style={{ width: 300 }}>
       <Menu.Item icon={<FiUser />} label="Your profile">
         <Menu>
           <Menu.Item icon={<FiHeart />} label="Your likes" />

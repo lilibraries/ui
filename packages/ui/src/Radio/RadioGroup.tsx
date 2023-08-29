@@ -1,11 +1,5 @@
-import React, {
-  FC,
-  useState,
-  ReactNode,
-  ChangeEvent,
-  ChangeEventHandler,
-} from "react";
-import { usePersist, useUpdate } from "@lilib/hooks";
+import React, { FC, ReactNode, ChangeEvent, ChangeEventHandler } from "react";
+import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Size, { SizeValue } from "../Size";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
 import RadioConfig, { RadioElement } from "./RadioConfig";
@@ -38,7 +32,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
 
   const controlled = valueProp !== undefined;
   const size = Size.useConfig(sizeProp);
-  const [value, setValue] = useState<any>(
+  const [value, setValue] = useSafeState<any>(
     controlled ? valueProp : defaultValue
   );
 

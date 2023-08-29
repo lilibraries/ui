@@ -514,7 +514,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   });
 
   const handleAnchorContextMenu = usePersist((event: MouseEvent) => {
-    event.preventDefault();
+    if (isContextMenu) {
+      event.preventDefault();
+    }
     if (rawAnchorContextMenu) {
       rawAnchorContextMenu(event);
     }

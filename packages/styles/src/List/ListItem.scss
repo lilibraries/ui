@@ -178,6 +178,10 @@
     &.#{$cls-prefix}hoverable {
       cursor: not-allowed;
     }
+
+    &.#{$cls-prefix}active {
+      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+    }
   }
 }
 

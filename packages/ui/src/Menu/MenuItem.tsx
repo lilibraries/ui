@@ -1,5 +1,4 @@
 import React, {
-  useState,
   ReactNode,
   forwardRef,
   MouseEvent,
@@ -9,7 +8,7 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import { usePersist } from "@lilib/hooks";
+import { usePersist, useSafeState } from "@lilib/hooks";
 import List from "../List";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
@@ -20,6 +19,7 @@ import Collapse, { CollapseProps } from "../Collapse";
 import { IntentValue } from "../utils/types";
 import isRenderableNode from "../utils/isRenderableNode";
 import OpenIcon from "./OpenIcon";
+import MenuConfig from "./MenuConfig";
 
 export interface MenuItemCommonProps {
   size?: SizeValue;
@@ -35,7 +35,6 @@ export interface MenuItemCommonProps {
   disabled?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
-  openByIcon?: boolean;
   collapsible?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
@@ -71,13 +70,12 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     prefix,
     suffix,
     intent: intentProp,
-    activeIntent,
+    activeIntent: activeIntentProp,
     active,
     disabled,
     open: openProp,
     defaultOpen,
-    openByIcon,
-    collapsible,
+    collapsible: collapsibleProp,
     popupProps,
     collapseProps,
     onOpen,
@@ -86,8 +84,27 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     ...rest
   } = props;
 
+  const { cls } = Prefix.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
+  const {
+    collapsible,
+    activeIntent,
+    intent: intentConfig,
+    popupProps: popupConfigProps,
+    collapseProps: collapseConfigProps,
+  } = MenuConfig.useConfig({
+    intent: intentProp,
+    activeIntent: activeIntentProp,
+    collapsible: collapsibleProp,
+  });
+
+  let intent = intentConfig;
+  if (active) {
+    intent = activeIntent || intentConfig;
+  }
+
   const controlled = openProp != null;
-  const [open, setOpen] = useState(controlled ? !!openProp : !!defaultOpen);
+  const [open, setOpen] = useSafeState(controlled ? !!openProp : !!defaultOpen);
 
   const handlePopupOpen = usePersist(() => {
     if (!controlled) {
@@ -130,14 +147,6 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     }
   });
 
-  const { cls } = Prefix.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
-
-  let intent = intentProp;
-  if (active) {
-    intent = activeIntent || intentProp;
-  }
-
   const classes = cn(
     `${cls}menu-item`,
     {
@@ -153,8 +162,8 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   if (hasSubmenu) {
     if (collapsible) {
       submenu = (
-        <Collapse open={open} {...collapseProps}>
-          {children}
+        <Collapse open={open} {...collapseConfigProps} {...collapseProps}>
+          <List as="div">{children}</List>
         </Collapse>
       );
     } else {
@@ -198,6 +207,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
         on="hover"
         placement={isRTL ? "left-start" : "right-start"}
         open={open}
+        {...popupConfigProps}
         {...popupProps}
         content={submenu}
         className={cn(`${cls}menu-item-popup`, popupProps?.className)}

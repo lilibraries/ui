@@ -1,18 +1,11 @@
-import {
-  FC,
-  useRef,
-  useState,
-  Children,
-  cloneElement,
-  ReactElement,
-} from "react";
+import { FC, useRef, Children, cloneElement, ReactElement } from "react";
 import cn from "classnames";
 import isObject from "lodash/isObject";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
 import isFunction from "lodash/isFunction";
 import { composeRefs, warning } from "@lilib/utils";
-import { useMount, useUpdate, useTimeout } from "@lilib/hooks";
+import { useMount, useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
@@ -110,7 +103,7 @@ const Transition: FC<TransitionProps> & {
   const { cls } = Prefix.useConfig();
   const domRef = useRef<HTMLElement>();
 
-  const [state, setState] = useState<TransitionState>(() => {
+  const [state, setState] = useSafeState<TransitionState>(() => {
     if (inProp) {
       if (firstAppear) {
         if (delayOnEnter) {

@@ -1,10 +1,11 @@
 import "intersection-observer";
-import React, { useRef, useState, forwardRef, ImgHTMLAttributes } from "react";
+import React, { useRef, forwardRef, ImgHTMLAttributes } from "react";
 import { inBrowser } from "@lilib/utils";
 import {
   useUpdate,
   usePersist,
   useUnmount,
+  useSafeState,
   useComposedRef,
   useIsomorphicLayoutEffect,
 } from "@lilib/hooks";
@@ -48,7 +49,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const isCustomLazy = isLazy && inBrowser && !isNativeLazy;
   const hasSource = !!srcProp || !!srcSetProp;
 
-  const [state, setState] = useState<ImageState>(() => {
+  const [state, setState] = useSafeState<ImageState>(() => {
     let alt: string | undefined;
     let src: string | undefined;
     let srcSet: string | undefined;

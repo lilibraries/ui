@@ -1,6 +1,5 @@
 import React, {
   Ref,
-  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -13,7 +12,7 @@ import React, {
 } from "react";
 import cn from "classnames";
 import { warning } from "@lilib/utils";
-import { usePersist, useUpdate } from "@lilib/hooks";
+import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Direction from "../Direction";
@@ -98,7 +97,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const isValueControlled = groupControlled && value !== undefined;
   const isCheckedControlled = checkedProp != null;
 
-  const [checked, setChecked] = useState(() => {
+  const [checked, setChecked] = useSafeState(() => {
     if (isValueControlled) {
       return groupValue === value;
     } else if (isCheckedControlled) {

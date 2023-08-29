@@ -1,6 +1,5 @@
 import React, {
   Ref,
-  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -9,7 +8,7 @@ import React, {
   LabelHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { usePersist, useUpdate } from "@lilib/hooks";
+import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Direction from "../Direction";
@@ -56,7 +55,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   const controlled = checkedProp != null;
-  const [checked, setChecked] = useState(
+  const [checked, setChecked] = useSafeState(
     controlled ? !!checkedProp : !!defaultChecked
   );
 
