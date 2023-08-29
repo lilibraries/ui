@@ -1,12 +1,11 @@
 import React, {
-  useState,
   ReactNode,
   MouseEvent,
   forwardRef,
   HTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { usePersist, useUpdate } from "@lilib/hooks";
+import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Collapse from "../Collapse";
 import Direction from "../Direction";
@@ -38,7 +37,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   const controlled = openProp != null;
-  const [open, setOpen] = useState(controlled ? !!openProp : true);
+  const [open, setOpen] = useSafeState(controlled ? !!openProp : true);
 
   useUpdate(() => {
     if (controlled) {

@@ -1,6 +1,5 @@
 import React, {
   Ref,
-  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -9,7 +8,7 @@ import React, {
   InputHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { usePersist, useUpdate } from "@lilib/hooks";
+import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Direction from "../Direction";
@@ -65,7 +64,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   }
 
   const controlled = checkedProp != null;
-  const [checked, setChecked] = useState(
+  const [checked, setChecked] = useSafeState(
     controlled ? !!checkedProp : !!defaultChecked
   );
 

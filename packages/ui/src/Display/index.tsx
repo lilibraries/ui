@@ -1,5 +1,10 @@
-import React, { FC, ReactNode, useRef, useState } from "react";
-import { useUpdate, useTimeout, useIsomorphicLayoutEffect } from "@lilib/hooks";
+import React, { FC, ReactNode, useRef } from "react";
+import {
+  useUpdate,
+  useTimeout,
+  useSafeState,
+  useIsomorphicLayoutEffect,
+} from "@lilib/hooks";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useCloseEvent, { CloseEventOptions } from "./useCloseEvent";
 
@@ -40,7 +45,7 @@ const Display: FC<DisplayProps> & {
 
   const openedRef = useRef(false);
   const renderedRef = useRef(false);
-  const [display, setDisplay] = useState(!!open);
+  const [display, setDisplay] = useSafeState(!!open);
 
   const setOpened = () => {
     setDisplay(true);
