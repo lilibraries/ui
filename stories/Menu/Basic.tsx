@@ -12,12 +12,10 @@ import { AiOutlineProject, AiOutlineBgColors } from "react-icons/ai";
 
 function Example() {
   return (
-    <Menu style={{ width: 300 }}>
+    <Menu bordered style={{ width: 300 }}>
       <Menu.Item icon={<FiUser />} label="Your profile">
-        <Menu>
-          <Menu.Item icon={<FiHeart />} label="Your likes" />
-          <Menu.Item icon={<FiStar />} label="Your stars" />
-        </Menu>
+        <Menu.Item icon={<FiHeart />} label="Your likes" />
+        <Menu.Item icon={<FiStar />} label="Your stars" />
       </Menu.Item>
       <Menu.Item icon={<AiOutlineProject />} label="Your projects">
         <Menu.Item icon={<FiCode />} label="Your codespaces" />

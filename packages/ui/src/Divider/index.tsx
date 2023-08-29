@@ -10,7 +10,7 @@ import {
 import cn from "classnames";
 import isString from "lodash/isString";
 import Prefix from "../Prefix";
-import isCSSPropertyValue from "../utils/isCSSPropertyValue";
+import isCSSValue from "../utils/isCSSValue";
 
 export type DividerPresetSpacing =
   | "1x"
@@ -57,7 +57,7 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
   } = props;
 
   const isPresetSpacing = isString(spacing) && /^\dx$/.test(spacing);
-  const isCustomSpacing = !isPresetSpacing && isCSSPropertyValue(spacing);
+  const isCustomSpacing = !isPresetSpacing && isCSSValue(spacing);
 
   const { cls } = Prefix.useConfig();
   const classes = cn(

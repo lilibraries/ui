@@ -9,7 +9,7 @@ import React, {
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 import InfoTitle from "./InfoTitle";
 import InfoDetail from "./InfoDetail";
 
@@ -41,9 +41,7 @@ const Info = forwardRef<HTMLDivElement, InfoProps>((props, ref) => {
 
   return (
     <div {...rest} ref={ref} className={classes}>
-      {isRenderableNode(icon) && (
-        <span className={`${cls}info-icon`}>{icon}</span>
-      )}
+      {isRenderable(icon) && <span className={`${cls}info-icon`}>{icon}</span>}
       <div className={`${cls}info-content`}>{children}</div>
     </div>
   );

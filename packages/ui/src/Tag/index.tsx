@@ -10,14 +10,14 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
+import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import Button, { ButtonProps } from "../Button";
 import CloseIcon from "../icons/CloseIcon";
+import isRenderable from "../utils/isRenderable";
 import { ColorValue } from "../utils/types";
-import { usePersist } from "@lilib/hooks";
-import isRenderableNode from "../utils/isRenderableNode";
 
 export type TagVariant = null | "solid" | "hollow";
 
@@ -139,7 +139,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       onClick: handleClick,
       className: classes,
     },
-    isRenderableNode(icon) ? (
+    isRenderable(icon) ? (
       <span className={`${cls}tag-icon`}>{icon}</span>
     ) : null,
     <span className={`${cls}tag-content`}>{children}</span>,

@@ -7,11 +7,21 @@
     }
   }
 
-  &-open-icon {
+  &-collapse-icon {
     @include transition(fast, transform);
 
     &.#{$cls-prefix}reverse {
       transform: rotate3d(1, 0, 0, 180deg);
+    }
+  }
+
+  &-collapse-button {
+    &.#{$cls-prefix}button {
+      width: 1.5em;
+      height: 1.5em;
+      padding: 0;
+      text-align: center;
+      border-radius: var(--border-radius-small);
     }
   }
 
@@ -29,24 +39,32 @@
           &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
             &:hover {
               color: var(--#{$intent}-6);
+              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
             }
 
             &:active {
               color: var(--#{$intent}-7);
+              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
             }
           }
         }
 
         &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
           color: var(--#{$intent}-6);
+          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
         }
 
         &.#{$cls-prefix}active {
           color: var(--#{$intent}-7);
+          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
         }
 
         &.#{$cls-prefix}disabled {
           color: var(--#{$intent}-2);
+
+          &.#{$cls-prefix}active {
+            background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+          }
         }
       }
     }

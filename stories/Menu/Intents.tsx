@@ -10,7 +10,7 @@ import {
 
 function Example() {
   return (
-    <Menu style={{ width: 300 }}>
+    <Menu bordered style={{ width: 300 }}>
       <Menu.Item intent="major" icon={<FiUser />} label="Major" />
       <Menu.Item intent="minor" icon={<FiExternalLink />} label="Minor" />
       <Menu.Item intent="positive" icon={<FiThumbsUp />} label="Positive" />

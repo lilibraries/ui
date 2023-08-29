@@ -16,10 +16,10 @@ import ListConfig from "../List/ListConfig";
 import { SizeValue } from "../Size";
 import Popup, { PopupProps } from "../Popup";
 import Collapse, { CollapseProps } from "../Collapse";
+import isRenderable from "../utils/isRenderable";
 import { IntentValue } from "../utils/types";
-import isRenderableNode from "../utils/isRenderableNode";
-import OpenIcon from "./OpenIcon";
-import MenuConfig from "./MenuConfig";
+import ExpandIcon from "./ExpandIcon";
+import MenuConfig, { MenuRenderExpandIconOptions } from "./MenuConfig";
 
 export interface MenuItemCommonProps {
   size?: SizeValue;
@@ -36,6 +36,10 @@ export interface MenuItemCommonProps {
   open?: boolean;
   defaultOpen?: boolean;
   collapsible?: boolean;
+  collapseByIcon?: boolean;
+  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
+  firstMount?: boolean;
+  keepMounted?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
   onOpen?: () => void;
@@ -72,10 +76,14 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     intent: intentProp,
     activeIntent: activeIntentProp,
     active,
-    disabled,
+    disabled: disabledProp,
     open: openProp,
     defaultOpen,
     collapsible: collapsibleProp,
+    collapseByIcon: collapseByIconProp,
+    renderExpandIcon: renderExpandIconProp,
+    firstMount: firstMountProp,
+    keepMounted: keepMountedProp,
     popupProps,
     collapseProps,
     onOpen,
@@ -87,15 +95,25 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";
   const {
+    disabled,
     collapsible,
     activeIntent,
+    collapseByIcon,
+    renderExpandIcon,
+    firstMount,
+    keepMounted,
     intent: intentConfig,
     popupProps: popupConfigProps,
     collapseProps: collapseConfigProps,
   } = MenuConfig.useConfig({
     intent: intentProp,
     activeIntent: activeIntentProp,
+    disabled: disabledProp,
     collapsible: collapsibleProp,
+    collapseByIcon: collapseByIconProp,
+    renderExpandIcon: renderExpandIconProp,
+    firstMount: firstMountProp,
+    keepMounted: keepMountedProp,
   });
 
   let intent = intentConfig;
@@ -105,6 +123,18 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
 
   const controlled = openProp != null;
   const [open, setOpen] = useSafeState(controlled ? !!openProp : !!defaultOpen);
+
+  const toggleOpen = usePersist(() => {
+    if (!controlled) {
+      setOpen(!open);
+    }
+    if (!open && onOpen) {
+      onOpen();
+    }
+    if (open && onClose) {
+      onClose();
+    }
+  });
 
   const handlePopupOpen = usePersist(() => {
     if (!controlled) {
@@ -134,16 +164,15 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     if (onClick) {
       onClick(event);
     }
-    if (collapsible) {
-      if (!controlled) {
-        setOpen(!open);
-      }
-      if (!open && onOpen) {
-        onOpen();
-      }
-      if (open && onClose) {
-        onClose();
-      }
+    if (collapsible && !collapseByIcon) {
+      toggleOpen();
+    }
+  });
+
+  const handleCollapseClick = usePersist((event: MouseEvent) => {
+    if (collapsible && collapseByIcon) {
+      event.stopPropagation();
+      toggleOpen();
     }
   });
 
@@ -157,12 +186,18 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   );
 
   let submenu: ReactNode = null;
-  const hasSubmenu = isRenderableNode(children);
+  const hasSubmenu = isRenderable(children);
 
   if (hasSubmenu) {
     if (collapsible) {
       submenu = (
-        <Collapse open={open} {...collapseConfigProps} {...collapseProps}>
+        <Collapse
+          open={open}
+          firstMount={firstMount}
+          keepMounted={keepMounted}
+          {...collapseConfigProps}
+          {...collapseProps}
+        >
           <List as="div">{children}</List>
         </Collapse>
       );
@@ -173,6 +208,27 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
         </List>
       );
     }
+  }
+
+  let expandIcon: ReactNode = null;
+  if (renderExpandIcon) {
+    expandIcon = renderExpandIcon({
+      open,
+      disabled: !!disabled,
+      collapsible: !!collapsible,
+      collapseByIcon: !!collapseByIcon,
+      handleCollapseClick,
+    });
+  } else {
+    expandIcon = (
+      <ExpandIcon
+        open={open}
+        disabled={disabled}
+        collapsible={collapsible}
+        collapseByIcon={collapseByIcon}
+        onCollapseClick={handleCollapseClick}
+      />
+    );
   }
 
   const item = (
@@ -192,7 +248,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
       active={active}
       disabled={disabled}
       arrowed={hasSubmenu}
-      arrowIcon={<OpenIcon opened={open} collapsible={collapsible} />}
+      arrowIcon={expandIcon}
       onClick={handleItemClick}
     >
       {collapsible && submenu}
@@ -207,6 +263,8 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
         on="hover"
         placement={isRTL ? "left-start" : "right-start"}
         open={open}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
         {...popupConfigProps}
         {...popupProps}
         content={submenu}

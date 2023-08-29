@@ -1,4 +1,11 @@
-import { FC, useRef, Children, cloneElement, ReactElement } from "react";
+import {
+  FC,
+  useRef,
+  Children,
+  useEffect,
+  cloneElement,
+  ReactElement,
+} from "react";
 import cn from "classnames";
 import isObject from "lodash/isObject";
 import isNumber from "lodash/isNumber";
@@ -46,6 +53,7 @@ export interface TransitionProps {
   in?: boolean;
   enterDelay?: number;
   exitDelay?: number;
+  firstMount?: boolean;
   firstAppear?: boolean;
   keepMounted?: boolean;
   onEnter?: () => void;
@@ -71,6 +79,7 @@ const Transition: FC<TransitionProps> & {
     in: inProp,
     enterDelay,
     exitDelay,
+    firstMount,
     firstAppear,
     keepMounted,
     onEnter,
@@ -102,6 +111,8 @@ const Transition: FC<TransitionProps> & {
 
   const { cls } = Prefix.useConfig();
   const domRef = useRef<HTMLElement>();
+  const enteredRef = useRef(false);
+  const renderedRef = useRef(false);
 
   const [state, setState] = useSafeState<TransitionState>(() => {
     if (inProp) {
@@ -239,7 +250,30 @@ const Transition: FC<TransitionProps> & {
     }
   }, [state]);
 
-  if (state === EXITED && !keepMounted) {
+  useEffect(
+    () => {
+      if (state !== EXITED) {
+        enteredRef.current = true;
+        renderedRef.current = true;
+      } else {
+        if (!keepMounted) {
+          enteredRef.current = false;
+        }
+      }
+    },
+    [state] // eslint-disable-line
+  );
+
+  let renderable = false;
+  if (state !== EXITED) {
+    renderable = true;
+  } else if (firstMount && !renderedRef.current) {
+    renderable = true;
+  } else if (keepMounted && enteredRef.current) {
+    renderable = true;
+  }
+
+  if (!renderable) {
     return null;
   }
 

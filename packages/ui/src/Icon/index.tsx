@@ -10,7 +10,7 @@ import isString from "lodash/isString";
 import isNumber from "lodash/isNumber";
 import { composeRefs } from "@lilib/utils";
 import Prefix from "../Prefix";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 
 export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
@@ -29,7 +29,7 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
 
   let icon: ReactNode;
-  if (isRenderableNode(iconProp)) {
+  if (isRenderable(iconProp)) {
     icon = iconProp;
   } else {
     icon = children;

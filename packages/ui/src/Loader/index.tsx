@@ -16,7 +16,7 @@ import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Icon, { IconProps } from "../Icon";
 import LoaderIcon from "../icons/LoaderIcon";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 import LoaderConfig from "./LoaderConfig";
 
 export * from "./LoaderConfig";
@@ -51,7 +51,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const { fast } = Duration.useConfig();
-  const contained = isRenderableNode(children);
+  const contained = isRenderable(children);
 
   const {
     icon: iconConfig,
@@ -64,7 +64,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   });
 
   let icon: ReactNode;
-  if (isRenderableNode(iconConfig)) {
+  if (isRenderable(iconConfig)) {
     icon = iconConfig;
   } else {
     icon = <LoaderIcon />;
@@ -100,6 +100,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
           classes
           durations={fast}
           enterDelay={delay}
+          firstMount
           keepMounted
         >
           <div className={`${cls}loader-content`}>{children}</div>
@@ -107,7 +108,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
         <Transition in={loading} classes durations={fast} enterDelay={delay}>
           <div className={`${cls}loader-mask`}>
             {icon}
-            {isRenderableNode(message) && (
+            {isRenderable(message) && (
               <div className={`${cls}loader-message`}>{message}</div>
             )}
           </div>
@@ -125,7 +126,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
       >
         <div className={`${cls}loader-content`}>
           {icon}
-          {isRenderableNode(message) && (
+          {isRenderable(message) && (
             <div className={`${cls}loader-message`}>{message}</div>
           )}
         </div>

@@ -10,7 +10,7 @@ import Popup, { PopupProps } from "../Popup";
 import Button, { ButtonProps } from "../Button";
 import InfoIcon from "../icons/InfoIcon";
 import isPromise from "../utils/isPromise";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 
 export interface ConfirmProps extends Omit<PopupProps, "title"> {
   icon?: ReactNode;
@@ -129,12 +129,12 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
 
   const content = (
     <>
-      {isRenderableNode(contentProp) ? (
+      {isRenderable(contentProp) ? (
         contentProp
       ) : (
         <Info
           icon={
-            isRenderableNode(icon) ? (
+            isRenderable(icon) ? (
               icon
             ) : (
               <Text as={Icon} intent="alertive">
@@ -143,8 +143,8 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
             )
           }
         >
-          {isRenderableNode(title) && <Info.Title>{title}</Info.Title>}
-          {isRenderableNode(detail) && <Info.Detail>{detail}</Info.Detail>}
+          {isRenderable(title) && <Info.Title>{title}</Info.Title>}
+          {isRenderable(detail) && <Info.Detail>{detail}</Info.Detail>}
         </Info>
       )}
       <Flexbox
@@ -153,7 +153,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
         justify="flex-end"
         className={`${cls}confirm-actions`}
       >
-        {isRenderableNode(cancelLabel) && (
+        {isRenderable(cancelLabel) && (
           <Button
             size="small"
             color="gray"

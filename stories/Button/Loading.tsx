@@ -28,7 +28,9 @@ function Example() {
       </Flexbox>
 
       <Flexbox gap="2x" align="center">
-        <Button loading={loading}>Button</Button>
+        <Button loading={loading} loadingPlacement="start">
+          Button
+        </Button>
         <Button loading={loading} startIcon={<FiThumbsUp />}>
           Like
         </Button>

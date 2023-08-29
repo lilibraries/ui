@@ -17,8 +17,8 @@ import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
+import isRenderable from "../utils/isRenderable";
 import { ColorValue, IntentValue } from "../utils/types";
-import isRenderableNode from "../utils/isRenderableNode";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPlacement,
@@ -124,8 +124,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPlacement: loadingPlacementProp,
   });
 
-  const hasStartIcon = isRenderableNode(startIcon);
-  const hasEndIcon = isRenderableNode(endIcon);
+  const hasStartIcon = isRenderable(startIcon);
+  const hasEndIcon = isRenderable(endIcon);
 
   let loadingStart = false;
   let loadingEnd = false;
@@ -219,7 +219,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       }
     }
 
-    if (isRenderableNode(node)) {
+    if (isRenderable(node)) {
       return (
         <Icon
           className={cn({
@@ -305,6 +305,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         classes
         durations={fast}
         exitDelay={loadingDelay}
+        firstMount
         keepMounted
       >
         {button}

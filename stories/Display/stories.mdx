@@ -34,8 +34,6 @@ Display content.
 
 ## API
 
-### Display
-
 | Property               | Type                                           | Description                                                    |
 | ---------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
 | `children`             | `ReactNode`                                    | Content to display                                             |
@@ -52,34 +50,3 @@ Display content.
 | `onClose`              | `() => void`                                   | Close event                                                    |
 | `onOpened`             | `() => void`                                   | Opened event                                                   |
 | `onClosed`             | `() => void`                                   | Closed event                                                   |
-
-### Display.useCloseEvent
-
-```ts
-function useCloseEvent(
-  listener: () => void,
-  options: {
-    closeOnEscape?: boolean;
-    closeOnPageHide?: boolean;
-    closeOnWindowBlur?: boolean;
-    closeOnClickOutside?: EffectTarget<Node> | EffectTarget<Node>[];
-    closeOnDocumentClick?: boolean;
-  }
-): void;
-
-type Nullable<T> = T | undefined | null;
-type EffectTarget<T> =
-  | Nullable<T>
-  | (() => Nullable<T>)
-  | { current: Nullable<T> };
-```
-
-Params:
-
-- **`listener`:** Event listener.
-- **`options`:** Options object.
-  - **`options.closeOnEscape`:** Close when pressing the <kbd>ESC</kbd> key.
-  - **`options.closeOnPageHide`:** Close when the page is hidden.
-  - **`options.closeOnWindowBlur`:** Close when the `window` loses focus.
-  - **`options.closeOnClickOutside`:** Close when clicking outside the targets.
-  - **`options.closeOnDocumentClick`:** Close when the `document` is clicked.

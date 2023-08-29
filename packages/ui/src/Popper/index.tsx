@@ -43,6 +43,7 @@ import { inBrowser, composeRefs, EffectTarget } from "@lilib/utils";
 import Portal from "../Portal";
 import Display from "../Display";
 import isPositiveNumber from "../utils/isPositiveNumber";
+import RenderAfterMounted from "../utils/RenderAfterMounted";
 
 export type PopperEvent = "click" | "hover" | "focus" | "contextmenu";
 export type PopperStrategy = Strategy;
@@ -573,7 +574,13 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           // @ts-ignore
           ref: composeRefs(arrowRef, arrow.ref),
         })}
-      <Portal.Config container={popperRef}>{content}</Portal.Config>
+      <Portal.Config container={popperRef}>
+        {firstMount ? (
+          <RenderAfterMounted>{content}</RenderAfterMounted>
+        ) : (
+          content
+        )}
+      </Portal.Config>
     </div>
   );
 

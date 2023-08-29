@@ -13,6 +13,7 @@ import Display from "../Display";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
+import RenderAfterMounted from "../utils/RenderAfterMounted";
 import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
@@ -160,7 +161,13 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
             className={classes}
             onClick={handleClick}
           >
-            <Portal.Config container={backdropRef}>{children}</Portal.Config>
+            <Portal.Config container={backdropRef}>
+              {firstMount ? (
+                <RenderAfterMounted>{children}</RenderAfterMounted>
+              ) : (
+                children
+              )}
+            </Portal.Config>
           </div>
         </Portal>
       </Display>
@@ -187,6 +194,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
           classes
           durations={base}
           exitDelay={closeDelay}
+          firstMount
           keepMounted
         >
           <div
@@ -195,7 +203,13 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
             className={classes}
             onClick={handleClick}
           >
-            <Portal.Config container={backdropRef}>{children}</Portal.Config>
+            <Portal.Config container={backdropRef}>
+              {firstMount ? (
+                <RenderAfterMounted>{children}</RenderAfterMounted>
+              ) : (
+                children
+              )}
+            </Portal.Config>
           </div>
         </Transition>
       </Portal>

@@ -13,7 +13,7 @@ import Prefix from "../Prefix";
 import Spinner from "../Spinner";
 import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import isRenderableNode from "../utils/isRenderableNode";
+import isRenderable from "../utils/isRenderable";
 
 export interface SwitchProps
   extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
@@ -57,7 +57,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   let icon: ReactNode;
-  if (isRenderableNode(iconProp)) {
+  if (isRenderable(iconProp)) {
     icon = iconProp;
   } else {
     icon = children;
@@ -110,10 +110,10 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         className={cn(`${cls}switch-input`, inputProps?.className)}
       />
       <span className={`${cls}switch-track`}>
-        {isRenderableNode(checkedLabel) && (
+        {isRenderable(checkedLabel) && (
           <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>
         )}
-        {isRenderableNode(uncheckedLabel) && (
+        {isRenderable(uncheckedLabel) && (
           <span className={`${cls}switch-unchecked-label`}>
             {uncheckedLabel}
           </span>
