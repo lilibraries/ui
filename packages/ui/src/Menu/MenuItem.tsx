@@ -30,8 +30,8 @@ export interface MenuItemCommonProps {
   prefix?: ReactNode;
   suffix?: ReactNode;
   intent?: IntentValue;
-  activeIntent?: IntentValue;
-  active?: boolean;
+  selectedIntent?: IntentValue;
+  selected?: boolean;
   disabled?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
@@ -74,8 +74,8 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     prefix,
     suffix,
     intent: intentProp,
-    activeIntent: activeIntentProp,
-    active,
+    selectedIntent: selectedIntentProp,
+    selected,
     disabled: disabledProp,
     open: openProp,
     defaultOpen,
@@ -97,7 +97,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   const {
     disabled,
     collapsible,
-    activeIntent,
+    selectedIntent,
     collapseByIcon,
     renderExpandIcon,
     firstMount,
@@ -105,9 +105,10 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     intent: intentConfig,
     popupProps: popupConfigProps,
     collapseProps: collapseConfigProps,
+    onItemClick: onItemClickConfig,
   } = MenuConfig.useConfig({
     intent: intentProp,
-    activeIntent: activeIntentProp,
+    selectedIntent: selectedIntentProp,
     disabled: disabledProp,
     collapsible: collapsibleProp,
     collapseByIcon: collapseByIconProp,
@@ -117,8 +118,8 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   });
 
   let intent = intentConfig;
-  if (active) {
-    intent = activeIntent || intentConfig;
+  if (selected) {
+    intent = selectedIntent || intentConfig;
   }
 
   const controlled = openProp != null;
@@ -164,8 +165,20 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     if (onClick) {
       onClick(event);
     }
+    if (onItemClickConfig) {
+      onItemClickConfig();
+    }
     if (collapsible && !collapseByIcon) {
       toggleOpen();
+    }
+  });
+
+  const handleSubmenuItemClick = usePersist(() => {
+    if (onItemClickConfig) {
+      onItemClickConfig();
+    }
+    if (!collapsible && !controlled) {
+      setOpen(false);
     }
   });
 
@@ -209,6 +222,9 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
       );
     }
   }
+  submenu = (
+    <MenuConfig onItemClick={handleSubmenuItemClick}>{submenu}</MenuConfig>
+  );
 
   let expandIcon: ReactNode = null;
   if (renderExpandIcon) {
@@ -245,7 +261,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
       prefix={prefix}
       suffix={suffix}
       hoverable
-      active={active}
+      active={selected}
       disabled={disabled}
       arrowed={hasSubmenu}
       arrowIcon={expandIcon}

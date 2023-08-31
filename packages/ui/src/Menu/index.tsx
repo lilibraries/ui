@@ -8,6 +8,7 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
+import { usePersist } from "@lilib/hooks";
 import List from "../List";
 import Prefix from "../Prefix";
 import { SizeValue } from "../Size";
@@ -18,7 +19,7 @@ import MenuItem from "./MenuItem";
 import MenuConfig, { MenuRenderExpandIconOptions } from "./MenuConfig";
 
 export * from "./MenuItem";
-export { MenuRenderExpandIconOptions } from "./MenuConfig";
+export type { MenuRenderExpandIconOptions } from "./MenuConfig";
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
@@ -28,7 +29,11 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   indented?: boolean;
   bordered?: boolean;
   intent?: IntentValue;
-  activeIntent?: IntentValue;
+  selectedIntent?: IntentValue;
+  multiple?: boolean;
+  selectable?: boolean;
+  deselectable?: boolean;
+  unhoverable?: boolean;
   disabled?: boolean;
   collapsible?: boolean;
   collapseByIcon?: boolean;
@@ -39,8 +44,11 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   collapseProps?: CollapseProps;
   openKeys?: Key[];
   defaultOpenKeys?: Key[];
-  activeKeys?: Key[];
-  defaultActiveKeys?: Key[];
+  selectedKeys?: Key[];
+  defaultSelectedKeys?: Key[];
+  onItemClick?: () => void;
+  onOpenKeysChange?: (openKeys: Key[]) => void;
+  onSelectedKeysChange?: (selectedKeys: Key[]) => void;
 }
 
 export interface MenuComponent
@@ -61,7 +69,11 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     indented,
     bordered,
     intent,
-    activeIntent,
+    selectedIntent,
+    multiple,
+    selectable,
+    deselectable,
+    unhoverable,
     disabled,
     collapsible,
     collapseByIcon,
@@ -70,11 +82,24 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     keepMounted,
     popupProps,
     collapseProps,
+    openKeys,
+    defaultOpenKeys,
+    selectedKeys,
+    defaultSelectedKeys,
+    onItemClick,
+    onOpenKeysChange,
+    onSelectedKeysChange,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
   const classes = cn(`${cls}menu`, className);
+
+  const handleItemClick = usePersist(() => {
+    if (onItemClick) {
+      onItemClick();
+    }
+  });
 
   return (
     <List
@@ -92,8 +117,8 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     >
       <MenuConfig
         intent={intent}
+        selectedIntent={selectedIntent}
         disabled={disabled}
-        activeIntent={activeIntent}
         collapsible={collapsible}
         collapseByIcon={collapseByIcon}
         renderExpandIcon={renderExpandIcon}
@@ -101,6 +126,7 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
         keepMounted={keepMounted}
         popupProps={popupProps}
         collapseProps={collapseProps}
+        onItemClick={handleItemClick}
       >
         {children}
       </MenuConfig>
