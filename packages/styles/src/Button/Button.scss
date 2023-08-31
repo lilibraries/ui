@@ -41,6 +41,17 @@
     }
   }
 
+  & > .#{$cls-prefix}spinner.#{$cls-prefix}standalone {
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+
   &.#{$cls-prefix}small {
     padding: var(--space-1) calc(var(--space-1) * 2);
     font-size: var(--font-size-small);
