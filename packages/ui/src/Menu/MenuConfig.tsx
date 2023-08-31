@@ -1,8 +1,8 @@
 import { ReactNode, MouseEvent } from "react";
 import { PopupProps } from "../Popup";
 import { CollapseProps } from "../Collapse";
-import { IntentValue } from "../utils/types";
 import createConfig from "../utils/createConfig";
+import { IntentValue } from "../utils/types";
 
 export interface MenuRenderExpandIconOptions {
   open: boolean;
@@ -14,7 +14,7 @@ export interface MenuRenderExpandIconOptions {
 
 export interface MenuConfigValue {
   intent?: IntentValue;
-  activeIntent?: IntentValue;
+  selectedIntent?: IntentValue;
   disabled?: boolean;
   collapsible?: boolean;
   collapseByIcon?: boolean;
@@ -23,6 +23,7 @@ export interface MenuConfigValue {
   keepMounted?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
+  onItemClick?: () => void;
 }
 
 export interface MenuConfigProps extends MenuConfigValue {
@@ -33,7 +34,7 @@ const MenuConfig = createConfig<MenuConfigValue, MenuConfigProps>(
   {},
   [
     "intent",
-    "activeIntent",
+    "selectedIntent",
     "disabled",
     "collapsible",
     "collapseByIcon",
@@ -42,6 +43,7 @@ const MenuConfig = createConfig<MenuConfigValue, MenuConfigProps>(
     "keepMounted",
     "popupProps",
     "collapseProps",
+    "onItemClick",
   ],
   { inherit: true }
 );
