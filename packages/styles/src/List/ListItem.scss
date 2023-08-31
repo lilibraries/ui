@@ -137,12 +137,10 @@
 
     &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
       &:hover {
-        color: var(--text-color-hover);
         background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
       }
 
       &:active {
-        color: var(--text-color-active);
         background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
       }
     }
