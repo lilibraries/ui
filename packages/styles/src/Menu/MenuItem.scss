@@ -38,24 +38,22 @@
         &.#{$cls-prefix}hoverable {
           &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
             &:hover {
-              color: var(--#{$intent}-6);
               background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
             }
 
             &:active {
-              color: var(--#{$intent}-7);
               background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
             }
           }
         }
 
         &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
-          color: var(--#{$intent}-6);
+          color: var(--#{$intent}-5);
           background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
         }
 
         &.#{$cls-prefix}active {
-          color: var(--#{$intent}-7);
+          color: var(--#{$intent}-5);
           background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
         }
 
