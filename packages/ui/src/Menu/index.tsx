@@ -1,6 +1,7 @@
 import React, {
   Key,
   ReactNode,
+  MouseEvent,
   forwardRef,
   RefAttributes,
   HTMLAttributes,
@@ -23,21 +24,19 @@ export type { MenuRenderExpandIconOptions } from "./MenuConfig";
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
+  intent?: IntentValue;
   filled?: boolean;
   splited?: boolean;
   bounded?: boolean;
   indented?: boolean;
   bordered?: boolean;
-  intent?: IntentValue;
-  selectedIntent?: IntentValue;
-  multiple?: boolean;
   selectable?: boolean;
+  multiple?: boolean;
   deselectable?: boolean;
-  unhoverable?: boolean;
+  selectedIntent?: IntentValue;
   disabled?: boolean;
   collapsible?: boolean;
   collapseByIcon?: boolean;
-  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
   firstMount?: boolean;
   keepMounted?: boolean;
   popupProps?: PopupProps;
@@ -46,9 +45,10 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   defaultOpenKeys?: Key[];
   selectedKeys?: Key[];
   defaultSelectedKeys?: Key[];
-  onItemClick?: () => void;
+  onItemClick?: (event: MouseEvent) => void;
   onOpenKeysChange?: (openKeys: Key[]) => void;
   onSelectedKeysChange?: (selectedKeys: Key[]) => void;
+  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
 }
 
 export interface MenuComponent
@@ -63,21 +63,19 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     children,
     className,
     size,
+    intent,
     filled,
     splited,
     bounded,
     indented,
     bordered,
-    intent,
-    selectedIntent,
-    multiple,
     selectable,
+    multiple,
     deselectable,
-    unhoverable,
+    selectedIntent,
     disabled,
     collapsible,
     collapseByIcon,
-    renderExpandIcon,
     firstMount,
     keepMounted,
     popupProps,
@@ -89,15 +87,16 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     onItemClick,
     onOpenKeysChange,
     onSelectedKeysChange,
+    renderExpandIcon,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
   const classes = cn(`${cls}menu`, className);
 
-  const handleItemClick = usePersist(() => {
+  const handleItemClick = usePersist((event: MouseEvent) => {
     if (onItemClick) {
-      onItemClick();
+      onItemClick(event);
     }
   });
 

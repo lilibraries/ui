@@ -33,6 +33,9 @@ export interface MenuItemCommonProps {
   selectedIntent?: IntentValue;
   selected?: boolean;
   disabled?: boolean;
+  selectable?: boolean;
+  deselectable?: boolean;
+  clickable?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
   collapsible?: boolean;
@@ -77,6 +80,9 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
     selectedIntent: selectedIntentProp,
     selected,
     disabled: disabledProp,
+    selectable,
+    deselectable,
+    clickable,
     open: openProp,
     defaultOpen,
     collapsible: collapsibleProp,
@@ -166,16 +172,16 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
       onClick(event);
     }
     if (onItemClickConfig) {
-      onItemClickConfig();
+      onItemClickConfig(event);
     }
     if (collapsible && !collapseByIcon) {
       toggleOpen();
     }
   });
 
-  const handleSubmenuItemClick = usePersist(() => {
+  const handleSubmenuItemClick = usePersist((event: MouseEvent) => {
     if (onItemClickConfig) {
-      onItemClickConfig();
+      onItemClickConfig(event);
     }
     if (!collapsible && !controlled) {
       setOpen(false);

@@ -18,12 +18,12 @@ export interface MenuConfigValue {
   disabled?: boolean;
   collapsible?: boolean;
   collapseByIcon?: boolean;
-  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
   firstMount?: boolean;
   keepMounted?: boolean;
   popupProps?: PopupProps;
   collapseProps?: CollapseProps;
-  onItemClick?: () => void;
+  onItemClick?: (event: MouseEvent) => void;
+  renderExpandIcon?: (options: MenuRenderExpandIconOptions) => ReactNode;
 }
 
 export interface MenuConfigProps extends MenuConfigValue {
@@ -38,12 +38,12 @@ const MenuConfig = createConfig<MenuConfigValue, MenuConfigProps>(
     "disabled",
     "collapsible",
     "collapseByIcon",
-    "renderExpandIcon",
     "firstMount",
     "keepMounted",
     "popupProps",
     "collapseProps",
     "onItemClick",
+    "renderExpandIcon",
   ],
   { inherit: true }
 );
