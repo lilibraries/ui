@@ -7,7 +7,7 @@ React component library.
 ### Designs
 
 - [ ] Tokens
-- [ ] Palettes
+- [x] Palettes
 
 ### Configs
 
@@ -62,8 +62,8 @@ React component library.
 
 - [ ] Dot
 - [ ] Tag
-- [ ] Avatar
 - [ ] Badge
+- [ ] Avatar
 - [ ] Info
 - [ ] List
 - [ ] Tree
