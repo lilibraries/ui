@@ -26,12 +26,11 @@ const Colors: FC<{ names?: string[] }> = (props) => {
 
   return (
     <Table
-      head={["Color", "SCSS", "Value"]}
+      head={["Color", "SCSS", "CSS", "Value"]}
       body={names.map((name) => [
         <Color name={name} />,
         <Usage name={name} type="scss" darkable />,
         <Usage name={name} type="css" />,
-
         <Value
           format="hex"
           styleName="color"
