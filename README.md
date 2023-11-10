@@ -18,7 +18,7 @@ React component library.
 - [x] Theme
 - [x] Size
 - [x] Duration
-- [ ] Direction
+- [x] Direction
 
 ### Generics
 
