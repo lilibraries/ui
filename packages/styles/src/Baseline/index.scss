@@ -19,7 +19,7 @@ html {
 body {
   margin: 0;
   color: var(--text-color-base);
-  font-weight: 400;
+  font-weight: var(--font-weight-base);
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
   line-height: var(--line-height-base);
@@ -37,7 +37,7 @@ h4,
 h5,
 h6 {
   margin-bottom: var(--space-4);
-  font-weight: 700;
+  font-weight: var(--font-weight-heading);
 }
 
 h1 {
@@ -76,17 +76,17 @@ p {
 }
 
 a {
-  color: var(--major-5);
+  color: var(--text-color-major-base);
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
-    color: var(--major-6);
+    color: var(--text-color-major-hover);
     text-decoration: underline;
   }
 
   &:active {
-    color: var(--major-7);
+    color: var(--text-color-major-active);
     text-decoration: underline;
   }
 }
@@ -223,20 +223,12 @@ blockquote {
 ol,
 ul {
   margin: 0 0 var(--space-4);
-  padding-left: 2em;
+  padding-inline-start: 2em;
 
   ol,
   ul {
     margin-bottom: 0;
   }
-}
-
-ol[dir="rtl"],
-ul[dir="rtl"],
-[dir="rtl"] ol,
-[dir="rtl"] ul {
-  padding-right: 2em;
-  padding-left: 0;
 }
 
 details {
@@ -246,7 +238,7 @@ details {
 
 summary {
   display: list-item;
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
   cursor: pointer;
 
   & + * {
@@ -255,7 +247,7 @@ summary {
 }
 
 dt {
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
 }
 
 dd {
@@ -277,15 +269,10 @@ address {
 
 table {
   min-width: 100%;
-  text-align: left;
+  text-align: start;
   caption-side: bottom;
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-table[dir="rtl"],
-[dir="rtl"] table {
-  text-align: right;
 }
 
 thead {
@@ -302,7 +289,7 @@ td {
 }
 
 th {
-  font-weight: 700;
+  font-weight: var(--font-weight-title);
   text-align: inherit;
 }
 
@@ -414,12 +401,4 @@ iframe {
 
 [hidden] {
   display: none !important;
-}
-
-:focus {
-  outline: 0;
-}
-
-[data-focusing] :focus {
-  @include focus-outline;
 }
