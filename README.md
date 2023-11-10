@@ -13,6 +13,7 @@ React component library.
 
 - [x] Root
 - [x] Baseline
+- [x] Focusing
 - [ ] Prefix
 - [ ] Theme
 - [ ] Size

@@ -7,6 +7,7 @@ $var-prefix: "li-" !default;
 $enable-variables: true !default;
 $enable-variable-fallbacks: true !default;
 $enable-event-transitions: true !default;
+$focusing-attribute: "data-focusing" !default;
 
 $colors: (
   "red",

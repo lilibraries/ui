@@ -23,6 +23,14 @@ const Features: FC = () => {
           <Monospace>true</Monospace>,
           "Enable transition effects when executing user events (such as hovering, clicking).",
         ],
+        [
+          <Usage type="scss" name="focusing-attribute" />,
+          <Monospace>"data-focusing"</Monospace>,
+          <>
+            Attribute name attached to the <code>{"<html>"}</code> element when
+            focusing.
+          </>,
+        ],
       ]}
     />
   );

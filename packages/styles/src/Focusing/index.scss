@@ -4,6 +4,6 @@
   outline: 0;
 }
 
-[data-focusing] :focus {
+[#{$focusing-attribute}] :focus {
   @include focus-outline;
 }
