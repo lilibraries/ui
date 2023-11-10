@@ -6,6 +6,7 @@ module.exports = (ctx) => {
         features: {
           "custom-properties": false,
           "system-ui-font-family": false,
+          "logical-properties-and-values": false,
         },
         autoprefixer: {
           flexbox: "no-2009",

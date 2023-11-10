@@ -1,0 +1,9 @@
+@import "@lilib/themes";
+
+:focus {
+  outline: 0;
+}
+
+[data-focusing] :focus {
+  @include focus-outline;
+}
