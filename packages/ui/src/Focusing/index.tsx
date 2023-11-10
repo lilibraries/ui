@@ -1,6 +1,6 @@
-import React, { FC, ReactNode, useLayoutEffect } from "react";
+import React, { FC, ReactNode } from "react";
 import { inBrowser } from "@lilib/utils";
-import { usePersist } from "@lilib/hooks";
+import { usePersist, useIsomorphicLayoutEffect } from "@lilib/hooks";
 
 export type FocusingType = "tab" | "always";
 
@@ -31,7 +31,7 @@ const Focusing: FC<FocusingProps> = (props) => {
     }
   });
 
-  useLayoutEffect(
+  useIsomorphicLayoutEffect(
     () => {
       if (inBrowser) {
         if (type === "tab") {
