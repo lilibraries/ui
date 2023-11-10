@@ -19,6 +19,7 @@ const BoxShadows: FC = () => {
           boxShadow: `var(--${prefix}${name})`,
           border: `1px solid var(--${prefix}border-color-base)`,
           borderRadius: `var(--${prefix}border-radius-base)`,
+          backgroundColor: `var(--${prefix}background-color-overlay)`,
         }}
       />,
       <Usage type="scss" name={name} darkable />,

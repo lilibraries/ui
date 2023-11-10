@@ -7,9 +7,9 @@
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
-  padding: calc(var(--space-1) + 2px) calc((var(--space-1) + 2px) * 2);
+  padding: var(--space-block-base) var(--space-inline-base);
   color: var(--text-color-base);
-  font-weight: 400;
+  font-weight: var(--font-weight-button);
   font-size: var(--font-size-base);
   line-height: var(--line-height-fixed-base);
   text-align: left;
@@ -121,7 +121,7 @@
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}button-content {
-      @include transition(fast, opacity);
+      @include transition(fast, ease-in-out, opacity);
     }
 
     &.#{$cls-prefix}transition {
@@ -144,7 +144,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include transition(fast, opacity);
+      @include transition(fast, ease-in-out, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -205,36 +205,36 @@
 
   @each $item in join($intents, $colors) {
     &.#{$cls-prefix}#{$item} {
-      background-color: var(--#{$item}-0);
-      border-color: var(--#{$item}-3);
+      background-color: var(--background-color-#{$item}-base);
+      border-color: var(--border-color-#{$item}-base);
 
       &:hover {
-        background-color: var(--#{$item}-1);
-        border-color: var(--#{$item}-4);
+        background-color: var(--background-color-#{$item}-hover);
+        border-color: var(--border-color-#{$item}-hover);
       }
 
       &:active {
-        background-color: var(--#{$item}-2);
-        border-color: var(--#{$item}-5);
+        background-color: var(--background-color-#{$item}-active);
+        border-color: var(--border-color-#{$item}-active);
       }
 
       &[disabled] {
-        background-color: var(--#{$item}-0);
-        border-color: var(--#{$item}-3);
+        background-color: var(--background-color-#{$item}-base);
+        border-color: var(--border-color-#{$item}-base);
       }
 
       &.#{$cls-prefix}active {
-        background-color: var(--#{$item}-2);
-        border-color: var(--#{$item}-5);
+        background-color: var(--background-color-#{$item}-active);
+        border-color: var(--border-color-#{$item}-active);
       }
 
       &.#{$cls-prefix}disabled {
-        background-color: var(--#{$item}-0);
-        border-color: var(--#{$item}-1);
+        background-color: var(--background-color-#{$item}-disabled);
+        border-color: var(--border-color-#{$item}-disabled);
 
         &.#{$cls-prefix}active {
-          background-color: var(--#{$item}-1);
-          border-color: var(--#{$item}-2);
+          background-color: var(--background-color-#{$item}-inactive);
+          border-color: var(--border-color-#{$item}-inactive);
         }
       }
     }
@@ -285,42 +285,42 @@
   @each $item in join($intents, $colors) {
     &.#{$cls-prefix}#{$item} {
       color: var(--text-color-solid-base);
-      background-color: var(--#{$item}-5);
-      border-color: var(--#{$item}-7);
+      background-color: var(--background-color-#{$item}-solid-base);
+      border-color: var(--border-color-#{$item}-solid-base);
 
       &:hover {
         color: var(--text-color-solid-hover);
-        background-color: var(--#{$item}-6);
-        border-color: var(--#{$item}-8);
+        background-color: var(--background-color-#{$item}-solid-hover);
+        border-color: var(--border-color-#{$item}-solid-hover);
       }
 
       &:active {
         color: var(--text-color-solid-active);
-        background-color: var(--#{$item}-7);
-        border-color: var(--#{$item}-9);
+        background-color: var(--background-color-#{$item}-solid-active);
+        border-color: var(--border-color-#{$item}-solid-active);
       }
 
       &[disabled] {
         color: var(--text-color-solid-base);
-        background-color: var(--#{$item}-5);
-        border-color: var(--#{$item}-7);
+        background-color: var(--background-color-#{$item}-solid-base);
+        border-color: var(--border-color-#{$item}-solid-base);
       }
 
       &.#{$cls-prefix}active {
         color: var(--text-color-solid-active);
-        background-color: var(--#{$item}-7);
-        border-color: var(--#{$item}-9);
+        background-color: var(--background-color-#{$item}-solid-active);
+        border-color: var(--border-color-#{$item}-solid-active);
       }
 
       &.#{$cls-prefix}disabled {
         color: var(--text-color-solid-disabled);
-        background-color: var(--#{$item}-2);
-        border-color: var(--#{$item}-3);
+        background-color: var(--background-color-#{$item}-solid-disabled);
+        border-color: var(--border-color-#{$item}-solid-disabled);
 
         &.#{$cls-prefix}active {
           color: var(--text-color-solid-inactive);
-          background-color: var(--#{$item}-3);
-          border-color: var(--#{$item}-4);
+          background-color: var(--background-color-#{$item}-solid-inactive);
+          border-color: var(--border-color-#{$item}-solid-inactive);
         }
       }
     }
@@ -356,35 +356,35 @@
 
   @each $item in join($intents, $colors) {
     &.#{$cls-prefix}#{$item} {
-      color: var(--#{$item}-5);
+      color: var(--text-color-#{$item}-base);
       background-color: transparent;
 
       &:hover {
-        color: var(--#{$item}-6);
+        color: var(--text-color-#{$item}-hover);
         background-color: rgba(var(--#{$item}-rgb) / var(--alpha-soft));
       }
 
       &:active {
-        color: var(--#{$item}-7);
+        color: var(--text-color-#{$item}-active);
         background-color: rgba(var(--#{$item}-rgb) / var(--alpha-deep));
       }
 
       &[disabled] {
-        color: var(--#{$item}-5);
+        color: var(--text-color-#{$item}-base);
         background-color: transparent;
       }
 
       &.#{$cls-prefix}active {
-        color: var(--#{$item}-7);
+        color: var(--text-color-#{$item}-active);
         background-color: rgba(var(--#{$item}-rgb) / var(--alpha-deep));
       }
 
       &.#{$cls-prefix}disabled {
-        color: var(--#{$item}-2);
+        color: var(--text-color-#{$item}-disabled);
         background-color: transparent;
 
         &.#{$cls-prefix}active {
-          color: var(--#{$item}-3);
+          color: var(--text-color-#{$item}-inactive);
           background-color: rgba(var(--#{$item}-rgb) / var(--alpha-soft));
         }
       }

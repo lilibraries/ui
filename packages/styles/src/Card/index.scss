@@ -241,7 +241,7 @@
 
   &.#{$cls-prefix}hoverable {
     cursor: pointer;
-    @include transition(fast, box-shadow);
+    @include transition(fast, ease-in-out, box-shadow);
 
     &:hover {
       box-shadow: var(--box-shadow-4);

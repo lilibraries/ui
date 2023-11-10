@@ -7,7 +7,7 @@
     &-exit,
     &-exiting {
       overflow: hidden;
-      @include transition(fast, height);
+      @include transition(fast, ease-in-out, height);
     }
 
     &-exited {

@@ -11,12 +11,17 @@ const Features: FC = () => {
         [
           <Usage type="scss" name="enable-variables" />,
           <Monospace>true</Monospace>,
-          "Enable CSS variables",
+          "Enable CSS variables.",
         ],
         [
-          <Usage type="scss" name="enable-fallbacks" />,
+          <Usage type="scss" name="enable-variable-fallbacks" />,
           <Monospace>true</Monospace>,
-          "Enable CSS variable fallbacks",
+          "Enable CSS variable fallbacks.",
+        ],
+        [
+          <Usage type="scss" name="enable-event-transitions" />,
+          <Monospace>true</Monospace>,
+          "Enable transition effects when executing user events (such as hovering, clicking).",
         ],
       ]}
     />

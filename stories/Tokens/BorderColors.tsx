@@ -1,20 +1,28 @@
 import React, { FC } from "react";
-import { Prefix } from "@lilib/ui";
+import { ColorValue, IntentValue, Prefix } from "@lilib/ui";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
 
 interface BorderColorsProps {
+  color?: ColorValue;
+  intent?: IntentValue;
   variant?: "deep" | "solid";
 }
 
 const BorderColors: FC<BorderColorsProps> = (props) => {
-  const { variant } = props;
+  const { color, intent, variant } = props;
   const { var: prefix } = Prefix.useConfig();
 
   const rows = ["base", "hover", "active", "inactive", "disabled"].map(
     (status) => {
       let name = "border-color-";
+      if (color) {
+        name += color + "-";
+      }
+      if (intent) {
+        name += intent + "-";
+      }
       if (variant) {
         name += variant + "-";
       }
@@ -33,20 +41,13 @@ const BorderColors: FC<BorderColorsProps> = (props) => {
             width: 60,
             height: 1,
             borderTop: `1px solid var(--${prefix}${name})`,
-            borderRadius: `var(--${prefix}border-radius-fixed-small)`,
           }}
         />,
       ];
     }
   );
 
-  return (
-    <Table
-      head={["SCSS", "CSS", "Value", "Preview"]}
-      body={rows}
-      style={{ marginBottom: `var(--${prefix}space-8)` }}
-    />
-  );
+  return <Table head={["SCSS", "CSS", "Value", "Preview"]} body={rows} />;
 };
 
 export default BorderColors;

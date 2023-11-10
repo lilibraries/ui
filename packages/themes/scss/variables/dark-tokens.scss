@@ -1,0 +1,637 @@
+@import "./base";
+@import "./dark-palettes";
+@import "../functions/shade-color";
+
+$dark-alpha-soft: 0.15 !default;
+$dark-alpha-deep: 0.25 !default;
+$dark-alpha-dark: 0.35 !default;
+
+$dark-text-color-base: rgba($white, 0.9) !default;
+$dark-text-color-muted: rgba($white, 0.6) !default;
+$dark-text-color-hover: rgba($white, 0.95) !default;
+$dark-text-color-active: $white !default;
+$dark-text-color-inactive: rgba($white, 0.4) !default;
+$dark-text-color-disabled: rgba($white, 0.3) !default;
+
+$dark-text-color-solid-base: $white !default;
+$dark-text-color-solid-hover: $white !default;
+$dark-text-color-solid-active: $white !default;
+$dark-text-color-solid-inactive: rgba($white, 0.4) !default;
+$dark-text-color-solid-disabled: rgba($white, 0.3) !default;
+
+$dark-text-color-major-base: $dark-major-5 !default;
+$dark-text-color-major-hover: $dark-major-6 !default;
+$dark-text-color-major-active: $dark-major-7 !default;
+$dark-text-color-major-inactive: $dark-major-3 !default;
+$dark-text-color-major-disabled: $dark-major-2 !default;
+
+$dark-text-color-minor-base: $dark-minor-5 !default;
+$dark-text-color-minor-hover: $dark-minor-6 !default;
+$dark-text-color-minor-active: $dark-minor-7 !default;
+$dark-text-color-minor-inactive: $dark-minor-3 !default;
+$dark-text-color-minor-disabled: $dark-minor-2 !default;
+
+$dark-text-color-positive-base: $dark-positive-5 !default;
+$dark-text-color-positive-hover: $dark-positive-6 !default;
+$dark-text-color-positive-active: $dark-positive-7 !default;
+$dark-text-color-positive-inactive: $dark-positive-3 !default;
+$dark-text-color-positive-disabled: $dark-positive-2 !default;
+
+$dark-text-color-alertive-base: $dark-alertive-5 !default;
+$dark-text-color-alertive-hover: $dark-alertive-6 !default;
+$dark-text-color-alertive-active: $dark-alertive-7 !default;
+$dark-text-color-alertive-inactive: $dark-alertive-3 !default;
+$dark-text-color-alertive-disabled: $dark-alertive-2 !default;
+
+$dark-text-color-negative-base: $dark-negative-5 !default;
+$dark-text-color-negative-hover: $dark-negative-6 !default;
+$dark-text-color-negative-active: $dark-negative-7 !default;
+$dark-text-color-negative-inactive: $dark-negative-3 !default;
+$dark-text-color-negative-disabled: $dark-negative-2 !default;
+
+$dark-text-color-red-base: $dark-red-5 !default;
+$dark-text-color-red-hover: $dark-red-6 !default;
+$dark-text-color-red-active: $dark-red-7 !default;
+$dark-text-color-red-inactive: $dark-red-3 !default;
+$dark-text-color-red-disabled: $dark-red-2 !default;
+
+$dark-text-color-magenta-base: $dark-magenta-5 !default;
+$dark-text-color-magenta-hover: $dark-magenta-6 !default;
+$dark-text-color-magenta-active: $dark-magenta-7 !default;
+$dark-text-color-magenta-inactive: $dark-magenta-3 !default;
+$dark-text-color-magenta-disabled: $dark-magenta-2 !default;
+
+$dark-text-color-purple-base: $dark-purple-5 !default;
+$dark-text-color-purple-hover: $dark-purple-6 !default;
+$dark-text-color-purple-active: $dark-purple-7 !default;
+$dark-text-color-purple-inactive: $dark-purple-3 !default;
+$dark-text-color-purple-disabled: $dark-purple-2 !default;
+
+$dark-text-color-indigo-base: $dark-indigo-5 !default;
+$dark-text-color-indigo-hover: $dark-indigo-6 !default;
+$dark-text-color-indigo-active: $dark-indigo-7 !default;
+$dark-text-color-indigo-inactive: $dark-indigo-3 !default;
+$dark-text-color-indigo-disabled: $dark-indigo-2 !default;
+
+$dark-text-color-navy-base: $dark-navy-5 !default;
+$dark-text-color-navy-hover: $dark-navy-6 !default;
+$dark-text-color-navy-active: $dark-navy-7 !default;
+$dark-text-color-navy-inactive: $dark-navy-3 !default;
+$dark-text-color-navy-disabled: $dark-navy-2 !default;
+
+$dark-text-color-blue-base: $dark-blue-5 !default;
+$dark-text-color-blue-hover: $dark-blue-6 !default;
+$dark-text-color-blue-active: $dark-blue-7 !default;
+$dark-text-color-blue-inactive: $dark-blue-3 !default;
+$dark-text-color-blue-disabled: $dark-blue-2 !default;
+
+$dark-text-color-cyan-base: $dark-cyan-5 !default;
+$dark-text-color-cyan-hover: $dark-cyan-6 !default;
+$dark-text-color-cyan-active: $dark-cyan-7 !default;
+$dark-text-color-cyan-inactive: $dark-cyan-3 !default;
+$dark-text-color-cyan-disabled: $dark-cyan-2 !default;
+
+$dark-text-color-teal-base: $dark-teal-5 !default;
+$dark-text-color-teal-hover: $dark-teal-6 !default;
+$dark-text-color-teal-active: $dark-teal-7 !default;
+$dark-text-color-teal-inactive: $dark-teal-3 !default;
+$dark-text-color-teal-disabled: $dark-teal-2 !default;
+
+$dark-text-color-green-base: $dark-green-5 !default;
+$dark-text-color-green-hover: $dark-green-6 !default;
+$dark-text-color-green-active: $dark-green-7 !default;
+$dark-text-color-green-inactive: $dark-green-3 !default;
+$dark-text-color-green-disabled: $dark-green-2 !default;
+
+$dark-text-color-lime-base: $dark-lime-5 !default;
+$dark-text-color-lime-hover: $dark-lime-6 !default;
+$dark-text-color-lime-active: $dark-lime-7 !default;
+$dark-text-color-lime-inactive: $dark-lime-3 !default;
+$dark-text-color-lime-disabled: $dark-lime-2 !default;
+
+$dark-text-color-yellow-base: $dark-yellow-5 !default;
+$dark-text-color-yellow-hover: $dark-yellow-6 !default;
+$dark-text-color-yellow-active: $dark-yellow-7 !default;
+$dark-text-color-yellow-inactive: $dark-yellow-3 !default;
+$dark-text-color-yellow-disabled: $dark-yellow-2 !default;
+
+$dark-text-color-orange-base: $dark-orange-5 !default;
+$dark-text-color-orange-hover: $dark-orange-6 !default;
+$dark-text-color-orange-active: $dark-orange-7 !default;
+$dark-text-color-orange-inactive: $dark-orange-3 !default;
+$dark-text-color-orange-disabled: $dark-orange-2 !default;
+
+$dark-text-color-brown-base: $dark-brown-5 !default;
+$dark-text-color-brown-hover: $dark-brown-6 !default;
+$dark-text-color-brown-active: $dark-brown-7 !default;
+$dark-text-color-brown-inactive: $dark-brown-3 !default;
+$dark-text-color-brown-disabled: $dark-brown-2 !default;
+
+$dark-text-color-gray-base: $dark-gray-5 !default;
+$dark-text-color-gray-hover: $dark-gray-6 !default;
+$dark-text-color-gray-active: $dark-gray-7 !default;
+$dark-text-color-gray-inactive: $dark-gray-3 !default;
+$dark-text-color-gray-disabled: $dark-gray-2 !default;
+
+$dark-border-color-base: $dark-basis-3 !default;
+$dark-border-color-hover: $dark-basis-4 !default;
+$dark-border-color-active: $dark-basis-5 !default;
+$dark-border-color-inactive: $dark-basis-2 !default;
+$dark-border-color-disabled: $dark-basis-1 !default;
+
+$dark-border-color-deep-base: $dark-basis-5 !default;
+$dark-border-color-deep-hover: $dark-basis-6 !default;
+$dark-border-color-deep-active: $dark-basis-7 !default;
+$dark-border-color-deep-inactive: $dark-basis-3 !default;
+$dark-border-color-deep-disabled: $dark-basis-2 !default;
+
+$dark-border-color-solid-base: $dark-basis-7 !default;
+$dark-border-color-solid-hover: $dark-basis-8 !default;
+$dark-border-color-solid-active: $dark-basis-6 !default;
+$dark-border-color-solid-inactive: $dark-basis-4 !default;
+$dark-border-color-solid-disabled: $dark-basis-3 !default;
+
+$dark-border-color-major-base: $dark-major-3 !default;
+$dark-border-color-major-hover: $dark-major-4 !default;
+$dark-border-color-major-active: $dark-major-5 !default;
+$dark-border-color-major-inactive: $dark-major-2 !default;
+$dark-border-color-major-disabled: $dark-major-1 !default;
+
+$dark-border-color-minor-base: $dark-minor-3 !default;
+$dark-border-color-minor-hover: $dark-minor-4 !default;
+$dark-border-color-minor-active: $dark-minor-5 !default;
+$dark-border-color-minor-inactive: $dark-minor-2 !default;
+$dark-border-color-minor-disabled: $dark-minor-1 !default;
+
+$dark-border-color-positive-base: $dark-positive-3 !default;
+$dark-border-color-positive-hover: $dark-positive-4 !default;
+$dark-border-color-positive-active: $dark-positive-5 !default;
+$dark-border-color-positive-inactive: $dark-positive-2 !default;
+$dark-border-color-positive-disabled: $dark-positive-1 !default;
+
+$dark-border-color-alertive-base: $dark-alertive-3 !default;
+$dark-border-color-alertive-hover: $dark-alertive-4 !default;
+$dark-border-color-alertive-active: $dark-alertive-5 !default;
+$dark-border-color-alertive-inactive: $dark-alertive-2 !default;
+$dark-border-color-alertive-disabled: $dark-alertive-1 !default;
+
+$dark-border-color-negative-base: $dark-negative-3 !default;
+$dark-border-color-negative-hover: $dark-negative-4 !default;
+$dark-border-color-negative-active: $dark-negative-5 !default;
+$dark-border-color-negative-inactive: $dark-negative-2 !default;
+$dark-border-color-negative-disabled: $dark-negative-1 !default;
+
+$dark-border-color-red-base: $dark-red-3 !default;
+$dark-border-color-red-hover: $dark-red-4 !default;
+$dark-border-color-red-active: $dark-red-5 !default;
+$dark-border-color-red-inactive: $dark-red-2 !default;
+$dark-border-color-red-disabled: $dark-red-1 !default;
+
+$dark-border-color-magenta-base: $dark-magenta-3 !default;
+$dark-border-color-magenta-hover: $dark-magenta-4 !default;
+$dark-border-color-magenta-active: $dark-magenta-5 !default;
+$dark-border-color-magenta-inactive: $dark-magenta-2 !default;
+$dark-border-color-magenta-disabled: $dark-magenta-1 !default;
+
+$dark-border-color-purple-base: $dark-purple-3 !default;
+$dark-border-color-purple-hover: $dark-purple-4 !default;
+$dark-border-color-purple-active: $dark-purple-5 !default;
+$dark-border-color-purple-inactive: $dark-purple-2 !default;
+$dark-border-color-purple-disabled: $dark-purple-1 !default;
+
+$dark-border-color-indigo-base: $dark-indigo-3 !default;
+$dark-border-color-indigo-hover: $dark-indigo-4 !default;
+$dark-border-color-indigo-active: $dark-indigo-5 !default;
+$dark-border-color-indigo-inactive: $dark-indigo-2 !default;
+$dark-border-color-indigo-disabled: $dark-indigo-1 !default;
+
+$dark-border-color-navy-base: $dark-navy-3 !default;
+$dark-border-color-navy-hover: $dark-navy-4 !default;
+$dark-border-color-navy-active: $dark-navy-5 !default;
+$dark-border-color-navy-inactive: $dark-navy-2 !default;
+$dark-border-color-navy-disabled: $dark-navy-1 !default;
+
+$dark-border-color-blue-base: $dark-blue-3 !default;
+$dark-border-color-blue-hover: $dark-blue-4 !default;
+$dark-border-color-blue-active: $dark-blue-5 !default;
+$dark-border-color-blue-inactive: $dark-blue-2 !default;
+$dark-border-color-blue-disabled: $dark-blue-1 !default;
+
+$dark-border-color-cyan-base: $dark-cyan-3 !default;
+$dark-border-color-cyan-hover: $dark-cyan-4 !default;
+$dark-border-color-cyan-active: $dark-cyan-5 !default;
+$dark-border-color-cyan-inactive: $dark-cyan-2 !default;
+$dark-border-color-cyan-disabled: $dark-cyan-1 !default;
+
+$dark-border-color-teal-base: $dark-teal-3 !default;
+$dark-border-color-teal-hover: $dark-teal-4 !default;
+$dark-border-color-teal-active: $dark-teal-5 !default;
+$dark-border-color-teal-inactive: $dark-teal-2 !default;
+$dark-border-color-teal-disabled: $dark-teal-1 !default;
+
+$dark-border-color-green-base: $dark-green-3 !default;
+$dark-border-color-green-hover: $dark-green-4 !default;
+$dark-border-color-green-active: $dark-green-5 !default;
+$dark-border-color-green-inactive: $dark-green-2 !default;
+$dark-border-color-green-disabled: $dark-green-1 !default;
+
+$dark-border-color-lime-base: $dark-lime-3 !default;
+$dark-border-color-lime-hover: $dark-lime-4 !default;
+$dark-border-color-lime-active: $dark-lime-5 !default;
+$dark-border-color-lime-inactive: $dark-lime-2 !default;
+$dark-border-color-lime-disabled: $dark-lime-1 !default;
+
+$dark-border-color-yellow-base: $dark-yellow-3 !default;
+$dark-border-color-yellow-hover: $dark-yellow-4 !default;
+$dark-border-color-yellow-active: $dark-yellow-5 !default;
+$dark-border-color-yellow-inactive: $dark-yellow-2 !default;
+$dark-border-color-yellow-disabled: $dark-yellow-1 !default;
+
+$dark-border-color-orange-base: $dark-orange-3 !default;
+$dark-border-color-orange-hover: $dark-orange-4 !default;
+$dark-border-color-orange-active: $dark-orange-5 !default;
+$dark-border-color-orange-inactive: $dark-orange-2 !default;
+$dark-border-color-orange-disabled: $dark-orange-1 !default;
+
+$dark-border-color-brown-base: $dark-brown-3 !default;
+$dark-border-color-brown-hover: $dark-brown-4 !default;
+$dark-border-color-brown-active: $dark-brown-5 !default;
+$dark-border-color-brown-inactive: $dark-brown-2 !default;
+$dark-border-color-brown-disabled: $dark-brown-1 !default;
+
+$dark-border-color-gray-base: $dark-gray-3 !default;
+$dark-border-color-gray-hover: $dark-gray-4 !default;
+$dark-border-color-gray-active: $dark-gray-5 !default;
+$dark-border-color-gray-inactive: $dark-gray-2 !default;
+$dark-border-color-gray-disabled: $dark-gray-1 !default;
+
+$dark-border-color-major-solid-base: $dark-major-7 !default;
+$dark-border-color-major-solid-hover: $dark-major-8 !default;
+$dark-border-color-major-solid-active: $dark-major-6 !default;
+$dark-border-color-major-solid-inactive: $dark-major-4 !default;
+$dark-border-color-major-solid-disabled: $dark-major-3 !default;
+
+$dark-border-color-minor-solid-base: $dark-minor-7 !default;
+$dark-border-color-minor-solid-hover: $dark-minor-8 !default;
+$dark-border-color-minor-solid-active: $dark-minor-6 !default;
+$dark-border-color-minor-solid-inactive: $dark-minor-4 !default;
+$dark-border-color-minor-solid-disabled: $dark-minor-3 !default;
+
+$dark-border-color-positive-solid-base: $dark-positive-7 !default;
+$dark-border-color-positive-solid-hover: $dark-positive-8 !default;
+$dark-border-color-positive-solid-active: $dark-positive-6 !default;
+$dark-border-color-positive-solid-inactive: $dark-positive-4 !default;
+$dark-border-color-positive-solid-disabled: $dark-positive-3 !default;
+
+$dark-border-color-alertive-solid-base: $dark-alertive-7 !default;
+$dark-border-color-alertive-solid-hover: $dark-alertive-8 !default;
+$dark-border-color-alertive-solid-active: $dark-alertive-6 !default;
+$dark-border-color-alertive-solid-inactive: $dark-alertive-4 !default;
+$dark-border-color-alertive-solid-disabled: $dark-alertive-3 !default;
+
+$dark-border-color-negative-solid-base: $dark-negative-7 !default;
+$dark-border-color-negative-solid-hover: $dark-negative-8 !default;
+$dark-border-color-negative-solid-active: $dark-negative-6 !default;
+$dark-border-color-negative-solid-inactive: $dark-negative-4 !default;
+$dark-border-color-negative-solid-disabled: $dark-negative-3 !default;
+
+$dark-border-color-red-solid-base: $dark-red-7 !default;
+$dark-border-color-red-solid-hover: $dark-red-8 !default;
+$dark-border-color-red-solid-active: $dark-red-6 !default;
+$dark-border-color-red-solid-inactive: $dark-red-4 !default;
+$dark-border-color-red-solid-disabled: $dark-red-3 !default;
+
+$dark-border-color-magenta-solid-base: $dark-magenta-7 !default;
+$dark-border-color-magenta-solid-hover: $dark-magenta-8 !default;
+$dark-border-color-magenta-solid-active: $dark-magenta-6 !default;
+$dark-border-color-magenta-solid-inactive: $dark-magenta-4 !default;
+$dark-border-color-magenta-solid-disabled: $dark-magenta-3 !default;
+
+$dark-border-color-purple-solid-base: $dark-purple-7 !default;
+$dark-border-color-purple-solid-hover: $dark-purple-8 !default;
+$dark-border-color-purple-solid-active: $dark-purple-6 !default;
+$dark-border-color-purple-solid-inactive: $dark-purple-4 !default;
+$dark-border-color-purple-solid-disabled: $dark-purple-3 !default;
+
+$dark-border-color-indigo-solid-base: $dark-indigo-7 !default;
+$dark-border-color-indigo-solid-hover: $dark-indigo-8 !default;
+$dark-border-color-indigo-solid-active: $dark-indigo-6 !default;
+$dark-border-color-indigo-solid-inactive: $dark-indigo-4 !default;
+$dark-border-color-indigo-solid-disabled: $dark-indigo-3 !default;
+
+$dark-border-color-navy-solid-base: $dark-navy-7 !default;
+$dark-border-color-navy-solid-hover: $dark-navy-8 !default;
+$dark-border-color-navy-solid-active: $dark-navy-6 !default;
+$dark-border-color-navy-solid-inactive: $dark-navy-4 !default;
+$dark-border-color-navy-solid-disabled: $dark-navy-3 !default;
+
+$dark-border-color-blue-solid-base: $dark-blue-7 !default;
+$dark-border-color-blue-solid-hover: $dark-blue-8 !default;
+$dark-border-color-blue-solid-active: $dark-blue-6 !default;
+$dark-border-color-blue-solid-inactive: $dark-blue-4 !default;
+$dark-border-color-blue-solid-disabled: $dark-blue-3 !default;
+
+$dark-border-color-cyan-solid-base: $dark-cyan-7 !default;
+$dark-border-color-cyan-solid-hover: $dark-cyan-8 !default;
+$dark-border-color-cyan-solid-active: $dark-cyan-6 !default;
+$dark-border-color-cyan-solid-inactive: $dark-cyan-4 !default;
+$dark-border-color-cyan-solid-disabled: $dark-cyan-3 !default;
+
+$dark-border-color-teal-solid-base: $dark-teal-7 !default;
+$dark-border-color-teal-solid-hover: $dark-teal-8 !default;
+$dark-border-color-teal-solid-active: $dark-teal-6 !default;
+$dark-border-color-teal-solid-inactive: $dark-teal-4 !default;
+$dark-border-color-teal-solid-disabled: $dark-teal-3 !default;
+
+$dark-border-color-green-solid-base: $dark-green-7 !default;
+$dark-border-color-green-solid-hover: $dark-green-8 !default;
+$dark-border-color-green-solid-active: $dark-green-6 !default;
+$dark-border-color-green-solid-inactive: $dark-green-4 !default;
+$dark-border-color-green-solid-disabled: $dark-green-3 !default;
+
+$dark-border-color-lime-solid-base: $dark-lime-7 !default;
+$dark-border-color-lime-solid-hover: $dark-lime-8 !default;
+$dark-border-color-lime-solid-active: $dark-lime-6 !default;
+$dark-border-color-lime-solid-inactive: $dark-lime-4 !default;
+$dark-border-color-lime-solid-disabled: $dark-lime-3 !default;
+
+$dark-border-color-yellow-solid-base: $dark-yellow-7 !default;
+$dark-border-color-yellow-solid-hover: $dark-yellow-8 !default;
+$dark-border-color-yellow-solid-active: $dark-yellow-6 !default;
+$dark-border-color-yellow-solid-inactive: $dark-yellow-4 !default;
+$dark-border-color-yellow-solid-disabled: $dark-yellow-3 !default;
+
+$dark-border-color-orange-solid-base: $dark-orange-7 !default;
+$dark-border-color-orange-solid-hover: $dark-orange-8 !default;
+$dark-border-color-orange-solid-active: $dark-orange-6 !default;
+$dark-border-color-orange-solid-inactive: $dark-orange-4 !default;
+$dark-border-color-orange-solid-disabled: $dark-orange-3 !default;
+
+$dark-border-color-brown-solid-base: $dark-brown-7 !default;
+$dark-border-color-brown-solid-hover: $dark-brown-8 !default;
+$dark-border-color-brown-solid-active: $dark-brown-6 !default;
+$dark-border-color-brown-solid-inactive: $dark-brown-4 !default;
+$dark-border-color-brown-solid-disabled: $dark-brown-3 !default;
+
+$dark-border-color-gray-solid-base: $dark-gray-7 !default;
+$dark-border-color-gray-solid-hover: $dark-gray-8 !default;
+$dark-border-color-gray-solid-active: $dark-gray-6 !default;
+$dark-border-color-gray-solid-inactive: $dark-gray-4 !default;
+$dark-border-color-gray-solid-disabled: $dark-gray-3 !default;
+
+$dark-background-color-page: shade-color($basis, 80%) !default;
+$dark-background-color-card: $dark-basis-0 !default;
+$dark-background-color-overlay: $dark-basis-0 !default;
+$dark-background-color-backdrop: rgba($black, 0.5) !default;
+
+$dark-background-color-base: $dark-basis-0 !default;
+$dark-background-color-hover: $dark-basis-1 !default;
+$dark-background-color-active: $dark-basis-2 !default;
+$dark-background-color-inactive: $dark-basis-1 !default;
+$dark-background-color-disabled: $dark-basis-0 !default;
+
+$dark-background-color-deep-base: $dark-basis-3 !default;
+$dark-background-color-deep-hover: $dark-basis-4 !default;
+$dark-background-color-deep-active: $dark-basis-5 !default;
+$dark-background-color-deep-inactive: $dark-basis-2 !default;
+$dark-background-color-deep-disabled: $dark-basis-1 !default;
+
+$dark-background-color-solid-base: $dark-basis-5 !default;
+$dark-background-color-solid-hover: $dark-basis-6 !default;
+$dark-background-color-solid-active: $dark-basis-4 !default;
+$dark-background-color-solid-inactive: $dark-basis-3 !default;
+$dark-background-color-solid-disabled: $dark-basis-2 !default;
+
+$dark-background-color-major-base: $dark-major-0 !default;
+$dark-background-color-major-hover: $dark-major-1 !default;
+$dark-background-color-major-active: $dark-major-2 !default;
+$dark-background-color-major-inactive: $dark-major-1 !default;
+$dark-background-color-major-disabled: $dark-major-0 !default;
+
+$dark-background-color-minor-base: $dark-minor-0 !default;
+$dark-background-color-minor-hover: $dark-minor-1 !default;
+$dark-background-color-minor-active: $dark-minor-2 !default;
+$dark-background-color-minor-inactive: $dark-minor-1 !default;
+$dark-background-color-minor-disabled: $dark-minor-0 !default;
+
+$dark-background-color-positive-base: $dark-positive-0 !default;
+$dark-background-color-positive-hover: $dark-positive-1 !default;
+$dark-background-color-positive-active: $dark-positive-2 !default;
+$dark-background-color-positive-inactive: $dark-positive-1 !default;
+$dark-background-color-positive-disabled: $dark-positive-0 !default;
+
+$dark-background-color-alertive-base: $dark-alertive-0 !default;
+$dark-background-color-alertive-hover: $dark-alertive-1 !default;
+$dark-background-color-alertive-active: $dark-alertive-2 !default;
+$dark-background-color-alertive-inactive: $dark-alertive-1 !default;
+$dark-background-color-alertive-disabled: $dark-alertive-0 !default;
+
+$dark-background-color-negative-base: $dark-negative-0 !default;
+$dark-background-color-negative-hover: $dark-negative-1 !default;
+$dark-background-color-negative-active: $dark-negative-2 !default;
+$dark-background-color-negative-inactive: $dark-negative-1 !default;
+$dark-background-color-negative-disabled: $dark-negative-0 !default;
+
+$dark-background-color-red-base: $dark-red-0 !default;
+$dark-background-color-red-hover: $dark-red-1 !default;
+$dark-background-color-red-active: $dark-red-2 !default;
+$dark-background-color-red-inactive: $dark-red-1 !default;
+$dark-background-color-red-disabled: $dark-red-0 !default;
+
+$dark-background-color-magenta-base: $dark-magenta-0 !default;
+$dark-background-color-magenta-hover: $dark-magenta-1 !default;
+$dark-background-color-magenta-active: $dark-magenta-2 !default;
+$dark-background-color-magenta-inactive: $dark-magenta-1 !default;
+$dark-background-color-magenta-disabled: $dark-magenta-0 !default;
+
+$dark-background-color-purple-base: $dark-purple-0 !default;
+$dark-background-color-purple-hover: $dark-purple-1 !default;
+$dark-background-color-purple-active: $dark-purple-2 !default;
+$dark-background-color-purple-inactive: $dark-purple-1 !default;
+$dark-background-color-purple-disabled: $dark-purple-0 !default;
+
+$dark-background-color-indigo-base: $dark-indigo-0 !default;
+$dark-background-color-indigo-hover: $dark-indigo-1 !default;
+$dark-background-color-indigo-active: $dark-indigo-2 !default;
+$dark-background-color-indigo-inactive: $dark-indigo-1 !default;
+$dark-background-color-indigo-disabled: $dark-indigo-0 !default;
+
+$dark-background-color-navy-base: $dark-navy-0 !default;
+$dark-background-color-navy-hover: $dark-navy-1 !default;
+$dark-background-color-navy-active: $dark-navy-2 !default;
+$dark-background-color-navy-inactive: $dark-navy-1 !default;
+$dark-background-color-navy-disabled: $dark-navy-0 !default;
+
+$dark-background-color-blue-base: $dark-blue-0 !default;
+$dark-background-color-blue-hover: $dark-blue-1 !default;
+$dark-background-color-blue-active: $dark-blue-2 !default;
+$dark-background-color-blue-inactive: $dark-blue-1 !default;
+$dark-background-color-blue-disabled: $dark-blue-0 !default;
+
+$dark-background-color-cyan-base: $dark-cyan-0 !default;
+$dark-background-color-cyan-hover: $dark-cyan-1 !default;
+$dark-background-color-cyan-active: $dark-cyan-2 !default;
+$dark-background-color-cyan-inactive: $dark-cyan-1 !default;
+$dark-background-color-cyan-disabled: $dark-cyan-0 !default;
+
+$dark-background-color-teal-base: $dark-teal-0 !default;
+$dark-background-color-teal-hover: $dark-teal-1 !default;
+$dark-background-color-teal-active: $dark-teal-2 !default;
+$dark-background-color-teal-inactive: $dark-teal-1 !default;
+$dark-background-color-teal-disabled: $dark-teal-0 !default;
+
+$dark-background-color-green-base: $dark-green-0 !default;
+$dark-background-color-green-hover: $dark-green-1 !default;
+$dark-background-color-green-active: $dark-green-2 !default;
+$dark-background-color-green-inactive: $dark-green-1 !default;
+$dark-background-color-green-disabled: $dark-green-0 !default;
+
+$dark-background-color-lime-base: $dark-lime-0 !default;
+$dark-background-color-lime-hover: $dark-lime-1 !default;
+$dark-background-color-lime-active: $dark-lime-2 !default;
+$dark-background-color-lime-inactive: $dark-lime-1 !default;
+$dark-background-color-lime-disabled: $dark-lime-0 !default;
+
+$dark-background-color-yellow-base: $dark-yellow-0 !default;
+$dark-background-color-yellow-hover: $dark-yellow-1 !default;
+$dark-background-color-yellow-active: $dark-yellow-2 !default;
+$dark-background-color-yellow-inactive: $dark-yellow-1 !default;
+$dark-background-color-yellow-disabled: $dark-yellow-0 !default;
+
+$dark-background-color-orange-base: $dark-orange-0 !default;
+$dark-background-color-orange-hover: $dark-orange-1 !default;
+$dark-background-color-orange-active: $dark-orange-2 !default;
+$dark-background-color-orange-inactive: $dark-orange-1 !default;
+$dark-background-color-orange-disabled: $dark-orange-0 !default;
+
+$dark-background-color-brown-base: $dark-brown-0 !default;
+$dark-background-color-brown-hover: $dark-brown-1 !default;
+$dark-background-color-brown-active: $dark-brown-2 !default;
+$dark-background-color-brown-inactive: $dark-brown-1 !default;
+$dark-background-color-brown-disabled: $dark-brown-0 !default;
+
+$dark-background-color-gray-base: $dark-gray-0 !default;
+$dark-background-color-gray-hover: $dark-gray-1 !default;
+$dark-background-color-gray-active: $dark-gray-2 !default;
+$dark-background-color-gray-inactive: $dark-gray-1 !default;
+$dark-background-color-gray-disabled: $dark-gray-0 !default;
+
+$dark-background-color-major-solid-base: $dark-major-5 !default;
+$dark-background-color-major-solid-hover: $dark-major-6 !default;
+$dark-background-color-major-solid-active: $dark-major-4 !default;
+$dark-background-color-major-solid-inactive: $dark-major-3 !default;
+$dark-background-color-major-solid-disabled: $dark-major-2 !default;
+
+$dark-background-color-minor-solid-base: $dark-minor-5 !default;
+$dark-background-color-minor-solid-hover: $dark-minor-6 !default;
+$dark-background-color-minor-solid-active: $dark-minor-4 !default;
+$dark-background-color-minor-solid-inactive: $dark-minor-3 !default;
+$dark-background-color-minor-solid-disabled: $dark-minor-2 !default;
+
+$dark-background-color-positive-solid-base: $dark-positive-5 !default;
+$dark-background-color-positive-solid-hover: $dark-positive-6 !default;
+$dark-background-color-positive-solid-active: $dark-positive-4 !default;
+$dark-background-color-positive-solid-inactive: $dark-positive-3 !default;
+$dark-background-color-positive-solid-disabled: $dark-positive-2 !default;
+
+$dark-background-color-alertive-solid-base: $dark-alertive-5 !default;
+$dark-background-color-alertive-solid-hover: $dark-alertive-6 !default;
+$dark-background-color-alertive-solid-active: $dark-alertive-4 !default;
+$dark-background-color-alertive-solid-inactive: $dark-alertive-3 !default;
+$dark-background-color-alertive-solid-disabled: $dark-alertive-2 !default;
+
+$dark-background-color-negative-solid-base: $dark-negative-5 !default;
+$dark-background-color-negative-solid-hover: $dark-negative-6 !default;
+$dark-background-color-negative-solid-active: $dark-negative-4 !default;
+$dark-background-color-negative-solid-inactive: $dark-negative-3 !default;
+$dark-background-color-negative-solid-disabled: $dark-negative-2 !default;
+
+$dark-background-color-red-solid-base: $dark-red-5 !default;
+$dark-background-color-red-solid-hover: $dark-red-6 !default;
+$dark-background-color-red-solid-active: $dark-red-4 !default;
+$dark-background-color-red-solid-inactive: $dark-red-3 !default;
+$dark-background-color-red-solid-disabled: $dark-red-2 !default;
+
+$dark-background-color-magenta-solid-base: $dark-magenta-5 !default;
+$dark-background-color-magenta-solid-hover: $dark-magenta-6 !default;
+$dark-background-color-magenta-solid-active: $dark-magenta-4 !default;
+$dark-background-color-magenta-solid-inactive: $dark-magenta-3 !default;
+$dark-background-color-magenta-solid-disabled: $dark-magenta-2 !default;
+
+$dark-background-color-purple-solid-base: $dark-purple-5 !default;
+$dark-background-color-purple-solid-hover: $dark-purple-6 !default;
+$dark-background-color-purple-solid-active: $dark-purple-4 !default;
+$dark-background-color-purple-solid-inactive: $dark-purple-3 !default;
+$dark-background-color-purple-solid-disabled: $dark-purple-2 !default;
+
+$dark-background-color-indigo-solid-base: $dark-indigo-5 !default;
+$dark-background-color-indigo-solid-hover: $dark-indigo-6 !default;
+$dark-background-color-indigo-solid-active: $dark-indigo-4 !default;
+$dark-background-color-indigo-solid-inactive: $dark-indigo-3 !default;
+$dark-background-color-indigo-solid-disabled: $dark-indigo-2 !default;
+
+$dark-background-color-navy-solid-base: $dark-navy-5 !default;
+$dark-background-color-navy-solid-hover: $dark-navy-6 !default;
+$dark-background-color-navy-solid-active: $dark-navy-4 !default;
+$dark-background-color-navy-solid-inactive: $dark-navy-3 !default;
+$dark-background-color-navy-solid-disabled: $dark-navy-2 !default;
+
+$dark-background-color-blue-solid-base: $dark-blue-5 !default;
+$dark-background-color-blue-solid-hover: $dark-blue-6 !default;
+$dark-background-color-blue-solid-active: $dark-blue-4 !default;
+$dark-background-color-blue-solid-inactive: $dark-blue-3 !default;
+$dark-background-color-blue-solid-disabled: $dark-blue-2 !default;
+
+$dark-background-color-cyan-solid-base: $dark-cyan-5 !default;
+$dark-background-color-cyan-solid-hover: $dark-cyan-6 !default;
+$dark-background-color-cyan-solid-active: $dark-cyan-4 !default;
+$dark-background-color-cyan-solid-inactive: $dark-cyan-3 !default;
+$dark-background-color-cyan-solid-disabled: $dark-cyan-2 !default;
+
+$dark-background-color-teal-solid-base: $dark-teal-5 !default;
+$dark-background-color-teal-solid-hover: $dark-teal-6 !default;
+$dark-background-color-teal-solid-active: $dark-teal-4 !default;
+$dark-background-color-teal-solid-inactive: $dark-teal-3 !default;
+$dark-background-color-teal-solid-disabled: $dark-teal-2 !default;
+
+$dark-background-color-green-solid-base: $dark-green-5 !default;
+$dark-background-color-green-solid-hover: $dark-green-6 !default;
+$dark-background-color-green-solid-active: $dark-green-4 !default;
+$dark-background-color-green-solid-inactive: $dark-green-3 !default;
+$dark-background-color-green-solid-disabled: $dark-green-2 !default;
+
+$dark-background-color-lime-solid-base: $dark-lime-5 !default;
+$dark-background-color-lime-solid-hover: $dark-lime-6 !default;
+$dark-background-color-lime-solid-active: $dark-lime-4 !default;
+$dark-background-color-lime-solid-inactive: $dark-lime-3 !default;
+$dark-background-color-lime-solid-disabled: $dark-lime-2 !default;
+
+$dark-background-color-yellow-solid-base: $dark-yellow-5 !default;
+$dark-background-color-yellow-solid-hover: $dark-yellow-6 !default;
+$dark-background-color-yellow-solid-active: $dark-yellow-4 !default;
+$dark-background-color-yellow-solid-inactive: $dark-yellow-3 !default;
+$dark-background-color-yellow-solid-disabled: $dark-yellow-2 !default;
+
+$dark-background-color-orange-solid-base: $dark-orange-5 !default;
+$dark-background-color-orange-solid-hover: $dark-orange-6 !default;
+$dark-background-color-orange-solid-active: $dark-orange-4 !default;
+$dark-background-color-orange-solid-inactive: $dark-orange-3 !default;
+$dark-background-color-orange-solid-disabled: $dark-orange-2 !default;
+
+$dark-background-color-brown-solid-base: $dark-brown-5 !default;
+$dark-background-color-brown-solid-hover: $dark-brown-6 !default;
+$dark-background-color-brown-solid-active: $dark-brown-4 !default;
+$dark-background-color-brown-solid-inactive: $dark-brown-3 !default;
+$dark-background-color-brown-solid-disabled: $dark-brown-2 !default;
+
+$dark-background-color-gray-solid-base: $dark-gray-5 !default;
+$dark-background-color-gray-solid-hover: $dark-gray-6 !default;
+$dark-background-color-gray-solid-active: $dark-gray-4 !default;
+$dark-background-color-gray-solid-inactive: $dark-gray-3 !default;
+$dark-background-color-gray-solid-disabled: $dark-gray-2 !default;
+
+$dark-box-shadow-1: 0 1px 3px rgba($black, 0.85) !default;
+$dark-box-shadow-2: 0 2px 6px rgba($black, 0.85) !default;
+$dark-box-shadow-3: 0 3px 9px rgba($black, 0.85) !default;
+$dark-box-shadow-4: 0 5px 15px rgba($black, 0.85) !default;
+$dark-box-shadow-5: 0 8px 24px rgba($black, 0.85) !default;

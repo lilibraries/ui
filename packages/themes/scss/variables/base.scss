@@ -1,8 +1,12 @@
+$white: #fff !default;
+$black: #000 !default;
+
 $cls-prefix: "li-" !default;
 $var-prefix: "li-" !default;
 
 $enable-variables: true !default;
-$enable-fallbacks: true !default;
+$enable-variable-fallbacks: true !default;
+$enable-event-transitions: true !default;
 
 $colors: (
   "red",
@@ -22,15 +26,10 @@ $colors: (
 ) !default;
 $intents: ("major", "minor", "positive", "alertive", "negative") !default;
 
-$space-1: 4px !default;
-$space-2: $space-1 * 2 !default;
-$space-3: $space-1 * 3 !default;
-$space-4: $space-1 * 4 !default;
-$space-5: $space-1 * 5 !default;
-$space-6: $space-1 * 6 !default;
-$space-7: $space-1 * 7 !default;
-$space-8: $space-1 * 8 !default;
-$space-9: $space-1 * 9 !default;
+$font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-mono: Monaco, Menlo, Consolas, "Courier New", Courier, monospace !default;
 
 $font-size-h1: 46px !default;
 $font-size-h2: 36px !default;
@@ -45,37 +44,61 @@ $font-size-large: 20px !default;
 $font-size-smaller: 0.875em !default;
 $font-size-larger: 1.125em !default;
 
-$font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji",
-  "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-mono: Monaco, Menlo, Consolas, "Courier New", Courier, monospace !default;
+$font-weight-base: 400 !default;
+$font-weight-input: 400 !default;
+$font-weight-button: 400 !default;
+$font-weight-heading: 700 !default;
+$font-weight-title: 600 !default;
+$font-weight-subtitle: 400 !default;
 
 $line-height-base: 1.5 !default;
 $line-height-small: 1.25 !default;
 $line-height-large: 2 !default;
-
 $line-height-fixed-base: 24px !default;
 $line-height-fixed-small: 18px !default;
 $line-height-fixed-large: 30px !default;
+
+$space-1: 4px !default;
+$space-2: $space-1 * 2 !default;
+$space-3: $space-1 * 3 !default;
+$space-4: $space-1 * 4 !default;
+$space-5: $space-1 * 5 !default;
+$space-6: $space-1 * 6 !default;
+$space-7: $space-1 * 7 !default;
+$space-8: $space-1 * 8 !default;
+$space-9: $space-1 * 9 !default;
+
+$space-block-base: 6px !default;
+$space-block-small: 4px !default;
+$space-block-large: 8px !default;
+$space-inline-base: 12px !default;
+$space-inline-small: 8px !default;
+$space-inline-large: 16px !default;
 
 $border-radius-base: 0.5em !default;
 $border-radius-small: 0.25em !default;
 $border-radius-large: 1em !default;
 $border-radius-round: 1000px !default;
-
 $border-radius-fixed-base: 8px !default;
 $border-radius-fixed-small: 4px !default;
 $border-radius-fixed-large: 16px !default;
 
+$z-index-affix: 100 !default;
 $z-index-backdrop: 1000 !default;
-$z-index-modal: 1100 !default;
+$z-index-drawer: 1100 !default;
+$z-index-modal: 1200 !default;
 $z-index-popup: 2000 !default;
 $z-index-tooltip: 2100 !default;
+$z-index-notice: 3000 !default;
+$z-index-toast: 3100 !default;
 
-$motion-duration-base: 300ms !default;
-$motion-duration-fast: 150ms !default;
-$motion-duration-slow: 750ms !default;
-$motion-duration-lazy: 1250ms !default;
+$motion-duration-base: 200ms !default;
+$motion-duration-fast: 100ms !default;
+$motion-duration-slow: 800ms !default;
+$motion-duration-lazy: 1200ms !default;
 
-$motion-function-base: ease-in-out !default;
-$motion-function-spin: linear !default;
+$motion-function-ease: ease !default;
+$motion-function-ease-in: ease-in !default;
+$motion-function-ease-out: ease-out !default;
+$motion-function-ease-in-out: ease-in-out !default;
+$motion-function-linear: linear !default;
