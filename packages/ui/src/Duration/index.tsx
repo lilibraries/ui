@@ -42,10 +42,10 @@ export interface DurationComponent
 }
 
 const DurationContext = createContext<DurationValue>({
-  base: 300,
-  fast: 150,
-  slow: 750,
-  lazy: 1250,
+  base: 200,
+  fast: 100,
+  slow: 800,
+  lazy: 1200,
 });
 
 function useDurationConfig(override?: Partial<DurationValue>): DurationValue {

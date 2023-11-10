@@ -10,7 +10,7 @@
   }
 
   @if $enable-variables {
-    @if $enable-fallbacks {
+    @if $enable-variable-fallbacks {
       @return unquote("var(" + $property + ", " + $value + ")");
     } @else {
       @return unquote("var(" + $property + ")");

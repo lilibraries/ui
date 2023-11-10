@@ -79,7 +79,7 @@
     background-color: var(--background-color-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
-    @include transition(fast, left);
+    @include transition(fast, ease-in-out, left);
   }
 
   &.#{$cls-prefix}checked {

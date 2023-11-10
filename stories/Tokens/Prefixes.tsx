@@ -11,12 +11,12 @@ const Prefixes: FC = () => {
         [
           <Usage type="scss" name="cls-prefix" />,
           <Monospace>"li-"</Monospace>,
-          "CSS class name prefix",
+          "CSS class name prefix.",
         ],
         [
           <Usage type="scss" name="var-prefix" />,
           <Monospace>"li-"</Monospace>,
-          "CSS variable name prefix",
+          "CSS variable name prefix.",
         ],
       ]}
     />

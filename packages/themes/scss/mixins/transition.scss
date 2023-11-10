@@ -7,22 +7,35 @@ $-durations: (
   "lazy": var(--motion-duration-lazy),
 );
 
-@mixin transition($speed, $properties...) {
+$-functions: (
+  "ease": var(--motion-function-ease),
+  "ease-in": var(--motion-function-ease-in),
+  "ease-out": var(--motion-function-ease-out),
+  "ease-in-out": var(--motion-function-ease-in-out),
+  "linear": var(--motion-function-linear),
+);
+
+@mixin transition($speed, $algorithm, $properties...) {
   $duration: map-get($-durations, $speed);
+  $function: map-get($-functions, $algorithm);
 
   @if not $duration {
-    @error "Mixin `transition`'s first param must be on of `base`, `fast`, `slow` or `lazy`.";
+    @error "Mixin `transition`'s first param must be one of `base`, `fast`, `slow` or `lazy`.";
+  }
+
+  @if not $function {
+    @error "Mixin `transition`'s second param must be one of `ease`, `ease-in`, `ease-out`, `ease-in-out`, `linear`.";
   }
 
   @if length($properties) == 0 {
-    transition: all $duration var(--motion-function-basic);
+    transition: all $duration $function;
   } @else {
     $transition: ();
 
     @for $i from 1 through length($properties) {
       $transition: append(
         $transition,
-        nth($properties, $i) $duration var(--motion-function-base),
+        nth($properties, $i) $duration $function,
         comma
       );
     }

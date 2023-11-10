@@ -1,18 +1,17 @@
 import { Meta } from "@storybook/addon-docs";
 import Prefixes from "./Prefixes";
 import Features from "./Features";
-import Spaces from "./Spaces";
-import FontSizes from "./FontSizes";
+import Lists from "./Lists";
 import FontFamilies from "./FontFamilies";
+import FontSizes from "./FontSizes";
+import FontWeights from "./FontWeights";
+import Spaces from "./Spaces";
 import LineHeights from "./LineHeights";
 import BorderRadii from "./BorderRadii";
 import ZIndexes from "./ZIndexes";
 import MotionDurations from "./MotionDurations";
 import MotionFunctions from "./MotionFunctions";
-import Colors from "../Palettes/Colors";
-import RGBs from "../Palettes/RGBs";
 import Alphas from "./Alphas";
-import Scales from "../Palettes/Scales";
 import TextColors from "./TextColors";
 import BorderColors from "./BorderColors";
 import BackgroundColors from "./BackgroundColors";
@@ -22,103 +21,275 @@ import BoxShadows from "./BoxShadows";
 
 # Tokens
 
-## Basic
+Design tokens.
 
-### Prefixes
+## Prefixes
 
 <Prefixes />
 
-### Features
+## Features
 
 <Features />
 
-### Spaces
+## Lists
 
-<Spaces />
+<Lists />
 
-### Font Sizes
-
-<FontSizes />
-
-### Font Families
+## Font Families
 
 <FontFamilies />
 
-### Line Heights
+## Font Sizes
+
+<FontSizes />
+
+## Font Weights
+
+<FontWeights />
+
+## Line Heights
 
 <LineHeights />
 
-### Border Radii
+## Spaces
+
+<Spaces />
+
+## Border Radii
 
 <BorderRadii />
 
-### Z Indexes
+## Z Indexes
 
 <ZIndexes />
 
-### Motion Durations
+## Motion Durations
 
 <MotionDurations />
 
-### Motion Functions
+## Motion Functions
 
 <MotionFunctions />
 
-## Colors
-
-<Colors
-  names={["basis", "major", "minor", "positive", "alertive", "negative"]}
-/>
-
-### RGBs
-
-<RGBs names={["basis", "major", "minor", "positive", "alertive", "negative"]} />
-
-### Alphas
+## Color Alphas
 
 <Alphas />
 
-### Basis
+## Text Colors
 
-<Scales name="basis" />
-
-### Major
-
-<Scales name="major" />
-
-### Minor
-
-<Scales name="minor" />
-
-### Positive
-
-<Scales name="positive" />
-
-### Alertive
-
-<Scales name="alertive" />
-
-### Negative
-
-<Scales name="negative" />
-
-### Text Colors
-
-<TextColors />
-<TextColors variant="solid" />
+<TextColors
+  statuses={["base", "muted", "hover", "active", "inactive", "disabled"]}
+/>
+<br />
+<TextColors variant="solid" preview={false} />
+<br />
+<TextColors intent="major" />
+<br />
+<TextColors intent="minor" />
+<br />
+<TextColors intent="positive" />
+<br />
+<TextColors intent="alertive" />
+<br />
+<TextColors intent="negative" />
+<br />
+<TextColors color="red" />
+<br />
+<TextColors color="magenta" />
+<br />
+<TextColors color="purple" />
+<br />
+<TextColors color="indigo" />
+<br />
+<TextColors color="navy" />
+<br />
+<TextColors color="blue" />
+<br />
+<TextColors color="cyan" />
+<br />
+<TextColors color="teal" />
+<br />
+<TextColors color="green" />
+<br />
+<TextColors color="lime" />
+<br />
+<TextColors color="yellow" />
+<br />
+<TextColors color="orange" />
+<br />
+<TextColors color="brown" />
+<br />
+<TextColors color="gray" />
 
 ### Border Colors
 
 <BorderColors />
+<br />
 <BorderColors variant="deep" />
+<br />
 <BorderColors variant="solid" />
+<br />
+<BorderColors intent="major" />
+<br />
+<BorderColors intent="minor" />
+<br />
+<BorderColors intent="positive" />
+<br />
+<BorderColors intent="alertive" />
+<br />
+<BorderColors intent="negative" />
+<br />
+<BorderColors color="red" />
+<br />
+<BorderColors color="magenta" />
+<br />
+<BorderColors color="purple" />
+<br />
+<BorderColors color="indigo" />
+<br />
+<BorderColors color="navy" />
+<br />
+<BorderColors color="blue" />
+<br />
+<BorderColors color="cyan" />
+<br />
+<BorderColors color="teal" />
+<br />
+<BorderColors color="green" />
+<br />
+<BorderColors color="lime" />
+<br />
+<BorderColors color="yellow" />
+<br />
+<BorderColors color="orange" />
+<br />
+<BorderColors color="brown" />
+<br />
+<BorderColors color="gray" />
+<br />
+<BorderColors variant="solid" intent="major" />
+<br />
+<BorderColors variant="solid" intent="minor" />
+<br />
+<BorderColors variant="solid" intent="positive" />
+<br />
+<BorderColors variant="solid" intent="alertive" />
+<br />
+<BorderColors variant="solid" intent="negative" />
+<br />
+<BorderColors variant="solid" color="red" />
+<br />
+<BorderColors variant="solid" color="magenta" />
+<br />
+<BorderColors variant="solid" color="purple" />
+<br />
+<BorderColors variant="solid" color="indigo" />
+<br />
+<BorderColors variant="solid" color="navy" />
+<br />
+<BorderColors variant="solid" color="blue" />
+<br />
+<BorderColors variant="solid" color="cyan" />
+<br />
+<BorderColors variant="solid" color="teal" />
+<br />
+<BorderColors variant="solid" color="green" />
+<br />
+<BorderColors variant="solid" color="lime" />
+<br />
+<BorderColors variant="solid" color="yellow" />
+<br />
+<BorderColors variant="solid" color="orange" />
+<br />
+<BorderColors variant="solid" color="brown" />
+<br />
+<BorderColors variant="solid" color="gray" />
 
 ### Background Colors
 
 <BackgroundColors statuses={["page", "card", "overlay", "backdrop"]} />
+<br />
 <BackgroundColors />
+<br />
 <BackgroundColors variant="deep" />
+<br />
 <BackgroundColors variant="solid" />
+<br />
+<BackgroundColors intent="major" />
+<br />
+<BackgroundColors intent="minor" />
+<br />
+<BackgroundColors intent="positive" />
+<br />
+<BackgroundColors intent="alertive" />
+<br />
+<BackgroundColors intent="negative" />
+<br />
+<BackgroundColors color="red" />
+<br />
+<BackgroundColors color="magenta" />
+<br />
+<BackgroundColors color="purple" />
+<br />
+<BackgroundColors color="indigo" />
+<br />
+<BackgroundColors color="navy" />
+<br />
+<BackgroundColors color="blue" />
+<br />
+<BackgroundColors color="cyan" />
+<br />
+<BackgroundColors color="teal" />
+<br />
+<BackgroundColors color="green" />
+<br />
+<BackgroundColors color="lime" />
+<br />
+<BackgroundColors color="yellow" />
+<br />
+<BackgroundColors color="orange" />
+<br />
+<BackgroundColors color="brown" />
+<br />
+<BackgroundColors color="gray" />
+<br />
+<BackgroundColors variant="solid" intent="major" />
+<br />
+<BackgroundColors variant="solid" intent="minor" />
+<br />
+<BackgroundColors variant="solid" intent="positive" />
+<br />
+<BackgroundColors variant="solid" intent="alertive" />
+<br />
+<BackgroundColors variant="solid" intent="negative" />
+<br />
+<BackgroundColors variant="solid" color="red" />
+<br />
+<BackgroundColors variant="solid" color="magenta" />
+<br />
+<BackgroundColors variant="solid" color="purple" />
+<br />
+<BackgroundColors variant="solid" color="indigo" />
+<br />
+<BackgroundColors variant="solid" color="navy" />
+<br />
+<BackgroundColors variant="solid" color="blue" />
+<br />
+<BackgroundColors variant="solid" color="cyan" />
+<br />
+<BackgroundColors variant="solid" color="teal" />
+<br />
+<BackgroundColors variant="solid" color="green" />
+<br />
+<BackgroundColors variant="solid" color="lime" />
+<br />
+<BackgroundColors variant="solid" color="yellow" />
+<br />
+<BackgroundColors variant="solid" color="orange" />
+<br />
+<BackgroundColors variant="solid" color="brown" />
+<br />
+<BackgroundColors variant="solid" color="gray" />
 
 ### Box Shadows
 

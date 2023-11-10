@@ -70,7 +70,7 @@
         background-color: currentColor;
         border-radius: 50%;
         animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy)
-          var(--motion-function-base) 0s infinite;
+          var(--motion-function-ease-in-out) 0s infinite;
         content: "";
       }
     }

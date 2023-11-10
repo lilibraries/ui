@@ -1,28 +1,40 @@
 import React, { FC } from "react";
-import { Prefix } from "@lilib/ui";
+import { ColorValue, IntentValue, Prefix } from "@lilib/ui";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
 
 interface TextColorsProps {
+  color?: ColorValue;
+  intent?: IntentValue;
   variant?: "solid";
+  preview?: boolean;
+  statuses?: string[];
 }
 
 const TextColors: FC<TextColorsProps> = (props) => {
-  const { variant } = props;
+  const {
+    color,
+    intent,
+    variant,
+    preview = true,
+    statuses = ["base", "hover", "active", "inactive", "disabled"],
+  } = props;
   const { var: prefix } = Prefix.useConfig();
 
-  const statuses = variant
-    ? ["base", "hover", "active", "inactive", "disabled"]
-    : ["base", "muted", "hover", "active", "inactive", "disabled"];
-
   const head = ["SCSS", "CSS", "Value"];
-  if (!variant) {
+  if (preview) {
     head.push("Preview");
   }
 
   const body = statuses.map((status) => {
     let name = "text-color-";
+    if (color) {
+      name += color + "-";
+    }
+    if (intent) {
+      name += intent + "-";
+    }
     if (variant) {
       name += variant + "-";
     }
@@ -38,7 +50,7 @@ const TextColors: FC<TextColorsProps> = (props) => {
       />,
     ];
 
-    if (!variant) {
+    if (preview) {
       result.push(
         <span style={{ color: `var(--${prefix}${name})` }}>{status}</span>
       );
@@ -47,13 +59,7 @@ const TextColors: FC<TextColorsProps> = (props) => {
     return result;
   });
 
-  return (
-    <Table
-      head={head}
-      body={body}
-      style={{ marginBottom: `var(--${prefix}space-8)` }}
-    />
-  );
+  return <Table head={head} body={body} />;
 };
 
 export default TextColors;

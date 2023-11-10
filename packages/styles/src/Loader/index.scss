@@ -48,7 +48,7 @@
     position: relative;
 
     & > .#{$cls-prefix}loader-content {
-      @include transition(fast, opacity, filter);
+      @include transition(fast, ease-in-out, opacity, filter);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -71,7 +71,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--space-4);
-      @include transition(fast, opacity);
+      @include transition(fast, ease-in-out, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,

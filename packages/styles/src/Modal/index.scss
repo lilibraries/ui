@@ -51,13 +51,13 @@
     &-exiting {
       transform: translateX(-50%) translateY(-32px);
       opacity: 0;
-      @include transition(base, opacity, transform);
+      @include transition(base, ease-in-out, opacity, transform);
     }
 
     &-entering {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
-      @include transition(base, opacity, transform);
+      @include transition(base, ease-in-out, opacity, transform);
     }
 
     &-exited {

@@ -5,7 +5,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    @include transition(fast, transform, opacity);
+    @include transition(fast, ease-in-out, transform, opacity);
   }
 
   &.#{$cls-prefix}outlined {
@@ -18,7 +18,7 @@
 
   &.#{$cls-prefix}standalone {
     display: inline-flex;
-    @include transition(fast, transform, opacity);
+    @include transition(fast, ease-in-out, transform, opacity);
 
     &.#{$cls-prefix}transition {
       &-enter,

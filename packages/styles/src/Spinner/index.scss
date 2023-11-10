@@ -30,7 +30,7 @@
       align-items: center;
       justify-content: center;
       line-height: 1;
-      @include transition(fast, transform, opacity);
+      @include transition(fast, ease-in-out, transform, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -47,6 +47,7 @@
   &.#{$cls-prefix}standalone {
     @include transition(
       fast,
+      ease-in-out,
       width,
       margin-right,
       margin-left,
