@@ -18,7 +18,7 @@ import { Duration } from "@lilib/ui";
 
 function App() {
   return (
-    <Duration base={400} fast={200} slow={800} lazy={1200}>
+    <Duration base={200} fast={100} slow={800} lazy={1200}>
       ...
     </Duration>
   );
@@ -27,7 +27,7 @@ function App() {
 
 ### Scoped
 
-Many components in this library perform animation effects. The following example describes how to configure scoped durations. The Spinner component performs a rotation animation of 750 milliseconds by default, but 3000 milliseconds in this example. Scoped way will add styles to the child element, and the `children` prop must be a React element that accepts `style` prop.
+Many components in this library perform animation effects. The following example describes how to configure scoped durations. The Spinner component performs a rotation animation of 800 milliseconds by default, but 3000 milliseconds in this example. Scoped way will add styles to the child element, and the `children` prop must be a React element that accepts `style` prop.
 
 <Canvas mdxSource={require("!!raw-loader!./Scoped").default}>
   <Story id="examples-duration--scoped" />
@@ -45,12 +45,12 @@ Many components in this library perform animation effects. The following example
 
 | Property   | Type                          | Description                               | Default |
 | ---------- | ----------------------------- | ----------------------------------------- | ------- |
-| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes | -       |
+| `base`     | `number`                      | Base animation duration, in milliseconds  | `200`   |
+| `fast`     | `number`                      | Fast animation duration, in milliseconds  | `100`   |
+| `slow`     | `number`                      | Slow animation duration, in milliseconds  | `800`   |
+| `lazy`     | `number`                      | Lazy animation duration, in milliseconds  | `1200`  |
 | `scoped`   | `boolean`                     | Scoped                                    | -       |
-| `base`     | `number`                      | Base animation duration, in milliseconds  | `300`   |
-| `fast`     | `number`                      | Fast animation duration, in milliseconds  | `150`   |
-| `slow`     | `number`                      | Slow animation duration, in milliseconds  | `750`   |
-| `lazy`     | `number`                      | Lazy animation duration, in milliseconds  | `1250`  |
+| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes | -       |
 
 Duration will inherit the upper configuration.
 
@@ -69,4 +69,4 @@ Get configured durations.
 
 ### Duration.Context
 
-A context created by `React.createContext`. It's default value is `{ base: 300, fast: 150, slow: 750, lazy: 1250 }`.
+A context created by `React.createContext`. It's default value is `{ base: 200, fast: 100, slow: 800, lazy: 1200 }`.
