@@ -104,5 +104,5 @@ React component library.
 
 ### Utilities
 
-- [ ] Portal
+- [x] Portal
 - [ ] Display
