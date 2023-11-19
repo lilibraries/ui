@@ -39,12 +39,12 @@
     cursor: pointer;
 
     &:hover {
-      color: var(--major-6);
+      color: var(--text-color-major-hover);
       text-decoration: underline;
     }
 
     &:active {
-      color: var(--major-7);
+      color: var(--text-color-major-active);
       text-decoration: underline;
     }
   }
@@ -73,43 +73,43 @@
 
   @each $item in join($intents, $colors) {
     &.#{$cls-prefix}#{$item} {
-      color: var(--#{$item}-5);
+      color: var(--text-color-#{$item}-base);
 
       &.#{$cls-prefix}muted {
-        color: var(--#{$item}-3);
+        color: var(--text-color-#{$item}-inactive);
       }
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          color: var(--#{$item}-6);
+          color: var(--text-color-#{$item}-hover);
         }
 
         &:active {
-          color: var(--#{$item}-7);
+          color: var(--text-color-#{$item}-active);
         }
       }
 
       &.#{$cls-prefix}active {
-        color: var(--#{$item}-7);
+        color: var(--text-color-#{$item}-active);
 
         &:hover {
-          color: var(--#{$item}-7);
+          color: var(--text-color-#{$item}-active);
         }
 
         &:active {
-          color: var(--#{$item}-7);
+          color: var(--text-color-#{$item}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
-        color: var(--#{$item}-2);
+        color: var(--text-color-#{$item}-disabled);
 
         &:hover {
-          color: var(--#{$item}-2);
+          color: var(--text-color-#{$item}-disabled);
         }
 
         &:active {
-          color: var(--#{$item}-2);
+          color: var(--text-color-#{$item}-disabled);
         }
       }
     }
