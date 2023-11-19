@@ -71,7 +71,7 @@
     }
   }
 
-  @each $item in join($intents, $colors) {
+  @each $item in join($colors, $intents) {
     &.#{$cls-prefix}#{$item} {
       color: var(--text-color-#{$item}-base);
 
