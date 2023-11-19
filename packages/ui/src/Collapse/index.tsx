@@ -63,8 +63,8 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
       onExited={onClosed}
     >
       {(state) => {
-        const element = domRef.current as HTMLDivElement;
-        let height: number | string | undefined;
+        const element = domRef.current!;
+        let height: number | undefined;
 
         switch (state) {
           case Transition.ENTER:
