@@ -11,12 +11,12 @@ import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import { ColorValue, IntentValue } from "../utils/types";
 
-export type TextSize = "small" | "large" | "smaller" | "larger";
+export type TextSize = null | "small" | "large" | "smaller" | "larger";
 
 export interface TextCommonProps {
-  intent?: IntentValue;
-  color?: ColorValue;
   size?: TextSize;
+  color?: ColorValue;
+  intent?: IntentValue;
   muted?: boolean;
   active?: boolean;
   disabled?: boolean;
@@ -43,9 +43,9 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     children,
     className,
     as = "span",
-    intent,
-    color,
     size,
+    color,
+    intent,
     muted,
     active,
     disabled,
@@ -58,9 +58,9 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const classes = cn(
     `${cls}text`,
     {
-      [`${cls}${intent}`]: intent,
-      [`${cls}${color}`]: color,
       [`${cls}${size}`]: size,
+      [`${cls}${color}`]: color,
+      [`${cls}${intent}`]: intent,
       [`${cls}muted`]: muted,
       [`${cls}active`]: active,
       [`${cls}disabled`]: disabled,
@@ -85,8 +85,8 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       ...rest,
       ref,
       disabled,
-      onClick: handleClick,
       className: classes,
+      onClick: handleClick,
     },
     children
   );

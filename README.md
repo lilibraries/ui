@@ -23,7 +23,7 @@ React component library.
 ### Generics
 
 - [x] Icon
-- [ ] Text
+- [x] Text
 - [ ] Image
 - [ ] Button
 
