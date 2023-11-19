@@ -99,7 +99,7 @@ React component library.
 
 ### Animations
 
-- [ ] Collapse
+- [x] Collapse
 - [x] Transition
 
 ### Utilities
