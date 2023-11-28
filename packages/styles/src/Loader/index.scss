@@ -1,25 +1,24 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}loader {
-  & > .#{$cls-prefix}loader-content,
   & > .#{$cls-prefix}loader-mask {
+    color: var(--text-color-base);
+
     & > .#{$cls-prefix}loader-icon {
       flex: 0 0 auto;
-      color: var(--text-color-base);
       font-size: var(--line-height-fixed-base);
+      line-height: 1;
     }
 
     & > .#{$cls-prefix}loader-message {
       flex: 0 0 auto;
       margin-top: var(--space-1);
-      color: var(--text-color-base);
       font-size: var(--font-size-base);
       line-height: var(--line-height-base);
     }
   }
 
   &.#{$cls-prefix}small {
-    & > .#{$cls-prefix}loader-content,
     & > .#{$cls-prefix}loader-mask {
       & > .#{$cls-prefix}icon {
         font-size: var(--line-height-fixed-small);
@@ -32,7 +31,6 @@
   }
 
   &.#{$cls-prefix}large {
-    & > .#{$cls-prefix}loader-content,
     & > .#{$cls-prefix}loader-mask {
       & > .#{$cls-prefix}icon {
         font-size: var(--line-height-fixed-large);
@@ -48,7 +46,7 @@
     position: relative;
 
     & > .#{$cls-prefix}loader-content {
-      @include transition(fast, ease-in-out, opacity, filter);
+      @include transition(base, ease, opacity, filter);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -71,7 +69,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--space-4);
-      @include transition(fast, ease-in-out, opacity);
+      @include transition(base, ease, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -83,8 +81,8 @@
     }
   }
 
-  &.#{$cls-prefix}standalone {
-    & > .#{$cls-prefix}loader-content {
+  &:not(.#{$cls-prefix}contained) {
+    & > .#{$cls-prefix}loader-mask {
       display: flex;
       flex-direction: column;
       align-items: center;
