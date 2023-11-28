@@ -50,7 +50,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const { fast } = Duration.useConfig();
+  const { base } = Duration.useConfig();
   const contained = isRenderable(children);
 
   const {
@@ -87,7 +87,6 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
     {
       [`${cls}${size}`]: size,
       [`${cls}contained`]: contained,
-      [`${cls}standalone`]: !contained,
     },
     className
   );
@@ -95,23 +94,23 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   if (contained) {
     return (
       <div {...rest} ref={ref} className={classes}>
-        <Transition
-          in={loading}
-          classes
-          durations={fast}
-          enterDelay={delay}
-          firstMount
-          keepMounted
-        >
-          <div className={`${cls}loader-content`}>{children}</div>
-        </Transition>
-        <Transition in={loading} classes durations={fast} enterDelay={delay}>
+        <Transition in={loading} classes durations={base} enterDelay={delay}>
           <div className={`${cls}loader-mask`}>
             {icon}
             {isRenderable(message) && (
               <div className={`${cls}loader-message`}>{message}</div>
             )}
           </div>
+        </Transition>
+        <Transition
+          in={loading}
+          classes
+          durations={base}
+          enterDelay={delay}
+          firstMount
+          keepMounted
+        >
+          <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
       </div>
     );
@@ -124,7 +123,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
         open={loading}
         openDelay={delay}
       >
-        <div className={`${cls}loader-content`}>
+        <div className={`${cls}loader-mask`}>
           {icon}
           {isRenderable(message) && (
             <div className={`${cls}loader-message`}>{message}</div>
