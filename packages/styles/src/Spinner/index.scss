@@ -9,12 +9,12 @@
   line-height: 1;
   vertical-align: -0.125em;
 
-  &.#{$cls-prefix}left-spaced {
-    margin-left: 0.375em;
+  &.#{$cls-prefix}start-spaced {
+    margin-inline-start: 0.375em;
   }
 
-  &.#{$cls-prefix}right-spaced {
-    margin-right: 0.375em;
+  &.#{$cls-prefix}end-spaced {
+    margin-inline-end: 0.375em;
   }
 
   &.#{$cls-prefix}contained {
@@ -30,7 +30,7 @@
       align-items: center;
       justify-content: center;
       line-height: 1;
-      @include transition(fast, ease-in-out, transform, opacity);
+      @include transition(base, ease, transform, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -40,17 +40,21 @@
           transform: scale(0);
           opacity: 0;
         }
+
+        &-exited {
+          display: none;
+        }
       }
     }
   }
 
-  &.#{$cls-prefix}standalone {
+  &:not(.#{$cls-prefix}contained) {
     @include transition(
-      fast,
-      ease-in-out,
+      base,
+      ease,
       width,
-      margin-right,
-      margin-left,
+      margin-inline-start,
+      margin-inline-end,
       transform,
       opacity
     );
@@ -60,8 +64,8 @@
       &-exit,
       &-exiting {
         width: 0.01px;
-        margin-right: 0;
-        margin-left: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
         transform: scale(0);
         opacity: 0;
       }

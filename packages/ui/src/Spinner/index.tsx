@@ -11,7 +11,6 @@ import React, {
 import cn from "classnames";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
-import Direction from "../Direction";
 import Transition from "../Transition";
 import LoaderIcon from "../icons/LoaderIcon";
 import Icon, { IconProps } from "../Icon";
@@ -52,8 +51,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
-  const { fast } = Duration.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
+  const { base } = Duration.useConfig();
   const { icon: iconConfig, delay } = SpinnerConfig.useConfig({
     icon: iconProp,
     delay: delayProp,
@@ -79,14 +77,15 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   }
 
   if (contained) {
-    const start = hasStartSpaceStyle ? startSpace : undefined;
-    const end = hasEndSpaceStyle ? endSpace : undefined;
+    const marginInlineStart = hasStartSpaceStyle ? startSpace : undefined;
+    const marginInlineEnd = hasEndSpaceStyle ? endSpace : undefined;
 
     const styles = Object.assign(
       {},
-      isRTL
-        ? { marginLeft: end, marginRight: start }
-        : { marginLeft: start, marginRight: end },
+      {
+        marginInlineStart,
+        marginInlineEnd,
+      },
       style
     );
 
@@ -94,8 +93,8 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
       `${cls}spinner`,
       `${cls}contained`,
       {
-        [`${cls}left-spaced`]: isRTL ? hasEndSpaceClass : hasStartSpaceClass,
-        [`${cls}right-spaced`]: isRTL ? hasStartSpaceClass : hasEndSpaceClass,
+        [`${cls}start-spaced`]: hasStartSpaceClass,
+        [`${cls}end-spaced`]: hasEndSpaceClass,
       },
       className
     );
@@ -115,7 +114,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
           <Transition
             in={!spinning}
             classes
-            durations={fast}
+            durations={base}
             exitDelay={delay}
             firstMount
             keepMounted
@@ -123,38 +122,36 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
             <span className={`${cls}spinner-switcher`}>{content}</span>
           </Transition>
         )}
-        <Transition in={spinning} classes durations={fast} enterDelay={delay}>
+        <Transition in={spinning} classes durations={base} enterDelay={delay}>
           <span className={`${cls}spinner-switcher`}>{icon}</span>
         </Transition>
       </span>
     );
   } else {
     return (
-      <Transition in={spinning} classes durations={fast} enterDelay={delay}>
+      <Transition in={spinning} classes durations={base} enterDelay={delay}>
         {(status) => {
           const enter =
             status === Transition.ENTERING || status === Transition.ENTERED;
-          const start = enter && hasStartSpaceStyle ? startSpace : undefined;
-          const end = enter && hasEndSpaceStyle ? endSpace : undefined;
+          const marginInlineStart =
+            enter && hasStartSpaceStyle ? startSpace : undefined;
+          const marginInlineEnd =
+            enter && hasEndSpaceStyle ? endSpace : undefined;
 
           const styles = Object.assign(
             {},
-            isRTL
-              ? { marginLeft: end, marginRight: start }
-              : { marginLeft: start, marginRight: end },
+            {
+              marginInlineStart,
+              marginInlineEnd,
+            },
             style
           );
 
           const classes = cn(
             `${cls}spinner`,
-            `${cls}standalone`,
             {
-              [`${cls}left-spaced`]: isRTL
-                ? hasEndSpaceClass
-                : hasStartSpaceClass,
-              [`${cls}right-spaced`]: isRTL
-                ? hasStartSpaceClass
-                : hasEndSpaceClass,
+              [`${cls}start-spaced`]: hasStartSpaceClass,
+              [`${cls}end-spaced`]: hasEndSpaceClass,
             },
             className
           );
