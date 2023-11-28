@@ -41,7 +41,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
-  const { fast } = Duration.useConfig();
+  const { base } = Duration.useConfig();
   const domRef = useRef<HTMLDivElement>();
   const composedRef = useComposedRef(domRef, ref);
 
@@ -49,7 +49,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
     <Transition
       in={open}
       classes
-      durations={fast}
+      durations={base}
       enterDelay={openDelay}
       exitDelay={closeDelay}
       firstMount={firstMount}
