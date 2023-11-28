@@ -38,7 +38,7 @@ The following example will show spinner after 500ms when the switch is on.
 
 ### Config
 
-`Spinner` provides `Spinner.Config` component to set `delay` and `icon` for all sub Spinner components. The following example will show custom spinner icon after 500ms when the switch is on.
+`Spinner` provides `Spinner.Config` component to set `icon` and `delay` for all sub Spinner components. The following example will show custom spinner icon after 500ms when the switch is on.
 
 <Canvas mdxSource={require("!!raw-loader!./Config").default}>
   <Story id="examples-spinner--config" />
@@ -64,9 +64,9 @@ It accepts all props which the native `<span>` element supports.
 
 | Property   | Type        | Description                          |
 | ---------- | ----------- | ------------------------------------ |
-| `children` | `ReactNode` | **Required** subcomponents           |
 | `icon`     | `ReactNode` | Custom spinner icon                  |
 | `delay`    | `number`    | Spinning delay time, in milliseconds |
+| `children` | `ReactNode` | **Required** subcomponents           |
 
 Spinner.Config will inherit the upper configuration.
 
