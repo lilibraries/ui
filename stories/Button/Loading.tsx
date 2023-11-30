@@ -42,7 +42,7 @@ function Example() {
           startIcon={<FiFileText />}
           endIcon={<FiArrowRight />}
         >
-          Next page
+          Next Page
         </Button>
       </Flexbox>
     </Flexbox>

@@ -3,8 +3,8 @@ import { Button } from "@lilib/ui";
 
 function Example() {
   return (
-    <Button truncated style={{ width: 240 }}>
-      This is a very long button which may be truncated
+    <Button truncated style={{ width: 230 }}>
+      This is a very long button which may be truncated.
     </Button>
   );
 }

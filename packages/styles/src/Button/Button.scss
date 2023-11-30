@@ -12,13 +12,14 @@
   font-weight: var(--font-weight-button);
   font-size: var(--font-size-base);
   line-height: var(--line-height-fixed-base);
-  text-align: left;
+  text-align: start;
   vertical-align: middle;
   background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-base);
   cursor: pointer;
   user-select: none;
+  @include event-transition(fast, ease, color, border-color, background-color);
 
   &-content {
     flex: 1 1 0;
@@ -32,58 +33,62 @@
   & > .#{$cls-prefix}spinner {
     flex: 0 0 auto;
 
-    &.#{$cls-prefix}left-spaced {
-      margin-left: var(--space-2);
+    &.#{$cls-prefix}start-spaced {
+      margin-inline-start: var(--space-block-base);
     }
 
-    &.#{$cls-prefix}right-spaced {
-      margin-right: var(--space-2);
+    &.#{$cls-prefix}end-spaced {
+      margin-inline-end: var(--space-block-base);
     }
   }
 
-  & > .#{$cls-prefix}spinner.#{$cls-prefix}standalone {
+  & > .#{$cls-prefix}spinner:not(.#{$cls-prefix}contained) {
     &.#{$cls-prefix}transition {
       &-enter,
       &-exit,
       &-exiting {
-        margin-right: 0;
-        margin-left: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
       }
     }
   }
 
   &.#{$cls-prefix}small {
-    padding: var(--space-1) calc(var(--space-1) * 2);
+    padding: var(--space-block-small) var(--space-inline-small);
     font-size: var(--font-size-small);
     line-height: var(--line-height-fixed-small);
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}spinner {
-      &.#{$cls-prefix}left-spaced {
-        margin-left: var(--space-1);
+      &.#{$cls-prefix}start-spaced {
+        margin-inline-start: var(--space-block-small);
       }
 
-      &.#{$cls-prefix}right-spaced {
-        margin-right: var(--space-1);
+      &.#{$cls-prefix}end-spaced {
+        margin-inline-end: var(--space-block-small);
       }
     }
   }
 
   &.#{$cls-prefix}large {
-    padding: calc(var(--space-1) + 4px) calc((var(--space-1) + 4px) * 2);
+    padding: var(--space-block-large) var(--space-inline-large);
     font-size: var(--font-size-large);
     line-height: var(--line-height-fixed-large);
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}spinner {
-      &.#{$cls-prefix}left-spaced {
-        margin-left: var(--space-3);
+      &.#{$cls-prefix}start-spaced {
+        margin-inline-start: var(--space-block-large);
       }
 
-      &.#{$cls-prefix}right-spaced {
-        margin-right: var(--space-3);
+      &.#{$cls-prefix}end-spaced {
+        margin-inline-end: var(--space-block-large);
       }
     }
+  }
+
+  &.#{$cls-prefix}round {
+    border-radius: var(--border-radius-round);
   }
 
   &.#{$cls-prefix}fluid {
@@ -93,10 +98,6 @@
     text-align: center;
   }
 
-  &.#{$cls-prefix}round {
-    border-radius: var(--border-radius-round);
-  }
-
   &.#{$cls-prefix}truncated {
     & > .#{$cls-prefix}button-content {
       @include text-overflow;
@@ -104,15 +105,15 @@
   }
 
   &.#{$cls-prefix}icon-only {
-    padding: calc(var(--space-1) + 2px);
+    padding: var(--space-block-base);
     line-height: 1;
 
     &.#{$cls-prefix}small {
-      padding: var(--space-1);
+      padding: var(--space-block-small);
     }
 
     &.#{$cls-prefix}large {
-      padding: calc(var(--space-1) + 4px);
+      padding: var(--space-block-large);
     }
   }
 
@@ -121,7 +122,7 @@
 
     & > .#{$cls-prefix}icon,
     & > .#{$cls-prefix}button-content {
-      @include transition(fast, ease-in-out, opacity);
+      @include transition(base, ease, opacity);
     }
 
     &.#{$cls-prefix}transition {
@@ -144,7 +145,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include transition(fast, ease-in-out, opacity);
+      @include transition(base, ease, opacity);
 
       &.#{$cls-prefix}transition {
         &-enter,
@@ -157,7 +158,7 @@
     }
   }
 
-  [data-focusing] &:focus {
+  [#{$focusing-attribute}] &:focus {
     @include focus-outline;
   }
 
@@ -203,38 +204,38 @@
     }
   }
 
-  @each $item in join($intents, $colors) {
-    &.#{$cls-prefix}#{$item} {
-      background-color: var(--background-color-#{$item}-base);
-      border-color: var(--border-color-#{$item}-base);
+  @each $prefer in join($colors, $intents) {
+    &.#{$cls-prefix}#{$prefer} {
+      background-color: var(--background-color-#{$prefer}-base);
+      border-color: var(--border-color-#{$prefer}-base);
 
       &:hover {
-        background-color: var(--background-color-#{$item}-hover);
-        border-color: var(--border-color-#{$item}-hover);
+        background-color: var(--background-color-#{$prefer}-hover);
+        border-color: var(--border-color-#{$prefer}-hover);
       }
 
       &:active {
-        background-color: var(--background-color-#{$item}-active);
-        border-color: var(--border-color-#{$item}-active);
+        background-color: var(--background-color-#{$prefer}-active);
+        border-color: var(--border-color-#{$prefer}-active);
       }
 
       &[disabled] {
-        background-color: var(--background-color-#{$item}-base);
-        border-color: var(--border-color-#{$item}-base);
+        background-color: var(--background-color-#{$prefer}-base);
+        border-color: var(--border-color-#{$prefer}-base);
       }
 
       &.#{$cls-prefix}active {
-        background-color: var(--background-color-#{$item}-active);
-        border-color: var(--border-color-#{$item}-active);
+        background-color: var(--background-color-#{$prefer}-active);
+        border-color: var(--border-color-#{$prefer}-active);
       }
 
       &.#{$cls-prefix}disabled {
-        background-color: var(--background-color-#{$item}-disabled);
-        border-color: var(--border-color-#{$item}-disabled);
+        background-color: var(--background-color-#{$prefer}-disabled);
+        border-color: var(--border-color-#{$prefer}-disabled);
 
         &.#{$cls-prefix}active {
-          background-color: var(--background-color-#{$item}-inactive);
-          border-color: var(--border-color-#{$item}-inactive);
+          background-color: var(--background-color-#{$prefer}-inactive);
+          border-color: var(--border-color-#{$prefer}-inactive);
         }
       }
     }
@@ -282,45 +283,45 @@
     }
   }
 
-  @each $item in join($intents, $colors) {
-    &.#{$cls-prefix}#{$item} {
+  @each $prefer in join($colors, $intents) {
+    &.#{$cls-prefix}#{$prefer} {
       color: var(--text-color-solid-base);
-      background-color: var(--background-color-#{$item}-solid-base);
-      border-color: var(--border-color-#{$item}-solid-base);
+      background-color: var(--background-color-#{$prefer}-solid-base);
+      border-color: var(--border-color-#{$prefer}-solid-base);
 
       &:hover {
         color: var(--text-color-solid-hover);
-        background-color: var(--background-color-#{$item}-solid-hover);
-        border-color: var(--border-color-#{$item}-solid-hover);
+        background-color: var(--background-color-#{$prefer}-solid-hover);
+        border-color: var(--border-color-#{$prefer}-solid-hover);
       }
 
       &:active {
         color: var(--text-color-solid-active);
-        background-color: var(--background-color-#{$item}-solid-active);
-        border-color: var(--border-color-#{$item}-solid-active);
+        background-color: var(--background-color-#{$prefer}-solid-active);
+        border-color: var(--border-color-#{$prefer}-solid-active);
       }
 
       &[disabled] {
         color: var(--text-color-solid-base);
-        background-color: var(--background-color-#{$item}-solid-base);
-        border-color: var(--border-color-#{$item}-solid-base);
+        background-color: var(--background-color-#{$prefer}-solid-base);
+        border-color: var(--border-color-#{$prefer}-solid-base);
       }
 
       &.#{$cls-prefix}active {
         color: var(--text-color-solid-active);
-        background-color: var(--background-color-#{$item}-solid-active);
-        border-color: var(--border-color-#{$item}-solid-active);
+        background-color: var(--background-color-#{$prefer}-solid-active);
+        border-color: var(--border-color-#{$prefer}-solid-active);
       }
 
       &.#{$cls-prefix}disabled {
         color: var(--text-color-solid-disabled);
-        background-color: var(--background-color-#{$item}-solid-disabled);
-        border-color: var(--border-color-#{$item}-solid-disabled);
+        background-color: var(--background-color-#{$prefer}-solid-disabled);
+        border-color: var(--border-color-#{$prefer}-solid-disabled);
 
         &.#{$cls-prefix}active {
           color: var(--text-color-solid-inactive);
-          background-color: var(--background-color-#{$item}-solid-inactive);
-          border-color: var(--border-color-#{$item}-solid-inactive);
+          background-color: var(--background-color-#{$prefer}-solid-inactive);
+          border-color: var(--border-color-#{$prefer}-solid-inactive);
         }
       }
     }
@@ -354,38 +355,38 @@
     }
   }
 
-  @each $item in join($intents, $colors) {
-    &.#{$cls-prefix}#{$item} {
-      color: var(--text-color-#{$item}-base);
+  @each $prefer in join($colors, $intents) {
+    &.#{$cls-prefix}#{$prefer} {
+      color: var(--text-color-#{$prefer}-base);
       background-color: transparent;
 
       &:hover {
-        color: var(--text-color-#{$item}-hover);
-        background-color: rgba(var(--#{$item}-rgb) / var(--alpha-soft));
+        color: var(--text-color-#{$prefer}-hover);
+        background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-soft));
       }
 
       &:active {
-        color: var(--text-color-#{$item}-active);
-        background-color: rgba(var(--#{$item}-rgb) / var(--alpha-deep));
+        color: var(--text-color-#{$prefer}-active);
+        background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-deep));
       }
 
       &[disabled] {
-        color: var(--text-color-#{$item}-base);
+        color: var(--text-color-#{$prefer}-base);
         background-color: transparent;
       }
 
       &.#{$cls-prefix}active {
-        color: var(--text-color-#{$item}-active);
-        background-color: rgba(var(--#{$item}-rgb) / var(--alpha-deep));
+        color: var(--text-color-#{$prefer}-active);
+        background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-deep));
       }
 
       &.#{$cls-prefix}disabled {
-        color: var(--text-color-#{$item}-disabled);
+        color: var(--text-color-#{$prefer}-disabled);
         background-color: transparent;
 
         &.#{$cls-prefix}active {
-          color: var(--text-color-#{$item}-inactive);
-          background-color: rgba(var(--#{$item}-rgb) / var(--alpha-soft));
+          color: var(--text-color-#{$prefer}-inactive);
+          background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-soft));
         }
       }
     }
@@ -393,67 +394,18 @@
 }
 
 .#{$cls-prefix}button.#{$cls-prefix}borderless {
-  border-color: transparent;
-
-  &:hover {
-    border-color: transparent;
-  }
-
-  &:active {
-    border-color: transparent;
-  }
-
-  &[disabled] {
-    border-color: transparent;
-  }
-
-  &.#{$cls-prefix}active {
-    border-color: transparent;
-  }
-
-  &.#{$cls-prefix}disabled {
+  &,
+  &.#{$cls-prefix}solid,
+  &.#{$cls-prefix}hollow {
     border-color: transparent;
 
-    &.#{$cls-prefix}active {
+    &:hover,
+    &:active,
+    &[disabled],
+    &.#{$cls-prefix}active,
+    &.#{$cls-prefix}disabled,
+    &.#{$cls-prefix}disabled.#{$cls-prefix}active {
       border-color: transparent;
     }
-  }
-
-  @each $item in join($intents, $colors) {
-    &.#{$cls-prefix}#{$item} {
-      border-color: transparent;
-
-      &:hover {
-        border-color: transparent;
-      }
-
-      &:active {
-        border-color: transparent;
-      }
-
-      &[disabled] {
-        border-color: transparent;
-      }
-
-      &.#{$cls-prefix}active {
-        border-color: transparent;
-      }
-
-      &.#{$cls-prefix}disabled {
-        border-color: transparent;
-
-        &.#{$cls-prefix}active {
-          border-color: transparent;
-        }
-      }
-    }
-  }
-}
-
-.#{$cls-prefix}button.#{$cls-prefix}rtl {
-  text-align: right;
-
-  &.#{$cls-prefix}fluid {
-    text-align: center;
   }
 }

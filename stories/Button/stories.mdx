@@ -14,16 +14,16 @@ Button components.
   <Story id="examples-button--basic" />
 </Canvas>
 
-### Link
+### As Link
 
-<Canvas mdxSource={require("!!raw-loader!./Link").default}>
-  <Story id="examples-button--link" />
+<Canvas mdxSource={require("!!raw-loader!./AsLink").default}>
+  <Story id="examples-button--as-link" />
 </Canvas>
 
-### Icons
+### With Icons
 
-<Canvas mdxSource={require("!!raw-loader!./Icons").default}>
-  <Story id="examples-button--icons" />
+<Canvas mdxSource={require("!!raw-loader!./WithIcons").default}>
+  <Story id="examples-button--with-icons" />
 </Canvas>
 
 ### Round
@@ -62,6 +62,12 @@ Button components.
   <Story id="examples-button--intents" />
 </Canvas>
 
+### Colors
+
+<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
+  <Story id="examples-button--colors" />
+</Canvas>
+
 ### Solid
 
 <Canvas mdxSource={require("!!raw-loader!./Solid").default}>
@@ -72,12 +78,6 @@ Button components.
 
 <Canvas mdxSource={require("!!raw-loader!./Hollow").default}>
   <Story id="examples-button--hollow" />
-</Canvas>
-
-### Colors
-
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-button--colors" />
 </Canvas>
 
 ### Groups
@@ -94,19 +94,19 @@ Button components.
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
 | `as`               | `ElementType`                                                                                                                                                                              | Element type, default is `"button"` |
 | `children`         | `ReactNode`                                                                                                                                                                                | Button content                      |
-| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
 | `variant`          | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant                             |
-| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
+| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
 | `color`            | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                               |
-| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
+| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
 | `round`            | `boolean`                                                                                                                                                                                  | Make corners round                  |
+| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
 | `truncated`        | `boolean`                                                                                                                                                                                  | Truncate text                       |
 | `borderless`       | `boolean`                                                                                                                                                                                  | Remove borders                      |
-| `active`           | `boolean`                                                                                                                                                                                  | Active state                        |
-| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
 | `startIcon`        | `ReactNode`                                                                                                                                                                                | Start icon                          |
 | `endIcon`          | `ReactNode`                                                                                                                                                                                | End icon                            |
 | `iconOnly`         | `boolean`                                                                                                                                                                                  | Show icon only                      |
+| `active`           | `boolean`                                                                                                                                                                                  | Active state                        |
+| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
 | `loading`          | `boolean`                                                                                                                                                                                  | Show spinner                        |
 | `loadingIcon`      | `ReactNode`                                                                                                                                                                                | Custom spinner icon                 |
 | `loadingDelay`     | `number`                                                                                                                                                                                   | Loading delay time, in milliseconds |
@@ -118,17 +118,17 @@ It accepts all props which the `as` element type supports. The `loadingIcon` and
 
 | Property           | Type                                                                                                                                                                                       | Description                         |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
-| `vertical`         | `boolean`                                                                                                                                                                                  | Vertical display                    |
-| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
 | `variant`          | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant                             |
-| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
+| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
 | `color`            | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                               |
-| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
+| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
 | `round`            | `boolean`                                                                                                                                                                                  | Make corners round                  |
+| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
+| `vertical`         | `boolean`                                                                                                                                                                                  | Vertical display                    |
 | `truncated`        | `boolean`                                                                                                                                                                                  | Truncate text                       |
 | `borderless`       | `boolean`                                                                                                                                                                                  | Remove borders                      |
-| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
 | `iconOnly`         | `boolean`                                                                                                                                                                                  | Show icon only                      |
+| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
 | `loading`          | `boolean`                                                                                                                                                                                  | Show spinner                        |
 | `loadingIcon`      | `ReactNode`                                                                                                                                                                                | Custom spinner icon                 |
 | `loadingDelay`     | `number`                                                                                                                                                                                   | Loading delay time, in milliseconds |
