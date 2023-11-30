@@ -7,14 +7,14 @@ export type ButtonLoadingPlacement = null | "start" | "center" | "end";
 
 export interface ButtonConfigValue {
   variant?: ButtonVariant;
-  intent?: IntentValue;
   color?: ColorValue;
-  fluid?: boolean;
+  intent?: IntentValue;
   round?: boolean;
+  fluid?: boolean;
   truncated?: boolean;
   borderless?: boolean;
-  disabled?: boolean;
   iconOnly?: boolean;
+  disabled?: boolean;
   loading?: boolean;
   loadingPlacement?: ButtonLoadingPlacement;
 }
@@ -25,14 +25,14 @@ export interface ButtonConfigProps extends ButtonConfigValue {
 
 const ButtonConfig = createConfig<ButtonConfigValue, ButtonConfigProps>({}, [
   "variant",
-  "intent",
   "color",
-  "fluid",
+  "intent",
   "round",
+  "fluid",
   "truncated",
   "borderless",
-  "disabled",
   "iconOnly",
+  "disabled",
   "loading",
   "loadingPlacement",
 ]);

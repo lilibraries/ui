@@ -1,49 +1,65 @@
 @import "@lilib/themes";
 
-.#{$cls-prefix}button-group {
-  & .#{$cls-prefix}button {
-    position: relative;
+.#{$cls-prefix}button-group .#{$cls-prefix}button {
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    z-index: 3;
+  }
+
+  &:active {
+    z-index: 4;
+  }
+
+  &[disabled] {
     z-index: 2;
+  }
 
-    &:hover {
-      z-index: 3;
-    }
+  &.#{$cls-prefix}active {
+    z-index: 5;
+  }
 
-    &:active {
-      z-index: 4;
-    }
-
-    &:focus {
-      z-index: 5;
-    }
-
-    &[disabled] {
-      z-index: 2;
-    }
+  &.#{$cls-prefix}disabled {
+    z-index: 0;
 
     &.#{$cls-prefix}active {
-      z-index: 4;
-
-      &:focus {
-        z-index: 5;
-      }
-    }
-
-    &.#{$cls-prefix}disabled {
-      z-index: 0;
-
-      &.#{$cls-prefix}active {
-        z-index: 1;
-      }
+      z-index: 1;
     }
   }
 }
 
-.#{$cls-prefix}button-group.#{$cls-prefix}horizontal {
+[#{$focusing-attribute}] .#{$cls-prefix}button-group .#{$cls-prefix}button {
+  &:focus {
+    z-index: 6;
+  }
+}
+
+.#{$cls-prefix}button-group:not(.#{$cls-prefix}vertical) {
   display: inline-flex;
   align-items: stretch;
   max-width: 100%;
   vertical-align: middle;
+
+  & .#{$cls-prefix}button {
+    &:not(:first-child) {
+      margin-inline-start: -1px;
+    }
+
+    &:first-child {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &:last-child {
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
 
   &.#{$cls-prefix}fluid {
     display: flex;
@@ -60,78 +76,28 @@
   display: inline-block;
   max-width: 100%;
 
-  &.#{$cls-prefix}vertical {
-    & .#{$cls-prefix}button {
-      &:not(:first-child) {
-        margin-top: -1px;
-      }
+  & .#{$cls-prefix}button {
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
 
-      &:first-child {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-      }
+    &:first-child {
+      border-end-start-radius: 0;
+      border-end-end-radius: 0;
+    }
 
-      &:last-child {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
+    &:last-child {
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
 
-      &:not(:first-child):not(:last-child) {
-        border-radius: 0;
-      }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
     }
   }
 
   &.#{$cls-prefix}fluid {
     display: block;
     width: 100%;
-  }
-}
-
-.#{$cls-prefix}button-group.#{$cls-prefix}ltr {
-  &.#{$cls-prefix}horizontal {
-    & .#{$cls-prefix}button {
-      &:not(:first-child) {
-        margin-left: -1px;
-      }
-
-      &:first-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      &:last-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-
-      &:not(:first-child):not(:last-child) {
-        border-radius: 0;
-      }
-    }
-  }
-}
-
-.#{$cls-prefix}button-group.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}horizontal {
-    & .#{$cls-prefix}button {
-      &:not(:first-child) {
-        margin-right: -1px;
-      }
-
-      &:first-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-
-      &:last-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      &:not(:first-child):not(:last-child) {
-        border-radius: 0;
-      }
-    }
   }
 }

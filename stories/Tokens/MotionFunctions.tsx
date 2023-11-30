@@ -9,11 +9,11 @@ const MotionFunctions: FC = () => {
       head={["SCSS", "CSS", "Value"]}
       body={[
         [
-          <Usage type="scss" name="motion-function-base" />,
-          <Usage type="css" name="motion-function-base" />,
+          <Usage type="scss" name="motion-function-ease" />,
+          <Usage type="css" name="motion-function-ease" />,
           <Value
             styleName="animationTimingFunction"
-            styleValue={(prefix) => `var(--${prefix}motion-function-base)`}
+            styleValue={(prefix) => `var(--${prefix}motion-function-ease)`}
           />,
         ],
 

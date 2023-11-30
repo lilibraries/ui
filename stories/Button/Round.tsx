@@ -13,7 +13,7 @@ function Example() {
         Logout
       </Button>
       <Button round startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
-        Next page
+        Next Page
       </Button>
     </Flexbox>
   );

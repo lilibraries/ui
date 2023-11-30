@@ -2378,10 +2378,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
-"@lilib/hooks@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lilib/hooks/-/hooks-1.0.1.tgz#24efea48b423c9c96837b6fc823c69e3be4b410d"
-  integrity sha512-Cmh7DP6nfMdLZ5DEDKP26ytLYeNXqPkyaZWI7kbg+XcMbX+DgRVjbET9mnDGRDn6ig1fyKNm5+4R7h9AsdzJTQ==
+"@lilib/hooks@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@lilib/hooks/-/hooks-1.0.3.tgz#3473e43e37cb2db3d53f6bb131fc244e5497117f"
+  integrity sha512-Bl0CMPSbo2Ml+kRVypmC3am760RE3h9FrK+TLkE0sC8rbPHbdPWhFC9AQM+o1I9v5WeF+3qvCnpTpDqm/jWGaA==
   dependencies:
     "@babel/runtime-corejs3" "^7.18.3"
     "@lilib/utils" "^1.0.0"

@@ -5,15 +5,14 @@ import React, {
   cloneElement,
   ReactElement,
   createElement,
-  ComponentProps,
   isValidElement,
+  ComponentProps,
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
 import Icon from "../Icon";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
-import Direction from "../Direction";
 import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
@@ -31,17 +30,17 @@ export * from "./ButtonConfig";
 export interface ButtonCommonProps {
   variant?: ButtonVariant;
   size?: SizeValue;
-  intent?: IntentValue;
   color?: ColorValue;
-  fluid?: boolean;
+  intent?: IntentValue;
   round?: boolean;
+  fluid?: boolean;
   truncated?: boolean;
   borderless?: boolean;
-  active?: boolean;
-  disabled?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   iconOnly?: boolean;
+  active?: boolean;
+  disabled?: boolean;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
@@ -71,17 +70,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     as = "button",
     variant: variantProp,
     size: sizeProp,
+    color: colorProp,
     intent: intentProp,
-    color,
-    fluid: fluidProp,
     round: roundProp,
+    fluid: fluidProp,
     truncated: truncatedProp,
     borderless: borderlessProp,
-    active,
-    disabled: disabledProp,
     startIcon,
     endIcon,
     iconOnly: iconOnlyProp,
+    active,
+    disabled: disabledProp,
     loading: loadingProp,
     loadingIcon: loadingIconProp,
     loadingDelay: loadingDelayProp,
@@ -92,8 +91,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const { fast } = Duration.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
+  const { base } = Duration.useConfig();
 
   const { icon: loadingIcon, delay: loadingDelay } = Spinner.Config.useConfig({
     icon: loadingIconProp,
@@ -102,24 +100,26 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const {
     variant,
+    color,
     intent,
-    fluid,
     round,
+    fluid,
     truncated,
     borderless,
-    disabled,
     iconOnly,
+    disabled,
     loading,
     loadingPlacement,
   } = ButtonConfig.useConfig({
     variant: variantProp,
+    color: colorProp,
     intent: intentProp,
-    fluid: fluidProp,
     round: roundProp,
+    fluid: fluidProp,
     truncated: truncatedProp,
     borderless: borderlessProp,
-    disabled: disabledProp,
     iconOnly: iconOnlyProp,
+    disabled: disabledProp,
     loading: loadingProp,
     loadingPlacement: loadingPlacementProp,
   });
@@ -160,19 +160,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const classes = cn(
     `${cls}button`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
-      [`${cls}${intent}`]: intent,
       [`${cls}${color}`]: color,
-      [`${cls}fluid`]: fluid,
+      [`${cls}${intent}`]: intent,
       [`${cls}round`]: round,
+      [`${cls}fluid`]: fluid,
       [`${cls}truncated`]: truncated,
       [`${cls}borderless`]: borderless,
+      [`${cls}icon-only`]: iconOnly,
+      [`${cls}loading`]: loading && loadingCenter,
       [`${cls}active`]: active,
       [`${cls}disabled`]: disabled,
-      [`${cls}loading`]: loading && loadingCenter,
-      [`${cls}icon-only`]: iconOnly,
     },
     className
   );
@@ -204,8 +203,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         return cloneElement(node as any, {
           className: cn(
             {
-              [`${cls}left-spaced`]: isRTL ? endSpace : startSpace,
-              [`${cls}right-spaced`]: isRTL ? startSpace : endSpace,
+              [`${cls}start-spaced`]: startSpace,
+              [`${cls}end-spaced`]: endSpace,
             },
             node.props.className
           ),
@@ -223,8 +222,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       return (
         <Icon
           className={cn({
-            [`${cls}left-spaced`]: isRTL ? endSpace : startSpace,
-            [`${cls}right-spaced`]: isRTL ? startSpace : endSpace,
+            [`${cls}start-spaced`]: startSpace,
+            [`${cls}end-spaced`]: endSpace,
           })}
         >
           {node}
@@ -263,7 +262,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         <Transition
           in={loading}
           classes
-          durations={fast}
+          durations={base}
           enterDelay={loadingDelay}
         >
           <span className={`${cls}button-loader`}>
@@ -303,7 +302,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       <Transition
         in={!loading}
         classes
-        durations={fast}
+        durations={base}
         exitDelay={loadingDelay}
         firstMount
         keepMounted
