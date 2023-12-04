@@ -8,7 +8,7 @@ function Example() {
       front-end JavaScript library for building user interfaces or UI
       components. It is maintained by Facebook and a community of inidual
       developers and companies.
-      <Divider spacing="4x" />
+      <Divider space="2x" />
       React can be used as a base in the development of single-page or mobile
       applications. However, React is only concerned with state management and
       rendering that state to the DOM, so creating React applications usually
