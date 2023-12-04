@@ -12,7 +12,7 @@ import isString from "lodash/isString";
 import Prefix from "../Prefix";
 import isCSSValue from "../utils/isCSSValue";
 
-export type DividerPresetSpacing =
+export type DividerPresetSpace =
   | "1x"
   | "2x"
   | "3x"
@@ -24,9 +24,9 @@ export type DividerPresetSpacing =
   | "9x";
 
 export interface DividerCommonProps {
-  vertical?: boolean;
+  space?: DividerPresetSpace | string | number;
   inline?: boolean;
-  spacing?: DividerPresetSpacing | string | number;
+  vertical?: boolean;
 }
 
 export type DividerProps<C extends ElementType = "hr"> = C extends "hr"
@@ -50,43 +50,42 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
     style,
     children,
     className,
-    vertical,
+    space,
     inline,
-    spacing,
+    vertical,
     ...rest
   } = props;
 
-  const isPresetSpacing = isString(spacing) && /^\dx$/.test(spacing);
-  const isCustomSpacing = !isPresetSpacing && isCSSValue(spacing);
+  const isPresetSpace = isString(space) && /^\dx$/.test(space);
+  const isCustomSpace = !isPresetSpace && isCSSValue(space);
 
   const { cls } = Prefix.useConfig();
   const classes = cn(
     `${cls}divider`,
     {
-      [`${cls}vertical`]: vertical,
-      [`${cls}horizontal`]: !vertical,
       [`${cls}inline`]: inline,
-      [`${cls}spacing-${spacing}`]: isPresetSpacing,
+      [`${cls}vertical`]: vertical,
+      [`${cls}space-${space}`]: isPresetSpace,
     },
     className
   );
 
   const customStyle: CSSProperties = {};
-  if (isCustomSpacing) {
+  if (isCustomSpace) {
     if (vertical) {
-      customStyle.marginLeft = spacing;
-      customStyle.marginRight = spacing;
+      customStyle.marginLeft = space;
+      customStyle.marginRight = space;
     } else {
-      customStyle.marginTop = spacing;
-      customStyle.marginBottom = spacing;
+      customStyle.marginTop = space;
+      customStyle.marginBottom = space;
     }
   }
 
   return createElement(as, {
     ...rest,
     ref,
+    style: isCustomSpace ? { ...customStyle, ...style } : style,
     className: classes,
-    style: isCustomSpacing ? { ...customStyle, ...style } : style,
   });
 }) as DividerComponent;
 
