@@ -18,7 +18,8 @@ export type FlexboxGap =
   | "7x"
   | "8x"
   | "9x";
-export type FlexboxWrap = boolean | "nowrap" | "wrap" | "wrap-reverse";
+
+export type FlexboxWrap = boolean | "wrap" | "nowrap" | "wrap-reverse";
 
 export type FlexboxAlign =
   | "stretch"

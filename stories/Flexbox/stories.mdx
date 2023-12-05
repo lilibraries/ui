@@ -16,6 +16,8 @@ Flexbox makes layout easy by using CSS [flexbox](https://developer.mozilla.org/e
 
 ### Fluid
 
+Display as `flex`, default is `inline-flex`.
+
 <Canvas mdxSource={require("!!raw-loader!./Fluid").default}>
   <Story id="examples-flexbox--fluid" />
 </Canvas>
@@ -32,19 +34,19 @@ Flexbox makes layout easy by using CSS [flexbox](https://developer.mozilla.org/e
   <Story id="examples-flexbox--gaps" />
 </Canvas>
 
-### Wrap
+### Flex Wrap
 
 <Canvas mdxSource={require("!!raw-loader!./Wrap").default}>
   <Story id="examples-flexbox--wrap" />
 </Canvas>
 
-### Align
+### Align Items
 
 <Canvas mdxSource={require("!!raw-loader!./Align").default}>
   <Story id="examples-flexbox--align" />
 </Canvas>
 
-### Justify
+### Justify Content
 
 <Canvas
   mdxSource={require("!!raw-loader!./Justify").default.replace(/\%/g, "%25")}
@@ -54,13 +56,13 @@ Flexbox makes layout easy by using CSS [flexbox](https://developer.mozilla.org/e
 
 ## API
 
-| Property    | Type                                                                                                      | Description                                                                                                                                      |
-| ----------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `fluid`     | `boolean`                                                                                                 | Display as a block element                                                                                                                       |
-| `direction` | `"row"` \| `"column"` \| `"row-reverse"` \| `"column-reverse"`                                            | [`flex-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)                                                              |
-| `gap`       | `"1x"` \| `"2x"` \| `"3x"` \| `"4x"` \| `"5x"` \| `"6x"` \| `"7x"` \| `"8x"` \| `"9x"`                    | Gap size                                                                                                                                         |
-| `wrap`      | `true` \| `false` \| `"nowrap"` \| `"wrap"` \| `"wrap-reverse"`                                           | [`flex-wrap`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap). `true` is equivalent to `"wrap"`; `false` is equivalent to `"nowrap"` |
-| `align`     | `"stretch"` \| `"center"` \| `"baseline"` \| `"flex-start"` \| `"flex-end"`                               | [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)                                                                    |
-| `justify`   | `"flex-start"` \| `"flex-end"` \| `"center"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"` | [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)                                                            |
+| Property    | Type                                                                                                      | Description                                                                                                                                       |
+| ----------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fluid`     | `boolean`                                                                                                 | Display as `flex`, default is `inline-flex`.                                                                                                      |
+| `direction` | `"row"` \| `"column"` \| `"row-reverse"` \| `"column-reverse"`                                            | [`flex-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction)                                                               |
+| `gap`       | `"1x"` \| `"2x"` \| `"3x"` \| `"4x"` \| `"5x"` \| `"6x"` \| `"7x"` \| `"8x"` \| `"9x"`                    | Gap size.                                                                                                                                         |
+| `wrap`      | `boolean` \| `"wrap"` \| `"nowrap"` \| `"wrap-reverse"`                                                   | [`flex-wrap`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap). `true` is equivalent to `"wrap"`, `false` is equivalent to `"nowrap"`. |
+| `align`     | `"stretch"` \| `"center"` \| `"baseline"` \| `"flex-start"` \| `"flex-end"`                               | [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)                                                                     |
+| `justify`   | `"flex-start"` \| `"flex-end"` \| `"center"` \| `"space-between"` \| `"space-around"` \| `"space-evenly"` | [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)                                                             |
 
 It accepts all props which the native `<div>` element supports.
