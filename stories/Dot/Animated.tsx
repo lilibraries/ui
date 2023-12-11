@@ -4,9 +4,9 @@ import { Dot, Flexbox } from "@lilib/ui";
 function Example() {
   return (
     <Flexbox direction="column" gap="2x" align="flex-start">
-      <Dot animated color="#de2910">
-        Dot
-      </Dot>
+      <div>
+        <Dot animated color="#de2910" /> Dot
+      </div>
 
       <Flexbox gap="2x" align="center">
         <Dot animated color="red" />

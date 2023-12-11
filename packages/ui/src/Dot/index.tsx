@@ -1,57 +1,42 @@
 import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
-import isRenderable from "../utils/isRenderable";
 import isPresetColor from "../utils/isPresetColor";
 import { ColorValue } from "../utils/types";
 
 export interface DotProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "color" | "children"> {
   size?: SizeValue;
   color?: ColorValue | string;
   animated?: boolean;
 }
 
 const Dot = forwardRef<HTMLSpanElement, DotProps>((props, ref) => {
-  const {
-    children,
-    className,
-    size: sizeProp,
-    color,
-    animated,
-    ...rest
-  } = props;
+  const { style, className, size: sizeProp, color, animated, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
-  const contained = isRenderable(children);
-  const isPreseted = isPresetColor(color);
-  const isCustomColor = !!color && !isPreseted;
+  const isPreset = isPresetColor(color);
+  const isCustom = !!color && !isPreset;
 
   const classes = cn(
     `${cls}dot`,
     {
-      [`${cls}rtl`]: isRTL,
-      [`${cls}contained`]: contained,
-      [`${cls}standalone`]: !contained,
       [`${cls}${size}`]: size,
-      [`${cls}${color}`]: isPreseted,
+      [`${cls}${color}`]: isPreset,
       [`${cls}animated`]: animated,
     },
     className
   );
 
   return (
-    <span {...rest} ref={ref} className={classes}>
-      <span
-        className={`${cls}dot-indicator`}
-        style={isCustomColor ? { color, backgroundColor: color } : undefined}
-      />
-      {children}
-    </span>
+    <span
+      {...rest}
+      ref={ref}
+      style={isCustom ? { color, backgroundColor: color, ...style } : style}
+      className={classes}
+    />
   );
 });
 
