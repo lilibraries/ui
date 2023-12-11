@@ -1,96 +1,47 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}dot {
-  display: inline-flex;
-  align-items: center;
-
-  &-indicator {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    color: var(--text-color-base);
-    background-color: var(--text-color-base);
-    border-radius: 50%;
-  }
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  color: var(--text-color-base);
+  vertical-align: 0.125em;
+  background-color: var(--text-color-base);
+  border-radius: 50%;
 
   &.#{$cls-prefix}small {
-    & > .#{$cls-prefix}dot-indicator {
-      width: 6px;
-      height: 6px;
-    }
+    width: 6px;
+    height: 6px;
+    vertical-align: 0.1875em;
   }
 
   &.#{$cls-prefix}large {
-    & > .#{$cls-prefix}dot-indicator {
-      width: 10px;
-      height: 10px;
-    }
-  }
-
-  &.#{$cls-prefix}standalone {
-    vertical-align: 0.125em;
-    border-radius: 50%;
-
-    &.#{$cls-prefix}small {
-      vertical-align: 0.1875em;
-    }
-
-    &.#{$cls-prefix}large {
-      vertical-align: 0.0625em;
-    }
-  }
-
-  &.#{$cls-prefix}contained {
-    font-size: var(--font-size-base);
-    vertical-align: baseline;
-
-    & > .#{$cls-prefix}dot-indicator {
-      margin-right: 0.375em;
-    }
-
-    &.#{$cls-prefix}small {
-      font-size: var(--font-size-small);
-    }
-
-    &.#{$cls-prefix}large {
-      font-size: var(--font-size-large);
-    }
+    width: 10px;
+    height: 10px;
+    vertical-align: 0.0625em;
   }
 
   &.#{$cls-prefix}animated {
-    & > .#{$cls-prefix}dot-indicator {
-      position: relative;
+    position: relative;
 
-      &::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: currentColor;
-        border-radius: 50%;
-        animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy)
-          var(--motion-function-ease-in-out) 0s infinite;
-        content: "";
-      }
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: currentColor;
+      border-radius: 50%;
+      animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy)
+        var(--motion-function-ease-in-out) 0s infinite;
+      content: "";
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      & > .#{$cls-prefix}dot-indicator {
-        color: rgb(var(--#{$color}-rgb));
-        background-color: rgb(var(--#{$color}-rgb));
-      }
-    }
-  }
-}
-
-.#{$cls-prefix}dot.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}contained {
-    & > .#{$cls-prefix}dot-indicator {
-      margin-right: 0;
-      margin-left: 0.375em;
+      color: rgb(var(--#{$color}-rgb));
+      background-color: rgb(var(--#{$color}-rgb));
     }
   }
 }
