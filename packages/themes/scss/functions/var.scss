@@ -6,11 +6,11 @@
   $property: str-insert($name, $var-prefix, 3);
 
   @if not $value {
-    @error "Can't find " + $name + " property";
+    @error "Can't find " + $name + " property.";
   }
 
   @if $enable-variables {
-    @if $enable-variable-fallbacks {
+    @if $enable-fallbacks {
       @return unquote("var(" + $property + ", " + $value + ")");
     } @else {
       @return unquote("var(" + $property + ")");

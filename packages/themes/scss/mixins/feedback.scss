@@ -1,8 +1,8 @@
 @import "./transition";
 @import "../variables/base";
 
-@mixin event-transition($speed, $algorithm, $properties...) {
-  @if $enable-event-transitions {
+@mixin feedback($speed, $algorithm, $properties...) {
+  @if $enable-feedbacks {
     @include transition($speed, $algorithm, $properties...);
   }
 }

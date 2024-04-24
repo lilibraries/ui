@@ -24,7 +24,7 @@ $-functions: (
   }
 
   @if not $function {
-    @error "Mixin `transition`'s second param must be one of `ease`, `ease-in`, `ease-out`, `ease-in-out`, `linear`.";
+    @error "Mixin `transition`'s second param must be one of `ease`, `ease-in`, `ease-out`, `ease-in-out` or `linear`.";
   }
 
   @if length($properties) == 0 {
