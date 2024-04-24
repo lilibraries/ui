@@ -379,10 +379,10 @@ $dark-border-color-gray-solid-active: $dark-gray-6 !default;
 $dark-border-color-gray-solid-inactive: $dark-gray-4 !default;
 $dark-border-color-gray-solid-disabled: $dark-gray-3 !default;
 
-$dark-background-color-page: shade-color($basis, 80%) !default;
+$dark-background-color-page: shade-color($dark-basis, 80%) !default;
 $dark-background-color-card: $dark-basis-0 !default;
 $dark-background-color-overlay: $dark-basis-0 !default;
-$dark-background-color-backdrop: rgba($black, 0.5) !default;
+$dark-background-color-backdrop: rgba($black, 0.6) !default;
 
 $dark-background-color-base: $dark-basis-0 !default;
 $dark-background-color-hover: $dark-basis-1 !default;

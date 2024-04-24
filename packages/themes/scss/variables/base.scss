@@ -5,8 +5,8 @@ $cls-prefix: "li-" !default;
 $var-prefix: "li-" !default;
 
 $enable-variables: true !default;
-$enable-variable-fallbacks: true !default;
-$enable-event-transitions: true !default;
+$enable-fallbacks: true !default;
+$enable-feedbacks: true !default;
 $focusing-attribute: "data-focusing" !default;
 
 $colors: (
@@ -25,12 +25,19 @@ $colors: (
   "brown",
   "gray"
 ) !default;
-$intents: ("major", "minor", "positive", "alertive", "negative") !default;
+
+$intents: (
+  "major",
+  "minor",
+  "positive",
+  "alertive",
+  "negative"
+) !default;
 
 $font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-mono: Monaco, Menlo, Consolas, "Courier New", Courier, monospace !default;
+$font-family-mono: Menlo, Monaco, Consolas, "Courier New", Courier, monospace !default;
 
 $font-size-h1: 46px !default;
 $font-size-h2: 36px !default;
