@@ -29,16 +29,16 @@ const FontFamilies: FC = () => {
         [
           <Usage
             type="scss"
-            name="font-family-mono"
+            name="font-family-code"
             style={{ whiteSpace: "nowrap" }}
           />,
           <Usage
             type="css"
-            name="font-family-mono"
+            name="font-family-code"
             style={{ whiteSpace: "nowrap" }}
           />,
           <Monospace>
-            Monaco, Menlo, Consolas, "Courier New", Courier, monospace
+            Menlo, Monaco, Consolas, "Courier New", Courier, monospace
           </Monospace>,
         ],
       ]}

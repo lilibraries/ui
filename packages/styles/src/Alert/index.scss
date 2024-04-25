@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: var(--space-4);
   line-height: var(--line-height-base);
-  background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+  background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
 
@@ -27,7 +27,7 @@
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
-      background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
       border-color: var(--#{$intent}-3);
     }
   }
