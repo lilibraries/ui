@@ -7,7 +7,7 @@
 
 $base-properties: (
   "--font-family-base": $font-family-base,
-  "--font-family-mono": $font-family-mono,
+  "--font-family-code": $font-family-code,
 
   "--font-size-h1": $font-size-h1,
   "--font-size-h2": $font-size-h2,
@@ -347,7 +347,7 @@ $light-properties: (
   "--gray-8": $gray-8,
   "--gray-9": $gray-9,
 
-  "--alpha-soft": $alpha-soft,
+  "--alpha-base": $alpha-base,
   "--alpha-deep": $alpha-deep,
   "--alpha-dark": $alpha-dark,
 
@@ -1247,7 +1247,7 @@ $dark-properties: (
   "--gray-8": $dark-gray-8,
   "--gray-9": $dark-gray-9,
 
-  "--alpha-soft": $dark-alpha-soft,
+  "--alpha-base": $dark-alpha-base,
   "--alpha-deep": $dark-alpha-deep,
   "--alpha-dark": $dark-alpha-dark,
 

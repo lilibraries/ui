@@ -9,12 +9,12 @@ const Alphas: FC = () => {
       head={["SCSS", "CSS", "Value"]}
       body={[
         [
-          <Usage type="scss" name="alpha-soft" darkable />,
-          <Usage type="css" name="alpha-soft" />,
+          <Usage type="scss" name="alpha-base" darkable />,
+          <Usage type="css" name="alpha-base" />,
           <Value
             format="alpha"
             styleName="color"
-            styleValue={(prefix) => `rgba(0 0 0 / var(--${prefix}alpha-soft))`}
+            styleValue={(prefix) => `rgba(0 0 0 / var(--${prefix}alpha-base))`}
           />,
         ],
 

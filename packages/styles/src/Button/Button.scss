@@ -332,7 +332,7 @@
   background-color: transparent;
 
   &:hover {
-    background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+    background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   }
 
   &:active {
@@ -351,7 +351,7 @@
     background-color: transparent;
 
     &.#{$cls-prefix}active {
-      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
     }
   }
 
@@ -362,7 +362,7 @@
 
       &:hover {
         color: var(--text-color-#{$prefer}-hover);
-        background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-soft));
+        background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-base));
       }
 
       &:active {
@@ -386,7 +386,7 @@
 
         &.#{$cls-prefix}active {
           color: var(--text-color-#{$prefer}-inactive);
-          background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-soft));
+          background-color: rgba(var(--#{$prefer}-rgb) / var(--alpha-base));
         }
       }
     }

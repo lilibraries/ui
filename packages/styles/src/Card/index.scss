@@ -186,7 +186,7 @@
   &.#{$cls-prefix}splited {
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
       padding: var(--space-2) var(--space-4);
-      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-bottom: 1px solid var(--border-color-inactive);
       border-top-left-radius: var(--border-radius-fixed-base);
       border-top-right-radius: var(--border-radius-fixed-base);
@@ -194,7 +194,7 @@
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
       padding: var(--space-2) var(--space-4);
-      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-top: 1px solid var(--border-color-inactive);
       border-bottom-right-radius: var(--border-radius-fixed-base);
       border-bottom-left-radius: var(--border-radius-fixed-base);

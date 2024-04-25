@@ -150,7 +150,7 @@
   }
 
   &.#{$cls-prefix}square {
-    font-family: var(--font-family-mono);
+    font-family: var(--font-family-code);
 
     & > .#{$cls-prefix}tag-content {
       min-width: calc(var(--line-height-fixed-base) - 2px);
@@ -269,7 +269,7 @@
 
   &.#{$cls-prefix}hoverable {
     &:hover {
-      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
     }
 
     &:active {
@@ -290,7 +290,7 @@
       &.#{$cls-prefix}hoverable {
         &:hover {
           color: var(--#{$color}-6);
-          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-soft));
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
         }
 
         &:active {

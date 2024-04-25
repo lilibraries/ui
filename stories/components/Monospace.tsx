@@ -9,7 +9,7 @@ const Monospace: FC<HTMLAttributes<HTMLSpanElement>> = (props) => {
     <span
       {...rest}
       style={{
-        fontFamily: `var(--${prefix}font-family-mono)`,
+        fontFamily: `var(--${prefix}font-family-code)`,
         ...style,
       }}
     />

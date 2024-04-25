@@ -28,7 +28,7 @@
   &.#{$cls-prefix}list-item {
     &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
       color: var(--text-color-hover);
-      background-color: rgba(var(--basis-rgb) / var(--alpha-soft));
+      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
     }
 
     @each $intent in $intents {
@@ -38,7 +38,7 @@
         &.#{$cls-prefix}hoverable {
           &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
             &:hover {
-              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+              background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
             }
 
             &:active {
@@ -49,7 +49,7 @@
 
         &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
           color: var(--#{$intent}-5);
-          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+          background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
         }
 
         &.#{$cls-prefix}active {
@@ -61,7 +61,7 @@
           color: var(--#{$intent}-2);
 
           &.#{$cls-prefix}active {
-            background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-soft));
+            background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
           }
         }
       }

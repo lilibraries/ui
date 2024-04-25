@@ -6,14 +6,13 @@ import Monospace from "../components/Monospace";
 const Lists: FC = () => {
   return (
     <Table
-      head={["SCSS", "Value", "Description"]}
+      head={["SCSS", "Value"]}
       body={[
         [
           <Usage type="scss" name="intents" />,
           <Monospace>
             "major", "minor", "positive", "alertive", "negative"
           </Monospace>,
-          "Intents.",
         ],
         [
           <Usage type="scss" name="colors" />,
@@ -21,7 +20,6 @@ const Lists: FC = () => {
             "red", "magenta", "purple", "indigo", "navy", "blue", "cyan",
             "teal", "green", "lime", "yellow", "orange", "brown", "gray"
           </Monospace>,
-          "Preset colors.",
         ],
       ]}
     />
