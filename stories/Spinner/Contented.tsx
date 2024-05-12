@@ -12,7 +12,7 @@ function Example() {
         onChange={(event) => setSpinning(event.target.checked)}
       />
       <div>
-        <Spinner spinning={spinning} endSpace contained />
+        <Spinner spinning={spinning} endSpace contented />
         <Spinner spinning={spinning} endSpace>
           <FiStar />
         </Spinner>

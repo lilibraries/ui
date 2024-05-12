@@ -120,7 +120,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         )}
         <span className={`${cls}switch-slider`}>
           <Spinner
-            contained
+            contented
             spinning={loading}
             icon={loadingIcon}
             delay={loadingDelay}

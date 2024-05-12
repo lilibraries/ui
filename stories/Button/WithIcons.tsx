@@ -23,7 +23,7 @@ function Example() {
         <Button startIcon={<FiThumbsUp />}>Like</Button>
         <Button endIcon={<FiLogOut />}>Logout</Button>
         <Button startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
-          Next Page
+          Next page
         </Button>
       </Flexbox>
     </Flexbox>

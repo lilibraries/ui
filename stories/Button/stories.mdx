@@ -62,12 +62,6 @@ Button components.
   <Story id="examples-button--intents" />
 </Canvas>
 
-### Colors
-
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-button--colors" />
-</Canvas>
-
 ### Solid
 
 <Canvas mdxSource={require("!!raw-loader!./Solid").default}>
@@ -90,48 +84,46 @@ Button components.
 
 ### Button
 
-| Property           | Type                                                                                                                                                                                       | Description                         |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
-| `as`               | `ElementType`                                                                                                                                                                              | Element type, default is `"button"` |
-| `children`         | `ReactNode`                                                                                                                                                                                | Button content                      |
-| `variant`          | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant                             |
-| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
-| `color`            | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                               |
-| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
-| `round`            | `boolean`                                                                                                                                                                                  | Make corners round                  |
-| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
-| `truncated`        | `boolean`                                                                                                                                                                                  | Truncate text                       |
-| `borderless`       | `boolean`                                                                                                                                                                                  | Remove borders                      |
-| `startIcon`        | `ReactNode`                                                                                                                                                                                | Start icon                          |
-| `endIcon`          | `ReactNode`                                                                                                                                                                                | End icon                            |
-| `iconOnly`         | `boolean`                                                                                                                                                                                  | Show icon only                      |
-| `active`           | `boolean`                                                                                                                                                                                  | Active state                        |
-| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
-| `loading`          | `boolean`                                                                                                                                                                                  | Show spinner                        |
-| `loadingIcon`      | `ReactNode`                                                                                                                                                                                | Custom spinner icon                 |
-| `loadingDelay`     | `number`                                                                                                                                                                                   | Loading delay time, in milliseconds |
-| `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                                                                                                                               | Specify spinner placement           |
+| Property           | Type                                                                             | Description                          |
+| ------------------ | -------------------------------------------------------------------------------- | ------------------------------------ |
+| `as`               | `ElementType`                                                                    | Element type, default is `"button"`. |
+| `children`         | `ReactNode`                                                                      | Button content.                      |
+| `size`             | `null` \| `"small"` \| `"large"`                                                 | Size.                                |
+| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent.                              |
+| `variant`          | `null` \| `"solid"` \| `"hollow"`                                                | Variant.                             |
+| `round`            | `boolean`                                                                        | Make corners round.                  |
+| `fluid`            | `boolean`                                                                        | Display as a block element.          |
+| `truncated`        | `boolean`                                                                        | Truncate text.                       |
+| `borderless`       | `boolean`                                                                        | Remove borders.                      |
+| `startIcon`        | `ReactNode`                                                                      | Start icon.                          |
+| `endIcon`          | `ReactNode`                                                                      | End icon.                            |
+| `iconOnly`         | `boolean`                                                                        | Show icon only.                      |
+| `active`           | `boolean`                                                                        | Active.                              |
+| `disabled`         | `boolean`                                                                        | Disabled.                            |
+| `loading`          | `boolean`                                                                        | Show spinner.                        |
+| `loadingIcon`      | `ReactNode`                                                                      | Custom spinner icon.                 |
+| `loadingDelay`     | `number`                                                                         | Loading delay time, in milliseconds. |
+| `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                     | Specify spinner placement.           |
 
 It accepts all props which the `as` element type supports. The `loadingIcon` and `loadingDelay` props can be configured by the [`Spinner.Config`](?path=/story/feedbacks-spinner--page#spinnerconfig) component.
 
 ### Button.Group
 
-| Property           | Type                                                                                                                                                                                       | Description                         |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
-| `variant`          | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant                             |
-| `size`             | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                |
-| `color`            | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                               |
-| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                              |
-| `round`            | `boolean`                                                                                                                                                                                  | Make corners round                  |
-| `fluid`            | `boolean`                                                                                                                                                                                  | Display as a block element          |
-| `vertical`         | `boolean`                                                                                                                                                                                  | Vertical display                    |
-| `truncated`        | `boolean`                                                                                                                                                                                  | Truncate text                       |
-| `borderless`       | `boolean`                                                                                                                                                                                  | Remove borders                      |
-| `iconOnly`         | `boolean`                                                                                                                                                                                  | Show icon only                      |
-| `disabled`         | `boolean`                                                                                                                                                                                  | Disabled state                      |
-| `loading`          | `boolean`                                                                                                                                                                                  | Show spinner                        |
-| `loadingIcon`      | `ReactNode`                                                                                                                                                                                | Custom spinner icon                 |
-| `loadingDelay`     | `number`                                                                                                                                                                                   | Loading delay time, in milliseconds |
-| `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                                                                                                                               | Specify spinner placement           |
+| Property           | Type                                                                             | Description                          |
+| ------------------ | -------------------------------------------------------------------------------- | ------------------------------------ |
+| `size`             | `null` \| `"small"` \| `"large"`                                                 | Size.                                |
+| `intent`           | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent.                              |
+| `variant`          | `null` \| `"solid"` \| `"hollow"`                                                | Variant.                             |
+| `round`            | `boolean`                                                                        | Make corners round.                  |
+| `fluid`            | `boolean`                                                                        | Display as a block element.          |
+| `vertical`         | `boolean`                                                                        | Vertical display.                    |
+| `truncated`        | `boolean`                                                                        | Truncate text.                       |
+| `borderless`       | `boolean`                                                                        | Remove borders.                      |
+| `iconOnly`         | `boolean`                                                                        | Show icon only.                      |
+| `disabled`         | `boolean`                                                                        | Disabled.                            |
+| `loading`          | `boolean`                                                                        | Show spinner.                        |
+| `loadingIcon`      | `ReactNode`                                                                      | Custom spinner icon.                 |
+| `loadingDelay`     | `number`                                                                         | Loading delay time, in milliseconds. |
+| `loadingPlacement` | `null` \| `"start"` \| `"center"` \| `"end"`                                     | Specify spinner placement.           |
 
 It accepts all props which the native `<div>` element supports.

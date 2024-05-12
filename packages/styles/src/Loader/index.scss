@@ -42,7 +42,7 @@
     }
   }
 
-  &.#{$cls-prefix}contained {
+  &.#{$cls-prefix}contented {
     position: relative;
 
     & > .#{$cls-prefix}loader-content {
@@ -81,7 +81,7 @@
     }
   }
 
-  &:not(.#{$cls-prefix}contained) {
+  &:not(.#{$cls-prefix}contented) {
     & > .#{$cls-prefix}loader-mask {
       display: flex;
       flex-direction: column;

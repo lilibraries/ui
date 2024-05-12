@@ -64,7 +64,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const solid = variant === "solid";
   const dotted = variant === "dotted";
-  const contained = isRenderable(children);
+  const contented = isRenderable(children);
   const offsets = Array.isArray(offset) ? offset : ([offset, offset] as const);
 
   const { cls } = Prefix.useConfig();
@@ -76,8 +76,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     `${cls}badge`,
     {
       [`${cls}rtl`]: isRTL,
-      [`${cls}contained`]: contained,
-      [`${cls}standalone`]: !contained,
+      [`${cls}contented`]: contented,
+      [`${cls}standalone`]: !contented,
       [`${cls}outlined`]: outlined,
     },
     className
@@ -129,7 +129,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     visible = false;
   }
 
-  if (contained) {
+  if (contented) {
     const [horizontal, vertical] = offsets;
 
     if (placement.includes("top")) {
@@ -158,8 +158,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
       in={visible}
       classes
       durations={fast}
-      firstMount={contained}
-      keepMounted={contained}
+      firstMount={contented}
+      keepMounted={contented}
     >
       <span {...rest} ref={ref} className={classes}>
         {children}

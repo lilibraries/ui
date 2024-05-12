@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxJustify } from "@lilib/ui";
+import { Button, Flexbox, FlexboxJustify, Radio } from "@lilib/ui";
 
 function Example() {
-  const [justify, setJustify] = useState<FlexboxJustify>("center");
+  const [justify, setJustify] = useState<FlexboxJustify>("flex-start");
 
   return (
     <Flexbox fluid direction="column" gap="4x" align="flex-start">
-      <select
+      <Radio.Group
         value={justify}
         onChange={(event) => {
-          setJustify(event.target.value as FlexboxJustify);
+          setJustify(event.target.value);
         }}
       >
-        <option value="center">center</option>
-        <option value="flex-end">flex-end</option>
-        <option value="flex-start">flex-start</option>
-        <option value="space-around">space-around</option>
-        <option value="space-evenly">space-evenly</option>
-        <option value="space-between">space-between</option>
-      </select>
+        <Flexbox gap="4x">
+          <Radio value="center">center</Radio>
+          <Radio value="flex-end">flex-end</Radio>
+          <Radio value="flex-start">flex-start</Radio>
+          <Radio value="space-around">space-around</Radio>
+          <Radio value="space-evenly">space-evenly</Radio>
+          <Radio value="space-between">space-between</Radio>
+        </Flexbox>
+      </Radio.Group>
 
       <Flexbox gap="4x" fluid justify={justify} style={{ width: "100%" }}>
         <Button>1</Button>

@@ -37,23 +37,23 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
   <Story id="examples-theme--nested" />
 </Canvas>
 
-### Sync with System
+### Sync with Operating System
 
 You can change the operating system theme mode to see the effect.
 
-<Canvas mdxSource={require("!!raw-loader!./SyncWithSystem").default}>
-  <Story id="examples-theme--sync-with-system" />
+<Canvas mdxSource={require("!!raw-loader!./SyncWithOperatingSystem").default}>
+  <Story id="examples-theme--sync-with-operating-system" />
 </Canvas>
 
 ## API
 
 ### Theme
 
-| Property   | Type                            | Description                               |
-| ---------- | ------------------------------- | ----------------------------------------- |
-| `value`    | `null` \| `"light"` \| `"dark"` | **Required** theme value                  |
-| `scoped`   | `boolean`                       | Scoped theme                              |
-| `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes |
+| Property   | Type                            | Description                                |
+| ---------- | ------------------------------- | ------------------------------------------ |
+| `value`    | `null` \| `"light"` \| `"dark"` | **Required** theme value.                  |
+| `scoped`   | `boolean`                       | Scoped theme.                              |
+| `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes. |
 
 The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` prop is `null`, all theme class names added before will be cleared.
 

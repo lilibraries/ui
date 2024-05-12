@@ -30,7 +30,7 @@
     }
   }
 
-  &.#{$cls-prefix}contained {
+  &.#{$cls-prefix}contented {
     position: relative;
     display: inline-block;
 
@@ -90,7 +90,7 @@
 }
 
 .#{$cls-prefix}badge.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}contained {
+  &.#{$cls-prefix}contented {
     & > .#{$cls-prefix}badge-switcher {
       &-top-start {
         transform: translate(50%, -50%);

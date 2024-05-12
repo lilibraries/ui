@@ -4,7 +4,7 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Text
 
-Display text with different intents and colors.
+Display text with different sizes, intents and statuses.
 
 ## Examples
 
@@ -12,12 +12,6 @@ Display text with different intents and colors.
 
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
   <Story id="examples-text--basic" />
-</Canvas>
-
-### Hoverable
-
-<Canvas mdxSource={require("!!raw-loader!./Hoverable").default}>
-  <Story id="examples-text--hoverable" />
 </Canvas>
 
 ### As Link
@@ -38,23 +32,22 @@ Display text with different intents and colors.
   <Story id="examples-text--intents" />
 </Canvas>
 
-### Colors
+### Statuses
 
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-text--colors" />
+<Canvas mdxSource={require("!!raw-loader!./Statuses").default}>
+  <Story id="examples-text--statuses" />
 </Canvas>
 
 ## API
 
-| Property    | Type                                                                                                                                                                                       | Description                       |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- |
-| `as`        | `ElementType`                                                                                                                                                                              | Element type, default is `"span"` |
-| `size`      | `null` \| `"small"` \| `"smaller"` \| `"large"` \| `"larger"`                                                                                                                              | Size                              |
-| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                             |
-| `intent`    | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"`                                                                                                           | Intent                            |
-| `muted`     | `boolean`                                                                                                                                                                                  | Muted                             |
-| `active`    | `boolean`                                                                                                                                                                                  | Active                            |
-| `disabled`  | `boolean`                                                                                                                                                                                  | Disabled                          |
-| `hoverable` | `boolean`                                                                                                                                                                                  | Hoverable                         |
+| Property    | Type                                                                             | Description                        |
+| ----------- | -------------------------------------------------------------------------------- | ---------------------------------- |
+| `as`        | `ElementType`                                                                    | Element type, default is `"span"`. |
+| `size`      | `null` \| `"small"` \| `"smaller"` \| `"large"` \| `"larger"`                    | Size value.                        |
+| `intent`    | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent value.                      |
+| `muted`     | `boolean`                                                                        | Muted status.                      |
+| `active`    | `boolean`                                                                        | Active status.                     |
+| `disabled`  | `boolean`                                                                        | Disabled status.                   |
+| `hoverable` | `boolean`                                                                        | Hoverable status.                  |
 
 It accepts all props which the `as` element supports.

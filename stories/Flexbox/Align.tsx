@@ -1,23 +1,25 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxAlign } from "@lilib/ui";
+import { Button, Flexbox, FlexboxAlign, Radio } from "@lilib/ui";
 
 function Example() {
   const [align, setAlign] = useState<FlexboxAlign>("center");
 
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
-      <select
+      <Radio.Group
         value={align}
         onChange={(event) => {
-          setAlign(event.target.value as FlexboxAlign);
+          setAlign(event.target.value);
         }}
       >
-        <option value="center">center</option>
-        <option value="stretch">stretch</option>
-        <option value="baseline">baseline</option>
-        <option value="flex-end">flex-end</option>
-        <option value="flex-start">flex-start</option>
-      </select>
+        <Flexbox gap="4x">
+          <Radio value="center">center</Radio>
+          <Radio value="stretch">stretch</Radio>
+          <Radio value="baseline">baseline</Radio>
+          <Radio value="flex-end">flex-end</Radio>
+          <Radio value="flex-start">flex-start</Radio>
+        </Flexbox>
+      </Radio.Group>
 
       <Flexbox gap="4x" align={align}>
         Buttons:

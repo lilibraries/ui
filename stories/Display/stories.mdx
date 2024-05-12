@@ -34,19 +34,19 @@ Display content.
 
 ## API
 
-| Property               | Type                                           | Description                                                    |
-| ---------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
-| `children`             | `ReactNode`                                    | Content to display                                             |
-| `open`                 | `boolean`                                      | Control content to display                                     |
-| `openDelay`            | `number`                                       | Open delay, in milliseconds                                    |
-| `closeDelay`           | `number`                                       | Close delay, in milliseconds                                   |
-| `firstMount`           | `boolean`                                      | Mount on first time, no matter whether the component is opened |
-| `keepMounted`          | `boolean`                                      | Keep mounted after closed                                      |
-| `closeOnEscape`        | `boolean`                                      | Close when pressing the <kbd>ESC</kbd> key                     |
-| `closeOnPageHide`      | `boolean`                                      | Close when the page is hidden                                  |
-| `closeOnWindowBlur`    | `boolean`                                      | Close when the `window` loses focus                            |
-| `closeOnClickOutside`  | `EffectTarget<Node>` \| `EffectTarget<Node>[]` | Close when clicking outside the targets                        |
-| `closeOnDocumentClick` | `boolean`                                      | Close when clicking the `document`                             |
-| `onClose`              | `() => void`                                   | Close event                                                    |
-| `onOpened`             | `() => void`                                   | Opened event                                                   |
-| `onClosed`             | `() => void`                                   | Closed event                                                   |
+| Property               | Type                                           | Description                                                     |
+| ---------------------- | ---------------------------------------------- | --------------------------------------------------------------- |
+| `children`             | `ReactNode`                                    | Content to display.                                             |
+| `open`                 | `boolean`                                      | Control content to display.                                     |
+| `openDelay`            | `number`                                       | Open delay, in milliseconds.                                    |
+| `closeDelay`           | `number`                                       | Close delay, in milliseconds.                                   |
+| `firstMount`           | `boolean`                                      | Mount on first time, no matter whether the component is opened. |
+| `keepMounted`          | `boolean`                                      | Keep mounted after closed.                                      |
+| `closeOnEscape`        | `boolean`                                      | Close when pressing the <kbd>ESC</kbd> key.                     |
+| `closeOnPageHide`      | `boolean`                                      | Close when the page is hidden.                                  |
+| `closeOnWindowBlur`    | `boolean`                                      | Close when the `window` loses focus.                            |
+| `closeOnClickOutside`  | `EffectTarget<Node>` \| `EffectTarget<Node>[]` | Close when clicking outside the targets.                        |
+| `closeOnDocumentClick` | `boolean`                                      | Close when clicking the `document`.                             |
+| `onClose`              | `() => void`                                   | Close event.                                                    |
+| `onOpened`             | `() => void`                                   | Opened event.                                                   |
+| `onClosed`             | `() => void`                                   | Closed event.                                                   |

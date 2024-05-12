@@ -71,45 +71,45 @@
     }
   }
 
-  @each $item in join($colors, $intents) {
-    &.#{$cls-prefix}#{$item} {
-      color: var(--text-color-#{$item}-base);
+  @each $intent in $intents {
+    &.#{$cls-prefix}#{$intent} {
+      color: var(--text-color-#{$intent}-base);
 
       &.#{$cls-prefix}muted {
-        color: var(--text-color-#{$item}-inactive);
+        color: var(--text-color-#{$intent}-inactive);
       }
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          color: var(--text-color-#{$item}-hover);
+          color: var(--text-color-#{$intent}-hover);
         }
 
         &:active {
-          color: var(--text-color-#{$item}-active);
+          color: var(--text-color-#{$intent}-active);
         }
       }
 
       &.#{$cls-prefix}active {
-        color: var(--text-color-#{$item}-active);
+        color: var(--text-color-#{$intent}-active);
 
         &:hover {
-          color: var(--text-color-#{$item}-active);
+          color: var(--text-color-#{$intent}-active);
         }
 
         &:active {
-          color: var(--text-color-#{$item}-active);
+          color: var(--text-color-#{$intent}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
-        color: var(--text-color-#{$item}-disabled);
+        color: var(--text-color-#{$intent}-disabled);
 
         &:hover {
-          color: var(--text-color-#{$item}-disabled);
+          color: var(--text-color-#{$intent}-disabled);
         }
 
         &:active {
-          color: var(--text-color-#{$item}-disabled);
+          color: var(--text-color-#{$intent}-disabled);
         }
       }
     }

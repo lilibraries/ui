@@ -38,130 +38,58 @@ function Example() {
 
       <Flexbox gap="4x" wrap>
         <Text
-          color="red"
+          intent={null}
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Red
+          Basic
         </Text>
         <Text
-          color="magenta"
+          intent="major"
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Magenta
+          Major
         </Text>
         <Text
-          color="purple"
+          intent="minor"
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Purple
+          Minor
         </Text>
         <Text
-          color="indigo"
+          intent="positive"
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Indigo
+          Positive
         </Text>
         <Text
-          color="navy"
+          intent="alertive"
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Navy
+          Alertive
         </Text>
         <Text
-          color="blue"
+          intent="negative"
           muted={muted}
           active={active}
           disabled={disabled}
           hoverable={hoverable}
         >
-          Blue
-        </Text>
-        <Text
-          color="cyan"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Cyan
-        </Text>
-        <Text
-          color="teal"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Teal
-        </Text>
-        <Text
-          color="green"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Green
-        </Text>
-        <Text
-          color="lime"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Lime
-        </Text>
-        <Text
-          color="yellow"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Yellow
-        </Text>
-        <Text
-          color="orange"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Orange
-        </Text>
-        <Text
-          color="brown"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Brown
-        </Text>
-        <Text
-          color="gray"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
-          Gray
+          Negative
         </Text>
       </Flexbox>
     </Flexbox>
