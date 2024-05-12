@@ -51,7 +51,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
   const { base } = Duration.useConfig();
-  const contained = isRenderable(children);
+  const contented = isRenderable(children);
 
   const {
     icon: iconConfig,
@@ -86,12 +86,12 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
     `${cls}loader`,
     {
       [`${cls}${size}`]: size,
-      [`${cls}contained`]: contained,
+      [`${cls}contented`]: contented,
     },
     className
   );
 
-  if (contained) {
+  if (contented) {
     return (
       <div {...rest} ref={ref} className={classes}>
         <Transition in={loading} classes durations={base} enterDelay={delay}>

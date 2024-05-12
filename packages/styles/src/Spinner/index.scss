@@ -17,7 +17,7 @@
     margin-inline-end: 0.375em;
   }
 
-  &.#{$cls-prefix}contained {
+  &.#{$cls-prefix}contented {
     position: relative;
 
     & > .#{$cls-prefix}spinner-switcher {
@@ -48,7 +48,7 @@
     }
   }
 
-  &:not(.#{$cls-prefix}contained) {
+  &:not(.#{$cls-prefix}contented) {
     @include transition(
       base,
       ease,

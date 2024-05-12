@@ -1,9 +1,9 @@
 import React, { forwardRef, HTMLAttributes, ReactNode } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
-import Size, { SizeValue } from "../Size";
 import SpinnerConfig from "../Spinner/SpinnerConfig";
-import { ColorValue, IntentValue } from "../utils/types";
+import Size, { SizeValue } from "../Size";
+import { IntentValue } from "../utils/types";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPlacement,
@@ -11,10 +11,9 @@ import ButtonConfig, {
 
 export interface ButtonGroupProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
-  variant?: ButtonVariant;
   size?: SizeValue;
-  color?: ColorValue;
   intent?: IntentValue;
+  variant?: ButtonVariant;
   round?: boolean;
   fluid?: boolean;
   vertical?: boolean;
@@ -33,10 +32,9 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     const {
       children,
       className,
-      variant,
       size: sizeProp,
-      color,
       intent,
+      variant,
       round,
       fluid,
       vertical,
@@ -68,9 +66,8 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
         <Size value={size}>
           <SpinnerConfig icon={loadingIcon} delay={loadingDelay}>
             <ButtonConfig
-              variant={variant}
-              color={color}
               intent={intent}
+              variant={variant}
               round={round}
               fluid={vertical}
               truncated={truncated}

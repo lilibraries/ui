@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxWrap } from "@lilib/ui";
+import { Button, Flexbox, FlexboxWrap, Radio } from "@lilib/ui";
 
 function Example() {
   const [wrap, setWrap] = useState<FlexboxWrap>("wrap");
@@ -11,16 +11,18 @@ function Example() {
 
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
-      <select
-        value={wrap as string}
+      <Radio.Group
+        value={wrap}
         onChange={(event) => {
-          setWrap(event.target.value as FlexboxWrap);
+          setWrap(event.target.value);
         }}
       >
-        <option value="wrap">wrap</option>
-        <option value="nowrap">nowrap</option>
-        <option value="wrap-reverse">wrap-reverse</option>
-      </select>
+        <Flexbox gap="4x">
+          <Radio value="wrap">wrap</Radio>
+          <Radio value="nowrap">nowrap</Radio>
+          <Radio value="wrap-reverse">wrap-reverse</Radio>
+        </Flexbox>
+      </Radio.Group>
 
       <Flexbox gap="4x" wrap={wrap}>
         {buttons}

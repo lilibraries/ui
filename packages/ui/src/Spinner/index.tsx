@@ -24,7 +24,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   icon?: ReactNode;
   delay?: number;
   spinning?: boolean;
-  contained?: boolean;
+  contented?: boolean;
   startSpace?: boolean | number | string;
   endSpace?: boolean | number | string;
 }
@@ -44,7 +44,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     icon: iconProp,
     delay: delayProp,
     spinning,
-    contained: containedProp,
+    contented: contentedProp,
     startSpace,
     endSpace,
     ...rest
@@ -58,7 +58,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   });
 
   const hasContent = isRenderable(children);
-  const contained = !!containedProp || hasContent;
+  const contented = !!contentedProp || hasContent;
   const hasStartSpaceStyle = isCSSValue(startSpace);
   const hasEndSpaceStyle = isCSSValue(endSpace);
   const hasStartSpaceClass = !!startSpace && !hasStartSpaceStyle;
@@ -76,7 +76,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     icon = <Icon spinning>{icon}</Icon>;
   }
 
-  if (contained) {
+  if (contented) {
     const marginInlineStart = hasStartSpaceStyle ? startSpace : undefined;
     const marginInlineEnd = hasEndSpaceStyle ? endSpace : undefined;
 
@@ -91,7 +91,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
     const classes = cn(
       `${cls}spinner`,
-      `${cls}contained`,
+      `${cls}contented`,
       {
         [`${cls}start-spaced`]: hasStartSpaceClass,
         [`${cls}end-spaced`]: hasEndSpaceClass,

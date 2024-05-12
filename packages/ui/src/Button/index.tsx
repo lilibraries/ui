@@ -17,7 +17,7 @@ import Transition from "../Transition";
 import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
 import isRenderable from "../utils/isRenderable";
-import { ColorValue, IntentValue } from "../utils/types";
+import { IntentValue } from "../utils/types";
 import ButtonConfig, {
   ButtonVariant,
   ButtonLoadingPlacement,
@@ -28,10 +28,9 @@ export * from "./ButtonGroup";
 export * from "./ButtonConfig";
 
 export interface ButtonCommonProps {
-  variant?: ButtonVariant;
   size?: SizeValue;
-  color?: ColorValue;
   intent?: IntentValue;
+  variant?: ButtonVariant;
   round?: boolean;
   fluid?: boolean;
   truncated?: boolean;
@@ -68,10 +67,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     children,
     className,
     as = "button",
-    variant: variantProp,
     size: sizeProp,
-    color: colorProp,
     intent: intentProp,
+    variant: variantProp,
     round: roundProp,
     fluid: fluidProp,
     truncated: truncatedProp,
@@ -99,9 +97,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   });
 
   const {
-    variant,
-    color,
     intent,
+    variant,
     round,
     fluid,
     truncated,
@@ -111,9 +108,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loading,
     loadingPlacement,
   } = ButtonConfig.useConfig({
-    variant: variantProp,
-    color: colorProp,
     intent: intentProp,
+    variant: variantProp,
     round: roundProp,
     fluid: fluidProp,
     truncated: truncatedProp,
@@ -152,18 +148,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   }
 
   const spinnerProps: SpinnerProps = {
-    spinning: loading,
     icon: loadingIcon,
     delay: loadingDelay,
+    spinning: loading,
   };
 
   const classes = cn(
     `${cls}button`,
     {
-      [`${cls}${variant}`]: variant,
       [`${cls}${size}`]: size,
-      [`${cls}${color}`]: color,
       [`${cls}${intent}`]: intent,
+      [`${cls}${variant}`]: variant,
       [`${cls}round`]: round,
       [`${cls}fluid`]: fluid,
       [`${cls}truncated`]: truncated,

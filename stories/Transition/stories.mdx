@@ -38,19 +38,19 @@ The Transition component will automatically add the corresponding class name for
 | ------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `children`    | `ReactElement` \| `(state: TransitionState) => ReactElement)` | **Required.** Must be a React element, or a function returns a React element.                                  |
 | `durations`   | `number` \| `TransitionDurations`                             | **Required.** Specify transition durations. It is usually consistent with the duration time of CSS transition. |
-| `classes`     | `boolean` \| `string` \| `TransitionClasses`                  | Specify class names in different states                                                                        |
-| `in`          | `boolean`                                                     | Enter when `true`, exit when `false`                                                                           |
-| `enterDelay`  | `number`                                                      | Delay time on enter, in milliseconds                                                                           |
-| `exitDelay`   | `number`                                                      | Delay time on exit, in milliseconds                                                                            |
-| `firstMount`  | `boolean`                                                     | Mount on first time, no matter whether the component is entered                                                |
-| `firstAppear` | `boolean`                                                     | Perform enter phase when the `in` prop is initially true                                                       |
-| `keepMounted` | `boolean`                                                     | Keep mounted after the component is exited                                                                     |
-| `onEnter`     | `() => void`                                                  | State changes to `"enter"`                                                                                     |
-| `onEntering`  | `() => void`                                                  | State changes to `"entering"`                                                                                  |
-| `onEntered`   | `() => void`                                                  | State changes to `"entered"`                                                                                   |
-| `onExit`      | `() => void`                                                  | State changes to `"exit"`                                                                                      |
-| `onExiting`   | `() => void`                                                  | State changes to `"exiting"`                                                                                   |
-| `onExited`    | `() => void`                                                  | State changes to `"exited"`                                                                                    |
+| `classes`     | `boolean` \| `string` \| `TransitionClasses`                  | Specify class names in different states.                                                                       |
+| `in`          | `boolean`                                                     | Enter when `true`, exit when `false`.                                                                          |
+| `enterDelay`  | `number`                                                      | Delay time on enter, in milliseconds.                                                                          |
+| `exitDelay`   | `number`                                                      | Delay time on exit, in milliseconds.                                                                           |
+| `firstMount`  | `boolean`                                                     | Mount on first time, no matter whether the component is entered.                                               |
+| `firstAppear` | `boolean`                                                     | Perform enter phase when the `in` prop is initially true.                                                      |
+| `keepMounted` | `boolean`                                                     | Keep mounted after the component is exited.                                                                    |
+| `onEnter`     | `() => void`                                                  | State changes to `"enter"`.                                                                                    |
+| `onEntering`  | `() => void`                                                  | State changes to `"entering"`.                                                                                 |
+| `onEntered`   | `() => void`                                                  | State changes to `"entered"`.                                                                                  |
+| `onExit`      | `() => void`                                                  | State changes to `"exit"`.                                                                                     |
+| `onExiting`   | `() => void`                                                  | State changes to `"exiting"`.                                                                                  |
+| `onExited`    | `() => void`                                                  | State changes to `"exited"`.                                                                                   |
 
 ```ts
 type TransitionState =

@@ -7,7 +7,7 @@ function Example() {
 
   return (
     <Theme scoped value={isDarkMode ? "dark" : "light"}>
-      <Button>Sync with System</Button>
+      <Button>Sync with operating system</Button>
     </Theme>
   );
 }

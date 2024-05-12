@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { Button, Flexbox, FlexboxDirection } from "@lilib/ui";
+import { Button, Flexbox, FlexboxDirection, Radio } from "@lilib/ui";
 
 function Example() {
   const [direction, setDirection] = useState<FlexboxDirection>("row");
 
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
-      <select
+      <Radio.Group
         value={direction}
         onChange={(event) => {
-          setDirection(event.target.value as FlexboxDirection);
+          setDirection(event.target.value);
         }}
       >
-        <option value="row">row</option>
-        <option value="column">column</option>
-        <option value="row-reverse">row-reverse</option>
-        <option value="column-reverse">column-reverse</option>
-      </select>
+        <Flexbox gap="4x">
+          <Radio value="row">row</Radio>
+          <Radio value="column">column</Radio>
+          <Radio value="row-reverse">row-reverse</Radio>
+          <Radio value="column-reverse">column-reverse</Radio>
+        </Flexbox>
+      </Radio.Group>
 
       <Flexbox gap="4x" direction={direction}>
         <Button>1</Button>
