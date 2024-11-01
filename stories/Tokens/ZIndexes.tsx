@@ -48,11 +48,11 @@ const ZIndexes: FC = () => {
         ],
 
         [
-          <Usage type="scss" name="z-index-popup" />,
-          <Usage type="css" name="z-index-popup" />,
+          <Usage type="scss" name="z-index-popover" />,
+          <Usage type="css" name="z-index-popover" />,
           <Value
             styleName="zIndex"
-            styleValue={`var(--${prefix}z-index-popup`}
+            styleValue={`var(--${prefix}z-index-popover`}
           />,
         ],
 
@@ -75,11 +75,11 @@ const ZIndexes: FC = () => {
         ],
 
         [
-          <Usage type="scss" name="z-index-toast" />,
-          <Usage type="css" name="z-index-toast" />,
+          <Usage type="scss" name="z-index-message" />,
+          <Usage type="css" name="z-index-message" />,
           <Value
             styleName="zIndex"
-            styleValue={`var(--${prefix}z-index-toast`}
+            styleValue={`var(--${prefix}z-index-message`}
           />,
         ],
       ]}

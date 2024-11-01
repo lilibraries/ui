@@ -6,33 +6,33 @@ React component library.
 
 ### Designs
 
-- [x] Tokens
-- [x] Palettes
+- [ ] Tokens
+- [ ] Palettes
 
 ### Configs
 
-- [x] Root
-- [x] Baseline
-- [x] Focusing
-- [x] Prefix
-- [x] Theme
-- [x] Size
-- [x] Duration
-- [x] Direction
+- [ ] Root
+- [ ] Baseline
+- [ ] Focusing
+- [ ] Prefix
+- [ ] Theme
+- [ ] Size
+- [ ] Duration
+- [ ] Direction
 
 ### Generics
 
-- [x] Icon
-- [x] Text
-- [x] Image
-- [x] Button
+- [ ] Icon
+- [ ] Text
+- [ ] Image
+- [ ] Button
 
 ### Layouts
 
 - [ ] Grid
 - [ ] Layout
-- [x] Divider
-- [x] Flexbox
+- [ ] Divider
+- [ ] Flexbox
 
 ### Navigations
 
@@ -61,7 +61,7 @@ React component library.
 
 ### Views
 
-- [x] Dot
+- [ ] Dot
 - [ ] Tag
 - [ ] Badge
 - [ ] Avatar
@@ -78,8 +78,8 @@ React component library.
 ### Feedbacks
 
 - [ ] Alert
-- [x] Loader
-- [x] Spinner
+- [ ] Loader
+- [ ] Spinner
 - [ ] Skeleton
 - [ ] Progress
 
@@ -99,10 +99,10 @@ React component library.
 
 ### Animations
 
-- [x] Collapse
-- [x] Transition
+- [ ] Collapse
+- [ ] Transition
 
 ### Utilities
 
-- [x] Portal
-- [x] Display
+- [ ] Portal
+- [ ] Display

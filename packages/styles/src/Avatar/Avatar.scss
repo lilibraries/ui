@@ -90,41 +90,41 @@
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      color: var(--#{$color}-5);
-      background-color: var(--#{$color}-0);
+      color: var(--text-color-#{$color}-base);
+      background-color: var(--background-color-#{$color}-base);
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          color: var(--#{$color}-6);
-          background-color: var(--#{$color}-1);
+          color: var(--text-color-#{$color}-hover);
+          background-color: var(--background-color-#{$color}-hover);
         }
 
         &:active {
-          color: var(--#{$color}-7);
-          background-color: var(--#{$color}-2);
+          color: var(--text-color-#{$color}-active);
+          background-color: var(--background-color-#{$color}-active);
         }
       }
     }
   }
 
-  &.#{$cls-prefix}solid {
-    @each $color in $colors {
-      &.#{$cls-prefix}#{$color} {
-        color: var(--text-color-solid-base);
-        background-color: var(--#{$color}-5);
+  // &.#{$cls-prefix}solid {
+  //   @each $color in $colors {
+  //     &.#{$cls-prefix}#{$color} {
+  //       color: var(--text-color-solid-base);
+  //       background-color: var(--background-color-solid-#{$color}-base);
 
-        &.#{$cls-prefix}hoverable {
-          &:hover {
-            color: var(--text-color-solid-base);
-            background-color: var(--#{$color}-6);
-          }
+  //       &.#{$cls-prefix}hoverable {
+  //         &:hover {
+  //           color: var(--text-color-solid-base);
+  //           background-color: var(--background-color-solid-#{$color}-hover);
+  //         }
 
-          &:active {
-            color: var(--text-color-solid-base);
-            background-color: var(--#{$color}-7);
-          }
-        }
-      }
-    }
-  }
+  //         &:active {
+  //           color: var(--text-color-solid-base);
+  //           background-color: var(--background-color-solid-#{$color}-active);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }

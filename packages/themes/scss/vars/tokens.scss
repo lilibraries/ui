@@ -1,10 +1,758 @@
-@import "./base";
-@import "./dark-palettes";
-@import "../functions/shade-color";
+@import "./palettes";
+
+$cls-prefix: "" !default;
+$var-prefix: "" !default;
+
+$enable-variables: true !default;
+$enable-fallbacks: true !default;
+$enable-feedbacks: true !default;
+$focusing-attribute: "data-focusing" !default;
+
+$intents: (
+  "major",
+  "minor",
+  "positive",
+  "alertive",
+  "negative"
+) !default;
+
+$colors: (
+  "red",
+  "magenta",
+  "purple",
+  "indigo",
+  "navy",
+  "blue",
+  "cyan",
+  "teal",
+  "green",
+  "lime",
+  "yellow",
+  "orange",
+  "brown",
+  "gray"
+) !default;
+
+$font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-mono: Menlo, Monaco, Consolas, "Courier New", Courier, monospace !default;
+
+$font-size-heading-1: 46px !default;
+$font-size-heading-2: 36px !default;
+$font-size-heading-3: 28px !default;
+$font-size-heading-4: 22px !default;
+$font-size-heading-5: 18px !default;
+$font-size-heading-6: 14px !default;
+
+$font-size-base: 16px !default;
+$font-size-small: 12px !default;
+$font-size-large: 20px !default;
+$font-size-smaller: 0.875em !default;
+$font-size-larger: 1.125em !default;
+
+$font-weight-base: 400 !default;
+$font-weight-input: 400 !default;
+$font-weight-button: 400 !default;
+$font-weight-heading: 700 !default;
+$font-weight-title: 600 !default;
+$font-weight-subtitle: 500 !default;
+
+$line-height-base: 1.5 !default;
+$line-height-small: 1.25 !default;
+$line-height-large: 2 !default;
+$line-height-fixed-base: 24px !default;
+$line-height-fixed-small: 18px !default;
+$line-height-fixed-large: 30px !default;
+
+$space-1: 4px !default;
+$space-2: $space-1 * 2 !default;
+$space-3: $space-1 * 3 !default;
+$space-4: $space-1 * 4 !default;
+$space-5: $space-1 * 5 !default;
+$space-6: $space-1 * 6 !default;
+$space-7: $space-1 * 7 !default;
+$space-8: $space-1 * 8 !default;
+$space-9: $space-1 * 9 !default;
+
+$space-block-base: 6px !default;
+$space-block-small: 4px !default;
+$space-block-large: 8px !default;
+$space-inline-base: 12px !default;
+$space-inline-small: 8px !default;
+$space-inline-large: 16px !default;
+
+$border-radius-base: 0.5em !default;
+$border-radius-small: 0.25em !default;
+$border-radius-large: 1em !default;
+$border-radius-round: 1000px !default;
+$border-radius-fixed-base: 8px !default;
+$border-radius-fixed-small: 4px !default;
+$border-radius-fixed-large: 16px !default;
+
+$z-index-affix: 100 !default;
+$z-index-backdrop: 1000 !default;
+$z-index-drawer: 1100 !default;
+$z-index-modal: 1200 !default;
+$z-index-popover: 2000 !default;
+$z-index-tooltip: 2100 !default;
+$z-index-notice: 3000 !default;
+$z-index-message: 3100 !default;
+
+$motion-duration-base: 200ms !default;
+$motion-duration-fast: 100ms !default;
+$motion-duration-slow: 800ms !default;
+$motion-duration-lazy: 1200ms !default;
+
+$motion-function-ease: ease !default;
+$motion-function-ease-in: ease-in !default;
+$motion-function-ease-out: ease-out !default;
+$motion-function-ease-in-out: ease-in-out !default;
+$motion-function-linear: linear !default;
+
+$alpha-base: 0.1 !default;
+$alpha-deep: 0.2 !default;
+$alpha-dark: 0.3 !default;
+
+$shadow-1: 0 1px 3px rgba($basis, 0.25) !default;
+$shadow-2: 0 2px 6px rgba($basis, 0.25) !default;
+$shadow-3: 0 3px 9px rgba($basis, 0.25) !default;
+$shadow-4: 0 5px 15px rgba($black, 0.25) !default;
+$shadow-5: 0 8px 24px rgba($black, 0.25) !default;
+
+$text-color-base: rgba($black, 0.8) !default;
+$text-color-muted: rgba($black, 0.6) !default;
+$text-color-hover: rgba($black, 0.9) !default;
+$text-color-active: $black !default;
+$text-color-inactive: rgba($black, 0.4) !default;
+$text-color-disabled: rgba($black, 0.3) !default;
+
+$text-color-solid-base: $white !default;
+$text-color-solid-hover: $white !default;
+$text-color-solid-active: $white !default;
+$text-color-solid-inactive: rgba($white, 0.7) !default;
+$text-color-solid-disabled: rgba($white, 0.6) !default;
+
+$text-color-major-base: $major-5 !default;
+$text-color-major-hover: $major-6 !default;
+$text-color-major-active: $major-7 !default;
+$text-color-major-inactive: $major-3 !default;
+$text-color-major-disabled: $major-2 !default;
+
+$text-color-minor-base: $minor-5 !default;
+$text-color-minor-hover: $minor-6 !default;
+$text-color-minor-active: $minor-7 !default;
+$text-color-minor-inactive: $minor-3 !default;
+$text-color-minor-disabled: $minor-2 !default;
+
+$text-color-positive-base: $positive-5 !default;
+$text-color-positive-hover: $positive-6 !default;
+$text-color-positive-active: $positive-7 !default;
+$text-color-positive-inactive: $positive-3 !default;
+$text-color-positive-disabled: $positive-2 !default;
+
+$text-color-alertive-base: $alertive-5 !default;
+$text-color-alertive-hover: $alertive-6 !default;
+$text-color-alertive-active: $alertive-7 !default;
+$text-color-alertive-inactive: $alertive-3 !default;
+$text-color-alertive-disabled: $alertive-2 !default;
+
+$text-color-negative-base: $negative-5 !default;
+$text-color-negative-hover: $negative-6 !default;
+$text-color-negative-active: $negative-7 !default;
+$text-color-negative-inactive: $negative-3 !default;
+$text-color-negative-disabled: $negative-2 !default;
+
+$text-color-red-base: $red-5 !default;
+$text-color-red-hover: $red-6 !default;
+$text-color-red-active: $red-7 !default;
+$text-color-red-inactive: $red-3 !default;
+$text-color-red-disabled: $red-2 !default;
+
+$text-color-magenta-base: $magenta-5 !default;
+$text-color-magenta-hover: $magenta-6 !default;
+$text-color-magenta-active: $magenta-7 !default;
+$text-color-magenta-inactive: $magenta-3 !default;
+$text-color-magenta-disabled: $magenta-2 !default;
+
+$text-color-purple-base: $purple-5 !default;
+$text-color-purple-hover: $purple-6 !default;
+$text-color-purple-active: $purple-7 !default;
+$text-color-purple-inactive: $purple-3 !default;
+$text-color-purple-disabled: $purple-2 !default;
+
+$text-color-indigo-base: $indigo-5 !default;
+$text-color-indigo-hover: $indigo-6 !default;
+$text-color-indigo-active: $indigo-7 !default;
+$text-color-indigo-inactive: $indigo-3 !default;
+$text-color-indigo-disabled: $indigo-2 !default;
+
+$text-color-navy-base: $navy-5 !default;
+$text-color-navy-hover: $navy-6 !default;
+$text-color-navy-active: $navy-7 !default;
+$text-color-navy-inactive: $navy-3 !default;
+$text-color-navy-disabled: $navy-2 !default;
+
+$text-color-blue-base: $blue-5 !default;
+$text-color-blue-hover: $blue-6 !default;
+$text-color-blue-active: $blue-7 !default;
+$text-color-blue-inactive: $blue-3 !default;
+$text-color-blue-disabled: $blue-2 !default;
+
+$text-color-cyan-base: $cyan-5 !default;
+$text-color-cyan-hover: $cyan-6 !default;
+$text-color-cyan-active: $cyan-7 !default;
+$text-color-cyan-inactive: $cyan-3 !default;
+$text-color-cyan-disabled: $cyan-2 !default;
+
+$text-color-teal-base: $teal-5 !default;
+$text-color-teal-hover: $teal-6 !default;
+$text-color-teal-active: $teal-7 !default;
+$text-color-teal-inactive: $teal-3 !default;
+$text-color-teal-disabled: $teal-2 !default;
+
+$text-color-green-base: $green-5 !default;
+$text-color-green-hover: $green-6 !default;
+$text-color-green-active: $green-7 !default;
+$text-color-green-inactive: $green-3 !default;
+$text-color-green-disabled: $green-2 !default;
+
+$text-color-lime-base: $lime-5 !default;
+$text-color-lime-hover: $lime-6 !default;
+$text-color-lime-active: $lime-7 !default;
+$text-color-lime-inactive: $lime-3 !default;
+$text-color-lime-disabled: $lime-2 !default;
+
+$text-color-yellow-base: $yellow-5 !default;
+$text-color-yellow-hover: $yellow-6 !default;
+$text-color-yellow-active: $yellow-7 !default;
+$text-color-yellow-inactive: $yellow-3 !default;
+$text-color-yellow-disabled: $yellow-2 !default;
+
+$text-color-orange-base: $orange-5 !default;
+$text-color-orange-hover: $orange-6 !default;
+$text-color-orange-active: $orange-7 !default;
+$text-color-orange-inactive: $orange-3 !default;
+$text-color-orange-disabled: $orange-2 !default;
+
+$text-color-brown-base: $brown-5 !default;
+$text-color-brown-hover: $brown-6 !default;
+$text-color-brown-active: $brown-7 !default;
+$text-color-brown-inactive: $brown-3 !default;
+$text-color-brown-disabled: $brown-2 !default;
+
+$text-color-gray-base: $gray-5 !default;
+$text-color-gray-hover: $gray-6 !default;
+$text-color-gray-active: $gray-7 !default;
+$text-color-gray-inactive: $gray-3 !default;
+$text-color-gray-disabled: $gray-2 !default;
+
+$border-color-base: $basis-2 !default;
+$border-color-hover: $basis-3 !default;
+$border-color-active: $basis-4 !default;
+$border-color-inactive: $basis-2 !default;
+$border-color-disabled: $basis-1 !default;
+
+$border-color-deep-base: $basis-4 !default;
+$border-color-deep-hover: $basis-5 !default;
+$border-color-deep-active: $basis-6 !default;
+$border-color-deep-inactive: $basis-3 !default;
+$border-color-deep-disabled: $basis-2 !default;
+
+$border-color-solid-base: $black !default;
+$border-color-solid-hover: $basis-9 !default;
+$border-color-solid-active: $black !default;
+$border-color-solid-inactive: $basis-5 !default;
+$border-color-solid-disabled: $basis-4 !default;
+
+$border-color-major-base: $major-3 !default;
+$border-color-major-hover: $major-4 !default;
+$border-color-major-active: $major-5 !default;
+$border-color-major-inactive: $major-2 !default;
+$border-color-major-disabled: $major-1 !default;
+
+$border-color-minor-base: $minor-3 !default;
+$border-color-minor-hover: $minor-4 !default;
+$border-color-minor-active: $minor-5 !default;
+$border-color-minor-inactive: $minor-2 !default;
+$border-color-minor-disabled: $minor-1 !default;
+
+$border-color-positive-base: $positive-3 !default;
+$border-color-positive-hover: $positive-4 !default;
+$border-color-positive-active: $positive-5 !default;
+$border-color-positive-inactive: $positive-2 !default;
+$border-color-positive-disabled: $positive-1 !default;
+
+$border-color-alertive-base: $alertive-3 !default;
+$border-color-alertive-hover: $alertive-4 !default;
+$border-color-alertive-active: $alertive-5 !default;
+$border-color-alertive-inactive: $alertive-2 !default;
+$border-color-alertive-disabled: $alertive-1 !default;
+
+$border-color-negative-base: $negative-3 !default;
+$border-color-negative-hover: $negative-4 !default;
+$border-color-negative-active: $negative-5 !default;
+$border-color-negative-inactive: $negative-2 !default;
+$border-color-negative-disabled: $negative-1 !default;
+
+$border-color-red-base: $red-3 !default;
+$border-color-red-hover: $red-4 !default;
+$border-color-red-active: $red-5 !default;
+$border-color-red-inactive: $red-2 !default;
+$border-color-red-disabled: $red-1 !default;
+
+$border-color-magenta-base: $magenta-3 !default;
+$border-color-magenta-hover: $magenta-4 !default;
+$border-color-magenta-active: $magenta-5 !default;
+$border-color-magenta-inactive: $magenta-2 !default;
+$border-color-magenta-disabled: $magenta-1 !default;
+
+$border-color-purple-base: $purple-3 !default;
+$border-color-purple-hover: $purple-4 !default;
+$border-color-purple-active: $purple-5 !default;
+$border-color-purple-inactive: $purple-2 !default;
+$border-color-purple-disabled: $purple-1 !default;
+
+$border-color-indigo-base: $indigo-3 !default;
+$border-color-indigo-hover: $indigo-4 !default;
+$border-color-indigo-active: $indigo-5 !default;
+$border-color-indigo-inactive: $indigo-2 !default;
+$border-color-indigo-disabled: $indigo-1 !default;
+
+$border-color-navy-base: $navy-3 !default;
+$border-color-navy-hover: $navy-4 !default;
+$border-color-navy-active: $navy-5 !default;
+$border-color-navy-inactive: $navy-2 !default;
+$border-color-navy-disabled: $navy-1 !default;
+
+$border-color-blue-base: $blue-3 !default;
+$border-color-blue-hover: $blue-4 !default;
+$border-color-blue-active: $blue-5 !default;
+$border-color-blue-inactive: $blue-2 !default;
+$border-color-blue-disabled: $blue-1 !default;
+
+$border-color-cyan-base: $cyan-3 !default;
+$border-color-cyan-hover: $cyan-4 !default;
+$border-color-cyan-active: $cyan-5 !default;
+$border-color-cyan-inactive: $cyan-2 !default;
+$border-color-cyan-disabled: $cyan-1 !default;
+
+$border-color-teal-base: $teal-3 !default;
+$border-color-teal-hover: $teal-4 !default;
+$border-color-teal-active: $teal-5 !default;
+$border-color-teal-inactive: $teal-2 !default;
+$border-color-teal-disabled: $teal-1 !default;
+
+$border-color-green-base: $green-3 !default;
+$border-color-green-hover: $green-4 !default;
+$border-color-green-active: $green-5 !default;
+$border-color-green-inactive: $green-2 !default;
+$border-color-green-disabled: $green-1 !default;
+
+$border-color-lime-base: $lime-3 !default;
+$border-color-lime-hover: $lime-4 !default;
+$border-color-lime-active: $lime-5 !default;
+$border-color-lime-inactive: $lime-2 !default;
+$border-color-lime-disabled: $lime-1 !default;
+
+$border-color-yellow-base: $yellow-3 !default;
+$border-color-yellow-hover: $yellow-4 !default;
+$border-color-yellow-active: $yellow-5 !default;
+$border-color-yellow-inactive: $yellow-2 !default;
+$border-color-yellow-disabled: $yellow-1 !default;
+
+$border-color-orange-base: $orange-3 !default;
+$border-color-orange-hover: $orange-4 !default;
+$border-color-orange-active: $orange-5 !default;
+$border-color-orange-inactive: $orange-2 !default;
+$border-color-orange-disabled: $orange-1 !default;
+
+$border-color-brown-base: $brown-3 !default;
+$border-color-brown-hover: $brown-4 !default;
+$border-color-brown-active: $brown-5 !default;
+$border-color-brown-inactive: $brown-2 !default;
+$border-color-brown-disabled: $brown-1 !default;
+
+$border-color-gray-base: $gray-3 !default;
+$border-color-gray-hover: $gray-4 !default;
+$border-color-gray-active: $gray-5 !default;
+$border-color-gray-inactive: $gray-2 !default;
+$border-color-gray-disabled: $gray-1 !default;
+
+$border-color-major-solid-base: $major-7 !default;
+$border-color-major-solid-hover: $major-6 !default;
+$border-color-major-solid-active: $major-8 !default;
+$border-color-major-solid-inactive: $major-4 !default;
+$border-color-major-solid-disabled: $major-3 !default;
+
+$border-color-minor-solid-base: $minor-7 !default;
+$border-color-minor-solid-hover: $minor-6 !default;
+$border-color-minor-solid-active: $minor-8 !default;
+$border-color-minor-solid-inactive: $minor-4 !default;
+$border-color-minor-solid-disabled: $minor-3 !default;
+
+$border-color-positive-solid-base: $positive-7 !default;
+$border-color-positive-solid-hover: $positive-6 !default;
+$border-color-positive-solid-active: $positive-8 !default;
+$border-color-positive-solid-inactive: $positive-4 !default;
+$border-color-positive-solid-disabled: $positive-3 !default;
+
+$border-color-alertive-solid-base: $alertive-7 !default;
+$border-color-alertive-solid-hover: $alertive-6 !default;
+$border-color-alertive-solid-active: $alertive-8 !default;
+$border-color-alertive-solid-inactive: $alertive-4 !default;
+$border-color-alertive-solid-disabled: $alertive-3 !default;
+
+$border-color-negative-solid-base: $negative-7 !default;
+$border-color-negative-solid-hover: $negative-6 !default;
+$border-color-negative-solid-active: $negative-8 !default;
+$border-color-negative-solid-inactive: $negative-4 !default;
+$border-color-negative-solid-disabled: $negative-3 !default;
+
+$border-color-red-solid-base: $red-7 !default;
+$border-color-red-solid-hover: $red-6 !default;
+$border-color-red-solid-active: $red-8 !default;
+$border-color-red-solid-inactive: $red-4 !default;
+$border-color-red-solid-disabled: $red-3 !default;
+
+$border-color-magenta-solid-base: $magenta-7 !default;
+$border-color-magenta-solid-hover: $magenta-6 !default;
+$border-color-magenta-solid-active: $magenta-8 !default;
+$border-color-magenta-solid-inactive: $magenta-4 !default;
+$border-color-magenta-solid-disabled: $magenta-3 !default;
+
+$border-color-purple-solid-base: $purple-7 !default;
+$border-color-purple-solid-hover: $purple-6 !default;
+$border-color-purple-solid-active: $purple-8 !default;
+$border-color-purple-solid-inactive: $purple-4 !default;
+$border-color-purple-solid-disabled: $purple-3 !default;
+
+$border-color-indigo-solid-base: $indigo-7 !default;
+$border-color-indigo-solid-hover: $indigo-6 !default;
+$border-color-indigo-solid-active: $indigo-8 !default;
+$border-color-indigo-solid-inactive: $indigo-4 !default;
+$border-color-indigo-solid-disabled: $indigo-3 !default;
+
+$border-color-navy-solid-base: $navy-7 !default;
+$border-color-navy-solid-hover: $navy-6 !default;
+$border-color-navy-solid-active: $navy-8 !default;
+$border-color-navy-solid-inactive: $navy-4 !default;
+$border-color-navy-solid-disabled: $navy-3 !default;
+
+$border-color-blue-solid-base: $blue-7 !default;
+$border-color-blue-solid-hover: $blue-6 !default;
+$border-color-blue-solid-active: $blue-8 !default;
+$border-color-blue-solid-inactive: $blue-4 !default;
+$border-color-blue-solid-disabled: $blue-3 !default;
+
+$border-color-cyan-solid-base: $cyan-7 !default;
+$border-color-cyan-solid-hover: $cyan-6 !default;
+$border-color-cyan-solid-active: $cyan-8 !default;
+$border-color-cyan-solid-inactive: $cyan-4 !default;
+$border-color-cyan-solid-disabled: $cyan-3 !default;
+
+$border-color-teal-solid-base: $teal-7 !default;
+$border-color-teal-solid-hover: $teal-6 !default;
+$border-color-teal-solid-active: $teal-8 !default;
+$border-color-teal-solid-inactive: $teal-4 !default;
+$border-color-teal-solid-disabled: $teal-3 !default;
+
+$border-color-green-solid-base: $green-7 !default;
+$border-color-green-solid-hover: $green-6 !default;
+$border-color-green-solid-active: $green-8 !default;
+$border-color-green-solid-inactive: $green-4 !default;
+$border-color-green-solid-disabled: $green-3 !default;
+
+$border-color-lime-solid-base: $lime-7 !default;
+$border-color-lime-solid-hover: $lime-6 !default;
+$border-color-lime-solid-active: $lime-8 !default;
+$border-color-lime-solid-inactive: $lime-4 !default;
+$border-color-lime-solid-disabled: $lime-3 !default;
+
+$border-color-yellow-solid-base: $yellow-7 !default;
+$border-color-yellow-solid-hover: $yellow-6 !default;
+$border-color-yellow-solid-active: $yellow-8 !default;
+$border-color-yellow-solid-inactive: $yellow-4 !default;
+$border-color-yellow-solid-disabled: $yellow-3 !default;
+
+$border-color-orange-solid-base: $orange-7 !default;
+$border-color-orange-solid-hover: $orange-6 !default;
+$border-color-orange-solid-active: $orange-8 !default;
+$border-color-orange-solid-inactive: $orange-4 !default;
+$border-color-orange-solid-disabled: $orange-3 !default;
+
+$border-color-brown-solid-base: $brown-7 !default;
+$border-color-brown-solid-hover: $brown-6 !default;
+$border-color-brown-solid-active: $brown-8 !default;
+$border-color-brown-solid-inactive: $brown-4 !default;
+$border-color-brown-solid-disabled: $brown-3 !default;
+
+$border-color-gray-solid-base: $gray-7 !default;
+$border-color-gray-solid-hover: $gray-6 !default;
+$border-color-gray-solid-active: $gray-8 !default;
+$border-color-gray-solid-inactive: $gray-4 !default;
+$border-color-gray-solid-disabled: $gray-3 !default;
+
+$background-color-page: $gray-0 !default;
+$background-color-card: $white !default;
+$background-color-overlay: $white !default;
+$background-color-backdrop: rgba($white, 0.8) !default;
+
+$background-color-base: $white !default;
+$background-color-hover: $basis-0 !default;
+$background-color-active: $basis-1 !default;
+$background-color-inactive: $basis-0 !default;
+$background-color-disabled: $white !default;
+
+$background-color-deep-base: $basis-2 !default;
+$background-color-deep-hover: $basis-3 !default;
+$background-color-deep-active: $basis-4 !default;
+$background-color-deep-inactive: $basis-1 !default;
+$background-color-deep-disabled: $basis-0 !default;
+
+$background-color-solid-base: $basis-9 !default;
+$background-color-solid-hover: $basis-8 !default;
+$background-color-solid-active: $black !default;
+$background-color-solid-inactive: $basis-4 !default;
+$background-color-solid-disabled: $basis-3 !default;
+
+$background-color-major-base: $major-0 !default;
+$background-color-major-hover: $major-1 !default;
+$background-color-major-active: $major-2 !default;
+$background-color-major-inactive: $major-1 !default;
+$background-color-major-disabled: $major-0 !default;
+
+$background-color-minor-base: $minor-0 !default;
+$background-color-minor-hover: $minor-1 !default;
+$background-color-minor-active: $minor-2 !default;
+$background-color-minor-inactive: $minor-1 !default;
+$background-color-minor-disabled: $minor-0 !default;
+
+$background-color-positive-base: $positive-0 !default;
+$background-color-positive-hover: $positive-1 !default;
+$background-color-positive-active: $positive-2 !default;
+$background-color-positive-inactive: $positive-1 !default;
+$background-color-positive-disabled: $positive-0 !default;
+
+$background-color-alertive-base: $alertive-0 !default;
+$background-color-alertive-hover: $alertive-1 !default;
+$background-color-alertive-active: $alertive-2 !default;
+$background-color-alertive-inactive: $alertive-1 !default;
+$background-color-alertive-disabled: $alertive-0 !default;
+
+$background-color-negative-base: $negative-0 !default;
+$background-color-negative-hover: $negative-1 !default;
+$background-color-negative-active: $negative-2 !default;
+$background-color-negative-inactive: $negative-1 !default;
+$background-color-negative-disabled: $negative-0 !default;
+
+$background-color-red-base: $red-0 !default;
+$background-color-red-hover: $red-1 !default;
+$background-color-red-active: $red-2 !default;
+$background-color-red-inactive: $red-1 !default;
+$background-color-red-disabled: $red-0 !default;
+
+$background-color-magenta-base: $magenta-0 !default;
+$background-color-magenta-hover: $magenta-1 !default;
+$background-color-magenta-active: $magenta-2 !default;
+$background-color-magenta-inactive: $magenta-1 !default;
+$background-color-magenta-disabled: $magenta-0 !default;
+
+$background-color-purple-base: $purple-0 !default;
+$background-color-purple-hover: $purple-1 !default;
+$background-color-purple-active: $purple-2 !default;
+$background-color-purple-inactive: $purple-1 !default;
+$background-color-purple-disabled: $purple-0 !default;
+
+$background-color-indigo-base: $indigo-0 !default;
+$background-color-indigo-hover: $indigo-1 !default;
+$background-color-indigo-active: $indigo-2 !default;
+$background-color-indigo-inactive: $indigo-1 !default;
+$background-color-indigo-disabled: $indigo-0 !default;
+
+$background-color-navy-base: $navy-0 !default;
+$background-color-navy-hover: $navy-1 !default;
+$background-color-navy-active: $navy-2 !default;
+$background-color-navy-inactive: $navy-1 !default;
+$background-color-navy-disabled: $navy-0 !default;
+
+$background-color-blue-base: $blue-0 !default;
+$background-color-blue-hover: $blue-1 !default;
+$background-color-blue-active: $blue-2 !default;
+$background-color-blue-inactive: $blue-1 !default;
+$background-color-blue-disabled: $blue-0 !default;
+
+$background-color-cyan-base: $cyan-0 !default;
+$background-color-cyan-hover: $cyan-1 !default;
+$background-color-cyan-active: $cyan-2 !default;
+$background-color-cyan-inactive: $cyan-1 !default;
+$background-color-cyan-disabled: $cyan-0 !default;
+
+$background-color-teal-base: $teal-0 !default;
+$background-color-teal-hover: $teal-1 !default;
+$background-color-teal-active: $teal-2 !default;
+$background-color-teal-inactive: $teal-1 !default;
+$background-color-teal-disabled: $teal-0 !default;
+
+$background-color-green-base: $green-0 !default;
+$background-color-green-hover: $green-1 !default;
+$background-color-green-active: $green-2 !default;
+$background-color-green-inactive: $green-1 !default;
+$background-color-green-disabled: $green-0 !default;
+
+$background-color-lime-base: $lime-0 !default;
+$background-color-lime-hover: $lime-1 !default;
+$background-color-lime-active: $lime-2 !default;
+$background-color-lime-inactive: $lime-1 !default;
+$background-color-lime-disabled: $lime-0 !default;
+
+$background-color-yellow-base: $yellow-0 !default;
+$background-color-yellow-hover: $yellow-1 !default;
+$background-color-yellow-active: $yellow-2 !default;
+$background-color-yellow-inactive: $yellow-1 !default;
+$background-color-yellow-disabled: $yellow-0 !default;
+
+$background-color-orange-base: $orange-0 !default;
+$background-color-orange-hover: $orange-1 !default;
+$background-color-orange-active: $orange-2 !default;
+$background-color-orange-inactive: $orange-1 !default;
+$background-color-orange-disabled: $orange-0 !default;
+
+$background-color-brown-base: $brown-0 !default;
+$background-color-brown-hover: $brown-1 !default;
+$background-color-brown-active: $brown-2 !default;
+$background-color-brown-inactive: $brown-1 !default;
+$background-color-brown-disabled: $brown-0 !default;
+
+$background-color-gray-base: $gray-0 !default;
+$background-color-gray-hover: $gray-1 !default;
+$background-color-gray-active: $gray-2 !default;
+$background-color-gray-inactive: $gray-1 !default;
+$background-color-gray-disabled: $gray-0 !default;
+
+$background-color-major-solid-base: $major-5 !default;
+$background-color-major-solid-hover: $major-4 !default;
+$background-color-major-solid-active: $major-6 !default;
+$background-color-major-solid-inactive: $major-3 !default;
+$background-color-major-solid-disabled: $major-2 !default;
+
+$background-color-minor-solid-base: $minor-5 !default;
+$background-color-minor-solid-hover: $minor-4 !default;
+$background-color-minor-solid-active: $minor-6 !default;
+$background-color-minor-solid-inactive: $minor-3 !default;
+$background-color-minor-solid-disabled: $minor-2 !default;
+
+$background-color-positive-solid-base: $positive-5 !default;
+$background-color-positive-solid-hover: $positive-4 !default;
+$background-color-positive-solid-active: $positive-6 !default;
+$background-color-positive-solid-inactive: $positive-3 !default;
+$background-color-positive-solid-disabled: $positive-2 !default;
+
+$background-color-alertive-solid-base: $alertive-5 !default;
+$background-color-alertive-solid-hover: $alertive-4 !default;
+$background-color-alertive-solid-active: $alertive-6 !default;
+$background-color-alertive-solid-inactive: $alertive-3 !default;
+$background-color-alertive-solid-disabled: $alertive-2 !default;
+
+$background-color-negative-solid-base: $negative-5 !default;
+$background-color-negative-solid-hover: $negative-4 !default;
+$background-color-negative-solid-active: $negative-6 !default;
+$background-color-negative-solid-inactive: $negative-3 !default;
+$background-color-negative-solid-disabled: $negative-2 !default;
+
+$background-color-red-solid-base: $red-5 !default;
+$background-color-red-solid-hover: $red-4 !default;
+$background-color-red-solid-active: $red-6 !default;
+$background-color-red-solid-inactive: $red-3 !default;
+$background-color-red-solid-disabled: $red-2 !default;
+
+$background-color-magenta-solid-base: $magenta-5 !default;
+$background-color-magenta-solid-hover: $magenta-4 !default;
+$background-color-magenta-solid-active: $magenta-6 !default;
+$background-color-magenta-solid-inactive: $magenta-3 !default;
+$background-color-magenta-solid-disabled: $magenta-2 !default;
+
+$background-color-purple-solid-base: $purple-5 !default;
+$background-color-purple-solid-hover: $purple-4 !default;
+$background-color-purple-solid-active: $purple-6 !default;
+$background-color-purple-solid-inactive: $purple-3 !default;
+$background-color-purple-solid-disabled: $purple-2 !default;
+
+$background-color-indigo-solid-base: $indigo-5 !default;
+$background-color-indigo-solid-hover: $indigo-4 !default;
+$background-color-indigo-solid-active: $indigo-6 !default;
+$background-color-indigo-solid-inactive: $indigo-3 !default;
+$background-color-indigo-solid-disabled: $indigo-2 !default;
+
+$background-color-navy-solid-base: $navy-5 !default;
+$background-color-navy-solid-hover: $navy-4 !default;
+$background-color-navy-solid-active: $navy-6 !default;
+$background-color-navy-solid-inactive: $navy-3 !default;
+$background-color-navy-solid-disabled: $navy-2 !default;
+
+$background-color-blue-solid-base: $blue-5 !default;
+$background-color-blue-solid-hover: $blue-4 !default;
+$background-color-blue-solid-active: $blue-6 !default;
+$background-color-blue-solid-inactive: $blue-3 !default;
+$background-color-blue-solid-disabled: $blue-2 !default;
+
+$background-color-cyan-solid-base: $cyan-5 !default;
+$background-color-cyan-solid-hover: $cyan-4 !default;
+$background-color-cyan-solid-active: $cyan-6 !default;
+$background-color-cyan-solid-inactive: $cyan-3 !default;
+$background-color-cyan-solid-disabled: $cyan-2 !default;
+
+$background-color-teal-solid-base: $teal-5 !default;
+$background-color-teal-solid-hover: $teal-4 !default;
+$background-color-teal-solid-active: $teal-6 !default;
+$background-color-teal-solid-inactive: $teal-3 !default;
+$background-color-teal-solid-disabled: $teal-2 !default;
+
+$background-color-green-solid-base: $green-5 !default;
+$background-color-green-solid-hover: $green-4 !default;
+$background-color-green-solid-active: $green-6 !default;
+$background-color-green-solid-inactive: $green-3 !default;
+$background-color-green-solid-disabled: $green-2 !default;
+
+$background-color-lime-solid-base: $lime-5 !default;
+$background-color-lime-solid-hover: $lime-4 !default;
+$background-color-lime-solid-active: $lime-6 !default;
+$background-color-lime-solid-inactive: $lime-3 !default;
+$background-color-lime-solid-disabled: $lime-2 !default;
+
+$background-color-yellow-solid-base: $yellow-5 !default;
+$background-color-yellow-solid-hover: $yellow-4 !default;
+$background-color-yellow-solid-active: $yellow-6 !default;
+$background-color-yellow-solid-inactive: $yellow-3 !default;
+$background-color-yellow-solid-disabled: $yellow-2 !default;
+
+$background-color-orange-solid-base: $orange-5 !default;
+$background-color-orange-solid-hover: $orange-4 !default;
+$background-color-orange-solid-active: $orange-6 !default;
+$background-color-orange-solid-inactive: $orange-3 !default;
+$background-color-orange-solid-disabled: $orange-2 !default;
+
+$background-color-brown-solid-base: $brown-5 !default;
+$background-color-brown-solid-hover: $brown-4 !default;
+$background-color-brown-solid-active: $brown-6 !default;
+$background-color-brown-solid-inactive: $brown-3 !default;
+$background-color-brown-solid-disabled: $brown-2 !default;
+
+$background-color-gray-solid-base: $gray-5 !default;
+$background-color-gray-solid-hover: $gray-4 !default;
+$background-color-gray-solid-active: $gray-6 !default;
+$background-color-gray-solid-inactive: $gray-3 !default;
+$background-color-gray-solid-disabled: $gray-2 !default;
 
 $dark-alpha-base: 0.15 !default;
 $dark-alpha-deep: 0.25 !default;
 $dark-alpha-dark: 0.35 !default;
+
+$dark-shadow-1: 0 1px 3px rgba($black, 0.85) !default;
+$dark-shadow-2: 0 2px 6px rgba($black, 0.85) !default;
+$dark-shadow-3: 0 3px 9px rgba($black, 0.85) !default;
+$dark-shadow-4: 0 5px 15px rgba($black, 0.85) !default;
+$dark-shadow-5: 0 8px 24px rgba($black, 0.85) !default;
 
 $dark-text-color-base: rgba($white, 0.9) !default;
 $dark-text-color-muted: rgba($white, 0.6) !default;
@@ -629,9 +1377,3 @@ $dark-background-color-gray-solid-hover: $dark-gray-6 !default;
 $dark-background-color-gray-solid-active: $dark-gray-4 !default;
 $dark-background-color-gray-solid-inactive: $dark-gray-3 !default;
 $dark-background-color-gray-solid-disabled: $dark-gray-2 !default;
-
-$dark-box-shadow-1: 0 1px 3px rgba($black, 0.85) !default;
-$dark-box-shadow-2: 0 2px 6px rgba($black, 0.85) !default;
-$dark-box-shadow-3: 0 3px 9px rgba($black, 0.85) !default;
-$dark-box-shadow-4: 0 5px 15px rgba($black, 0.85) !default;
-$dark-box-shadow-5: 0 8px 24px rgba($black, 0.85) !default;

@@ -33,7 +33,7 @@
 
     @each $intent in $intents {
       &.#{$cls-prefix}#{$intent} {
-        color: var(--#{$intent}-5);
+        color: var(--#{$intent});
 
         &.#{$cls-prefix}hoverable {
           &:not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
@@ -48,17 +48,17 @@
         }
 
         &.#{$cls-prefix}hovered:not(:active):not(.#{$cls-prefix}active):not(.#{$cls-prefix}disabled) {
-          color: var(--#{$intent}-5);
+          color: var(--#{$intent});
           background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
         }
 
         &.#{$cls-prefix}active {
-          color: var(--#{$intent}-5);
+          color: var(--#{$intent});
           background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-deep));
         }
 
         &.#{$cls-prefix}disabled {
-          color: var(--#{$intent}-2);
+          color: var(--#{$intent});
 
           &.#{$cls-prefix}active {
             background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));

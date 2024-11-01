@@ -150,7 +150,7 @@
   }
 
   &.#{$cls-prefix}square {
-    font-family: var(--font-family-code);
+    font-family: var(--font-family-mono);
 
     & > .#{$cls-prefix}tag-content {
       min-width: calc(var(--line-height-fixed-base) - 2px);
@@ -185,25 +185,25 @@
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      background-color: var(--#{$color}-0);
-      border-color: var(--#{$color}-3);
+      background-color: var(--#{$color});
+      border-color: var(--#{$color});
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          background-color: var(--#{$color}-1);
-          border-color: var(--#{$color}-4);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
 
         &:active {
-          background-color: var(--#{$color}-2);
-          border-color: var(--#{$color}-5);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}hoverable {
-          background-color: var(--#{$color}-0);
-          border-color: var(--#{$color}-1);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
       }
     }
@@ -239,25 +239,25 @@
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      background-color: var(--#{$color}-5);
-      border-color: var(--#{$color}-7);
+      background-color: var(--#{$color});
+      border-color: var(--#{$color});
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          background-color: var(--#{$color}-6);
-          border-color: var(--#{$color}-8);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
 
         &:active {
-          background-color: var(--#{$color}-7);
-          border-color: var(--#{$color}-9);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}hoverable {
-          background-color: var(--#{$color}-2);
-          border-color: var(--#{$color}-3);
+          background-color: var(--#{$color});
+          border-color: var(--#{$color});
         }
       }
     }
@@ -285,23 +285,23 @@
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      color: var(--#{$color}-5);
+      color: var(--#{$color});
 
       &.#{$cls-prefix}hoverable {
         &:hover {
-          color: var(--#{$color}-6);
+          color: var(--#{$color});
           background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
         }
 
         &:active {
-          color: var(--#{$color}-7);
+          color: var(--#{$color});
           background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
         }
       }
 
       &.#{$cls-prefix}disabled {
         &.#{$cls-prefix}hoverable {
-          color: var(--#{$color}-2);
+          color: var(--#{$color});
           background-color: transparent;
         }
       }

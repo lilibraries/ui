@@ -1,4 +1,4 @@
-@import "../functions/var";
+@import "../funcs/var";
 
 @mixin focus-outline {
   outline: 2px solid var(--major);
