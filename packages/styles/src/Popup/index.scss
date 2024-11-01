@@ -1,13 +1,13 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}popup {
-  z-index: var(--z-index-popup);
+  z-index: var(--z-index-popover);
   box-sizing: border-box;
   padding: var(--space-4);
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
-  box-shadow: var(--box-shadow-3);
+  box-shadow: var(--shadow-3);
   @include transition(fast, ease-in-out, transform, opacity);
 
   &.#{$cls-prefix}unpadding {

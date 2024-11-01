@@ -58,7 +58,15 @@ module.exports = {
             implementation: require("postcss"),
           },
         },
-        "sass-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            implementation: require("sass"),
+            sassOptions: {
+              additionalData: '$cls-prefix: "li-"; $var-prefix: "li-";',
+            },
+          },
+        },
       ],
     });
     return config;

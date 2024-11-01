@@ -77,23 +77,23 @@
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}checkbox-indicator {
       color: var(--text-color-solid-base);
-      background-color: var(--major-5);
-      border-color: var(--major-7);
+      background-color: var(--major);
+      border-color: var(--major);
     }
 
     &:hover {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-hover);
-        background-color: var(--major-6);
-        border-color: var(--major-8);
+        background-color: var(--major);
+        border-color: var(--major);
       }
     }
 
     &:active {
       & .#{$cls-prefix}checkbox-indicator {
         color: var(--text-color-solid-active);
-        background-color: var(--major-7);
-        border-color: var(--major-9);
+        background-color: var(--major);
+        border-color: var(--major);
       }
     }
   }

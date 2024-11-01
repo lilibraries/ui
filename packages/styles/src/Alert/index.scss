@@ -28,7 +28,7 @@
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
       background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
-      border-color: var(--#{$intent}-3);
+      border-color: var(--#{$intent});
     }
   }
 }

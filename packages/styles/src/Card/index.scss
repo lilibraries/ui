@@ -236,7 +236,7 @@
   }
 
   &.#{$cls-prefix}shadowed {
-    box-shadow: var(--box-shadow-2);
+    box-shadow: var(--shadow-2);
   }
 
   &.#{$cls-prefix}hoverable {
@@ -244,11 +244,11 @@
     @include transition(fast, ease-in-out, box-shadow);
 
     &:hover {
-      box-shadow: var(--box-shadow-4);
+      box-shadow: var(--shadow-4);
     }
 
     &:active {
-      box-shadow: var(--box-shadow-2);
+      box-shadow: var(--shadow-2);
     }
 
     [data-focusing] &:focus {

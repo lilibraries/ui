@@ -12,7 +12,7 @@
 
   &.#{$cls-prefix}card {
     border-radius: var(--border-radius-fixed-large);
-    box-shadow: var(--box-shadow-5);
+    box-shadow: var(--shadow-5);
 
     &
       > .#{$cls-prefix}card-main
