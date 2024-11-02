@@ -7,10 +7,7 @@ function Example() {
 
   return (
     <Flexbox gap="2x" align="center">
-      <Switch
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-      />
+      <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} />
       <ArrowPopper open={open} placement="top-start">
         <Button>Trigger</Button>
       </ArrowPopper>

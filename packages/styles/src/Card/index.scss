@@ -297,16 +297,14 @@
   &.#{$cls-prefix}image-placement-start {
     & > .#{$cls-prefix}card-image {
       margin: -1px -1px -1px 0;
-      border-radius: 0 var(--border-radius-fixed-base)
-        var(--border-radius-fixed-base) 0;
+      border-radius: 0 var(--border-radius-fixed-base) var(--border-radius-fixed-base) 0;
     }
   }
 
   &.#{$cls-prefix}image-placement-end {
     & > .#{$cls-prefix}card-image {
       margin: -1px 0 -1px -1px;
-      border-radius: var(--border-radius-fixed-base) 0 0
-        var(--border-radius-fixed-base);
+      border-radius: var(--border-radius-fixed-base) 0 0 var(--border-radius-fixed-base);
     }
   }
 

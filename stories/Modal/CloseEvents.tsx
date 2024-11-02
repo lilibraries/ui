@@ -8,14 +8,7 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Modal
-        open={open}
-        closeOnEscape
-        closeOnPageHide
-        closeOnWindowBlur
-        closeOnClickOutside
-        onClose={toggleOff}
-      >
+      <Modal open={open} closeOnEscape closeOnPageHide closeOnWindowBlur closeOnClickOutside onClose={toggleOff}>
         <Spinner spinning /> Loading...
       </Modal>
     </>

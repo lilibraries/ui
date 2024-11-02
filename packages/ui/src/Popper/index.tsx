@@ -166,14 +166,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const toggleOn = () => toggle(true);
   const toggleOff = () => toggle(false);
 
-  const [startHoverEnterTimer, cancelHoverEnterTimer] = useTimeout(
-    toggleOn,
-    hoverEnterDelay
-  );
-  const [startHoverLeaveTimer, cancelHoverLeaveTimer] = useTimeout(
-    toggleOff,
-    hoverLeaveDelay
-  );
+  const [startHoverEnterTimer, cancelHoverEnterTimer] = useTimeout(toggleOn, hoverEnterDelay);
+  const [startHoverLeaveTimer, cancelHoverLeaveTimer] = useTimeout(toggleOff, hoverLeaveDelay);
 
   const handleClose = usePersist(() => {
     if (!controlled) {
@@ -220,11 +214,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       if (offset != null) {
         [mainAxisOffset, crossAxisOffset] = offsets;
       } else if (arrowRef.current) {
-        mainAxisOffset =
-          Math.max(
-            arrowRef.current.offsetWidth,
-            arrowRef.current.offsetHeight
-          ) * 0.707106781187;
+        mainAxisOffset = Math.max(arrowRef.current.offsetWidth, arrowRef.current.offsetHeight) * 0.707106781187;
       }
 
       const middleware = [
@@ -241,9 +231,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         middleware.unshift(inlineMiddleware());
       }
       if (arrowRef.current) {
-        middleware.push(
-          arrowMiddleware({ element: arrowRef.current, padding: arrowPadding })
-        );
+        middleware.push(arrowMiddleware({ element: arrowRef.current, padding: arrowPadding }));
       }
 
       computePosition(refrence, popperRef.current, {
@@ -289,12 +277,9 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const setAutoUpdate = () => {
     if (!autoUpdateCleanupRef.current) {
       if (inBrowser && anchorRef.current && popperRef.current) {
-        autoUpdateCleanupRef.current = autoUpdate(
-          anchorRef.current,
-          popperRef.current,
-          updatePosition,
-          { elementResize: !!window.ResizeObserver }
-        );
+        autoUpdateCleanupRef.current = autoUpdate(anchorRef.current, popperRef.current, updatePosition, {
+          elementResize: !!window.ResizeObserver,
+        });
       }
     }
   };
@@ -459,40 +444,36 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   });
 
-  const handlePopperMouseEnter = usePersist(
-    (event: MouseEvent<HTMLDivElement>) => {
-      if (rawPopperMouseEnter) {
-        rawPopperMouseEnter(event);
-      }
-      if (isHover && !isClickClose.current) {
-        cancelHoverEnterTimer();
-        cancelHoverLeaveTimer();
-        toggleOn();
-        isHoverClose.current = true;
-        isBlurClose.current = false;
-      }
+  const handlePopperMouseEnter = usePersist((event: MouseEvent<HTMLDivElement>) => {
+    if (rawPopperMouseEnter) {
+      rawPopperMouseEnter(event);
     }
-  );
+    if (isHover && !isClickClose.current) {
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
+      toggleOn();
+      isHoverClose.current = true;
+      isBlurClose.current = false;
+    }
+  });
 
-  const handlePopperMouseLeave = usePersist(
-    (event: MouseEvent<HTMLDivElement>) => {
-      if (rawPopperMouseLeave) {
-        rawPopperMouseLeave(event);
-      }
-      if (isHover && isHoverClose.current) {
-        cancelHoverEnterTimer();
-        cancelHoverLeaveTimer();
-        if (open) {
-          if (delayOnHoverLeave) {
-            startHoverLeaveTimer();
-          } else {
-            toggleOff();
-          }
-        }
-        isHoverClose.current = false;
-      }
+  const handlePopperMouseLeave = usePersist((event: MouseEvent<HTMLDivElement>) => {
+    if (rawPopperMouseLeave) {
+      rawPopperMouseLeave(event);
     }
-  );
+    if (isHover && isHoverClose.current) {
+      cancelHoverEnterTimer();
+      cancelHoverLeaveTimer();
+      if (open) {
+        if (delayOnHoverLeave) {
+          startHoverLeaveTimer();
+        } else {
+          toggleOff();
+        }
+      }
+      isHoverClose.current = false;
+    }
+  });
 
   const handleAnchorFocus = usePersist((event: FocusEvent) => {
     if (rawAnchorFocus) {
@@ -533,27 +514,23 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     }
   });
 
-  const handlePopperMouseDown = usePersist(
-    (event: MouseEvent<HTMLDivElement>) => {
-      if (rawPopperMouseDown) {
-        rawPopperMouseDown(event);
-      }
-      if (isFocus) {
-        isBlurClose.current = false;
-      }
+  const handlePopperMouseDown = usePersist((event: MouseEvent<HTMLDivElement>) => {
+    if (rawPopperMouseDown) {
+      rawPopperMouseDown(event);
     }
-  );
+    if (isFocus) {
+      isBlurClose.current = false;
+    }
+  });
 
-  const handlePopperTouchStart = usePersist(
-    (event: TouchEvent<HTMLDivElement>) => {
-      if (rawPopperTouchStart) {
-        rawPopperTouchStart(event);
-      }
-      if (isFocus) {
-        isBlurClose.current = false;
-      }
+  const handlePopperTouchStart = usePersist((event: TouchEvent<HTMLDivElement>) => {
+    if (rawPopperTouchStart) {
+      rawPopperTouchStart(event);
     }
-  );
+    if (isFocus) {
+      isBlurClose.current = false;
+    }
+  });
 
   let popper = (
     <div
@@ -575,11 +552,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           ref: composeRefs(arrowRef, arrow.ref),
         })}
       <Portal.Config container={popperRef}>
-        {firstMount ? (
-          <RenderAfterMounted>{content}</RenderAfterMounted>
-        ) : (
-          content
-        )}
+        {firstMount ? <RenderAfterMounted>{content}</RenderAfterMounted> : content}
       </Portal.Config>
     </div>
   );
@@ -611,9 +584,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
         closeOnEscape={opened && closeOnEscape}
         closeOnPageHide={opened && closeOnPageHide}
         closeOnWindowBlur={opened && closeOnWindowBlur}
-        closeOnClickOutside={
-          opened && closeOnClickOutside ? [anchorRef, popperRef] : null
-        }
+        closeOnClickOutside={opened && closeOnClickOutside ? [anchorRef, popperRef] : null}
         onClose={handleClose}
         onOpened={handleOpened}
         onClosed={handleClosed}

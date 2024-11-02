@@ -2,10 +2,7 @@ import { inBrowser } from "@lilib/utils";
 import { useIsomorphicLayoutEffect } from "@lilib/hooks";
 
 function hasScrollbar() {
-  return (
-    document.body.scrollHeight > document.body.clientHeight ||
-    document.body.scrollHeight > window.innerHeight
-  );
+  return document.body.scrollHeight > document.body.clientHeight || document.body.scrollHeight > window.innerHeight;
 }
 
 function getScrollbarWidth() {

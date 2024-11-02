@@ -17,15 +17,7 @@ export interface ListConfigProps extends ListConfigValue {
 
 const ListConfig = createConfig<ListConfigValue, ListConfigProps>(
   {},
-  [
-    "indent",
-    "splited",
-    "indented",
-    "arrowed",
-    "arrowIcon",
-    "hoverable",
-    "disabled",
-  ],
+  ["indent", "splited", "indented", "arrowed", "arrowIcon", "hoverable", "disabled"],
   { inherit: true }
 );
 

@@ -32,8 +32,7 @@
       height: 100%;
       background-color: currentColor;
       border-radius: 50%;
-      animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy)
-        var(--motion-function-ease-in-out) 0s infinite;
+      animation: #{$cls-prefix}dot-animate var(--motion-duration-lazy) var(--motion-function-ease-in-out) 0s infinite;
       content: "";
     }
   }

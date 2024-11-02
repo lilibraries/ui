@@ -20,15 +20,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
     className
   );
 
-  return (
-    <Popup
-      {...rest}
-      ref={ref}
-      on={on}
-      className={classes}
-      placement={placement}
-    />
-  );
+  return <Popup {...rest} ref={ref} on={on} className={classes} placement={placement} />;
 });
 
 export default Tooltip;

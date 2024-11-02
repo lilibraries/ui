@@ -1,11 +1,4 @@
-import {
-  forwardRef,
-  ElementType,
-  ReactElement,
-  createElement,
-  ComponentProps,
-  ForwardRefExoticComponent,
-} from "react";
+import { forwardRef, ElementType, ReactElement, createElement, ComponentProps, ForwardRefExoticComponent } from "react";
 import cn from "classnames";
 import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
@@ -32,8 +25,7 @@ export type TextProps<C extends ElementType = "span"> = C extends "span"
     } & ComponentProps<C> &
       TextCommonProps;
 
-export interface TextComponent
-  extends ForwardRefExoticComponent<TextCommonProps> {
+export interface TextComponent extends ForwardRefExoticComponent<TextCommonProps> {
   <C extends ElementType = "span">(props: TextProps<C>): ReactElement;
 }
 

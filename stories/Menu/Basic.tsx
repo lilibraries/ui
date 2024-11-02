@@ -1,13 +1,7 @@
 import React from "react";
 import { Menu } from "@lilib/ui";
 import { GiOrganigram } from "react-icons/gi";
-import {
-  FiCode,
-  FiHeart,
-  FiStar,
-  FiUser,
-  FiGitPullRequest,
-} from "react-icons/fi";
+import { FiCode, FiHeart, FiStar, FiUser, FiGitPullRequest } from "react-icons/fi";
 import { AiOutlineProject, AiOutlineBgColors } from "react-icons/ai";
 
 function Example() {
@@ -25,11 +19,7 @@ function Example() {
         </Menu.Item>
         <Menu.Item icon={<GiOrganigram />} label="Your organizations" />
       </Menu.Item>
-      <Menu.Item
-        icon={<AiOutlineBgColors />}
-        suffix="Dark"
-        label="Theme preferences"
-      />
+      <Menu.Item icon={<AiOutlineBgColors />} suffix="Dark" label="Theme preferences" />
     </Menu>
   );
 }

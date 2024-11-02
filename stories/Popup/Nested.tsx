@@ -8,17 +8,8 @@ function Example() {
       unpadding
       placement="bottom-start"
       content={
-        <Popup
-          unpadding
-          placement="right"
-          content={
-            <Button style={{ borderColor: "transparent" }}>Button</Button>
-          }
-        >
-          <Button
-            endIcon={<FiChevronRight />}
-            style={{ borderColor: "transparent" }}
-          >
+        <Popup unpadding placement="right" content={<Button style={{ borderColor: "transparent" }}>Button</Button>}>
+          <Button endIcon={<FiChevronRight />} style={{ borderColor: "transparent" }}>
             Dropright
           </Button>
         </Popup>

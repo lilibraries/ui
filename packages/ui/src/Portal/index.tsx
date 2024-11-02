@@ -38,11 +38,7 @@ const Portal: FC<PortalProps> & {
   }
 
   function removeRoot() {
-    if (
-      rootRef.current &&
-      containerRef.current &&
-      containerRef.current.contains(rootRef.current)
-    ) {
+    if (rootRef.current && containerRef.current && containerRef.current.contains(rootRef.current)) {
       containerRef.current.removeChild(rootRef.current);
     }
   }

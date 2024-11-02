@@ -18,10 +18,7 @@ import Size, { SizeValue } from "../Size";
 import Spinner, { SpinnerProps } from "../Spinner";
 import isRenderable from "../utils/isRenderable";
 import { IntentValue } from "../utils/types";
-import ButtonConfig, {
-  ButtonVariant,
-  ButtonLoadingPlacement,
-} from "./ButtonConfig";
+import ButtonConfig, { ButtonVariant, ButtonLoadingPlacement } from "./ButtonConfig";
 import ButtonGroup from "./ButtonGroup";
 
 export * from "./ButtonGroup";
@@ -56,8 +53,7 @@ export type ButtonProps<C extends ElementType = "button"> = C extends "button"
     } & ComponentProps<C> &
       ButtonCommonProps;
 
-export interface ButtonComponent
-  extends ForwardRefExoticComponent<ButtonCommonProps> {
+export interface ButtonComponent extends ForwardRefExoticComponent<ButtonCommonProps> {
   <C extends ElementType = "button">(props: ButtonProps<C>): ReactElement;
   Group: typeof ButtonGroup;
 }
@@ -96,29 +92,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     delay: loadingDelayProp,
   });
 
-  const {
-    intent,
-    variant,
-    round,
-    fluid,
-    truncated,
-    borderless,
-    iconOnly,
-    disabled,
-    loading,
-    loadingPlacement,
-  } = ButtonConfig.useConfig({
-    intent: intentProp,
-    variant: variantProp,
-    round: roundProp,
-    fluid: fluidProp,
-    truncated: truncatedProp,
-    borderless: borderlessProp,
-    iconOnly: iconOnlyProp,
-    disabled: disabledProp,
-    loading: loadingProp,
-    loadingPlacement: loadingPlacementProp,
-  });
+  const { intent, variant, round, fluid, truncated, borderless, iconOnly, disabled, loading, loadingPlacement } =
+    ButtonConfig.useConfig({
+      intent: intentProp,
+      variant: variantProp,
+      round: roundProp,
+      fluid: fluidProp,
+      truncated: truncatedProp,
+      borderless: borderlessProp,
+      iconOnly: iconOnlyProp,
+      disabled: disabledProp,
+      loading: loadingProp,
+      loadingPlacement: loadingPlacementProp,
+    });
 
   const hasStartIcon = isRenderable(startIcon);
   const hasEndIcon = isRenderable(endIcon);
@@ -187,10 +173,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     );
   }
 
-  function wrapIcon(
-    node?: ReactNode,
-    options: { startSpace?: boolean; endSpace?: boolean } = {}
-  ) {
+  function wrapIcon(node?: ReactNode, options: { startSpace?: boolean; endSpace?: boolean } = {}) {
     const { startSpace, endSpace } = options;
 
     if (isValidElement(node)) {
@@ -254,12 +237,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
     if (loadingCenter) {
       loader = (
-        <Transition
-          in={loading}
-          classes
-          durations={base}
-          enterDelay={loadingDelay}
-        >
+        <Transition in={loading} classes durations={base} enterDelay={loadingDelay}>
           <span className={`${cls}button-loader`}>
             <Spinner spinning delay={0} icon={loadingIcon} />
           </span>
@@ -294,14 +272,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   if (loadingCenter && !iconOnly) {
     return (
-      <Transition
-        in={!loading}
-        classes
-        durations={base}
-        exitDelay={loadingDelay}
-        firstMount
-        keepMounted
-      >
+      <Transition in={!loading} classes durations={base} exitDelay={loadingDelay} firstMount keepMounted>
         {button}
       </Transition>
     );

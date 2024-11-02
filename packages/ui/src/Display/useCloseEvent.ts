@@ -10,52 +10,27 @@ export interface CloseEventOptions {
 }
 
 function useCloseEvent(listener: () => void, options: CloseEventOptions) {
-  const {
-    closeOnEscape,
-    closeOnPageHide,
-    closeOnWindowBlur,
-    closeOnClickOutside,
-    closeOnDocumentClick,
-  } = options;
+  const { closeOnEscape, closeOnPageHide, closeOnWindowBlur, closeOnClickOutside, closeOnDocumentClick } = options;
 
-  useEventListener(
-    inBrowser && closeOnEscape ? document : null,
-    "keydown",
-    (event: KeyboardEvent) => {
-      if (!event.repeat) {
-        if (event.key === "Escape") {
-          listener();
-        }
-      }
-    }
-  );
-
-  useEventListener(
-    inBrowser && closeOnPageHide ? document : null,
-    "visibilitychange",
-    () => {
-      if (!isPageVisible()) {
+  useEventListener(inBrowser && closeOnEscape ? document : null, "keydown", (event: KeyboardEvent) => {
+    if (!event.repeat) {
+      if (event.key === "Escape") {
         listener();
       }
     }
-  );
+  });
 
-  useEventListener(
-    inBrowser && closeOnWindowBlur ? window : null,
-    "blur",
-    listener
-  );
+  useEventListener(inBrowser && closeOnPageHide ? document : null, "visibilitychange", () => {
+    if (!isPageVisible()) {
+      listener();
+    }
+  });
 
-  useClickOutside(
-    inBrowser && closeOnClickOutside ? closeOnClickOutside : null,
-    listener
-  );
+  useEventListener(inBrowser && closeOnWindowBlur ? window : null, "blur", listener);
 
-  useEventListener(
-    inBrowser && closeOnDocumentClick ? document : null,
-    "mousedown",
-    listener
-  );
+  useClickOutside(inBrowser && closeOnClickOutside ? closeOnClickOutside : null, listener);
+
+  useEventListener(inBrowser && closeOnDocumentClick ? document : null, "mousedown", listener);
 }
 
 export default useCloseEvent;

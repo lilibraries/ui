@@ -6,15 +6,8 @@ function Example() {
 
   return (
     <Flexbox gap="2x" align="center">
-      <Switch
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-      />
-      <Popup
-        open={open}
-        placement="top-start"
-        content="This is a popup message."
-      >
+      <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} />
+      <Popup open={open} placement="top-start" content="This is a popup message.">
         <Button>Trigger</Button>
       </Popup>
     </Flexbox>

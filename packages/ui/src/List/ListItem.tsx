@@ -45,8 +45,7 @@ export type ListItemProps<C extends ElementType = "li"> = C extends "li"
     } & Omit<ComponentProps<C>, "prefix" | "title"> &
       ListItemCommonProps;
 
-export interface ListItemComponent
-  extends ForwardRefExoticComponent<ListItemCommonProps> {
+export interface ListItemComponent extends ForwardRefExoticComponent<ListItemCommonProps> {
   <C extends ElementType = "li">(props: ListItemProps<C>): ReactElement;
 }
 
@@ -88,8 +87,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
     disabled: disabledProp,
     hoverable: hoverableProp,
   });
-  const hoverable =
-    hoverableConfig !== undefined ? !!hoverableConfig : !!onClick;
+  const hoverable = hoverableConfig !== undefined ? !!hoverableConfig : !!onClick;
 
   const classes = cn(
     `${cls}list-item`,
@@ -139,30 +137,16 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         </div>
       )}
       <div className={`${cls}list-item-main`}>
-        {isRenderable(prefix) && (
-          <div className={`${cls}list-item-prefix`}>{prefix}</div>
-        )}
+        {isRenderable(prefix) && <div className={`${cls}list-item-prefix`}>{prefix}</div>}
         <div className={`${cls}list-item-info`}>
-          {isRenderable(title) && (
-            <div className={`${cls}list-item-title`}>{title}</div>
-          )}
+          {isRenderable(title) && <div className={`${cls}list-item-title`}>{title}</div>}
           <div className={`${cls}list-item-label`}>{label}</div>
-          {isRenderable(detail) && (
-            <div className={`${cls}list-item-detail`}>{detail}</div>
-          )}
+          {isRenderable(detail) && <div className={`${cls}list-item-detail`}>{detail}</div>}
         </div>
-        {isRenderable(suffix) && (
-          <div className={`${cls}list-item-suffix`}>{suffix}</div>
-        )}
+        {isRenderable(suffix) && <div className={`${cls}list-item-suffix`}>{suffix}</div>}
         {!!arrowed && (
           <div className={`${cls}list-item-arrow`}>
-            {isRenderable(arrowIcon) ? (
-              arrowIcon
-            ) : isRTL ? (
-              <LeftChevronIcon />
-            ) : (
-              <RightChevronIcon />
-            )}
+            {isRenderable(arrowIcon) ? arrowIcon : isRTL ? <LeftChevronIcon /> : <RightChevronIcon />}
           </div>
         )}
       </div>
@@ -191,9 +175,7 @@ const ListItem = forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
         },
         inner
       )}
-      {isRenderable(children) && (
-        <ListConfig indent={indent + increasedIndent}>{children}</ListConfig>
-      )}
+      {isRenderable(children) && <ListConfig indent={indent + increasedIndent}>{children}</ListConfig>}
     </>
   );
 }) as ListItemComponent;

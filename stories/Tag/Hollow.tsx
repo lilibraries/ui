@@ -23,154 +23,49 @@ function Example() {
       </Flexbox>
 
       <Flexbox gap="2x" align="center" wrap>
-        <Tag
-          variant="hollow"
-          color="red"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="red" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="magenta"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="magenta" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="purple"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="purple" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="indigo"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="indigo" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="navy"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="navy" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="blue"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="blue" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="cyan"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="cyan" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="teal"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="teal" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="green"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="green" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="lime"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="lime" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="yellow"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="yellow" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="orange"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="orange" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="brown"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="brown" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color="gray"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color="gray" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          variant="hollow"
-          color={undefined}
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag variant="hollow" color={undefined} hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
       </Flexbox>

@@ -23,139 +23,49 @@ function Example() {
       </Flexbox>
 
       <Flexbox gap="2x" align="center" wrap>
-        <Tag
-          color="red"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="red" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="magenta"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="magenta" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="purple"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="purple" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="indigo"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="indigo" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="navy"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="navy" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="blue"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="blue" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="cyan"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="cyan" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="teal"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="teal" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="green"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="green" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="lime"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="lime" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="yellow"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="yellow" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="orange"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="orange" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="brown"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="brown" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color="gray"
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color="gray" hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
-        <Tag
-          color={null}
-          hoverable
-          clearable
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Tag color={null} hoverable clearable disabled={disabled} borderless={borderless}>
           Tag
         </Tag>
       </Flexbox>

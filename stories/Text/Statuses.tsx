@@ -10,85 +10,37 @@ function Example() {
   return (
     <Flexbox direction="column" fluid gap="4x">
       <Flexbox gap="4x" wrap>
-        <Checkbox
-          checked={muted}
-          onChange={(event) => setMuted(event.target.checked)}
-        >
+        <Checkbox checked={muted} onChange={(event) => setMuted(event.target.checked)}>
           Muted
         </Checkbox>
-        <Checkbox
-          checked={active}
-          onChange={(event) => setActive(event.target.checked)}
-        >
+        <Checkbox checked={active} onChange={(event) => setActive(event.target.checked)}>
           Active
         </Checkbox>
-        <Checkbox
-          checked={disabled}
-          onChange={(event) => setDisabled(event.target.checked)}
-        >
+        <Checkbox checked={disabled} onChange={(event) => setDisabled(event.target.checked)}>
           Disabled
         </Checkbox>
-        <Checkbox
-          checked={hoverable}
-          onChange={(event) => setHoverable(event.target.checked)}
-        >
+        <Checkbox checked={hoverable} onChange={(event) => setHoverable(event.target.checked)}>
           Hoverable
         </Checkbox>
       </Flexbox>
 
       <Flexbox gap="4x" wrap>
-        <Text
-          intent={null}
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent={null} muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Basic
         </Text>
-        <Text
-          intent="major"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent="major" muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Major
         </Text>
-        <Text
-          intent="minor"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent="minor" muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Minor
         </Text>
-        <Text
-          intent="positive"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent="positive" muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Positive
         </Text>
-        <Text
-          intent="alertive"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent="alertive" muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Alertive
         </Text>
-        <Text
-          intent="negative"
-          muted={muted}
-          active={active}
-          disabled={disabled}
-          hoverable={hoverable}
-        >
+        <Text intent="negative" muted={muted} active={active} disabled={disabled} hoverable={hoverable}>
           Negative
         </Text>
       </Flexbox>

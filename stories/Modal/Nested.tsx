@@ -21,18 +21,8 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Modal
-        open={open}
-        onClose={toggleOff}
-        width="medium"
-        showClose
-        title="Nested Modal"
-      >
-        <Popup
-          content={<NestedModal />}
-          placement="right"
-          style={{ width: "max-content" }}
-        >
+      <Modal open={open} onClose={toggleOff} width="medium" showClose title="Nested Modal">
+        <Popup content={<NestedModal />} placement="right" style={{ width: "max-content" }}>
           <Button>Popup</Button>
         </Popup>
         <br />

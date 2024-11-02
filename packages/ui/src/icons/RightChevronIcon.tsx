@@ -1,9 +1,6 @@
 import React, { forwardRef, SVGAttributes } from "react";
 
-const RightChevronIcon = forwardRef<
-  SVGSVGElement,
-  SVGAttributes<SVGSVGElement>
->((props, ref) => {
+const RightChevronIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>((props, ref) => {
   return (
     <svg
       ref={ref}

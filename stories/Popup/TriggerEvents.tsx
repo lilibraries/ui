@@ -16,11 +16,7 @@ function Example() {
       <Popup on="contextmenu" content="This is a popup message.">
         <Button>ContextMenu</Button>
       </Popup>
-      <Popup
-        on={["click", "hover", "focus", "contextmenu"]}
-        content="This is a popup message."
-        placement="top"
-      >
+      <Popup on={["click", "hover", "focus", "contextmenu"]} content="This is a popup message." placement="top">
         <Button>All</Button>
       </Popup>
     </Flexbox>

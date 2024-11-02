@@ -12,12 +12,7 @@ function Example() {
       <List.Item icon={<AiOutlineProject />} label="Your projects" />
       <List.Item icon={<FiCode />} label="Your codespaces" />
       <List.Item icon={<GiOrganigram />} label="Your organizations" />
-      <List.Item
-        icon={<AiOutlineBgColors />}
-        arrowed
-        suffix="Dark"
-        label="Theme preferences"
-      />
+      <List.Item icon={<AiOutlineBgColors />} arrowed suffix="Dark" label="Theme preferences" />
     </List>
   );
 }

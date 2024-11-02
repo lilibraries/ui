@@ -46,8 +46,7 @@ export type TagProps<C extends ElementType = "span"> = C extends "span"
     } & Omit<ComponentProps<C>, "color"> &
       TagCommonProps;
 
-export interface TagComponent
-  extends ForwardRefExoticComponent<TagCommonProps> {
+export interface TagComponent extends ForwardRefExoticComponent<TagCommonProps> {
   <C extends ElementType = "span">(props: TagProps<C>): ReactElement;
 }
 
@@ -139,9 +138,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       onClick: handleClick,
       className: classes,
     },
-    isRenderable(icon) ? (
-      <span className={`${cls}tag-icon`}>{icon}</span>
-    ) : null,
+    isRenderable(icon) ? <span className={`${cls}tag-icon`}>{icon}</span> : null,
     <span className={`${cls}tag-content`}>{children}</span>,
     clear
   );

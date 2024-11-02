@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { Menu, Switch } from "@lilib/ui";
 import { GiOrganigram } from "react-icons/gi";
-import {
-  FiCode,
-  FiHeart,
-  FiStar,
-  FiUser,
-  FiGitPullRequest,
-} from "react-icons/fi";
+import { FiCode, FiHeart, FiStar, FiUser, FiGitPullRequest } from "react-icons/fi";
 import { AiOutlineProject, AiOutlineBgColors } from "react-icons/ai";
 
 function Example() {
@@ -16,20 +10,11 @@ function Example() {
   return (
     <>
       <div style={{ marginBottom: 16 }}>
-        <Switch
-          checked={collapseByIcon}
-          onChange={(event) => setCollapseByIcon(event.target.checked)}
-        />{" "}
-        Collapse by Icon
+        <Switch checked={collapseByIcon} onChange={(event) => setCollapseByIcon(event.target.checked)} /> Collapse by
+        Icon
       </div>
 
-      <Menu
-        bounded
-        collapsible
-        collapseByIcon={collapseByIcon}
-        keepMounted
-        style={{ width: 300 }}
-      >
+      <Menu bounded collapsible collapseByIcon={collapseByIcon} keepMounted style={{ width: 300 }}>
         <Menu.Item icon={<FiUser />} label="Your profile">
           <Menu.Item icon={<FiHeart />} label="Your likes" />
           <Menu.Item icon={<FiStar />} label="Your stars" />
@@ -42,11 +27,7 @@ function Example() {
           </Menu.Item>
           <Menu.Item icon={<GiOrganigram />} label="Your organizations" />
         </Menu.Item>
-        <Menu.Item
-          icon={<AiOutlineBgColors />}
-          suffix="Dark"
-          label="Theme preferences"
-        />
+        <Menu.Item icon={<AiOutlineBgColors />} suffix="Dark" label="Theme preferences" />
       </Menu>
     </>
   );

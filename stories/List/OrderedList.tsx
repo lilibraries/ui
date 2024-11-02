@@ -1,10 +1,6 @@
 import React from "react";
 import { Icon, List, Text } from "@lilib/ui";
-import {
-  PiNumberOneBold,
-  PiNumberTwoBold,
-  PiNumberThreeBold,
-} from "react-icons/pi";
+import { PiNumberOneBold, PiNumberTwoBold, PiNumberThreeBold } from "react-icons/pi";
 
 function Example() {
   return (

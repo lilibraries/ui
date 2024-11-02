@@ -5,8 +5,7 @@ import Size, { SizeValue } from "../Size";
 import isPresetColor from "../utils/isPresetColor";
 import { ColorValue } from "../utils/types";
 
-export interface DotProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "color" | "children"> {
+export interface DotProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color" | "children"> {
   size?: SizeValue;
   color?: ColorValue | string;
   animated?: boolean;

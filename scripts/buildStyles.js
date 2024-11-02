@@ -32,10 +32,7 @@ const scriptFiles = glob.sync("**/*.ts?(x)", { cwd: sourceDir });
 
 async function copyScss() {
   for (const name of scssFiles) {
-    await fs.copy(
-      path.resolve(sourceDir, name),
-      path.resolve(outputDir, "scss", name)
-    );
+    await fs.copy(path.resolve(sourceDir, name), path.resolve(outputDir, "scss", name));
   }
 }
 
@@ -44,30 +41,22 @@ async function buildScss() {
 
   for (const name of scssFiles) {
     if (!path.basename(name).startsWith("_")) {
-      const sassResult = await sass.compileAsync(
-        path.resolve(sourceDir, name),
-        {
-          importers: [
-            {
-              findFileUrl(url) {
-                if (url === "@lilib/themes") {
-                  return pathToFileURL(
-                    path.resolve(__dirname, "../packages/themes/")
-                  );
-                } else {
-                  return url;
-                }
-              },
+      const sassResult = await sass.compileAsync(path.resolve(sourceDir, name), {
+        importers: [
+          {
+            findFileUrl(url) {
+              if (url === "@lilib/themes") {
+                return pathToFileURL(path.resolve(__dirname, "../packages/themes/"));
+              } else {
+                return url;
+              }
             },
-          ],
-        }
-      );
+          },
+        ],
+      });
       const postcssResult = await postcss(plugins).process(sassResult.css);
 
-      await fs.outputFile(
-        path.resolve(outputDir, "css", name.replace(/\.scss$/, ".css")),
-        postcssResult.css
-      );
+      await fs.outputFile(path.resolve(outputDir, "css", name.replace(/\.scss$/, ".css")), postcssResult.css);
     }
   }
 
@@ -75,37 +64,21 @@ async function buildScss() {
 
   if (fs.existsSync(cssEntry)) {
     const cssContent = fs.readFileSync(cssEntry, "utf-8");
-    const postcssResult = await postcss([
-      cssnano({ preset: "default" }),
-    ]).process(cssContent);
+    const postcssResult = await postcss([cssnano({ preset: "default" })]).process(cssContent);
 
-    await fs.outputFile(
-      path.resolve(outputDir, "css", "index.min.css"),
-      postcssResult.css
-    );
+    await fs.outputFile(path.resolve(outputDir, "css", "index.min.css"), postcssResult.css);
   }
 }
 
 async function buildScripts() {
   for (const name of scriptFiles) {
-    const babelResult = await babel.transformFileAsync(
-      path.resolve(sourceDir, name),
-      {
-        presets: [
-          [path.resolve(__dirname, "../babel.preset.js"), { module: "cjs" }],
-        ],
-      }
-    );
+    const babelResult = await babel.transformFileAsync(path.resolve(sourceDir, name), {
+      presets: [[path.resolve(__dirname, "../babel.preset.js"), { module: "cjs" }]],
+    });
     const outName = name.replace(/\.tsx?$/, ".js");
 
-    await fs.outputFile(
-      path.resolve(outputDir, "scss", outName),
-      babelResult.code
-    );
-    await fs.outputFile(
-      path.resolve(outputDir, "css", outName),
-      babelResult.code.replace(".scss", ".css")
-    );
+    await fs.outputFile(path.resolve(outputDir, "scss", outName), babelResult.code);
+    await fs.outputFile(path.resolve(outputDir, "css", outName), babelResult.code.replace(".scss", ".css"));
   }
 }
 

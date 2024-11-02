@@ -6,11 +6,7 @@ function Example() {
 
   return (
     <>
-      <Switch
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-        style={{ marginBottom: 8 }}
-      />
+      <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} style={{ marginBottom: 8 }} />
       <Alert open={open} closable onClose={() => setOpen(false)}>
         This is an example alert.
       </Alert>

@@ -10,12 +10,7 @@ import React, {
 import cn from "classnames";
 import isString from "lodash/isString";
 import ResizeObserver from "resize-observer-polyfill";
-import {
-  usePersist,
-  useUnmount,
-  useComposedRef,
-  useIsomorphicLayoutEffect,
-} from "@lilib/hooks";
+import { usePersist, useUnmount, useComposedRef, useIsomorphicLayoutEffect } from "@lilib/hooks";
 import { inBrowser } from "@lilib/utils";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
@@ -47,8 +42,7 @@ export type AvatarProps<C extends ElementType = "span"> = C extends "span"
     } & ComponentProps<C> &
       AvatarCommonProps;
 
-export interface AvatarComponent
-  extends ForwardRefExoticComponent<AvatarCommonProps> {
+export interface AvatarComponent extends ForwardRefExoticComponent<AvatarCommonProps> {
   <C extends ElementType = "span">(props: AvatarProps<C>): ReactElement;
   Group: typeof AvatarGroup;
 }
@@ -72,15 +66,13 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
-  const { variant, round, color, outlined, hoverable } = AvatarConfig.useConfig(
-    {
-      variant: variantProp,
-      round: roundProp,
-      color: colorProp,
-      outlined: outlinedProp,
-      hoverable: hoverableProp,
-    }
-  );
+  const { variant, round, color, outlined, hoverable } = AvatarConfig.useConfig({
+    variant: variantProp,
+    round: roundProp,
+    color: colorProp,
+    outlined: outlinedProp,
+    hoverable: hoverableProp,
+  });
 
   const classes = cn(
     `${cls}avatar`,
@@ -114,10 +106,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       const contentHeight = contentRef.current.clientHeight;
 
       if (contentWidth > wrapperWidth || contentHeight > wrapperHeight) {
-        const scale = Math.min(
-          wrapperWidth / contentWidth,
-          wrapperHeight / contentHeight
-        );
+        const scale = Math.min(wrapperWidth / contentWidth, wrapperHeight / contentHeight);
         contentRef.current.style.transform = `scale(${scale}) translate(-50%, -50%)`;
       } else {
         contentRef.current.style.transform = "translate(-50%, -50%)";

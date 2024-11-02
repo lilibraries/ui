@@ -8,16 +8,8 @@ const Prefixes: FC = () => {
     <Table
       head={["SCSS", "Value", "Description"]}
       body={[
-        [
-          <Usage type="scss" name="cls-prefix" />,
-          <Monospace>""</Monospace>,
-          "CSS class name prefix.",
-        ],
-        [
-          <Usage type="scss" name="var-prefix" />,
-          <Monospace>""</Monospace>,
-          "CSS variable name prefix.",
-        ],
+        [<Usage type="scss" name="cls-prefix" />, <Monospace>""</Monospace>, "CSS class name prefix."],
+        [<Usage type="scss" name="var-prefix" />, <Monospace>""</Monospace>, "CSS variable name prefix."],
       ]}
     />
   );

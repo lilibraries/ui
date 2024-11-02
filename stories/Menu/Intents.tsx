@@ -1,12 +1,6 @@
 import React from "react";
 import { Menu } from "@lilib/ui";
-import {
-  FiExternalLink,
-  FiHeart,
-  FiStar,
-  FiThumbsUp,
-  FiUser,
-} from "react-icons/fi";
+import { FiExternalLink, FiHeart, FiStar, FiThumbsUp, FiUser } from "react-icons/fi";
 
 function Example() {
   return (

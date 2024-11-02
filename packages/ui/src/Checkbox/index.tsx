@@ -17,8 +17,7 @@ import CheckIcon from "../icons/CheckIcon";
 import MinusIcon from "../icons/MinusIcon";
 import isRenderable from "../utils/isRenderable";
 
-export interface CheckboxProps
-  extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
+export interface CheckboxProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   indeterminate?: boolean;
   size?: SizeValue;
   loading?: boolean;
@@ -55,9 +54,7 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const isRTL = Direction.useConfig() === "rtl";
 
   const controlled = checkedProp != null;
-  const [checked, setChecked] = useSafeState(
-    controlled ? !!checkedProp : !!defaultChecked
-  );
+  const [checked, setChecked] = useSafeState(controlled ? !!checkedProp : !!defaultChecked);
 
   useUpdate(() => {
     if (controlled) {
@@ -104,18 +101,12 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
         <span className={`${cls}checkbox-indicator`}>
           {checked && (
             <span className={`${cls}checkbox-icon`}>
-              {indeterminate ? (
-                <MinusIcon strokeWidth="8" />
-              ) : (
-                <CheckIcon strokeWidth="8" />
-              )}
+              {indeterminate ? <MinusIcon strokeWidth="8" /> : <CheckIcon strokeWidth="8" />}
             </span>
           )}
         </span>
       </Spinner>
-      {isRenderable(children) && (
-        <span className={`${cls}checkbox-label`}>{children}</span>
-      )}
+      {isRenderable(children) && <span className={`${cls}checkbox-label`}>{children}</span>}
     </label>
   );
 });

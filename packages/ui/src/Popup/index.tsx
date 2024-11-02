@@ -1,19 +1,13 @@
 import React, { ReactElement, forwardRef, useRef } from "react";
 import cn from "classnames";
-import {
-  useUpdate,
-  usePersist,
-  useSetState,
-  useComposedRef,
-} from "@lilib/hooks";
+import { useUpdate, usePersist, useSetState, useComposedRef } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Duration from "../Duration";
 import Transition from "../Transition";
 import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
-export interface PopupProps
-  extends Omit<PopperProps, "arrow" | "arrowPadding" | "render"> {
+export interface PopupProps extends Omit<PopperProps, "arrow" | "arrowPadding" | "render"> {
   unpadding?: boolean;
   arrowless?: boolean;
   animeless?: boolean;
@@ -146,14 +140,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   if (!animeless) {
     render = (popper) => {
       return (
-        <Transition
-          in={enter}
-          classes
-          durations={fast}
-          exitDelay={exitDelay}
-          firstMount
-          keepMounted
-        >
+        <Transition in={enter} classes durations={fast} exitDelay={exitDelay} firstMount keepMounted>
           {popper}
         </Transition>
       );

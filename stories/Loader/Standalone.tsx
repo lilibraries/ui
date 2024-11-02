@@ -6,10 +6,7 @@ function Example() {
 
   return (
     <>
-      <Switch
-        checked={loading}
-        onChange={(event) => setLoading(event.target.checked)}
-      />
+      <Switch checked={loading} onChange={(event) => setLoading(event.target.checked)} />
       <Loader loading={loading} />
     </>
   );

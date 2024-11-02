@@ -71,9 +71,7 @@ export const decorators = [
     const { direction } = context.globals;
 
     useLayoutMount(() => {
-      const wrapper = demoContainerRef.current?.closest(
-        ".innerZoomElementWrapper"
-      );
+      const wrapper = demoContainerRef.current?.closest(".innerZoomElementWrapper");
       if (wrapper) {
         wrapper.parentNode.style.height = "unset";
       }

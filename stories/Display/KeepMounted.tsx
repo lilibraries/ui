@@ -10,10 +10,7 @@ function Example() {
 
   return (
     <>
-      <Switch
-        checked={open}
-        onChange={(event) => setState({ open: event.target.checked })}
-      />
+      <Switch checked={open} onChange={(event) => setState({ open: event.target.checked })} />
       <Display
         open={open}
         openDelay={300}
@@ -27,9 +24,7 @@ function Example() {
         onOpened={() => setState({ opened: true })}
         onClosed={() => setState({ opened: false })}
       >
-        <div style={{ opacity: opened ? 1 : 0.5 }}>
-          {opened ? "Opened" : "Closed"}
-        </div>
+        <div style={{ opacity: opened ? 1 : 0.5 }}>{opened ? "Opened" : "Closed"}</div>
       </Display>
     </>
   );

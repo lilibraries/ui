@@ -8,27 +8,9 @@ function Example() {
       placement="right"
       content={
         <Flexbox gap="1x">
-          <Button
-            color="blue"
-            variant="hollow"
-            startIcon={<FiThumbsUp />}
-            iconOnly
-            borderless
-          />
-          <Button
-            color="orange"
-            variant="hollow"
-            startIcon={<FiStar />}
-            iconOnly
-            borderless
-          />
-          <Button
-            color="red"
-            variant="hollow"
-            startIcon={<FiHeart />}
-            iconOnly
-            borderless
-          />
+          <Button color="blue" variant="hollow" startIcon={<FiThumbsUp />} iconOnly borderless />
+          <Button color="orange" variant="hollow" startIcon={<FiStar />} iconOnly borderless />
+          <Button color="red" variant="hollow" startIcon={<FiHeart />} iconOnly borderless />
         </Flexbox>
       }
     >

@@ -16,10 +16,7 @@
     opacity: 0;
     appearance: none;
 
-    [data-focusing]
-      &:focus
-      + .#{$cls-prefix}spinner
-      .#{$cls-prefix}checkbox-indicator {
+    [data-focusing] &:focus + .#{$cls-prefix}spinner .#{$cls-prefix}checkbox-indicator {
       @include focus-outline;
     }
   }

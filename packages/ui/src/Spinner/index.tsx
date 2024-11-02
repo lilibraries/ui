@@ -30,9 +30,7 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export interface SpinnerComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<SpinnerProps> & RefAttributes<HTMLSpanElement>
-  > {
+  extends ForwardRefExoticComponent<PropsWithoutRef<SpinnerProps> & RefAttributes<HTMLSpanElement>> {
   Config: typeof SpinnerConfig;
 }
 
@@ -111,14 +109,7 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     return (
       <span {...rest} ref={ref} style={styles} className={classes}>
         {hasContent && (
-          <Transition
-            in={!spinning}
-            classes
-            durations={base}
-            exitDelay={delay}
-            firstMount
-            keepMounted
-          >
+          <Transition in={!spinning} classes durations={base} exitDelay={delay} firstMount keepMounted>
             <span className={`${cls}spinner-switcher`}>{content}</span>
           </Transition>
         )}
@@ -131,12 +122,9 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     return (
       <Transition in={spinning} classes durations={base} enterDelay={delay}>
         {(status) => {
-          const enter =
-            status === Transition.ENTERING || status === Transition.ENTERED;
-          const marginInlineStart =
-            enter && hasStartSpaceStyle ? startSpace : undefined;
-          const marginInlineEnd =
-            enter && hasEndSpaceStyle ? endSpace : undefined;
+          const enter = status === Transition.ENTERING || status === Transition.ENTERED;
+          const marginInlineStart = enter && hasStartSpaceStyle ? startSpace : undefined;
+          const marginInlineEnd = enter && hasEndSpaceStyle ? endSpace : undefined;
 
           const styles = Object.assign(
             {},

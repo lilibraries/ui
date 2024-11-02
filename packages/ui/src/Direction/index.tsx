@@ -28,10 +28,7 @@ export interface DirectionUnscopedProps {
   children: ReactNode;
 }
 
-export interface DirectionComponent
-  extends ForwardRefExoticComponent<
-    DirectionScopedProps | DirectionUnscopedProps
-  > {
+export interface DirectionComponent extends ForwardRefExoticComponent<DirectionScopedProps | DirectionUnscopedProps> {
   Context: typeof DirectionContext;
   useConfig: typeof useDirectionConfig;
 }
@@ -43,10 +40,7 @@ function useDirectionConfig(override?: DirectionValue): DirectionValue {
   return mergeConfig(base, override);
 }
 
-const Direction = forwardRef<
-  any,
-  DirectionScopedProps | DirectionUnscopedProps
->((props, ref) => {
+const Direction = forwardRef<any, DirectionScopedProps | DirectionUnscopedProps>((props, ref) => {
   const { value, scoped, children, ...rest } = props;
 
   useIsomorphicLayoutEffect(() => {
@@ -62,9 +56,7 @@ const Direction = forwardRef<
             ...rest,
             dir: scoped && value ? value : undefined,
             ...children.props,
-            ref: isFunction(children.type)
-              ? undefined
-              : composeRefs((children as any).ref, ref),
+            ref: isFunction(children.type) ? undefined : composeRefs((children as any).ref, ref),
             style: { ...(rest as any).style, ...children.props.style },
             className: cn((rest as any).className, children.props.className),
           })

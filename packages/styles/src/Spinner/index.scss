@@ -49,15 +49,7 @@
   }
 
   &:not(.#{$cls-prefix}contented) {
-    @include transition(
-      base,
-      ease,
-      width,
-      margin-inline-start,
-      margin-inline-end,
-      transform,
-      opacity
-    );
+    @include transition(base, ease, width, margin-inline-start, margin-inline-end, transform, opacity);
 
     &.#{$cls-prefix}transition {
       &-enter,

@@ -1,11 +1,6 @@
 import React from "react";
 import { Alert, Icon, Info, Text } from "@lilib/ui";
-import {
-  FiInfo,
-  FiCheckCircle,
-  FiAlertCircle,
-  FiAlertTriangle,
-} from "react-icons/fi";
+import { FiInfo, FiCheckCircle, FiAlertCircle, FiAlertTriangle } from "react-icons/fi";
 
 function Example() {
   return (
