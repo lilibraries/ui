@@ -6,8 +6,7 @@ React component library.
 
 ### Designs
 
-- [ ] Tokens
-- [ ] Palettes
+- [x] Tokens
 
 ### Configs
 
