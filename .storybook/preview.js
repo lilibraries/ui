@@ -18,10 +18,10 @@ export const parameters = {
       const { direction } = globals;
 
       return (
-        <Prefix cls="li-" var="li-">
-          <Root>
-            <Baseline>
-              <Focusing>
+        <Root>
+          <Baseline>
+            <Focusing>
+              <Prefix cls="li-" var="li-">
                 <Theme value={isDarkMode ? "dark" : "light"}>
                   <Direction value={direction || "ltr"}>
                     <BaseContainer
@@ -46,10 +46,10 @@ export const parameters = {
                     </BaseContainer>
                   </Direction>
                 </Theme>
-              </Focusing>
-            </Baseline>
-          </Root>
-        </Prefix>
+              </Prefix>
+            </Focusing>
+          </Baseline>
+        </Root>
       );
     },
   },
@@ -78,19 +78,19 @@ export const decorators = [
     });
 
     return (
-      <Prefix cls="li-" var="li-">
-        <Root>
-          <Baseline>
-            <Focusing>
+      <Root>
+        <Baseline>
+          <Focusing>
+            <Prefix cls="li-" var="li-">
               <Theme value={useDarkMode() ? "dark" : "light"}>
                 <Direction value={direction || "ltr"}>
                   <div ref={demoContainerRef}>{render()}</div>
                 </Direction>
               </Theme>
-            </Focusing>
-          </Baseline>
-        </Root>
-      </Prefix>
+            </Prefix>
+          </Focusing>
+        </Baseline>
+      </Root>
     );
   },
 ];
