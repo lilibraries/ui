@@ -10,7 +10,7 @@ React component library.
 
 ### Configs
 
-- [ ] Root
+- [x] Root
 - [ ] Baseline
 - [ ] Focusing
 - [ ] Prefix
