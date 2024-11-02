@@ -6,10 +6,7 @@ function Example() {
 
   return (
     <>
-      <Switch
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-      />
+      <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} />
       <Display
         open={open}
         openDelay={500}

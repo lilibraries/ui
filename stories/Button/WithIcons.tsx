@@ -1,13 +1,6 @@
 import React from "react";
 import { Button, Flexbox } from "@lilib/ui";
-import {
-  FiStar,
-  FiHeart,
-  FiLogOut,
-  FiThumbsUp,
-  FiFileText,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiStar, FiHeart, FiLogOut, FiThumbsUp, FiFileText, FiArrowRight } from "react-icons/fi";
 
 function Example() {
   return (

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Avatar,
-  Checkbox,
-  Flexbox,
-  Info,
-  Radio,
-  Spinner,
-  Switch,
-} from "@lilib/ui";
+import { Avatar, Checkbox, Flexbox, Info, Radio, Spinner, Switch } from "@lilib/ui";
 import { FiInfo } from "react-icons/fi";
 
 function Example() {

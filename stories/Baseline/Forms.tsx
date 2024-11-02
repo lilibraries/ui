@@ -124,8 +124,7 @@ function Forms() {
         </fieldset>
 
         <div>
-          <input type="button" value="Input" /> <button>Button</button>{" "}
-          <button type="submit">Submit</button>{" "}
+          <input type="button" value="Input" /> <button>Button</button> <button type="submit">Submit</button>{" "}
           <button type="reset">Reset</button>
         </div>
       </Flexbox>

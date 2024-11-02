@@ -25,8 +25,7 @@ import RadioConfig, { RadioElement } from "./RadioConfig";
 export * from "./RadioGroup";
 export * from "./RadioConfig";
 
-export interface RadioProps
-  extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
+export interface RadioProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   size?: SizeValue;
   loading?: boolean;
   loadingIcon?: ReactNode;
@@ -41,9 +40,7 @@ export interface RadioProps
 }
 
 export interface RadioComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<RadioProps> & RefAttributes<HTMLLabelElement>
-  > {
+  extends ForwardRefExoticComponent<PropsWithoutRef<RadioProps> & RefAttributes<HTMLLabelElement>> {
   Group: typeof RadioGroup;
 }
 
@@ -165,9 +162,7 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
           )}
         </span>
       </Spinner>
-      {isRenderable(children) && (
-        <span className={`${cls}radio-label`}>{children}</span>
-      )}
+      {isRenderable(children) && <span className={`${cls}radio-label`}>{children}</span>}
     </label>
   );
 }) as RadioComponent;

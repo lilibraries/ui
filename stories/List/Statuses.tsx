@@ -1,34 +1,14 @@
 import React, { useState } from "react";
 import { Flexbox, List, Radio, SizeValue, Switch } from "@lilib/ui";
 import { useSetState } from "@lilib/hooks";
-import {
-  AiOutlineBgColors,
-  AiOutlinePicCenter,
-  AiOutlineBorderOuter,
-} from "react-icons/ai";
-import {
-  BsTextIndentLeft,
-  BsHandIndexThumb,
-  BsArrowRightSquare,
-} from "react-icons/bs";
+import { AiOutlineBgColors, AiOutlinePicCenter, AiOutlineBorderOuter } from "react-icons/ai";
+import { BsTextIndentLeft, BsHandIndexThumb, BsArrowRightSquare } from "react-icons/bs";
 import { VscSplitVertical } from "react-icons/vsc";
 import { MdOutlineNearMeDisabled } from "react-icons/md";
 
 function Example() {
   const [size, setSize] = useState<SizeValue>(null);
-  const [
-    {
-      filled,
-      splited,
-      indented,
-      bounded,
-      bordered,
-      arrowed,
-      hoverable,
-      disabled,
-    },
-    setState,
-  ] = useSetState({
+  const [{ filled, splited, indented, bounded, bordered, arrowed, hoverable, disabled }, setState] = useSetState({
     filled: false,
     splited: true,
     indented: true,
@@ -42,11 +22,7 @@ function Example() {
   return (
     <>
       <div style={{ marginBottom: 8 }}>
-        <Radio.Group
-          size={size}
-          value={size}
-          onChange={(event) => setSize(event.target.value as SizeValue)}
-        >
+        <Radio.Group size={size} value={size} onChange={(event) => setSize(event.target.value as SizeValue)}>
           <Flexbox gap="4x">
             <Radio value="small">Small</Radio>
             <Radio value={null}>Medium</Radio>
@@ -69,22 +45,14 @@ function Example() {
         <List.Item
           icon={<AiOutlineBgColors />}
           suffix={
-            <Switch
-              size="small"
-              checked={filled}
-              onChange={(event) => setState({ filled: event.target.checked })}
-            />
+            <Switch size="small" checked={filled} onChange={(event) => setState({ filled: event.target.checked })} />
           }
           label="Filled"
         />
         <List.Item
           icon={<VscSplitVertical />}
           suffix={
-            <Switch
-              size="small"
-              checked={splited}
-              onChange={(event) => setState({ splited: event.target.checked })}
-            />
+            <Switch size="small" checked={splited} onChange={(event) => setState({ splited: event.target.checked })} />
           }
           label="Splited"
         />
@@ -102,11 +70,7 @@ function Example() {
         <List.Item
           icon={<AiOutlinePicCenter />}
           suffix={
-            <Switch
-              size="small"
-              checked={bounded}
-              onChange={(event) => setState({ bounded: event.target.checked })}
-            />
+            <Switch size="small" checked={bounded} onChange={(event) => setState({ bounded: event.target.checked })} />
           }
           label="Bounded"
         />
@@ -124,11 +88,7 @@ function Example() {
         <List.Item
           icon={<BsArrowRightSquare />}
           suffix={
-            <Switch
-              size="small"
-              checked={arrowed}
-              onChange={(event) => setState({ arrowed: event.target.checked })}
-            />
+            <Switch size="small" checked={arrowed} onChange={(event) => setState({ arrowed: event.target.checked })} />
           }
           label="Arrowed"
         />
@@ -138,9 +98,7 @@ function Example() {
             <Switch
               size="small"
               checked={hoverable}
-              onChange={(event) =>
-                setState({ hoverable: event.target.checked })
-              }
+              onChange={(event) => setState({ hoverable: event.target.checked })}
             />
           }
           label="Hoverable"

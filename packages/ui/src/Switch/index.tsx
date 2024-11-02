@@ -15,8 +15,7 @@ import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import isRenderable from "../utils/isRenderable";
 
-export interface SwitchProps
-  extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
+export interface SwitchProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   size?: SizeValue;
   icon?: ReactNode;
   checkedLabel?: ReactNode;
@@ -64,9 +63,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   }
 
   const controlled = checkedProp != null;
-  const [checked, setChecked] = useSafeState(
-    controlled ? !!checkedProp : !!defaultChecked
-  );
+  const [checked, setChecked] = useSafeState(controlled ? !!checkedProp : !!defaultChecked);
 
   useUpdate(() => {
     if (controlled) {
@@ -110,21 +107,10 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
         className={cn(`${cls}switch-input`, inputProps?.className)}
       />
       <span className={`${cls}switch-track`}>
-        {isRenderable(checkedLabel) && (
-          <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>
-        )}
-        {isRenderable(uncheckedLabel) && (
-          <span className={`${cls}switch-unchecked-label`}>
-            {uncheckedLabel}
-          </span>
-        )}
+        {isRenderable(checkedLabel) && <span className={`${cls}switch-checked-label`}>{checkedLabel}</span>}
+        {isRenderable(uncheckedLabel) && <span className={`${cls}switch-unchecked-label`}>{uncheckedLabel}</span>}
         <span className={`${cls}switch-slider`}>
-          <Spinner
-            contented
-            spinning={loading}
-            icon={loadingIcon}
-            delay={loadingDelay}
-          >
+          <Spinner contented spinning={loading} icon={loadingIcon} delay={loadingDelay}>
             {icon}
           </Spinner>
         </span>

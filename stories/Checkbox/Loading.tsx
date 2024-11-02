@@ -6,10 +6,7 @@ function Example() {
 
   return (
     <Flexbox gap="4x" align="center">
-      <Switch
-        checked={loading}
-        onChange={(event) => setLoading(event.target.checked)}
-      />
+      <Switch checked={loading} onChange={(event) => setLoading(event.target.checked)} />
       <Checkbox loading={loading}>Checkbox</Checkbox>
     </Flexbox>
   );

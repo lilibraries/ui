@@ -29,8 +29,7 @@ export interface ThemeUnscopedProps {
   children: ReactNode;
 }
 
-export interface ThemeComponent
-  extends ForwardRefExoticComponent<ThemeScopedProps | ThemeUnscopedProps> {
+export interface ThemeComponent extends ForwardRefExoticComponent<ThemeScopedProps | ThemeUnscopedProps> {
   Context: typeof ThemeContext;
   useConfig: typeof useThemeConfig;
 }
@@ -42,72 +41,64 @@ function useThemeConfig(override?: ThemeValue): ThemeValue {
   return mergeConfig(base, override);
 }
 
-const Theme = forwardRef<any, ThemeScopedProps | ThemeUnscopedProps>(
-  (props, ref) => {
-    const { value, scoped, children, ...rest } = props;
-    const { cls } = Prefix.useConfig();
+const Theme = forwardRef<any, ThemeScopedProps | ThemeUnscopedProps>((props, ref) => {
+  const { value, scoped, children, ...rest } = props;
+  const { cls } = Prefix.useConfig();
 
-    useIsomorphicLayoutEffect(() => {
-      if (inBrowser && !scoped) {
-        const dark = `${cls}dark`;
-        const light = `${cls}light`;
-        const classes = document.documentElement.classList;
+  useIsomorphicLayoutEffect(() => {
+    if (inBrowser && !scoped) {
+      const dark = `${cls}dark`;
+      const light = `${cls}light`;
+      const classes = document.documentElement.classList;
 
-        switch (value) {
-          case "dark": {
-            if (!classes.contains(dark)) {
-              classes.add(dark);
-            }
-            if (classes.contains(light)) {
-              classes.remove(light);
-            }
-            break;
+      switch (value) {
+        case "dark": {
+          if (!classes.contains(dark)) {
+            classes.add(dark);
           }
-
-          case "light": {
-            if (!classes.contains(light)) {
-              classes.add(light);
-            }
-            if (classes.contains(dark)) {
-              classes.remove(dark);
-            }
-            break;
+          if (classes.contains(light)) {
+            classes.remove(light);
           }
+          break;
+        }
 
-          default: {
-            if (classes.contains(dark)) {
-              classes.remove(dark);
-            }
-            if (classes.contains(light)) {
-              classes.remove(light);
-            }
-            break;
+        case "light": {
+          if (!classes.contains(light)) {
+            classes.add(light);
           }
+          if (classes.contains(dark)) {
+            classes.remove(dark);
+          }
+          break;
+        }
+
+        default: {
+          if (classes.contains(dark)) {
+            classes.remove(dark);
+          }
+          if (classes.contains(light)) {
+            classes.remove(light);
+          }
+          break;
         }
       }
-    }, [cls, value]);
+    }
+  }, [cls, value]);
 
-    return (
-      <ThemeContext.Provider value={value}>
-        {isValidElement(children)
-          ? cloneElement(children, {
-              ...rest,
-              ...children.props,
-              ref: isFunction(children.type)
-                ? undefined
-                : composeRefs((children as any).ref, ref),
-              className: cn(
-                (rest as any).className,
-                { [`${cls}${value}`]: scoped && value },
-                children.props.className
-              ),
-              style: { ...(rest as any).style, ...children.props.style },
-            })
-          : children}
-      </ThemeContext.Provider>
-    );
-  }
-) as ThemeComponent;
+  return (
+    <ThemeContext.Provider value={value}>
+      {isValidElement(children)
+        ? cloneElement(children, {
+            ...rest,
+            ...children.props,
+            ref: isFunction(children.type) ? undefined : composeRefs((children as any).ref, ref),
+            className: cn((rest as any).className, { [`${cls}${value}`]: scoped && value }, children.props.className),
+            style: { ...(rest as any).style, ...children.props.style },
+          })
+        : children}
+    </ThemeContext.Provider>
+  );
+}) as ThemeComponent;
 
 Theme.Context = ThemeContext;
 Theme.useConfig = useThemeConfig;

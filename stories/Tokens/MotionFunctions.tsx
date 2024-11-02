@@ -11,10 +11,7 @@ const MotionFunctions: FC = () => {
         [
           <Usage type="scss" name="motion-function-ease" />,
           <Usage type="css" name="motion-function-ease" />,
-          <Value
-            styleName="animationTimingFunction"
-            styleValue={(prefix) => `var(--${prefix}motion-function-ease)`}
-          />,
+          <Value styleName="animationTimingFunction" styleValue={(prefix) => `var(--${prefix}motion-function-ease)`} />,
         ],
 
         [
@@ -40,9 +37,7 @@ const MotionFunctions: FC = () => {
           <Usage type="css" name="motion-function-ease-in-out" />,
           <Value
             styleName="animationTimingFunction"
-            styleValue={(prefix) =>
-              `var(--${prefix}motion-function-ease-in-out)`
-            }
+            styleValue={(prefix) => `var(--${prefix}motion-function-ease-in-out)`}
           />,
         ],
 

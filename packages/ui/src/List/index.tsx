@@ -38,8 +38,7 @@ export type ListProps<C extends ElementType = "ul"> = C extends "ul"
     } & ComponentProps<C> &
       ListCommonProps;
 
-export interface ListComponent
-  extends ForwardRefExoticComponent<ListCommonProps> {
+export interface ListComponent extends ForwardRefExoticComponent<ListCommonProps> {
   <C extends ElementType = "ul">(props: ListProps<C>): ReactElement;
   Item: typeof ListItem;
 }

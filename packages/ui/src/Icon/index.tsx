@@ -1,10 +1,4 @@
-import React, {
-  ReactNode,
-  forwardRef,
-  cloneElement,
-  isValidElement,
-  HTMLAttributes,
-} from "react";
+import React, { ReactNode, forwardRef, cloneElement, isValidElement, HTMLAttributes } from "react";
 import cn from "classnames";
 import isString from "lodash/isString";
 import isNumber from "lodash/isNumber";
@@ -18,14 +12,7 @@ export interface IconProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
-  const {
-    icon: iconProp,
-    spinning,
-    style,
-    children,
-    className,
-    ...rest
-  } = props;
+  const { icon: iconProp, spinning, style, children, className, ...rest } = props;
   const { cls } = Prefix.useConfig();
 
   let icon: ReactNode;

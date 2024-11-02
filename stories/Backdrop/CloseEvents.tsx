@@ -8,14 +8,7 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Backdrop
-        open={open}
-        closeOnEscape
-        closeOnPageHide
-        closeOnWindowBlur
-        closeOnBackdropClick
-        onClose={toggleOff}
-      >
+      <Backdrop open={open} closeOnEscape closeOnPageHide closeOnWindowBlur closeOnBackdropClick onClose={toggleOff}>
         <div
           style={{
             position: "absolute",

@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-prettier",
-    "stylelint-config-rational-order"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier", "stylelint-config-rational-order"],
   "rules": {
     "no-empty-source": null,
     "value-keyword-case": null,

@@ -6,15 +6,8 @@ function Example() {
 
   return (
     <>
-      <Switch
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-      />
-      <Display
-        open={open}
-        onOpened={() => console.log("Opened")}
-        onClosed={() => console.log("Closed")}
-      >
+      <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} />
+      <Display open={open} onOpened={() => console.log("Opened")} onClosed={() => console.log("Closed")}>
         <div>Display content.</div>
       </Display>
     </>

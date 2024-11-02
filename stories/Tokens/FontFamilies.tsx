@@ -9,37 +9,18 @@ const FontFamilies: FC = () => {
       head={["SCSS", "CSS", "Value"]}
       body={[
         [
-          <Usage
-            type="scss"
-            name="font-family-base"
-            style={{ whiteSpace: "nowrap" }}
-          />,
-          <Usage
-            type="css"
-            name="font-family-base"
-            style={{ whiteSpace: "nowrap" }}
-          />,
+          <Usage type="scss" name="font-family-base" style={{ whiteSpace: "nowrap" }} />,
+          <Usage type="css" name="font-family-base" style={{ whiteSpace: "nowrap" }} />,
           <Monospace>
-            system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color
-            Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+            system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", Arial,
+            sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
           </Monospace>,
         ],
 
         [
-          <Usage
-            type="scss"
-            name="font-family-mono"
-            style={{ whiteSpace: "nowrap" }}
-          />,
-          <Usage
-            type="css"
-            name="font-family-mono"
-            style={{ whiteSpace: "nowrap" }}
-          />,
-          <Monospace>
-            Menlo, Monaco, Consolas, "Courier New", Courier, monospace
-          </Monospace>,
+          <Usage type="scss" name="font-family-mono" style={{ whiteSpace: "nowrap" }} />,
+          <Usage type="css" name="font-family-mono" style={{ whiteSpace: "nowrap" }} />,
+          <Monospace>Menlo, Monaco, Consolas, "Courier New", Courier, monospace</Monospace>,
         ],
       ]}
     />

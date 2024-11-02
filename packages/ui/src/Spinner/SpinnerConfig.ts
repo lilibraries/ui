@@ -10,10 +10,6 @@ export interface SpinnerConfigProps extends SpinnerConfigValue {
   children: ReactNode;
 }
 
-const SpinnerConfig = createConfig<SpinnerConfigValue, SpinnerConfigProps>(
-  {},
-  ["icon", "delay"],
-  { inherit: true }
-);
+const SpinnerConfig = createConfig<SpinnerConfigValue, SpinnerConfigProps>({}, ["icon", "delay"], { inherit: true });
 
 export default SpinnerConfig;

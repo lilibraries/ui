@@ -3,13 +3,7 @@ import { Tag } from "@lilib/ui";
 
 function Example() {
   return (
-    <Tag
-      as="a"
-      rel="noreferrer"
-      href="https://github.com/lilibraries/ui"
-      target="_blank"
-      hoverable
-    >
+    <Tag as="a" rel="noreferrer" href="https://github.com/lilibraries/ui" target="_blank" hoverable>
       Github
     </Tag>
   );

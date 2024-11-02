@@ -2,39 +2,15 @@ import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import Prefix from "../Prefix";
 
-export type FlexboxDirection =
-  | "row"
-  | "column"
-  | "row-reverse"
-  | "column-reverse";
+export type FlexboxDirection = "row" | "column" | "row-reverse" | "column-reverse";
 
-export type FlexboxGap =
-  | "1x"
-  | "2x"
-  | "3x"
-  | "4x"
-  | "5x"
-  | "6x"
-  | "7x"
-  | "8x"
-  | "9x";
+export type FlexboxGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
 
 export type FlexboxWrap = boolean | "wrap" | "nowrap" | "wrap-reverse";
 
-export type FlexboxAlign =
-  | "stretch"
-  | "center"
-  | "baseline"
-  | "flex-start"
-  | "flex-end";
+export type FlexboxAlign = "stretch" | "center" | "baseline" | "flex-start" | "flex-end";
 
-export type FlexboxJustify =
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-between"
-  | "space-around"
-  | "space-evenly";
+export type FlexboxJustify = "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
 
 export interface FlexboxProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
@@ -46,17 +22,7 @@ export interface FlexboxProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>((props, ref) => {
-  const {
-    children,
-    className,
-    fluid,
-    direction,
-    gap,
-    wrap,
-    align,
-    justify,
-    ...rest
-  } = props;
+  const { children, className, fluid, direction, gap, wrap, align, justify, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const classes = cn(

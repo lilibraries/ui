@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Avatar,
-  Text,
-  Image,
-  Flexbox,
-  Checkbox,
-} from "@lilib/ui";
+import { Button, Card, Avatar, Text, Image, Flexbox, Checkbox } from "@lilib/ui";
 import { FiMoreVertical } from "react-icons/fi";
 
 function Example() {
@@ -20,34 +12,19 @@ function Example() {
   return (
     <>
       <Flexbox gap="4x" style={{ marginBottom: 16 }}>
-        <Checkbox
-          checked={splited}
-          onChange={(event) => setSplited(event.target.checked)}
-        >
+        <Checkbox checked={splited} onChange={(event) => setSplited(event.target.checked)}>
           Splited
         </Checkbox>
-        <Checkbox
-          checked={shadowed}
-          onChange={(event) => setShadowed(event.target.checked)}
-        >
+        <Checkbox checked={shadowed} onChange={(event) => setShadowed(event.target.checked)}>
           Shadowed
         </Checkbox>
-        <Checkbox
-          checked={hoverable}
-          onChange={(event) => setHoverable(event.target.checked)}
-        >
+        <Checkbox checked={hoverable} onChange={(event) => setHoverable(event.target.checked)}>
           Hoverable
         </Checkbox>
-        <Checkbox
-          checked={unpadding}
-          onChange={(event) => setUnpadding(event.target.checked)}
-        >
+        <Checkbox checked={unpadding} onChange={(event) => setUnpadding(event.target.checked)}>
           Unpadding
         </Checkbox>
-        <Checkbox
-          checked={borderless}
-          onChange={(event) => setBorderless(event.target.checked)}
-        >
+        <Checkbox checked={borderless} onChange={(event) => setBorderless(event.target.checked)}>
           Borderless
         </Checkbox>
       </Flexbox>
@@ -59,24 +36,12 @@ function Example() {
         hoverable={hoverable}
         unpadding={unpadding}
         borderless={borderless}
-        image={
-          <Image src="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5" />
-        }
+        image={<Image src="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5" />}
         imageSize="200px"
         imagePlacement="start"
-        icon={
-          <Avatar
-            round
-            size="small"
-            image="https://avatars.githubusercontent.com/u/9942342?v=4"
-          />
-        }
+        icon={<Avatar round size="small" image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
         title={
-          <a
-            rel="noreferrer"
-            href="https://github.com/LeeWeisheng"
-            target="_blank"
-          >
+          <a rel="noreferrer" href="https://github.com/LeeWeisheng" target="_blank">
             LeeWeisheng
           </a>
         }
@@ -101,9 +66,8 @@ function Example() {
           </Button>
         }
       >
-        I am a front-end developer. Daily development using the React framework.
-        I am interested in UI design and have created a component library. I am
-        currently looking for a good job.
+        I am a front-end developer. Daily development using the React framework. I am interested in UI design and have
+        created a component library. I am currently looking for a good job.
       </Card>
     </>
   );

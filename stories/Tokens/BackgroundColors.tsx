@@ -13,12 +13,7 @@ interface BackgroundColorsProps {
 }
 
 const BackgroundColors: FC<BackgroundColorsProps> = (props) => {
-  const {
-    color,
-    intent,
-    variant,
-    statuses = ["base", "hover", "active", "inactive", "disabled"],
-  } = props;
+  const { color, intent, variant, statuses = ["base", "hover", "active", "inactive", "disabled"] } = props;
   const { var: prefix } = Prefix.useConfig();
 
   const rows = statuses.map((status) => {
@@ -50,11 +45,7 @@ const BackgroundColors: FC<BackgroundColorsProps> = (props) => {
       />,
       <Usage type="scss" name={name} darkable />,
       <Usage type="css" name={name} />,
-      <Value
-        format="hex"
-        styleName="color"
-        styleValue={`var(--${prefix}${name})`}
-      />,
+      <Value format="hex" styleName="color" styleValue={`var(--${prefix}${name})`} />,
     ];
   });
 

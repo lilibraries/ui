@@ -89,11 +89,7 @@ const Collapse = forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
           <div
             {...rest}
             ref={composedRef}
-            style={Object.assign(
-              {},
-              style,
-              height !== undefined ? { height } : {}
-            )}
+            style={Object.assign({}, style, height !== undefined ? { height } : {})}
             className={cn(`${cls}collapse`, className)}
           >
             {children}

@@ -147,12 +147,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
           {isRenderable(detail) && <Info.Detail>{detail}</Info.Detail>}
         </Info>
       )}
-      <Flexbox
-        fluid
-        gap="2x"
-        justify="flex-end"
-        className={`${cls}confirm-actions`}
-      >
+      <Flexbox fluid gap="2x" justify="flex-end" className={`${cls}confirm-actions`}>
         {isRenderable(cancelLabel) && (
           <Button
             size="small"

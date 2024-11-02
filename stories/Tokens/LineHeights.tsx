@@ -30,28 +30,19 @@ const LineHeights: FC = () => {
         [
           <Usage type="scss" name="line-height-fixed-base" />,
           <Usage type="css" name="line-height-fixed-base" />,
-          <Value
-            styleName="lineHeight"
-            styleValue={(prefix) => `var(--${prefix}line-height-fixed-base)`}
-          />,
+          <Value styleName="lineHeight" styleValue={(prefix) => `var(--${prefix}line-height-fixed-base)`} />,
         ],
 
         [
           <Usage type="scss" name="line-height-fixed-small" />,
           <Usage type="css" name="line-height-fixed-small" />,
-          <Value
-            styleName="lineHeight"
-            styleValue={(prefix) => `var(--${prefix}line-height-fixed-small)`}
-          />,
+          <Value styleName="lineHeight" styleValue={(prefix) => `var(--${prefix}line-height-fixed-small)`} />,
         ],
 
         [
           <Usage type="scss" name="line-height-fixed-large" />,
           <Usage type="css" name="line-height-fixed-large" />,
-          <Value
-            styleName="lineHeight"
-            styleValue={(prefix) => `var(--${prefix}line-height-fixed-large)`}
-          />,
+          <Value styleName="lineHeight" styleValue={(prefix) => `var(--${prefix}line-height-fixed-large)`} />,
         ],
       ]}
     />

@@ -39,9 +39,7 @@ async function bundle(minified) {
       }),
       commonjs(),
       babel({
-        presets: [
-          [path.resolve(__dirname, "../babel.preset.js"), { module: "esm" }],
-        ],
+        presets: [[path.resolve(__dirname, "../babel.preset.js"), { module: "esm" }]],
         babelHelpers: "runtime",
         extensions: [".ts", ".tsx"],
       }),

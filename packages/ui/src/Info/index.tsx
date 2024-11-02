@@ -18,9 +18,7 @@ export interface InfoProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface InfoComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<InfoProps> & RefAttributes<HTMLDivElement>
-  > {
+  extends ForwardRefExoticComponent<PropsWithoutRef<InfoProps> & RefAttributes<HTMLDivElement>> {
   Title: typeof InfoTitle;
   Detail: typeof InfoDetail;
 }

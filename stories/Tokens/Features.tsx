@@ -8,16 +8,8 @@ const Features: FC = () => {
     <Table
       head={["SCSS", "Value", "Description"]}
       body={[
-        [
-          <Usage type="scss" name="enable-variables" />,
-          <Monospace>true</Monospace>,
-          "Enable CSS variables.",
-        ],
-        [
-          <Usage type="scss" name="enable-fallbacks" />,
-          <Monospace>true</Monospace>,
-          "Enable CSS variable fallbacks.",
-        ],
+        [<Usage type="scss" name="enable-variables" />, <Monospace>true</Monospace>, "Enable CSS variables."],
+        [<Usage type="scss" name="enable-fallbacks" />, <Monospace>true</Monospace>, "Enable CSS variable fallbacks."],
         [
           <Usage type="scss" name="enable-feedbacks" />,
           <Monospace>true</Monospace>,
@@ -27,8 +19,7 @@ const Features: FC = () => {
           <Usage type="scss" name="focusing-attribute" />,
           <Monospace>"data-focusing"</Monospace>,
           <>
-            Attribute name attached to the <code>{"<html>"}</code> element when
-            focusing.
+            Attribute name attached to the <code>{"<html>"}</code> element when focusing.
           </>,
         ],
       ]}

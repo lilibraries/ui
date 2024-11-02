@@ -52,9 +52,7 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface MenuComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<MenuProps> & RefAttributes<HTMLDivElement>
-  > {
+  extends ForwardRefExoticComponent<PropsWithoutRef<MenuProps> & RefAttributes<HTMLDivElement>> {
   Item: typeof MenuItem;
 }
 

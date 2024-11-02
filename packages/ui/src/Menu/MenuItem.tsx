@@ -59,8 +59,7 @@ export type MenuItemProps<C extends ElementType = "button"> = C extends "button"
     } & Omit<ComponentProps<C>, "prefix" | "title"> &
       MenuItemCommonProps;
 
-export interface MenuItemComponent
-  extends ForwardRefExoticComponent<MenuItemCommonProps> {
+export interface MenuItemComponent extends ForwardRefExoticComponent<MenuItemCommonProps> {
   <C extends ElementType = "button">(props: MenuItemProps<C>): ReactElement;
 }
 
@@ -228,9 +227,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
       );
     }
   }
-  submenu = (
-    <MenuConfig onItemClick={handleSubmenuItemClick}>{submenu}</MenuConfig>
-  );
+  submenu = <MenuConfig onItemClick={handleSubmenuItemClick}>{submenu}</MenuConfig>;
 
   let expandIcon: ReactNode = null;
   if (renderExpandIcon) {

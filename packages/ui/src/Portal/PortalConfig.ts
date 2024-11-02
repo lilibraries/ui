@@ -10,10 +10,6 @@ export interface PortalConfigProps extends PortalConfigValue {
   children: ReactNode;
 }
 
-const PortalConfig = createConfig<PortalConfigValue, PortalConfigProps>(
-  {},
-  ["container"],
-  { inherit: true }
-);
+const PortalConfig = createConfig<PortalConfigValue, PortalConfigProps>({}, ["container"], { inherit: true });
 
 export default PortalConfig;

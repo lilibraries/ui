@@ -17,10 +17,7 @@ function Example() {
       <ArrowPopper on="contextmenu">
         <Button>ContextMenu</Button>
       </ArrowPopper>
-      <ArrowPopper
-        on={["click", "hover", "focus", "contextmenu"]}
-        placement="top"
-      >
+      <ArrowPopper on={["click", "hover", "focus", "contextmenu"]} placement="top">
         <Button>All</Button>
       </ArrowPopper>
     </Flexbox>

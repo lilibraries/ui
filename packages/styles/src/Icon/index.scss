@@ -24,8 +24,7 @@
   }
 
   &.#{$cls-prefix}spinning {
-    animation: #{$cls-prefix}icon-spin var(--motion-duration-slow)
-      var(--motion-function-linear) 0s infinite;
+    animation: #{$cls-prefix}icon-spin var(--motion-duration-slow) var(--motion-function-linear) 0s infinite;
   }
 }
 

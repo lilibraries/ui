@@ -4,13 +4,7 @@ import { FiGithub } from "react-icons/fi";
 
 function Example() {
   return (
-    <Avatar
-      as="a"
-      rel="noreferrer noopener"
-      href="https://github.com/lilibraries/ui"
-      target="_blank"
-      hoverable
-    >
+    <Avatar as="a" rel="noreferrer noopener" href="https://github.com/lilibraries/ui" target="_blank" hoverable>
       <FiGithub />
     </Avatar>
   );

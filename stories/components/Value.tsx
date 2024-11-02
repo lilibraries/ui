@@ -49,9 +49,7 @@ const Value: FC<ValueProps> = (props) => {
 
   const [updateValue] = useTimeout(() => {
     if (valueNodeRef.current) {
-      const value = String(
-        window.getComputedStyle(valueNodeRef.current!)[styleName]
-      );
+      const value = String(window.getComputedStyle(valueNodeRef.current!)[styleName]);
       setValue(transform ? transform(value) : value);
     }
   }, 1);
@@ -70,8 +68,7 @@ const Value: FC<ValueProps> = (props) => {
         ref={valueNodeRef}
         style={{
           display: "none",
-          [styleName]:
-            typeof styleValue === "function" ? styleValue(prefix) : styleValue,
+          [styleName]: typeof styleValue === "function" ? styleValue(prefix) : styleValue,
         }}
       />
     </span>

@@ -1,12 +1,7 @@
 import React, { useRef, forwardRef, MouseEvent, HTMLAttributes } from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
-import {
-  useUpdate,
-  usePersist,
-  useSetState,
-  useComposedRef,
-} from "@lilib/hooks";
+import { useUpdate, usePersist, useSetState, useComposedRef } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Portal from "../Portal";
 import Display from "../Display";
@@ -155,18 +150,9 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
         onClosed={handleClosed}
       >
         <Portal container={container}>
-          <div
-            {...rest}
-            ref={composedRef}
-            className={classes}
-            onClick={handleClick}
-          >
+          <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
             <Portal.Config container={backdropRef}>
-              {firstMount ? (
-                <RenderAfterMounted>{children}</RenderAfterMounted>
-              ) : (
-                children
-              )}
+              {firstMount ? <RenderAfterMounted>{children}</RenderAfterMounted> : children}
             </Portal.Config>
           </div>
         </Portal>
@@ -189,26 +175,10 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       onClosed={handleClosed}
     >
       <Portal container={container}>
-        <Transition
-          in={enter}
-          classes
-          durations={base}
-          exitDelay={closeDelay}
-          firstMount
-          keepMounted
-        >
-          <div
-            {...rest}
-            ref={composedRef}
-            className={classes}
-            onClick={handleClick}
-          >
+        <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+          <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
             <Portal.Config container={backdropRef}>
-              {firstMount ? (
-                <RenderAfterMounted>{children}</RenderAfterMounted>
-              ) : (
-                children
-              )}
+              {firstMount ? <RenderAfterMounted>{children}</RenderAfterMounted> : children}
             </Portal.Config>
           </div>
         </Transition>

@@ -30,9 +30,7 @@ export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface LoaderComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>
-  > {
+  extends ForwardRefExoticComponent<PropsWithoutRef<LoaderProps> & RefAttributes<HTMLDivElement>> {
   Config: typeof LoaderConfig;
 }
 
@@ -97,37 +95,20 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
         <Transition in={loading} classes durations={base} enterDelay={delay}>
           <div className={`${cls}loader-mask`}>
             {icon}
-            {isRenderable(message) && (
-              <div className={`${cls}loader-message`}>{message}</div>
-            )}
+            {isRenderable(message) && <div className={`${cls}loader-message`}>{message}</div>}
           </div>
         </Transition>
-        <Transition
-          in={loading}
-          classes
-          durations={base}
-          enterDelay={delay}
-          firstMount
-          keepMounted
-        >
+        <Transition in={loading} classes durations={base} enterDelay={delay} firstMount keepMounted>
           <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
       </div>
     );
   } else {
     return (
-      <Collapse
-        {...rest}
-        ref={ref}
-        className={classes}
-        open={loading}
-        openDelay={delay}
-      >
+      <Collapse {...rest} ref={ref} className={classes} open={loading} openDelay={delay}>
         <div className={`${cls}loader-mask`}>
           {icon}
-          {isRenderable(message) && (
-            <div className={`${cls}loader-message`}>{message}</div>
-          )}
+          {isRenderable(message) && <div className={`${cls}loader-message`}>{message}</div>}
         </div>
       </Collapse>
     );

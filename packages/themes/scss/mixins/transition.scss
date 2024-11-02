@@ -33,11 +33,7 @@ $-functions: (
     $transition: ();
 
     @for $i from 1 through length($properties) {
-      $transition: append(
-        $transition,
-        nth($properties, $i) $duration $function,
-        comma
-      );
+      $transition: append($transition, nth($properties, $i) $duration $function, comma);
     }
 
     transition: $transition;

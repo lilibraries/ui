@@ -45,8 +45,7 @@ export type CardProps<C extends ElementType = "div"> = C extends "div"
     } & Omit<ComponentProps<C>, "title"> &
       CardCommonProps;
 
-export interface CardComponent
-  extends ForwardRefExoticComponent<CardCommonProps> {
+export interface CardComponent extends ForwardRefExoticComponent<CardCommonProps> {
   <C extends ElementType = "div">(props: CardProps<C>): ReactElement;
 }
 
@@ -112,16 +111,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   if (hasHeader) {
     header = (
       <div className={`${cls}card-header`}>
-        {isRenderable(icon) && (
-          <span className={`${cls}card-icon`}>{icon}</span>
-        )}
+        {isRenderable(icon) && <span className={`${cls}card-icon`}>{icon}</span>}
         <span className={`${cls}card-title`}>{title}</span>
-        {isRenderable(headnote) && (
-          <span className={`${cls}card-headnote`}>{headnote}</span>
-        )}
-        {isRenderable(headmark) && (
-          <span className={`${cls}card-headmark`}>{headmark}</span>
-        )}
+        {isRenderable(headnote) && <span className={`${cls}card-headnote`}>{headnote}</span>}
+        {isRenderable(headmark) && <span className={`${cls}card-headmark`}>{headmark}</span>}
       </div>
     );
   }
@@ -130,9 +123,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     footer = (
       <div className={`${cls}card-footer`}>
         <span className={`${cls}card-footnote`}>{footnote}</span>
-        {hasFootmark && (
-          <span className={`${cls}card-footmark`}>{footmark}</span>
-        )}
+        {hasFootmark && <span className={`${cls}card-footmark`}>{footmark}</span>}
       </div>
     );
   }
@@ -173,9 +164,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     image,
     <div className={`${cls}card-main`}>
       {header}
-      {isRenderable(children) && (
-        <div className={`${cls}card-content`}>{children}</div>
-      )}
+      {isRenderable(children) && <div className={`${cls}card-content`}>{children}</div>}
       {footer}
     </div>
   );

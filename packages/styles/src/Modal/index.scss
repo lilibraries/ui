@@ -14,10 +14,7 @@
     border-radius: var(--border-radius-fixed-large);
     box-shadow: var(--shadow-5);
 
-    &
-      > .#{$cls-prefix}card-main
-      > .#{$cls-prefix}card-header
-      > .#{$cls-prefix}card-title {
+    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header > .#{$cls-prefix}card-title {
       font-size: var(--font-size-larger);
     }
 

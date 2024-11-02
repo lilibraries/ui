@@ -17,8 +17,7 @@ interface ExpandIconProps {
 }
 
 const ExpandIcon: FC<ExpandIconProps> = (props) => {
-  const { open, disabled, collapsible, collapseByIcon, onCollapseClick } =
-    props;
+  const { open, disabled, collapsible, collapseByIcon, onCollapseClick } = props;
 
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";

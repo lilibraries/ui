@@ -15,26 +15,22 @@ function Example() {
     bottom: 0,
   });
 
-  const handleDragStart = usePersist(
-    (event: DraggableEvent, data: DraggableData) => {
-      const { clientWidth, clientHeight } = window.document.documentElement;
-      const modalRect = modalRef.current?.getBoundingClientRect();
-      if (modalRect) {
-        setBounds({
-          top: -modalRect.top + data.y,
-          left: -modalRect.left + data.x,
-          right: clientWidth - (modalRect.right - data.x),
-          bottom: clientHeight - (modalRect.bottom - data.y),
-        });
-      }
+  const handleDragStart = usePersist((event: DraggableEvent, data: DraggableData) => {
+    const { clientWidth, clientHeight } = window.document.documentElement;
+    const modalRect = modalRef.current?.getBoundingClientRect();
+    if (modalRect) {
+      setBounds({
+        top: -modalRect.top + data.y,
+        left: -modalRect.left + data.x,
+        right: clientWidth - (modalRect.right - data.x),
+        bottom: clientHeight - (modalRect.bottom - data.y),
+      });
     }
-  );
+  });
 
-  const handleDragStop = usePersist(
-    (event: DraggableEvent, data: DraggableData) => {
-      console.log(data);
-    }
-  );
+  const handleDragStop = usePersist((event: DraggableEvent, data: DraggableData) => {
+    console.log(data);
+  });
 
   return (
     <>

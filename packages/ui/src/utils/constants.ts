@@ -15,10 +15,4 @@ export const COLORS = [
   "gray",
 ] as const;
 
-export const INTENTS = [
-  "major",
-  "minor",
-  "positive",
-  "alertive",
-  "negative",
-] as const;
+export const INTENTS = ["major", "minor", "positive", "alertive", "negative"] as const;

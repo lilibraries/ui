@@ -7,10 +7,7 @@ function Example() {
 
   return (
     <div ref={containerRef}>
-      <Switch
-        checked={enable}
-        onChange={(event) => setEnable(event.target.checked)}
-      />
+      <Switch checked={enable} onChange={(event) => setEnable(event.target.checked)} />
       {enable && (
         <Portal container={containerRef}>
           <div>This content is rendered by Portal.</div>

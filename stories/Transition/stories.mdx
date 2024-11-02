@@ -53,13 +53,7 @@ The Transition component will automatically add the corresponding class name for
 | `onExited`    | `() => void`                                                  | State changes to `"exited"`.                                                                                   |
 
 ```ts
-type TransitionState =
-  | "enter"
-  | "entering"
-  | "entered"
-  | "exit"
-  | "exiting"
-  | "exited";
+type TransitionState = "enter" | "entering" | "entered" | "exit" | "exiting" | "exited";
 
 interface TransitionDurations {
   entering: number;

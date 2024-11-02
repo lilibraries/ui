@@ -1,19 +1,7 @@
-import React, {
-  useRef,
-  ReactNode,
-  forwardRef,
-  MouseEvent,
-  ReactElement,
-  HTMLAttributes,
-} from "react";
+import React, { useRef, ReactNode, forwardRef, MouseEvent, ReactElement, HTMLAttributes } from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
-import {
-  useUpdate,
-  usePersist,
-  useSetState,
-  useClickOutside,
-} from "@lilib/hooks";
+import { useUpdate, usePersist, useSetState, useClickOutside } from "@lilib/hooks";
 import Card from "../Card";
 import Prefix from "../Prefix";
 import Portal from "../Portal";
@@ -32,8 +20,7 @@ import RenderAfterMounted from "../utils/RenderAfterMounted";
 
 export type ModalWidthSize = "small" | "medium" | "large";
 
-export interface ModalProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   width?: ModalWidthSize | string | number;
   centered?: boolean;
   icon?: ReactNode;
@@ -72,10 +59,7 @@ export interface ModalProps
   onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
   renderHeader?: (header: ReactElement | null) => ReactNode;
   renderFooter?: (footer: ReactElement | null) => ReactNode;
-  renderActions?: (
-    actions: ReactElement | null,
-    close: () => void
-  ) => ReactNode;
+  renderActions?: (actions: ReactElement | null, close: () => void) => ReactNode;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
@@ -149,14 +133,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   });
 
-  const handleButtonClose = usePersist(
-    (event: MouseEvent<HTMLButtonElement>) => {
-      if (closeProps?.onClick) {
-        closeProps?.onClick(event);
-      }
-      handleClose();
+  const handleButtonClose = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    if (closeProps?.onClick) {
+      closeProps?.onClick(event);
     }
-  );
+    handleClose();
+  });
 
   const handleOpened = usePersist(() => {
     setState({ opened: true });
@@ -211,11 +193,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     }
   });
 
-  useClickOutside(
-    closeOnClickOutside && open && opened ? containerRef : null,
-    handleClose,
-    { container: backdropRef }
-  );
+  useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose, { container: backdropRef });
 
   useUpdate(() => {
     if (controlled) {
@@ -327,11 +305,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       renderFooter={renderFooter}
     >
       <Portal.Config container={containerRef}>
-        {firstMount ? (
-          <RenderAfterMounted>{children}</RenderAfterMounted>
-        ) : (
-          children
-        )}
+        {firstMount ? <RenderAfterMounted>{children}</RenderAfterMounted> : children}
       </Portal.Config>
     </Card>
   );
@@ -343,14 +317,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       closeDelay = base;
     }
     result = (
-      <Transition
-        in={enter}
-        classes
-        durations={base}
-        exitDelay={exitDelay}
-        firstMount
-        keepMounted
-      >
+      <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
         {result}
       </Transition>
     );

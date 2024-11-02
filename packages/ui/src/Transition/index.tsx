@@ -1,11 +1,4 @@
-import {
-  FC,
-  useRef,
-  Children,
-  useEffect,
-  cloneElement,
-  ReactElement,
-} from "react";
+import { FC, useRef, Children, useEffect, cloneElement, ReactElement } from "react";
 import cn from "classnames";
 import isObject from "lodash/isObject";
 import isNumber from "lodash/isNumber";
@@ -92,17 +85,12 @@ const Transition: FC<TransitionProps> & {
 
   const delayOnEnter = isPositiveNumber(enterDelay);
   const delayOnExit = isPositiveNumber(exitDelay);
-  const enteringDuration = isNumber(durations)
-    ? durations
-    : durations[ENTERING];
+  const enteringDuration = isNumber(durations) ? durations : durations[ENTERING];
   const exitingDuration = isNumber(durations) ? durations : durations[EXITING];
 
   if (process.env.NODE_ENV !== "production") {
     warning(
-      !isNumber(enteringDuration) ||
-        !(enteringDuration > 0) ||
-        !isNumber(exitingDuration) ||
-        !(exitingDuration > 0),
+      !isNumber(enteringDuration) || !(enteringDuration > 0) || !isNumber(exitingDuration) || !(exitingDuration > 0),
       "The `durations` prop must be a positive number or an object contains " +
         "entering and exiting durations whose are positive numbers.",
       { scope: "Transition" }

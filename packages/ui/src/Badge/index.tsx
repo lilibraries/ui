@@ -1,9 +1,4 @@
-import React, {
-  ReactNode,
-  forwardRef,
-  CSSProperties,
-  HTMLAttributes,
-} from "react";
+import React, { ReactNode, forwardRef, CSSProperties, HTMLAttributes } from "react";
 import cn from "classnames";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
@@ -19,14 +14,9 @@ import { ColorValue } from "../utils/types";
 
 export type BadgeVariant = null | "solid" | "dotted";
 
-export type BadgePlacement =
-  | "top-start"
-  | "top-end"
-  | "bottom-start"
-  | "bottom-end";
+export type BadgePlacement = "top-start" | "top-end" | "bottom-start" | "bottom-end";
 
-export interface BadgeProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
+export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   size?: SizeValue;
   variant?: BadgeVariant;
   color?: ColorValue;
@@ -88,13 +78,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   let style: CSSProperties = {};
 
   if (isRenderable(count)) {
-    if (
-      isNumber(count) &&
-      !isNaN(count) &&
-      isNumber(maxCount) &&
-      !isNaN(maxCount) &&
-      count > maxCount
-    ) {
+    if (isNumber(count) && !isNaN(count) && isNumber(maxCount) && !isNaN(maxCount) && count > maxCount) {
       tag = maxCount + "+";
     } else {
       tag = count;
@@ -104,14 +88,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
         tag = <Dot size={size} color={color} animated={animated} />;
       } else {
         tag = (
-          <Tag
-            size={size}
-            variant={solid ? "solid" : null}
-            color={color}
-            round={round}
-            square
-            borderless={borderless}
-          >
+          <Tag size={size} variant={solid ? "solid" : null} color={color} round={round} square borderless={borderless}>
             {tag}
           </Tag>
         );
@@ -154,13 +131,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   }
 
   return (
-    <Transition
-      in={visible}
-      classes
-      durations={fast}
-      firstMount={contented}
-      keepMounted={contented}
-    >
+    <Transition in={visible} classes durations={fast} firstMount={contented} keepMounted={contented}>
       <span {...rest} ref={ref} className={classes}>
         {children}
         <span

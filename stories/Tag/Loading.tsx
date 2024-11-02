@@ -6,10 +6,7 @@ function Example() {
 
   return (
     <Flexbox gap="4x">
-      <Switch
-        checked={loading}
-        onChange={(event) => setLoading(event.target.checked)}
-      />
+      <Switch checked={loading} onChange={(event) => setLoading(event.target.checked)} />
       <Tag clearable clearProps={{ loading }}>
         Tag
       </Tag>

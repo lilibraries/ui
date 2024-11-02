@@ -26,10 +26,7 @@ function Example() {
       style={{ width: 300 }}
     >
       <Menu.Item label="Size" icon={<CgSize />} defaultOpen>
-        <Radio.Group
-          value={size}
-          onChange={(event) => setSize(event.target.value)}
-        >
+        <Radio.Group value={size} onChange={(event) => setSize(event.target.value)}>
           <Menu.Item label="Small" suffix={<Radio value="small" />} />
           <Menu.Item label="Medium" suffix={<Radio value={null} />} />
           <Menu.Item label="Large" suffix={<Radio value="large" />} />
@@ -38,65 +35,29 @@ function Example() {
       <Menu.Item label="Style" icon={<AiOutlineBgColors />} defaultOpen>
         <Menu.Item
           label="Filled"
-          suffix={
-            <Switch
-              size="small"
-              checked={filled}
-              onChange={(event) => setFilled(event.target.checked)}
-            />
-          }
+          suffix={<Switch size="small" checked={filled} onChange={(event) => setFilled(event.target.checked)} />}
         />
         <Menu.Item
           label="Splited"
-          suffix={
-            <Switch
-              size="small"
-              checked={splited}
-              onChange={(event) => setSplited(event.target.checked)}
-            />
-          }
+          suffix={<Switch size="small" checked={splited} onChange={(event) => setSplited(event.target.checked)} />}
         />
         <Menu.Item
           label="Indented"
-          suffix={
-            <Switch
-              size="small"
-              checked={indented}
-              onChange={(event) => setIndented(event.target.checked)}
-            />
-          }
+          suffix={<Switch size="small" checked={indented} onChange={(event) => setIndented(event.target.checked)} />}
         />
         <Menu.Item
           label="Bounded"
-          suffix={
-            <Switch
-              size="small"
-              checked={bounded}
-              onChange={(event) => setBounded(event.target.checked)}
-            />
-          }
+          suffix={<Switch size="small" checked={bounded} onChange={(event) => setBounded(event.target.checked)} />}
         />
         <Menu.Item
           label="Bordered"
-          suffix={
-            <Switch
-              size="small"
-              checked={bordered}
-              onChange={(event) => setBordered(event.target.checked)}
-            />
-          }
+          suffix={<Switch size="small" checked={bordered} onChange={(event) => setBordered(event.target.checked)} />}
         />
       </Menu.Item>
       <Menu.Item
         label="Disabled"
         icon={<MdOutlineNearMeDisabled />}
-        suffix={
-          <Switch
-            size="small"
-            checked={disabled}
-            onChange={(event) => setDisabled(event.target.checked)}
-          />
-        }
+        suffix={<Switch size="small" checked={disabled} onChange={(event) => setDisabled(event.target.checked)} />}
       />
     </Menu>
   );

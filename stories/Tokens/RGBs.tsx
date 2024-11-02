@@ -13,11 +13,7 @@ const RGBs: FC<{ names?: string[] }> = (props) => {
       body={names.map((name) => [
         <Usage name={name + "-rgb"} type="scss" darkable />,
         <Usage name={name + "-rgb"} type="css" />,
-        <Value
-          format="rgb"
-          styleName="color"
-          styleValue={(prefix) => `rgb(var(--${prefix}${name}-rgb))`}
-        />,
+        <Value format="rgb" styleName="color" styleValue={(prefix) => `rgb(var(--${prefix}${name}-rgb))`} />,
       ])}
     />
   );

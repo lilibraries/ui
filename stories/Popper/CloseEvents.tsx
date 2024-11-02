@@ -17,12 +17,7 @@ function Example() {
       <ArrowPopper closeOnClickOutside>
         <Button>Click Outside</Button>
       </ArrowPopper>
-      <ArrowPopper
-        closeOnEscape
-        closeOnPageHide
-        closeOnWindowBlur
-        closeOnClickOutside
-      >
+      <ArrowPopper closeOnEscape closeOnPageHide closeOnWindowBlur closeOnClickOutside>
         <Button>All</Button>
       </ArrowPopper>
     </Flexbox>

@@ -10,8 +10,7 @@ import {
   useIsomorphicLayoutEffect,
 } from "@lilib/hooks";
 
-export interface ImageProps
-  extends Omit<ImgHTMLAttributes<HTMLImageElement>, "children"> {
+export interface ImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "children"> {
   fallback?: string;
   placeholder?: string;
 }
@@ -23,8 +22,7 @@ interface ImageState {
   visibility?: "hidden";
 }
 
-const supportNativeLazyLoading =
-  inBrowser && "loading" in HTMLImageElement.prototype;
+const supportNativeLazyLoading = inBrowser && "loading" in HTMLImageElement.prototype;
 
 const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const {

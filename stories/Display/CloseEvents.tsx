@@ -8,11 +8,7 @@ function Example() {
 
   return (
     <>
-      <Switch
-        ref={switchRef}
-        checked={open}
-        onChange={(event) => setOpen(event.target.checked)}
-      />
+      <Switch ref={switchRef} checked={open} onChange={(event) => setOpen(event.target.checked)} />
       <Display
         open={open}
         closeOnEscape

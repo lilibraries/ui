@@ -16,9 +16,7 @@ import mergeConfig from "./mergeConfig";
 
 function createConfig<Value, Props>(
   defaultValue: Value,
-  configNames:
-    | Exclude<keyof Props, "children">
-    | Exclude<keyof Props, "children">[],
+  configNames: Exclude<keyof Props, "children"> | Exclude<keyof Props, "children">[],
   options?: { inherit?: boolean }
 ) {
   const inherit = !!options && !!options.inherit;
@@ -52,9 +50,7 @@ function createConfig<Value, Props>(
           ? cloneElement(children, {
               ...restProps,
               ...children.props,
-              ref: isFunction(children.type)
-                ? undefined
-                : composeRefs((children as any).ref, ref),
+              ref: isFunction(children.type) ? undefined : composeRefs((children as any).ref, ref),
               style: { ...restProps.style, ...children.props.style },
               className: cn(restProps.className, children.props.className),
             })

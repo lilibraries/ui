@@ -3,22 +3,10 @@ import { useToggle } from "@lilib/hooks";
 import { Button, Flexbox, Modal } from "@lilib/ui";
 
 function Example() {
-  const [
-    smallModalOpen,
-    { toggleOn: openSmallModal, toggleOff: closeSmallModal },
-  ] = useToggle(false);
-  const [
-    mediumModalOpen,
-    { toggleOn: openMediumModal, toggleOff: closeMediumModal },
-  ] = useToggle(false);
-  const [
-    largeModalOpen,
-    { toggleOn: openLargeModal, toggleOff: closeLargeModal },
-  ] = useToggle(false);
-  const [
-    customWidthModalOpen,
-    { toggleOn: openCustomWidthModal, toggleOff: closeCustomWidthModal },
-  ] = useToggle(false);
+  const [smallModalOpen, { toggleOn: openSmallModal, toggleOff: closeSmallModal }] = useToggle(false);
+  const [mediumModalOpen, { toggleOn: openMediumModal, toggleOff: closeMediumModal }] = useToggle(false);
+  const [largeModalOpen, { toggleOn: openLargeModal, toggleOff: closeLargeModal }] = useToggle(false);
+  const [customWidthModalOpen, { toggleOn: openCustomWidthModal, toggleOff: closeCustomWidthModal }] = useToggle(false);
 
   return (
     <>

@@ -23,52 +23,22 @@ function Example() {
       </Flexbox>
 
       <Flexbox gap="2x" align="center" wrap>
-        <Button
-          variant="hollow"
-          intent={null}
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent={null} disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          variant="hollow"
-          intent="major"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent="major" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          variant="hollow"
-          intent="minor"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent="minor" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          variant="hollow"
-          intent="positive"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent="positive" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          variant="hollow"
-          intent="alertive"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent="alertive" disabled={disabled} borderless={borderless}>
           Button
         </Button>
-        <Button
-          variant="hollow"
-          intent="negative"
-          disabled={disabled}
-          borderless={borderless}
-        >
+        <Button variant="hollow" intent="negative" disabled={disabled} borderless={borderless}>
           Button
         </Button>
       </Flexbox>

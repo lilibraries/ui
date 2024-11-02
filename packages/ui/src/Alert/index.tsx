@@ -1,9 +1,4 @@
-import React, {
-  ReactNode,
-  MouseEvent,
-  forwardRef,
-  HTMLAttributes,
-} from "react";
+import React, { ReactNode, MouseEvent, forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
@@ -22,16 +17,7 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const {
-    children,
-    className,
-    intent,
-    open: openProp,
-    closable,
-    closeProps,
-    onClose,
-    ...rest
-  } = props;
+  const { children, className, intent, open: openProp, closable, closeProps, onClose, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const isRTL = Direction.useConfig() === "rtl";

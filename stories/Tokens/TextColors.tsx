@@ -43,17 +43,11 @@ const TextColors: FC<TextColorsProps> = (props) => {
     const result = [
       <Usage type="scss" name={name} darkable />,
       <Usage type="css" name={name} />,
-      <Value
-        format="hex"
-        styleName="color"
-        styleValue={`var(--${prefix}${name})`}
-      />,
+      <Value format="hex" styleName="color" styleValue={`var(--${prefix}${name})`} />,
     ];
 
     if (preview) {
-      result.push(
-        <span style={{ color: `var(--${prefix}${name})` }}>{status}</span>
-      );
+      result.push(<span style={{ color: `var(--${prefix}${name})` }}>{status}</span>);
     }
 
     return result;
