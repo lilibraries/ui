@@ -9,7 +9,7 @@ const BoxShadows: FC = () => {
   const rows: ReactNode[][] = [];
 
   for (let i = 1; i <= 5; i++) {
-    const name = `box-shadow-${i}`;
+    const name = `shadow-${i}`;
 
     rows.push([
       <div
