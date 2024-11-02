@@ -11,7 +11,7 @@ React component library.
 ### Configs
 
 - [x] Root
-- [ ] Baseline
+- [x] Baseline
 - [ ] Focusing
 - [ ] Prefix
 - [ ] Theme
