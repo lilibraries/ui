@@ -62,9 +62,7 @@ module.exports = {
           loader: "sass-loader",
           options: {
             implementation: require("sass"),
-            sassOptions: {
-              additionalData: '$cls-prefix: "li-"; $var-prefix: "li-";',
-            },
+            additionalData: '$cls-prefix: "li-"; $var-prefix: "li-";',
           },
         },
       ],
