@@ -7,7 +7,7 @@ function Example() {
 
   return (
     <Theme scoped value={isDarkMode ? "dark" : "light"}>
-      <Button>Sync with operating system</Button>
+      <Button>The system theme mode is {isDarkMode ? "dark" : "light"}</Button>
     </Theme>
   );
 }

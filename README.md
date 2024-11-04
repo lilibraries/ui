@@ -14,7 +14,7 @@ React component library.
 - [x] Baseline
 - [x] Focusing
 - [x] Prefix
-- [ ] Theme
+- [x] Theme
 - [ ] Size
 - [ ] Duration
 - [ ] Direction

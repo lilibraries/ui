@@ -92,8 +92,8 @@ const Theme = forwardRef<any, ThemeScopedProps | ThemeUnscopedProps>((props, ref
             ...rest,
             ...children.props,
             ref: isFunction(children.type) ? undefined : composeRefs((children as any).ref, ref),
-            className: cn((rest as any).className, { [`${cls}${value}`]: scoped && value }, children.props.className),
             style: { ...(rest as any).style, ...children.props.style },
+            className: cn((rest as any).className, { [`${cls}${value}`]: scoped && value }, children.props.className),
           })
         : children}
     </ThemeContext.Provider>
