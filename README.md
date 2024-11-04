@@ -15,7 +15,7 @@ React component library.
 - [x] Focusing
 - [x] Prefix
 - [x] Theme
-- [ ] Size
+- [x] Size
 - [ ] Duration
 - [ ] Direction
 
