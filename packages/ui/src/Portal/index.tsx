@@ -1,4 +1,4 @@
-import { FC, ReactNode, useRef } from "react";
+import React, { FC, ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useOnce, useUnmount, useLayoutMount } from "@lilib/hooks";
 import { inBrowser, getEffectTarget, EffectTarget } from "@lilib/utils";
@@ -47,7 +47,7 @@ const Portal: FC<PortalProps> & {
   useUnmount(removeRoot);
 
   if (rootRef.current) {
-    return createPortal(children, rootRef.current);
+    return <>{createPortal(children, rootRef.current)}</>;
   } else {
     return null;
   }
