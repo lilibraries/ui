@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Portal, Switch } from "@lilib/ui";
 
 function Example() {
-  const [enable, setEnable] = useState(false);
+  const [enable, setEnable] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (

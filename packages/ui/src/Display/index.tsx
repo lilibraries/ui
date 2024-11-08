@@ -1,37 +1,20 @@
 import React, { FC, ReactNode, useEffect, useRef } from "react";
 import { useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import useCloseEvent, { CloseEventOptions } from "./useCloseEvent";
 
-export interface DisplayProps extends CloseEventOptions {
+export interface DisplayProps {
   children?: ReactNode;
   open?: boolean;
   openDelay?: number;
   closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
-  onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
 }
 
 const Display: FC<DisplayProps> = (props) => {
-  const {
-    children,
-    open,
-    openDelay,
-    closeDelay,
-    firstMount,
-    keepMounted,
-    closeOnEscape,
-    closeOnPageHide,
-    closeOnWindowBlur,
-    closeOnClickOutside,
-    closeOnDocumentClick,
-    onClose,
-    onOpened,
-    onClosed,
-  } = props;
+  const { children, open, openDelay, closeDelay, firstMount, keepMounted, onOpened, onClosed } = props;
 
   const delayOnOpen = isPositiveNumber(openDelay);
   const delayOnClose = isPositiveNumber(closeDelay);
@@ -42,16 +25,12 @@ const Display: FC<DisplayProps> = (props) => {
 
   const setOpened = () => {
     setDisplay(true);
-    if (onOpened) {
-      onOpened();
-    }
+    onOpened?.();
   };
 
   const setClosed = () => {
     setDisplay(false);
-    if (onClosed) {
-      onClosed();
-    }
+    onClosed?.();
   };
 
   const [startShowTimer, cancelShowTimer] = useTimeout(setOpened, openDelay);
@@ -90,23 +69,6 @@ const Display: FC<DisplayProps> = (props) => {
       }
     },
     [display] // eslint-disable-line
-  );
-
-  useCloseEvent(
-    () => {
-      if (onClose) {
-        onClose();
-      }
-    },
-    open && display && onClose
-      ? {
-          closeOnEscape,
-          closeOnPageHide,
-          closeOnWindowBlur,
-          closeOnClickOutside,
-          closeOnDocumentClick,
-        }
-      : {}
   );
 
   let renderable = false;

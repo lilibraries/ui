@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useOnce, useUnmount, useLayoutMount } from "@lilib/hooks";
+import { useOnce, useMount, useUnmount } from "@lilib/hooks";
 import { inBrowser, getEffectTarget, EffectTarget } from "@lilib/utils";
 import PortalConfig from "./PortalConfig";
 
@@ -43,7 +43,7 @@ const Portal: FC<PortalProps> & {
     }
   }
 
-  useLayoutMount(appendRoot);
+  useMount(appendRoot);
   useUnmount(removeRoot);
 
   if (rootRef.current) {

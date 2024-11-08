@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Display, Switch } from "@lilib/ui";
 
 function Example() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <>

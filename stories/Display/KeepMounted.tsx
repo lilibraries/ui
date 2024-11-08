@@ -12,15 +12,11 @@ function Example() {
     <>
       <Switch checked={open} onChange={(event) => setState({ open: event.target.checked })} />
       <Display
+        firstMount
+        keepMounted
         open={open}
         openDelay={300}
         closeDelay={300}
-        firstMount
-        keepMounted
-        closeOnEscape
-        closeOnPageHide
-        closeOnWindowBlur
-        onClose={() => setState({ open: false })}
         onOpened={() => setState({ opened: true })}
         onClosed={() => setState({ opened: false })}
       >
