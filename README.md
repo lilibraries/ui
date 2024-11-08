@@ -53,7 +53,7 @@ React component library.
 - [ ] Rate
 - [ ] Slider
 - [ ] Switch
-- [ ] Segmenter
+- [ ] Segments
 - [ ] TimePicker
 - [ ] DatePicker
 - [ ] ColorPicker

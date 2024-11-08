@@ -20,7 +20,7 @@ const order = [
     "Rate",
     "Switch",
     "Slider",
-    "Segmenter",
+    "Segments",
     "TimePicker",
     "DatePicker",
     "ColorPicker",
