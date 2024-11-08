@@ -1,10 +1,10 @@
 import { FC, useRef, Children, useEffect, cloneElement, ReactElement } from "react";
 import cn from "classnames";
-import isObject from "lodash/isObject";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
+import isObject from "lodash/isObject";
 import isFunction from "lodash/isFunction";
-import { composeRefs, warning } from "@lilib/utils";
+import { composeRefs } from "@lilib/utils";
 import { useMount, useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import isPositiveNumber from "../utils/isPositiveNumber";
@@ -15,7 +15,7 @@ const ENTERED = "entered";
 const EXIT = "exit";
 const EXITING = "exiting";
 const EXITED = "exited";
-const states = [ENTER, ENTERING, ENTERED, EXIT, EXITING, EXITED] as const;
+const STATES = [ENTER, ENTERING, ENTERED, EXIT, EXITING, EXITED] as const;
 
 export type TransitionState =
   | typeof ENTER
@@ -89,12 +89,11 @@ const Transition: FC<TransitionProps> & {
   const exitingDuration = isNumber(durations) ? durations : durations[EXITING];
 
   if (process.env.NODE_ENV !== "production") {
-    warning(
-      !isNumber(enteringDuration) || !(enteringDuration > 0) || !isNumber(exitingDuration) || !(exitingDuration > 0),
-      "The `durations` prop must be a positive number or an object contains " +
-        "entering and exiting durations whose are positive numbers.",
-      { scope: "Transition" }
-    );
+    if (!isNumber(enteringDuration) || enteringDuration <= 0 || !isNumber(exitingDuration) || exitingDuration <= 0) {
+      console.warn(
+        "The `durations` prop of Transition component must be a positive number or an object contains entering and exiting durations whose are positive numbers."
+      );
+    }
   }
 
   const { cls } = Prefix.useConfig();
@@ -123,7 +122,7 @@ const Transition: FC<TransitionProps> & {
   } = {};
 
   if (classes) {
-    states.forEach((state) => {
+    STATES.forEach((state) => {
       if (classes === true) {
         classesMapping[state] = `${cls}transition-${state}`;
       } else if (isString(classes)) {
@@ -173,6 +172,7 @@ const Transition: FC<TransitionProps> & {
   const [startEnterTimer, cancelEnterTimer] = useTimeout(() => {
     changeState(ENTER);
   }, enterDelay);
+
   const [startExitTimer, cancelExitTimer] = useTimeout(() => {
     changeState(EXIT);
   }, exitDelay);
@@ -182,6 +182,7 @@ const Transition: FC<TransitionProps> & {
       changeState(ENTERED);
     }
   }, enteringDuration);
+
   const [startExitedTimer, cancelExitedTimer] = useTimeout(() => {
     if (state === EXIT || state === EXITING) {
       changeState(EXITED);
