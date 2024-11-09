@@ -3,9 +3,9 @@ import cn from "classnames";
 import { usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import Icon from "../Icon";
 import Text from "../Text";
-import Info from "../Info";
 import Prefix from "../Prefix";
 import Flexbox from "../Flexbox";
+import Description from "../Description";
 import Popup, { PopupProps } from "../Popup";
 import Button, { ButtonProps } from "../Button";
 import InfoIcon from "../icons/InfoIcon";
@@ -132,7 +132,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       {isRenderable(contentProp) ? (
         contentProp
       ) : (
-        <Info
+        <Description
           icon={
             isRenderable(icon) ? (
               icon
@@ -143,9 +143,9 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
             )
           }
         >
-          {isRenderable(title) && <Info.Title>{title}</Info.Title>}
-          {isRenderable(detail) && <Info.Detail>{detail}</Info.Detail>}
-        </Info>
+          {isRenderable(title) && <Description.Title>{title}</Description.Title>}
+          {isRenderable(detail) && <Description.Detail>{detail}</Description.Detail>}
+        </Description>
       )}
       <Flexbox fluid gap="2x" justify="flex-end" className={`${cls}confirm-actions`}>
         {isRenderable(cancelLabel) && (

@@ -1,12 +1,12 @@
 import React from "react";
-import { Alert, Icon, Info, Text } from "@lilib/ui";
+import { Alert, Icon, Text, Description } from "@lilib/ui";
 import { FiInfo, FiCheckCircle, FiAlertCircle, FiAlertTriangle } from "react-icons/fi";
 
 function Example() {
   return (
     <>
       <Alert intent="major" closable style={{ marginBottom: 16 }}>
-        <Info
+        <Description
           icon={
             <Text as={Icon} intent="major">
               <FiInfo />
@@ -14,10 +14,10 @@ function Example() {
           }
         >
           This is a major alert.
-        </Info>
+        </Description>
       </Alert>
       <Alert intent="minor" closable style={{ marginBottom: 16 }}>
-        <Info
+        <Description
           icon={
             <Text as={Icon} intent="minor">
               <FiInfo />
@@ -25,10 +25,10 @@ function Example() {
           }
         >
           This is a minor alert.
-        </Info>
+        </Description>
       </Alert>
       <Alert intent="positive" closable style={{ marginBottom: 16 }}>
-        <Info
+        <Description
           icon={
             <Text as={Icon} intent="positive">
               <FiCheckCircle />
@@ -36,10 +36,10 @@ function Example() {
           }
         >
           This is a positive alert.
-        </Info>
+        </Description>
       </Alert>
       <Alert intent="alertive" closable style={{ marginBottom: 16 }}>
-        <Info
+        <Description
           icon={
             <Text as={Icon} intent="alertive">
               <FiAlertTriangle />
@@ -47,10 +47,10 @@ function Example() {
           }
         >
           This is an alertive alert.
-        </Info>
+        </Description>
       </Alert>
       <Alert intent="negative" closable style={{ marginBottom: 16 }}>
-        <Info
+        <Description
           icon={
             <Text as={Icon} intent="negative">
               <FiAlertCircle />
@@ -58,7 +58,7 @@ function Example() {
           }
         >
           This is a negative alert.
-        </Info>
+        </Description>
       </Alert>
     </>
   );

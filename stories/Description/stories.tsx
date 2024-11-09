@@ -1,5 +1,5 @@
 export default {
-  title: "Examples/Info",
+  title: "Examples/Description",
 };
 
 export { default as Basic } from "./Basic";

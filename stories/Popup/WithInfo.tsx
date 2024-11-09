@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Popup, Info } from "@lilib/ui";
+import { Button, Popup, Description } from "@lilib/ui";
 import { FiInfo } from "react-icons/fi";
 
 function Example() {
@@ -8,9 +8,9 @@ function Example() {
       style={{ maxWidth: 600 }}
       placement="top-start"
       content={
-        <Info icon={<FiInfo />}>
-          <Info.Title>What is React?</Info.Title>
-          <Info.Detail>
+        <Description icon={<FiInfo />}>
+          <Description.Title>What is React?</Description.Title>
+          <Description.Detail>
             <p>
               React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for
               building user interfaces or UI components. It is maintained by Facebook and a community of individual
@@ -22,8 +22,8 @@ function Example() {
               usually requires the use of additional libraries for routing, as well as certain client-side
               functionality.
             </p>
-          </Info.Detail>
-        </Info>
+          </Description.Detail>
+        </Description>
       }
     >
       <Button>Click</Button>

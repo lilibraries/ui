@@ -1,40 +1,40 @@
 import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
-<Meta title="Views/Info" />
+<Meta title="Views/Description" />
 
-# Info
+# Description
 
-Info component.
+Description component.
 
 ## Examples
 
 ### Basic
 
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-info--basic" />
+  <Story id="examples-description--basic" />
 </Canvas>
 
 ### Icons
 
 <Canvas mdxSource={require("!!raw-loader!./Icons").default}>
-  <Story id="examples-info--icons" />
+  <Story id="examples-description--icons" />
 </Canvas>
 
 ## API
 
-### Info
+### Description
 
-| Property   | Type        | Description  |
-| ---------- | ----------- | ------------ |
-| `children` | `ReactNode` | Content      |
-| `icon`     | `ReactNode` | Specify icon |
-
-It accepts all props which the native `<div>` element supports.
-
-### Info.Title
+| Property   | Type        | Description |
+| ---------- | ----------- | ----------- |
+| `icon`     | `ReactNode` | Icon.       |
+| `children` | `ReactNode` | Content.    |
 
 It accepts all props which the native `<div>` element supports.
 
-### Info.Detail
+### Description.Title
+
+It accepts all props which the native `<div>` element supports.
+
+### Description.Detail
 
 It accepts all props which the native `<div>` element supports.

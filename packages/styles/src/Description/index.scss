@@ -1,6 +1,6 @@
 @import "@lilib/themes";
 
-.#{$cls-prefix}info {
+.#{$cls-prefix}description {
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
     justify-content: center;
     min-width: 1em;
     min-height: 1em;
-    margin-right: var(--space-2);
+    margin-inline-end: var(--space-2);
     color: var(--text-color-base);
     font-size: calc(var(--line-height-base) * 1em);
     line-height: 1;
@@ -32,10 +32,10 @@
 
   &-title {
     color: var(--text-color-base);
-    font-weight: 700;
+    font-weight: var(--font-weight-title);
 
     & + * {
-      margin-top: var(--space-2);
+      margin-top: 0.5em;
     }
   }
 
@@ -44,22 +44,15 @@
     font-size: var(--font-size-smaller);
 
     & + * {
-      margin-top: var(--space-2);
+      margin-top: 0.5em;
     }
 
     & p {
-      margin-bottom: var(--space-2);
+      margin-bottom: 0.5em;
 
       &:last-child {
         margin-bottom: 0;
       }
     }
-  }
-}
-
-.#{$cls-prefix}info.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}info-icon {
-    margin-right: 0;
-    margin-left: var(--space-2);
   }
 }

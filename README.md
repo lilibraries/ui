@@ -64,7 +64,6 @@ React component library.
 - [ ] Tag
 - [ ] Badge
 - [ ] Avatar
-- [ ] Info
 - [ ] List
 - [ ] Tree
 - [ ] Card
@@ -73,6 +72,7 @@ React component library.
 - [ ] Carousel
 - [ ] Calendar
 - [ ] Accordion
+- [x] Description
 
 ### Feedbacks
 
