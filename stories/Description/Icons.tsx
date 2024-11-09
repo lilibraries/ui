@@ -10,7 +10,7 @@ function Example() {
         <Description.Detail>This is a descriptive message.</Description.Detail>
       </Description>
 
-      <Description icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_1.png" />}>
+      <Description icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}>
         <Description.Title>Image</Description.Title>
         <Description.Detail>This is a descriptive message.</Description.Detail>
       </Description>
@@ -35,7 +35,7 @@ function Example() {
         <Description.Detail>This is a descriptive message.</Description.Detail>
       </Description>
 
-      <Description icon={<Avatar size="small" image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_1.png" />}>
+      <Description icon={<Avatar size="small" image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}>
         <Description.Title>Avatar</Description.Title>
         <Description.Detail>This is a descriptive message.</Description.Detail>
       </Description>
