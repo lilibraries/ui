@@ -6,8 +6,8 @@ function Example() {
     <Image
       alt="Image"
       src="error"
-      style={{ width: 200, height: 200, objectFit: "cover" }}
-      fallback="https://via.placeholder.com/200x200.png?text=Fallback"
+      style={{ width: 364, height: 273, objectFit: "cover" }}
+      fallback="https://via.placeholder.com/364x273.png?text=Fallback"
     />
   );
 }

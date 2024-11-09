@@ -26,7 +26,6 @@ const supportNativeLazyLoading = inBrowser && "loading" in HTMLImageElement.prot
 
 const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const {
-    children,
     style,
     alt: altProp,
     src: srcProp,
@@ -73,9 +72,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     if (fallback && src !== fallback) {
       setState({ alt: altProp, src: fallback });
     }
-    if (onError) {
-      onError(event);
-    }
+    onError?.(event);
   });
 
   const imageRef = useRef<HTMLImageElement>(null);

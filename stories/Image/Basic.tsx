@@ -1,14 +1,9 @@
 import React from "react";
 import { Image } from "@lilib/ui";
+import image1 from "./images/image1.jpeg";
 
 function Example() {
-  return (
-    <Image
-      alt="Image"
-      src="https://images.unsplash.com/photo-1682687218608-5e2522b04673"
-      style={{ width: 200, height: 200, objectFit: "cover" }}
-    />
-  );
+  return <Image alt="Image" src={image1} style={{ width: 364, height: 273, objectFit: "cover" }} />;
 }
 
 export default Example;
