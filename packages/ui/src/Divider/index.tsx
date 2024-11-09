@@ -12,10 +12,10 @@ import isString from "lodash/isString";
 import Prefix from "../Prefix";
 import isCSSValue from "../utils/isCSSValue";
 
-export type DividerPresetSpace = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
+export type DividerGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
 
 export interface DividerCommonProps {
-  space?: DividerPresetSpace | string | number;
+  gap?: DividerGap | string | number;
   inline?: boolean;
   vertical?: boolean;
 }
@@ -35,10 +35,10 @@ export interface DividerComponent extends ForwardRefExoticComponent<DividerCommo
 }
 
 const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
-  const { as = "hr", style, children, className, space, inline, vertical, ...rest } = props;
+  const { as = "hr", style, children, className, gap, inline, vertical, ...rest } = props;
 
-  const isPresetSpace = isString(space) && /^\dx$/.test(space);
-  const isCustomSpace = !isPresetSpace && isCSSValue(space);
+  const isPresetGap = isString(gap) && /^\dx$/.test(gap);
+  const isCustomGap = !isPresetGap && isCSSValue(gap);
 
   const { cls } = Prefix.useConfig();
   const classes = cn(
@@ -46,26 +46,26 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
     {
       [`${cls}inline`]: inline,
       [`${cls}vertical`]: vertical,
-      [`${cls}space-${space}`]: isPresetSpace,
+      [`${cls}gap-${gap}`]: isPresetGap,
     },
     className
   );
 
   const customStyle: CSSProperties = {};
-  if (isCustomSpace) {
+  if (isCustomGap) {
     if (vertical) {
-      customStyle.marginLeft = space;
-      customStyle.marginRight = space;
+      customStyle.marginLeft = gap;
+      customStyle.marginRight = gap;
     } else {
-      customStyle.marginTop = space;
-      customStyle.marginBottom = space;
+      customStyle.marginTop = gap;
+      customStyle.marginBottom = gap;
     }
   }
 
   return createElement(as, {
     ...rest,
     ref,
-    style: isCustomSpace ? { ...customStyle, ...style } : style,
+    style: isCustomGap ? { ...customStyle, ...style } : style,
     className: classes,
   });
 }) as DividerComponent;
