@@ -28,7 +28,7 @@ function Example() {
           Logout
         </Button>
         <Button loading={loading} startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
-          Next page
+          Next Page
         </Button>
       </Flexbox>
     </Flexbox>

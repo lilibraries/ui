@@ -16,7 +16,7 @@ function Example() {
         <Button startIcon={<FiThumbsUp />}>Like</Button>
         <Button endIcon={<FiLogOut />}>Logout</Button>
         <Button startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
-          Next page
+          Next Page
         </Button>
       </Flexbox>
     </Flexbox>

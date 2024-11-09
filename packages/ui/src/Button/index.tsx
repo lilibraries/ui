@@ -28,8 +28,8 @@ export interface ButtonCommonProps {
   size?: SizeValue;
   intent?: IntentValue;
   variant?: ButtonVariant;
-  round?: boolean;
   fluid?: boolean;
+  rounded?: boolean;
   truncated?: boolean;
   borderless?: boolean;
   startIcon?: ReactNode;
@@ -66,8 +66,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     size: sizeProp,
     intent: intentProp,
     variant: variantProp,
-    round: roundProp,
     fluid: fluidProp,
+    rounded: roundedProp,
     truncated: truncatedProp,
     borderless: borderlessProp,
     startIcon,
@@ -92,12 +92,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     delay: loadingDelayProp,
   });
 
-  const { intent, variant, round, fluid, truncated, borderless, iconOnly, disabled, loading, loadingPlacement } =
+  const { intent, variant, fluid, rounded, truncated, borderless, iconOnly, disabled, loading, loadingPlacement } =
     ButtonConfig.useConfig({
       intent: intentProp,
       variant: variantProp,
-      round: roundProp,
       fluid: fluidProp,
+      rounded: roundedProp,
       truncated: truncatedProp,
       borderless: borderlessProp,
       iconOnly: iconOnlyProp,
@@ -119,7 +119,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         loadingStart = true;
       } else if (loadingPlacement === "end") {
         loadingEnd = true;
-      } else {
+      } else if (loadingPlacement === "center") {
         loadingCenter = true;
       }
     } else {
@@ -145,12 +145,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       [`${cls}${size}`]: size,
       [`${cls}${intent}`]: intent,
       [`${cls}${variant}`]: variant,
-      [`${cls}round`]: round,
       [`${cls}fluid`]: fluid,
+      [`${cls}rounded`]: rounded,
       [`${cls}truncated`]: truncated,
       [`${cls}borderless`]: borderless,
       [`${cls}icon-only`]: iconOnly,
-      [`${cls}loading`]: loading && loadingCenter,
+      [`${cls}loading-center`]: loading && loadingCenter,
       [`${cls}active`]: active,
       [`${cls}disabled`]: disabled,
     },
@@ -259,8 +259,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       onClick: (event) => {
         if (disabled || loading) {
           event.preventDefault();
-        } else if (onClick) {
-          onClick(event);
+        } else {
+          onClick?.(event);
         }
       },
     },

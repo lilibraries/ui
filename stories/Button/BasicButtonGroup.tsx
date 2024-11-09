@@ -3,9 +3,11 @@ import { Button } from "@lilib/ui";
 
 function Example() {
   return (
-    <Button truncated style={{ width: 230 }}>
-      This is a very long button which may be truncated.
-    </Button>
+    <Button.Group>
+      <Button>One</Button>
+      <Button>Two</Button>
+      <Button>Three</Button>
+    </Button.Group>
   );
 }
 

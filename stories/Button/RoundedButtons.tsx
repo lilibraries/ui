@@ -5,15 +5,15 @@ import { FiLogOut, FiThumbsUp, FiFileText, FiArrowRight } from "react-icons/fi";
 function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Button round>Button</Button>
-      <Button round startIcon={<FiThumbsUp />}>
+      <Button rounded>Button</Button>
+      <Button rounded startIcon={<FiThumbsUp />}>
         Like
       </Button>
-      <Button round endIcon={<FiLogOut />}>
+      <Button rounded endIcon={<FiLogOut />}>
         Logout
       </Button>
-      <Button round startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
-        Next page
+      <Button rounded startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
+        Next Page
       </Button>
     </Flexbox>
   );

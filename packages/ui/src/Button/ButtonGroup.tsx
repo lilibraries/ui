@@ -6,13 +6,13 @@ import Size, { SizeValue } from "../Size";
 import { IntentValue } from "../utils/types";
 import ButtonConfig, { ButtonVariant, ButtonLoadingPlacement } from "./ButtonConfig";
 
-export interface ButtonGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
+export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   size?: SizeValue;
   intent?: IntentValue;
   variant?: ButtonVariant;
-  round?: boolean;
-  fluid?: boolean;
   vertical?: boolean;
+  fluid?: boolean;
+  rounded?: boolean;
   truncated?: boolean;
   borderless?: boolean;
   iconOnly?: boolean;
@@ -30,9 +30,9 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     size: sizeProp,
     intent,
     variant,
-    round,
-    fluid,
     vertical,
+    fluid,
+    rounded,
     truncated,
     borderless,
     iconOnly,
@@ -63,8 +63,8 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
           <ButtonConfig
             intent={intent}
             variant={variant}
-            round={round}
             fluid={vertical}
+            rounded={rounded}
             truncated={truncated}
             borderless={borderless}
             iconOnly={iconOnly}
