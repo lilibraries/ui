@@ -25,39 +25,39 @@
       vertical-align: middle;
     }
 
-    &.#{$cls-prefix}gap-1x {
+    &.#{$cls-prefix}divider-gap-1x {
       margin: var(--space-1) auto;
     }
 
-    &.#{$cls-prefix}gap-2x {
+    &.#{$cls-prefix}divider-gap-2x {
       margin: var(--space-2) auto;
     }
 
-    &.#{$cls-prefix}gap-3x {
+    &.#{$cls-prefix}divider-gap-3x {
       margin: var(--space-3) auto;
     }
 
-    &.#{$cls-prefix}gap-4x {
+    &.#{$cls-prefix}divider-gap-4x {
       margin: var(--space-4) auto;
     }
 
-    &.#{$cls-prefix}gap-5x {
+    &.#{$cls-prefix}divider-gap-5x {
       margin: var(--space-5) auto;
     }
 
-    &.#{$cls-prefix}gap-6x {
+    &.#{$cls-prefix}divider-gap-6x {
       margin: var(--space-6) auto;
     }
 
-    &.#{$cls-prefix}gap-7x {
+    &.#{$cls-prefix}divider-gap-7x {
       margin: var(--space-7) auto;
     }
 
-    &.#{$cls-prefix}gap-8x {
+    &.#{$cls-prefix}divider-gap-8x {
       margin: var(--space-8) auto;
     }
 
-    &.#{$cls-prefix}gap-9x {
+    &.#{$cls-prefix}divider-gap-9x {
       margin: var(--space-9) auto;
     }
   }
@@ -73,39 +73,39 @@
       height: 1em;
     }
 
-    &.#{$cls-prefix}gap-1x {
+    &.#{$cls-prefix}divider-gap-1x {
       margin: 0 var(--space-1);
     }
 
-    &.#{$cls-prefix}gap-2x {
+    &.#{$cls-prefix}divider-gap-2x {
       margin: 0 var(--space-2);
     }
 
-    &.#{$cls-prefix}gap-3x {
+    &.#{$cls-prefix}divider-gap-3x {
       margin: 0 var(--space-3);
     }
 
-    &.#{$cls-prefix}gap-4x {
+    &.#{$cls-prefix}divider-gap-4x {
       margin: 0 var(--space-4);
     }
 
-    &.#{$cls-prefix}gap-5x {
+    &.#{$cls-prefix}divider-gap-5x {
       margin: 0 var(--space-5);
     }
 
-    &.#{$cls-prefix}gap-6x {
+    &.#{$cls-prefix}divider-gap-6x {
       margin: 0 var(--space-6);
     }
 
-    &.#{$cls-prefix}gap-7x {
+    &.#{$cls-prefix}divider-gap-7x {
       margin: 0 var(--space-7);
     }
 
-    &.#{$cls-prefix}gap-8x {
+    &.#{$cls-prefix}divider-gap-8x {
       margin: 0 var(--space-8);
     }
 
-    &.#{$cls-prefix}gap-9x {
+    &.#{$cls-prefix}divider-gap-9x {
       margin: 0 var(--space-9);
     }
   }

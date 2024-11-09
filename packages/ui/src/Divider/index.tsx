@@ -46,7 +46,7 @@ const Divider = forwardRef<HTMLHRElement, DividerProps>((props, ref) => {
     {
       [`${cls}inline`]: inline,
       [`${cls}vertical`]: vertical,
-      [`${cls}gap-${gap}`]: isPresetGap,
+      [`${cls}divider-gap-${gap}`]: isPresetGap,
     },
     className
   );
