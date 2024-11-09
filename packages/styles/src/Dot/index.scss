@@ -1,7 +1,7 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}dot {
-  display: inline-block;
+  display: inline-flex;
   width: 8px;
   height: 8px;
   color: var(--text-color-base);
@@ -12,13 +12,11 @@
   &.#{$cls-prefix}small {
     width: 6px;
     height: 6px;
-    vertical-align: 0.1875em;
   }
 
   &.#{$cls-prefix}large {
     width: 10px;
     height: 10px;
-    vertical-align: 0.0625em;
   }
 
   &.#{$cls-prefix}animated {

@@ -60,7 +60,7 @@ React component library.
 
 ### Views
 
-- [ ] Dot
+- [x] Dot
 - [ ] Tag
 - [ ] Badge
 - [ ] Avatar
