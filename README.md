@@ -31,7 +31,7 @@ React component library.
 - [ ] Grid
 - [ ] Layout
 - [x] Divider
-- [ ] Flexbox
+- [x] Flexbox
 
 ### Navigations
 

@@ -1,6 +1,8 @@
 import React, { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
+import isString from "lodash/isString";
 import Prefix from "../Prefix";
+import isCSSValue from "../utils/isCSSValue";
 
 export type FlexboxDirection = "row" | "column" | "row-reverse" | "column-reverse";
 
@@ -15,14 +17,17 @@ export type FlexboxJustify = "flex-start" | "flex-end" | "center" | "space-betwe
 export interface FlexboxProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
   direction?: FlexboxDirection;
-  gap?: FlexboxGap;
+  gap?: FlexboxGap | string | number;
   wrap?: FlexboxWrap;
   align?: FlexboxAlign;
   justify?: FlexboxJustify;
 }
 
 const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>((props, ref) => {
-  const { children, className, fluid, direction, gap, wrap, align, justify, ...rest } = props;
+  const { children, style, className, fluid, direction, gap, wrap, align, justify, ...rest } = props;
+
+  const isPresetGap = isString(gap) && /^\dx$/.test(gap);
+  const isCustomGap = !isPresetGap && isCSSValue(gap);
 
   const { cls } = Prefix.useConfig();
   const classes = cn(
@@ -30,7 +35,7 @@ const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>((props, ref) => {
     {
       [`${cls}fluid`]: fluid,
       [`${cls}flexbox-direction-${direction}`]: direction,
-      [`${cls}flexbox-gap-${gap}`]: gap,
+      [`${cls}flexbox-gap-${gap}`]: isPresetGap,
       [`${cls}flexbox-wrap`]: wrap === true || wrap === "wrap",
       [`${cls}flexbox-nowrap`]: wrap === false || wrap === "nowrap",
       [`${cls}flexbox-wrap-reverse`]: wrap === "wrap-reverse",
@@ -41,7 +46,7 @@ const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>((props, ref) => {
   );
 
   return (
-    <div {...rest} ref={ref} className={classes}>
+    <div {...rest} ref={ref} style={isCustomGap ? { gap, ...style } : style} className={classes}>
       {children}
     </div>
   );

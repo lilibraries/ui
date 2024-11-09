@@ -5,6 +5,7 @@ import SpinnerConfig from "../Spinner/SpinnerConfig";
 import RadioConfig, { RadioElement } from "./RadioConfig";
 
 export interface RadioGroupProps {
+  children?: ReactNode;
   size?: SizeValue;
   name?: string;
   value?: any;
