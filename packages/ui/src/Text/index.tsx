@@ -62,9 +62,7 @@ const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     if (disabled) {
       return;
     }
-    if (onClick) {
-      onClick(event);
-    }
+    onClick?.(event);
   });
 
   return createElement<TextProps>(
