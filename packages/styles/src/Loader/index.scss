@@ -3,42 +3,29 @@
 .#{$cls-prefix}loader {
   & > .#{$cls-prefix}loader-mask {
     color: var(--text-color-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
 
     & > .#{$cls-prefix}loader-icon {
       flex: 0 0 auto;
-      font-size: var(--line-height-fixed-base);
-      line-height: 1;
+      font-size: 1.5em;
     }
 
     & > .#{$cls-prefix}loader-message {
       flex: 0 0 auto;
       margin-top: var(--space-1);
-      font-size: var(--font-size-base);
-      line-height: var(--line-height-base);
     }
   }
 
   &.#{$cls-prefix}small {
     & > .#{$cls-prefix}loader-mask {
-      & > .#{$cls-prefix}icon {
-        font-size: var(--line-height-fixed-small);
-      }
-
-      & > .#{$cls-prefix}loader-message {
-        font-size: var(--font-size-small);
-      }
+      font-size: var(--font-size-small);
     }
   }
 
   &.#{$cls-prefix}large {
     & > .#{$cls-prefix}loader-mask {
-      & > .#{$cls-prefix}icon {
-        font-size: var(--line-height-fixed-large);
-      }
-
-      & > .#{$cls-prefix}loader-message {
-        font-size: var(--font-size-large);
-      }
+      font-size: var(--font-size-large);
     }
   }
 

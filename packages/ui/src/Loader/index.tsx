@@ -92,14 +92,14 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   if (contented) {
     return (
       <div {...rest} ref={ref} className={classes}>
+        <Transition in={loading} classes durations={base} enterDelay={delay} firstMount keepMounted>
+          <div className={`${cls}loader-content`}>{children}</div>
+        </Transition>
         <Transition in={loading} classes durations={base} enterDelay={delay}>
           <div className={`${cls}loader-mask`}>
             {icon}
             {isRenderable(message) && <div className={`${cls}loader-message`}>{message}</div>}
           </div>
-        </Transition>
-        <Transition in={loading} classes durations={base} enterDelay={delay} firstMount keepMounted>
-          <div className={`${cls}loader-content`}>{children}</div>
         </Transition>
       </div>
     );
