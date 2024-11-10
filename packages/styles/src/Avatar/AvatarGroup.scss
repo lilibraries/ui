@@ -5,13 +5,6 @@
   vertical-align: middle;
 
   & .#{$cls-prefix}avatar:not(:first-child) {
-    margin-left: -0.5em;
-  }
-
-  &.#{$cls-prefix}rtl {
-    & .#{$cls-prefix}avatar:not(:first-child) {
-      margin-right: -0.5em;
-      margin-left: 0;
-    }
+    margin-inline-start: -0.5em;
   }
 }

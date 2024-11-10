@@ -15,21 +15,17 @@ import { inBrowser } from "@lilib/utils";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
 import Image, { ImageProps } from "../Image";
-import { ColorValue } from "../utils/types";
 import AvatarGroup from "./AvatarGroup";
-import AvatarConfig, { AvatarVariant } from "./AvatarConfig";
+import AvatarConfig from "./AvatarConfig";
 
 export * from "./AvatarGroup";
 export * from "./AvatarConfig";
 
 export interface AvatarCommonProps {
-  variant?: AvatarVariant;
   size?: SizeValue;
   image?: string | ImageProps;
-  round?: boolean;
-  color?: ColorValue;
+  rounded?: boolean;
   outlined?: boolean;
-  hoverable?: boolean;
 }
 
 export type AvatarProps<C extends ElementType = "span"> = C extends "span"
@@ -52,37 +48,27 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
     children,
     className,
     as = "span",
-    variant: variantProp,
     size: sizeProp,
     image,
-    round: roundProp,
-    color: colorProp,
+    rounded: roundedProp,
     outlined: outlinedProp,
-    hoverable: hoverableProp,
-    onClick,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
 
-  const { variant, round, color, outlined, hoverable } = AvatarConfig.useConfig({
-    variant: variantProp,
-    round: roundProp,
-    color: colorProp,
+  const { rounded, outlined } = AvatarConfig.useConfig({
+    rounded: roundedProp,
     outlined: outlinedProp,
-    hoverable: hoverableProp,
   });
 
   const classes = cn(
     `${cls}avatar`,
     {
       [`${cls}${size}`]: size,
-      [`${cls}${variant}`]: variant,
-      [`${cls}round`]: round,
-      [`${cls}${color}`]: color,
+      [`${cls}rounded`]: rounded,
       [`${cls}outlined`]: outlined,
-      [`${cls}hoverable`]: hoverable !== undefined ? !!hoverable : !!onClick,
     },
     className
   );
@@ -129,10 +115,8 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
   return createElement<AvatarProps>(
     as,
     {
-      tabIndex: hoverable ? 0 : undefined,
       ...rest,
       ref: useComposedRef(wrapperRef, ref),
-      onClick: onClick,
       className: classes,
     },
     !!image ? (

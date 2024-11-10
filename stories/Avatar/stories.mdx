@@ -14,34 +14,34 @@ Avatar component.
   <Story id="examples-avatar--basic" />
 </Canvas>
 
-### Icon
+### Icon Content
 
-<Canvas mdxSource={require("!!raw-loader!./Icon").default}>
-  <Story id="examples-avatar--icon" />
+<Canvas mdxSource={require("!!raw-loader!./IconContent").default}>
+  <Story id="examples-avatar--icon-content" />
 </Canvas>
 
-### Link
+### Link Avatar
 
-<Canvas mdxSource={require("!!raw-loader!./Link").default}>
-  <Story id="examples-avatar--link" />
+<Canvas mdxSource={require("!!raw-loader!./LinkAvatar").default}>
+  <Story id="examples-avatar--link-avatar" />
 </Canvas>
 
-### Text
+### Text Contents
 
-<Canvas mdxSource={require("!!raw-loader!./Text").default}>
-  <Story id="examples-avatar--text" />
+<Canvas mdxSource={require("!!raw-loader!./TextContents").default}>
+  <Story id="examples-avatar--text-contents" />
 </Canvas>
 
-### Round
+### Rounded Avatar
 
-<Canvas mdxSource={require("!!raw-loader!./Round").default}>
-  <Story id="examples-avatar--round" />
+<Canvas mdxSource={require("!!raw-loader!./RoundedAvatar").default}>
+  <Story id="examples-avatar--rounded-avatar" />
 </Canvas>
 
-### Sizes
+### Avatar Sizes
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-avatar--sizes" />
+<Canvas mdxSource={require("!!raw-loader!./AvatarSizes").default}>
+  <Story id="examples-avatar--avatar-sizes" />
 </Canvas>
 
 ### Custom Size
@@ -50,50 +50,38 @@ Avatar component.
   <Story id="examples-avatar--custom-size" />
 </Canvas>
 
-### Colors
+### Custom Color
 
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-avatar--colors" />
+<Canvas mdxSource={require("!!raw-loader!./CustomColor").default}>
+  <Story id="examples-avatar--custom-color" />
 </Canvas>
 
-### Solid
+### Avatar Group
 
-<Canvas mdxSource={require("!!raw-loader!./Solid").default}>
-  <Story id="examples-avatar--solid" />
-</Canvas>
-
-### Groups
-
-<Canvas mdxSource={require("!!raw-loader!./Groups").default}>
-  <Story id="examples-avatar--groups" />
+<Canvas mdxSource={require("!!raw-loader!./AvatarGroup").default}>
+  <Story id="examples-avatar--avatar-group" />
 </Canvas>
 
 ## API
 
 ### Avatar
 
-| Property    | Type                                                                                                                                                                                       | Description                                                                   |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| `as`        | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`                                             |
-| `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                                          |
-| `variant`   | `null` \| `"solid"`                                                                                                                                                                        | Variant                                                                       |
-| `image`     | `string` \| [`ImageProps`](?path=/story/views-image--page#props)                                                                                                                           | Image url or props of the [`Image`](?path=/story/views-image--page) component |
-| `round`     | `boolean`                                                                                                                                                                                  | Make corners round                                                            |
-| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                                                         |
-| `outlined`  | `boolean`                                                                                                                                                                                  | Add outline                                                                   |
-| `hoverable` | `boolean`                                                                                                                                                                                  | Display hover styles when the mouse moved on                                  |
+| Property   | Type                                                             | Description                                                                    |
+| ---------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `as`       | `ElementType`                                                    | Element type, default is `"span"`.                                             |
+| `size`     | `null` \| `"small"` \| `"large"`                                 | Avatar size.                                                                   |
+| `image`    | `string` \| [`ImageProps`](?path=/story/views-image--page#props) | Image url or props of the [`Image`](?path=/story/views-image--page) component. |
+| `rounded`  | `boolean`                                                        | Make corners rounded.                                                          |
+| `outlined` | `boolean`                                                        | Add outline.                                                                   |
 
 It accepts all props which the `as` element type supports.
 
 ### Avatar.Group
 
-| Property    | Type                                                                                                                                                                                       | Description                                  |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
-| `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                         |
-| `variant`   | `null` \| `"solid"`                                                                                                                                                                        | Variant                                      |
-| `round`     | `boolean`                                                                                                                                                                                  | Make corners round                           |
-| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                        |
-| `outlined`  | `boolean`                                                                                                                                                                                  | Add outline                                  |
-| `hoverable` | `boolean`                                                                                                                                                                                  | Display hover styles when the mouse moved on |
+| Property   | Type                             | Description           |
+| ---------- | -------------------------------- | --------------------- |
+| `size`     | `null` \| `"small"` \| `"large"` | Avatar size.          |
+| `rounded`  | `boolean`                        | Make corners rounded. |
+| `outlined` | `boolean`                        | Add outline.          |
 
 It accepts all props which the native `<div>` element supports.

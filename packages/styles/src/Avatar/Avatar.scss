@@ -5,17 +5,15 @@
 
   position: relative;
   display: inline-block;
-  width: calc(var(--line-height-fixed-base) * 2);
-  height: calc(var(--line-height-fixed-base) * 2);
+  width: calc(var(--font-size-base) * 2);
+  height: calc(var(--font-size-base) * 2);
   overflow: hidden;
   color: var(--text-color-base);
-  font-weight: 400;
-  font-size: var(--line-height-fixed-base);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-small);
   vertical-align: middle;
   background-color: var(--background-color-deep-base);
   border-radius: var(--border-radius-base);
-  cursor: auto;
 
   &:hover,
   &:active {
@@ -40,6 +38,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    font-size: var(--font-size-larger);
     text-align: center;
     word-break: keep-all;
     transform: translate(-50%, -50%);
@@ -47,18 +46,18 @@
   }
 
   &.#{$cls-prefix}small {
-    width: calc(var(--line-height-fixed-small) * 2);
-    height: calc(var(--line-height-fixed-small) * 2);
-    font-size: var(--line-height-fixed-small);
+    width: calc(var(--font-size-small) * 2);
+    height: calc(var(--font-size-small) * 2);
+    font-size: var(--font-size-small);
   }
 
   &.#{$cls-prefix}large {
-    width: calc(var(--line-height-fixed-large) * 2);
-    height: calc(var(--line-height-fixed-large) * 2);
-    font-size: var(--line-height-fixed-large);
+    width: calc(var(--font-size-large) * 2);
+    height: calc(var(--font-size-large) * 2);
+    font-size: var(--font-size-large);
   }
 
-  &.#{$cls-prefix}round {
+  &.#{$cls-prefix}rounded {
     border-radius: var(--border-radius-round);
 
     & img {
@@ -67,64 +66,6 @@
   }
 
   &.#{$cls-prefix}outlined {
-    box-shadow: 0 0 0 2px var(--background-color-page);
+    box-shadow: 0 0 0 1px var(--background-color-card);
   }
-
-  &.#{$cls-prefix}hoverable {
-    cursor: pointer;
-
-    &:hover {
-      color: var(--text-color-hover);
-      background-color: var(--background-color-deep-hover);
-    }
-
-    &:active {
-      color: var(--text-color-active);
-      background-color: var(--background-color-deep-active);
-    }
-
-    [data-focusing] &:focus {
-      @include focus-outline;
-    }
-  }
-
-  @each $color in $colors {
-    &.#{$cls-prefix}#{$color} {
-      color: var(--text-color-#{$color}-base);
-      background-color: var(--background-color-#{$color}-base);
-
-      &.#{$cls-prefix}hoverable {
-        &:hover {
-          color: var(--text-color-#{$color}-hover);
-          background-color: var(--background-color-#{$color}-hover);
-        }
-
-        &:active {
-          color: var(--text-color-#{$color}-active);
-          background-color: var(--background-color-#{$color}-active);
-        }
-      }
-    }
-  }
-
-  // &.#{$cls-prefix}solid {
-  //   @each $color in $colors {
-  //     &.#{$cls-prefix}#{$color} {
-  //       color: var(--text-color-solid-base);
-  //       background-color: var(--background-color-solid-#{$color}-base);
-
-  //       &.#{$cls-prefix}hoverable {
-  //         &:hover {
-  //           color: var(--text-color-solid-base);
-  //           background-color: var(--background-color-solid-#{$color}-hover);
-  //         }
-
-  //         &:active {
-  //           color: var(--text-color-solid-base);
-  //           background-color: var(--background-color-solid-#{$color}-active);
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
