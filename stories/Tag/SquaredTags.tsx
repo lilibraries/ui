@@ -4,8 +4,8 @@ import { Flexbox, Tag } from "@lilib/ui";
 function Example() {
   return (
     <Flexbox gap="2x" align="center">
-      <Tag square>0</Tag>
-      <Tag square clearable>
+      <Tag squared>0</Tag>
+      <Tag squared clearable>
         88
       </Tag>
     </Flexbox>

@@ -8,50 +8,56 @@ Tag components.
 
 ## Examples
 
-### Basic
+### Basic Tag
 
-<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-tag--basic" />
+<Canvas mdxSource={require("!!raw-loader!./BasicTag").default}>
+  <Story id="examples-tag--basic-tag" />
 </Canvas>
 
-### Link
+### Link Tag
 
-<Canvas mdxSource={require("!!raw-loader!./Link").default}>
-  <Story id="examples-tag--link" />
+<Canvas mdxSource={require("!!raw-loader!./LinkTag").default}>
+  <Story id="examples-tag--link-tag" />
 </Canvas>
 
-### Hoverable
+### Hoverable Tags
 
 When the `onClick` prop is specified, it is hoverable by default. You can set `hoverable` prop to `false` to disable it.
 
-<Canvas mdxSource={require("!!raw-loader!./Hoverable").default}>
-  <Story id="examples-tag--hoverable" />
+<Canvas mdxSource={require("!!raw-loader!./HoverableTags").default}>
+  <Story id="examples-tag--hoverable-tags" />
 </Canvas>
 
-### Clearable
+### Clearable Tags
 
 When the `onClear` prop is specified, it is clearable by default.
 
-<Canvas mdxSource={require("!!raw-loader!./Clearable").default}>
-  <Story id="examples-tag--clearable" />
+<Canvas mdxSource={require("!!raw-loader!./ClearableTags").default}>
+  <Story id="examples-tag--clearable-tags" />
 </Canvas>
 
-### Icons
+### Clear Loading
 
-<Canvas mdxSource={require("!!raw-loader!./Icons").default}>
-  <Story id="examples-tag--icons" />
+<Canvas mdxSource={require("!!raw-loader!./ClearLoading").default}>
+  <Story id="examples-tag--clear-loading" />
 </Canvas>
 
-### Round
+### Tag Icons
 
-<Canvas mdxSource={require("!!raw-loader!./Round").default}>
-  <Story id="examples-tag--round" />
+<Canvas mdxSource={require("!!raw-loader!./TagIcons").default}>
+  <Story id="examples-tag--tag-icons" />
 </Canvas>
 
-### Square
+### Rounded Tags
 
-<Canvas mdxSource={require("!!raw-loader!./Square").default}>
-  <Story id="examples-tag--square" />
+<Canvas mdxSource={require("!!raw-loader!./RoundedTags").default}>
+  <Story id="examples-tag--rounded-tags" />
+</Canvas>
+
+### Squared Tags
+
+<Canvas mdxSource={require("!!raw-loader!./SquaredTags").default}>
+  <Story id="examples-tag--squared-tags" />
 </Canvas>
 
 ### Long Tag
@@ -60,54 +66,48 @@ When the `onClear` prop is specified, it is clearable by default.
   <Story id="examples-tag--long-tag" />
 </Canvas>
 
-### Loading
+### Tag Sizes
 
-<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
-  <Story id="examples-tag--loading" />
+<Canvas mdxSource={require("!!raw-loader!./TagSizes").default}>
+  <Story id="examples-tag--tag-sizes" />
 </Canvas>
 
-### Sizes
+### Tag Colors
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-tag--sizes" />
+<Canvas mdxSource={require("!!raw-loader!./TagColors").default}>
+  <Story id="examples-tag--tag-colors" />
 </Canvas>
 
-### Colors
+### Solid Tags
 
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-tag--colors" />
+<Canvas mdxSource={require("!!raw-loader!./SolidTags").default}>
+  <Story id="examples-tag--solid-tags" />
 </Canvas>
 
-### Solid
+### Hollow Tags
 
-<Canvas mdxSource={require("!!raw-loader!./Solid").default}>
-  <Story id="examples-tag--solid" />
-</Canvas>
-
-### Hollow
-
-<Canvas mdxSource={require("!!raw-loader!./Hollow").default}>
-  <Story id="examples-tag--hollow" />
+<Canvas mdxSource={require("!!raw-loader!./HollowTags").default}>
+  <Story id="examples-tag--hollow-tags" />
 </Canvas>
 
 ## API
 
-| Property     | Type                                                                                                                                                                                       | Description                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
-| `as`         | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`            |
-| `children`   | `ReactNode`                                                                                                                                                                                | Tag content                                  |
-| `icon`       | `ReactNode`                                                                                                                                                                                | Specify icon                                 |
-| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                         |
-| `variant`    | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant                                      |
-| `color`      | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                        |
-| `round`      | `boolean`                                                                                                                                                                                  | Make corners round                           |
-| `square`     | `boolean`                                                                                                                                                                                  | Square style                                 |
-| `hoverable`  | `boolean`                                                                                                                                                                                  | Display hover styles when the mouse moved on |
-| `borderless` | `boolean`                                                                                                                                                                                  | Remove borders                               |
-| `disabled`   | `boolean`                                                                                                                                                                                  | Disable clear and click evnets               |
-| `clearable`  | `boolean`                                                                                                                                                                                  | Show clear button                            |
-| `clearProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                                                                                                                                    | Clear button props                           |
-| `onClick`    | `MouseEventHandler`                                                                                                                                                                        | Click event                                  |
-| `onClear`    | `MouseEventHandler`                                                                                                                                                                        | Clear event                                  |
+| Property     | Type                                                                                                                                                                                       | Description                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| `as`         | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`.            |
+| `children`   | `ReactNode`                                                                                                                                                                                | Tag content.                                  |
+| `icon`       | `ReactNode`                                                                                                                                                                                | Specify icon.                                 |
+| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size.                                         |
+| `variant`    | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant.                                      |
+| `color`      | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color.                                        |
+| `rounded`    | `boolean`                                                                                                                                                                                  | Make corners round.                           |
+| `squared`    | `boolean`                                                                                                                                                                                  | Square style.                                 |
+| `hoverable`  | `boolean`                                                                                                                                                                                  | Display hover styles when the mouse moved on. |
+| `borderless` | `boolean`                                                                                                                                                                                  | Remove borders.                               |
+| `disabled`   | `boolean`                                                                                                                                                                                  | Disable clear and click evnets.               |
+| `clearable`  | `boolean`                                                                                                                                                                                  | Show clear button.                            |
+| `clearProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                                                                                                                                    | Clear button props.                           |
+| `onClick`    | `MouseEventHandler`                                                                                                                                                                        | Click event.                                  |
+| `onClear`    | `MouseEventHandler`                                                                                                                                                                        | Clear event.                                  |
 
 It accepts all props which the `as` prop supports.

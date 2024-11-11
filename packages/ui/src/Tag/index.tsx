@@ -26,8 +26,8 @@ export interface TagCommonProps {
   size?: SizeValue;
   variant?: TagVariant;
   color?: ColorValue;
-  round?: boolean;
-  square?: boolean;
+  rounded?: boolean;
+  squared?: boolean;
   hoverable?: boolean;
   borderless?: boolean;
   disabled?: boolean;
@@ -59,8 +59,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     size: sizeProp,
     variant,
     color,
-    round,
-    square,
+    rounded,
+    squared,
     hoverable: hoverableProp,
     borderless,
     clearable: clearableProp,
@@ -84,8 +84,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       [`${cls}${size}`]: size,
       [`${cls}${variant}`]: variant,
       [`${cls}${color}`]: color,
-      [`${cls}round`]: round,
-      [`${cls}square`]: square,
+      [`${cls}rounded`]: rounded,
+      [`${cls}squared`]: squared,
       [`${cls}hoverable`]: hoverable,
       [`${cls}borderless`]: borderless,
       [`${cls}disabled`]: disabled,
@@ -101,26 +101,22 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
 
   const handleClear = usePersist((event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-    if (clearProps?.onClick) {
-      clearProps?.onClick(event);
-    }
-    if (onClear) {
-      onClear(event);
-    }
+    clearProps?.onClick?.(event);
+    onClear?.(event);
   });
 
   let clear: ReactNode = null;
   if (clearable) {
     clear = (
       <Button
-        children={<CloseIcon />}
         iconOnly
         borderless
         size={size}
-        color={color}
-        round={round}
-        variant={variant}
+        intent="minor"
+        variant="hollow"
+        rounded={rounded}
         disabled={disabled}
+        children={<CloseIcon />}
         {...clearProps}
         onClick={handleClear}
         className={cn(`${cls}tag-clear`, clearProps?.className)}
@@ -135,8 +131,8 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       ...rest,
       ref,
       disabled,
-      onClick: handleClick,
       className: classes,
+      onClick: handleClick,
     },
     isRenderable(icon) ? <span className={`${cls}tag-icon`}>{icon}</span> : null,
     <span className={`${cls}tag-content`}>{children}</span>,

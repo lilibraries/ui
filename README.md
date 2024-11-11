@@ -61,9 +61,9 @@ React component library.
 ### Views
 
 - [x] Dot
-- [ ] Tag
+- [x] Tag
 - [ ] Badge
-- [ ] Avatar
+- [x] Avatar
 - [ ] List
 - [ ] Tree
 - [ ] Card

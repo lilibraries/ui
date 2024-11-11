@@ -7,25 +7,26 @@
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
-  height: var(--line-height-fixed-base);
+  height: calc(var(--font-size-base) * var(--line-height-base));
   color: var(--text-color-base);
-  font-weight: 400;
+  font-weight: var(--font-weight-tag);
   font-size: var(--font-size-base);
   background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
+
+  @include feedback(fast, ease, color, border-color, background-color);
 
   &-icon {
     display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: var(--line-height-fixed-base);
-    height: var(--line-height-fixed-base);
-    margin-left: -1px;
+    width: calc(var(--font-size-base) * var(--line-height-base));
+    height: calc(var(--font-size-base) * var(--line-height-base));
+    margin-inline-start: -1px;
     overflow: hidden;
-    border-top-left-radius: var(--border-radius-small);
-    border-bottom-left-radius: var(--border-radius-small);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
 
     & > img {
       width: 100%;
@@ -51,7 +52,7 @@
     @include text-overflow;
 
     & + .#{$cls-prefix}tag-clear {
-      margin-left: -0.25em;
+      margin-inline-start: -0.25em;
     }
   }
 
@@ -60,34 +61,78 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: calc(var(--line-height-fixed-base) - 2px);
-    height: calc(var(--line-height-fixed-base) - 2px);
+    width: calc(var(--font-size-base) * var(--line-height-base));
+    height: calc(var(--font-size-base) * var(--line-height-base));
     padding: 0;
     font-size: var(--font-size-smaller);
-    background-color: transparent;
-    border-radius: var(--border-radius-small);
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+    margin-inline-end: -1px;
+  }
 
-    &:hover,
-    &:active,
-    &[disabled],
-    &.#{$cls-prefix}disabled {
-      background-color: transparent;
+  &.#{$cls-prefix}small {
+    height: calc(var(--font-size-small) * var(--line-height-base));
+    font-size: var(--font-size-small);
+
+    & > .#{$cls-prefix}tag-icon {
+      width: calc(var(--font-size-small) * var(--line-height-base));
+      height: calc(var(--font-size-small) * var(--line-height-base));
     }
 
-    &.#{$cls-prefix}solid,
-    &.#{$cls-prefix}hollow {
-      background-color: transparent;
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+      width: calc(var(--font-size-small) * var(--line-height-base));
+      height: calc(var(--font-size-small) * var(--line-height-base));
+    }
+  }
 
-      &:hover,
-      &:active,
-      &[disabled],
-      &.#{$cls-prefix}disabled {
-        background-color: transparent;
+  &.#{$cls-prefix}large {
+    height: calc(var(--font-size-large) * var(--line-height-base));
+    font-size: var(--font-size-large);
+
+    & > .#{$cls-prefix}tag-icon {
+      width: calc(var(--font-size-large) * var(--line-height-base));
+      height: calc(var(--font-size-large) * var(--line-height-base));
+    }
+
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+      width: calc(var(--font-size-large) * var(--line-height-base));
+      height: calc(var(--font-size-large) * var(--line-height-base));
+    }
+  }
+
+  &.#{$cls-prefix}rounded {
+    border-radius: var(--border-radius-round);
+
+    & > .#{$cls-prefix}tag-icon {
+      border-radius: var(--border-radius-round);
+    }
+
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+      border-radius: var(--border-radius-round);
+    }
+  }
+
+  &.#{$cls-prefix}squared {
+    font-family: var(--font-family-mono);
+
+    & > .#{$cls-prefix}tag-content {
+      min-width: calc(var(--font-size-base) * var(--line-height-base) - 2px);
+      padding: 0 0.25em;
+    }
+
+    &.#{$cls-prefix}small {
+      & > .#{$cls-prefix}tag-content {
+        min-width: calc(var(--font-size-small) * var(--line-height-base) - 2px);
+      }
+    }
+
+    &.#{$cls-prefix}large {
+      & > .#{$cls-prefix}tag-content {
+        min-width: calc(var(--font-size-large) * var(--line-height-base) - 2px);
       }
     }
   }
 
-  &.#{$cls-prefix}hoverable {
+  &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
     cursor: pointer;
 
     &:hover {
@@ -107,104 +152,41 @@
     }
   }
 
-  &.#{$cls-prefix}round {
-    border-radius: var(--border-radius-round);
-
-    & > .#{$cls-prefix}tag-icon {
-      border-radius: var(--border-radius-round);
-    }
-
-    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
-      border-radius: var(--border-radius-round);
-    }
-  }
-
-  &.#{$cls-prefix}small {
-    height: var(--line-height-fixed-small);
-    font-size: var(--font-size-small);
-
-    & > .#{$cls-prefix}tag-icon {
-      width: calc(var(--line-height-fixed-small) - 2px);
-      height: calc(var(--line-height-fixed-small) - 2px);
-    }
-
-    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
-      width: calc(var(--line-height-fixed-small) - 2px);
-      height: calc(var(--line-height-fixed-small) - 2px);
-    }
-  }
-
-  &.#{$cls-prefix}large {
-    height: var(--line-height-fixed-large);
-    font-size: var(--font-size-large);
-
-    & > .#{$cls-prefix}tag-icon {
-      width: calc(var(--line-height-fixed-large) - 2px);
-      height: calc(var(--line-height-fixed-large) - 2px);
-    }
-
-    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
-      width: calc(var(--line-height-fixed-large) - 2px);
-      height: calc(var(--line-height-fixed-large) - 2px);
-    }
-  }
-
-  &.#{$cls-prefix}square {
-    font-family: var(--font-family-mono);
-
-    & > .#{$cls-prefix}tag-content {
-      min-width: calc(var(--line-height-fixed-base) - 2px);
-      padding: 0 0.25em;
-    }
-
-    &.#{$cls-prefix}small {
-      & > .#{$cls-prefix}tag-content {
-        min-width: calc(var(--line-height-fixed-small) - 2px);
-      }
-    }
-
-    &.#{$cls-prefix}large {
-      & > .#{$cls-prefix}tag-content {
-        min-width: calc(var(--line-height-fixed-large) - 2px);
-      }
-    }
-  }
-
   &.#{$cls-prefix}disabled {
+    color: var(--text-color-disabled);
+    background-color: var(--background-color-disabled);
+    border-color: var(--border-color-disabled);
+    cursor: not-allowed;
+
     &[href] {
       pointer-events: none;
-    }
-
-    &.#{$cls-prefix}hoverable {
-      color: var(--text-color-disabled);
-      background-color: var(--background-color-disabled);
-      border-color: var(--border-color-disabled);
-      cursor: not-allowed;
     }
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      background-color: var(--#{$color});
-      border-color: var(--#{$color});
+      color: var(--text-color-#{$color}-base);
+      background-color: var(--background-color-#{$color}-base);
+      border-color: var(--border-color-#{$color}-base);
 
-      &.#{$cls-prefix}hoverable {
+      &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
+          color: var(--text-color-#{$color}-hover);
+          background-color: var(--background-color-#{$color}-hover);
+          border-color: var(--border-color-#{$color}-hover);
         }
 
         &:active {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
+          color: var(--text-color-#{$color}-active);
+          background-color: var(--background-color-#{$color}-active);
+          border-color: var(--border-color-#{$color}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}hoverable {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
-        }
+        color: var(--text-color-#{$color}-disabled);
+        background-color: var(--background-color-#{$color}-disabled);
+        border-color: var(--border-color-#{$color}-disabled);
       }
     }
   }
@@ -215,7 +197,32 @@
   background-color: var(--background-color-solid-base);
   border-color: var(--border-color-solid-base);
 
-  &.#{$cls-prefix}hoverable {
+  & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+    color: var(--text-color-solid-inactive);
+    background-color: transparent;
+
+    &:hover {
+      color: var(--text-color-solid-hover);
+      background-color: rgba(255, 255, 255, var(--alpha-base));
+    }
+
+    &:active {
+      color: var(--text-color-solid-active);
+      background-color: rgba(0, 0, 0, var(--alpha-base));
+    }
+
+    &[disabled] {
+      color: var(--text-color-solid-inactive);
+      background-color: transparent;
+    }
+
+    &.#{$cls-prefix}disabled {
+      color: var(--text-color-solid-disabled);
+      background-color: transparent;
+    }
+  }
+
+  &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
     &:hover {
       color: var(--text-color-solid-hover);
       background-color: var(--background-color-solid-hover);
@@ -230,35 +237,31 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}hoverable {
-      color: var(--text-color-solid-disabled);
-      background-color: var(--background-color-solid-disabled);
-      border-color: var(--border-color-solid-disabled);
-    }
+    color: var(--text-color-solid-disabled);
+    background-color: var(--background-color-solid-disabled);
+    border-color: var(--border-color-solid-disabled);
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      background-color: var(--#{$color});
-      border-color: var(--#{$color});
+      background-color: var(--background-color-#{$color}-solid-base);
+      border-color: var(--border-color-#{$color}-solid-base);
 
-      &.#{$cls-prefix}hoverable {
+      &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
+          background-color: var(--background-color-#{$color}-solid-hover);
+          border-color: var(--border-color-#{$color}-solid-hover);
         }
 
         &:active {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
+          background-color: var(--background-color-#{$color}-solid-active);
+          border-color: var(--border-color-#{$color}-solid-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}hoverable {
-          background-color: var(--#{$color});
-          border-color: var(--#{$color});
-        }
+        background-color: var(--background-color-#{$color}-solid-disabled);
+        border-color: var(--border-color-#{$color}-solid-disabled);
       }
     }
   }
@@ -267,7 +270,7 @@
 .#{$cls-prefix}tag.#{$cls-prefix}hollow {
   background-color: transparent;
 
-  &.#{$cls-prefix}hoverable {
+  &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
     &:hover {
       background-color: rgba(var(--basis-rgb) / var(--alpha-base));
     }
@@ -278,32 +281,28 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}hoverable {
-      background-color: transparent;
-    }
+    background-color: transparent;
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
-      color: var(--#{$color});
+      color: var(--text-color-#{$color}-base);
 
-      &.#{$cls-prefix}hoverable {
+      &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
-          color: var(--#{$color});
+          color: var(--text-color-#{$color}-hover);
           background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
         }
 
         &:active {
-          color: var(--#{$color});
+          color: var(--text-color-#{$color}-active);
           background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
         }
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}hoverable {
-          color: var(--#{$color});
-          background-color: transparent;
-        }
+        color: var(--text-color-#{$color}-disabled);
+        background-color: transparent;
       }
     }
   }
@@ -312,7 +311,7 @@
 .#{$cls-prefix}tag.#{$cls-prefix}borderless {
   border-color: transparent;
 
-  &.#{$cls-prefix}hoverable {
+  &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
     &:hover {
       border-color: transparent;
     }
@@ -323,16 +322,14 @@
   }
 
   &.#{$cls-prefix}disabled {
-    &.#{$cls-prefix}hoverable {
-      border-color: transparent;
-    }
+    border-color: transparent;
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
       border-color: transparent;
 
-      &.#{$cls-prefix}hoverable {
+      &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
           border-color: transparent;
         }
@@ -343,9 +340,7 @@
       }
 
       &.#{$cls-prefix}disabled {
-        &.#{$cls-prefix}hoverable {
-          border-color: transparent;
-        }
+        border-color: transparent;
       }
     }
   }
@@ -353,19 +348,17 @@
 
 .#{$cls-prefix}tag.#{$cls-prefix}rtl {
   & > .#{$cls-prefix}tag-icon {
-    margin-right: -1px;
-    margin-left: 0;
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
   }
 
-  &.#{$cls-prefix}round {
-    & > .#{$cls-prefix}tag-icon {
-      border-radius: var(--border-radius-round);
-    }
+  & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
   }
 
-  & > .#{$cls-prefix}tag-content + .#{$cls-prefix}tag-clear {
-    margin-right: -0.25em;
-    margin-left: 0;
+  &.#{$cls-prefix}rounded {
+    & > .#{$cls-prefix}tag-icon,
+    & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+      border-radius: var(--border-radius-round);
+    }
   }
 }
