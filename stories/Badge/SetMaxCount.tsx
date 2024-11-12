@@ -4,13 +4,13 @@ import { Badge } from "@lilib/ui";
 const block = {
   width: 50,
   height: 50,
-  borderRadius: "50%",
-  backgroundColor: "#808080",
+  borderRadius: 4,
+  backgroundColor: "#797E86",
 };
 
 function Example() {
   return (
-    <Badge count={6} round offset="14.64%">
+    <Badge count={100} maxCount={99} size="small" color="red" outlined>
       <div style={block} />
     </Badge>
   );

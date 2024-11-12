@@ -5,17 +5,18 @@ const block = {
   width: 50,
   height: 50,
   borderRadius: 4,
-  backgroundColor: "#808080",
+  backgroundColor: "#797E86",
 };
 
 function Example() {
   return (
     <Badge
-      count={
-        <Tag variant="solid" size="small" color="red">
-          Hot
+      tag={
+        <Tag variant="solid" size="small" color="yellow" borderless>
+          VIP
         </Tag>
       }
+      outlined
     >
       <div style={block} />
     </Badge>

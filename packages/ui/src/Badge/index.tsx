@@ -1,7 +1,6 @@
 import React, { ReactNode, forwardRef, CSSProperties, HTMLAttributes } from "react";
 import cn from "classnames";
 import isNumber from "lodash/isNumber";
-import isString from "lodash/isString";
 import Dot from "../Dot";
 import Tag from "../Tag";
 import Prefix from "../Prefix";
@@ -20,11 +19,11 @@ export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color
   size?: SizeValue;
   variant?: BadgeVariant;
   color?: ColorValue;
-  round?: boolean;
-  borderless?: boolean;
+  rounded?: boolean;
   animated?: boolean;
   outlined?: boolean;
-  count?: ReactNode;
+  tag?: ReactNode;
+  count?: number;
   maxCount?: number;
   showZero?: boolean;
   invisible?: boolean;
@@ -39,10 +38,10 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     size: sizeProp,
     variant,
     color,
-    round,
-    borderless,
+    rounded,
     animated,
     outlined,
+    tag: tagProp,
     count,
     maxCount,
     showZero,
@@ -58,17 +57,17 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const offsets = Array.isArray(offset) ? offset : ([offset, offset] as const);
 
   const { cls } = Prefix.useConfig();
-  const size = Size.useConfig(sizeProp);
   const { fast } = Duration.useConfig();
+  const size = Size.useConfig(sizeProp);
   const isRTL = Direction.useConfig() === "rtl";
 
   const classes = cn(
     `${cls}badge`,
     {
       [`${cls}rtl`]: isRTL,
+      [`${cls}outlined`]: outlined,
       [`${cls}contented`]: contented,
       [`${cls}standalone`]: !contented,
-      [`${cls}outlined`]: outlined,
     },
     className
   );
@@ -77,32 +76,30 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   let visible: boolean = true;
   let style: CSSProperties = {};
 
-  if (isRenderable(count)) {
-    if (isNumber(count) && !isNaN(count) && isNumber(maxCount) && !isNaN(maxCount) && count > maxCount) {
+  if (isRenderable(tagProp)) {
+    tag = tagProp;
+  } else if (isNumber(count) && !isNaN(count)) {
+    if (isNumber(maxCount) && !isNaN(maxCount) && count > maxCount) {
       tag = maxCount + "+";
     } else {
       tag = count;
     }
-    if (isNumber(count)) {
-      if (dotted) {
-        tag = <Dot size={size} color={color} animated={animated} />;
-      } else {
-        tag = (
-          <Tag size={size} variant={solid ? "solid" : null} color={color} round={round} square borderless={borderless}>
-            {tag}
-          </Tag>
-        );
-      }
+    if (dotted) {
+      tag = <Dot size={size} color={color} animated={animated} />;
+    } else {
+      tag = (
+        <Tag squared borderless size={size} variant={solid ? "solid" : null} color={color} rounded={rounded}>
+          {tag}
+        </Tag>
+      );
     }
   }
 
   if (invisible) {
     visible = false;
-  } else if (isNumber(count)) {
-    if (isNaN(count) || (count === 0 && !showZero)) {
-      visible = false;
-    }
-  } else if (!isRenderable(count)) {
+  } else if (!isRenderable(tag)) {
+    visible = false;
+  } else if (isNumber(count) && !showZero && count === 0) {
     visible = false;
   }
 
@@ -134,12 +131,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     <Transition in={visible} classes durations={fast} firstMount={contented} keepMounted={contented}>
       <span {...rest} ref={ref} className={classes}>
         {children}
-        <span
-          style={style}
-          className={cn(`${cls}badge-switcher`, {
-            [`${cls}badge-switcher-${placement}`]: isString(placement),
-          })}
-        >
+        <span style={style} className={cn(`${cls}badge-switcher`, `${cls}badge-switcher-${placement}`)}>
           {tag}
         </span>
       </span>

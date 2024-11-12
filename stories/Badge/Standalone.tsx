@@ -4,7 +4,7 @@ import { Badge } from "@lilib/ui";
 function Example() {
   return (
     <>
-      <Badge count={6} /> Badge
+      <Badge count={8} color="green" rounded /> Badge
     </>
   );
 }

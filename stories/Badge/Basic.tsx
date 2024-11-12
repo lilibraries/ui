@@ -5,12 +5,12 @@ const block = {
   width: 50,
   height: 50,
   borderRadius: 4,
-  backgroundColor: "#808080",
+  backgroundColor: "#797E86",
 };
 
 function Example() {
   return (
-    <Badge count={6}>
+    <Badge count={8} color="blue" outlined>
       <div style={block} />
     </Badge>
   );

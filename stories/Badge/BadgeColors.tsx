@@ -5,55 +5,55 @@ const block = {
   width: 50,
   height: 50,
   borderRadius: 4,
-  backgroundColor: "#808080",
+  backgroundColor: "#797E86",
 };
 
 function Example() {
   return (
     <Flexbox gap="8x" align="center" wrap>
-      <Badge count={6} color="red">
+      <Badge count={8} color="red" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="magenta">
+      <Badge count={8} color="magenta" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="purple">
+      <Badge count={8} color="purple" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="indigo">
+      <Badge count={8} color="indigo" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="navy">
+      <Badge count={8} color="navy" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="blue">
+      <Badge count={8} color="blue" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="cyan">
+      <Badge count={8} color="cyan" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="teal">
+      <Badge count={8} color="teal" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="green">
+      <Badge count={8} color="green" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="lime">
+      <Badge count={8} color="lime" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="yellow">
+      <Badge count={8} color="yellow" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="orange">
+      <Badge count={8} color="orange" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="brown">
+      <Badge count={8} color="brown" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color="gray">
+      <Badge count={8} color="gray" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} color={null}>
+      <Badge count={8} color={null}>
         <div style={block} />
       </Badge>
     </Flexbox>

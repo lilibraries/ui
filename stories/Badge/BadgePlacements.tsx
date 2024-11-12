@@ -5,22 +5,22 @@ const block = {
   width: 50,
   height: 50,
   borderRadius: 4,
-  backgroundColor: "#808080",
+  backgroundColor: "#797E86",
 };
 
 function Example() {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={6} placement="top-start">
+      <Badge count={8} placement="top-start" color="blue" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} placement="top-end">
+      <Badge count={8} placement="top-end" color="blue" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} placement="bottom-start">
+      <Badge count={8} placement="bottom-start" color="blue" outlined>
         <div style={block} />
       </Badge>
-      <Badge count={6} placement="bottom-end">
+      <Badge count={8} placement="bottom-end" color="blue" outlined>
         <div style={block} />
       </Badge>
     </Flexbox>

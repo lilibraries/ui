@@ -62,7 +62,7 @@ React component library.
 
 - [x] Dot
 - [x] Tag
-- [ ] Badge
+- [x] Badge
 - [x] Avatar
 - [ ] List
 - [ ] Tree

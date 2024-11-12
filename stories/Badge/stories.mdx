@@ -20,76 +20,70 @@ Show count tag.
   <Story id="examples-badge--standalone" />
 </Canvas>
 
-### Max Count
+### Set Max Count
 
-<Canvas mdxSource={require("!!raw-loader!./MaxCount").default}>
-  <Story id="examples-badge--max-count" />
+<Canvas mdxSource={require("!!raw-loader!./SetMaxCount").default}>
+  <Story id="examples-badge--set-max-count" />
 </Canvas>
 
-### Custom Tag
+### Custom Badge Tag
 
-<Canvas mdxSource={require("!!raw-loader!./CustomTag").default}>
-  <Story id="examples-badge--custom-tag" />
+<Canvas mdxSource={require("!!raw-loader!./CustomBadgeTag").default}>
+  <Story id="examples-badge--custom-badge-tag" />
 </Canvas>
 
-### Placements
+### Badge Placements
 
-<Canvas mdxSource={require("!!raw-loader!./Placements").default}>
-  <Story id="examples-badge--placements" />
+<Canvas mdxSource={require("!!raw-loader!./BadgePlacements").default}>
+  <Story id="examples-badge--badge-placements" />
 </Canvas>
 
-### Offset
+### Set Badge Offset
 
-<Canvas mdxSource={require("!!raw-loader!./Offset").default.replace(/\%/g, "%25")}>
-  <Story id="examples-badge--offset" />
+<Canvas mdxSource={require("!!raw-loader!./SetBadgeOffset").default.replace(/\%/g, "%25")}>
+  <Story id="examples-badge--set-badge-offset" />
 </Canvas>
 
-### Outlined
+### Badge Sizes
 
-<Canvas mdxSource={require("!!raw-loader!./Outlined").default}>
-  <Story id="examples-badge--outlined" />
+<Canvas mdxSource={require("!!raw-loader!./BadgeSizes").default}>
+  <Story id="examples-badge--badge-sizes" />
 </Canvas>
 
-### Sizes
+### Badge Colors
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-badge--sizes" />
+<Canvas mdxSource={require("!!raw-loader!./BadgeColors").default}>
+  <Story id="examples-badge--badge-colors" />
 </Canvas>
 
-### Colors
+### Solid Badges
 
-<Canvas mdxSource={require("!!raw-loader!./Colors").default}>
-  <Story id="examples-badge--colors" />
+<Canvas mdxSource={require("!!raw-loader!./SolidBadges").default}>
+  <Story id="examples-badge--solid-badges" />
 </Canvas>
 
-### Solid
+### Display Dots
 
-<Canvas mdxSource={require("!!raw-loader!./Solid").default}>
-  <Story id="examples-badge--solid" />
-</Canvas>
-
-### Dotted
-
-<Canvas mdxSource={require("!!raw-loader!./Dotted").default}>
-  <Story id="examples-badge--dotted" />
+<Canvas mdxSource={require("!!raw-loader!./DisplayDots").default}>
+  <Story id="examples-badge--display-dots" />
 </Canvas>
 
 ## API
 
-| Property     | Type                                                                                                                                                                                       | Description                                                                                                      |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size                                                                                                             |
-| `variant`    | `null` \| `"solid"` \| `"dotted"`                                                                                                                                                          | Variant                                                                                                          |
-| `color`      | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color                                                                                                            |
-| `round`      | `boolean`                                                                                                                                                                                  | Make tag corners round. Only works when the `variant` is not `"dotted"`                                          |
-| `borderless` | `boolean`                                                                                                                                                                                  | Remove borders. Only works when the `variant` is not `"dotted"`                                                  |
-| `animated`   | `boolen`                                                                                                                                                                                   | Perform heartbeat animation. Only works when the `variant` is `"dotted"`                                         |
-| `outlined`   | `boolen`                                                                                                                                                                                   | Add outline to the tag                                                                                           |
-| `count`      | `number` \| `ReactNode`                                                                                                                                                                    | Count number or custom tag element                                                                               |
-| `maxCount`   | `number`                                                                                                                                                                                   | If the `count` is large than `maxCount`, the tag will show `+` symbol                                            |
-| `showZero`   | `boolean`                                                                                                                                                                                  | The tag will hide when the `count` is zero by default. This property is used to modify the default behavior      |
-| `invisible`  | `boolean`                                                                                                                                                                                  | Control the tag visibility                                                                                       |
-| `placement`  | `"top-start"` \| `"top-end"` \| `"bottom-start"` \| `"bottom-end"`                                                                                                                         | Specify the tag placement. Default is `"top-end"`                                                                |
-| `offset`     | `number` \| `string` \| [`number` \| `string`, `number` \| `string`]                                                                                                                       | Placement offset. When it is an array, the first value is horizontal offset, the second value is vertical offset |
+| Property    | Type                                                                                                                                                                                       | Description                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `size`      | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size.                                                                                                             |
+| `variant`   | `null` \| `"solid"` \| `"dotted"`                                                                                                                                                          | Variant.                                                                                                          |
+| `color`     | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color.                                                                                                            |
+| `rounded`   | `boolean`                                                                                                                                                                                  | Make tag corners round. Only works when the `variant` is not `"dotted"`.                                          |
+| `animated`  | `boolen`                                                                                                                                                                                   | Perform heartbeat animation. Only works when the `variant` is `"dotted"`.                                         |
+| `outlined`  | `boolen`                                                                                                                                                                                   | Add outline to the tag.                                                                                           |
+| `tag`       | `ReactNode`                                                                                                                                                                                | Custom badge tag.                                                                                                 |
+| `count`     | `number`                                                                                                                                                                                   | Count number.                                                                                                     |
+| `maxCount`  | `number`                                                                                                                                                                                   | If the `count` is large than `maxCount`, the tag will show `+` symbol.                                            |
+| `showZero`  | `boolean`                                                                                                                                                                                  | The tag will hide when the `count` is zero by default. This property is used to modify the default behavior.      |
+| `invisible` | `boolean`                                                                                                                                                                                  | Control the tag visibility.                                                                                       |
+| `placement` | `"top-start"` \| `"top-end"` \| `"bottom-start"` \| `"bottom-end"`                                                                                                                         | Specify the tag placement. Default is `"top-end"`.                                                                |
+| `offset`    | `number` \| `string` \| [`number` \| `string`, `number` \| `string`]                                                                                                                       | Placement offset. When it is an array, the first value is horizontal offset, the second value is vertical offset. |
 
 It accepts all props which the native `<span>` element supports.
