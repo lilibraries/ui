@@ -7,6 +7,7 @@ export { default as LinkTag } from "./LinkTag";
 export { default as HoverableTags } from "./HoverableTags";
 export { default as ClearableTags } from "./ClearableTags";
 export { default as ClearLoading } from "./ClearLoading";
+export { default as CustomClearIcon } from "./CustomClearIcon";
 export { default as TagIcons } from "./TagIcons";
 export { default as RoundedTags } from "./RoundedTags";
 export { default as SquaredTags } from "./SquaredTags";
