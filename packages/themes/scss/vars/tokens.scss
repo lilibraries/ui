@@ -134,6 +134,12 @@ $text-color-solid-active: $white !default;
 $text-color-solid-inactive: rgba($white, 0.7) !default;
 $text-color-solid-disabled: rgba($white, 0.6) !default;
 
+$text-color-reverse-base: $white !default;
+$text-color-reverse-hover: $white !default;
+$text-color-reverse-active: $white !default;
+$text-color-reverse-inactive: rgba($white, 0.7) !default;
+$text-color-reverse-disabled: rgba($white, 0.6) !default;
+
 $text-color-major-base: $major-5 !default;
 $text-color-major-hover: $major-6 !default;
 $text-color-major-active: $major-7 !default;
@@ -767,6 +773,13 @@ $dark-text-color-solid-hover: $white !default;
 $dark-text-color-solid-active: $white !default;
 $dark-text-color-solid-inactive: rgba($white, 0.4) !default;
 $dark-text-color-solid-disabled: rgba($white, 0.3) !default;
+
+$dark-text-color-reverse-base: rgba($black, 0.8) !default;
+$dark-text-color-reverse-muted: rgba($black, 0.6) !default;
+$dark-text-color-reverse-hover: rgba($black, 0.9) !default;
+$dark-text-color-reverse-active: $black !default;
+$dark-text-color-reverse-inactive: rgba($black, 0.4) !default;
+$dark-text-color-reverse-disabled: rgba($black, 0.3) !default;
 
 $dark-text-color-major-base: $dark-major-6 !default;
 $dark-text-color-major-hover: $dark-major-7 !default;

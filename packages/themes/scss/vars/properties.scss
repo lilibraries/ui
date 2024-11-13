@@ -147,6 +147,12 @@ $light-properties: (
   "--text-color-solid-inactive": $text-color-solid-inactive,
   "--text-color-solid-disabled": $text-color-solid-disabled,
 
+  "--text-color-reverse-base": $text-color-reverse-base,
+  "--text-color-reverse-hover": $text-color-reverse-hover,
+  "--text-color-reverse-active": $text-color-reverse-active,
+  "--text-color-reverse-inactive": $text-color-reverse-inactive,
+  "--text-color-reverse-disabled": $text-color-reverse-disabled,
+
   "--text-color-red-base": $text-color-red-base,
   "--text-color-red-hover": $text-color-red-hover,
   "--text-color-red-active": $text-color-red-active,
@@ -826,6 +832,12 @@ $dark-properties: (
   "--text-color-solid-active": $dark-text-color-solid-active,
   "--text-color-solid-inactive": $dark-text-color-solid-inactive,
   "--text-color-solid-disabled": $dark-text-color-solid-disabled,
+
+  "--text-color-reverse-base": $dark-text-color-reverse-base,
+  "--text-color-reverse-hover": $dark-text-color-reverse-hover,
+  "--text-color-reverse-active": $dark-text-color-reverse-active,
+  "--text-color-reverse-inactive": $dark-text-color-reverse-inactive,
+  "--text-color-reverse-disabled": $dark-text-color-reverse-disabled,
 
   "--text-color-red-base": $dark-text-color-red-base,
   "--text-color-red-hover": $dark-text-color-red-hover,
