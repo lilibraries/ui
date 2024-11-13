@@ -14,8 +14,7 @@
   background-color: var(--background-color-base);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
-
-  @include feedback(fast, ease, color, border-color, background-color);
+  @include feedback(color, border-color, background-color);
 
   &-icon {
     display: inline-flex;

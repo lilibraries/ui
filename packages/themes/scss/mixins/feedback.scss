@@ -1,8 +1,8 @@
 @import "./transition";
 @import "../vars/tokens";
 
-@mixin feedback($speed, $algorithm, $properties...) {
+@mixin feedback($properties...) {
   @if $enable-feedbacks {
-    @include transition($speed, $algorithm, $properties...);
+    @include transition(fast, ease, $properties...);
   }
 }

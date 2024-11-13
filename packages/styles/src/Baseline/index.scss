@@ -79,6 +79,7 @@ a {
   color: var(--text-color-major-base);
   text-decoration: none;
   cursor: pointer;
+  @include feedback(color);
 
   &:hover {
     color: var(--text-color-major-hover);
