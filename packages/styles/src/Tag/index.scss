@@ -4,6 +4,7 @@
   @include reset;
 
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
@@ -63,9 +64,26 @@
     width: calc(var(--font-size-base) * var(--line-height-base));
     height: calc(var(--font-size-base) * var(--line-height-base));
     padding: 0;
+    color: var(--text-color-muted);
     font-size: var(--font-size-smaller);
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     margin-inline-end: -1px;
+
+    &:hover {
+      color: var(--text-color-hover);
+    }
+
+    &:active {
+      color: var(--text-color-active);
+    }
+
+    &[disabled] {
+      color: var(--text-color-muted);
+    }
+
+    &.#{$cls-prefix}disabled {
+      color: var(--text-color-disabled);
+    }
   }
 
   &.#{$cls-prefix}small {
@@ -192,73 +210,97 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}solid {
-  color: var(--text-color-solid-base);
+  color: var(--text-color-reverse-base);
   background-color: var(--background-color-solid-base);
   border-color: var(--border-color-solid-base);
 
   & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
-    color: var(--text-color-solid-inactive);
+    color: var(--text-color-reverse-base);
     background-color: transparent;
 
     &:hover {
-      color: var(--text-color-solid-hover);
-      background-color: rgba(255, 255, 255, var(--alpha-base));
+      color: var(--text-color-reverse-hover);
+      background-color: rgba($white, var(--alpha-base));
     }
 
     &:active {
-      color: var(--text-color-solid-active);
-      background-color: rgba(0, 0, 0, var(--alpha-base));
+      color: var(--text-color-reverse-active);
+      background-color: rgba($white, var(--alpha-deep));
     }
 
     &[disabled] {
-      color: var(--text-color-solid-inactive);
+      color: var(--text-color-reverse-base);
       background-color: transparent;
     }
 
     &.#{$cls-prefix}disabled {
-      color: var(--text-color-solid-disabled);
+      color: var(--text-color-reverse-disabled);
       background-color: transparent;
     }
   }
 
   &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
     &:hover {
-      color: var(--text-color-solid-hover);
+      color: var(--text-color-reverse-hover);
       background-color: var(--background-color-solid-hover);
       border-color: var(--border-color-solid-hover);
     }
 
     &:active {
-      color: var(--text-color-solid-active);
+      color: var(--text-color-reverse-active);
       background-color: var(--background-color-solid-active);
       border-color: var(--border-color-solid-active);
     }
   }
 
   &.#{$cls-prefix}disabled {
-    color: var(--text-color-solid-disabled);
+    color: var(--text-color-reverse-disabled);
     background-color: var(--background-color-solid-disabled);
     border-color: var(--border-color-solid-disabled);
   }
 
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
+      color: var(--text-color-solid-base);
       background-color: var(--background-color-#{$color}-solid-base);
       border-color: var(--border-color-#{$color}-solid-base);
 
+      & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
+        color: var(--text-color-solid-base);
+
+        &:hover {
+          color: var(--text-color-solid-hover);
+        }
+
+        &:active {
+          color: var(--text-color-solid-active);
+        }
+
+        &[disabled] {
+          color: var(--text-color-solid-base);
+        }
+
+        &.#{$cls-prefix}disabled {
+          color: var(--text-color-solid-disabled);
+        }
+      }
+
       &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
+          color: var(--text-color-solid-hover);
           background-color: var(--background-color-#{$color}-solid-hover);
           border-color: var(--border-color-#{$color}-solid-hover);
         }
 
         &:active {
+          color: var(--text-color-solid-active);
           background-color: var(--background-color-#{$color}-solid-active);
           border-color: var(--border-color-#{$color}-solid-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
+        color: var(--text-color-solid-disabled);
         background-color: var(--background-color-#{$color}-solid-disabled);
         border-color: var(--border-color-#{$color}-solid-disabled);
       }

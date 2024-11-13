@@ -112,7 +112,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
         iconOnly
         borderless
         size={size}
-        intent="minor"
         variant="hollow"
         rounded={rounded}
         disabled={disabled}
