@@ -11,13 +11,13 @@ const block = {
 function Example() {
   return (
     <Flexbox gap="8x" align="center">
-      <Badge count={8} size="small" color="blue" outlined>
+      <Badge count={8} size="small" color="blue">
         <div style={block} />
       </Badge>
-      <Badge count={8} size={null} color="blue" outlined>
+      <Badge count={8} size={null} color="blue">
         <div style={block} />
       </Badge>
-      <Badge count={8} size="large" color="blue" outlined>
+      <Badge count={8} size="large" color="blue">
         <div style={block} />
       </Badge>
     </Flexbox>

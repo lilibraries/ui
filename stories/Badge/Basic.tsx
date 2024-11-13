@@ -10,7 +10,7 @@ const block = {
 
 function Example() {
   return (
-    <Badge count={8} color="blue" outlined>
+    <Badge count={8} color="blue">
       <div style={block} />
     </Badge>
   );
