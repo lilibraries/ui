@@ -768,21 +768,21 @@ $dark-text-color-solid-active: $white !default;
 $dark-text-color-solid-inactive: rgba($white, 0.4) !default;
 $dark-text-color-solid-disabled: rgba($white, 0.3) !default;
 
-$dark-text-color-major-base: $dark-major-5 !default;
-$dark-text-color-major-hover: $dark-major-6 !default;
-$dark-text-color-major-active: $dark-major-7 !default;
+$dark-text-color-major-base: $dark-major-6 !default;
+$dark-text-color-major-hover: $dark-major-7 !default;
+$dark-text-color-major-active: $dark-major-8 !default;
 $dark-text-color-major-inactive: $dark-major-3 !default;
 $dark-text-color-major-disabled: $dark-major-2 !default;
 
-$dark-text-color-minor-base: $dark-minor-5 !default;
-$dark-text-color-minor-hover: $dark-minor-6 !default;
-$dark-text-color-minor-active: $dark-minor-7 !default;
+$dark-text-color-minor-base: $dark-minor-6 !default;
+$dark-text-color-minor-hover: $dark-minor-7 !default;
+$dark-text-color-minor-active: $dark-minor-8 !default;
 $dark-text-color-minor-inactive: $dark-minor-3 !default;
 $dark-text-color-minor-disabled: $dark-minor-2 !default;
 
-$dark-text-color-positive-base: $dark-positive-5 !default;
-$dark-text-color-positive-hover: $dark-positive-6 !default;
-$dark-text-color-positive-active: $dark-positive-7 !default;
+$dark-text-color-positive-base: $dark-positive-6 !default;
+$dark-text-color-positive-hover: $dark-positive-7 !default;
+$dark-text-color-positive-active: $dark-positive-8 !default;
 $dark-text-color-positive-inactive: $dark-positive-3 !default;
 $dark-text-color-positive-disabled: $dark-positive-2 !default;
 
@@ -792,63 +792,63 @@ $dark-text-color-alertive-active: $dark-alertive-7 !default;
 $dark-text-color-alertive-inactive: $dark-alertive-3 !default;
 $dark-text-color-alertive-disabled: $dark-alertive-2 !default;
 
-$dark-text-color-negative-base: $dark-negative-5 !default;
-$dark-text-color-negative-hover: $dark-negative-6 !default;
-$dark-text-color-negative-active: $dark-negative-7 !default;
+$dark-text-color-negative-base: $dark-negative-6 !default;
+$dark-text-color-negative-hover: $dark-negative-7 !default;
+$dark-text-color-negative-active: $dark-negative-8 !default;
 $dark-text-color-negative-inactive: $dark-negative-3 !default;
 $dark-text-color-negative-disabled: $dark-negative-2 !default;
 
-$dark-text-color-red-base: $dark-red-5 !default;
-$dark-text-color-red-hover: $dark-red-6 !default;
-$dark-text-color-red-active: $dark-red-7 !default;
+$dark-text-color-red-base: $dark-red-6 !default;
+$dark-text-color-red-hover: $dark-red-7 !default;
+$dark-text-color-red-active: $dark-red-8 !default;
 $dark-text-color-red-inactive: $dark-red-3 !default;
 $dark-text-color-red-disabled: $dark-red-2 !default;
 
-$dark-text-color-magenta-base: $dark-magenta-5 !default;
-$dark-text-color-magenta-hover: $dark-magenta-6 !default;
-$dark-text-color-magenta-active: $dark-magenta-7 !default;
+$dark-text-color-magenta-base: $dark-magenta-6 !default;
+$dark-text-color-magenta-hover: $dark-magenta-7 !default;
+$dark-text-color-magenta-active: $dark-magenta-8 !default;
 $dark-text-color-magenta-inactive: $dark-magenta-3 !default;
 $dark-text-color-magenta-disabled: $dark-magenta-2 !default;
 
-$dark-text-color-purple-base: $dark-purple-5 !default;
-$dark-text-color-purple-hover: $dark-purple-6 !default;
-$dark-text-color-purple-active: $dark-purple-7 !default;
+$dark-text-color-purple-base: $dark-purple-6 !default;
+$dark-text-color-purple-hover: $dark-purple-7 !default;
+$dark-text-color-purple-active: $dark-purple-8 !default;
 $dark-text-color-purple-inactive: $dark-purple-3 !default;
 $dark-text-color-purple-disabled: $dark-purple-2 !default;
 
-$dark-text-color-indigo-base: $dark-indigo-5 !default;
-$dark-text-color-indigo-hover: $dark-indigo-6 !default;
-$dark-text-color-indigo-active: $dark-indigo-7 !default;
-$dark-text-color-indigo-inactive: $dark-indigo-3 !default;
-$dark-text-color-indigo-disabled: $dark-indigo-2 !default;
+$dark-text-color-indigo-base: $dark-indigo-6 !default;
+$dark-text-color-indigo-hover: $dark-indigo-7 !default;
+$dark-text-color-indigo-active: $dark-indigo-8 !default;
+$dark-text-color-indigo-inactive: $dark-indigo-4 !default;
+$dark-text-color-indigo-disabled: $dark-indigo-3 !default;
 
-$dark-text-color-navy-base: $dark-navy-5 !default;
-$dark-text-color-navy-hover: $dark-navy-6 !default;
-$dark-text-color-navy-active: $dark-navy-7 !default;
-$dark-text-color-navy-inactive: $dark-navy-3 !default;
-$dark-text-color-navy-disabled: $dark-navy-2 !default;
+$dark-text-color-navy-base: $dark-navy-6 !default;
+$dark-text-color-navy-hover: $dark-navy-7 !default;
+$dark-text-color-navy-active: $dark-navy-8 !default;
+$dark-text-color-navy-inactive: $dark-navy-4 !default;
+$dark-text-color-navy-disabled: $dark-navy-3 !default;
 
-$dark-text-color-blue-base: $dark-blue-5 !default;
-$dark-text-color-blue-hover: $dark-blue-6 !default;
-$dark-text-color-blue-active: $dark-blue-7 !default;
+$dark-text-color-blue-base: $dark-blue-6 !default;
+$dark-text-color-blue-hover: $dark-blue-7 !default;
+$dark-text-color-blue-active: $dark-blue-8 !default;
 $dark-text-color-blue-inactive: $dark-blue-3 !default;
 $dark-text-color-blue-disabled: $dark-blue-2 !default;
 
-$dark-text-color-cyan-base: $dark-cyan-5 !default;
-$dark-text-color-cyan-hover: $dark-cyan-6 !default;
-$dark-text-color-cyan-active: $dark-cyan-7 !default;
+$dark-text-color-cyan-base: $dark-cyan-6 !default;
+$dark-text-color-cyan-hover: $dark-cyan-7 !default;
+$dark-text-color-cyan-active: $dark-cyan-8 !default;
 $dark-text-color-cyan-inactive: $dark-cyan-3 !default;
 $dark-text-color-cyan-disabled: $dark-cyan-2 !default;
 
-$dark-text-color-teal-base: $dark-teal-5 !default;
-$dark-text-color-teal-hover: $dark-teal-6 !default;
-$dark-text-color-teal-active: $dark-teal-7 !default;
+$dark-text-color-teal-base: $dark-teal-6 !default;
+$dark-text-color-teal-hover: $dark-teal-7 !default;
+$dark-text-color-teal-active: $dark-teal-8 !default;
 $dark-text-color-teal-inactive: $dark-teal-3 !default;
 $dark-text-color-teal-disabled: $dark-teal-2 !default;
 
-$dark-text-color-green-base: $dark-green-5 !default;
-$dark-text-color-green-hover: $dark-green-6 !default;
-$dark-text-color-green-active: $dark-green-7 !default;
+$dark-text-color-green-base: $dark-green-6 !default;
+$dark-text-color-green-hover: $dark-green-7 !default;
+$dark-text-color-green-active: $dark-green-8 !default;
 $dark-text-color-green-inactive: $dark-green-3 !default;
 $dark-text-color-green-disabled: $dark-green-2 !default;
 
@@ -870,15 +870,15 @@ $dark-text-color-orange-active: $dark-orange-7 !default;
 $dark-text-color-orange-inactive: $dark-orange-3 !default;
 $dark-text-color-orange-disabled: $dark-orange-2 !default;
 
-$dark-text-color-brown-base: $dark-brown-5 !default;
-$dark-text-color-brown-hover: $dark-brown-6 !default;
-$dark-text-color-brown-active: $dark-brown-7 !default;
+$dark-text-color-brown-base: $dark-brown-6 !default;
+$dark-text-color-brown-hover: $dark-brown-7 !default;
+$dark-text-color-brown-active: $dark-brown-8 !default;
 $dark-text-color-brown-inactive: $dark-brown-3 !default;
 $dark-text-color-brown-disabled: $dark-brown-2 !default;
 
-$dark-text-color-gray-base: $dark-gray-5 !default;
-$dark-text-color-gray-hover: $dark-gray-6 !default;
-$dark-text-color-gray-active: $dark-gray-7 !default;
+$dark-text-color-gray-base: $dark-gray-6 !default;
+$dark-text-color-gray-hover: $dark-gray-7 !default;
+$dark-text-color-gray-active: $dark-gray-8 !default;
 $dark-text-color-gray-inactive: $dark-gray-3 !default;
 $dark-text-color-gray-disabled: $dark-gray-2 !default;
 
