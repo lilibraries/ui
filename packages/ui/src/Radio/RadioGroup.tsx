@@ -31,7 +31,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
     children,
   } = props;
 
-  const controlled = valueProp !== undefined;
+  const controlled = "value" in props;
   const size = Size.useConfig(sizeProp);
   const [value, setValue] = useSafeState<any>(controlled ? valueProp : defaultValue);
 

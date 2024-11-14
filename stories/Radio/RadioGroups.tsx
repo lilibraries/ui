@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Flexbox, Radio } from "@lilib/ui";
 
 function Controlled() {
-  const [value, setValue] = useState<any>(1);
+  const [value, setValue] = useState(1);
 
   return (
     <Radio.Group

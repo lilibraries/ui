@@ -1,5 +1,6 @@
 import { FC, useRef, Children, useEffect, cloneElement, ReactElement } from "react";
 import cn from "classnames";
+import warning from "warning";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
 import isObject from "lodash/isObject";
@@ -88,13 +89,10 @@ const Transition: FC<TransitionProps> & {
   const enteringDuration = isNumber(durations) ? durations : durations[ENTERING];
   const exitingDuration = isNumber(durations) ? durations : durations[EXITING];
 
-  if (process.env.NODE_ENV !== "production") {
-    if (!isNumber(enteringDuration) || enteringDuration <= 0 || !isNumber(exitingDuration) || exitingDuration <= 0) {
-      console.warn(
-        "The `durations` prop of Transition component must be a positive number or an object contains entering and exiting durations whose are positive numbers."
-      );
-    }
-  }
+  warning(
+    isNumber(enteringDuration) && enteringDuration > 0 && isNumber(exitingDuration) && exitingDuration > 0,
+    "The `durations` prop of Transition component must be a positive number or an object contains entering and exiting durations whose are positive numbers."
+  );
 
   const { cls } = Prefix.useConfig();
   const domRef = useRef<HTMLElement>();

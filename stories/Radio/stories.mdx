@@ -8,68 +8,68 @@ Based on `<input type="radio" />`.
 
 ## Examples
 
-### Basic
+### Basic Radio
 
-<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-radio--basic" />
+<Canvas mdxSource={require("!!raw-loader!./BasicRadio").default}>
+  <Story id="examples-radio--basic-radio" />
 </Canvas>
 
-### Sizes
+### Radio Sizes
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-radio--sizes" />
+<Canvas mdxSource={require("!!raw-loader!./RadioSizes").default}>
+  <Story id="examples-radio--radio-sizes" />
 </Canvas>
 
-### Loading
+### Loading State
 
-<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
-  <Story id="examples-radio--loading" />
+<Canvas mdxSource={require("!!raw-loader!./LoadingState").default}>
+  <Story id="examples-radio--loading-state" />
 </Canvas>
 
-### Disabled
+### Disabled State
 
-<Canvas mdxSource={require("!!raw-loader!./Disabled").default}>
-  <Story id="examples-radio--disabled" />
+<Canvas mdxSource={require("!!raw-loader!./DisabledState").default}>
+  <Story id="examples-radio--disabled-state" />
 </Canvas>
 
-### Groups
+### Radio Groups
 
-<Canvas mdxSource={require("!!raw-loader!./Groups").default}>
-  <Story id="examples-radio--groups" />
+<Canvas mdxSource={require("!!raw-loader!./RadioGroups").default}>
+  <Story id="examples-radio--radio-groups" />
 </Canvas>
 
 ## API
 
 ### Radio
 
-| Property         | Type                                                    | Description                              |
-| ---------------- | ------------------------------------------------------- | ---------------------------------------- |
-| `children`       | `ReactNode`                                             | Radio label                              |
-| `size`           | `null` \| `"small"` \| `"large"`                        | Size                                     |
-| `loading`        | `boolean`                                               | Show spinner                             |
-| `loadingIcon`    | `ReactNode`                                             | Custom spinner icon                      |
-| `loadingDelay`   | `number`                                                | Loading delay time, in milliseconds      |
-| `disabled`       | `boolean`                                               | Disable change event                     |
-| `value`          | `any`                                                   | Radio value. **Required** in Radio.Group |
-| `checked`        | `boolean`                                               | Controlled checked                       |
-| `defaultChecked` | `boolean`                                               | Uncontrolled checked                     |
-| `onChange`       | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event                             |
-| `inputRef`       | `Ref<HTMLInputElement>`                                 | Ref to internal input element            |
-| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`                 | Internal input props                     |
+| Property         | Type                                                    | Description                               |
+| ---------------- | ------------------------------------------------------- | ----------------------------------------- |
+| `children`       | `ReactNode`                                             | Radio label.                              |
+| `size`           | `null` \| `"small"` \| `"large"`                        | Size.                                     |
+| `loading`        | `boolean`                                               | Show spinner.                             |
+| `loadingIcon`    | `ReactNode`                                             | Custom spinner icon.                      |
+| `loadingDelay`   | `number`                                                | Loading delay time, in milliseconds.      |
+| `disabled`       | `boolean`                                               | Disable change event.                     |
+| `value`          | `any`                                                   | Radio value. **Required** in Radio.Group. |
+| `checked`        | `boolean`                                               | Controlled checked.                       |
+| `defaultChecked` | `boolean`                                               | Uncontrolled checked.                     |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event.                             |
+| `inputRef`       | `Ref<HTMLInputElement>`                                 | Ref to internal input element.            |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`                 | Internal input props.                     |
 
 It accepts all props which the native `<label>` element supports. The `loadingIcon` and `loadingDelay` props can be configured by the [`Spinner.Config`](?path=/story/feedbacks-spinner--page#spinnerconfig) component.
 
 ### Radio.Group
 
-| Property       | Type                                                    | Description                         |
-| -------------- | ------------------------------------------------------- | ----------------------------------- |
-| `children`     | `ReactNode`                                             | Radios                              |
-| `size`         | `null` \| `"small"` \| `"large"`                        | Size                                |
-| `name`         | `string`                                                | Name of all radios                  |
-| `value`        | `any`                                                   | Controlled value                    |
-| `defaultValue` | `any`                                                   | Uncontrolled value                  |
-| `loading`      | `boolean`                                               | Show spinner                        |
-| `loadingIcon`  | `ReactNode`                                             | Custom spinner icon                 |
-| `loadingDelay` | `number`                                                | Loading delay time, in milliseconds |
-| `disabled`     | `boolean`                                               | Disable all radios                  |
-| `onChange`     | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event                        |
+| Property       | Type                                                    | Description                          |
+| -------------- | ------------------------------------------------------- | ------------------------------------ |
+| `children`     | `ReactNode`                                             | Radios.                              |
+| `size`         | `null` \| `"small"` \| `"large"`                        | Size.                                |
+| `name`         | `string`                                                | Name of all radios.                  |
+| `value`        | `any`                                                   | Controlled value.                    |
+| `defaultValue` | `any`                                                   | Uncontrolled value.                  |
+| `loading`      | `boolean`                                               | Show spinner.                        |
+| `loadingIcon`  | `ReactNode`                                             | Custom spinner icon.                 |
+| `loadingDelay` | `number`                                                | Loading delay time, in milliseconds. |
+| `disabled`     | `boolean`                                               | Disable all radios.                  |
+| `onChange`     | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event.                        |

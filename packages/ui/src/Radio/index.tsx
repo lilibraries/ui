@@ -11,11 +11,10 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import { warning } from "@lilib/utils";
+import warning from "warning";
 import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import DotIcon from "../icons/DotIcon";
 import isRenderable from "../utils/isRenderable";
@@ -64,7 +63,6 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
 
   const { icon: loadingIcon, delay: loadingDelay } = Spinner.Config.useConfig({
     icon: loadingIconProp,
@@ -83,16 +81,10 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
     disabled: disabledProp,
   });
 
-  if (process.env.NODE_ENV !== "production") {
-    warning(
-      !!groupControlled && value === undefined,
-      "You should set a non-undefined value for Radio under Radio.Group.",
-      { scope: "Radio" }
-    );
-  }
+  warning(!groupControlled || value !== undefined, "You should set a non-undefined value for Radio in Radio.Group.");
 
   const isValueControlled = groupControlled && value !== undefined;
-  const isCheckedControlled = checkedProp != null;
+  const isCheckedControlled = "checked" in props;
 
   const [checked, setChecked] = useSafeState(() => {
     if (isValueControlled) {
@@ -131,7 +123,6 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const classes = cn(
     `${cls}radio`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}loading`]: loading,
       [`${cls}checked`]: checked,
