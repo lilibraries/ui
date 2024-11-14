@@ -48,8 +48,8 @@ React component library.
 - [ ] Input
 - [ ] Select
 - [ ] Textarea
-- [ ] Radio
-- [ ] Checkbox
+- [x] Radio
+- [x] Checkbox
 - [ ] Rate
 - [ ] Slider
 - [ ] Switch
