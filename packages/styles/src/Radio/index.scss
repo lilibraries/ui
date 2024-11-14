@@ -32,7 +32,7 @@
     box-sizing: border-box;
     width: 1em;
     height: 1em;
-    color: var(--background-color-card);
+    color: var(--text-color-solid-active);
     background-color: var(--background-color-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
@@ -76,22 +76,8 @@
 
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}radio-indicator {
-      background-color: var(--major);
-      border-color: var(--major);
-    }
-
-    &:hover {
-      & .#{$cls-prefix}radio-indicator {
-        background-color: var(--major);
-        border-color: var(--major);
-      }
-    }
-
-    &:active {
-      & .#{$cls-prefix}radio-indicator {
-        background-color: var(--major);
-        border-color: var(--major);
-      }
+      background-color: var(--background-color-major-solid-base);
+      border-color: var(--background-color-major-solid-base);
     }
   }
 
