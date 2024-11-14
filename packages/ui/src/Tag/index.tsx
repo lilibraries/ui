@@ -109,6 +109,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   if (clearable) {
     clear = (
       <Button
+        as="a"
         iconOnly
         borderless
         size={size}
