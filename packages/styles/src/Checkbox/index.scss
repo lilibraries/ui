@@ -3,10 +3,12 @@
 .#{$cls-prefix}checkbox {
   position: relative;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   font-size: var(--font-size-base);
   vertical-align: -0.125em;
   cursor: pointer;
+  @include feedback(color);
 
   &-input {
     position: absolute;
@@ -30,9 +32,11 @@
     box-sizing: border-box;
     width: 1em;
     height: 1em;
+    color: var(--text-color-solid-active);
     background-color: var(--background-color-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-small);
+    @include feedback(color, border-color, background-color);
   }
 
   &-icon {
@@ -46,7 +50,7 @@
 
   &-label {
     flex: 1 1 auto;
-    margin-left: 0.5em;
+    margin-inline-start: 0.5em;
   }
 
   &.#{$cls-prefix}small {
@@ -73,24 +77,21 @@
 
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}checkbox-indicator {
-      color: var(--text-color-solid-base);
-      background-color: var(--major);
-      border-color: var(--major);
+      background-color: var(--background-color-major-solid-base);
+      border-color: var(--background-color-major-solid-base);
     }
 
     &:hover {
       & .#{$cls-prefix}checkbox-indicator {
-        color: var(--text-color-solid-hover);
-        background-color: var(--major);
-        border-color: var(--major);
+        background-color: var(--background-color-major-solid-hover);
+        border-color: var(--background-color-major-solid-hover);
       }
     }
 
     &:active {
       & .#{$cls-prefix}checkbox-indicator {
-        color: var(--text-color-solid-active);
-        background-color: var(--major);
-        border-color: var(--major);
+        background-color: var(--background-color-major-solid-active);
+        border-color: var(--background-color-major-solid-active);
       }
     }
   }
@@ -115,12 +116,5 @@
         border-color: var(--border-color-deep-disabled);
       }
     }
-  }
-}
-
-.#{$cls-prefix}checkbox.#{$cls-prefix}rtl {
-  & .#{$cls-prefix}checkbox-label {
-    margin-right: 0.5em;
-    margin-left: 0;
   }
 }

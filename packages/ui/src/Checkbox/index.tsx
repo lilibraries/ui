@@ -1,5 +1,6 @@
 import React, {
   Ref,
+  useState,
   ReactNode,
   forwardRef,
   ChangeEvent,
@@ -8,22 +9,21 @@ import React, {
   LabelHTMLAttributes,
 } from "react";
 import cn from "classnames";
-import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
+import { usePersist, useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import CheckIcon from "../icons/CheckIcon";
 import MinusIcon from "../icons/MinusIcon";
 import isRenderable from "../utils/isRenderable";
 
 export interface CheckboxProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
-  indeterminate?: boolean;
   size?: SizeValue;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
   disabled?: boolean;
+  indeterminate?: boolean;
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -35,12 +35,12 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const {
     children,
     className,
-    indeterminate,
     size: sizeProp,
     loading,
     loadingIcon,
     loadingDelay,
     disabled,
+    indeterminate,
     checked: checkedProp,
     defaultChecked,
     onChange,
@@ -51,10 +51,9 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
 
-  const controlled = checkedProp != null;
-  const [checked, setChecked] = useSafeState(controlled ? !!checkedProp : !!defaultChecked);
+  const controlled = "checked" in props;
+  const [checked, setChecked] = useState(controlled ? !!checkedProp : !!defaultChecked);
 
   useUpdate(() => {
     if (controlled) {
@@ -77,7 +76,6 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   const classes = cn(
     `${cls}checkbox`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}loading`]: loading,
       [`${cls}checked`]: checked,

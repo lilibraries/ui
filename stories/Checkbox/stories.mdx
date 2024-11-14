@@ -8,51 +8,51 @@ Based on `<input type="checkbox" />`.
 
 ## Examples
 
-### Basic
+### Basic Checkbox
 
-<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-checkbox--basic" />
+<Canvas mdxSource={require("!!raw-loader!./BasicCheckbox").default}>
+  <Story id="examples-checkbox--basic-checkbox" />
 </Canvas>
 
-### Indeterminate
+### Indeterminate Style
 
-<Canvas mdxSource={require("!!raw-loader!./Indeterminate").default}>
-  <Story id="examples-checkbox--indeterminate" />
+<Canvas mdxSource={require("!!raw-loader!./IndeterminateStyle").default}>
+  <Story id="examples-checkbox--indeterminate-style" />
 </Canvas>
 
-### Sizes
+### Checkbox Sizes
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-checkbox--sizes" />
+<Canvas mdxSource={require("!!raw-loader!./CheckboxSizes").default}>
+  <Story id="examples-checkbox--checkbox-sizes" />
 </Canvas>
 
-### Loading
+### Loading State
 
-<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
-  <Story id="examples-checkbox--loading" />
+<Canvas mdxSource={require("!!raw-loader!./LoadingState").default}>
+  <Story id="examples-checkbox--loading-state" />
 </Canvas>
 
-### Disabled
+### Disabled State
 
-<Canvas mdxSource={require("!!raw-loader!./Disabled").default}>
-  <Story id="examples-checkbox--disabled" />
+<Canvas mdxSource={require("!!raw-loader!./DisabledState").default}>
+  <Story id="examples-checkbox--disabled-state" />
 </Canvas>
 
 ## API
 
-| Property         | Type                                    | Description                         |
-| ---------------- | --------------------------------------- | ----------------------------------- |
-| `children`       | `ReactNode`                             | Checkbox label                      |
-| `indeterminate`  | `boolean`                               | Show minus icon when checked        |
-| `size`           | `null` \| `"small"` \| `"large"`        | Size                                |
-| `loading`        | `boolean`                               | Show spinner                        |
-| `loadingIcon`    | `ReactNode`                             | Custom spinner icon                 |
-| `loadingDelay`   | `number`                                | Loading delay time, in milliseconds |
-| `disabled`       | `boolean`                               | Disable change event                |
-| `checked`        | `boolean`                               | Controlled checked                  |
-| `defaultChecked` | `boolean`                               | Uncontrolled checked                |
-| `onChange`       | `ChangeEventHandler<HTMLInputElement>`  | Change event                        |
-| `inputRef`       | `Ref<HTMLInputElement>`                 | Ref to internal input element       |
-| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props                |
+| Property         | Type                                    | Description                          |
+| ---------------- | --------------------------------------- | ------------------------------------ |
+| `children`       | `ReactNode`                             | Checkbox label.                      |
+| `indeterminate`  | `boolean`                               | Show minus icon when checked.        |
+| `size`           | `null` \| `"small"` \| `"large"`        | Size.                                |
+| `loading`        | `boolean`                               | Show spinner.                        |
+| `loadingIcon`    | `ReactNode`                             | Custom spinner icon.                 |
+| `loadingDelay`   | `number`                                | Loading delay time, in milliseconds. |
+| `disabled`       | `boolean`                               | Disable change event.                |
+| `checked`        | `boolean`                               | Controlled checked.                  |
+| `defaultChecked` | `boolean`                               | Uncontrolled checked.                |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement>`  | Change event.                        |
+| `inputRef`       | `Ref<HTMLInputElement>`                 | Ref to internal input element.       |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props.                |
 
 It accepts all props which the native `<label>` element supports. The `loadingIcon` and `loadingDelay` props can be configured by the [`Spinner.Config`](?path=/story/feedbacks-spinner--page#spinnerconfig) component.
