@@ -52,7 +52,7 @@ React component library.
 - [x] Checkbox
 - [ ] Rate
 - [ ] Slider
-- [ ] Switch
+- [x] Switch
 - [ ] Segments
 - [ ] TimePicker
 - [ ] DatePicker
