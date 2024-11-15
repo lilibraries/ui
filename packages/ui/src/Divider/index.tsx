@@ -15,7 +15,7 @@ import isCSSValue from "../utils/isCSSValue";
 export type DividerGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
 
 export interface DividerCommonProps {
-  gap?: DividerGap | string | number;
+  gap?: DividerGap | number | (string & {});
   inline?: boolean;
   vertical?: boolean;
 }

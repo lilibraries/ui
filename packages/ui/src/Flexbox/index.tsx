@@ -17,7 +17,7 @@ export type FlexboxJustify = "flex-start" | "flex-end" | "center" | "space-betwe
 export interface FlexboxProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
   direction?: FlexboxDirection;
-  gap?: FlexboxGap | string | number;
+  gap?: FlexboxGap | number | (string & {});
   wrap?: FlexboxWrap;
   align?: FlexboxAlign;
   justify?: FlexboxJustify;

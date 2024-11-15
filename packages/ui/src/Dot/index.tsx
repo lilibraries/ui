@@ -7,7 +7,7 @@ import { ColorValue } from "../utils/types";
 
 export interface DotProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color" | "children"> {
   size?: SizeValue;
-  color?: ColorValue | string;
+  color?: ColorValue | (string & {});
   animated?: boolean;
 }
 
