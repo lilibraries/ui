@@ -2,17 +2,17 @@ export default {
   title: "Examples/Tag",
 };
 
-export { default as BasicTag } from "./BasicTag";
-export { default as LinkTag } from "./LinkTag";
-export { default as HoverableTags } from "./HoverableTags";
-export { default as ClearableTags } from "./ClearableTags";
+export { default as Basic } from "./Basic";
+export { default as AsLink } from "./AsLink";
+export { default as Hoverable } from "./Hoverable";
+export { default as Clearable } from "./Clearable";
 export { default as ClearLoading } from "./ClearLoading";
 export { default as CustomClearIcon } from "./CustomClearIcon";
-export { default as TagIcons } from "./TagIcons";
-export { default as RoundedTags } from "./RoundedTags";
-export { default as SquaredTags } from "./SquaredTags";
+export { default as WithIcons } from "./WithIcons";
+export { default as Rounded } from "./Rounded";
+export { default as Squared } from "./Squared";
 export { default as LongTag } from "./LongTag";
-export { default as TagSizes } from "./TagSizes";
-export { default as TagColors } from "./TagColors";
-export { default as SolidTags } from "./SolidTags";
-export { default as HollowTags } from "./HollowTags";
+export { default as Sizes } from "./Sizes";
+export { default as Colors } from "./Colors";
+export { default as Solid } from "./Solid";
+export { default as Hollow } from "./Hollow";
