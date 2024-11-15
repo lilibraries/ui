@@ -3,9 +3,11 @@
 .#{$cls-prefix}switch {
   position: relative;
   display: inline-block;
+  flex: 0 0 auto;
   max-width: 100%;
   font-size: var(--font-size-base);
   line-height: 1;
+  white-space: nowrap;
   vertical-align: middle;
   border-radius: var(--border-radius-round);
   cursor: pointer;
@@ -28,14 +30,15 @@
     position: relative;
     display: inline-block;
     box-sizing: border-box;
-    min-width: calc(#{var(--line-height-fixed-base)} * 1.75);
+    min-width: calc(var(--line-height-base) * 1.75em);
     max-width: 100%;
-    height: var(--line-height-fixed-base);
+    height: calc(var(--line-height-base) * 1em);
     color: var(--text-color-base);
     vertical-align: middle;
     background-color: var(--background-color-deep-base);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
+    @include feedback(color, border-color, background-color);
   }
 
   &-checked-label {
@@ -45,10 +48,11 @@
     box-sizing: border-box;
     width: 100%;
     height: 0;
-    padding-right: var(--line-height-fixed-base);
-    padding-left: calc(#{var(--line-height-fixed-base)} / 4);
+    padding-right: calc(var(--line-height-base) * 1em);
+    padding-left: calc(var(--line-height-base) * 1em / 4);
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
     visibility: hidden;
   }
 
@@ -59,10 +63,11 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding-right: calc(#{var(--line-height-fixed-base)} / 4);
-    padding-left: var(--line-height-fixed-base);
+    padding-right: calc(var(--line-height-base) * 1em / 4);
+    padding-left: calc(var(--line-height-base) * 1em);
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &-slider {
@@ -73,19 +78,19 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: calc(#{var(--line-height-fixed-base)} - 6px);
-    height: calc(#{var(--line-height-fixed-base)} - 6px);
+    width: calc(var(--line-height-base) * 1em - 6px);
+    height: calc(var(--line-height-base) * 1em - 6px);
     color: var(--text-color-base);
-    background-color: var(--background-color-base);
+    background-color: var(--background-color-card);
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
-    @include transition(fast, ease-in-out, left);
+    @include transition(fast, ease-in-out, left, color, border-color, background-color);
   }
 
   &.#{$cls-prefix}checked {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-base);
-      background-color: var(--major);
+      background-color: var(--background-color-major-solid-base);
       border-color: var(--border-color-major-solid-base);
     }
 
@@ -100,8 +105,8 @@
     }
 
     & .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-base)} - 4px)));
-      color: var(--major);
+      left: calc(100% - ((var(--line-height-base) * 1em - 4px)));
+      color: var(--text-color-major-base);
       border-color: var(--border-color-major-solid-base);
     }
   }
@@ -109,60 +114,30 @@
   &.#{$cls-prefix}small {
     font-size: var(--font-size-small);
 
-    & .#{$cls-prefix}switch-track {
-      min-width: calc(#{var(--line-height-fixed-small)} * 1.75);
-      height: var(--line-height-fixed-small);
-    }
-
-    & .#{$cls-prefix}switch-checked-label {
-      padding-right: var(--line-height-fixed-small);
-      padding-left: calc(#{var(--line-height-fixed-small)} / 4);
-    }
-
-    & .#{$cls-prefix}switch-unchecked-label {
-      padding-right: calc(#{var(--line-height-fixed-small)} / 4);
-      padding-left: var(--line-height-fixed-small);
-    }
-
     & .#{$cls-prefix}switch-slider {
       top: 1px;
       left: 1px;
-      width: calc(#{var(--line-height-fixed-small)} - 4px);
-      height: calc(#{var(--line-height-fixed-small)} - 4px);
+      width: calc(var(--line-height-base) * 1em - 4px);
+      height: calc(var(--line-height-base) * 1em - 4px);
     }
 
     &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-small)} - 3px)));
+      left: calc(100% - ((var(--line-height-base) * 1em - 3px)));
     }
   }
 
   &.#{$cls-prefix}large {
     font-size: var(--font-size-large);
 
-    & .#{$cls-prefix}switch-track {
-      min-width: calc(#{var(--line-height-fixed-large)} * 1.75);
-      height: var(--line-height-fixed-large);
-    }
-
-    & .#{$cls-prefix}switch-checked-label {
-      padding-right: var(--line-height-fixed-large);
-      padding-left: calc(#{var(--line-height-fixed-large)} / 4);
-    }
-
-    & .#{$cls-prefix}switch-unchecked-label {
-      padding-right: calc(#{var(--line-height-fixed-large)} / 4);
-      padding-left: var(--line-height-fixed-large);
-    }
-
     & .#{$cls-prefix}switch-slider {
       top: 3px;
       left: 3px;
-      width: calc(#{var(--line-height-fixed-large)} - 8px);
-      height: calc(#{var(--line-height-fixed-large)} - 8px);
+      width: calc(var(--line-height-base) * 1em - 8px);
+      height: calc(var(--line-height-base) * 1em - 8px);
     }
 
     &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-large)} - 5px)));
+      left: calc(100% - ((var(--line-height-base) * 1em - 5px)));
     }
   }
 
@@ -195,25 +170,25 @@
   &.#{$cls-prefix}checked:hover {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-hover);
-      background-color: var(--background-color-major-solid-active);
-      border-color: var(--border-color-major-solid-active);
+      background-color: var(--background-color-major-solid-hover);
+      border-color: var(--border-color-major-solid-hover);
     }
 
     & .#{$cls-prefix}switch-slider {
-      color: var(--background-color-major-solid-active);
-      border-color: var(--border-color-major-solid-active);
+      color: var(--text-color-major-hover);
+      border-color: var(--border-color-major-solid-hover);
     }
   }
 
   &.#{$cls-prefix}checked:active {
     & .#{$cls-prefix}switch-track {
       color: var(--text-color-solid-active);
-      background-color: var(--border-color-major-solid-base);
+      background-color: var(--background-color-major-solid-active);
       border-color: var(--border-color-major-solid-active);
     }
 
     & .#{$cls-prefix}switch-slider {
-      color: var(--border-color-major-solid-base);
+      color: var(--text-color-major-active);
       border-color: var(--border-color-major-solid-active);
     }
   }
@@ -235,12 +210,12 @@
     &.#{$cls-prefix}checked {
       & .#{$cls-prefix}switch-track {
         color: var(--text-color-solid-base);
-        background-color: var(--major);
+        background-color: var(--background-color-major-solid-base);
         border-color: var(--border-color-major-solid-base);
       }
 
       & .#{$cls-prefix}switch-slider {
-        color: var(--major);
+        color: var(--text-color-major-base);
         border-color: var(--border-color-major-solid-base);
       }
     }
@@ -271,68 +246,6 @@
         color: var(--text-color-major-disabled);
         border-color: var(--border-color-major-solid-disabled);
       }
-    }
-  }
-}
-
-.#{$cls-prefix}switch.#{$cls-prefix}rtl {
-  & .#{$cls-prefix}switch-checked-label {
-    padding-right: calc(#{var(--line-height-fixed-base)} / 4);
-    padding-left: var(--line-height-fixed-base);
-  }
-
-  & .#{$cls-prefix}switch-unchecked-label {
-    padding-right: var(--line-height-fixed-base);
-    padding-left: calc(#{var(--line-height-fixed-base)} / 4);
-  }
-
-  & .#{$cls-prefix}switch-slider {
-    left: calc(100% - ((#{var(--line-height-fixed-base)} - 4px)));
-  }
-
-  &.#{$cls-prefix}checked {
-    & .#{$cls-prefix}switch-slider {
-      left: 2px;
-    }
-  }
-
-  &.#{$cls-prefix}small {
-    & .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-small)} - 3px)));
-    }
-
-    & .#{$cls-prefix}switch-checked-label {
-      padding-right: calc(#{var(--line-height-fixed-small)} / 4);
-      padding-left: var(--line-height-fixed-small);
-    }
-
-    & .#{$cls-prefix}switch-unchecked-label {
-      padding-right: var(--line-height-fixed-small);
-      padding-left: calc(#{var(--line-height-fixed-small)} / 4);
-    }
-
-    &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
-      left: 1px;
-    }
-  }
-
-  &.#{$cls-prefix}large {
-    & .#{$cls-prefix}switch-slider {
-      left: calc(100% - ((#{var(--line-height-fixed-large)} - 4px)));
-    }
-
-    & .#{$cls-prefix}switch-checked-label {
-      padding-right: calc(#{var(--line-height-fixed-large)} / 4);
-      padding-left: var(--line-height-fixed-large);
-    }
-
-    & .#{$cls-prefix}switch-unchecked-label {
-      padding-right: var(--line-height-fixed-large);
-      padding-left: calc(#{var(--line-height-fixed-large)} / 4);
-    }
-
-    &.#{$cls-prefix}checked .#{$cls-prefix}switch-slider {
-      left: 3px;
     }
   }
 }

@@ -11,7 +11,6 @@ import cn from "classnames";
 import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import Spinner from "../Spinner";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import isRenderable from "../utils/isRenderable";
 
@@ -53,7 +52,6 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
 
   let icon: ReactNode;
   if (isRenderable(iconProp)) {
@@ -62,7 +60,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon = children;
   }
 
-  const controlled = checkedProp != null;
+  const controlled = "checked" in props;
   const [checked, setChecked] = useSafeState(controlled ? !!checkedProp : !!defaultChecked);
 
   useUpdate(() => {
@@ -86,7 +84,6 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   const classes = cn(
     `${cls}switch`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: size,
       [`${cls}checked`]: checked,
       [`${cls}loading`]: loading,
