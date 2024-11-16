@@ -51,6 +51,10 @@ $font-size-large: 20px !default;
 $font-size-smaller: 0.875em !default;
 $font-size-larger: 1.125em !default;
 
+$line-height-base: 1.5 !default;
+$line-height-small: 1.25 !default;
+$line-height-large: 2 !default;
+
 $font-weight-base: 400 !default;
 $font-weight-tag: 400 !default;
 $font-weight-input: 400 !default;
@@ -58,13 +62,6 @@ $font-weight-button: 400 !default;
 $font-weight-heading: 700 !default;
 $font-weight-title: 600 !default;
 $font-weight-subtitle: 500 !default;
-
-$line-height-base: 1.5 !default;
-$line-height-small: 1.25 !default;
-$line-height-large: 2 !default;
-$line-height-fixed-base: 24px !default;
-$line-height-fixed-small: 18px !default;
-$line-height-fixed-large: 30px !default;
 
 $space-1: 4px !default;
 $space-2: $space-1 * 2 !default;
