@@ -3,6 +3,7 @@ import React, {
   useContext,
   cloneElement,
   createContext,
+  CSSProperties,
   isValidElement,
   ForwardRefExoticComponent,
 } from "react";
@@ -14,7 +15,7 @@ import isFunction from "lodash/isFunction";
 import { composeRefs } from "@lilib/utils";
 import mergeConfig from "./mergeConfig";
 
-function createConfig<Value, Props>(
+function createConfig<Value, Props extends { children?: any }>(
   defaultValue: Value,
   configNames: Exclude<keyof Props, "children"> | Exclude<keyof Props, "children">[],
   options?: { inherit?: boolean }
@@ -46,7 +47,7 @@ function createConfig<Value, Props>(
 
     return (
       <Context.Provider value={inherit ? mergedConfig : config}>
-        {isValidElement(children)
+        {isValidElement<{ style?: CSSProperties; className?: string }>(children)
           ? cloneElement(children, {
               ...restProps,
               ...children.props,

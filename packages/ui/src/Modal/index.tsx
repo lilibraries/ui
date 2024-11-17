@@ -12,11 +12,11 @@ import Transition from "../Transition";
 import Button, { ButtonProps } from "../Button";
 import Backdrop, { BackdropProps } from "../Backdrop";
 import CloseIcon from "../icons/CloseIcon";
+import Mounted from "../utils/Mounted";
 import isPromise from "../utils/isPromise";
 import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import RenderAfterMounted from "../utils/RenderAfterMounted";
 
 export type ModalWidthSize = "small" | "medium" | "large";
 
@@ -304,9 +304,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       renderHeader={renderHeader}
       renderFooter={renderFooter}
     >
-      <Portal.Config container={containerRef}>
-        {firstMount ? <RenderAfterMounted>{children}</RenderAfterMounted> : children}
-      </Portal.Config>
+      <Portal.Config container={containerRef}>{firstMount ? <Mounted>{children}</Mounted> : children}</Portal.Config>
     </Card>
   );
 

@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { useLayoutMount, useSafeState } from "@lilib/hooks";
 
-const RenderAfterMounted: FC<{ children?: ReactNode }> = (props) => {
+const Mounted: FC<{ children?: ReactNode }> = (props) => {
   const { children } = props;
   const [mounted, setMounted] = useSafeState(false);
 
@@ -12,4 +12,4 @@ const RenderAfterMounted: FC<{ children?: ReactNode }> = (props) => {
   return mounted ? <>{children}</> : null;
 };
 
-export default RenderAfterMounted;
+export default Mounted;

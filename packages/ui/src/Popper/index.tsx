@@ -42,13 +42,15 @@ import {
 import { inBrowser, composeRefs, EffectTarget } from "@lilib/utils";
 import Portal from "../Portal";
 import Display from "../Display";
+import Mounted from "../utils/Mounted";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import RenderAfterMounted from "../utils/RenderAfterMounted";
 
-export type PopperEvent = "click" | "hover" | "focus" | "contextmenu";
 export type PopperStrategy = Strategy;
 export type PopperPlacement = Placement;
 export type PopperVirtualElement = VirtualElement;
+
+export type PopperOpenEvent = "click" | "hover" | "focus" | "contextmenu";
+export type PopperCloseEvent = "escape" | "page-hide" | "window-blur" | "click-outside";
 
 export interface PopperUpdateData {
   x: number;
@@ -59,12 +61,13 @@ export interface PopperUpdateData {
   placement: PopperPlacement;
 }
 
-export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
+export interface PopperProps extends Omit<HTMLAttributes<HTMLDivElement>, "content" | "children"> {
+  children?: ReactElement | (() => PopperVirtualElement);
+  content?: ReactNode;
   arrow?: ReactElement;
   arrowPadding?: number;
-  content?: ReactNode;
-  children?: ReactElement | (() => PopperVirtualElement);
-  on?: PopperEvent | PopperEvent[];
+  on?: PopperOpenEvent | PopperOpenEvent[];
+  off?: PopperCloseEvent | PopperCloseEvent[];
   offset?: number | [number, number];
   strategy?: PopperStrategy;
   placement?: PopperPlacement;
@@ -79,10 +82,6 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
   followPoint?: boolean;
   firstMount?: boolean;
   keepMounted?: boolean;
-  closeOnEscape?: boolean;
-  closeOnPageHide?: boolean;
-  closeOnWindowBlur?: boolean;
-  closeOnClickOutside?: boolean;
   render?: (popper: ReactElement) => ReactElement;
   onOpen?: () => void;
   onClose?: () => void;
@@ -93,11 +92,12 @@ export interface PopperProps extends HTMLAttributes<HTMLDivElement> {
 
 const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   const {
+    children,
+    content,
     arrow,
     arrowPadding,
-    content,
-    children,
     on = "click",
+    off = "click-outside",
     offset,
     strategy = "absolute",
     placement = "bottom",
@@ -112,10 +112,6 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     followPoint,
     firstMount,
     keepMounted,
-    closeOnEscape,
-    closeOnPageHide,
-    closeOnWindowBlur,
-    closeOnClickOutside = true,
     render,
     onOpen,
     onClose,
@@ -125,7 +121,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     ...rest
   } = props;
 
-  const events = Array.isArray(on) ? on : [on];
+  const openEvents = Array.isArray(on) ? on : [on];
+  const closeEvents = Array.isArray(off) ? off : [off];
   const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
   const delayOnHoverEnter = isPositiveNumber(hoverEnterDelay);
   const delayOnHoverLeave = isPositiveNumber(hoverLeaveDelay);
@@ -551,9 +548,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
           // @ts-ignore
           ref: composeRefs(arrowRef, arrow.ref),
         })}
-      <Portal.Config container={popperRef}>
-        {firstMount ? <RenderAfterMounted>{content}</RenderAfterMounted> : content}
-      </Portal.Config>
+      <Portal.Config container={popperRef}>{firstMount ? <Mounted>{content}</Mounted> : content}</Portal.Config>
     </div>
   );
 
