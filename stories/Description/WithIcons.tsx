@@ -5,39 +5,38 @@ import { FiInfo } from "react-icons/fi";
 function Example() {
   return (
     <Flexbox direction="column" gap="8x" fluid>
-      <Description icon={<FiInfo />}>
-        <Description.Title>Icon</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description icon={<FiInfo />} title="Icon">
+        This is descriptive message.
       </Description>
 
-      <Description icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}>
-        <Description.Title>Image</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description
+        icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}
+        title="Image"
+      >
+        This is a descriptive message.
       </Description>
 
-      <Description icon={<Spinner spinning />}>
-        <Description.Title>Spinner</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description icon={<Spinner spinning />} title="Spinner">
+        This is a descriptive message.
       </Description>
 
-      <Description icon={<Radio />}>
-        <Description.Title>Radio</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description icon={<Radio />} title="Radio">
+        This is a descriptive message.
       </Description>
 
-      <Description icon={<Checkbox />}>
-        <Description.Title>Checkbox</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description icon={<Checkbox />} title="Checkbox">
+        This is a descriptive message.
       </Description>
 
-      <Description icon={<Switch size="small" />}>
-        <Description.Title>Switch</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description icon={<Switch size="small" />} title="Switch">
+        This is a descriptive message.
       </Description>
 
-      <Description icon={<Avatar size="small" image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}>
-        <Description.Title>Avatar</Description.Title>
-        <Description.Detail>This is a descriptive message.</Description.Detail>
+      <Description
+        icon={<Avatar size="small" image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}
+        title="Avatar"
+      >
+        This is a descriptive message.
       </Description>
     </Flexbox>
   );

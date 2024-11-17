@@ -4,7 +4,6 @@
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
-  line-height: var(--line-height-base);
 
   &-icon {
     display: flex;
@@ -42,10 +41,6 @@
   &-detail {
     color: var(--text-color-muted);
     font-size: var(--font-size-smaller);
-
-    & + * {
-      margin-top: 0.5em;
-    }
 
     & p {
       margin-bottom: 0.5em;
