@@ -105,3 +105,4 @@ React component library.
 
 - [x] Portal
 - [x] Display
+- [x] Trigger

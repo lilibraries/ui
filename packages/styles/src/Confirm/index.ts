@@ -1,7 +1,7 @@
 import "../Icon";
 import "../Text";
-import "../Popup";
 import "../Button";
 import "../Flexbox";
 import "../Description";
+import "../Popup";
 import "./index.scss";

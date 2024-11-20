@@ -1,6 +1,6 @@
 import "../Icon";
+import "../Collapse";
+import "../Button";
 import "../List";
 import "../Popup";
-import "../Button";
-import "../Collapse";
 import "./index.scss";

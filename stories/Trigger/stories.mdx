@@ -1,0 +1,70 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs";
+
+<Meta title="Utilities/Trigger" />
+
+# Trigger
+
+This component used to listen for events of anchor and layer elements, trigger `onOpen` and `onClose` handlers. You can use these handlers to display your UI elements. This component does not provide any UI elements, the anchor and layer elements are provided by yourself. It is commonly used to build pop-up components, such as Popup, Modal.
+
+You should at least provide a Trigger.Anchor component as child component in the Trigger component. Usually, a Trigger.Layer component is also provided in the Trigger component as child component. But there can only be one Trigger.Anchor component and one Trigger.Layer component in the Trigger component at most.
+
+## Example
+
+### Basic
+
+The Trigger component opens when the anchor is clicked, and closes when the document is clicked by default.
+
+<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
+  <Story id="examples-trigger--basic" />
+</Canvas>
+
+### Popup Layer
+
+The following example creates a simple pop-up component.
+
+<Canvas mdxSource={require("!!raw-loader!./PopupLayer").default}>
+  <Story id="examples-trigger--popup-layer" />
+</Canvas>
+
+### Context Menu
+
+It supports opening context menu by right click.
+
+<Canvas mdxSource={require("!!raw-loader!./ContextMenu").default}>
+  <Story id="examples-trigger--context-menu" />
+</Canvas>
+
+### Complex Events
+
+The pop-up layer in following example opens on the anchor click, hover and focus. It closes in these events: the `Escape` key is pressed, the window is blurred and the document is clicked.
+
+<Canvas mdxSource={require("!!raw-loader!./ComplexEvents").default}>
+  <Story id="examples-trigger--complex-events" />
+</Canvas>
+
+## API
+
+## Trigger
+
+| Property          | Type                                                                 | Description                                                   |
+| ----------------- | -------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `on`              | `"click"` \| `"hover"` \| `"focus"` \| `"context-menu"`              | Trigger event. Default is `"click"`.                          |
+| `off`             | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"document-click"` | Close event. Default is `"document-click"`.                   |
+| `hoverEnterDelay` | `number`                                                             | Delay time on hover enter, in milliseconds. Default is `100`. |
+| `hoverLeaveDelay` | `number`                                                             | Delay time on hover leave, in milliseconds. Default is `100`. |
+| `open`            | `boolean`                                                            | Open value.                                                   |
+| `onOpen`          | `() => void`                                                         | Open event handler.                                           |
+| `onClose`         | `() => void`                                                         | Close event handler.                                          |
+| `children`        | `ReactNode`                                                          | Content.                                                      |
+
+### Trigger.Anchor
+
+| Property   | Type           | Description                                   |
+| ---------- | -------------- | --------------------------------------------- |
+| `children` | `ReactElement` | Trigger anchor, must refrences a DOM element. |
+
+### Trigger.Layer
+
+| Property   | Type           | Description                                  |
+| ---------- | -------------- | -------------------------------------------- |
+| `children` | `ReactElement` | Trigger layer, must refrences a DOM element. |

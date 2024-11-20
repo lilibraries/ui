@@ -36,9 +36,9 @@ const ZIndexes: FC = () => {
         ],
 
         [
-          <Usage type="scss" name="z-index-popover" />,
-          <Usage type="css" name="z-index-popover" />,
-          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-popover`} />,
+          <Usage type="scss" name="z-index-popup" />,
+          <Usage type="css" name="z-index-popup" />,
+          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-popup`} />,
         ],
 
         [

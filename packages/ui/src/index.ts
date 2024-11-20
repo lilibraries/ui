@@ -36,6 +36,7 @@ export * from "./Text";
 export * from "./Theme";
 export * from "./Tooltip";
 export * from "./Transition";
+export * from "./Trigger";
 export * from "./utils/types";
 
 export { default as Alert } from "./Alert";
@@ -76,3 +77,4 @@ export { default as Text } from "./Text";
 export { default as Theme } from "./Theme";
 export { default as Tooltip } from "./Tooltip";
 export { default as Transition } from "./Transition";
+export { default as Trigger } from "./Trigger";

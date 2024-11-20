@@ -1,7 +1,7 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}popup {
-  z-index: var(--z-index-popover);
+  z-index: var(--z-index-popup);
   box-sizing: border-box;
   padding: var(--space-4);
   background-color: var(--background-color-overlay);

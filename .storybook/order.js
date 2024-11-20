@@ -29,8 +29,8 @@ const order = [
   [
     "Dot",
     "Tag",
-    "Avatar",
     "Badge",
+    "Avatar",
     "List",
     "Tree",
     "Card",
@@ -48,7 +48,7 @@ const order = [
   "Animations",
   ["Collapse", "Transition"],
   "Utilities",
-  ["Portal", "Display"],
+  ["Portal", "Display", "Trigger"],
   "Examples",
 ];
 
