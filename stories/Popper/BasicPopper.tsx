@@ -8,8 +8,8 @@ const popperStyle = {
   padding: 16,
   borderRadius: 8,
   color: "#fff",
-  backgroundColor: "#797E86",
-  boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
+  backgroundColor: "#000",
+  boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
 };
 
 function BasicPopper(props: PopperProps) {
@@ -26,7 +26,7 @@ function BasicPopper(props: PopperProps) {
   return (
     <Popper
       ref={popperRef}
-      content="This is a tooltip message."
+      content="This is a popup"
       onUpdate={handleUpdate}
       {...props}
       style={{ ...popperStyle, ...props.style }}

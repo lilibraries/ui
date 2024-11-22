@@ -1,3 +1,17 @@
 {
-  "printWidth": 120
+  "printWidth": 120,
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "intersection-observer",
+    "resize-observer-polyfill",
+    "^react",
+    "classnames",
+    "warning",
+    "lodash",
+    "<THIRD_PARTY_MODULES>",
+    "^@",
+    "^[.]"
+  ],
+  "importOrderCaseSensitive": true,
+  "importOrderSortSpecifiers": true
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import BasicPopper from "./Basic";
+import BasicPopper from "./BasicPopper";
 
 function Example() {
   return (
@@ -7,7 +7,7 @@ function Example() {
       React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user
       interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies.{" "}
       <BasicPopper on="hover" placement="top-start">
-        <a href="https://reactjs.org/" rel="noreferrer noopener">
+        <a href="https://reactjs.org/">
           React can be used as a base in the development of single-page or mobile applications.
         </a>
       </BasicPopper>{" "}

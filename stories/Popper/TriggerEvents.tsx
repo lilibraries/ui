@@ -1,24 +1,24 @@
 import React from "react";
 import { Button, Flexbox } from "@lilib/ui";
-import ArrowPopper from "./Arrow";
+import ArrowPopper from "./ArrowPopper";
 
 function Example() {
   return (
-    <Flexbox gap="2x">
+    <Flexbox gap="2x" wrap>
       <ArrowPopper on="click" placement="top">
-        <Button>Click</Button>
+        <Button>click</Button>
       </ArrowPopper>
       <ArrowPopper on="hover">
-        <Button>Hover</Button>
+        <Button>hover</Button>
       </ArrowPopper>
       <ArrowPopper on="focus" placement="top">
-        <Button>Focus</Button>
+        <Button>focus</Button>
       </ArrowPopper>
-      <ArrowPopper on="contextmenu">
-        <Button>ContextMenu</Button>
+      <ArrowPopper on="context-menu">
+        <Button>context-menu</Button>
       </ArrowPopper>
-      <ArrowPopper on={["click", "hover", "focus", "contextmenu"]} placement="top">
-        <Button>All</Button>
+      <ArrowPopper on={["click", "hover", "focus", "context-menu"]} placement="top">
+        <Button>all</Button>
       </ArrowPopper>
     </Flexbox>
   );

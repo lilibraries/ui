@@ -1,15 +1,4 @@
-import {
-  FC,
-  Ref,
-  MouseEvent,
-  TouchEvent,
-  useContext,
-  ReactElement,
-  cloneElement,
-  isValidElement,
-  MouseEventHandler,
-  TouchEventHandler,
-} from "react";
+import { FC, MouseEvent, ReactElement, TouchEvent, cloneElement, isValidElement, useContext } from "react";
 import warning from "warning";
 import isFunction from "lodash/isFunction";
 import { usePersist } from "@lilib/hooks";
@@ -17,14 +6,7 @@ import { composeRefs } from "@lilib/utils";
 import TriggerContext from "./TriggerContext";
 
 export interface TriggerLayerProps {
-  children: ReactElement<{
-    onMouseEnter?: MouseEventHandler;
-    onMouseLeave?: MouseEventHandler;
-    onMouseDown?: MouseEventHandler;
-    onTouchStart?: TouchEventHandler;
-  }> & {
-    ref?: Ref<any>;
-  };
+  children: ReactElement;
 }
 
 const TriggerLayer: FC<TriggerLayerProps> = (props) => {
@@ -58,7 +40,8 @@ const TriggerLayer: FC<TriggerLayerProps> = (props) => {
     return children;
   }
 
-  return cloneElement<any>(children, {
+  return cloneElement(children, {
+    // @ts-ignore
     ref: isFunction(children.type) ? undefined : children.ref ? composeRefs(children.ref, layerRef) : layerRef,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,

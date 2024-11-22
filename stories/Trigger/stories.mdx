@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Utilities/Trigger" />
 
@@ -55,16 +55,20 @@ The pop-up layer in following example opens on the anchor click, hover and focus
 | `open`            | `boolean`                                                            | Open value.                                                   |
 | `onOpen`          | `() => void`                                                         | Open event handler.                                           |
 | `onClose`         | `() => void`                                                         | Close event handler.                                          |
-| `children`        | `ReactNode`                                                          | Content.                                                      |
+| `children`        | `ReactNode`                                                          | Children content.                                             |
 
 ### Trigger.Anchor
 
-| Property   | Type           | Description                                   |
-| ---------- | -------------- | --------------------------------------------- |
-| `children` | `ReactElement` | Trigger anchor, must refrences a DOM element. |
+| Property   | Type           | Description                                    |
+| ---------- | -------------- | ---------------------------------------------- |
+| `children` | `ReactElement` | Trigger anchor, must references a DOM element. |
+
+The `children` must support `onClick`, `onFocus`, `onBlur`, `onMouseEnter`, `onMouseLeave` and `onContextMenu` events.
 
 ### Trigger.Layer
 
-| Property   | Type           | Description                                  |
-| ---------- | -------------- | -------------------------------------------- |
-| `children` | `ReactElement` | Trigger layer, must refrences a DOM element. |
+| Property   | Type           | Description                                   |
+| ---------- | -------------- | --------------------------------------------- |
+| `children` | `ReactElement` | Trigger layer, must references a DOM element. |
+
+The `children` must support `onMouseEnter`, `onMouseLeave`, `onMouseDown` and `onTouchStart` events.

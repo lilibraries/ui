@@ -1,22 +1,21 @@
-import React, { useRef, ReactNode, forwardRef, MouseEvent, ReactElement, HTMLAttributes } from "react";
+import React, { HTMLAttributes, MouseEvent, ReactElement, ReactNode, forwardRef, useRef } from "react";
 import cn from "classnames";
+import { useClickOutside, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import { EffectTarget } from "@lilib/utils";
-import { useUpdate, usePersist, useSetState, useClickOutside } from "@lilib/hooks";
+import Backdrop, { BackdropProps } from "../Backdrop";
+import Button, { ButtonProps } from "../Button";
 import Card from "../Card";
-import Prefix from "../Prefix";
-import Portal from "../Portal";
-import Flexbox from "../Flexbox";
 import Display from "../Display";
 import Duration from "../Duration";
+import Flexbox from "../Flexbox";
+import Portal from "../Portal";
+import Prefix from "../Prefix";
 import Transition from "../Transition";
-import Button, { ButtonProps } from "../Button";
-import Backdrop, { BackdropProps } from "../Backdrop";
 import CloseIcon from "../icons/CloseIcon";
-import Mounted from "../utils/Mounted";
-import isPromise from "../utils/isPromise";
 import isCSSValue from "../utils/isCSSValue";
-import isRenderable from "../utils/isRenderable";
 import isPositiveNumber from "../utils/isPositiveNumber";
+import isPromise from "../utils/isPromise";
+import isRenderable from "../utils/isRenderable";
 
 export type ModalWidthSize = "small" | "medium" | "large";
 
@@ -304,7 +303,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       renderHeader={renderHeader}
       renderFooter={renderFooter}
     >
-      <Portal.Config container={containerRef}>{firstMount ? <Mounted>{children}</Mounted> : children}</Portal.Config>
+      <Portal.Config container={containerRef}>{children}</Portal.Config>
     </Card>
   );
 

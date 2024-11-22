@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useEventListener, useTimeout } from "@lilib/hooks";
 import { PopperVirtualElement } from "@lilib/ui";
-import BasicPopper from "./Basic";
+import BasicPopper from "./BasicPopper";
 
 function Example() {
   const [open, setOpen] = useState(false);

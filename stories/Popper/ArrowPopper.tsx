@@ -2,21 +2,21 @@ import React, { CSSProperties, useRef } from "react";
 import { usePersist } from "@lilib/hooks";
 import { Button, Popper, PopperProps, PopperUpdateData } from "@lilib/ui";
 
-const popperStyle: CSSProperties = {
+const popperStyle = {
   zIndex: 1000,
   width: "max-content",
   padding: 16,
   borderRadius: 8,
   color: "#fff",
-  backgroundColor: "#797E86",
-  boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
+  backgroundColor: "#000",
+  boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
 };
 
 const arrowStyle: CSSProperties = {
   position: "absolute",
   width: 12,
   height: 12,
-  backgroundColor: "#797E86",
+  backgroundColor: "#000",
   transform: "rotate(45deg)",
 };
 
@@ -60,7 +60,7 @@ function ArrowPopper(props: PopperProps) {
       ref={popperRef}
       arrow={<span ref={arrowRef} style={arrowStyle} />}
       arrowPadding={8}
-      content="This is a tooltip message."
+      content="This is a popup"
       onUpdate={handleUpdate}
       {...props}
       style={{ ...popperStyle, ...props.style }}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Flexbox } from "@lilib/ui";
-import ArrowPopper from "./Arrow";
+import ArrowPopper from "./ArrowPopper";
 
 function Example() {
   return (

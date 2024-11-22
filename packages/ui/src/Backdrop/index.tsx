@@ -1,13 +1,12 @@
-import React, { useRef, forwardRef, MouseEvent, HTMLAttributes } from "react";
+import React, { HTMLAttributes, MouseEvent, forwardRef, useRef } from "react";
 import cn from "classnames";
+import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import { EffectTarget } from "@lilib/utils";
-import { useUpdate, usePersist, useSetState, useComposedRef } from "@lilib/hooks";
-import Prefix from "../Prefix";
-import Portal from "../Portal";
 import Display from "../Display";
 import Duration from "../Duration";
+import Portal from "../Portal";
+import Prefix from "../Prefix";
 import Transition from "../Transition";
-import Mounted from "../utils/Mounted";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
 
@@ -151,9 +150,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       >
         <Portal container={container}>
           <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
-            <Portal.Config container={backdropRef}>
-              {firstMount ? <Mounted>{children}</Mounted> : children}
-            </Portal.Config>
+            <Portal.Config container={backdropRef}>{children}</Portal.Config>
           </div>
         </Portal>
       </Display>
@@ -177,9 +174,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       <Portal container={container}>
         <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
           <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
-            <Portal.Config container={backdropRef}>
-              {firstMount ? <Mounted>{children}</Mounted> : children}
-            </Portal.Config>
+            <Portal.Config container={backdropRef}>{children}</Portal.Config>
           </div>
         </Transition>
       </Portal>

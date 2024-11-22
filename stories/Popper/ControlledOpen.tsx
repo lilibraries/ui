@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Flexbox, Switch } from "@lilib/ui";
-import ArrowPopper from "./Arrow";
+import ArrowPopper from "./ArrowPopper";
 
 function Example() {
   const [open, setOpen] = useState(false);

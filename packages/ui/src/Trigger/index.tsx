@@ -1,18 +1,15 @@
 import React, { FC, MouseEvent, ReactNode, useEffect, useMemo, useRef } from "react";
-import { inBrowser } from "@lilib/utils";
 import { useEventListener, usePersist, useTimeout } from "@lilib/hooks";
+import { inBrowser } from "@lilib/utils";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import TriggerContext from "./TriggerContext";
 import TriggerAnchor from "./TriggerAnchor";
+import TriggerContext from "./TriggerContext";
 import TriggerLayer from "./TriggerLayer";
-
-export * from "./TriggerAnchor";
-export * from "./TriggerLayer";
 
 export type TriggerEvent = "click" | "hover" | "focus" | "context-menu";
 export type TriggerCloseEvent = "escape" | "page-hide" | "window-blur" | "document-click";
 
-interface TriggerProps {
+export interface TriggerProps {
   on?: TriggerEvent | TriggerEvent[];
   off?: TriggerCloseEvent | TriggerCloseEvent[];
   hoverEnterDelay?: number;
@@ -125,12 +122,14 @@ const Trigger: FC<TriggerProps> & {
   });
 
   const handleAnchorContextMenu = usePersist((event: MouseEvent) => {
-    if (!open && triggerOnContextMenu) {
+    if (triggerOnContextMenu) {
       event.preventDefault();
-      triggerOpen();
-      closeOnClickRef.current = true;
-      closeOnHoverRef.current = false;
-      closeOnBlurRef.current = false;
+      if (!open) {
+        triggerOpen();
+        closeOnClickRef.current = true;
+        closeOnHoverRef.current = false;
+        closeOnBlurRef.current = false;
+      }
     }
   });
 
@@ -196,7 +195,7 @@ const Trigger: FC<TriggerProps> & {
     }
   });
 
-  useEventListener(inBrowser && closeOnEscape ? document : null, "keydown", (event: KeyboardEvent) => {
+  useEventListener(inBrowser && closeOnEscape && open ? document : null, "keydown", (event: KeyboardEvent) => {
     if (!event.repeat) {
       if (event.key === "Escape") {
         triggerClose();
@@ -204,15 +203,15 @@ const Trigger: FC<TriggerProps> & {
     }
   });
 
-  useEventListener(inBrowser && closeOnPageHide ? document : null, "visibilitychange", () => {
+  useEventListener(inBrowser && closeOnPageHide && open ? document : null, "visibilitychange", () => {
     if (document.hidden) {
       triggerClose();
     }
   });
 
-  useEventListener(inBrowser && closeOnWindowBlur ? window : null, "blur", triggerClose);
+  useEventListener(inBrowser && closeOnWindowBlur && open ? window : null, "blur", triggerClose);
 
-  useEventListener(inBrowser && closeOnDocumentClick ? document : null, "mousedown", (event) => {
+  useEventListener(inBrowser && closeOnDocumentClick && open ? document : null, "mousedown", (event) => {
     const outsideTargets = [anchorRef.current, layerRef.current].filter(Boolean);
 
     if (outsideTargets.length) {
