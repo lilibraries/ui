@@ -4,7 +4,8 @@
   "importOrder": [
     "intersection-observer",
     "resize-observer-polyfill",
-    "^react",
+    "react",
+    "react-dom",
     "classnames",
     "warning",
     "lodash",

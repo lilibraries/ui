@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Overlays/Confirm" />
 
@@ -32,18 +32,16 @@ The `onConfirm` event handler can return a Promise object to show loading spinne
 
 ## API
 
-| Property                      | Type                                                                          | Description                                                                                                                  |
-| ----------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `icon`                        | `ReactNode`                                                                   | Custom icon                                                                                                                  |
-| `title`                       | `ReactNode`                                                                   | Title                                                                                                                        |
-| `detail`                      | `ReactNode`                                                                   | Detail                                                                                                                       |
-| `confirmLabel`                | `ReactNode`                                                                   | Confirm button label, default is `"Confirm"`                                                                                 |
-| `cancelLabel`                 | `ReactNode`                                                                   | Cancel button label, default is `"Cancel"`. Cancel button will hide when this prop is not renderable (ie. `null` or `false`) |
-| `confirmProps`                | [`ButtonProps`](?path=/story/generics-button--page#api)                       | Custom confirm button props                                                                                                  |
-| `cancelProps`                 | [`ButtonProps`](?path=/story/generics-button--page#api)                       | Custom cancel button props                                                                                                   |
-| `disableCloseWhenConfirming`  | `boolean`                                                                     | Disable close event when confirming                                                                                          |
-| `disableCancelWhenConfirming` | `boolean`                                                                     | Disable cancel button when confirming                                                                                        |
-| `onConfirm`                   | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code> | Confirm event                                                                                                                |
-| `onCancel`                    | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                  | Cancel event                                                                                                                 |
+| Property       | Type                                                                   | Description                                                                                                                   |
+| -------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `icon`         | `ReactNode`                                                            | Custom icon.                                                                                                                  |
+| `title`        | `ReactNode`                                                            | Title.                                                                                                                        |
+| `detail`       | `ReactNode`                                                            | Detail.                                                                                                                       |
+| `confirmLabel` | `ReactNode`                                                            | Confirm button label, default is `"Confirm"`.                                                                                 |
+| `cancelLabel`  | `ReactNode`                                                            | Cancel button label, default is `"Cancel"`. Cancel button will hide when this prop is not renderable (ie. `null` or `false`). |
+| `confirmProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                | Custom confirm button props.                                                                                                  |
+| `cancelProps`  | [`ButtonProps`](?path=/story/generics-button--page#api)                | Custom cancel button props.                                                                                                   |
+| `onConfirm`    | `(event: MouseEvent) => void` \| `(event: MouseEvent) => Promise<any>` | Confirm event.                                                                                                                |
+| `onCancel`     | `(event: MouseEvent) => void`                                          | Cancel event.                                                                                                                 |
 
 More props are presented in [Popup's document](?path=/story/overlays-popup--page#api).

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Confirm } from "@lilib/ui";
+import { Button, Confirm } from "@lilib/ui";
 
 function Example() {
   return (
@@ -9,9 +9,9 @@ function Example() {
       onConfirm={() => alert("Confirm")}
       onCancel={() => alert("Cancel")}
     >
-      <Text intent="negative" hoverable>
+      <Button variant="hollow" intent="negative">
         Delete
-      </Text>
+      </Button>
     </Confirm>
   );
 }

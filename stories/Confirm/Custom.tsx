@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, Confirm, Icon } from "@lilib/ui";
 import { FiAlertTriangle } from "react-icons/fi";
+import { Button, Confirm, Icon, Text } from "@lilib/ui";
 
 function Example() {
   return (
@@ -16,9 +16,7 @@ function Example() {
       confirmLabel="Delete"
       confirmProps={{ intent: "negative" }}
     >
-      <Text intent="negative" hoverable>
-        Delete
-      </Text>
+      <Button intent="negative">Delete</Button>
     </Confirm>
   );
 }

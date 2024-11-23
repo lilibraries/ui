@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, Confirm } from "@lilib/ui";
+import { Button, Confirm } from "@lilib/ui";
 
 function Example() {
   function handleConfirm() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(undefined);
-      }, 3000);
+      }, 1000);
     });
   }
 
@@ -15,12 +15,10 @@ function Example() {
       title="Are you sure to delete?"
       detail="Once deleted, the data cannot be recovered."
       onConfirm={handleConfirm}
-      disableCloseWhenConfirming
-      disableCancelWhenConfirming
     >
-      <Text intent="negative" hoverable>
+      <Button variant="solid" intent="negative">
         Delete
-      </Text>
+      </Button>
     </Confirm>
   );
 }

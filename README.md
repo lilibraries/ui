@@ -92,7 +92,7 @@ React component library.
 - [ ] Notice
 - [x] Popup
 - [x] Tooltip
-- [ ] Confirm
+- [x] Confirm
 - [x] Popper
 - [ ] Backdrop
 
