@@ -4,6 +4,7 @@ export default {
 
 export { default as BasicPopper } from "./BasicPopper";
 export { default as ArrowPopper } from "./ArrowPopper";
+export { default as TextTrigger } from "./TextTrigger";
 export { default as TriggerEvents } from "./TriggerEvents";
 export { default as CloseEvents } from "./CloseEvents";
 export { default as ControlledOpen } from "./ControlledOpen";

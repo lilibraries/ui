@@ -4,7 +4,8 @@ export default {
 
 export { default as Basic } from "./Basic";
 export { default as ShowArrow } from "./ShowArrow";
-export { default as WithDescription } from "./WithDescription";
+export { default as TextTrigger } from "./TextTrigger";
+export { default as DescriptionContent } from "./DescriptionContent";
 export { default as DisableAnimation } from "./DisableAnimation";
 export { default as TriggerEvents } from "./TriggerEvents";
 export { default as CloseEvents } from "./CloseEvents";

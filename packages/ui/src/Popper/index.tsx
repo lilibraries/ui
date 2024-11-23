@@ -328,10 +328,10 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     anchor = children;
   }
 
-  if (isValidElement(children)) {
+  if (isValidElement(anchor)) {
     anchor = (
       <Trigger.Anchor>
-        {cloneElement(children, {
+        {cloneElement(anchor, {
           // @ts-ignore
           ref: composeRefs(anchorRef, children.ref),
           onClick: handleAnchorClick,
