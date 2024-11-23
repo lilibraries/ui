@@ -75,6 +75,8 @@
   }
 
   &.#{$cls-prefix}checked {
+    cursor: auto;
+
     & .#{$cls-prefix}radio-indicator {
       background-color: var(--background-color-major-solid-base);
       border-color: var(--background-color-major-solid-base);
