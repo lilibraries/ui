@@ -90,7 +90,7 @@ React component library.
 - [ ] Drawer
 - [ ] Toast
 - [ ] Notice
-- [ ] Popup
+- [x] Popup
 - [ ] Tooltip
 - [ ] Confirm
 - [x] Popper
