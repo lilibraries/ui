@@ -4,20 +4,20 @@ import { Button, Flexbox, Popup } from "@lilib/ui";
 function Example() {
   return (
     <Flexbox gap="2x">
-      <Popup on="click" content="This is a popup message." placement="top">
-        <Button>Click</Button>
+      <Popup arrowed on="click" content="This is a popup message" placement="top">
+        <Button>click</Button>
       </Popup>
-      <Popup on="hover" content="This is a popup message.">
-        <Button>Hover</Button>
+      <Popup arrowed on="hover" content="This is a popup message">
+        <Button>hover</Button>
       </Popup>
-      <Popup on="focus" content="This is a popup message." placement="top">
-        <Button>Focus</Button>
+      <Popup arrowed on="focus" content="This is a popup message" placement="top">
+        <Button>focus</Button>
       </Popup>
-      <Popup on="contextmenu" content="This is a popup message.">
-        <Button>ContextMenu</Button>
+      <Popup arrowed on="context-menu" content="This is a popup message">
+        <Button>context-menu</Button>
       </Popup>
-      <Popup on={["click", "hover", "focus", "contextmenu"]} content="This is a popup message." placement="top">
-        <Button>All</Button>
+      <Popup arrowed on={["click", "hover", "focus", "context-menu"]} content="This is a popup message" placement="top">
+        <Button>all</Button>
       </Popup>
     </Flexbox>
   );

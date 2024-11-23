@@ -1,12 +1,12 @@
-import { FC, useRef, Children, useEffect, cloneElement, ReactElement } from "react";
+import { Children, ForwardRefExoticComponent, ReactElement, cloneElement, forwardRef, useEffect, useRef } from "react";
 import cn from "classnames";
 import warning from "warning";
-import isNumber from "lodash/isNumber";
-import isString from "lodash/isString";
-import isObject from "lodash/isObject";
 import isFunction from "lodash/isFunction";
+import isNumber from "lodash/isNumber";
+import isObject from "lodash/isObject";
+import isString from "lodash/isString";
+import { useMount, useSafeState, useTimeout, useUpdate } from "@lilib/hooks";
 import { composeRefs } from "@lilib/utils";
-import { useMount, useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
@@ -58,14 +58,16 @@ export interface TransitionProps {
   onExited?: () => void;
 }
 
-const Transition: FC<TransitionProps> & {
+export interface TransitionComponent extends ForwardRefExoticComponent<TransitionProps> {
   ENTER: typeof ENTER;
   ENTERING: typeof ENTERING;
   ENTERED: typeof ENTERED;
   EXIT: typeof EXIT;
   EXITING: typeof EXITING;
   EXITED: typeof EXITED;
-} = (props) => {
+}
+
+const Transition = forwardRef<any, TransitionProps>((props, ref) => {
   const {
     children,
     durations,
@@ -82,6 +84,7 @@ const Transition: FC<TransitionProps> & {
     onExit,
     onExiting,
     onExited,
+    ...rest
   } = props;
 
   const delayOnEnter = isPositiveNumber(enterDelay);
@@ -267,10 +270,11 @@ const Transition: FC<TransitionProps> & {
   const element: any = isFunction(children) ? children(state) : children;
 
   return cloneElement(Children.only(element), {
-    ref: composeRefs(element.ref, domRef),
+    ...rest,
+    ref: composeRefs(element.ref, domRef, ref),
     className: cn(element.props.className, classesMapping[state]),
   });
-};
+}) as TransitionComponent;
 
 Transition.ENTER = ENTER;
 Transition.ENTERING = ENTERING;

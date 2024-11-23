@@ -1,6 +1,5 @@
-import { FC, FocusEvent, MouseEvent, ReactElement, cloneElement, isValidElement, useContext } from "react";
+import { FocusEvent, MouseEvent, ReactElement, cloneElement, forwardRef, isValidElement, useContext } from "react";
 import warning from "warning";
-import isFunction from "lodash/isFunction";
 import { usePersist } from "@lilib/hooks";
 import { composeRefs } from "@lilib/utils";
 import TriggerContext from "./TriggerContext";
@@ -9,8 +8,8 @@ export interface TriggerAnchorProps {
   children: ReactElement;
 }
 
-const TriggerAnchor: FC<TriggerAnchorProps> = (props) => {
-  const { children } = props;
+const TriggerAnchor = forwardRef<any, TriggerAnchorProps>((props, ref) => {
+  const { children, ...rest } = props;
 
   const {
     inTrigger,
@@ -60,8 +59,9 @@ const TriggerAnchor: FC<TriggerAnchorProps> = (props) => {
   }
 
   return cloneElement(children, {
+    ...rest,
     // @ts-ignore
-    ref: isFunction(children.type) ? undefined : children.ref ? composeRefs(children.ref, anchorRef) : anchorRef,
+    ref: composeRefs(children.ref, anchorRef, ref),
     onClick: handleClick,
     onFocus: handleFocus,
     onBlur: handleBlur,
@@ -69,6 +69,6 @@ const TriggerAnchor: FC<TriggerAnchorProps> = (props) => {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   });
-};
+});
 
 export default TriggerAnchor;

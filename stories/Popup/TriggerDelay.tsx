@@ -3,8 +3,8 @@ import { Button, Popup } from "@lilib/ui";
 
 function Example() {
   return (
-    <Popup content="This is a popup message." openDelay={500} closeDelay={500}>
-      <Button>Open after 500ms, and close after 500ms</Button>
+    <Popup content="This is a popup message" placement="bottom-start" openDelay={500} closeDelay={500}>
+      <Button>Click to show or hide after 500ms</Button>
     </Popup>
   );
 }

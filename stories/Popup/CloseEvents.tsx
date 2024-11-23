@@ -4,20 +4,20 @@ import { Button, Flexbox, Popup } from "@lilib/ui";
 function Example() {
   return (
     <Flexbox gap="2x">
-      <Popup content="This is a popup message." closeOnEscape closeOnClickOutside={false}>
-        <Button>Escape Key</Button>
+      <Popup arrowed content="This is a popup message" off="escape">
+        <Button>escape</Button>
       </Popup>
-      <Popup content="This is a popup message." closeOnPageHide closeOnClickOutside={false}>
-        <Button>Page Hide</Button>
+      <Popup arrowed content="This is a popup message" off="page-hide" placement="top">
+        <Button>page-hide</Button>
       </Popup>
-      <Popup content="This is a popup message." closeOnWindowBlur closeOnClickOutside={false}>
-        <Button>Window Blur</Button>
+      <Popup arrowed content="This is a popup message" off="window-blur">
+        <Button>window-blur</Button>
       </Popup>
-      <Popup content="This is a popup message." closeOnClickOutside>
-        <Button>Click Outside</Button>
+      <Popup arrowed content="This is a popup message" off="document-click" placement="top">
+        <Button>document-click</Button>
       </Popup>
-      <Popup content="This is a popup message." closeOnEscape closeOnPageHide closeOnWindowBlur closeOnClickOutside>
-        <Button>All</Button>
+      <Popup arrowed content="This is a popup message" off={["escape", "page-hide", "window-blur", "document-click"]}>
+        <Button>all</Button>
       </Popup>
     </Flexbox>
   );

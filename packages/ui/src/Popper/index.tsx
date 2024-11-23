@@ -365,6 +365,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   if (render) {
     popper = render(popper);
   }
+
   popper = <Trigger.Layer>{popper}</Trigger.Layer>;
 
   return (

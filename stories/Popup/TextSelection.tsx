@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useEventListener, useTimeout } from "@lilib/hooks";
-import { Popup, PopperVirtualElement } from "@lilib/ui";
+import { PopperVirtualElement, Popup } from "@lilib/ui";
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -37,7 +37,7 @@ function Example() {
         is only concerned with state management and rendering that state to the DOM, so creating React applications
         usually requires the use of additional libraries for routing, as well as certain client-side functionality.
       </div>
-      <Popup content="This is a popup message." open={open} placement="top" onClose={() => setOpen(false)}>
+      <Popup content="This is a popup message" open={open} placement="top-start" onClose={() => setOpen(false)}>
         {() => virtualElement}
       </Popup>
     </>

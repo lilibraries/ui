@@ -1,14 +1,15 @@
 import React from "react";
 import { FiChevronRight } from "react-icons/fi";
-import { Button } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import { Button, Popup } from "@lilib/ui";
 
 function Example() {
   return (
-    <ArrowPopper
+    <Popup
+      arrowed
       placement="right"
       content={
-        <ArrowPopper
+        <Popup
+          arrowed
           placement="right"
           offset={[30, 0]}
           content={
@@ -20,13 +21,13 @@ function Example() {
           <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
             Dropright
           </Button>
-        </ArrowPopper>
+        </Popup>
       }
     >
       <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
         Dropright
       </Button>
-    </ArrowPopper>
+    </Popup>
   );
 }
 

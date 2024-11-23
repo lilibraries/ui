@@ -11,14 +11,7 @@ const triggerStyle: CSSProperties = {
 
 function Example() {
   return (
-    <Popup
-      content="This is a popup message."
-      offset={0}
-      placement="bottom-start"
-      on="contextmenu"
-      arrowless
-      followPoint
-    >
+    <Popup content="This is a popup message" offset={0} placement="bottom-start" on="context-menu" followPointer>
       <div style={triggerStyle}>Right Click</div>
     </Popup>
   );

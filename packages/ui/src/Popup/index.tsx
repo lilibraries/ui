@@ -1,27 +1,29 @@
 import React, { ReactElement, forwardRef, useRef } from "react";
 import cn from "classnames";
-import { useUpdate, usePersist, useSetState, useComposedRef } from "@lilib/hooks";
-import Prefix from "../Prefix";
+import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
+import Direction from "../Direction";
 import Duration from "../Duration";
-import Transition from "../Transition";
 import Popper, { PopperProps, PopperUpdateData } from "../Popper";
+import Prefix from "../Prefix";
+import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
-export interface PopupProps extends Omit<PopperProps, "arrow" | "arrowPadding" | "render"> {
+export interface PopupProps extends Omit<PopperProps, "arrow" | "arrowPadding"> {
+  arrowed?: boolean;
   unpadding?: boolean;
-  arrowless?: boolean;
   animeless?: boolean;
 }
 
 const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const {
     className,
+    arrowed,
     unpadding,
-    arrowless,
     animeless,
     open: openProp,
     defaultOpen,
     closeDelay: exitDelay,
+    render,
     onOpen,
     onClose,
     onOpened,
@@ -30,7 +32,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     ...rest
   } = props;
 
-  const controlled = openProp != null;
+  const controlled = "open" in props;
   const [{ open, opened, enter }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
     return { open, opened: open, enter: open };
@@ -40,32 +42,24 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     if (!controlled) {
       setState({ open: true });
     }
-    if (onOpen) {
-      onOpen();
-    }
+    onOpen?.();
   });
 
   const handleClose = usePersist(() => {
     if (!controlled) {
       setState({ open: false });
     }
-    if (onClose) {
-      onClose();
-    }
+    onClose?.();
   });
 
   const handleOpened = usePersist(() => {
     setState({ opened: true });
-    if (onOpened) {
-      onOpened();
-    }
+    onOpened?.();
   });
 
   const handleClosed = usePersist(() => {
     setState({ opened: false });
-    if (onClosed) {
-      onClosed();
-    }
+    onClosed?.();
   });
 
   useUpdate(() => {
@@ -87,7 +81,8 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   }, [open, opened]);
 
   const { cls } = Prefix.useConfig();
-  const { fast } = Duration.useConfig();
+  const { base } = Duration.useConfig();
+  const isRTL = Direction.useConfig() === "rtl";
 
   const arrowRef = useRef<HTMLSpanElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
@@ -96,13 +91,14 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const classes = cn(
     `${cls}popup`,
     {
+      [`${cls}rtl`]: isRTL,
       [`${cls}unpadding`]: unpadding,
     },
     className
   );
 
   let arrow: ReactElement | undefined;
-  if (!arrowless) {
+  if (arrowed) {
     arrow = <span ref={arrowRef} className={`${cls}popup-arrow`} />;
   }
 
@@ -134,27 +130,28 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     }
   });
 
-  let render: ((popper: ReactElement) => ReactElement) | undefined;
+  let popperRender = render;
   let closeDelay = exitDelay;
 
   if (!animeless) {
-    render = (popper) => {
-      return (
-        <Transition in={enter} classes durations={fast} exitDelay={exitDelay} firstMount keepMounted>
+    popperRender = (popper) => {
+      const node = (
+        <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
           {popper}
         </Transition>
       );
+      return render ? render(node) : node;
     };
     if (isPositiveNumber(exitDelay)) {
-      closeDelay = exitDelay + fast;
+      closeDelay = exitDelay + base;
     } else {
-      closeDelay = fast;
+      closeDelay = base;
     }
   }
 
   return (
     <Popper
-      offset={arrowless ? 4 : 14}
+      offset={arrowed ? 14 : 4}
       {...rest}
       ref={composedRef}
       arrow={arrow}
@@ -162,7 +159,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
       open={open}
       className={classes}
       closeDelay={closeDelay}
-      render={render}
+      render={popperRender}
       onOpen={handleOpen}
       onClose={handleClose}
       onOpened={handleOpened}

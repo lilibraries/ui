@@ -5,7 +5,7 @@ import ArrowPopper from "./ArrowPopper";
 function Example() {
   return (
     <ArrowPopper openDelay={500} closeDelay={500}>
-      <Button>Click to show and hide after 500ms</Button>
+      <Button>Click to show or hide after 500ms</Button>
     </ArrowPopper>
   );
 }

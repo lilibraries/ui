@@ -13,12 +13,11 @@ function Example() {
   return (
     <Popup
       content="This is a popup content."
-      offset={[20, 20]}
-      placement="bottom-start"
       on="hover"
-      arrowless
+      placement="bottom-start"
+      offset={[20, 20]}
       animeless
-      followPoint
+      followPointer
       hoverEnterDelay={0}
       hoverLeaveDelay={0}
     >

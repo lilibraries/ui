@@ -8,11 +8,7 @@
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
   box-shadow: var(--shadow-3);
-  @include transition(fast, ease-in-out, transform, opacity);
-
-  &.#{$cls-prefix}unpadding {
-    padding: 0;
-  }
+  @include transition(base, ease-in-out, transform, opacity);
 
   &-arrow {
     position: absolute;
@@ -57,27 +53,64 @@
     }
   }
 
+  &.#{$cls-prefix}unpadding {
+    padding: 0;
+  }
+
+  &[data-placement="top"] {
+    transform-origin: 50% 100%;
+  }
+
+  &[data-placement="top-start"] {
+    transform-origin: 0% 100%;
+  }
+
+  &[data-placement="top-end"] {
+    transform-origin: 100% 100%;
+  }
+
+  &[data-placement="bottom"] {
+    transform-origin: 50% 0%;
+  }
+
+  &[data-placement="bottom-start"] {
+    transform-origin: 0% 0%;
+  }
+
+  &[data-placement="bottom-end"] {
+    transform-origin: 100% 0%;
+  }
+
+  &[data-placement="left"] {
+    transform-origin: 100% 50%;
+  }
+
+  &[data-placement="left-start"] {
+    transform-origin: 100% 0%;
+  }
+
+  &[data-placement="left-end"] {
+    transform-origin: 100% 100%;
+  }
+
+  &[data-placement="right"] {
+    transform-origin: 0% 50%;
+  }
+
+  &[data-placement="right-start"] {
+    transform-origin: 0% 0%;
+  }
+
+  &[data-placement="right-end"] {
+    transform-origin: 0% 100%;
+  }
+
   &.#{$cls-prefix}transition {
     &-enter,
     &-exiting,
     &-exited {
+      transform: scale(0.9);
       opacity: 0;
-
-      &[data-placement^="top"] {
-        transform: translateY(4px);
-      }
-
-      &[data-placement^="bottom"] {
-        transform: translateY(-4px);
-      }
-
-      &[data-placement^="left"] {
-        transform: translateX(4px);
-      }
-
-      &[data-placement^="right"] {
-        transform: translateX(-4px);
-      }
     }
 
     &-entering,
@@ -89,5 +122,23 @@
     &-exited {
       display: none;
     }
+  }
+}
+
+.#{$cls-prefix}popup.#{$cls-prefix}rtl {
+  &[data-placement="top-start"] {
+    transform-origin: 100% 100%;
+  }
+
+  &[data-placement="top-end"] {
+    transform-origin: 0% 100%;
+  }
+
+  &[data-placement="bottom-start"] {
+    transform-origin: 100% 0%;
+  }
+
+  &[data-placement="bottom-end"] {
+    transform-origin: 0% 0%;
   }
 }
