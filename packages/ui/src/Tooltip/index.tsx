@@ -1,26 +1,15 @@
 import React, { forwardRef } from "react";
 import cn from "classnames";
-import Prefix from "../Prefix";
 import Popup, { PopupProps } from "../Popup";
-import { IntentValue } from "../utils/types";
+import Prefix from "../Prefix";
 
-export interface TooltipProps extends PopupProps {
-  intent?: IntentValue;
-}
-
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>((props, ref) => {
-  const { className, intent, on = "hover", placement = "top", ...rest } = props;
+const Tooltip = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
+  const { className, on = "hover", placement = "top", ...rest } = props;
 
   const { cls } = Prefix.useConfig();
-  const classes = cn(
-    `${cls}tooltip`,
-    {
-      [`${cls}${intent}`]: intent,
-    },
-    className
-  );
+  const classes = cn(`${cls}tooltip`, className);
 
-  return <Popup {...rest} ref={ref} on={on} className={classes} placement={placement} />;
+  return <Popup {...rest} ref={ref} on={on} placement={placement} className={classes} />;
 });
 
 export default Tooltip;

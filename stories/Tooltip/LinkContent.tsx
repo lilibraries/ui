@@ -5,7 +5,7 @@ function Example() {
   return (
     <Tooltip
       content={
-        <a rel="noreferrer" href="https://github.com/lilibraries/ui" target="_blank">
+        <a href="https://github.com/lilibraries/ui" target="_blank" rel="noreferrer">
           https://github.com/lilibraries/ui
         </a>
       }

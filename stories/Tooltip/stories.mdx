@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Overlays/Tooltip" />
 
@@ -16,28 +16,18 @@ More examples are presented in [Popup's document](?path=/story/overlays-popup--p
   <Story id="examples-tooltip--basic" />
 </Canvas>
 
-### With Link
+### Link Content
 
-<Canvas mdxSource={require("!!raw-loader!./WithLink").default}>
-  <Story id="examples-tooltip--with-link" />
+<Canvas mdxSource={require("!!raw-loader!./LinkContent").default}>
+  <Story id="examples-tooltip--link-content" />
 </Canvas>
 
-### With Buttons
+### Button Content
 
-<Canvas mdxSource={require("!!raw-loader!./WithButtons").default}>
-  <Story id="examples-tooltip--with-buttons" />
-</Canvas>
-
-### Intents
-
-<Canvas mdxSource={require("!!raw-loader!./Intents").default}>
-  <Story id="examples-tooltip--intents" />
+<Canvas mdxSource={require("!!raw-loader!./ButtonContent").default}>
+  <Story id="examples-tooltip--button-content" />
 </Canvas>
 
 ## API
 
-| Property | Type                                                                             | Description |
-| -------- | -------------------------------------------------------------------------------- | ----------- |
-| `intent` | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent      |
-
-More props are presented in [Popup's document](?path=/story/overlays-popup--page#api), except the `on`'s default value is `"hover"` and the `placement`'s default value is `"top"`.
+The props of the Tooltip component are the same as those of the [Popup](?path=/story/overlays-popup--page#api) component, except that the default value of the `on` prop is `"hover"` and the default value of the `placement` prop is `"top"`.

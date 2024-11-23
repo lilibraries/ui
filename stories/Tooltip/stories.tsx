@@ -3,6 +3,5 @@ export default {
 };
 
 export { default as Basic } from "./Basic";
-export { default as WithLink } from "./WithLink";
-export { default as WithButtons } from "./WithButtons";
-export { default as Intents } from "./Intents";
+export { default as LinkContent } from "./LinkContent";
+export { default as ButtonContent } from "./ButtonContent";

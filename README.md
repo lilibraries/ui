@@ -91,7 +91,7 @@ React component library.
 - [ ] Toast
 - [ ] Notice
 - [x] Popup
-- [ ] Tooltip
+- [x] Tooltip
 - [ ] Confirm
 - [x] Popper
 - [ ] Backdrop

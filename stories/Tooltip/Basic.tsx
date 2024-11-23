@@ -3,7 +3,7 @@ import { Button, Tooltip } from "@lilib/ui";
 
 function Example() {
   return (
-    <Tooltip content="Tooltip message.">
+    <Tooltip content="Tooltip message">
       <Button>Hover</Button>
     </Tooltip>
   );
