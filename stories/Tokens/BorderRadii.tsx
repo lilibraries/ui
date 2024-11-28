@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { Prefix } from "@lilib/ui";
+import Monospace from "../components/Monospace";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
 import Value from "../components/Value";
-import Monospace from "../components/Monospace";
 
 const BorderRadii: FC = () => {
   const { var: prefix } = Prefix.useConfig();
@@ -43,7 +43,7 @@ const BorderRadii: FC = () => {
         [
           <Usage type="scss" name="border-radius-large" />,
           <Usage type="css" name="border-radius-large" />,
-          <Monospace>1em</Monospace>,
+          <Monospace>0.75em</Monospace>,
           <div
             style={{
               width: 50,
