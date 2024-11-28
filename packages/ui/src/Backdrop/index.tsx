@@ -7,13 +7,16 @@ import Duration from "../Duration";
 import Portal from "../Portal";
 import Prefix from "../Prefix";
 import Transition from "../Transition";
+import Trigger from "../Trigger";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import useSuppressBodyScrollbar from "./useSuppressBodyScrollbar";
+import useSuppressBodyScrollbar from "../utils/useSuppressBodyScrollbar";
+
+export type BackdropCloseEvent = "escape" | "page-hide" | "window-blur" | "backdrop-click";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   blurred?: boolean;
-  transparent?: boolean;
   animeless?: boolean;
+  off?: BackdropCloseEvent | BackdropCloseEvent[];
   container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
@@ -21,10 +24,6 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
-  closeOnEscape?: boolean;
-  closeOnPageHide?: boolean;
-  closeOnWindowBlur?: boolean;
-  closeOnBackdropClick?: boolean;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
@@ -35,8 +34,8 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     children,
     className,
     blurred,
-    transparent,
     animeless,
+    off = "backdrop-click",
     container,
     open: openProp,
     defaultOpen,
@@ -44,10 +43,6 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     closeDelay,
     firstMount,
     keepMounted,
-    closeOnEscape,
-    closeOnPageHide,
-    closeOnWindowBlur,
-    closeOnBackdropClick = true,
     onClick,
     onClose,
     onOpened,
@@ -55,12 +50,16 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     ...rest
   } = props;
 
+  const closeEvents = Array.isArray(off) ? off : [off];
+  const triggerCloseEvents = closeEvents.filter((name) => name !== "backdrop-click");
+  const closeOnBackdropClick = closeEvents.includes("backdrop-click");
+
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
   const backdropRef = useRef(null);
-  const composedRef = useComposedRef(backdropRef, ref);
+  const composedBackdropRef = useComposedRef(backdropRef, ref);
 
-  const controlled = openProp != null;
+  const controlled = "open" in props;
   const [{ open, opened, enter }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
     return { open, opened: open, enter: open };
@@ -70,46 +69,35 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     `${cls}backdrop`,
     {
       [`${cls}opened`]: opened,
-      [`${cls}blurred`]: blurred && !transparent,
-      [`${cls}transparent`]: transparent,
+      [`${cls}blurred`]: blurred,
     },
     className
   );
 
-  const handleClose = usePersist(() => {
+  const triggerClose = usePersist(() => {
     if (!controlled) {
       setState({ open: false });
     }
-    if (onClose) {
-      onClose();
-    }
+    onClose?.();
   });
 
   const handleOpened = usePersist(() => {
     setState({ opened: true });
-    if (onOpened) {
-      onOpened();
-    }
+    onOpened?.();
   });
 
   const handleClosed = usePersist(() => {
     setState({ opened: false });
-    if (onClosed) {
-      onClosed();
-    }
+    onClosed?.();
   });
 
-  const handleClick = usePersist((event: MouseEvent<HTMLDivElement>) => {
-    if (onClick) {
-      onClick(event);
-    }
+  const handleBackdropClick = usePersist((event: MouseEvent<HTMLDivElement>) => {
+    onClick?.(event);
     if (closeOnBackdropClick && open) {
       if (!controlled) {
         setState({ open: false });
       }
-      if (onClose) {
-        onClose();
-      }
+      onClose?.();
     }
   });
 
@@ -133,52 +121,36 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   useSuppressBodyScrollbar(opened);
 
-  if (animeless) {
-    return (
-      <Display
-        open={open}
-        openDelay={openDelay}
-        closeDelay={closeDelay}
-        firstMount={firstMount}
-        keepMounted={keepMounted}
-        closeOnEscape={closeOnEscape}
-        closeOnPageHide={closeOnPageHide}
-        closeOnWindowBlur={closeOnWindowBlur}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onClosed={handleClosed}
-      >
-        <Portal container={container}>
-          <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
-            <Portal.Config container={backdropRef}>{children}</Portal.Config>
-          </div>
-        </Portal>
-      </Display>
+  let displayCloseDelay = closeDelay;
+  let backdrop = (
+    <div {...rest} ref={composedBackdropRef} className={classes} onClick={handleBackdropClick}>
+      <Portal.Config container={backdropRef}>{children}</Portal.Config>
+    </div>
+  );
+
+  if (!animeless) {
+    displayCloseDelay = isPositiveNumber(closeDelay) ? closeDelay + base : base;
+    backdrop = (
+      <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+        {backdrop}
+      </Transition>
     );
   }
 
   return (
-    <Display
-      open={open}
-      openDelay={openDelay}
-      closeDelay={isPositiveNumber(closeDelay) ? closeDelay + base : base}
-      firstMount={firstMount}
-      keepMounted={keepMounted}
-      closeOnEscape={closeOnEscape}
-      closeOnPageHide={closeOnPageHide}
-      closeOnWindowBlur={closeOnWindowBlur}
-      onClose={handleClose}
-      onOpened={handleOpened}
-      onClosed={handleClosed}
-    >
-      <Portal container={container}>
-        <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
-          <div {...rest} ref={composedRef} className={classes} onClick={handleClick}>
-            <Portal.Config container={backdropRef}>{children}</Portal.Config>
-          </div>
-        </Transition>
-      </Portal>
-    </Display>
+    <Trigger off={triggerCloseEvents} open={open} onClose={triggerClose}>
+      <Display
+        open={open}
+        openDelay={openDelay}
+        closeDelay={displayCloseDelay}
+        firstMount={firstMount}
+        keepMounted={keepMounted}
+        onOpened={handleOpened}
+        onClosed={handleClosed}
+      >
+        <Portal container={container}>{backdrop}</Portal>
+      </Display>
+    </Trigger>
   );
 });
 

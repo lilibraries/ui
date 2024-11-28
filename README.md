@@ -94,7 +94,7 @@ React component library.
 - [x] Tooltip
 - [x] Confirm
 - [x] Popper
-- [ ] Backdrop
+- [x] Backdrop
 
 ### Animations
 

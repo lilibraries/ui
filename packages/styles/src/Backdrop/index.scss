@@ -16,12 +16,7 @@
   }
 
   &.#{$cls-prefix}blurred {
-    backdrop-filter: blur(20px);
-  }
-
-  &.#{$cls-prefix}transparent {
-    background-color: transparent;
-    backdrop-filter: none;
+    backdrop-filter: blur(10px);
   }
 
   &.#{$cls-prefix}transition {

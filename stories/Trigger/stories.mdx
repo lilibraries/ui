@@ -46,16 +46,16 @@ The pop-up layer in following example opens on the anchor click, hover and focus
 
 ## Trigger
 
-| Property          | Type                                                                 | Description                                                   |
-| ----------------- | -------------------------------------------------------------------- | ------------------------------------------------------------- |
-| `on`              | `"click"` \| `"hover"` \| `"focus"` \| `"context-menu"`              | Trigger event. Default is `"click"`.                          |
-| `off`             | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"document-click"` | Close event. Default is `"document-click"`.                   |
-| `hoverEnterDelay` | `number`                                                             | Delay time on hover enter, in milliseconds. Default is `100`. |
-| `hoverLeaveDelay` | `number`                                                             | Delay time on hover leave, in milliseconds. Default is `100`. |
-| `open`            | `boolean`                                                            | Open value.                                                   |
-| `onOpen`          | `() => void`                                                         | Open event handler.                                           |
-| `onClose`         | `() => void`                                                         | Close event handler.                                          |
-| `children`        | `ReactNode`                                                          | Children content.                                             |
+| Property          | Type                                                                               | Description                                                   |
+| ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `on`              | `"click"` \| `"hover"` \| `"focus"` \| `"context-menu"` \| `string[]`              | Trigger event. Default is `"click"`.                          |
+| `off`             | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"document-click"` \| `string[]` | Close event. Default is `"document-click"`.                   |
+| `hoverEnterDelay` | `number`                                                                           | Delay time on hover enter, in milliseconds. Default is `100`. |
+| `hoverLeaveDelay` | `number`                                                                           | Delay time on hover leave, in milliseconds. Default is `100`. |
+| `open`            | `boolean`                                                                          | Open value.                                                   |
+| `onOpen`          | `() => void`                                                                       | Open event handler.                                           |
+| `onClose`         | `() => void`                                                                       | Close event handler.                                          |
+| `children`        | `ReactNode`                                                                        | Children content.                                             |
 
 ### Trigger.Anchor
 

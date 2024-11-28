@@ -8,12 +8,7 @@ function Example() {
   return (
     <>
       <Button onClick={toggleOn}>Open</Button>
-      <Backdrop
-        open={open}
-        onClose={toggleOff}
-        onOpened={() => console.log("Opened")}
-        onClosed={() => console.log("Closed")}
-      />
+      <Backdrop animeless open={open} onClose={toggleOff} />
     </>
   );
 }
