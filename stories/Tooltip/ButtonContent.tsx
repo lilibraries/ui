@@ -5,7 +5,6 @@ import { Button, Flexbox, Tooltip } from "@lilib/ui";
 function Example() {
   return (
     <Tooltip
-      arrowed
       placement="right"
       content={
         <Flexbox gap="1x">

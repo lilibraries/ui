@@ -3,6 +3,7 @@
 .#{$cls-prefix}popup {
   z-index: var(--z-index-popup);
   box-sizing: border-box;
+  max-width: 600px;
   padding: var(--space-4);
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);

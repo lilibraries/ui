@@ -5,7 +5,6 @@ import { Button, Description, Popup } from "@lilib/ui";
 function Example() {
   return (
     <Popup
-      style={{ maxWidth: 600 }}
       arrowed
       placement="top-start"
       content={
