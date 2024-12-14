@@ -4,18 +4,14 @@
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
+  line-height: var(--line-height-base);
 
-  &-icon {
-    display: flex;
+  &-icon,
+  &-mark {
+    display: inline-flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    min-width: 1em;
-    min-height: 1em;
-    margin-inline-end: var(--space-2);
-    color: var(--text-color-base);
-    font-size: calc(var(--line-height-base) * 1em);
-    line-height: 1;
 
     & > img {
       width: 1em;
@@ -23,6 +19,22 @@
       object-fit: cover;
       overflow: hidden;
     }
+  }
+
+  &-icon {
+    min-width: 1em;
+    height: 1em;
+    color: var(--text-color-base);
+    font-size: calc(var(--line-height-base) * 1em);
+    line-height: 1;
+    margin-inline-end: var(--space-2);
+  }
+
+  &-mark {
+    min-width: calc(var(--line-height-base) * 1em);
+    height: calc(var(--line-height-base) * 1em);
+    color: var(--text-color-muted);
+    margin-inline-start: var(--space-2);
   }
 
   &-content {

@@ -1,41 +1,17 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}alert {
-  display: flex;
-  align-items: flex-start;
   box-sizing: border-box;
   padding: var(--space-4);
-  line-height: var(--line-height-base);
+  font-size: var(--font-size-base);
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-base);
 
-  &-content {
-    flex: 1 1 0;
-  }
-
-  &-closer.#{$cls-prefix}button {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-    width: calc(var(--line-height-base) * 1em);
-    height: calc(var(--line-height-base) * 1em);
-    margin-left: var(--space-2);
-    padding: 0;
-  }
-
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
       background-color: rgba(var(--#{$intent}-rgb) / var(--alpha-base));
-      border-color: var(--#{$intent});
+      border-color: var(--border-color-#{$intent}-base);
     }
-  }
-}
-
-.#{$cls-prefix}alert.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}alert-closer.#{$cls-prefix}button {
-    margin-right: var(--space-2);
-    margin-left: 0;
   }
 }

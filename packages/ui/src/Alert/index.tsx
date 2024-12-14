@@ -1,28 +1,48 @@
-import React, { ReactNode, MouseEvent, forwardRef, HTMLAttributes } from "react";
+import React, { HTMLAttributes, MouseEvent, ReactNode, forwardRef } from "react";
 import cn from "classnames";
-import { usePersist, useUpdate, useSafeState } from "@lilib/hooks";
-import Prefix from "../Prefix";
-import Collapse from "../Collapse";
-import Direction from "../Direction";
+import {
+  AiFillCheckCircle,
+  AiFillCloseCircle,
+  AiFillExclamationCircle,
+  AiFillInfoCircle,
+  AiOutlineClose,
+} from "react-icons/ai";
+import { usePersist, useSafeState, useUpdate } from "@lilib/hooks";
 import Button, { ButtonProps } from "../Button";
-import CloseIcon from "../icons/CloseIcon";
+import Collapse from "../Collapse";
+import Description from "../Description";
+import Icon from "../Icon";
+import Prefix from "../Prefix";
+import Text from "../Text";
+import isRenderable from "../utils/isRenderable";
 import { IntentValue } from "../utils/types";
 
-export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
-  intent?: IntentValue;
+export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   open?: boolean;
+  intent?: IntentValue;
+  icon?: boolean | ReactNode;
+  title?: ReactNode;
   closable?: boolean;
   closeProps?: ButtonProps;
   onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { children, className, intent, open: openProp, closable, closeProps, onClose, ...rest } = props;
+  const {
+    children,
+    className,
+    open: openProp,
+    intent,
+    icon: iconProp,
+    title,
+    closable,
+    closeProps,
+    onClose,
+    ...rest
+  } = props;
+  const controlled = "open" in props;
 
   const { cls } = Prefix.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
-
-  const controlled = openProp != null;
   const [open, setOpen] = useSafeState(controlled ? !!openProp : true);
 
   useUpdate(() => {
@@ -34,37 +54,46 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const classes = cn(
     `${cls}alert`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}${intent}`]: intent,
     },
     className
   );
 
   const handleClose = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    if (closeProps?.onClick) {
-      closeProps?.onClick(event);
-    }
-    if (onClose) {
-      onClose(event);
-    }
+    closeProps?.onClick?.(event);
+    onClose?.(event);
     if (!controlled) {
       setOpen(false);
     }
   });
 
+  let icon: ReactNode = null;
+  if (iconProp === true) {
+    if (intent === "positive") {
+      icon = <AiFillCheckCircle />;
+    } else if (intent === "alertive") {
+      icon = <AiFillExclamationCircle />;
+    } else if (intent === "negative") {
+      icon = <AiFillCloseCircle />;
+    } else {
+      icon = <AiFillInfoCircle />;
+    }
+  } else {
+    icon = iconProp;
+  }
+
   let closer: ReactNode = null;
   if (closable) {
     closer = (
       <Button
-        children={<CloseIcon />}
-        round
+        rounded
         iconOnly
         borderless
         intent={intent}
         variant="hollow"
+        children={<AiOutlineClose />}
         {...closeProps}
         onClick={handleClose}
-        className={cn(`${cls}alert-closer`, closeProps?.className)}
       />
     );
   }
@@ -72,8 +101,19 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (
     <Collapse open={open}>
       <div {...rest} ref={ref} className={classes}>
-        <div className={`${cls}alert-content`}>{children}</div>
-        {closer}
+        <Description
+          icon={
+            isRenderable(icon) && (
+              <Text as={Icon} intent={intent}>
+                {icon}
+              </Text>
+            )
+          }
+          mark={closer}
+          title={title}
+        >
+          {children}
+        </Description>
       </div>
     </Collapse>
   );

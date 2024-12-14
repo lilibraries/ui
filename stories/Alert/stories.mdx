@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Feedbacks/Alert" />
 
@@ -20,16 +20,22 @@ Alert feedback.
   <Story id="examples-alert--closable" />
 </Canvas>
 
-### Loading
+### Close Loading
 
-<Canvas mdxSource={require("!!raw-loader!./Loading").default}>
-  <Story id="examples-alert--loading" />
+<Canvas mdxSource={require("!!raw-loader!./CloseLoading").default}>
+  <Story id="examples-alert--close-loading" />
 </Canvas>
 
-### Info
+### Description
 
-<Canvas mdxSource={require("!!raw-loader!./Info").default}>
-  <Story id="examples-alert--info" />
+<Canvas mdxSource={require("!!raw-loader!./Description").default}>
+  <Story id="examples-alert--description" />
+</Canvas>
+
+### Custom Icon
+
+<Canvas mdxSource={require("!!raw-loader!./CustomIcon").default}>
+  <Story id="examples-alert--custom-icon" />
 </Canvas>
 
 ### Intents
@@ -40,13 +46,15 @@ Alert feedback.
 
 ## API
 
-| Property     | Type                                                                             | Description              |
-| ------------ | -------------------------------------------------------------------------------- | ------------------------ |
-| `children`   | `ReactNode`                                                                      | Content                  |
-| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent                   |
-| `open`       | `boolean`                                                                        | Controlled open          |
-| `closable`   | `boolean`                                                                        | Whether it can be closed |
-| `closeProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                          | Close button props       |
-| `onClose`    | `MouseEventHandler`                                                              | Close event              |
+| Property     | Type                                                                             | Description                       |
+| ------------ | -------------------------------------------------------------------------------- | --------------------------------- |
+| `open`       | `boolean`                                                                        | Controlled open.                  |
+| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent value.                     |
+| `icon`       | `boolean` \| `ReactNode`                                                         | Show default icon or custom icon. |
+| `title`      | `ReactNode`                                                                      | Alert title.                      |
+| `children`   | `ReactNode`                                                                      | Alert detail.                     |
+| `closable`   | `boolean`                                                                        | Whether it can be closed.         |
+| `closeProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                          | Close button props.               |
+| `onClose`    | `MouseEventHandler`                                                              | Close event.                      |
 
 It accepts all props which the native `<div>` element supports.

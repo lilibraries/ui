@@ -76,7 +76,7 @@ React component library.
 
 ### Feedbacks
 
-- [ ] Alert
+- [x] Alert
 - [x] Loader
 - [x] Spinner
 - [ ] Skeleton

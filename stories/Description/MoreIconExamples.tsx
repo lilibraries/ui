@@ -1,19 +1,12 @@
 import React from "react";
-import { Avatar, Checkbox, Flexbox, Description, Radio, Spinner, Switch } from "@lilib/ui";
-import { FiInfo } from "react-icons/fi";
+import { AiFillInfoCircle } from "react-icons/ai";
+import { Avatar, Checkbox, Description, Flexbox, Radio, Spinner, Switch } from "@lilib/ui";
 
 function Example() {
   return (
     <Flexbox direction="column" gap="8x" fluid>
-      <Description icon={<FiInfo />} title="Icon">
+      <Description icon={<AiFillInfoCircle />} title="Icon">
         This is descriptive message.
-      </Description>
-
-      <Description
-        icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}
-        title="Image"
-      >
-        This is a descriptive message.
       </Description>
 
       <Description icon={<Spinner spinning />} title="Spinner">
@@ -29,6 +22,13 @@ function Example() {
       </Description>
 
       <Description icon={<Switch size="small" />} title="Switch">
+        This is a descriptive message.
+      </Description>
+
+      <Description
+        icon={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" />}
+        title="Image"
+      >
         This is a descriptive message.
       </Description>
 
