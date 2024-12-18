@@ -53,9 +53,9 @@
     justify-content: center;
     min-width: 1em;
     min-height: 1em;
-    margin-right: var(--space-2);
-    font-size: calc(var(--line-height-base) * 1em);
+    font-size: calc(var(--line-height-base) * var(--font-size-larger));
     line-height: 1;
+    margin-inline-end: var(--space-2);
 
     & > img {
       width: 1em;
@@ -67,22 +67,17 @@
 
   &-title {
     flex: 1 1 0;
-    font-weight: 700;
+    font-weight: var(--font-weight-title);
+    font-size: var(--font-size-larger);
     @include text-overflow;
   }
 
-  &-headnote {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    margin-left: var(--space-2);
-  }
-
+  &-headnote,
   &-headmark {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
-    margin-left: var(--space-2);
+    margin-inline-start: var(--space-2);
   }
 
   &-footer {
@@ -100,7 +95,7 @@
     align-items: center;
 
     & + .#{$cls-prefix}card-footmark {
-      margin-left: var(--space-2);
+      margin-inline-start: var(--space-2);
     }
   }
 
@@ -117,21 +112,19 @@
     overflow: auto;
 
     & p {
-      margin-bottom: var(--space-2);
-
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
 
-  &.#{$cls-prefix}has-header:not(.#{$cls-prefix}splited) {
+  &.#{$cls-prefix}with-header:not(.#{$cls-prefix}splited) {
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-content {
       padding-top: 0;
     }
   }
 
-  &.#{$cls-prefix}has-footer:not(.#{$cls-prefix}splited) {
+  &.#{$cls-prefix}with-footer:not(.#{$cls-prefix}splited) {
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-content {
       padding-bottom: 0;
     }
@@ -147,9 +140,11 @@
     flex-direction: column;
 
     & > .#{$cls-prefix}card-image {
-      margin: -1px -1px 0;
       border-top-left-radius: var(--border-radius-fixed-base);
       border-top-right-radius: var(--border-radius-fixed-base);
+      margin-block-start: -1px;
+      margin-inline-start: -1px;
+      margin-inline-end: -1px;
     }
   }
 
@@ -157,9 +152,11 @@
     flex-direction: column-reverse;
 
     & > .#{$cls-prefix}card-image {
-      margin: 0 -1px -1px;
       border-bottom-right-radius: var(--border-radius-fixed-base);
       border-bottom-left-radius: var(--border-radius-fixed-base);
+      margin-inline-start: -1px;
+      margin-inline-end: -1px;
+      margin-block-end: -1px;
     }
   }
 
@@ -167,9 +164,11 @@
     flex-direction: row;
 
     & > .#{$cls-prefix}card-image {
-      margin: -1px 0 -1px -1px;
       border-top-left-radius: var(--border-radius-fixed-base);
       border-bottom-left-radius: var(--border-radius-fixed-base);
+      margin-block-start: -1px;
+      margin-block-end: -1px;
+      margin-inline-start: -1px;
     }
   }
 
@@ -177,9 +176,11 @@
     flex-direction: row-reverse;
 
     & > .#{$cls-prefix}card-image {
-      margin: -1px -1px -1px 0;
       border-top-right-radius: var(--border-radius-fixed-base);
       border-bottom-right-radius: var(--border-radius-fixed-base);
+      margin-block-start: -1px;
+      margin-inline-end: -1px;
+      margin-block-end: -1px;
     }
   }
 
@@ -241,7 +242,7 @@
 
   &.#{$cls-prefix}hoverable {
     cursor: pointer;
-    @include transition(fast, ease-in-out, box-shadow);
+    @include transition(fast, ease, box-shadow);
 
     &:hover {
       box-shadow: var(--shadow-4);
@@ -266,44 +267,14 @@
 }
 
 .#{$cls-prefix}card.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}card-main {
-    & > .#{$cls-prefix}card-header {
-      & > .#{$cls-prefix}card-icon {
-        margin-right: 0;
-        margin-left: var(--space-2);
-      }
-
-      & > .#{$cls-prefix}card-headnote {
-        margin-right: var(--space-2);
-        margin-left: 0;
-      }
-
-      & > .#{$cls-prefix}card-headmark {
-        margin-right: var(--space-2);
-        margin-left: 0;
-      }
-    }
-
-    & > .#{$cls-prefix}card-footer {
-      & > .#{$cls-prefix}card-footnote {
-        & + .#{$cls-prefix}card-footmark {
-          margin-right: var(--space-2);
-          margin-left: 0;
-        }
-      }
-    }
-  }
-
   &.#{$cls-prefix}image-placement-start {
     & > .#{$cls-prefix}card-image {
-      margin: -1px -1px -1px 0;
       border-radius: 0 var(--border-radius-fixed-base) var(--border-radius-fixed-base) 0;
     }
   }
 
   &.#{$cls-prefix}image-placement-end {
     & > .#{$cls-prefix}card-image {
-      margin: -1px 0 -1px -1px;
       border-radius: var(--border-radius-fixed-base) 0 0 var(--border-radius-fixed-base);
     }
   }
@@ -331,12 +302,6 @@
         border-bottom-right-radius: var(--border-radius-fixed-base);
         border-bottom-left-radius: 0;
       }
-    }
-  }
-
-  &.#{$cls-prefix}borderless {
-    & > .#{$cls-prefix}card-image {
-      margin: 0;
     }
   }
 }

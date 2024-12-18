@@ -1,16 +1,17 @@
 import React, {
-  ReactNode,
-  forwardRef,
-  ElementType,
-  ReactElement,
-  createElement,
   CSSProperties,
   ComponentProps,
+  ElementType,
   ForwardRefExoticComponent,
+  ReactElement,
+  ReactNode,
+  createElement,
+  forwardRef,
 } from "react";
 import cn from "classnames";
-import Prefix from "../Prefix";
+import isString from "lodash/isString";
 import Direction from "../Direction";
+import Prefix from "../Prefix";
 import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 
@@ -23,7 +24,7 @@ export interface CardCommonProps {
   headmark?: ReactNode;
   footnote?: ReactNode;
   footmark?: ReactNode;
-  image?: ReactNode;
+  image?: string | ReactNode;
   imageSize?: string | number;
   imagePlacement?: CardImagePlacement;
   splited?: boolean;
@@ -31,8 +32,8 @@ export interface CardCommonProps {
   hoverable?: boolean;
   unpadding?: boolean;
   borderless?: boolean;
-  renderHeader?: (header: ReactElement | null) => ReactNode;
-  renderFooter?: (footer: ReactElement | null) => ReactNode;
+  renderHeader?: (header: ReactElement | null) => ReactElement | null;
+  renderFooter?: (footer: ReactElement | null) => ReactElement | null;
 }
 
 export type CardProps<C extends ElementType = "div"> = C extends "div"
@@ -60,7 +61,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     headmark,
     footnote,
     footmark,
-    image: img,
+    image: imageProp,
     imageSize,
     imagePlacement = "top",
     splited,
@@ -84,13 +85,13 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const hasFootmark = isRenderable(footmark);
 
   let image: ReactNode = null;
-  let header: ReactNode = null;
-  let footer: ReactNode = null;
+  let header: ReactElement | null = null;
+  let footer: ReactElement | null = null;
   let hasImage = false;
   let hasHeader = hasIcon || hasTitle || hasHeadnote || hasHeadmark;
   let hasFooter = hasFootnote || hasFootmark;
 
-  if (isRenderable(img)) {
+  if (imageProp) {
     let style: CSSProperties | undefined;
     if (isCSSValue(imageSize)) {
       if (imagePlacement === "top" || imagePlacement === "bottom") {
@@ -102,7 +103,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     }
     image = (
       <div style={style} className={`${cls}card-image`}>
-        {img}
+        {isString(imageProp) ? <img src={imageProp} /> : imageProp}
       </div>
     );
     hasImage = true;
@@ -129,10 +130,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   }
 
   if (renderHeader) {
-    header = renderHeader(header as ReactElement | null);
+    header = renderHeader(header);
   }
   if (renderFooter) {
-    footer = renderFooter(footer as ReactElement | null);
+    footer = renderFooter(footer);
   }
   hasHeader = isRenderable(header);
   hasFooter = isRenderable(footer);
@@ -146,8 +147,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
       [`${cls}hoverable`]: hoverable,
       [`${cls}unpadding`]: unpadding,
       [`${cls}borderless`]: borderless,
-      [`${cls}has-header`]: hasHeader,
-      [`${cls}has-footer`]: hasFooter,
+      [`${cls}with-header`]: hasHeader,
+      [`${cls}with-footer`]: hasFooter,
       [`${cls}image-placement-${imagePlacement}`]: hasImage,
     },
     className

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Card, Avatar, Text, Image, Flexbox, Checkbox } from "@lilib/ui";
 import { FiMoreVertical } from "react-icons/fi";
+import { Avatar, Button, Card, Checkbox, Flexbox, Text } from "@lilib/ui";
 
 function Example() {
   const [splited, setSplited] = useState(false);
@@ -30,16 +30,16 @@ function Example() {
       </Flexbox>
 
       <Card
-        style={{ width: 600 }}
+        style={{ maxWidth: 600 }}
         splited={splited}
         shadowed={shadowed}
         hoverable={hoverable}
         unpadding={unpadding}
         borderless={borderless}
-        image={<Image src="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5" />}
+        image="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5"
         imageSize="200px"
         imagePlacement="start"
-        icon={<Avatar round size="small" image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
+        icon={<Avatar rounded size="small" image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
         title={
           <a rel="noreferrer" href="https://github.com/LeeWeisheng" target="_blank">
             LeeWeisheng
@@ -51,7 +51,7 @@ function Example() {
           </Text>
         }
         headmark={
-          <Button variant="hollow" iconOnly round borderless>
+          <Button variant="hollow" iconOnly rounded borderless>
             <FiMoreVertical />
           </Button>
         }
@@ -61,7 +61,7 @@ function Example() {
           </Text>
         }
         footmark={
-          <Button variant="solid" intent="major" borderless size="small">
+          <Button variant="solid" intent="major">
             Follow
           </Button>
         }

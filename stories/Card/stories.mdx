@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Views/Card" />
 
@@ -30,22 +30,22 @@ Display a card.
 
 | Property         | Type                                                     | Description                                                                                                                                                       |
 | ---------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`       | `ReactNode`                                              | Content                                                                                                                                                           |
-| `icon`           | `ReactNode`                                              | Header icon                                                                                                                                                       |
-| `title`          | `ReactNode`                                              | Header title                                                                                                                                                      |
-| `headnote`       | `ReactNode`                                              | Header note                                                                                                                                                       |
-| `headmark`       | `ReactNode`                                              | Header mark                                                                                                                                                       |
-| `footnote`       | `ReactNode`                                              | Footer note                                                                                                                                                       |
-| `footmark`       | `ReactNode`                                              | Footer mark                                                                                                                                                       |
-| `image`          | `ReactNode`                                              | Image                                                                                                                                                             |
+| `children`       | `ReactNode`                                              | Card Content.                                                                                                                                                     |
+| `icon`           | `ReactNode`                                              | Header icon.                                                                                                                                                      |
+| `title`          | `ReactNode`                                              | Header title.                                                                                                                                                     |
+| `headnote`       | `ReactNode`                                              | Header end note.                                                                                                                                                  |
+| `headmark`       | `ReactNode`                                              | Header end mark.                                                                                                                                                  |
+| `footnote`       | `ReactNode`                                              | Footer start note.                                                                                                                                                |
+| `footmark`       | `ReactNode`                                              | Footer end mark.                                                                                                                                                  |
+| `image`          | `string` \| `ReactNode`                                  | Image url or other React node.                                                                                                                                    |
 | `imageSize`      | `string` \| `number`                                     | Image size. It set the image height when the `imagePlacement` is `"top"` or `"bottom"`. It set the image width when the `imagePlacement` is `"start"` or `"end"`. |
-| `imagePlacement` | `"top"` \| `"bottom"` \| `"start"` \| `"end"`            | Image placement, default is `"top"`                                                                                                                               |
-| `splited`        | `boolean`                                                | Split header and footer by border and background color                                                                                                            |
-| `shadowed`       | `boolean`                                                | Show shadow                                                                                                                                                       |
-| `hoverable`      | `boolean`                                                | Show hover shadow and active shadow                                                                                                                               |
-| `unpadding`      | `boolean`                                                | Remove content padding                                                                                                                                            |
-| `borderless`     | `boolean`                                                | Remove borders                                                                                                                                                    |
-| `renderHeader`   | <code>(header: ReactElement \| null) => ReactNode</code> | Custom header render                                                                                                                                              |
-| `renderFooter`   | <code>(footer: ReactElement \| null) => ReactNode</code> | Custom footer render                                                                                                                                              |
+| `imagePlacement` | `"top"` \| `"bottom"` \| `"start"` \| `"end"`            | Image placement, default is `"top"`.                                                                                                                              |
+| `splited`        | `boolean`                                                | Split header and footer by border and background color.                                                                                                           |
+| `shadowed`       | `boolean`                                                | Show shadow.                                                                                                                                                      |
+| `hoverable`      | `boolean`                                                | Show hover shadow and active shadow.                                                                                                                              |
+| `unpadding`      | `boolean`                                                | Remove content padding.                                                                                                                                           |
+| `borderless`     | `boolean`                                                | Remove borders.                                                                                                                                                   |
+| `renderHeader`   | <code>(header: ReactElement \| null) => ReactNode</code> | Custom header render.                                                                                                                                             |
+| `renderFooter`   | <code>(footer: ReactElement \| null) => ReactNode</code> | Custom footer render.                                                                                                                                             |
 
 It accepts all props which the `as` element type supports.

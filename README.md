@@ -66,7 +66,7 @@ React component library.
 - [x] Avatar
 - [ ] List
 - [ ] Tree
-- [ ] Card
+- [x] Card
 - [ ] Table
 - [ ] Timeline
 - [ ] Carousel

@@ -1,12 +1,12 @@
 import React from "react";
-import { Card } from "@lilib/ui";
 import { FaGithub } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+import { Card } from "@lilib/ui";
 
 function Example() {
   return (
     <Card
-      style={{ width: 400 }}
+      style={{ maxWidth: 400 }}
       as="a"
       rel="noreferrer"
       href="https://github.com/lilibraries/ui"
