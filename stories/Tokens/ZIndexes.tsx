@@ -18,6 +18,18 @@ const ZIndexes: FC = () => {
         ],
 
         [
+          <Usage type="scss" name="z-index-popup" />,
+          <Usage type="css" name="z-index-popup" />,
+          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-popup`} />,
+        ],
+
+        [
+          <Usage type="scss" name="z-index-tooltip" />,
+          <Usage type="css" name="z-index-tooltip" />,
+          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-tooltip`} />,
+        ],
+
+        [
           <Usage type="scss" name="z-index-backdrop" />,
           <Usage type="css" name="z-index-backdrop" />,
           <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-backdrop`} />,
@@ -36,27 +48,15 @@ const ZIndexes: FC = () => {
         ],
 
         [
-          <Usage type="scss" name="z-index-popup" />,
-          <Usage type="css" name="z-index-popup" />,
-          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-popup`} />,
-        ],
-
-        [
-          <Usage type="scss" name="z-index-tooltip" />,
-          <Usage type="css" name="z-index-tooltip" />,
-          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-tooltip`} />,
-        ],
-
-        [
           <Usage type="scss" name="z-index-notice" />,
           <Usage type="css" name="z-index-notice" />,
           <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-notice`} />,
         ],
 
         [
-          <Usage type="scss" name="z-index-message" />,
-          <Usage type="css" name="z-index-message" />,
-          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-message`} />,
+          <Usage type="scss" name="z-index-toast" />,
+          <Usage type="css" name="z-index-toast" />,
+          <Value styleName="zIndex" styleValue={`var(--${prefix}z-index-toast`} />,
         ],
       ]}
     />

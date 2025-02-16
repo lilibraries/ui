@@ -1,6 +1,5 @@
 import React, { FC, HTMLAttributes } from "react";
 import { useDarkMode } from "storybook-dark-mode";
-import Monospace from "./Monospace";
 
 interface UsageProps extends HTMLAttributes<HTMLSpanElement> {
   name: string;
@@ -23,7 +22,7 @@ const Usage: FC<UsageProps> = (props) => {
     value = format(value);
   }
 
-  return <Monospace {...rest}>{value}</Monospace>;
+  return <span {...rest}>{value}</span>;
 };
 
 export default Usage;

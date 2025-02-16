@@ -214,7 +214,7 @@ blockquote {
   margin: 0 0 var(--space-4);
   padding: var(--space-4);
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-base);
 
   & p:last-child {
     margin-bottom: 0;

@@ -19,20 +19,6 @@ const FontWeights: FC = () => {
         ],
 
         [
-          <Usage type="scss" name="font-weight-input" />,
-          <Usage type="css" name="font-weight-input" />,
-          <Value styleName="fontWeight" styleValue={`var(--${prefix}font-weight-input)`} />,
-          <span style={{ fontWeight: `var(--${prefix}font-weight-input` }}>Input</span>,
-        ],
-
-        [
-          <Usage type="scss" name="font-weight-button" />,
-          <Usage type="css" name="font-weight-button" />,
-          <Value styleName="fontWeight" styleValue={`var(--${prefix}font-weight-button)`} />,
-          <span style={{ fontWeight: `var(--${prefix}font-weight-button` }}>Button</span>,
-        ],
-
-        [
           <Usage type="scss" name="font-weight-heading" />,
           <Usage type="css" name="font-weight-heading" />,
           <Value styleName="fontWeight" styleValue={`var(--${prefix}font-weight-heading)`} />,

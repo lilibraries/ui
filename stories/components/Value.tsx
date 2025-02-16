@@ -1,9 +1,8 @@
 import React, { FC, HTMLAttributes, useEffect, useRef, useState } from "react";
 import tinycolor from "tinycolor2";
+import { Prefix } from "@lilib/ui";
 import { useTimeout } from "@lilib/hooks";
 import { useDarkMode } from "storybook-dark-mode";
-import Monospace from "./Monospace";
-import { Prefix } from "@lilib/ui";
 
 function toHex(value: string) {
   const color = tinycolor(value);
@@ -63,7 +62,7 @@ const Value: FC<ValueProps> = (props) => {
 
   return (
     <span {...rest}>
-      <Monospace>{value}</Monospace>
+      <span>{value}</span>
       <span
         ref={valueNodeRef}
         style={{

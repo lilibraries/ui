@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Table from "../components/Table";
 import Usage from "../components/Usage";
-import Monospace from "../components/Monospace";
 
 const FontFamilies: FC = () => {
   return (
@@ -11,16 +10,16 @@ const FontFamilies: FC = () => {
         [
           <Usage type="scss" name="font-family-base" style={{ whiteSpace: "nowrap" }} />,
           <Usage type="css" name="font-family-base" style={{ whiteSpace: "nowrap" }} />,
-          <Monospace>
+          <span>
             system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", Arial,
             sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
-          </Monospace>,
+          </span>,
         ],
 
         [
           <Usage type="scss" name="font-family-mono" style={{ whiteSpace: "nowrap" }} />,
           <Usage type="css" name="font-family-mono" style={{ whiteSpace: "nowrap" }} />,
-          <Monospace>Menlo, Monaco, Consolas, "Courier New", Courier, monospace</Monospace>,
+          <span>Menlo, Monaco, Consolas, "Courier New", Courier, monospace</span>,
         ],
       ]}
     />

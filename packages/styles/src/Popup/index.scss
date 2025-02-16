@@ -7,7 +7,7 @@
   padding: var(--space-4);
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-base);
   box-shadow: var(--shadow-3);
   @include transition(base, ease-in-out, transform, opacity);
 

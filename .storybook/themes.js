@@ -2,11 +2,11 @@ import { create } from "@storybook/theming";
 
 const common = {
   brandTitle: "UI",
-  appBorderRadius: 8,
+  appBorderRadius: 12,
   inputBorderRadius: 8,
   fontBase:
     'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Open Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  fontCode: 'Monaco, Menlo, Consolas, "Courier New", Courier, monospace',
+  fontCode: 'Menlo, Monaco, Consolas, "Courier New", Courier, monospace',
 };
 
 export const light = create({
@@ -14,17 +14,17 @@ export const light = create({
   base: "light",
   colorPrimary: "#1A6FE6",
   colorSecondary: "#1A6FE6",
-  appBg: "#F2F2F3",
+  appBg: "#F6F7F8",
   appContentBg: "#FFF",
-  appBorderColor: "#C9CBCF",
-  textColor: "rgba(0, 0, 0, 0.8)",
+  appBorderColor: "#D7D8DB",
+  textColor: "#303236",
   textInverseColor: "#FFF",
-  barTextColor: "rgba(0, 0, 0, 0.6)",
+  barTextColor: "#676B72",
   barSelectedColor: "#1A6FE6",
   barBg: "#FFF",
   inputBg: "transparent",
-  inputBorder: "#C9CBCF",
-  inputTextColor: "rgba(0, 0, 0, 0.8)",
+  inputBorder: "#D7D8DB",
+  inputTextColor: "#303236",
 });
 
 export const dark = create({
