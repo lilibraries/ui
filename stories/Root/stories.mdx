@@ -4,9 +4,11 @@ import { Meta } from "@storybook/addon-docs";
 
 # Root
 
-The only purpose of this component is to add CSS variables for the `<html>` element when importing on demand. It is recommended to use it only once in the application.
+The only purpose of this component is to add default CSS variables for the `<html>` element when using on-demand import tools.
 
 ## Usage
+
+It is recommended to use it only once in the application.
 
 ```tsx
 import React from "react";
@@ -20,6 +22,42 @@ function App() {
   return <Root>...</Root>;
 }
 ```
+
+If you haven't used an on-demand import tool, you can also import default CSS variables in the following ways:
+
+```ts
+import "@lilib/styles/dist/css/Root/index.css";
+// Or
+import "@lilib/styles/dist/scss/Root/index.scss";
+```
+
+No matter which way is used, it will add the following styles:
+
+```css
+html {
+  --major: #1a6fe6;
+  --minor: #797e86;
+  --positive: #389447;
+  --alertive: #ec8013;
+  --negative: #dd3c49;
+  ...
+  --font-size-base: 1rem;
+  --font-size-small: 0.75rem;
+  --font-size-large: 1.25rem;
+  --font-size-smaller: 0.875em;
+  --font-size-larger: 1.125em;
+  ...
+  --text-color-base: #303236;
+  --text-color-hover: #18191b;
+  --text-color-muted: #676b72;
+  --text-color-active: #000;
+  --text-color-inactive: #94989e;
+  --text-color-disabled: #afb2b6;
+  ...
+}
+```
+
+For more CSS variables, please refer to the [Design Tokens](?path=/story/designs-tokens--page) chapter.
 
 ## API
 
