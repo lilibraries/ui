@@ -5,9 +5,9 @@ import { usePersist, useIsomorphicLayoutEffect } from "@lilib/hooks";
 export type FocusingType = "tab" | "always";
 
 export interface FocusingProps {
+  children?: ReactNode;
   type?: FocusingType;
   attr?: string;
-  children?: ReactNode;
 }
 
 const Focusing: FC<FocusingProps> = (props) => {

@@ -10,6 +10,8 @@ Once you use the Focusing component, it defaults to showing the focusing outline
 
 ## Usage
 
+You should only use this component once in the application.
+
 ```tsx
 import React from "react";
 import { Focusing } from "@lilib/ui";
@@ -27,6 +29,8 @@ function App() {
 
 | Property   | Type                  | Description                                                                                                                                                                        | Default           |
 | ---------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `children` | `ReactNode`           | Subcomponents.                                                                                                                                                                     | --                |
 | `type`     | `"tab"` \| `"always"` | When the `type` is `"tab"`, the outline is showed by pressing <kbd>Tab</kbd> key to focus. When the `type` is `"always"`, once the element is focused, the outline will be showed. | `"tab"`           |
 | `attr`     | `string`              | Attribute added to the `<html>` element.                                                                                                                                           | `"data-focusing"` |
-| `children` | `ReactNode`           | Subcomponents.                                                                                                                                                                     | --                |
+
+Once you change the value of the `attr` prop, you should also modify the value of the SCSS variable `$focusing-attribute` to the same value.
