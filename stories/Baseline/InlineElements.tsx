@@ -4,7 +4,7 @@ function InlineElements() {
   return (
     <>
       <p>
-        <a target="_blank" rel="noreferrer noopener" href="https://github.com/lilibraries/ui">
+        <a rel="noopener noreferrer" href="https://github.com/lilibraries/ui" target="_blank">
           Link
         </a>
       </p>

@@ -212,12 +212,16 @@ pre {
 
 blockquote {
   margin: 0 0 var(--space-4);
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-6);
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
-  border-radius: var(--border-radius-base);
+  border-radius: var(--border-radius-large);
 
-  & p:last-child {
-    margin-bottom: 0;
+  & p {
+    margin-bottom: var(--space-3);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -307,7 +311,7 @@ textarea {
   margin: 0;
   font-size: 100%;
   font-family: inherit;
-  line-height: 1.15;
+  line-height: var(--line-height-small);
 }
 
 button,

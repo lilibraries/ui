@@ -4,9 +4,11 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Baseline
 
-This component resets browser default styles when importing on demand. It is highly recommended that you use this component in the entry component only once.
+This component resets browser default styles when when using on-demand import tools.
 
 ## Usage
+
+It is highly recommended that you use this component in the entry component only once.
 
 ```tsx
 import React from "react";
@@ -19,6 +21,14 @@ function App() {
 function App() {
   return <Baseline>...</Baseline>;
 }
+```
+
+You can also use the following ways instead.
+
+```ts
+import "@lilib/styles/dist/css/Baseline/index.css";
+// Or
+import "@lilib/styles/dist/scss/Baseline/index.scss";
 ```
 
 ## Examples

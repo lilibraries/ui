@@ -13,7 +13,7 @@ function Addresses() {
       <address>
         <strong>Github</strong>
         <br />
-        <a target="_blank" rel="noreferrer noopener" href="https://github.com/lilibraries">
+        <a rel="noopener noreferrer" href="https://github.com/lilibraries" target="_blank">
           https://github.com/lilibraries
         </a>
       </address>
