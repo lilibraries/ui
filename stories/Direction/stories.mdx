@@ -31,6 +31,8 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
 
 ### Nested
 
+The Direction component can be nested.
+
 <Canvas mdxSource={require("!!raw-loader!./Nested").default}>
   <Story id="examples-direction--nested" />
 </Canvas>
@@ -41,9 +43,9 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
 
 | Property   | Type                          | Description                                |
 | ---------- | ----------------------------- | ------------------------------------------ |
+| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes. |
 | `value`    | `"ltr"` \| `"rtl"`            | **Required** direction value.              |
 | `scoped`   | `boolean`                     | Scoped.                                    |
-| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes. |
 
 ### Direction.useConfig
 
