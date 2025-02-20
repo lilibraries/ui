@@ -10,7 +10,7 @@ Duration component can configure animation durations. It has two functions: one 
 
 ### Global
 
-Setting durations globally will add styles to `<html>`.
+Setting durations globally will add styles to the `<html>` element.
 
 ```tsx
 import React from "react";
@@ -35,6 +35,8 @@ Many components in this library perform animation effects. The following example
 
 ### Nested
 
+The Duration component can be nested.
+
 <Canvas mdxSource={require("!!raw-loader!./Nested").default}>
   <Story id="examples-duration--nested" />
 </Canvas>
@@ -45,12 +47,12 @@ Many components in this library perform animation effects. The following example
 
 | Property   | Type                          | Description                                | Default |
 | ---------- | ----------------------------- | ------------------------------------------ | ------- |
+| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes. | --      |
 | `base`     | `number`                      | Base animation duration, in milliseconds.  | `200`   |
 | `fast`     | `number`                      | Fast animation duration, in milliseconds.  | `100`   |
 | `slow`     | `number`                      | Slow animation duration, in milliseconds.  | `800`   |
 | `lazy`     | `number`                      | Lazy animation duration, in milliseconds.  | `1200`  |
 | `scoped`   | `boolean`                     | Scoped.                                    | --      |
-| `children` | `ReactElement` \| `ReactNode` | **Required** child element or child nodes. | --      |
 
 Duration will inherit the upper configuration.
 
