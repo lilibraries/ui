@@ -33,6 +33,8 @@ If the `scoped` prop is specified to `true`, the `children` prop must be a React
 
 ### Nested
 
+The Theme component can be nested.
+
 <Canvas mdxSource={require("!!raw-loader!./Nested").default}>
   <Story id="examples-theme--nested" />
 </Canvas>
@@ -51,9 +53,9 @@ You can change the system theme mode to see the effect.
 
 | Property   | Type                            | Description                                |
 | ---------- | ------------------------------- | ------------------------------------------ |
+| `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes. |
 | `value`    | `null` \| `"light"` \| `"dark"` | **Required** theme value.                  |
 | `scoped`   | `boolean`                       | Scoped theme.                              |
-| `children` | `ReactElement` \| `ReactNode`   | **Required** child element or child nodes. |
 
 The Theme component will not add CSS class names by default, they will be added only if you specify the `value` prop to `"light"` or `"dark"`. If the `value` prop is `null`, all theme class names added before will be cleared.
 
