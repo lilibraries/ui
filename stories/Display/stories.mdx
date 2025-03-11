@@ -4,11 +4,13 @@ import { Meta, Canvas, Story } from "@storybook/addon-docs";
 
 # Display
 
-Display content.
+This component can delay displaying and hiding content. It is very useful when creating CSS animation components, such as the [Transition](?path=/story/animations-transition--page) component.
 
 ## Examples
 
 ### Basic
+
+When opened, the `onOpened` event will be triggered; When closed, the `onClosed` event will be triggered.
 
 <Canvas mdxSource={require("!!raw-loader!./Basic").default}>
   <Story id="examples-display--basic" />
@@ -16,11 +18,15 @@ Display content.
 
 ### Delay
 
+The following content will be displayed 500ms after opening and hidden 500ms after closing.
+
 <Canvas mdxSource={require("!!raw-loader!./Delay").default}>
   <Story id="examples-display--delay" />
 </Canvas>
 
 ### Keep Mounted
+
+The content can be mounted at the first time, and keep mounted after closing.
 
 <Canvas mdxSource={require("!!raw-loader!./KeepMounted").default}>
   <Story id="examples-display--keep-mounted" />
@@ -28,13 +34,13 @@ Display content.
 
 ## API
 
-| Property      | Type         | Description                                                     |
-| ------------- | ------------ | --------------------------------------------------------------- |
-| `children`    | `ReactNode`  | Content to display.                                             |
-| `open`        | `boolean`    | Control content to display.                                     |
-| `openDelay`   | `number`     | Open delay, in milliseconds.                                    |
-| `closeDelay`  | `number`     | Close delay, in milliseconds.                                   |
-| `firstMount`  | `boolean`    | Mount on first time, no matter whether the component is opened. |
-| `keepMounted` | `boolean`    | Keep mounted after closed.                                      |
-| `onOpened`    | `() => void` | Opened event.                                                   |
-| `onClosed`    | `() => void` | Closed event.                                                   |
+| Property      | Type         | Description                                                         |
+| ------------- | ------------ | ------------------------------------------------------------------- |
+| `children`    | `ReactNode`  | Content to display.                                                 |
+| `open`        | `boolean`    | Control whether the content is displayed.                           |
+| `openDelay`   | `number`     | Open delay, in milliseconds.                                        |
+| `closeDelay`  | `number`     | Close delay, in milliseconds.                                       |
+| `firstMount`  | `boolean`    | Mount at the first time, no matter whether the component is opened. |
+| `keepMounted` | `boolean`    | Keep mounted after closing.                                         |
+| `onOpened`    | `() => void` | Opened event.                                                       |
+| `onClosed`    | `() => void` | Closed event.                                                       |

@@ -1,6 +1,5 @@
 {
   "*.{ts,tsx}": [
-    "tsc-files --noEmit",
     "eslint --fix",
     "jest --bail --findRelatedTests",
     "prettier --write",

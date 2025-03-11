@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useRef } from "react";
+import { FC, ReactNode, useEffect, useRef } from "react";
 import { useUpdate, useTimeout, useSafeState } from "@lilib/hooks";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
@@ -80,7 +80,7 @@ const Display: FC<DisplayProps> = (props) => {
     renderable = true;
   }
 
-  return renderable ? <>{children}</> : null;
+  return renderable ? children : null;
 };
 
 export default Display;
