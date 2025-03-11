@@ -6,9 +6,9 @@ function Example() {
 
   return (
     <Flexbox gap="2x" align="stretch">
-      <Trigger on={["click", "hover"]} open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
+      <Trigger on="hover" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
         <Trigger.Anchor>
-          <Button>Click or hover</Button>
+          <Button>Hover</Button>
         </Trigger.Anchor>
         {open && (
           <Trigger.Layer>

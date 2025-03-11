@@ -2,14 +2,15 @@ import React, { FC, MouseEvent, ReactNode, useEffect, useMemo, useRef } from "re
 import { useEventListener, usePersist, useTimeout } from "@lilib/hooks";
 import { inBrowser } from "@lilib/utils";
 import isPositiveNumber from "../utils/isPositiveNumber";
-import TriggerAnchor from "./TriggerAnchor";
 import TriggerContext from "./TriggerContext";
+import TriggerAnchor from "./TriggerAnchor";
 import TriggerLayer from "./TriggerLayer";
 
 export type TriggerEvent = "click" | "hover" | "focus" | "context-menu";
 export type TriggerCloseEvent = "escape" | "page-hide" | "window-blur" | "document-click";
 
 export interface TriggerProps {
+  children?: ReactNode;
   on?: TriggerEvent | TriggerEvent[];
   off?: TriggerCloseEvent | TriggerCloseEvent[];
   hoverEnterDelay?: number;
@@ -17,7 +18,6 @@ export interface TriggerProps {
   open?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  children?: ReactNode;
 }
 
 const Trigger: FC<TriggerProps> & {
@@ -25,6 +25,7 @@ const Trigger: FC<TriggerProps> & {
   Layer: typeof TriggerLayer;
 } = (props) => {
   const {
+    children,
     on = "click",
     off = "document-click",
     hoverEnterDelay = 100,
@@ -32,7 +33,6 @@ const Trigger: FC<TriggerProps> & {
     open,
     onOpen,
     onClose,
-    children,
   } = props;
 
   const anchorRef = useRef<Element>(null);

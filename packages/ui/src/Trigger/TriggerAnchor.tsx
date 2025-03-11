@@ -4,7 +4,7 @@ import { usePersist } from "@lilib/hooks";
 import { composeRefs } from "@lilib/utils";
 import TriggerContext from "./TriggerContext";
 
-export interface TriggerAnchorProps {
+interface TriggerAnchorProps {
   children: ReactElement;
 }
 

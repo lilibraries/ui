@@ -6,15 +6,9 @@ function Example() {
 
   return (
     <Flexbox gap="2x" align="stretch">
-      <Trigger
-        on="context-menu"
-        off={["page-hide", "document-click"]}
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-      >
+      <Trigger on="context-menu" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
         <Trigger.Anchor>
-          <Button>Right click</Button>
+          <Button>Right Click</Button>
         </Trigger.Anchor>
         {open && (
           <Trigger.Layer>
