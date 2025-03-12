@@ -23,7 +23,6 @@ React component library.
 
 - [x] Icon
 - [x] Text
-- [x] Image
 - [x] Button
 
 ### Layouts

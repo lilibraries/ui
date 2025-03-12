@@ -8,13 +8,11 @@ import React, {
   ForwardRefExoticComponent,
 } from "react";
 import cn from "classnames";
-import isString from "lodash/isString";
 import ResizeObserver from "resize-observer-polyfill";
 import { usePersist, useUnmount, useComposedRef, useIsomorphicLayoutEffect } from "@lilib/hooks";
 import { inBrowser } from "@lilib/utils";
 import Prefix from "../Prefix";
 import Size, { SizeValue } from "../Size";
-import Image, { ImageProps } from "../Image";
 import AvatarGroup from "./AvatarGroup";
 import AvatarConfig from "./AvatarConfig";
 
@@ -23,7 +21,7 @@ export * from "./AvatarConfig";
 
 export interface AvatarCommonProps {
   size?: SizeValue;
-  image?: string | ImageProps;
+  image?: string;
   rounded?: boolean;
   outlined?: boolean;
 }
@@ -120,11 +118,7 @@ const Avatar = forwardRef<HTMLSpanElement, AvatarProps>((props, ref) => {
       className: classes,
     },
     !!image ? (
-      isString(image) ? (
-        <Image src={image} />
-      ) : (
-        <Image {...image} />
-      )
+      <img src={image} />
     ) : (
       <span ref={contentRef} className={`${cls}avatar-content`}>
         {children}

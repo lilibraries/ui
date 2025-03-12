@@ -1,11 +1,5 @@
 {
-  "*.{ts,tsx}": [
-    "eslint --fix",
-    "jest --bail --findRelatedTests",
-    "prettier --write",
-    "git add --patch"
-  ],
-  "*.{js,jsx}": [
+  "*.{ts,tsx,js,jsx}": [
     "eslint --fix",
     "prettier --write",
     "git add --patch"

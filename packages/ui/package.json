@@ -50,7 +50,6 @@
     "@types/lodash": "^4.14.190",
     "@types/warning": "^3.0.3",
     "classnames": "^2.3.1",
-    "intersection-observer": "^0.12.2",
     "lodash": "^4.17.21",
     "react-icons": "^5.4.0",
     "resize-observer-polyfill": "^1.5.1",

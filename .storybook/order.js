@@ -4,7 +4,7 @@ const order = [
   "Configs",
   ["Root", "Baseline", "Focusing", "Prefix", "Theme", "Size", "Duration", "Direction"],
   "Generics",
-  ["Icon", "Text", "Image", "Button"],
+  ["Icon", "Text", "Button"],
   "Layouts",
   ["Grid", "Layout", "Divider", "Flexbox"],
   "Navigations",
