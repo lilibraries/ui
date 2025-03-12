@@ -1,12 +1,12 @@
 import { Children, ForwardRefExoticComponent, ReactElement, cloneElement, forwardRef, useEffect, useRef } from "react";
 import cn from "classnames";
 import warning from "warning";
-import isFunction from "lodash/isFunction";
 import isNumber from "lodash/isNumber";
 import isObject from "lodash/isObject";
 import isString from "lodash/isString";
-import { useMount, useSafeState, useTimeout, useUpdate } from "@lilib/hooks";
+import isFunction from "lodash/isFunction";
 import { composeRefs } from "@lilib/utils";
+import { useMount, useSafeState, useTimeout, useUpdate } from "@lilib/hooks";
 import Prefix from "../Prefix";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
@@ -130,7 +130,7 @@ const Transition = forwardRef<any, TransitionProps>((props, ref) => {
         classesMapping[state] = `${classes}-${state}`;
       } else if (isObject(classes)) {
         if (isString(classes[state])) {
-          classesMapping[state] = classes[state] as string;
+          classesMapping[state] = classes[state];
         } else if (classes[state]) {
           classesMapping[state] = `${cls}transition-${state}`;
         }
@@ -148,22 +148,22 @@ const Transition = forwardRef<any, TransitionProps>((props, ref) => {
 
     switch (state) {
       case ENTER:
-        if (onEnter) onEnter();
+        onEnter?.();
         break;
       case ENTERING:
-        if (onEntering) onEntering();
+        onEntering?.();
         break;
       case ENTERED:
-        if (onEntered) onEntered();
+        onEntered?.();
         break;
       case EXIT:
-        if (onExit) onExit();
+        onExit?.();
         break;
       case EXITING:
-        if (onExiting) onExiting();
+        onExiting?.();
         break;
       case EXITED:
-        if (onExited) onExited();
+        onExited?.();
         break;
       default:
         break;
@@ -267,11 +267,11 @@ const Transition = forwardRef<any, TransitionProps>((props, ref) => {
     return null;
   }
 
-  const element: any = isFunction(children) ? children(state) : children;
+  const element = isFunction(children) ? children(state) : children;
 
   return cloneElement(Children.only(element), {
     ...rest,
-    ref: composeRefs(element.ref, domRef, ref),
+    ref: composeRefs((element as any).ref, domRef, ref),
     className: cn(element.props.className, classesMapping[state]),
   });
 }) as TransitionComponent;
