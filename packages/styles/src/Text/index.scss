@@ -25,12 +25,8 @@
   }
 
   &.#{$cls-prefix}active {
-    color: var(--text-color-active);
-
-    &:hover {
-      color: var(--text-color-active);
-    }
-
+    &,
+    &:hover,
     &:active {
       color: var(--text-color-active);
     }
@@ -57,18 +53,14 @@
       pointer-events: none;
     }
 
-    &.#{$cls-prefix}hoverable {
-      cursor: not-allowed;
-    }
-
-    &:hover {
-      color: var(--text-color-disabled);
-      text-decoration: none;
-    }
-
+    &:hover,
     &:active {
       color: var(--text-color-disabled);
       text-decoration: none;
+    }
+
+    &.#{$cls-prefix}hoverable {
+      cursor: not-allowed;
     }
   }
 
@@ -91,24 +83,16 @@
       }
 
       &.#{$cls-prefix}active {
-        color: var(--text-color-#{$intent}-active);
-
-        &:hover {
-          color: var(--text-color-#{$intent}-active);
-        }
-
+        &,
+        &:hover,
         &:active {
           color: var(--text-color-#{$intent}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
-        color: var(--text-color-#{$intent}-disabled);
-
-        &:hover {
-          color: var(--text-color-#{$intent}-disabled);
-        }
-
+        &,
+        &:hover,
         &:active {
           color: var(--text-color-#{$intent}-disabled);
         }

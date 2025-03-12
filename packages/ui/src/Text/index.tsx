@@ -16,14 +16,8 @@ export interface TextCommonProps {
 }
 
 export type TextProps<C extends ElementType = "span"> = C extends "span"
-  ? {
-      as?: C;
-    } & ComponentProps<C> &
-      TextCommonProps
-  : {
-      as: C;
-    } & ComponentProps<C> &
-      TextCommonProps;
+  ? ComponentProps<C> & TextCommonProps & { as?: C }
+  : ComponentProps<C> & TextCommonProps & { as: C };
 
 export interface TextComponent extends ForwardRefExoticComponent<TextCommonProps> {
   <C extends ElementType = "span">(props: TextProps<C>): ReactElement;
