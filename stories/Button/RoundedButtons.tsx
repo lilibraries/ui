@@ -6,13 +6,13 @@ function Example() {
   return (
     <Flexbox gap="2x" align="center">
       <Button rounded>Button</Button>
-      <Button rounded startIcon={<FiThumbsUp />}>
+      <Button rounded icon={<FiThumbsUp />}>
         Like
       </Button>
       <Button rounded endIcon={<FiLogOut />}>
         Logout
       </Button>
-      <Button rounded startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
+      <Button rounded icon={<FiFileText />} endIcon={<FiArrowRight />}>
         Next Page
       </Button>
     </Flexbox>

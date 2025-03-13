@@ -5,7 +5,7 @@ import { IntentValue } from "../utils/types";
 export type ButtonVariant = null | "solid" | "hollow";
 export type ButtonLoadingPlacement = "auto" | "start" | "center" | "end";
 
-export interface ButtonConfigValue {
+interface ButtonConfigValue {
   intent?: IntentValue;
   variant?: ButtonVariant;
   fluid?: boolean;
@@ -18,7 +18,7 @@ export interface ButtonConfigValue {
   loadingPlacement?: ButtonLoadingPlacement;
 }
 
-export interface ButtonConfigProps extends ButtonConfigValue {
+interface ButtonConfigProps extends ButtonConfigValue {
   children: ReactNode;
 }
 

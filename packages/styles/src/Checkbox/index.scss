@@ -35,7 +35,7 @@
     color: var(--text-color-solid-active);
     background-color: var(--background-color-base);
     border: 1px solid var(--border-color-deep-base);
-    border-radius: var(--border-radius-small);
+    border-radius: var(--border-radius-fixed-small);
     @include feedback(color, border-color, background-color);
   }
 

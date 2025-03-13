@@ -78,10 +78,13 @@ $space-inline-base: 12px !default;
 $space-inline-small: 8px !default;
 $space-inline-large: 16px !default;
 
-$border-radius-base: 8px !default;
-$border-radius-small: 4px !default;
-$border-radius-large: 12px !default;
+$border-radius-base: 0.5em !default;
+$border-radius-small: 0.25em !default;
+$border-radius-large: 0.75em !default;
 $border-radius-round: 1000px !default;
+$border-radius-fixed-base: 8px !default;
+$border-radius-fixed-small: 4px !default;
+$border-radius-fixed-large: 12px !default;
 
 $z-index-affix: 100 !default;
 $z-index-popup: 1000 !default;

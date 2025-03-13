@@ -6,7 +6,7 @@ function Example() {
   return (
     <Flexbox direction="column" gap="4x" fluid align="flex-start">
       <Button fluid>Button</Button>
-      <Button fluid startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
+      <Button fluid icon={<FiFileText />} endIcon={<FiArrowRight />}>
         Next Page
       </Button>
     </Flexbox>

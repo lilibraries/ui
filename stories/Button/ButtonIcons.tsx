@@ -6,16 +6,16 @@ function Example() {
   return (
     <Flexbox direction="column" gap="4x" align="flex-start">
       <Flexbox gap="2x" align="center">
-        <Button iconOnly startIcon={<FiThumbsUp />} />
+        <Button iconOnly icon={<FiThumbsUp />} />
         <Button iconOnly>
           <FiStar />
         </Button>
         <Button iconOnly endIcon={<FiHeart />} />
       </Flexbox>
       <Flexbox gap="2x" align="center">
-        <Button startIcon={<FiThumbsUp />}>Like</Button>
+        <Button icon={<FiThumbsUp />}>Like</Button>
         <Button endIcon={<FiLogOut />}>Logout</Button>
-        <Button startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
+        <Button icon={<FiFileText />} endIcon={<FiArrowRight />}>
           Next Page
         </Button>
       </Flexbox>

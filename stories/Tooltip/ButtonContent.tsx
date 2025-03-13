@@ -8,13 +8,13 @@ function Example() {
       placement="right"
       content={
         <Flexbox gap="1x">
-          <Button intent="major" variant="hollow" startIcon={<FiThumbsUp />} iconOnly borderless />
-          <Button intent="alertive" variant="hollow" startIcon={<FiStar />} iconOnly borderless />
-          <Button intent="negative" variant="hollow" startIcon={<FiHeart />} iconOnly borderless />
+          <Button intent="major" variant="hollow" icon={<FiThumbsUp />} iconOnly borderless />
+          <Button intent="alertive" variant="hollow" icon={<FiStar />} iconOnly borderless />
+          <Button intent="negative" variant="hollow" icon={<FiHeart />} iconOnly borderless />
         </Flexbox>
       }
     >
-      <Button iconOnly startIcon={<FiMoreVertical />} />
+      <Button iconOnly icon={<FiMoreVertical />} />
     </Tooltip>
   );
 }

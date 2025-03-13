@@ -10,7 +10,7 @@ function Example() {
       <Switch checked={loading} onChange={(event) => setLoading(event.target.checked)} />
 
       <Flexbox gap="2x" align="center">
-        <Button iconOnly loading={loading} startIcon={<FiThumbsUp />} />
+        <Button iconOnly loading={loading} icon={<FiThumbsUp />} />
         <Button iconOnly loading={loading}>
           <FiStar />
         </Button>
@@ -21,13 +21,13 @@ function Example() {
         <Button loading={loading} loadingPlacement="start">
           Button
         </Button>
-        <Button loading={loading} startIcon={<FiThumbsUp />}>
+        <Button loading={loading} icon={<FiThumbsUp />}>
           Like
         </Button>
         <Button loading={loading} endIcon={<FiLogOut />}>
           Logout
         </Button>
-        <Button loading={loading} startIcon={<FiFileText />} endIcon={<FiArrowRight />}>
+        <Button loading={loading} icon={<FiFileText />} endIcon={<FiArrowRight />}>
           Next Page
         </Button>
       </Flexbox>

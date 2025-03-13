@@ -22,7 +22,6 @@ import ButtonConfig, { ButtonVariant, ButtonLoadingPlacement } from "./ButtonCon
 import ButtonGroup from "./ButtonGroup";
 
 export * from "./ButtonGroup";
-export * from "./ButtonConfig";
 
 export interface ButtonCommonProps {
   size?: SizeValue;
@@ -32,7 +31,7 @@ export interface ButtonCommonProps {
   rounded?: boolean;
   truncated?: boolean;
   borderless?: boolean;
-  startIcon?: ReactNode;
+  icon?: ReactNode;
   endIcon?: ReactNode;
   iconOnly?: boolean;
   active?: boolean;
@@ -44,14 +43,8 @@ export interface ButtonCommonProps {
 }
 
 export type ButtonProps<C extends ElementType = "button"> = C extends "button"
-  ? {
-      as?: C;
-    } & ComponentProps<C> &
-      ButtonCommonProps
-  : {
-      as: C;
-    } & ComponentProps<C> &
-      ButtonCommonProps;
+  ? ComponentProps<C> & ButtonCommonProps & { as?: C }
+  : ComponentProps<C> & ButtonCommonProps & { as: C };
 
 export interface ButtonComponent extends ForwardRefExoticComponent<ButtonCommonProps> {
   <C extends ElementType = "button">(props: ButtonProps<C>): ReactElement;
@@ -70,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     rounded: roundedProp,
     truncated: truncatedProp,
     borderless: borderlessProp,
-    startIcon,
+    icon,
     endIcon,
     iconOnly: iconOnlyProp,
     active,
@@ -106,7 +99,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       loadingPlacement: loadingPlacementProp,
     });
 
-  const hasStartIcon = isRenderable(startIcon);
+  const hasStartIcon = isRenderable(icon);
   const hasEndIcon = isRenderable(endIcon);
 
   let loadingStart = false;
@@ -212,14 +205,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   }
 
   if (iconOnly) {
-    center = hasStartIcon ? startIcon : hasEndIcon ? endIcon : children;
+    center = hasStartIcon ? icon : hasEndIcon ? endIcon : children;
     center = wrapSpinner(center);
   } else {
     if (hasStartIcon) {
       if (loadingStart) {
-        start = wrapSpinner(startIcon, { endSpaced: true });
+        start = wrapSpinner(icon, { endSpaced: true });
       } else {
-        start = wrapIcon(startIcon, { endSpaced: true });
+        start = wrapIcon(icon, { endSpaced: true });
       }
     } else if (loadingStart) {
       start = wrapSpinner(null, { endSpaced: true });

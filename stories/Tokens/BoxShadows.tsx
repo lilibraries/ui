@@ -18,7 +18,7 @@ const BoxShadows: FC = () => {
           height: 50,
           boxShadow: `var(--${prefix}${name})`,
           border: `1px solid var(--${prefix}border-color-base)`,
-          borderRadius: `var(--${prefix}border-radius-base)`,
+          borderRadius: `var(--${prefix}border-radius-fixed-base)`,
           backgroundColor: `var(--${prefix}background-color-overlay)`,
         }}
       />,

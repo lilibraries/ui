@@ -8,7 +8,7 @@ function Example() {
       <Button>
         <FiHeart />
       </Button>
-      <Button startIcon={<FiStar />} />
+      <Button icon={<FiStar />} />
       <Button endIcon={<FiThumbsUp />} />
     </Button.Group>
   );

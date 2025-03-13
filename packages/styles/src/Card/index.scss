@@ -7,7 +7,7 @@
   box-sizing: border-box;
   background-color: var(--background-color-card);
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-base);
+  border-radius: var(--border-radius-fixed-base);
 
   &[disabled] {
     &[href] {
@@ -140,8 +140,8 @@
     flex-direction: column;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-base);
-      border-top-right-radius: var(--border-radius-base);
+      border-top-left-radius: var(--border-radius-fixed-base);
+      border-top-right-radius: var(--border-radius-fixed-base);
       margin-block-start: -1px;
       margin-inline-start: -1px;
       margin-inline-end: -1px;
@@ -152,8 +152,8 @@
     flex-direction: column-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-bottom-right-radius: var(--border-radius-base);
-      border-bottom-left-radius: var(--border-radius-base);
+      border-bottom-right-radius: var(--border-radius-fixed-base);
+      border-bottom-left-radius: var(--border-radius-fixed-base);
       margin-inline-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
@@ -164,8 +164,8 @@
     flex-direction: row;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-base);
-      border-bottom-left-radius: var(--border-radius-base);
+      border-top-left-radius: var(--border-radius-fixed-base);
+      border-bottom-left-radius: var(--border-radius-fixed-base);
       margin-block-start: -1px;
       margin-block-end: -1px;
       margin-inline-start: -1px;
@@ -176,8 +176,8 @@
     flex-direction: row-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-top-right-radius: var(--border-radius-base);
-      border-bottom-right-radius: var(--border-radius-base);
+      border-top-right-radius: var(--border-radius-fixed-base);
+      border-bottom-right-radius: var(--border-radius-fixed-base);
       margin-block-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
@@ -189,16 +189,16 @@
       padding: var(--space-2) var(--space-4);
       background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-bottom: 1px solid var(--border-color-inactive);
-      border-top-left-radius: var(--border-radius-base);
-      border-top-right-radius: var(--border-radius-base);
+      border-top-left-radius: var(--border-radius-fixed-base);
+      border-top-right-radius: var(--border-radius-fixed-base);
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
       padding: var(--space-2) var(--space-4);
       background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-top: 1px solid var(--border-color-inactive);
-      border-bottom-right-radius: var(--border-radius-base);
-      border-bottom-left-radius: var(--border-radius-base);
+      border-bottom-right-radius: var(--border-radius-fixed-base);
+      border-bottom-left-radius: var(--border-radius-fixed-base);
     }
 
     &.#{$cls-prefix}image-placement-top {
@@ -269,37 +269,37 @@
 .#{$cls-prefix}card.#{$cls-prefix}rtl {
   &.#{$cls-prefix}image-placement-start {
     & > .#{$cls-prefix}card-image {
-      border-radius: 0 var(--border-radius-base) var(--border-radius-base) 0;
+      border-radius: 0 var(--border-radius-fixed-base) var(--border-radius-fixed-base) 0;
     }
   }
 
   &.#{$cls-prefix}image-placement-end {
     & > .#{$cls-prefix}card-image {
-      border-radius: var(--border-radius-base) 0 0 var(--border-radius-base);
+      border-radius: var(--border-radius-fixed-base) 0 0 var(--border-radius-fixed-base);
     }
   }
 
   &.#{$cls-prefix}splited {
     &.#{$cls-prefix}image-placement-start {
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-        border-top-left-radius: var(--border-radius-base);
+        border-top-left-radius: var(--border-radius-fixed-base);
         border-top-right-radius: 0;
       }
 
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
         border-bottom-right-radius: 0;
-        border-bottom-left-radius: var(--border-radius-base);
+        border-bottom-left-radius: var(--border-radius-fixed-base);
       }
     }
 
     &.#{$cls-prefix}image-placement-end {
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
         border-top-left-radius: 0;
-        border-top-right-radius: var(--border-radius-base);
+        border-top-right-radius: var(--border-radius-fixed-base);
       }
 
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-        border-bottom-right-radius: var(--border-radius-base);
+        border-bottom-right-radius: var(--border-radius-fixed-base);
         border-bottom-left-radius: 0;
       }
     }
