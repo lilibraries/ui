@@ -10,7 +10,7 @@
   max-width: 100%;
   padding: var(--space-block-base) var(--space-inline-base);
   color: var(--text-color-base);
-  font-weight: var(--font-weight-base);
+  font-weight: var(--font-weight-button);
   font-size: var(--font-size-base);
   line-height: var(--line-height-small);
   text-align: start;
@@ -33,6 +33,7 @@
   & > .#{$cls-prefix}icon,
   & > .#{$cls-prefix}spinner {
     flex: 0 0 auto;
+    font-size: var(--font-size-larger);
 
     &.#{$cls-prefix}start-spaced {
       margin-inline-start: var(--space-block-base);
@@ -107,12 +108,27 @@
     padding: var(--space-block-base);
     line-height: 1;
 
+    & > .#{$cls-prefix}spinner {
+      min-width: calc(var(--line-height-small) * var(--font-size-base));
+      min-height: calc(var(--line-height-small) * var(--font-size-base));
+    }
+
     &.#{$cls-prefix}small {
       padding: var(--space-block-small);
+
+      & > .#{$cls-prefix}spinner {
+        min-width: calc(var(--line-height-small) * var(--font-size-small));
+        min-height: calc(var(--line-height-small) * var(--font-size-small));
+      }
     }
 
     &.#{$cls-prefix}large {
       padding: var(--space-block-large);
+
+      & > .#{$cls-prefix}spinner {
+        min-width: calc(var(--line-height-small) * var(--font-size-large));
+        min-height: calc(var(--line-height-small) * var(--font-size-large));
+      }
     }
   }
 
