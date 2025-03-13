@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { inBrowser } from "@lilib/utils";
 import { usePersist, useIsomorphicLayoutEffect } from "@lilib/hooks";
 
 export type FocusingType = "tab" | "always";
 
 export interface FocusingProps {
-  children?: ReactNode;
   type?: FocusingType;
   attr?: string;
+  children?: ReactNode;
 }
 
 const Focusing: FC<FocusingProps> = (props) => {
@@ -56,7 +56,7 @@ const Focusing: FC<FocusingProps> = (props) => {
     [type, attr] // eslint-disable-line
   );
 
-  return <>{children}</>;
+  return children;
 };
 
 export default Focusing;

@@ -12,7 +12,7 @@ function Example() {
         <Icon icon={<FiStar />} /> Icon
       </Tag>
       <Tag rounded>
-        <Spinner spinning endSpace />
+        <Spinner spinning endSpaced />
         Spinner
       </Tag>
       <Tag

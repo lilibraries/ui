@@ -10,7 +10,7 @@ function Example() {
       <Switch checked={spinning} onChange={(event) => setSpinning(event.target.checked)} />
       <div>
         <Spinner.Config icon={<FiLoader />} delay={500}>
-          <Spinner spinning={spinning} endSpace />
+          <Spinner spinning={spinning} endSpaced />
           Spinner
         </Spinner.Config>
       </div>

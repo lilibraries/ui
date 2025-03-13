@@ -9,7 +9,7 @@ function Example() {
         <Icon icon={<FiStar />} /> Icon
       </Tag>
       <Tag>
-        <Spinner spinning endSpace />
+        <Spinner spinning endSpaced />
         Spinner
       </Tag>
       <Tag

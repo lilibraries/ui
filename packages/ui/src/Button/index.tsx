@@ -173,16 +173,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     );
   }
 
-  function wrapIcon(node?: ReactNode, options: { startSpace?: boolean; endSpace?: boolean } = {}) {
-    const { startSpace, endSpace } = options;
+  function wrapIcon(node?: ReactNode, options: { startSpaced?: boolean; endSpaced?: boolean } = {}) {
+    const { startSpaced, endSpaced } = options;
 
     if (isValidElement(node)) {
       if (node.type === Icon) {
         return cloneElement(node as any, {
           className: cn(
             {
-              [`${cls}start-spaced`]: startSpace,
-              [`${cls}end-spaced`]: endSpace,
+              [`${cls}start-spaced`]: startSpaced,
+              [`${cls}end-spaced`]: endSpaced,
             },
             node.props.className
           ),
@@ -190,8 +190,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       } else if (node.type === Spinner) {
         return cloneElement(node as any, {
           ...spinnerProps,
-          startSpace: startSpace,
-          endSpace: endSpace,
+          startSpaced: startSpaced,
+          endSpaced: endSpaced,
         });
       }
     }
@@ -200,8 +200,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       return (
         <Icon
           className={cn({
-            [`${cls}start-spaced`]: startSpace,
-            [`${cls}end-spaced`]: endSpace,
+            [`${cls}start-spaced`]: startSpaced,
+            [`${cls}end-spaced`]: endSpaced,
           })}
         >
           {node}
@@ -217,22 +217,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   } else {
     if (hasStartIcon) {
       if (loadingStart) {
-        start = wrapSpinner(startIcon, { endSpace: true });
+        start = wrapSpinner(startIcon, { endSpaced: true });
       } else {
-        start = wrapIcon(startIcon, { endSpace: true });
+        start = wrapIcon(startIcon, { endSpaced: true });
       }
     } else if (loadingStart) {
-      start = wrapSpinner(null, { endSpace: true });
+      start = wrapSpinner(null, { endSpaced: true });
     }
 
     if (hasEndIcon) {
       if (loadingEnd) {
-        end = wrapSpinner(endIcon, { startSpace: true });
+        end = wrapSpinner(endIcon, { startSpaced: true });
       } else {
-        end = wrapIcon(endIcon, { startSpace: true });
+        end = wrapIcon(endIcon, { startSpaced: true });
       }
     } else if (loadingEnd) {
-      end = wrapSpinner(null, { startSpace: true });
+      end = wrapSpinner(null, { startSpaced: true });
     }
 
     if (loadingCenter) {

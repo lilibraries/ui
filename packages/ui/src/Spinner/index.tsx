@@ -25,8 +25,8 @@ export interface SpinnerProps extends HTMLAttributes<HTMLSpanElement> {
   delay?: number;
   spinning?: boolean;
   contented?: boolean;
-  startSpace?: boolean | number | string;
-  endSpace?: boolean | number | string;
+  startSpaced?: boolean | number | string;
+  endSpaced?: boolean | number | string;
 }
 
 export interface SpinnerComponent
@@ -43,8 +43,8 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
     delay: delayProp,
     spinning,
     contented: contentedProp,
-    startSpace,
-    endSpace,
+    startSpaced,
+    endSpaced,
     ...rest
   } = props;
 
@@ -57,10 +57,10 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
 
   const hasContent = isRenderable(children);
   const contented = !!contentedProp || hasContent;
-  const hasStartSpaceStyle = isCSSValue(startSpace);
-  const hasEndSpaceStyle = isCSSValue(endSpace);
-  const hasStartSpaceClass = !!startSpace && !hasStartSpaceStyle;
-  const hasEndSpaceClass = !!endSpace && !hasEndSpaceStyle;
+  const hasStartSpaceStyle = isCSSValue(startSpaced);
+  const hasEndSpaceStyle = isCSSValue(endSpaced);
+  const hasStartSpaceClass = !!startSpaced && !hasStartSpaceStyle;
+  const hasEndSpaceClass = !!endSpaced && !hasEndSpaceStyle;
 
   let icon: ReactNode;
   if (isRenderable(iconConfig)) {
@@ -75,8 +75,8 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
   }
 
   if (contented) {
-    const marginInlineStart = hasStartSpaceStyle ? startSpace : undefined;
-    const marginInlineEnd = hasEndSpaceStyle ? endSpace : undefined;
+    const marginInlineStart = hasStartSpaceStyle ? startSpaced : undefined;
+    const marginInlineEnd = hasEndSpaceStyle ? endSpaced : undefined;
 
     const styles = Object.assign(
       {},
@@ -123,8 +123,8 @@ const Spinner = forwardRef<HTMLSpanElement, SpinnerProps>((props, ref) => {
       <Transition in={spinning} classes durations={base} enterDelay={delay}>
         {(status) => {
           const enter = status === Transition.ENTERING || status === Transition.ENTERED;
-          const marginInlineStart = enter && hasStartSpaceStyle ? startSpace : undefined;
-          const marginInlineEnd = enter && hasEndSpaceStyle ? endSpace : undefined;
+          const marginInlineStart = enter && hasStartSpaceStyle ? startSpaced : undefined;
+          const marginInlineEnd = enter && hasEndSpaceStyle ? endSpaced : undefined;
 
           const styles = Object.assign(
             {},

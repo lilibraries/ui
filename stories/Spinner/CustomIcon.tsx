@@ -9,7 +9,7 @@ function Example() {
     <Flexbox gap="4x" align="center">
       <Switch checked={spinning} onChange={(event) => setSpinning(event.target.checked)} />
       <div>
-        <Spinner spinning={spinning} endSpace icon={<FiLoader />} />
+        <Spinner spinning={spinning} endSpaced icon={<FiLoader />} />
         Spinner
       </div>
     </Flexbox>
