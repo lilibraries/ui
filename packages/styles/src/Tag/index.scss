@@ -4,7 +4,7 @@
   @include reset;
 
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: none;
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
@@ -19,7 +19,7 @@
 
   &-icon {
     display: inline-flex;
-    flex: 0 0 auto;
+    flex: none;
     align-items: center;
     justify-content: center;
     width: calc(var(--font-size-base) * var(--line-height-base));
@@ -58,7 +58,7 @@
 
   &-clear.#{$cls-prefix}button {
     display: inline-flex;
-    flex: 0 0 auto;
+    flex: none;
     align-items: center;
     justify-content: center;
     width: calc(var(--font-size-base) * var(--line-height-base));

@@ -4,7 +4,7 @@
   @include reset;
 
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: none;
   align-items: center;
   box-sizing: border-box;
   max-width: 100%;
@@ -32,7 +32,7 @@
 
   & > .#{$cls-prefix}icon,
   & > .#{$cls-prefix}spinner {
-    flex: 0 0 auto;
+    flex: none;
     font-size: var(--font-size-larger);
 
     &.#{$cls-prefix}start-spaced {

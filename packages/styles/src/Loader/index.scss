@@ -7,12 +7,12 @@
     line-height: var(--line-height-base);
 
     & > .#{$cls-prefix}loader-icon {
-      flex: 0 0 auto;
+      flex: none;
       font-size: calc(var(--line-height-base) * 1em);
     }
 
     & > .#{$cls-prefix}loader-message {
-      flex: 0 0 auto;
+      flex: none;
       margin-top: var(--space-1);
     }
   }

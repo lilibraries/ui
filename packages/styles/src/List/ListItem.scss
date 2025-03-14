@@ -19,7 +19,7 @@
 
   &-icon {
     display: flex;
-    flex: 0 0 auto;
+    flex: none;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -74,7 +74,7 @@
   &-prefix,
   &-suffix {
     display: flex;
-    flex: 0 0 auto;
+    flex: none;
     align-items: center;
     justify-content: center;
     color: var(--text-color-inactive);
@@ -90,7 +90,7 @@
 
   &-arrow {
     display: flex;
-    flex: 0 0 auto;
+    flex: none;
     align-items: center;
     justify-content: center;
     min-width: 1em;

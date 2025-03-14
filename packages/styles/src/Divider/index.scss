@@ -3,7 +3,7 @@
 .#{$cls-prefix}divider {
   @include reset;
 
-  flex: 0 0 auto;
+  flex: none;
   border-color: var(--border-color-inactive);
   border-style: solid;
   @include clearfix;

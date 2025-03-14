@@ -5,19 +5,15 @@ import Prefix from "../Prefix";
 import isCSSValue from "../utils/isCSSValue";
 
 export type FlexboxDirection = "row" | "column" | "row-reverse" | "column-reverse";
-
-export type FlexboxGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
-
+export type FlexboxGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | number | (string & {});
 export type FlexboxWrap = boolean | "wrap" | "nowrap" | "wrap-reverse";
-
 export type FlexboxAlign = "stretch" | "center" | "baseline" | "flex-start" | "flex-end";
-
 export type FlexboxJustify = "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
 
 export interface FlexboxProps extends HTMLAttributes<HTMLDivElement> {
   fluid?: boolean;
   direction?: FlexboxDirection;
-  gap?: FlexboxGap | number | (string & {});
+  gap?: FlexboxGap;
   wrap?: FlexboxWrap;
   align?: FlexboxAlign;
   justify?: FlexboxJustify;

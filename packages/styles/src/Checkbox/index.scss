@@ -3,7 +3,7 @@
 .#{$cls-prefix}checkbox {
   position: relative;
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: none;
   align-items: center;
   font-size: var(--font-size-base);
   vertical-align: -0.125em;
@@ -24,7 +24,7 @@
   }
 
   & > .#{$cls-prefix}spinner {
-    flex: 0 0 auto;
+    flex: none;
   }
 
   &-indicator {
