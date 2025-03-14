@@ -5,7 +5,7 @@ function Example() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <Flexbox gap="4x">
+    <Flexbox gap="4x" align="center">
       <Switch checked={loading} onChange={(event) => setLoading(event.target.checked)} />
       <Tag clearable clearProps={{ loading }}>
         Tag

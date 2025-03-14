@@ -10,14 +10,15 @@
   max-width: 100%;
   height: calc(var(--font-size-base) * var(--line-height-base));
   color: var(--text-color-base);
-  font-weight: var(--font-weight-base);
+  font-weight: var(--font-weight-tag);
   font-size: var(--font-size-base);
-  background-color: var(--background-color-base);
+  background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-small);
+  border-radius: var(--border-radius-small);
+  backdrop-filter: blur(8px);
   @include feedback(color, border-color, background-color);
 
-  &-icon {
+  &-avatar {
     display: inline-flex;
     flex: none;
     align-items: center;
@@ -26,7 +27,7 @@
     height: calc(var(--font-size-base) * var(--line-height-base));
     margin-inline-start: -1px;
     overflow: hidden;
-    border-radius: var(--border-radius-fixed-small) 0 0 var(--border-radius-fixed-small);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
 
     & > img {
       width: 100%;
@@ -46,7 +47,7 @@
   }
 
   &-content {
-    flex: 1 1 auto;
+    flex: auto;
     padding: 0 0.5em;
     text-align: center;
     @include text-overflow;
@@ -66,7 +67,7 @@
     padding: 0;
     color: var(--text-color-muted);
     font-size: var(--font-size-smaller);
-    border-radius: 0 var(--border-radius-fixed-small) var(--border-radius-fixed-small) 0;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     margin-inline-end: -1px;
 
     &:hover {
@@ -90,7 +91,7 @@
     height: calc(var(--font-size-small) * var(--line-height-base));
     font-size: var(--font-size-small);
 
-    & > .#{$cls-prefix}tag-icon {
+    & > .#{$cls-prefix}tag-avatar {
       width: calc(var(--font-size-small) * var(--line-height-base));
       height: calc(var(--font-size-small) * var(--line-height-base));
     }
@@ -105,7 +106,7 @@
     height: calc(var(--font-size-large) * var(--line-height-base));
     font-size: var(--font-size-large);
 
-    & > .#{$cls-prefix}tag-icon {
+    & > .#{$cls-prefix}tag-avatar {
       width: calc(var(--font-size-large) * var(--line-height-base));
       height: calc(var(--font-size-large) * var(--line-height-base));
     }
@@ -119,7 +120,7 @@
   &.#{$cls-prefix}rounded {
     border-radius: var(--border-radius-round);
 
-    & > .#{$cls-prefix}tag-icon {
+    & > .#{$cls-prefix}tag-avatar {
       border-radius: var(--border-radius-round);
     }
 
@@ -154,13 +155,13 @@
 
     &:hover {
       color: var(--text-color-hover);
-      background-color: var(--background-color-hover);
+      background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
       border-color: var(--border-color-hover);
     }
 
     &:active {
       color: var(--text-color-active);
-      background-color: var(--background-color-active);
+      background-color: rgba(var(--basis-rgb) / var(--alpha-dark));
       border-color: var(--border-color-active);
     }
 
@@ -171,8 +172,8 @@
 
   &.#{$cls-prefix}disabled {
     color: var(--text-color-disabled);
-    background-color: var(--background-color-disabled);
-    border-color: var(--border-color-disabled);
+    background-color: rgba(var(--basis-rgb) / var(--alpha-base));
+    border-color: var(--border-color-inactive);
     cursor: not-allowed;
 
     &[href] {
@@ -183,26 +184,26 @@
   @each $color in $colors {
     &.#{$cls-prefix}#{$color} {
       color: var(--text-color-#{$color}-base);
-      background-color: var(--background-color-#{$color}-base);
+      background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
       border-color: var(--border-color-#{$color}-base);
 
       &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
         &:hover {
           color: var(--text-color-#{$color}-hover);
-          background-color: var(--background-color-#{$color}-hover);
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
           border-color: var(--border-color-#{$color}-hover);
         }
 
         &:active {
           color: var(--text-color-#{$color}-active);
-          background-color: var(--background-color-#{$color}-active);
+          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-dark));
           border-color: var(--border-color-#{$color}-active);
         }
       }
 
       &.#{$cls-prefix}disabled {
         color: var(--text-color-#{$color}-disabled);
-        background-color: var(--background-color-#{$color}-disabled);
+        background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
         border-color: var(--border-color-#{$color}-disabled);
       }
     }
@@ -308,47 +309,6 @@
   }
 }
 
-.#{$cls-prefix}tag.#{$cls-prefix}hollow {
-  background-color: transparent;
-
-  &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
-    &:hover {
-      background-color: rgba(var(--basis-rgb) / var(--alpha-base));
-    }
-
-    &:active {
-      background-color: rgba(var(--basis-rgb) / var(--alpha-deep));
-    }
-  }
-
-  &.#{$cls-prefix}disabled {
-    background-color: transparent;
-  }
-
-  @each $color in $colors {
-    &.#{$cls-prefix}#{$color} {
-      color: var(--text-color-#{$color}-base);
-
-      &.#{$cls-prefix}hoverable:not(.#{$cls-prefix}disabled) {
-        &:hover {
-          color: var(--text-color-#{$color}-hover);
-          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-base));
-        }
-
-        &:active {
-          color: var(--text-color-#{$color}-active);
-          background-color: rgba(var(--#{$color}-rgb) / var(--alpha-deep));
-        }
-      }
-
-      &.#{$cls-prefix}disabled {
-        color: var(--text-color-#{$color}-disabled);
-        background-color: transparent;
-      }
-    }
-  }
-}
-
 .#{$cls-prefix}tag.#{$cls-prefix}borderless {
   border-color: transparent;
 
@@ -388,16 +348,16 @@
 }
 
 .#{$cls-prefix}tag.#{$cls-prefix}rtl {
-  & > .#{$cls-prefix}tag-icon {
-    border-radius: 0 var(--border-radius-fixed-small) var(--border-radius-fixed-small) 0;
+  & > .#{$cls-prefix}tag-avatar {
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
   }
 
   & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
-    border-radius: var(--border-radius-fixed-small) 0 0 var(--border-radius-fixed-small);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
   }
 
   &.#{$cls-prefix}rounded {
-    & > .#{$cls-prefix}tag-icon,
+    & > .#{$cls-prefix}tag-avatar,
     & > .#{$cls-prefix}tag-clear.#{$cls-prefix}button {
       border-radius: var(--border-radius-round);
     }

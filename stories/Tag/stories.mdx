@@ -54,6 +54,12 @@ When the `onClear` prop is specified, it is clearable by default.
   <Story id="examples-tag--with-icons" />
 </Canvas>
 
+### With Avatars
+
+<Canvas mdxSource={require("!!raw-loader!./WithAvatars").default}>
+  <Story id="examples-tag--with-avatars" />
+</Canvas>
+
 ### Rounded
 
 <Canvas mdxSource={require("!!raw-loader!./Rounded").default}>
@@ -90,22 +96,16 @@ When the `onClear` prop is specified, it is clearable by default.
   <Story id="examples-tag--solid" />
 </Canvas>
 
-### Hollow
-
-<Canvas mdxSource={require("!!raw-loader!./Hollow").default}>
-  <Story id="examples-tag--hollow" />
-</Canvas>
-
 ## API
 
 | Property     | Type                                                                                                                                                                                       | Description                                   |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
 | `as`         | `ElementType`                                                                                                                                                                              | Element type, default is `"span"`.            |
 | `children`   | `ReactNode`                                                                                                                                                                                | Tag content.                                  |
-| `icon`       | `ReactNode`                                                                                                                                                                                | Specify icon.                                 |
-| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size.                                         |
-| `variant`    | `null` \| `"solid"` \| `"hollow"`                                                                                                                                                          | Variant.                                      |
-| `color`      | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color.                                        |
+| `size`       | `null` \| `"small"` \| `"large"`                                                                                                                                                           | Size value.                                   |
+| `variant`    | `null` \| `"solid"`                                                                                                                                                                        | Variant value.                                |
+| `color`      | `null` \| `"red"` \| `"magenta"` \| `"purple"` \| `"indigo"` \| `"navy"` \| `"blue"` \| `"cyan"` \| `"teal"` \| `"green"` \| `"lime"` \| `"yellow"` \| `"orange"` \| `"brown"` \| `"gray"` | Color value.                                  |
+| `avatar`     | `ReactNode`                                                                                                                                                                                | Specify avatar.                               |
 | `rounded`    | `boolean`                                                                                                                                                                                  | Make corners round.                           |
 | `squared`    | `boolean`                                                                                                                                                                                  | Square style.                                 |
 | `hoverable`  | `boolean`                                                                                                                                                                                  | Display hover styles when the mouse moved on. |

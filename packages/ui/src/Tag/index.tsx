@@ -19,13 +19,13 @@ import CloseIcon from "../icons/CloseIcon";
 import isRenderable from "../utils/isRenderable";
 import { ColorValue } from "../utils/types";
 
-export type TagVariant = null | "solid" | "hollow";
+export type TagVariant = null | "solid";
 
 export interface TagCommonProps {
-  icon?: ReactNode;
   size?: SizeValue;
   variant?: TagVariant;
   color?: ColorValue;
+  avatar?: ReactNode;
   rounded?: boolean;
   squared?: boolean;
   hoverable?: boolean;
@@ -33,18 +33,12 @@ export interface TagCommonProps {
   disabled?: boolean;
   clearable?: boolean;
   clearProps?: ButtonProps;
-  onClear?: MouseEventHandler<HTMLSpanElement>;
+  onClear?: MouseEventHandler<HTMLElement>;
 }
 
 export type TagProps<C extends ElementType = "span"> = C extends "span"
-  ? {
-      as?: C;
-    } & Omit<ComponentProps<C>, "color"> &
-      TagCommonProps
-  : {
-      as: C;
-    } & Omit<ComponentProps<C>, "color"> &
-      TagCommonProps;
+  ? Omit<ComponentProps<C>, "color"> & TagCommonProps & { as?: C }
+  : Omit<ComponentProps<C>, "color"> & TagCommonProps & { as: C };
 
 export interface TagComponent extends ForwardRefExoticComponent<TagCommonProps> {
   <C extends ElementType = "span">(props: TagProps<C>): ReactElement;
@@ -55,10 +49,10 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     children,
     className,
     as = "span",
-    icon,
     size: sizeProp,
     variant,
     color,
+    avatar,
     rounded,
     squared,
     hoverable: hoverableProp,
@@ -72,15 +66,15 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
+  const rtl = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
-  const hoverable = hoverableProp !== undefined ? !!hoverableProp : !!onClick;
-  const clearable = clearableProp !== undefined ? !!clearableProp : !!onClear;
+  const hoverable = "hoverable" in props ? !!hoverableProp : !!onClick;
+  const clearable = "clearable" in props ? !!clearableProp : !!onClear;
 
   const classes = cn(
     `${cls}tag`,
     {
-      [`${cls}rtl`]: isRTL,
+      [`${cls}rtl`]: rtl,
       [`${cls}${size}`]: size,
       [`${cls}${variant}`]: variant,
       [`${cls}${color}`]: color,
@@ -134,7 +128,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
       className: classes,
       onClick: handleClick,
     },
-    isRenderable(icon) ? <span className={`${cls}tag-icon`}>{icon}</span> : null,
+    isRenderable(avatar) ? <span className={`${cls}tag-avatar`}>{avatar}</span> : null,
     <span className={`${cls}tag-content`}>{children}</span>,
     clear
   );

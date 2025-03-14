@@ -4,12 +4,12 @@ import { FiStar, FiUser } from "react-icons/fi";
 
 function Example() {
   return (
-    <Flexbox gap="2x" wrap>
+    <Flexbox gap="2x" align="center" wrap>
       <Tag rounded clearable>
         Tag
       </Tag>
       <Tag rounded>
-        <Icon icon={<FiStar />} /> Icon
+        <Icon icon={<FiStar />} /> Star
       </Tag>
       <Tag rounded>
         <Spinner spinning endSpaced />
@@ -17,7 +17,7 @@ function Example() {
       </Tag>
       <Tag
         rounded
-        icon={
+        avatar={
           <Avatar>
             <FiUser />
           </Avatar>
@@ -25,10 +25,10 @@ function Example() {
       >
         User
       </Tag>
-      <Tag rounded icon={<img alt="Avatar" src="	https://cdn.jsdelivr.net/gh/alohe/avatars/png/toon_9.png" />}>
+      <Tag rounded avatar={<img alt="Avatar" src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/toon_1.png" />}>
         Image
       </Tag>
-      <Tag rounded icon={<Avatar image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/toon_10.png" />}>
+      <Tag rounded avatar={<Avatar image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/toon_10.png" />}>
         Avatar
       </Tag>
     </Flexbox>
