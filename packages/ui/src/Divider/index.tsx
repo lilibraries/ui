@@ -12,23 +12,17 @@ import isString from "lodash/isString";
 import Prefix from "../Prefix";
 import isCSSValue from "../utils/isCSSValue";
 
-export type DividerGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x";
+export type DividerGap = "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | number | (string & {});
 
 export interface DividerCommonProps {
-  gap?: DividerGap | number | (string & {});
+  gap?: DividerGap;
   inline?: boolean;
   vertical?: boolean;
 }
 
 export type DividerProps<C extends ElementType = "hr"> = C extends "hr"
-  ? {
-      as?: C;
-    } & ComponentProps<C> &
-      DividerCommonProps
-  : {
-      as: C;
-    } & ComponentProps<C> &
-      DividerCommonProps;
+  ? ComponentProps<C> & DividerCommonProps & { as?: C }
+  : ComponentProps<C> & DividerCommonProps & { as: C };
 
 export interface DividerComponent extends ForwardRefExoticComponent<DividerCommonProps> {
   <C extends ElementType = "hr">(props: DividerProps<C>): ReactElement;
