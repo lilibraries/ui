@@ -21,6 +21,7 @@ import { IntentValue } from "../utils/types";
 import ButtonConfig, { ButtonVariant, ButtonLoadingPlacement } from "./ButtonConfig";
 import ButtonGroup from "./ButtonGroup";
 
+export * from "./ButtonConfig";
 export * from "./ButtonGroup";
 
 export interface ButtonCommonProps {
