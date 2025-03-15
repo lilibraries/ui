@@ -104,7 +104,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         <Description
           icon={
             isRenderable(icon) && (
-              <Text as={Icon} intent={intent}>
+              <Text<typeof Icon> as={Icon} intent={intent}>
                 {icon}
               </Text>
             )

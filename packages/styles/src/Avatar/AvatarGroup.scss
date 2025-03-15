@@ -1,7 +1,8 @@
 @import "@lilib/themes";
 
 .#{$cls-prefix}avatar-group {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   vertical-align: middle;
 
   & .#{$cls-prefix}avatar:not(:first-child) {

@@ -216,12 +216,12 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
           {...collapseConfigProps}
           {...collapseProps}
         >
-          <List as="div">{children}</List>
+          <List<"div"> as="div">{children}</List>
         </Collapse>
       );
     } else {
       submenu = (
-        <List as="div">
+        <List<"div"> as="div">
           <ListConfig indent={0}>{children}</ListConfig>
         </List>
       );
@@ -277,7 +277,6 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>((props, ref) => {
   if (hasSubmenu && !collapsible) {
     return (
       <Popup
-        arrowless
         offset={0}
         on="hover"
         placement={isRTL ? "left-start" : "right-start"}

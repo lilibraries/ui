@@ -10,4 +10,4 @@ export { default as Rounded } from "./Rounded";
 export { default as Sizes } from "./Sizes";
 export { default as CustomSize } from "./CustomSize";
 export { default as CustomColor } from "./CustomColor";
-export { default as Group } from "./Group";
+export { default as AvatarGroup } from "./AvatarGroup";

@@ -4,7 +4,7 @@ import { VscGithubInverted } from "react-icons/vsc";
 
 function Example() {
   return (
-    <Avatar as="a" href="https://github.com/lilibraries/ui" target="_blank">
+    <Avatar<"a"> as="a" rel="noreferrer" href="https://github.com/lilibraries/ui" target="_blank">
       <VscGithubInverted />
     </Avatar>
   );

@@ -4,10 +4,10 @@ import { PiNumberOneBold, PiNumberTwoBold, PiNumberThreeBold } from "react-icons
 
 function Example() {
   return (
-    <List as="ol" splited bordered style={{ width: 300 }}>
+    <List<"ol"> as="ol" splited bordered style={{ width: 300 }}>
       <List.Item
         prefix={
-          <Text as={Icon} color="red">
+          <Text<typeof Icon> as={Icon} color="red">
             <PiNumberOneBold />
           </Text>
         }
@@ -15,7 +15,7 @@ function Example() {
       />
       <List.Item
         prefix={
-          <Text as={Icon} color="orange">
+          <Text<typeof Icon> as={Icon} color="orange">
             <PiNumberTwoBold />
           </Text>
         }

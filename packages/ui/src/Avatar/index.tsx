@@ -27,14 +27,8 @@ export interface AvatarCommonProps {
 }
 
 export type AvatarProps<C extends ElementType = "span"> = C extends "span"
-  ? {
-      as?: C;
-    } & ComponentProps<C> &
-      AvatarCommonProps
-  : {
-      as: C;
-    } & ComponentProps<C> &
-      AvatarCommonProps;
+  ? ComponentProps<C> & AvatarCommonProps & { as?: C }
+  : ComponentProps<C> & AvatarCommonProps & { as: C };
 
 export interface AvatarComponent extends ForwardRefExoticComponent<AvatarCommonProps> {
   <C extends ElementType = "span">(props: AvatarProps<C>): ReactElement;

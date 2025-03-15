@@ -3,7 +3,7 @@ import { Text } from "@lilib/ui";
 
 function Example() {
   return (
-    <Text
+    <Text<"a">
       as="a"
       rel="noreferrer noopener"
       href="https://github.com/lilibraries/ui"

@@ -4,7 +4,7 @@
   @include reset;
 
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   flex: none;
   width: calc(var(--font-size-base) * 2);
   height: calc(var(--font-size-base) * 2);
@@ -14,7 +14,7 @@
   line-height: var(--line-height-small);
   vertical-align: middle;
   background-color: var(--background-color-deep-base);
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-base);
 
   &:hover,
   &:active {
@@ -26,10 +26,11 @@
   }
 
   & img {
+    flex: none;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: var(--border-radius-fixed-base);
+    border-radius: var(--border-radius-base);
   }
 
   &-content {

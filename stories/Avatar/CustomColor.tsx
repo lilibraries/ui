@@ -4,7 +4,7 @@ import { FiUser } from "react-icons/fi";
 
 function Example() {
   return (
-    <Avatar style={{ color: "#FFF", backgroundColor: "#2492A8" }}>
+    <Avatar style={{ color: "#FFF", backgroundColor: "#88BF91" }}>
       <FiUser />
     </Avatar>
   );

@@ -99,7 +99,7 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   });
 
   return (
-    <List
+    <List<"div">
       {...rest}
       as="div"
       ref={ref}

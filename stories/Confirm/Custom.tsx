@@ -6,7 +6,7 @@ function Example() {
   return (
     <Confirm
       icon={
-        <Text as={Icon} intent="negative">
+        <Text<typeof Icon> as={Icon} intent="negative">
           <FiAlertTriangle />
         </Text>
       }

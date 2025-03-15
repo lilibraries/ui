@@ -32,8 +32,8 @@ export interface TagCommonProps {
   borderless?: boolean;
   disabled?: boolean;
   clearable?: boolean;
-  clearProps?: ButtonProps;
-  onClear?: MouseEventHandler<HTMLElement>;
+  clearProps?: ButtonProps<"a">;
+  onClear?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export type TagProps<C extends ElementType = "span"> = C extends "span"
@@ -93,7 +93,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
     }
   });
 
-  const handleClear = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+  const handleClear = usePersist((event: MouseEvent<HTMLAnchorElement>) => {
     event.stopPropagation();
     clearProps?.onClick?.(event);
     onClear?.(event);
@@ -102,7 +102,7 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   let clear: ReactNode = null;
   if (clearable) {
     clear = (
-      <Button
+      <Button<"a">
         as="a"
         iconOnly
         borderless

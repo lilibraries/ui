@@ -5,8 +5,7 @@ import { Card } from "@lilib/ui";
 
 function Example() {
   return (
-    <Card
-      style={{ maxWidth: 400 }}
+    <Card<"a">
       as="a"
       rel="noreferrer"
       href="https://github.com/lilibraries/ui"
@@ -15,6 +14,7 @@ function Example() {
       icon={<FaGithub />}
       title="Github"
       headmark={<FiArrowRight />}
+      style={{ maxWidth: 400 }}
     />
   );
 }
