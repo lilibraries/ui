@@ -40,6 +40,7 @@ h6.sbdocs.sbdocs-h6 {
   font-size: var(--font-size-heading-6);
 }
 
+.sbdocs.sbdocs-table,
 p.sbdocs.sbdocs-p {
   margin-top: 0;
   margin-bottom: var(--space-4);
@@ -48,6 +49,7 @@ p.sbdocs.sbdocs-p {
   line-height: var(--line-height-base);
 
   code {
+    display: inline;
     margin: 0;
     padding: 0.125em 0.375em;
     color: inherit;

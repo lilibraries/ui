@@ -10,7 +10,7 @@ const block = {
 
 function Example() {
   return (
-    <Badge count={100} maxCount={99} size="small" color="red">
+    <Badge count={100} maximum={99} size="small" color="red">
       <div style={block} />
     </Badge>
   );

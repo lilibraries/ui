@@ -13,9 +13,9 @@ function Example() {
     <Badge
       rounded
       outlined
-      tag={<Avatar image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/3d_4.png" rounded />}
-      placement="bottom-end"
+      tag={<Avatar image="https://cdn.jsdelivr.net/gh/alohe/avatars/png/toon_1.png" rounded />}
       offset="16px"
+      placement="bottom-end"
     >
       <div style={block} />
     </Badge>

@@ -4,7 +4,7 @@ export default {
 
 export { default as Basic } from "./Basic";
 export { default as Standalone } from "./Standalone";
-export { default as SetMaxCount } from "./SetMaxCount";
+export { default as MaxCount } from "./MaxCount";
 export { default as CustomTag } from "./CustomTag";
 export { default as Placements } from "./Placements";
 export { default as SetOffset } from "./SetOffset";

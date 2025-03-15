@@ -1,6 +1,7 @@
 import React, { ReactNode, forwardRef, CSSProperties, HTMLAttributes } from "react";
 import cn from "classnames";
 import isNumber from "lodash/isNumber";
+import isObject from "lodash/isObject";
 import Dot from "../Dot";
 import Tag from "../Tag";
 import Prefix from "../Prefix";
@@ -12,7 +13,6 @@ import isRenderable from "../utils/isRenderable";
 import { ColorValue } from "../utils/types";
 
 export type BadgeVariant = null | "solid" | "dotted";
-
 export type BadgePlacement = "top-start" | "top-end" | "bottom-start" | "bottom-end";
 
 export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
@@ -24,11 +24,11 @@ export interface BadgeProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color
   outlined?: boolean;
   tag?: ReactNode;
   count?: number;
-  maxCount?: number;
-  showZero?: boolean;
+  maximum?: number;
+  zeroable?: boolean;
   invisible?: boolean;
+  offset?: number | string | { x?: number | string; y?: number | string };
   placement?: BadgePlacement;
-  offset?: number | string | [number | string, number | string];
 }
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
@@ -43,31 +43,30 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     outlined,
     tag: tagProp,
     count,
-    maxCount,
-    showZero,
+    maximum,
+    zeroable,
     invisible,
-    placement = "top-end",
     offset = 0,
+    placement = "top-end",
     ...rest
   } = props;
 
   const solid = variant === "solid";
   const dotted = variant === "dotted";
   const contented = isRenderable(children);
-  const offsets = Array.isArray(offset) ? offset : ([offset, offset] as const);
+  const offsets = isObject(offset) ? offset : { x: offset, y: offset };
 
   const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
+  const rtl = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
-  const isRTL = Direction.useConfig() === "rtl";
 
   const classes = cn(
     `${cls}badge`,
     {
-      [`${cls}rtl`]: isRTL,
+      [`${cls}rtl`]: rtl,
       [`${cls}outlined`]: outlined,
       [`${cls}contented`]: contented,
-      [`${cls}standalone`]: !contented,
     },
     className
   );
@@ -79,8 +78,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   if (isRenderable(tagProp)) {
     tag = tagProp;
   } else if (isNumber(count) && !isNaN(count)) {
-    if (isNumber(maxCount) && !isNaN(maxCount) && count > maxCount) {
-      tag = maxCount + "+";
+    if (isNumber(maximum) && !isNaN(maximum) && count > maximum) {
+      tag = maximum + "+";
     } else {
       tag = count;
     }
@@ -99,30 +98,30 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     visible = false;
   } else if (!isRenderable(tag)) {
     visible = false;
-  } else if (isNumber(count) && !showZero && count === 0) {
+  } else if (isNumber(count) && !zeroable && count === 0) {
     visible = false;
   }
 
   if (contented) {
-    const [horizontal, vertical] = offsets;
+    const { x, y } = offsets;
 
     if (placement.includes("top")) {
-      style.top = vertical;
+      style.top = y;
     } else if (placement.includes("bottom")) {
-      style.bottom = vertical;
+      style.bottom = y;
     }
 
     if (placement.includes("start")) {
-      if (isRTL) {
-        style.right = horizontal;
+      if (rtl) {
+        style.right = x;
       } else {
-        style.left = horizontal;
+        style.left = x;
       }
     } else if (placement.includes("end")) {
-      if (isRTL) {
-        style.left = horizontal;
+      if (rtl) {
+        style.left = x;
       } else {
-        style.right = horizontal;
+        style.right = x;
       }
     }
   }
@@ -131,7 +130,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     <Transition in={visible} classes durations={fast} firstMount={contented} keepMounted={contented}>
       <span {...rest} ref={ref} className={classes}>
         {children}
-        <span style={style} className={cn(`${cls}badge-switcher`, `${cls}badge-switcher-${placement}`)}>
+        <span style={style} className={cn(`${cls}badge-tag`, `${cls}badge-tag-${placement}`)}>
           {tag}
         </span>
       </span>
