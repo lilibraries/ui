@@ -45,14 +45,14 @@ Based on `<input type="radio" />`.
 | Property         | Type                                                    | Description                               |
 | ---------------- | ------------------------------------------------------- | ----------------------------------------- |
 | `children`       | `ReactNode`                                             | Radio label.                              |
-| `size`           | `null` \| `"small"` \| `"large"`                        | Size.                                     |
-| `loading`        | `boolean`                                               | Show spinner.                             |
-| `loadingIcon`    | `ReactNode`                                             | Custom spinner icon.                      |
-| `loadingDelay`   | `number`                                                | Loading delay time, in milliseconds.      |
-| `disabled`       | `boolean`                                               | Disable change event.                     |
+| `size`           | `null` \| `"small"` \| `"large"`                        | Size value.                               |
 | `value`          | `any`                                                   | Radio value. **Required** in Radio.Group. |
 | `checked`        | `boolean`                                               | Controlled checked.                       |
 | `defaultChecked` | `boolean`                                               | Uncontrolled checked.                     |
+| `disabled`       | `boolean`                                               | Disable change event.                     |
+| `loading`        | `boolean`                                               | Show spinner.                             |
+| `loadingIcon`    | `ReactNode`                                             | Custom spinner icon.                      |
+| `loadingDelay`   | `number`                                                | Loading delay time, in milliseconds.      |
 | `onChange`       | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event.                             |
 | `inputRef`       | `Ref<HTMLInputElement>`                                 | Ref to internal input element.            |
 | `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`                 | Internal input props.                     |
@@ -64,12 +64,12 @@ It accepts all props which the native `<label>` element supports. The `loadingIc
 | Property       | Type                                                    | Description                          |
 | -------------- | ------------------------------------------------------- | ------------------------------------ |
 | `children`     | `ReactNode`                                             | Radios.                              |
-| `size`         | `null` \| `"small"` \| `"large"`                        | Size.                                |
+| `size`         | `null` \| `"small"` \| `"large"`                        | Size value.                          |
 | `name`         | `string`                                                | Name of all radios.                  |
 | `value`        | `any`                                                   | Controlled value.                    |
 | `defaultValue` | `any`                                                   | Uncontrolled value.                  |
+| `disabled`     | `boolean`                                               | Disable all radios.                  |
 | `loading`      | `boolean`                                               | Show spinner.                        |
 | `loadingIcon`  | `ReactNode`                                             | Custom spinner icon.                 |
 | `loadingDelay` | `number`                                                | Loading delay time, in milliseconds. |
-| `disabled`     | `boolean`                                               | Disable all radios.                  |
 | `onChange`     | `ChangeEventHandler<HTMLInputElement & { value: any }>` | Change event.                        |

@@ -27,13 +27,13 @@ export * from "./RadioConfig";
 
 export interface RadioProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   size?: SizeValue;
-  loading?: boolean;
-  loadingIcon?: ReactNode;
-  loadingDelay?: number;
-  disabled?: boolean;
   value?: any;
   checked?: boolean;
   defaultChecked?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  loadingIcon?: ReactNode;
+  loadingDelay?: number;
   onChange?: ChangeEventHandler<RadioElement>;
   inputRef?: Ref<HTMLInputElement>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
@@ -48,14 +48,14 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   const {
     children,
     className,
-    value,
     size: sizeProp,
+    value,
+    checked: checkedProp,
+    defaultChecked,
+    disabled: disabledProp,
     loading: loadingProp,
     loadingIcon: loadingIconProp,
     loadingDelay: loadingDelayProp,
-    disabled: disabledProp,
-    checked: checkedProp,
-    defaultChecked,
     onChange,
     inputRef,
     inputProps,
@@ -113,12 +113,8 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
       ...event,
       target: { ...event.target, value },
     };
-    if (onChange) {
-      onChange(radioEvent);
-    }
-    if (onGroupChange) {
-      onGroupChange(radioEvent);
-    }
+    onChange?.(radioEvent);
+    onGroupChange?.(radioEvent);
   });
 
   const classes = cn(
@@ -135,10 +131,10 @@ const Radio = forwardRef<HTMLLabelElement, RadioProps>((props, ref) => {
   return (
     <label {...rest} ref={ref} className={classes}>
       <input
+        name={name}
         {...inputProps}
         ref={inputRef}
         type="radio"
-        name={name}
         value={String(value)}
         checked={checked}
         disabled={disabled || loading}

@@ -5,7 +5,7 @@ export interface RadioElement extends HTMLInputElement {
   value: any;
 }
 
-export interface RadioConfigValue {
+interface RadioConfigValue {
   name?: string;
   value?: any;
   loading?: boolean;
@@ -14,7 +14,7 @@ export interface RadioConfigValue {
   onChange?: ChangeEventHandler<RadioElement>;
 }
 
-export interface RadioConfigProps extends RadioConfigValue {
+interface RadioConfigProps extends RadioConfigValue {
   children: ReactNode;
 }
 
