@@ -19,12 +19,12 @@ export interface SwitchProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>,
   icon?: ReactNode;
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
-  disabled?: boolean;
-  checked?: boolean;
-  defaultChecked?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   inputRef?: Ref<HTMLInputElement>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
@@ -38,12 +38,12 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
     icon: iconProp,
     checkedLabel,
     uncheckedLabel,
+    checked: checkedProp,
+    defaultChecked,
+    disabled,
     loading,
     loadingIcon,
     loadingDelay,
-    disabled,
-    checked: checkedProp,
-    defaultChecked,
     onChange,
     inputRef,
     inputProps,
@@ -70,15 +70,10 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
   }, [checkedProp]);
 
   const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
-    if (disabled || loading) {
-      return;
-    }
     if (!controlled) {
       setChecked(event.target.checked);
     }
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
   });
 
   const classes = cn(

@@ -85,6 +85,10 @@
     border: 1px solid var(--border-color-deep-base);
     border-radius: var(--border-radius-round);
     @include transition(fast, ease-in-out, left, color, border-color, background-color);
+
+    & > .#{$cls-prefix}spinner {
+      font-size: var(--font-size-smaller);
+    }
   }
 
   &.#{$cls-prefix}checked {

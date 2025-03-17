@@ -46,21 +46,21 @@ A boolean control component.
 
 ## API
 
-| Property         | Type                                     | Description                                   |
-| ---------------- | ---------------------------------------- | --------------------------------------------- |
-| `size`           | `null` &#124; `"small"` &#124; `"large"` | Size.                                         |
-| `icon`           | `ReactNode`                              | Slider icon.                                  |
-| `children`       | `ReactNode`                              | Same as `icon` prop, but with lower priority. |
-| `checkedLabel`   | `ReactNode`                              | Checked label.                                |
-| `uncheckedLabel` | `ReactNode`                              | Unchecked label.                              |
-| `loading`        | `boolean`                                | Show spinner on the slider.                   |
-| `loadingIcon`    | `ReactNode`                              | Custom spinner icon.                          |
-| `loadingDelay`   | `number`                                 | Loading delay time, in milliseconds.          |
-| `disabled`       | `boolean`                                | Disable change event.                         |
-| `checked`        | `boolean`                                | Controlled checked value.                     |
-| `defaultChecked` | `boolean`                                | Uncontrolled checked value.                   |
-| `onChange`       | `ChangeEventHandler<HTMLInputElement>`   | Change event.                                 |
-| `inputRef`       | `Ref<HTMLInputElement>`                  | Ref to internal input element.                |
-| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>`  | Internal input props.                         |
+| Property         | Type                                    | Description                                   |
+| ---------------- | --------------------------------------- | --------------------------------------------- |
+| `icon`           | `ReactNode`                             | Slider icon.                                  |
+| `children`       | `ReactNode`                             | Same as `icon` prop, but with lower priority. |
+| `size`           | `null` \| `"small"` \| `"large"`        | Size value.                                   |
+| `checkedLabel`   | `ReactNode`                             | Checked label.                                |
+| `uncheckedLabel` | `ReactNode`                             | Unchecked label.                              |
+| `checked`        | `boolean`                               | Controlled checked value.                     |
+| `defaultChecked` | `boolean`                               | Uncontrolled checked value.                   |
+| `disabled`       | `boolean`                               | Disable change event.                         |
+| `loading`        | `boolean`                               | Show spinner on the slider.                   |
+| `loadingIcon`    | `ReactNode`                             | Custom spinner icon.                          |
+| `loadingDelay`   | `number`                                | Loading delay time, in milliseconds.          |
+| `onChange`       | `ChangeEventHandler<HTMLInputElement>`  | Change event.                                 |
+| `inputRef`       | `Ref<HTMLInputElement>`                 | Ref to internal input element.                |
+| `inputProps`     | `InputHTMLAttributes<HTMLInputElement>` | Internal input props.                         |
 
 It accepts all props which the native `<label>` element supports. The `loadingIcon` and `loadingDelay` props can be configured by the [`Spinner.Config`](?path=/story/feedbacks-spinner--page#spinnerconfig) component.
