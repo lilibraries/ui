@@ -19,13 +19,13 @@ import isRenderable from "../utils/isRenderable";
 
 export interface CheckboxProps extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "onChange"> {
   size?: SizeValue;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  indeterminate?: boolean;
   loading?: boolean;
   loadingIcon?: ReactNode;
   loadingDelay?: number;
-  disabled?: boolean;
-  indeterminate?: boolean;
-  checked?: boolean;
-  defaultChecked?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   inputRef?: Ref<HTMLInputElement>;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
@@ -36,13 +36,13 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
     children,
     className,
     size: sizeProp,
+    checked: checkedProp,
+    defaultChecked,
+    disabled,
+    indeterminate,
     loading,
     loadingIcon,
     loadingDelay,
-    disabled,
-    indeterminate,
-    checked: checkedProp,
-    defaultChecked,
     onChange,
     inputRef,
     inputProps,
@@ -62,15 +62,10 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref) => {
   }, [checkedProp]);
 
   const handleChange = usePersist((event: ChangeEvent<HTMLInputElement>) => {
-    if (disabled || loading) {
-      return;
-    }
     if (!controlled) {
       setChecked(event.target.checked);
     }
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
   });
 
   const classes = cn(
