@@ -5,15 +5,15 @@ import isRenderable from "../utils/isRenderable";
 
 export interface DescriptionProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: ReactNode;
-  mark?: ReactNode;
+  endIcon?: ReactNode;
   title?: ReactNode;
 }
 
 const Description = forwardRef<HTMLDivElement, DescriptionProps>((props, ref) => {
-  const { children, className, icon, mark, title, ...rest } = props;
+  const { children, className, icon, endIcon, title, ...rest } = props;
 
   const hasIcon = isRenderable(icon);
-  const hasMark = isRenderable(mark);
+  const hasEndIcon = isRenderable(endIcon);
   const hasTitle = isRenderable(title);
   const hasDetail = isRenderable(children);
 
@@ -27,7 +27,7 @@ const Description = forwardRef<HTMLDivElement, DescriptionProps>((props, ref) =>
         {hasTitle && hasDetail && <div className={`${cls}description-detail`}>{children}</div>}
         {!hasTitle && hasDetail && children}
       </div>
-      {hasMark && <span className={`${cls}description-mark`}>{mark}</span>}
+      {hasEndIcon && <span className={`${cls}description-end-icon`}>{endIcon}</span>}
     </div>
   );
 });

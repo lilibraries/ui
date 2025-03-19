@@ -109,7 +109,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
               </Text>
             )
           }
-          mark={closer}
+          endIcon={closer}
           title={title}
         >
           {children}
