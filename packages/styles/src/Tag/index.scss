@@ -65,26 +65,9 @@
     width: calc(var(--font-size-base) * var(--line-height-base));
     height: calc(var(--font-size-base) * var(--line-height-base));
     padding: 0;
-    color: var(--text-color-muted);
     font-size: var(--font-size-smaller);
     border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
     margin-inline-end: -1px;
-
-    &:hover {
-      color: var(--text-color-hover);
-    }
-
-    &:active {
-      color: var(--text-color-active);
-    }
-
-    &[disabled] {
-      color: var(--text-color-muted);
-    }
-
-    &.#{$cls-prefix}disabled {
-      color: var(--text-color-disabled);
-    }
   }
 
   &.#{$cls-prefix}small {
