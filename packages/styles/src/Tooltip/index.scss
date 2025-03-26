@@ -3,6 +3,9 @@
 .#{$cls-prefix}popup.#{$cls-prefix}tooltip {
   z-index: var(--z-index-tooltip);
   padding: var(--space-block-base) var(--space-inline-base);
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  border-radius: var(--border-radius-base);
   box-shadow: var(--shadow-1);
 
   &.#{$cls-prefix}unpadding {

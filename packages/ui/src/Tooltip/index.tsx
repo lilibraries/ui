@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import cn from "classnames";
-import Popup, { PopupProps } from "../Popup";
 import Prefix from "../Prefix";
+import Popup, { PopupProps } from "../Popup";
 
 const Tooltip = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const { className, ...rest } = props;
