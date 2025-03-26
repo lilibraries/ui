@@ -151,7 +151,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   return (
     <Popper
-      offset={arrowed ? 14 : 4}
+      offset={{ main: arrowed ? 14 : 4 }}
       {...rest}
       ref={composedRef}
       arrow={arrow}

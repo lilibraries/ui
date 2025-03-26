@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Flexbox, Switch } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import ArrowedPopper from "./ArrowedPopper";
 
 function Example() {
   const [open, setOpen] = useState(false);
@@ -8,9 +8,9 @@ function Example() {
   return (
     <Flexbox gap="2x" align="center">
       <Switch checked={open} onChange={(event) => setOpen(event.target.checked)} />
-      <ArrowPopper open={open} placement="top-start">
+      <ArrowedPopper open={open} placement="top-start">
         <Button>Trigger</Button>
-      </ArrowPopper>
+      </ArrowedPopper>
     </Flexbox>
   );
 }

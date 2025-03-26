@@ -1,32 +1,20 @@
 import React from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { Button } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import ArrowedPopper from "./ArrowedPopper";
 
 function Example() {
   return (
-    <ArrowPopper
+    <ArrowedPopper
       placement="right"
       content={
-        <ArrowPopper
-          placement="right"
-          offset={[30, 0]}
-          content={
-            <Button variant="hollow" intent="major" borderless>
-              Button
-            </Button>
-          }
-        >
-          <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
-            Dropright
-          </Button>
-        </ArrowPopper>
+        <ArrowedPopper placement="right" offset={{ main: 30 }} content={<Button>Button</Button>}>
+          <Button endIcon={<FiChevronRight />}>Dropright</Button>
+        </ArrowedPopper>
       }
     >
-      <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
-        Dropright
-      </Button>
-    </ArrowPopper>
+      <Button endIcon={<FiChevronRight />}>Dropright</Button>
+    </ArrowedPopper>
   );
 }
 

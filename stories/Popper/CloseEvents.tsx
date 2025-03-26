@@ -1,25 +1,25 @@
 import React from "react";
 import { Button, Flexbox } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import ArrowedPopper from "./ArrowedPopper";
 
 function Example() {
   return (
     <Flexbox gap="2x" wrap>
-      <ArrowPopper off="escape">
+      <ArrowedPopper off="escape" placement="top">
         <Button>escape</Button>
-      </ArrowPopper>
-      <ArrowPopper off="page-hide">
+      </ArrowedPopper>
+      <ArrowedPopper off="page-hide">
         <Button>page-hide</Button>
-      </ArrowPopper>
-      <ArrowPopper off="window-blur">
+      </ArrowedPopper>
+      <ArrowedPopper off="window-blur" placement="top">
         <Button>window-blur</Button>
-      </ArrowPopper>
-      <ArrowPopper off="document-click">
+      </ArrowedPopper>
+      <ArrowedPopper off="document-click">
         <Button>document-click</Button>
-      </ArrowPopper>
-      <ArrowPopper off={["escape", "page-hide", "window-blur", "document-click"]}>
+      </ArrowedPopper>
+      <ArrowedPopper off={["escape", "page-hide", "window-blur", "document-click"]} placement="top">
         <Button>all</Button>
-      </ArrowPopper>
+      </ArrowedPopper>
     </Flexbox>
   );
 }

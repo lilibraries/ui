@@ -4,7 +4,7 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 # Popper
 
-Popper is built on [floating-ui](https://floating-ui.com/), and it's the base component of pop-up components in this library, such as Popup, Tooltip, Confirm, Dropdown. You can build your own pop-up components based on this component.
+Popper is built on [floating-ui](https://floating-ui.com/), and it's the base component of pop-up components in this library, such as Popover, Tooltip, Confirm, Dropdown. You can build your own pop-up components based on this component.
 
 ## Examples
 
@@ -16,14 +16,8 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
 
 ### Show Arrow
 
-<Canvas mdxSource={require("!!raw-loader!./ArrowPopper").default}>
-  <Story id="examples-popper--arrow-popper" />
-</Canvas>
-
-### Text Trigger
-
-<Canvas mdxSource={require("!!raw-loader!./TextTrigger").default}>
-  <Story id="examples-popper--text-trigger" />
+<Canvas mdxSource={require("!!raw-loader!./ArrowedPopper").default}>
+  <Story id="examples-popper--arrowed-popper" />
 </Canvas>
 
 ### Trigger Events
@@ -46,16 +40,10 @@ Popper is built on [floating-ui](https://floating-ui.com/), and it's the base co
 
 ### Trigger Delay
 
+Click to show or hide after 500ms.
+
 <Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
   <Story id="examples-popper--trigger-delay" />
-</Canvas>
-
-### Hover Delay
-
-If you set `openDelay`, `closeDelay`, `hoverEnterDelay` and `hoverLeaveDelay` props to 500ms at the same time, the popup layer will show or hide after 1s.
-
-<Canvas mdxSource={require("!!raw-loader!./HoverDelay").default}>
-  <Story id="examples-popper--hover-delay" />
 </Canvas>
 
 ### Placements
@@ -106,7 +94,7 @@ If you set `openDelay`, `closeDelay`, `hoverEnterDelay` and `hoverLeaveDelay` pr
 | `content`         | `ReactNode`                                                                                                                                                                                | Popup content.                                                                                                                                                                                                                                                                                             |
 | `on`              | `"click"` \| `"hover"` \| `"focus"` \| `"context-menu"` \| `string[]`                                                                                                                      | Trigger event, default is `"click"`.                                                                                                                                                                                                                                                                       |
 | `off`             | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"document-click"` \| `string[]`                                                                                                         | Close event. Default is `"document-click"`.                                                                                                                                                                                                                                                                |
-| `offset`          | `number` \| `[number, number]`                                                                                                                                                             | Offset distance between popup layer and trigger element. If a number is set, it will only effect the main axis. If an array is set, the first one effects main axis, and the second one effects cross axis.                                                                                                |
+| `offset`          | `number` \| `{ main?: number; cross?: number }`                                                                                                                                            | Offset distance between popup layer and trigger element. If this property is specified as a number, it is equivalent to setting both the main and cross axes.                                                                                                                                              |
 | `strategy`        | `"absolute"` \| `"fixed"`                                                                                                                                                                  | Popup strategy, default is `"absolute"`.                                                                                                                                                                                                                                                                   |
 | `placement`       | `"top"` \| `"top-start"` \| `"top-end"` \| `"right"` \| `"right-start"` \| `"right-end"` \| `"bottom"` \| `"bottom-start"` \| `"bottom-end"` \| `"left"` \| `"left-start"` \| `"left-end"` | Popup placement, default is `"bottom"`.                                                                                                                                                                                                                                                                    |
 | `container`       | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react)                                                                                                | The DOM node where the component should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig). |
@@ -120,7 +108,7 @@ If you set `openDelay`, `closeDelay`, `hoverEnterDelay` and `hoverLeaveDelay` pr
 | `keepMounted`     | `boolean`                                                                                                                                                                                  | Keep mounted after the component is closed.                                                                                                                                                                                                                                                                |
 | `updateDeps`      | `any[]`                                                                                                                                                                                    | A dependency array to auto update popup position.                                                                                                                                                                                                                                                          |
 | `followPointer`   | `boolean`                                                                                                                                                                                  | The popup layer will follow the mouse pointer.                                                                                                                                                                                                                                                             |
-| `render`          | `(popper: ReactElement) => ReactElement`                                                                                                                                                   | Custom popper render.                                                                                                                                                                                                                                                                                      |
+| `render`          | `(popper: ReactElement) => ReactElement`                                                                                                                                                   | Custom popper layer render.                                                                                                                                                                                                                                                                                |
 | `onOpen`          | `() => void`                                                                                                                                                                               | Open event handler.                                                                                                                                                                                                                                                                                        |
 | `onClose`         | `() => void`                                                                                                                                                                               | Close event handler.                                                                                                                                                                                                                                                                                       |
 | `onOpened`        | `() => void`                                                                                                                                                                               | Opened event handler.                                                                                                                                                                                                                                                                                      |

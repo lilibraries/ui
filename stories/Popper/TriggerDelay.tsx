@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import ArrowedPopper from "./ArrowedPopper";
 
 function Example() {
   return (
-    <ArrowPopper openDelay={500} closeDelay={500}>
-      <Button>Click to show or hide after 500ms</Button>
-    </ArrowPopper>
+    <ArrowedPopper openDelay={500} closeDelay={500}>
+      <Button>Click</Button>
+    </ArrowedPopper>
   );
 }
 

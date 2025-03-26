@@ -11,14 +11,7 @@ const triggerStyle: CSSProperties = {
 
 function Example() {
   return (
-    <BasicPopper
-      on="hover"
-      offset={[20, 20]}
-      placement="bottom-start"
-      followPointer
-      hoverEnterDelay={0}
-      hoverLeaveDelay={0}
-    >
+    <BasicPopper on="hover" offset={20} placement="bottom-start" followPointer hoverEnterDelay={0} hoverLeaveDelay={0}>
       <div style={triggerStyle}>Hover Move</div>
     </BasicPopper>
   );

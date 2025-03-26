@@ -1,37 +1,38 @@
 import React, {
+  useRef,
+  useEffect,
+  ReactNode,
+  forwardRef,
+  MouseEvent,
+  ReactElement,
+  cloneElement,
+  isValidElement,
   DependencyList,
   HTMLAttributes,
-  MouseEvent,
   MouseEventHandler,
-  ReactElement,
-  ReactNode,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useEffect,
-  useRef,
 } from "react";
-import isFunction from "lodash/isFunction";
 import isNumber from "lodash/isNumber";
 import isString from "lodash/isString";
+import isObject from "lodash/isObject";
+import isFunction from "lodash/isFunction";
 import {
-  Placement,
-  ReferenceElement,
   Strategy,
-  VirtualElement,
-  arrow as arrowMiddleware,
+  Placement,
   autoUpdate,
-  computePosition,
-  flip as flipMiddleware,
-  inline as inlineMiddleware,
   limitShift,
-  offset as offsetMiddleware,
+  VirtualElement,
+  computePosition,
+  ReferenceElement,
+  flip as flipMiddleware,
   shift as shiftMiddleware,
+  arrow as arrowMiddleware,
+  inline as inlineMiddleware,
+  offset as offsetMiddleware,
 } from "@floating-ui/dom";
-import { useMemoizedValue, useMountedRef, usePersist, useSetState, useUnmount, useUpdate } from "@lilib/hooks";
 import { EffectTarget, composeRefs, inBrowser } from "@lilib/utils";
-import Display from "../Display";
+import { useMemoizedValue, useMountedRef, usePersist, useSetState, useUnmount, useUpdate } from "@lilib/hooks";
 import Portal from "../Portal";
+import Display from "../Display";
 import Trigger, { TriggerProps } from "../Trigger";
 
 export type PopperStrategy = Strategy;
@@ -54,7 +55,7 @@ export interface PopperProps
   arrow?: ReactElement;
   arrowPadding?: number;
   content?: ReactNode;
-  offset?: number | [number, number];
+  offset?: number | { main?: number; cross?: number };
   strategy?: PopperStrategy;
   placement?: PopperPlacement;
   container?: EffectTarget<HTMLElement>;
@@ -90,10 +91,10 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
     closeDelay,
     hoverEnterDelay,
     hoverLeaveDelay,
-    updateDeps = [],
-    followPointer,
     firstMount,
     keepMounted,
+    updateDeps = [],
+    followPointer,
     render,
     onOpen,
     onClose,
@@ -104,7 +105,7 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
   } = props;
 
   const controlled = "open" in props;
-  const offsets = useMemoizedValue(Array.isArray(offset) ? offset : [offset]);
+  const offsets = useMemoizedValue(isObject(offset) ? offset : { main: offset, cross: offset });
 
   const triggerEvents = Array.isArray(on) ? on : [on];
   const triggerOnClick = triggerEvents.includes("click");
@@ -167,7 +168,8 @@ const Popper = forwardRef<HTMLDivElement, PopperProps>((props, ref) => {
       let crossAxisOffset: number | undefined;
 
       if (offset != null) {
-        [mainAxisOffset, crossAxisOffset] = offsets;
+        mainAxisOffset = offsets.main;
+        crossAxisOffset = offsets.cross;
       } else if (arrowRef.current) {
         mainAxisOffset = Math.max(arrowRef.current.offsetWidth, arrowRef.current.offsetHeight) * 0.707106781187;
       }

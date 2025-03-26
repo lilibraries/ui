@@ -1,15 +1,15 @@
-import React, { useRef } from "react";
+import React, { CSSProperties, useRef } from "react";
 import { usePersist } from "@lilib/hooks";
 import { Button, Popper, PopperProps, PopperUpdateData } from "@lilib/ui";
 
-const popperStyle = {
+const popperStyle: CSSProperties = {
   zIndex: 1000,
   width: "max-content",
   padding: 16,
   borderRadius: 8,
   color: "#fff",
-  backgroundColor: "#000",
-  boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
+  backgroundColor: "#797E86",
+  boxShadow: "0 0 8px rgba(0, 0, 0, 0.6)",
 };
 
 function BasicPopper(props: PopperProps) {
@@ -26,7 +26,7 @@ function BasicPopper(props: PopperProps) {
   return (
     <Popper
       ref={popperRef}
-      content="This is a popup"
+      content="This is a popper"
       onUpdate={handleUpdate}
       {...props}
       style={{ ...popperStyle, ...props.style }}

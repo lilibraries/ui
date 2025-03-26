@@ -1,33 +1,33 @@
 import React from "react";
 import { Button, Flexbox } from "@lilib/ui";
-import ArrowPopper from "./ArrowPopper";
+import ArrowedPopper from "./ArrowedPopper";
 
 function Example() {
   return (
     <Flexbox fluid align="center" justify="center">
       <Button.Group vertical>
-        <ArrowPopper placement="left-start">
+        <ArrowedPopper placement="left-start">
           <Button>left-start</Button>
-        </ArrowPopper>
-        <ArrowPopper placement="left">
+        </ArrowedPopper>
+        <ArrowedPopper placement="left">
           <Button>left</Button>
-        </ArrowPopper>
-        <ArrowPopper placement="left-end">
+        </ArrowedPopper>
+        <ArrowedPopper placement="left-end">
           <Button>left-end</Button>
-        </ArrowPopper>
+        </ArrowedPopper>
       </Button.Group>
 
       <Flexbox direction="column">
         <Button.Group fluid>
-          <ArrowPopper placement="top-start">
+          <ArrowedPopper placement="top-start">
             <Button>top-start</Button>
-          </ArrowPopper>
-          <ArrowPopper placement="top">
+          </ArrowedPopper>
+          <ArrowedPopper placement="top">
             <Button>top</Button>
-          </ArrowPopper>
-          <ArrowPopper placement="top-end">
+          </ArrowedPopper>
+          <ArrowedPopper placement="top-end">
             <Button>top-end</Button>
-          </ArrowPopper>
+          </ArrowedPopper>
         </Button.Group>
 
         <Button.Group vertical style={{ visibility: "hidden" }}>
@@ -37,28 +37,28 @@ function Example() {
         </Button.Group>
 
         <Button.Group fluid>
-          <ArrowPopper placement="bottom-start">
+          <ArrowedPopper placement="bottom-start">
             <Button>bottom-start</Button>
-          </ArrowPopper>
-          <ArrowPopper placement="bottom">
+          </ArrowedPopper>
+          <ArrowedPopper placement="bottom">
             <Button>bottom</Button>
-          </ArrowPopper>
-          <ArrowPopper placement="bottom-end">
+          </ArrowedPopper>
+          <ArrowedPopper placement="bottom-end">
             <Button>bottom-end</Button>
-          </ArrowPopper>
+          </ArrowedPopper>
         </Button.Group>
       </Flexbox>
 
       <Button.Group vertical>
-        <ArrowPopper placement="right-start">
+        <ArrowedPopper placement="right-start">
           <Button>right-start</Button>
-        </ArrowPopper>
-        <ArrowPopper placement="right">
+        </ArrowedPopper>
+        <ArrowedPopper placement="right">
           <Button>right</Button>
-        </ArrowPopper>
-        <ArrowPopper placement="right-end">
+        </ArrowedPopper>
+        <ArrowedPopper placement="right-end">
           <Button>right-end</Button>
-        </ArrowPopper>
+        </ArrowedPopper>
       </Button.Group>
     </Flexbox>
   );
