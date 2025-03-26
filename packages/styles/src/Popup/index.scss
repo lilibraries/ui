@@ -4,10 +4,10 @@
   z-index: var(--z-index-popup);
   box-sizing: border-box;
   max-width: 600px;
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-6);
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-fixed-large);
   box-shadow: var(--shadow-3);
   @include transition(base, ease-in-out, transform, opacity);
 
@@ -15,41 +15,41 @@
     position: absolute;
     display: inline-block;
     box-sizing: border-box;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     background-color: var(--background-color-overlay);
     border: 1px solid var(--border-color-base);
     transform: rotate(45deg);
 
     &[data-placement^="top"] {
-      bottom: -8px;
+      bottom: -6px;
       border-top-color: transparent;
       border-left-color: transparent;
-      border-radius: 0 0 2px;
+      border-radius: 0 0 3px;
       clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
     }
 
     &[data-placement^="bottom"] {
-      top: -8px;
+      top: -6px;
       border-right-color: transparent;
       border-bottom-color: transparent;
-      border-radius: 2px 0 0;
+      border-radius: 3px 0 0;
       clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
     }
 
     &[data-placement^="left"] {
-      right: -8px;
+      right: -6px;
       border-bottom-color: transparent;
       border-left-color: transparent;
-      border-radius: 0 2px 0 0;
+      border-radius: 0 3px 0 0;
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
     }
 
     &[data-placement^="right"] {
-      left: -8px;
+      left: -6px;
       border-top-color: transparent;
       border-right-color: transparent;
-      border-radius: 0 0 0 2px;
+      border-radius: 0 0 0 3px;
       clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
     }
   }

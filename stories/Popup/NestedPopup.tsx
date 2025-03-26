@@ -8,25 +8,12 @@ function Example() {
       arrowed
       placement="right"
       content={
-        <Popup
-          arrowed
-          placement="right"
-          offset={[30, 0]}
-          content={
-            <Button variant="hollow" intent="major" borderless>
-              Button
-            </Button>
-          }
-        >
-          <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
-            Dropright
-          </Button>
+        <Popup arrowed placement="right" offset={{ main: 34 }} content={<Button>Button</Button>}>
+          <Button endIcon={<FiChevronRight />}>Dropright</Button>
         </Popup>
       }
     >
-      <Button variant="hollow" intent="major" borderless endIcon={<FiChevronRight />}>
-        Dropright
-      </Button>
+      <Button endIcon={<FiChevronRight />}>Dropright</Button>
     </Popup>
   );
 }

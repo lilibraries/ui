@@ -20,22 +20,10 @@ Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It
   <Story id="examples-popup--show-arrow" />
 </Canvas>
 
-### Text Trigger
-
-<Canvas mdxSource={require("!!raw-loader!./TextTrigger").default}>
-  <Story id="examples-popup--text-trigger" />
-</Canvas>
-
 ### Description Content
 
 <Canvas mdxSource={require("!!raw-loader!./DescriptionContent").default}>
   <Story id="examples-popup--description-content" />
-</Canvas>
-
-### Disable Animation
-
-<Canvas mdxSource={require("!!raw-loader!./DisableAnimation").default}>
-  <Story id="examples-popup--disable-animation" />
 </Canvas>
 
 ### Trigger Events
@@ -58,16 +46,10 @@ Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It
 
 ### Trigger Delay
 
+Click to show or hide after 500ms.
+
 <Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
   <Story id="examples-popup--trigger-delay" />
-</Canvas>
-
-### Hover Delay
-
-If you set `openDelay`, `closeDelay`, `hoverEnterDelay` and `hoverLeaveDelay` props to 500ms at the same time, the popup layer will show or hide after 1s.
-
-<Canvas mdxSource={require("!!raw-loader!./HoverDelay").default}>
-  <Story id="examples-popup--hover-delay" />
 </Canvas>
 
 ### Placements
@@ -113,11 +95,10 @@ If you set `openDelay`, `closeDelay`, `hoverEnterDelay` and `hoverLeaveDelay` pr
 | `children`        | `string` \| `number` \| `ReactElement` \| [`() => PopperVirtualElement`](?path=/story/overlays-popper--page#poppervirtualelement)                                                          | Trigger element, it should be string, number, a react element (must reference to a DOM element) or a function returns a virtual element.                                                                                                                                                                   |
 | `content`         | `ReactNode`                                                                                                                                                                                | Popup content.                                                                                                                                                                                                                                                                                             |
 | `arrowed`         | `boolean`                                                                                                                                                                                  | Show arrow.                                                                                                                                                                                                                                                                                                |
-| `animeless`       | `boolean`                                                                                                                                                                                  | Disable animation.                                                                                                                                                                                                                                                                                         |
 | `unpadding`       | `boolean`                                                                                                                                                                                  | Remove content padding style.                                                                                                                                                                                                                                                                              |
 | `on`              | `"click"` \| `"hover"` \| `"focus"` \| `"context-menu"` \| `string[]`                                                                                                                      | Trigger event, default is `"click"`.                                                                                                                                                                                                                                                                       |
 | `off`             | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"document-click"` \| `string[]`                                                                                                         | Close event. Default is `"document-click"`.                                                                                                                                                                                                                                                                |
-| `offset`          | `number` \| `[number, number]`                                                                                                                                                             | Offset distance between popup layer and trigger element. If a number is set, it will only effect the main axis. If an array is set, the first one effects main axis, and the second one effects cross axis.                                                                                                |
+| `offset`          | `number` \| `{ main?: number; cross?: number }`                                                                                                                                            | Offset distance between popup layer and trigger element. If this property is specified as a number, it is equivalent to setting both the main and cross axes.                                                                                                                                              |
 | `strategy`        | `"absolute"` \| `"fixed"`                                                                                                                                                                  | Popup strategy, default is `"absolute"`.                                                                                                                                                                                                                                                                   |
 | `placement`       | `"top"` \| `"top-start"` \| `"top-end"` \| `"right"` \| `"right-start"` \| `"right-end"` \| `"bottom"` \| `"bottom-start"` \| `"bottom-end"` \| `"left"` \| `"left-start"` \| `"left-end"` | Popup placement, default is `"bottom"`.                                                                                                                                                                                                                                                                    |
 | `container`       | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react)                                                                                                | The DOM node where the component should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig). |

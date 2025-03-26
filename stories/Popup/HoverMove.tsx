@@ -12,11 +12,10 @@ const triggerStyle: CSSProperties = {
 function Example() {
   return (
     <Popup
-      content="This is a popup content."
+      content="This is a popup message"
       on="hover"
       placement="bottom-start"
-      offset={[20, 20]}
-      animeless
+      offset={20}
       followPointer
       hoverEnterDelay={0}
       hoverLeaveDelay={0}

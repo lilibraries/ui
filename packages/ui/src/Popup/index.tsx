@@ -1,17 +1,16 @@
 import React, { ReactElement, forwardRef, useRef } from "react";
 import cn from "classnames";
 import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
-import Direction from "../Direction";
-import Duration from "../Duration";
-import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import Prefix from "../Prefix";
+import Duration from "../Duration";
+import Direction from "../Direction";
 import Transition from "../Transition";
+import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
 export interface PopupProps extends Omit<PopperProps, "arrow" | "arrowPadding"> {
   arrowed?: boolean;
   unpadding?: boolean;
-  animeless?: boolean;
 }
 
 const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
@@ -19,7 +18,6 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     className,
     arrowed,
     unpadding,
-    animeless,
     open: openProp,
     defaultOpen,
     closeDelay: exitDelay,
@@ -69,14 +67,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   }, [openProp]);
 
   useUpdate(() => {
-    if (!animeless) {
-      if (open) {
-        if (opened) {
-          setState({ enter: true });
-        }
-      } else {
-        setState({ enter: false });
+    if (open) {
+      if (opened) {
+        setState({ enter: true });
       }
+    } else {
+      setState({ enter: false });
     }
   }, [open, opened]);
 
@@ -130,32 +126,29 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     }
   });
 
-  let popperRender = render;
-  let closeDelay = exitDelay;
+  const popperRender = (popper: ReactElement) => {
+    const node = (
+      <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
+        {popper}
+      </Transition>
+    );
+    return render ? render(node) : node;
+  };
 
-  if (!animeless) {
-    popperRender = (popper) => {
-      const node = (
-        <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
-          {popper}
-        </Transition>
-      );
-      return render ? render(node) : node;
-    };
-    if (isPositiveNumber(exitDelay)) {
-      closeDelay = exitDelay + base;
-    } else {
-      closeDelay = base;
-    }
+  let closeDelay = exitDelay;
+  if (isPositiveNumber(exitDelay)) {
+    closeDelay = exitDelay + base;
+  } else {
+    closeDelay = base;
   }
 
   return (
     <Popper
-      offset={{ main: arrowed ? 14 : 4 }}
+      offset={{ main: arrowed ? 10 : 4 }}
       {...rest}
       ref={composedRef}
       arrow={arrow}
-      arrowPadding={8}
+      arrowPadding={10}
       open={open}
       className={classes}
       closeDelay={closeDelay}
