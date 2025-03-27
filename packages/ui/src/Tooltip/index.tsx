@@ -4,12 +4,23 @@ import Prefix from "../Prefix";
 import Popup, { PopupProps } from "../Popup";
 
 const Tooltip = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
-  const { className, ...rest } = props;
+  const { className, arrowed = true, ...rest } = props;
 
   const { cls } = Prefix.useConfig();
   const classes = cn(`${cls}tooltip`, className);
 
-  return <Popup arrowed on="hover" placement="top" {...rest} ref={ref} className={classes} />;
+  return (
+    <Popup
+      on="hover"
+      placement="top"
+      arrowed={arrowed}
+      offset={{ main: arrowed ? 10 : 4 }}
+      arrowPadding={8}
+      {...rest}
+      ref={ref}
+      className={classes}
+    />
+  );
 });
 
 export default Tooltip;

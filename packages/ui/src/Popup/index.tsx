@@ -8,7 +8,7 @@ import Transition from "../Transition";
 import Popper, { PopperProps, PopperUpdateData } from "../Popper";
 import isPositiveNumber from "../utils/isPositiveNumber";
 
-export interface PopupProps extends Omit<PopperProps, "arrow" | "arrowPadding"> {
+export interface PopupProps extends Omit<PopperProps, "arrow"> {
   arrowed?: boolean;
   unpadding?: boolean;
 }
@@ -144,11 +144,11 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   return (
     <Popper
-      offset={{ main: arrowed ? 10 : 4 }}
+      offset={{ main: arrowed ? 14 : 4 }}
+      arrowPadding={12}
       {...rest}
       ref={composedRef}
       arrow={arrow}
-      arrowPadding={10}
       open={open}
       className={classes}
       closeDelay={closeDelay}

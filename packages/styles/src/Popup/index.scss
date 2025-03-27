@@ -15,14 +15,14 @@
     position: absolute;
     display: inline-block;
     box-sizing: border-box;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     background-color: var(--background-color-overlay);
     border: 1px solid var(--border-color-base);
     transform: rotate(45deg);
 
     &[data-placement^="top"] {
-      bottom: -6px;
+      bottom: -8px;
       border-top-color: transparent;
       border-left-color: transparent;
       border-radius: 0 0 3px;
@@ -30,7 +30,7 @@
     }
 
     &[data-placement^="bottom"] {
-      top: -6px;
+      top: -8px;
       border-right-color: transparent;
       border-bottom-color: transparent;
       border-radius: 3px 0 0;
@@ -38,7 +38,7 @@
     }
 
     &[data-placement^="left"] {
-      right: -6px;
+      right: -8px;
       border-bottom-color: transparent;
       border-left-color: transparent;
       border-radius: 0 3px 0 0;
@@ -46,7 +46,7 @@
     }
 
     &[data-placement^="right"] {
-      left: -6px;
+      left: -8px;
       border-top-color: transparent;
       border-right-color: transparent;
       border-radius: 0 0 0 3px;

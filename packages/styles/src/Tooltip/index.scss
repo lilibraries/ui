@@ -1,12 +1,33 @@
 @import "@lilib/themes";
 
-.#{$cls-prefix}popup.#{$cls-prefix}tooltip {
+.#{$cls-prefix}tooltip.#{$cls-prefix}popup {
   z-index: var(--z-index-tooltip);
   padding: var(--space-block-base) var(--space-inline-base);
   font-size: var(--font-size-smaller);
   line-height: var(--line-height-small);
   border-radius: var(--border-radius-base);
   box-shadow: var(--shadow-1);
+
+  & > .#{$cls-prefix}popup-arrow {
+    width: 12px;
+    height: 12px;
+
+    &[data-placement^="top"] {
+      bottom: -6px;
+    }
+
+    &[data-placement^="bottom"] {
+      top: -6px;
+    }
+
+    &[data-placement^="left"] {
+      right: -6px;
+    }
+
+    &[data-placement^="right"] {
+      left: -6px;
+    }
+  }
 
   &.#{$cls-prefix}unpadding {
     padding: 0;
