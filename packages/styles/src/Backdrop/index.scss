@@ -16,7 +16,7 @@
   }
 
   &.#{$cls-prefix}blurred {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--blur-3));
   }
 
   &.#{$cls-prefix}transition {

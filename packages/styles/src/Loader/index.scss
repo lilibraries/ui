@@ -40,7 +40,7 @@
         &-entering,
         &-entered {
           opacity: 0.2;
-          filter: blur(4px);
+          filter: blur(var(--blur-1));
         }
       }
     }

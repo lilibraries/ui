@@ -15,7 +15,7 @@
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-small);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--blur-2));
   @include feedback(color, border-color, background-color);
 
   &-avatar {
