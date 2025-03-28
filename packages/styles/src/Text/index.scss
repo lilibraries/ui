@@ -37,12 +37,10 @@
 
     &:hover {
       color: var(--text-color-major-hover);
-      text-decoration: underline;
     }
 
     &:active {
       color: var(--text-color-major-active);
-      text-decoration: underline;
     }
   }
 
@@ -98,5 +96,12 @@
         }
       }
     }
+  }
+}
+
+a.#{$cls-prefix}text.#{$cls-prefix}hoverable {
+  &:hover,
+  &:active {
+    text-decoration: underline;
   }
 }
