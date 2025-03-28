@@ -1,27 +1,27 @@
 import React, { MouseEvent, ReactNode, forwardRef } from "react";
 import cn from "classnames";
 import { usePersist, useSetState, useUpdate } from "@lilib/hooks";
-import Button, { ButtonProps } from "../Button";
-import Description from "../Description";
-import Flexbox from "../Flexbox";
 import Icon from "../Icon";
-import Popup, { PopupProps } from "../Popup";
-import Prefix from "../Prefix";
 import Text from "../Text";
-import InfoIcon from "../icons/InfoIcon";
+import Prefix from "../Prefix";
+import Flexbox from "../Flexbox";
+import Description from "../Description";
+import Popup, { PopupProps } from "../Popup";
+import Button, { ButtonProps } from "../Button";
 import isPromise from "../utils/isPromise";
 import isRenderable from "../utils/isRenderable";
+import InfoFilledIcon from "../icons/InfoFilledIcon";
 
 export interface ConfirmProps extends Omit<PopupProps, "title"> {
   icon?: ReactNode;
   title?: ReactNode;
   detail?: ReactNode;
-  confirmLabel?: ReactNode;
   cancelLabel?: ReactNode;
-  confirmProps?: ButtonProps;
+  confirmLabel?: ReactNode;
   cancelProps?: ButtonProps;
-  onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
+  confirmProps?: ButtonProps;
   onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
 }
 
 const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
@@ -29,18 +29,19 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     icon,
     title,
     detail,
-    confirmLabel = "Confirm",
     cancelLabel = "Cancel",
-    confirmProps,
+    confirmLabel = "Confirm",
     cancelProps,
-    onConfirm,
+    confirmProps,
     onCancel,
+    onConfirm,
     className,
     open: openProp,
     defaultOpen,
     content: contentProp,
     onOpen,
     onClose,
+    onClosed,
     ...rest
   } = props;
 
@@ -59,19 +60,19 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     }
   }, [openProp]);
 
+  const close = usePersist(() => {
+    if (!controlled) {
+      setState({ open: false });
+    }
+    onClose?.();
+  });
+
   const handleOpen = usePersist(() => {
     if (!controlled) {
       setState({ open: true });
     }
     onOpen?.();
   });
-
-  const close = () => {
-    if (!controlled) {
-      setState({ open: false });
-    }
-    onClose?.();
-  };
 
   const handleClose = usePersist(() => {
     if (confirming) {
@@ -80,14 +81,29 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     close();
   });
 
+  const handleClosed = usePersist(() => {
+    if (confirming) {
+      setState({ confirming: false });
+    }
+    onClosed?.();
+  });
+
+  const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    cancelProps?.onClick?.(event);
+    if (confirming) {
+      return;
+    }
+    onCancel?.(event);
+    close();
+  });
+
   const handleConfirm = usePersist((event: MouseEvent<HTMLButtonElement>) => {
     confirmProps?.onClick?.(event);
-    let result = onConfirm?.(event);
-    if (isPromise(result)) {
+    let promise = onConfirm?.(event);
+    if (isPromise(promise)) {
       setState({ confirming: true });
-      result.then(
+      promise.then(
         (value) => {
-          setState({ confirming: false });
           close();
           return value;
         },
@@ -101,15 +117,6 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     }
   });
 
-  const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    cancelProps?.onClick?.(event);
-    if (confirming) {
-      return;
-    }
-    onCancel?.(event);
-    close();
-  });
-
   const content = (
     <>
       {isRenderable(contentProp) ? (
@@ -121,7 +128,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
               icon
             ) : (
               <Text<typeof Icon> as={Icon} intent="alertive">
-                <InfoIcon />
+                <InfoFilledIcon />
               </Text>
             )
           }
@@ -154,6 +161,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
   return (
     <Popup
       arrowed
+      placement="top"
       {...rest}
       ref={ref}
       open={open}
@@ -161,6 +169,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       className={classes}
       onOpen={handleOpen}
       onClose={handleClose}
+      onClosed={handleClosed}
     />
   );
 });
