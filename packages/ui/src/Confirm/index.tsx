@@ -124,7 +124,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       ) : (
         <Description
           icon={
-            isRenderable(icon) ? (
+            icon !== undefined ? (
               icon
             ) : (
               <Text<typeof Icon> as={Icon} intent="alertive">
