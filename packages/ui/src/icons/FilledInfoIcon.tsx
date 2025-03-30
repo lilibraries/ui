@@ -3,7 +3,7 @@ import React, { forwardRef, SVGAttributes } from "react";
 // The following icon path is copied from ant-design-icons.
 // @ant-design/icons-svg v4.4.2 | MIT License | https://github.com/ant-design/ant-design-icons
 
-const InfoFilledIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>((props, ref) => {
+const FilledInfoIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>((props, ref) => {
   return (
     <svg
       ref={ref}
@@ -19,4 +19,4 @@ const InfoFilledIcon = forwardRef<SVGSVGElement, SVGAttributes<SVGSVGElement>>((
   );
 });
 
-export default InfoFilledIcon;
+export default FilledInfoIcon;

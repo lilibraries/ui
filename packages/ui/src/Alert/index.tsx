@@ -1,26 +1,24 @@
-import React, { HTMLAttributes, MouseEvent, ReactNode, forwardRef } from "react";
+import React, { HTMLAttributes, MouseEvent, ReactNode, forwardRef, useState } from "react";
 import cn from "classnames";
-import {
-  AiFillCheckCircle,
-  AiFillCloseCircle,
-  AiFillExclamationCircle,
-  AiFillInfoCircle,
-  AiOutlineClose,
-} from "react-icons/ai";
-import { usePersist, useSafeState, useUpdate } from "@lilib/hooks";
-import Button, { ButtonProps } from "../Button";
+import { usePersist, useUpdate } from "@lilib/hooks";
+import Icon from "../Icon";
+import Text from "../Text";
+import Prefix from "../Prefix";
 import Collapse from "../Collapse";
 import Description from "../Description";
-import Icon from "../Icon";
-import Prefix from "../Prefix";
-import Text from "../Text";
+import Button, { ButtonProps } from "../Button";
+import CloseIcon from "../icons/CloseIcon";
+import FilledInfoIcon from "../icons/FilledInfoIcon";
+import FilledCheckIcon from "../icons/FilledCheckIcon";
+import FilledCloseIcon from "../icons/FilledCloseIcon";
+import FilledExclamationIcon from "../icons/FilledExclamationIcon";
 import isRenderable from "../utils/isRenderable";
 import { IntentValue } from "../utils/types";
 
 export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   open?: boolean;
   intent?: IntentValue;
-  icon?: boolean | ReactNode;
+  icon?: ReactNode;
   title?: ReactNode;
   closable?: boolean;
   closeProps?: ButtonProps;
@@ -43,7 +41,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const controlled = "open" in props;
 
   const { cls } = Prefix.useConfig();
-  const [open, setOpen] = useSafeState(controlled ? !!openProp : true);
+  const [open, setOpen] = useState(controlled ? !!openProp : true);
 
   useUpdate(() => {
     if (controlled) {
@@ -61,25 +59,25 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
 
   const handleClose = usePersist((event: MouseEvent<HTMLButtonElement>) => {
     closeProps?.onClick?.(event);
-    onClose?.(event);
     if (!controlled) {
       setOpen(false);
     }
+    onClose?.(event);
   });
 
   let icon: ReactNode = null;
-  if (iconProp === true) {
-    if (intent === "positive") {
-      icon = <AiFillCheckCircle />;
-    } else if (intent === "alertive") {
-      icon = <AiFillExclamationCircle />;
-    } else if (intent === "negative") {
-      icon = <AiFillCloseCircle />;
-    } else {
-      icon = <AiFillInfoCircle />;
-    }
-  } else {
+  if ("icon" in props) {
     icon = iconProp;
+  } else {
+    if (intent === "positive") {
+      icon = <FilledCheckIcon />;
+    } else if (intent === "alertive") {
+      icon = <FilledExclamationIcon />;
+    } else if (intent === "negative") {
+      icon = <FilledCloseIcon />;
+    } else {
+      icon = <FilledInfoIcon />;
+    }
   }
 
   let closer: ReactNode = null;
@@ -89,9 +87,9 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         rounded
         iconOnly
         borderless
-        intent={intent}
+        intent="minor"
         variant="hollow"
-        children={<AiOutlineClose />}
+        children={<CloseIcon />}
         {...closeProps}
         onClick={handleClose}
       />

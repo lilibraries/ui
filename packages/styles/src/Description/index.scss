@@ -31,7 +31,7 @@
   }
 
   &-end-icon {
-    min-width: calc(var(--line-height-base) * 1em);
+    width: calc(var(--line-height-base) * 1em);
     height: calc(var(--line-height-base) * 1em);
     color: var(--text-color-muted);
     margin-inline-start: var(--space-2);

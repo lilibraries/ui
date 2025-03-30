@@ -46,15 +46,15 @@ Alert feedback.
 
 ## API
 
-| Property     | Type                                                                             | Description                       |
-| ------------ | -------------------------------------------------------------------------------- | --------------------------------- |
-| `open`       | `boolean`                                                                        | Controlled open.                  |
-| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent value.                     |
-| `icon`       | `boolean` \| `ReactNode`                                                         | Show default icon or custom icon. |
-| `title`      | `ReactNode`                                                                      | Alert title.                      |
-| `children`   | `ReactNode`                                                                      | Alert detail.                     |
-| `closable`   | `boolean`                                                                        | Whether it can be closed.         |
-| `closeProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                          | Close button props.               |
-| `onClose`    | `MouseEventHandler`                                                              | Close event.                      |
+| Property     | Type                                                                             | Description                                                                      |
+| ------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `open`       | `boolean`                                                                        | Controlled open.                                                                 |
+| `intent`     | `null` \| `"major"` \| `"minor"` \| `"positive"` \| `"alertive"` \| `"negative"` | Intent value.                                                                    |
+| `icon`       | `ReactNode`                                                                      | Custom icon. It will be hidden when it's not renderable (ie. `null` or `false`). |
+| `title`      | `ReactNode`                                                                      | Alert title.                                                                     |
+| `children`   | `ReactNode`                                                                      | Alert detail.                                                                    |
+| `closable`   | `boolean`                                                                        | Whether it can be closed.                                                        |
+| `closeProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                          | Close button props.                                                              |
+| `onClose`    | `MouseEventHandler`                                                              | Close event.                                                                     |
 
 It accepts all props which the native `<div>` element supports.

@@ -10,7 +10,7 @@ import Popup, { PopupProps } from "../Popup";
 import Button, { ButtonProps } from "../Button";
 import isPromise from "../utils/isPromise";
 import isRenderable from "../utils/isRenderable";
-import InfoFilledIcon from "../icons/InfoFilledIcon";
+import FilledInfoIcon from "../icons/FilledInfoIcon";
 
 export interface ConfirmProps extends Omit<PopupProps, "title"> {
   icon?: ReactNode;
@@ -124,11 +124,11 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       ) : (
         <Description
           icon={
-            icon !== undefined ? (
+            "icon" in props ? (
               icon
             ) : (
               <Text<typeof Icon> as={Icon} intent="alertive">
-                <InfoFilledIcon />
+                <FilledInfoIcon />
               </Text>
             )
           }

@@ -6,7 +6,8 @@
   font-size: var(--font-size-base);
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-fixed-large);
+  backdrop-filter: blur(--blur-4);
 
   @each $intent in $intents {
     &.#{$cls-prefix}#{$intent} {
