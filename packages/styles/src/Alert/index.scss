@@ -3,7 +3,6 @@
 .#{$cls-prefix}alert {
   box-sizing: border-box;
   padding: var(--space-4);
-  font-size: var(--font-size-base);
   background-color: rgba(var(--basis-rgb) / var(--alpha-base));
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-large);

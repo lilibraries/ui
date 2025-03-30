@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMoreVertical } from "react-icons/fi";
-import { Avatar, Button, Card, Checkbox, Flexbox, Text } from "@lilib/ui";
+import { Avatar, Button, Card, CardImagePlacement, Checkbox, Flexbox, Radio, Text } from "@lilib/ui";
 
 function Example() {
   const [splited, setSplited] = useState(false);
@@ -8,10 +8,12 @@ function Example() {
   const [hoverable, setHoverable] = useState(false);
   const [unpadding, setUnpadding] = useState(false);
   const [borderless, setBorderless] = useState(false);
+  const [imagePlacement, setImagePlacement] = useState<CardImagePlacement>("start");
 
   return (
     <>
       <Flexbox gap="4x" style={{ marginBottom: 16 }}>
+        <span>Card styles:</span>
         <Checkbox checked={splited} onChange={(event) => setSplited(event.target.checked)}>
           Splited
         </Checkbox>
@@ -29,6 +31,16 @@ function Example() {
         </Checkbox>
       </Flexbox>
 
+      <Flexbox gap="4x" style={{ marginBottom: 16 }}>
+        <span>Image placement:</span>
+        <Radio.Group value={imagePlacement} onChange={(event) => setImagePlacement(event.target.value)}>
+          <Radio value="top">top</Radio>
+          <Radio value="bottom">bottom</Radio>
+          <Radio value="start">start</Radio>
+          <Radio value="end">end</Radio>
+        </Radio.Group>
+      </Flexbox>
+
       <Card
         style={{ maxWidth: 600 }}
         splited={splited}
@@ -38,15 +50,23 @@ function Example() {
         borderless={borderless}
         image="https://images.unsplash.com/photo-1688168293343-e1c824a4ace5"
         imageSize="200px"
-        imagePlacement="start"
-        icon={<Avatar rounded size="small" image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
+        imagePlacement={imagePlacement}
+        icon={<Avatar rounded image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
         title={
           <a rel="noreferrer" href="https://github.com/LeeWeisheng" target="_blank">
             LeeWeisheng
           </a>
         }
         headnote={
-          <Text size="small" muted hoverable>
+          <Text<"a">
+            as="a"
+            rel="noreferrer"
+            href="https://github.com/LeeWeisheng?tab=followers"
+            target="_blank"
+            size="small"
+            muted
+            hoverable
+          >
             10 Followers
           </Text>
         }

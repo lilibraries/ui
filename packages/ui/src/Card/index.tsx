@@ -1,17 +1,17 @@
 import React, {
+  ReactNode,
+  forwardRef,
+  ElementType,
+  ReactElement,
+  createElement,
   CSSProperties,
   ComponentProps,
-  ElementType,
   ForwardRefExoticComponent,
-  ReactElement,
-  ReactNode,
-  createElement,
-  forwardRef,
 } from "react";
 import cn from "classnames";
 import isString from "lodash/isString";
-import Direction from "../Direction";
 import Prefix from "../Prefix";
+import Direction from "../Direction";
 import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 
@@ -37,14 +37,8 @@ export interface CardCommonProps {
 }
 
 export type CardProps<C extends ElementType = "div"> = C extends "div"
-  ? {
-      as?: C;
-    } & Omit<ComponentProps<C>, "title"> &
-      CardCommonProps
-  : {
-      as: C;
-    } & Omit<ComponentProps<C>, "title"> &
-      CardCommonProps;
+  ? Omit<ComponentProps<C>, "title"> & CardCommonProps & { as?: C }
+  : Omit<ComponentProps<C>, "title"> & CardCommonProps & { as: C };
 
 export interface CardComponent extends ForwardRefExoticComponent<CardCommonProps> {
   <C extends ElementType = "div">(props: CardProps<C>): ReactElement;
@@ -62,7 +56,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     footnote,
     footmark,
     image: imageProp,
-    imageSize,
+    imageSize = "100px",
     imagePlacement = "top",
     splited,
     shadowed,

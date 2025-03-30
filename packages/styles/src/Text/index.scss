@@ -32,6 +32,7 @@
     }
   }
 
+  &[href],
   &.#{$cls-prefix}hoverable {
     cursor: pointer;
 
@@ -41,6 +42,13 @@
 
     &:active {
       color: var(--text-color-major-active);
+    }
+  }
+
+  &[href] {
+    &:hover,
+    &:active {
+      text-decoration: underline;
     }
   }
 
@@ -96,12 +104,5 @@
         }
       }
     }
-  }
-}
-
-a.#{$cls-prefix}text.#{$cls-prefix}hoverable {
-  &:hover,
-  &:active {
-    text-decoration: underline;
   }
 }

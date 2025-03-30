@@ -7,12 +7,10 @@
   box-sizing: border-box;
   background-color: var(--background-color-card);
   border: 1px solid var(--border-color-base);
-  border-radius: var(--border-radius-fixed-base);
+  border-radius: var(--border-radius-fixed-large);
 
-  &[disabled] {
-    &[href] {
-      pointer-events: none;
-    }
+  &[href][disabled] {
+    pointer-events: none;
   }
 
   &-image {
@@ -23,7 +21,7 @@
     overflow: hidden;
     background-color: var(--background-color-deep-base);
 
-    & img {
+    & > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -43,7 +41,7 @@
     flex: none;
     align-items: center;
     box-sizing: border-box;
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-6);
   }
 
   &-icon {
@@ -69,7 +67,6 @@
     flex: 1 1 0;
     font-weight: var(--font-weight-title);
     font-size: var(--font-size-larger);
-    @include text-overflow;
   }
 
   &-headnote,
@@ -86,7 +83,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-6);
   }
 
   &-footnote {
@@ -108,13 +105,11 @@
   &-content {
     flex: 1 1 0;
     box-sizing: border-box;
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-6);
     overflow: auto;
 
-    & p {
-      &:last-child {
-        margin-bottom: 0;
-      }
+    & p:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -140,8 +135,8 @@
     flex-direction: column;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-fixed-base);
-      border-top-right-radius: var(--border-radius-fixed-base);
+      border-top-left-radius: var(--border-radius-fixed-large);
+      border-top-right-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-inline-start: -1px;
       margin-inline-end: -1px;
@@ -152,8 +147,8 @@
     flex-direction: column-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-bottom-right-radius: var(--border-radius-fixed-base);
-      border-bottom-left-radius: var(--border-radius-fixed-base);
+      border-bottom-right-radius: var(--border-radius-fixed-large);
+      border-bottom-left-radius: var(--border-radius-fixed-large);
       margin-inline-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
@@ -164,8 +159,8 @@
     flex-direction: row;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-fixed-base);
-      border-bottom-left-radius: var(--border-radius-fixed-base);
+      border-top-left-radius: var(--border-radius-fixed-large);
+      border-bottom-left-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-block-end: -1px;
       margin-inline-start: -1px;
@@ -176,8 +171,8 @@
     flex-direction: row-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-top-right-radius: var(--border-radius-fixed-base);
-      border-bottom-right-radius: var(--border-radius-fixed-base);
+      border-top-right-radius: var(--border-radius-fixed-large);
+      border-bottom-right-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
@@ -186,19 +181,19 @@
 
   &.#{$cls-prefix}splited {
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      padding: var(--space-2) var(--space-4);
+      padding: var(--space-2) var(--space-6);
       background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-bottom: 1px solid var(--border-color-inactive);
-      border-top-left-radius: var(--border-radius-fixed-base);
-      border-top-right-radius: var(--border-radius-fixed-base);
+      border-top-left-radius: var(--border-radius-fixed-large);
+      border-top-right-radius: var(--border-radius-fixed-large);
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      padding: var(--space-2) var(--space-4);
+      padding: var(--space-2) var(--space-6);
       background-color: rgba(var(--basis-rgb) / var(--alpha-base));
       border-top: 1px solid var(--border-color-inactive);
-      border-bottom-right-radius: var(--border-radius-fixed-base);
-      border-bottom-left-radius: var(--border-radius-fixed-base);
+      border-bottom-right-radius: var(--border-radius-fixed-large);
+      border-bottom-left-radius: var(--border-radius-fixed-large);
     }
 
     &.#{$cls-prefix}image-placement-top {
@@ -269,37 +264,37 @@
 .#{$cls-prefix}card.#{$cls-prefix}rtl {
   &.#{$cls-prefix}image-placement-start {
     & > .#{$cls-prefix}card-image {
-      border-radius: 0 var(--border-radius-fixed-base) var(--border-radius-fixed-base) 0;
+      border-radius: 0 var(--border-radius-fixed-large) var(--border-radius-fixed-large) 0;
     }
   }
 
   &.#{$cls-prefix}image-placement-end {
     & > .#{$cls-prefix}card-image {
-      border-radius: var(--border-radius-fixed-base) 0 0 var(--border-radius-fixed-base);
+      border-radius: var(--border-radius-fixed-large) 0 0 var(--border-radius-fixed-large);
     }
   }
 
   &.#{$cls-prefix}splited {
     &.#{$cls-prefix}image-placement-start {
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-        border-top-left-radius: var(--border-radius-fixed-base);
+        border-top-left-radius: var(--border-radius-fixed-large);
         border-top-right-radius: 0;
       }
 
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
         border-bottom-right-radius: 0;
-        border-bottom-left-radius: var(--border-radius-fixed-base);
+        border-bottom-left-radius: var(--border-radius-fixed-large);
       }
     }
 
     &.#{$cls-prefix}image-placement-end {
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
         border-top-left-radius: 0;
-        border-top-right-radius: var(--border-radius-fixed-base);
+        border-top-right-radius: var(--border-radius-fixed-large);
       }
 
       & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-        border-bottom-right-radius: var(--border-radius-fixed-base);
+        border-bottom-right-radius: var(--border-radius-fixed-large);
         border-bottom-left-radius: 0;
       }
     }

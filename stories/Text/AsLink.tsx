@@ -3,14 +3,7 @@ import { Text } from "@lilib/ui";
 
 function Example() {
   return (
-    <Text<"a">
-      as="a"
-      rel="noreferrer noopener"
-      href="https://github.com/lilibraries/ui"
-      target="_blank"
-      intent="major"
-      hoverable
-    >
+    <Text<"a"> as="a" rel="noreferrer" href="https://github.com/lilibraries/ui" target="_blank" intent="major">
       Github
     </Text>
   );
