@@ -1,25 +1,24 @@
 import React, { HTMLAttributes, MouseEvent, forwardRef, useRef } from "react";
 import cn from "classnames";
-import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import { EffectTarget } from "@lilib/utils";
-import Display from "../Display";
-import Duration from "../Duration";
+import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import Portal from "../Portal";
 import Prefix from "../Prefix";
-import Transition from "../Transition";
+import Display from "../Display";
 import Trigger from "../Trigger";
+import Duration from "../Duration";
+import Transition from "../Transition";
 import isPositiveNumber from "../utils/isPositiveNumber";
 import useSuppressBodyScrollbar from "../utils/useSuppressBodyScrollbar";
 
 export type BackdropCloseEvent = "escape" | "page-hide" | "window-blur" | "backdrop-click";
 
 export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
-  blurred?: boolean;
-  animeless?: boolean;
-  off?: BackdropCloseEvent | BackdropCloseEvent[];
-  container?: EffectTarget<HTMLElement>;
   open?: boolean;
   defaultOpen?: boolean;
+  off?: BackdropCloseEvent | BackdropCloseEvent[];
+  blurred?: boolean;
+  container?: EffectTarget<HTMLElement>;
   openDelay?: number;
   closeDelay?: number;
   firstMount?: boolean;
@@ -33,12 +32,11 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   const {
     children,
     className,
-    blurred,
-    animeless,
-    off = "backdrop-click",
-    container,
     open: openProp,
     defaultOpen,
+    off = "backdrop-click",
+    blurred,
+    container,
     openDelay,
     closeDelay,
     firstMount,
@@ -56,6 +54,8 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
+  const displayCloseDelay = isPositiveNumber(closeDelay) ? closeDelay + base : base;
+
   const backdropRef = useRef(null);
   const composedBackdropRef = useComposedRef(backdropRef, ref);
 
@@ -108,34 +108,16 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   }, [openProp]);
 
   useUpdate(() => {
-    if (!animeless) {
-      if (open) {
-        if (opened) {
-          setState({ enter: true });
-        }
-      } else {
-        setState({ enter: false });
+    if (open) {
+      if (opened) {
+        setState({ enter: true });
       }
+    } else {
+      setState({ enter: false });
     }
   }, [open, opened]);
 
   useSuppressBodyScrollbar(opened);
-
-  let displayCloseDelay = closeDelay;
-  let backdrop = (
-    <div {...rest} ref={composedBackdropRef} className={classes} onClick={handleBackdropClick}>
-      <Portal.Config container={backdropRef}>{children}</Portal.Config>
-    </div>
-  );
-
-  if (!animeless) {
-    displayCloseDelay = isPositiveNumber(closeDelay) ? closeDelay + base : base;
-    backdrop = (
-      <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
-        {backdrop}
-      </Transition>
-    );
-  }
 
   return (
     <Trigger off={triggerCloseEvents} open={open} onClose={triggerClose}>
@@ -148,7 +130,13 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
         onOpened={handleOpened}
         onClosed={handleClosed}
       >
-        <Portal container={container}>{backdrop}</Portal>
+        <Portal container={container}>
+          <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+            <div {...rest} ref={composedBackdropRef} className={classes} onClick={handleBackdropClick}>
+              <Portal.Config container={backdropRef}>{children}</Portal.Config>
+            </div>
+          </Transition>
+        </Portal>
       </Display>
     </Trigger>
   );
