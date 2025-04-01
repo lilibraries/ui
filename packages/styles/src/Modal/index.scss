@@ -11,23 +11,10 @@
   transform-origin: top left;
 
   &.#{$cls-prefix}card {
-    border-radius: var(--border-radius-fixed-large);
     box-shadow: var(--shadow-5);
 
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header > .#{$cls-prefix}card-title {
-      font-size: var(--font-size-larger);
-    }
-
-    &.#{$cls-prefix}splited {
-      & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-        border-top-left-radius: var(--border-radius-fixed-large);
-        border-top-right-radius: var(--border-radius-fixed-large);
-      }
-
-      & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-        border-bottom-right-radius: var(--border-radius-fixed-large);
-        border-bottom-left-radius: var(--border-radius-fixed-large);
-      }
+    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header > .#{$cls-prefix}card-headmark {
+      margin-inline-end: calc(var(--space-2) * -1);
     }
   }
 
@@ -82,7 +69,7 @@
   }
 
   &.#{$cls-prefix}small {
-    width: 300px;
+    width: 400px;
   }
 
   &.#{$cls-prefix}medium {
@@ -90,6 +77,6 @@
   }
 
   &.#{$cls-prefix}large {
-    width: 900px;
+    width: 800px;
   }
 }

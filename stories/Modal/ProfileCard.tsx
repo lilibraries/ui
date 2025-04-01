@@ -7,21 +7,25 @@ function Example() {
 
   return (
     <>
-      <Button onClick={toggleOn}>Open</Button>
+      <Button intent="major" onClick={toggleOn}>
+        View Profile
+      </Button>
       <Modal
-        open={open}
-        onClose={toggleOff}
-        width="medium"
-        splited
-        showClose
-        icon={<Avatar round size="small" image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
+        icon={<Avatar rounded image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
         title={
           <a rel="noreferrer" href="https://github.com/LeeWeisheng" target="_blank">
             LeeWeisheng
           </a>
         }
         headnote={
-          <Text size="small" muted hoverable>
+          <Text<"a">
+            as="a"
+            rel="noreferrer"
+            href="https://github.com/LeeWeisheng?tab=followers"
+            target="_blank"
+            size="small"
+            muted
+          >
             10 Followers
           </Text>
         }
@@ -30,11 +34,15 @@ function Example() {
             Joined at July 31, 2023
           </Text>
         }
-        confirmLabel="Profile"
+        cancelLabel="Cancel"
+        confirmLabel="Follow"
+        width="medium"
+        closable
+        open={open}
+        onClose={toggleOff}
         onConfirm={() => {
           window.open("https://github.com/LeeWeisheng", "_blank");
         }}
-        cancelLabel="Cancel"
       >
         I am a front-end developer. Daily development using the React framework. I am interested in UI design and have
         created a component library. I am currently looking for a good job.

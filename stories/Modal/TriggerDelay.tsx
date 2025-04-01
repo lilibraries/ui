@@ -3,7 +3,7 @@ import { Button, Modal, Spinner } from "@lilib/ui";
 
 function Example() {
   return (
-    <Modal off={["escape", "page-hide", "window-blur", "backdrop-click"]} trigger={<Button>Open</Button>}>
+    <Modal trigger={<Button>Open</Button>} openDelay={500} closeDelay={500}>
       <Spinner spinning /> Loading...
     </Modal>
   );

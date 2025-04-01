@@ -1,34 +1,31 @@
 import React from "react";
-import { useToggle } from "@lilib/hooks";
 import { Button, Modal } from "@lilib/ui";
 
 function Example() {
-  const [open, { toggleOn, toggleOff }] = useToggle(false);
-
   const handleConfirm = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(undefined);
-      }, 3000);
+      }, 1000);
     });
   };
 
   return (
     <>
-      <Button onClick={toggleOn}>Open</Button>
       <Modal
-        open={open}
-        onClose={toggleOff}
-        width="medium"
-        showClose
-        title="Title"
-        confirmLabel="Confirm"
-        cancelLabel="Cancel"
+        trigger={
+          <Button intent="major" variant="solid">
+            Confirm
+          </Button>
+        }
+        closable
+        width="small"
+        title="Confirm"
+        cancelLabel="No"
+        confirmLabel="Yes"
         onConfirm={handleConfirm}
-        disableCloseWhenConfirming
-        disableCancelWhenConfirming
       >
-        Content.
+        Do you want to delete the data?
       </Modal>
     </>
   );

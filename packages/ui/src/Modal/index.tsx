@@ -1,64 +1,65 @@
-import React, { HTMLAttributes, MouseEvent, ReactElement, ReactNode, forwardRef, useRef } from "react";
+import React, {
+  useRef,
+  ReactNode,
+  forwardRef,
+  MouseEvent,
+  ReactElement,
+  cloneElement,
+  HTMLAttributes,
+  isValidElement,
+} from "react";
 import cn from "classnames";
-import { useClickOutside, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import { EffectTarget } from "@lilib/utils";
-import Backdrop, { BackdropProps } from "../Backdrop";
-import Button, { ButtonProps } from "../Button";
+import { useClickOutside, usePersist, useSetState, useUpdate } from "@lilib/hooks";
 import Card from "../Card";
-import Display from "../Display";
-import Duration from "../Duration";
-import Flexbox from "../Flexbox";
+import Theme from "../Theme";
 import Portal from "../Portal";
 import Prefix from "../Prefix";
+import Flexbox from "../Flexbox";
+import Duration from "../Duration";
 import Transition from "../Transition";
+import Button, { ButtonProps } from "../Button";
+import Backdrop, { BackdropCloseEvent } from "../Backdrop";
 import CloseIcon from "../icons/CloseIcon";
-import isCSSValue from "../utils/isCSSValue";
-import isPositiveNumber from "../utils/isPositiveNumber";
 import isPromise from "../utils/isPromise";
+import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 
-export type ModalWidthSize = "small" | "medium" | "large";
+export type ModalWidth = "small" | "medium" | "large" | number | (string & {});
 
 export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
-  width?: ModalWidthSize | string | number;
-  centered?: boolean;
   icon?: ReactNode;
   title?: ReactNode;
   headnote?: ReactNode;
   footnote?: ReactNode;
-  showClose?: boolean;
-  closeProps?: ButtonProps;
-  hideBackdrop?: boolean;
-  backdropProps?: BackdropProps;
-  confirmLabel?: ReactNode;
-  confirmProps?: ButtonProps;
-  cancelLabel?: ReactNode;
-  cancelProps?: ButtonProps;
-  splited?: boolean;
+  divided?: boolean;
+  striped?: boolean;
   unpadding?: boolean;
   borderless?: boolean;
-  animeless?: boolean;
-  container?: EffectTarget<HTMLElement>;
+  width?: ModalWidth;
+  blurred?: boolean;
+  centered?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
+  off?: BackdropCloseEvent | BackdropCloseEvent[];
+  trigger?: ReactElement;
+  container?: EffectTarget<HTMLElement>;
+  closable?: boolean;
+  closeProps?: ButtonProps;
+  cancelLabel?: ReactNode;
+  cancelProps?: ButtonProps;
+  confirmLabel?: ReactNode;
+  confirmProps?: ButtonProps;
   openDelay?: number;
   closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
-  closeOnEscape?: boolean;
-  closeOnPageHide?: boolean;
-  closeOnWindowBlur?: boolean;
-  closeOnClickOutside?: boolean;
-  disableCloseWhenConfirming?: boolean;
-  disableCancelWhenConfirming?: boolean;
+  onOpen?: () => void;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
-  onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
   onCancel?: (event: MouseEvent<HTMLButtonElement>) => void;
-  renderHeader?: (header: ReactElement | null) => ReactNode;
-  renderFooter?: (footer: ReactElement | null) => ReactNode;
-  renderActions?: (actions: ReactElement | null, close: () => void) => ReactNode;
+  onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
 }
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
@@ -66,52 +67,48 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     children,
     style,
     className,
-    width,
-    centered,
     icon,
     title,
     headnote,
     footnote,
-    showClose,
-    closeProps,
-    hideBackdrop,
-    backdropProps,
-    confirmLabel,
-    confirmProps,
-    cancelLabel,
-    cancelProps,
-    splited,
+    divided,
+    striped,
     unpadding,
     borderless,
-    animeless,
-    container,
+    width,
+    blurred,
+    centered,
     open: openProp,
     defaultOpen,
+    off = "backdrop-click",
+    trigger,
+    container,
+    closable,
+    closeProps,
+    cancelLabel,
+    cancelProps,
+    confirmLabel,
+    confirmProps,
     openDelay,
-    closeDelay: exitDelay,
+    closeDelay,
     firstMount,
     keepMounted,
-    closeOnEscape,
-    closeOnPageHide,
-    closeOnWindowBlur,
-    closeOnClickOutside = true,
-    disableCloseWhenConfirming,
-    disableCancelWhenConfirming,
+    onOpen,
     onClose,
     onOpened,
     onClosed,
-    onConfirm,
     onCancel,
-    renderHeader,
-    renderFooter,
-    renderActions,
+    onConfirm,
     ...rest
   } = props;
 
+  const closeEvents = Array.isArray(off) ? off : [off];
+  const backdropCloseEvents = closeEvents.filter((name) => name !== "backdrop-click");
+  const closeOnClickOutside = closeEvents.includes("backdrop-click");
+
+  const isDark = Theme.useConfig() === "dark";
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
-
-  const backdropRef = useRef(null);
   const containerRef = useRef(null);
 
   const controlled = openProp != null;
@@ -120,66 +117,60 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return { open, opened: open, enter: open, confirming: false };
   });
 
-  const handleClose = usePersist(() => {
-    if (confirming && disableCloseWhenConfirming) {
-      return;
-    }
+  const close = usePersist(() => {
     if (!controlled) {
       setState({ open: false });
     }
-    if (onClose) {
-      onClose();
-    }
+    onClose?.();
   });
 
-  const handleButtonClose = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    if (closeProps?.onClick) {
-      closeProps?.onClick(event);
+  const handleClose = usePersist(() => {
+    if (confirming) {
+      return;
     }
-    handleClose();
+    close();
+  });
+
+  const handleTriggerClick = usePersist((event: any) => {
+    (trigger as ReactElement).props.onClick?.(event);
+    if (!controlled) {
+      setState({ open: true });
+    }
+    onOpen?.();
+  });
+
+  const handleCloserClick = usePersist((event: MouseEvent<HTMLButtonElement>) => {
+    closeProps?.onClick?.(event);
+    close();
   });
 
   const handleOpened = usePersist(() => {
     setState({ opened: true });
-    if (onOpened) {
-      onOpened();
-    }
+    onOpened?.();
   });
 
   const handleClosed = usePersist(() => {
-    setState({ opened: false });
-    if (onClosed) {
-      onClosed();
-    }
+    setState({ opened: false, confirming: false });
+    onClosed?.();
   });
 
   const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    if (cancelProps?.onClick) {
-      cancelProps?.onClick(event);
-    }
-    if (confirming && disableCancelWhenConfirming) {
-      return;
-    }
-    if (onCancel) {
-      onCancel(event);
-    }
-    handleClose();
+    cancelProps?.onClick?.(event);
+    onCancel?.(event);
+    close();
   });
 
   const handleConfirm = usePersist((event: MouseEvent<HTMLButtonElement>) => {
-    if (confirmProps?.onClick) {
-      confirmProps?.onClick(event);
-    }
-    let result: Promise<any> | void = undefined;
+    confirmProps?.onClick?.(event);
+    let promise: Promise<any> | void = undefined;
     if (onConfirm) {
-      result = onConfirm(event);
+      promise = onConfirm(event);
     }
-    if (isPromise(result)) {
+    if (isPromise(promise)) {
       setState({ confirming: true });
-      result.then(
+      promise.then(
         (value) => {
-          setState({ confirming: false });
-          handleClose();
+          close();
           return value;
         },
         (reason) => {
@@ -188,11 +179,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         }
       );
     } else {
-      handleClose();
+      close();
     }
   });
-
-  useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose, { container: backdropRef });
 
   useUpdate(() => {
     if (controlled) {
@@ -201,16 +190,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   }, [openProp]);
 
   useUpdate(() => {
-    if (!animeless) {
-      if (open) {
-        if (opened) {
-          setState({ enter: true });
-        }
-      } else {
-        setState({ enter: false });
+    if (open) {
+      if (opened) {
+        setState({ enter: true });
       }
+    } else {
+      setState({ enter: false });
     }
   }, [open, opened]);
+
+  useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose);
 
   const isPresetSize = ["small", "medium", "large"].includes(String(width));
   const isCustomSize = !isPresetSize && isCSSValue(width);
@@ -227,40 +216,31 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   let headmark: ReactNode = null;
   let footmark: ReactNode = null;
-  let closeDelay = exitDelay;
 
-  if (showClose) {
+  if (closable) {
     headmark = (
       <Button
-        round
+        rounded
         iconOnly
         borderless
-        size="large"
+        intent="minor"
         variant="hollow"
-        disabled={confirming && disableCloseWhenConfirming}
+        disabled={confirming}
+        children={<CloseIcon />}
         {...closeProps}
-        onClick={handleButtonClose}
-      >
-        <CloseIcon />
-      </Button>
+        onClick={handleCloserClick}
+      />
     );
   }
 
-  const hasConfirmLabel = isRenderable(confirmLabel);
   const hasCancelLabel = isRenderable(cancelLabel);
+  const hasConfirmLabel = isRenderable(confirmLabel);
 
-  if (hasConfirmLabel || hasCancelLabel) {
+  if (hasCancelLabel || hasConfirmLabel) {
     footmark = (
-      <Flexbox gap="2x">
+      <Flexbox gap="2x" align="center">
         {hasCancelLabel && (
-          <Button
-            color="gray"
-            variant="hollow"
-            borderless
-            disabled={confirming && disableCancelWhenConfirming}
-            {...cancelProps}
-            onClick={handleCancel}
-          >
+          <Button disabled={confirming} {...cancelProps} onClick={handleCancel}>
             {cancelLabel}
           </Button>
         )}
@@ -268,7 +248,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           <Button
             intent="major"
             variant="solid"
-            borderless
             loading={confirming}
             loadingPlacement="start"
             {...confirmProps}
@@ -281,95 +260,47 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     );
   }
 
-  if (renderActions) {
-    footmark = renderActions(footmark as ReactElement | null, handleClose);
-  }
-
-  let result = (
-    <Card
-      {...rest}
-      ref={ref}
-      style={isCustomSize ? { ...style, width } : style}
-      className={classes}
-      icon={icon}
-      title={title}
-      headnote={headnote}
-      headmark={headmark}
-      footnote={footnote}
-      footmark={footmark}
-      splited={splited}
-      unpadding={unpadding}
-      borderless={borderless}
-      renderHeader={renderHeader}
-      renderFooter={renderFooter}
-    >
-      <Portal.Config container={containerRef}>{children}</Portal.Config>
-    </Card>
-  );
-
-  if (!animeless) {
-    if (isPositiveNumber(exitDelay)) {
-      closeDelay = exitDelay + base;
-    } else {
-      closeDelay = base;
-    }
-    result = (
-      <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
-        {result}
-      </Transition>
-    );
-  }
-
-  result = (
-    <div ref={containerRef} className={`${cls}modal-container`}>
-      {result}
-    </div>
-  );
-
-  if (hideBackdrop) {
-    result = (
-      <Display
-        open={open}
-        openDelay={openDelay}
-        closeDelay={closeDelay}
-        firstMount={firstMount}
-        keepMounted={keepMounted}
-        closeOnEscape={closeOnEscape}
-        closeOnPageHide={closeOnPageHide}
-        closeOnWindowBlur={closeOnWindowBlur}
-        onClose={handleClose}
-        onOpened={handleOpened}
-        onClosed={handleClosed}
-      >
-        <Portal container={container}>{result}</Portal>
-      </Display>
-    );
-  } else {
-    result = (
+  return (
+    <>
+      {isValidElement(trigger) ? cloneElement<any>(trigger, { onClick: handleTriggerClick }) : trigger}
       <Backdrop
-        {...backdropProps}
-        ref={backdropRef}
-        animeless={animeless}
+        off={backdropCloseEvents}
+        blurred={blurred}
         container={container}
         open={open}
         openDelay={openDelay}
         closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
-        closeOnEscape={closeOnEscape}
-        closeOnPageHide={closeOnPageHide}
-        closeOnWindowBlur={closeOnWindowBlur}
-        closeOnBackdropClick={false}
         onClose={handleClose}
         onOpened={handleOpened}
         onClosed={handleClosed}
       >
-        {result}
+        <div ref={containerRef} className={`${cls}modal-container`}>
+          <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+            <Card
+              {...rest}
+              ref={ref}
+              style={isCustomSize ? { ...style, width } : style}
+              className={classes}
+              icon={icon}
+              title={title}
+              headnote={headnote}
+              headmark={headmark}
+              footnote={footnote}
+              footmark={footmark}
+              divided={divided}
+              striped={striped}
+              unpadding={unpadding}
+              borderless={"borderless" in props ? borderless : isDark ? false : true}
+            >
+              <Portal.Config container={containerRef}>{children}</Portal.Config>
+            </Card>
+          </Transition>
+        </div>
       </Backdrop>
-    );
-  }
-
-  return result;
+    </>
+  );
 });
 
 export default Modal;

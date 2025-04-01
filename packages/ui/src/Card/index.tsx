@@ -27,13 +27,12 @@ export interface CardCommonProps {
   image?: string | ReactNode;
   imageSize?: string | number;
   imagePlacement?: CardImagePlacement;
-  splited?: boolean;
+  divided?: boolean;
+  striped?: boolean;
   shadowed?: boolean;
   hoverable?: boolean;
   unpadding?: boolean;
   borderless?: boolean;
-  renderHeader?: (header: ReactElement | null) => ReactElement | null;
-  renderFooter?: (footer: ReactElement | null) => ReactElement | null;
 }
 
 export type CardProps<C extends ElementType = "div"> = C extends "div"
@@ -58,13 +57,12 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     image: imageProp,
     imageSize = "100px",
     imagePlacement = "top",
-    splited,
+    divided,
+    striped,
     shadowed,
     hoverable,
     unpadding,
     borderless,
-    renderHeader,
-    renderFooter,
     ...rest
   } = props;
 
@@ -79,8 +77,8 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const hasFootmark = isRenderable(footmark);
 
   let image: ReactNode = null;
-  let header: ReactElement | null = null;
-  let footer: ReactElement | null = null;
+  let header: ReactNode = null;
+  let footer: ReactNode = null;
   let hasImage = false;
   let hasHeader = hasIcon || hasTitle || hasHeadnote || hasHeadmark;
   let hasFooter = hasFootnote || hasFootmark;
@@ -123,20 +121,12 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
     );
   }
 
-  if (renderHeader) {
-    header = renderHeader(header);
-  }
-  if (renderFooter) {
-    footer = renderFooter(footer);
-  }
-  hasHeader = isRenderable(header);
-  hasFooter = isRenderable(footer);
-
   const classes = cn(
     `${cls}card`,
     {
       [`${cls}rtl`]: isRTL,
-      [`${cls}splited`]: splited,
+      [`${cls}divided`]: divided || striped,
+      [`${cls}striped`]: striped,
       [`${cls}shadowed`]: shadowed,
       [`${cls}hoverable`]: hoverable,
       [`${cls}unpadding`]: unpadding,

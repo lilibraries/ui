@@ -90,9 +90,6 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
 
   const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
     cancelProps?.onClick?.(event);
-    if (confirming) {
-      return;
-    }
     onCancel?.(event);
     close();
   });

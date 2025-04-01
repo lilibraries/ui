@@ -4,79 +4,83 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 # Modal
 
-Modal components.
+Show modal on the document.
 
 ## Examples
 
-### Basic
+### Basic Modal
 
-<Canvas mdxSource={require("!!raw-loader!./Basic").default}>
-  <Story id="examples-modal--basic" />
+<Canvas mdxSource={require("!!raw-loader!./BasicModal").default}>
+  <Story id="examples-modal--basic-modal" />
 </Canvas>
 
-### Centered
+### Centered Modal
 
-<Canvas mdxSource={require("!!raw-loader!./Centered").default}>
-  <Story id="examples-modal--centered" />
+<Canvas mdxSource={require("!!raw-loader!./CenteredModal").default}>
+  <Story id="examples-modal--centered-modal" />
 </Canvas>
 
-### Blurred
+### Blurred Backdrop
 
-<Canvas mdxSource={require("!!raw-loader!./Blurred").default}>
-  <Story id="examples-modal--blurred" />
+<Canvas mdxSource={require("!!raw-loader!./BlurredBackdrop").default}>
+  <Story id="examples-modal--blurred-backdrop" />
 </Canvas>
 
-### Hide Backdrop
+### Delete Dialog
 
-<Canvas mdxSource={require("!!raw-loader!./HideBackdrop").default}>
-  <Story id="examples-modal--hide-backdrop" />
+<Canvas mdxSource={require("!!raw-loader!./DeleteDialog").default}>
+  <Story id="examples-modal--delete-dialog" />
 </Canvas>
 
-### Disable Animation
+### Profile Card
 
-<Canvas mdxSource={require("!!raw-loader!./DisableAnimation").default}>
-  <Story id="examples-modal--disable-animation" />
-</Canvas>
-
-### Delay
-
-<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
-  <Story id="examples-modal--delay" />
-</Canvas>
-
-### Dialog
-
-<Canvas mdxSource={require("!!raw-loader!./Dialog").default}>
-  <Story id="examples-modal--dialog" />
-</Canvas>
-
-### Complex
-
-<Canvas mdxSource={require("!!raw-loader!./Complex").default}>
-  <Story id="examples-modal--complex" />
+<Canvas mdxSource={require("!!raw-loader!./ProfileCard").default}>
+  <Story id="examples-modal--profile-card" />
 </Canvas>
 
 ### Long Content
+
+When the modal content exceeds the maximum height, a scrollbar will be displayed.
 
 <Canvas mdxSource={require("!!raw-loader!./LongContent").default}>
   <Story id="examples-modal--long-content" />
 </Canvas>
 
-### Nested
+### Trigger Button
 
-<Canvas mdxSource={require("!!raw-loader!./Nested").default}>
-  <Story id="examples-modal--nested" />
+You can specify an React element for the `trigger` prop that accepts the `onClick` event, and the opening of the Modal can be controlled by the specified element.
+
+<Canvas mdxSource={require("!!raw-loader!./TriggerButton").default}>
+  <Story id="examples-modal--trigger-button" />
 </Canvas>
 
-### Sizes
+### Trigger Delay
 
-<Canvas mdxSource={require("!!raw-loader!./Sizes").default}>
-  <Story id="examples-modal--sizes" />
+Open or close after 500ms.
+
+<Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
+  <Story id="examples-modal--trigger-delay" />
+</Canvas>
+
+### Nested Overlay
+
+Modal can not only be nested within themselves, but also nested with other overlay components (such as Popup).
+
+<Canvas mdxSource={require("!!raw-loader!./NestedOverlay").default}>
+  <Story id="examples-modal--nested-overlay" />
+</Canvas>
+
+### Modal Sizes
+
+The Modal component has three preset widths: `"small"`, `"medium"`, `"large"`. You can also customize the width.
+
+<Canvas mdxSource={require("!!raw-loader!./ModalSizes").default}>
+  <Story id="examples-modal--modal-sizes" />
 </Canvas>
 
 ### Close Events
 
-You can close the modal by pressing the <kbd>ESC</kbd> key, hidding the page, losing focus on the window, or clicking outside the modal.
+In the following example, you can close the modal by pressing the <kbd>ESC</kbd> key, hidding the page, losing focus on the window, or clicking the backdrop.
 
 <Canvas mdxSource={require("!!raw-loader!./CloseEvents").default}>
   <Story id="examples-modal--close-events" />
@@ -90,61 +94,42 @@ The `onConfirm` event handler can return a Promise object to show loading spinne
   <Story id="examples-modal--confirming" />
 </Canvas>
 
-### Draggable
-
-<Canvas mdxSource={require("!!raw-loader!./Draggable").default}>
-  <Story id="examples-modal--draggable" />
-</Canvas>
-
-### Custom Actions
-
-<Canvas mdxSource={require("!!raw-loader!./CustomActions").default}>
-  <Story id="examples-modal--custom-actions" />
-</Canvas>
-
 ## API
 
-| Property                      | Type                                                                                        | Description                                                                                                                                                                                                                                                                                           |
-| ----------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `children`                    | `ReactNode`                                                                                 | Content                                                                                                                                                                                                                                                                                               |
-| `width`                       | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Width                                                                                                                                                                                                                                                                                                 |
-| `centered`                    | `boolean`                                                                                   | Display modal in the middle of the screen                                                                                                                                                                                                                                                             |
-| `icon`                        | `ReactNode`                                                                                 | Header icon                                                                                                                                                                                                                                                                                           |
-| `title`                       | `ReactNode`                                                                                 | Header title                                                                                                                                                                                                                                                                                          |
-| `headnote`                    | `ReactNode`                                                                                 | Header note                                                                                                                                                                                                                                                                                           |
-| `footnote`                    | `ReactNode`                                                                                 | Footer note                                                                                                                                                                                                                                                                                           |
-| `showClose`                   | `boolean`                                                                                   | Show close button                                                                                                                                                                                                                                                                                     |
-| `closeProps`                  | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom close button props                                                                                                                                                                                                                                                                             |
-| `hideBackdrop`                | `boolean`                                                                                   | Hide backdrop                                                                                                                                                                                                                                                                                         |
-| `backdropProps`               | [`BackdropProps`](?path=/story/overlays-backdrop--page#api)                                 | Custom backdrop props                                                                                                                                                                                                                                                                                 |
-| `confirmLabel`                | `ReactNode`                                                                                 | Confirm button label                                                                                                                                                                                                                                                                                  |
-| `confirmProps`                | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom confirm button props                                                                                                                                                                                                                                                                           |
-| `cancelLabel`                 | `ReactNode`                                                                                 | Cancel button label                                                                                                                                                                                                                                                                                   |
-| `cancelProps`                 | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom cancel button props                                                                                                                                                                                                                                                                            |
-| `splited`                     | `boolean`                                                                                   | Split header and footer by border and background color                                                                                                                                                                                                                                                |
-| `unpadding`                   | `boolean`                                                                                   | Remove content padding                                                                                                                                                                                                                                                                                |
-| `borderless`                  | `boolean`                                                                                   | Remove borders                                                                                                                                                                                                                                                                                        |
-| `animeless`                   | `boolean`                                                                                   | Disable animation                                                                                                                                                                                                                                                                                     |
-| `container`                   | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the Modal should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig) |
-| `open`                        | `boolean`                                                                                   | Controlled open                                                                                                                                                                                                                                                                                       |
-| `defaultOpen`                 | `boolean`                                                                                   | Uncontrolled open                                                                                                                                                                                                                                                                                     |
-| `openDelay`                   | `number`                                                                                    | Open delay, in milliseconds                                                                                                                                                                                                                                                                           |
-| `closeDelay`                  | `number`                                                                                    | Close delay, in milliseconds                                                                                                                                                                                                                                                                          |
-| `firstMount`                  | `boolean`                                                                                   | Mount on first time, no matter whether the component is opened                                                                                                                                                                                                                                        |
-| `keepMounted`                 | `boolean`                                                                                   | Keep mounted after the component is closed                                                                                                                                                                                                                                                            |
-| `closeOnEscape`               | `boolean`                                                                                   | Close when pressing the <kbd>ESC</kbd> key                                                                                                                                                                                                                                                            |
-| `closeOnPageHide`             | `boolean`                                                                                   | Close when the page is hidden                                                                                                                                                                                                                                                                         |
-| `closeOnWindowBlur`           | `boolean`                                                                                   | Close when the `window` loses focus                                                                                                                                                                                                                                                                   |
-| `closeOnClickOutside`         | `boolean`                                                                                   | Close when clicking outside the modal layer, default is `true`                                                                                                                                                                                                                                        |
-| `disableCloseWhenConfirming`  | `boolean`                                                                                   | Disable close event when confirming                                                                                                                                                                                                                                                                   |
-| `disableCancelWhenConfirming` | `boolean`                                                                                   | Disable cancel button when confirming                                                                                                                                                                                                                                                                 |
-| `onClose`                     | `() => void`                                                                                | Close event                                                                                                                                                                                                                                                                                           |
-| `onOpened`                    | `() => void`                                                                                | Opened event                                                                                                                                                                                                                                                                                          |
-| `onClosed`                    | `() => void`                                                                                | Closed event                                                                                                                                                                                                                                                                                          |
-| `onConfirm`                   | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code>               | Confirm event                                                                                                                                                                                                                                                                                         |
-| `onCancel`                    | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                                | Cancel event                                                                                                                                                                                                                                                                                          |
-| `renderHeader`                | <code>(header: ReactElement \| null) => ReactNode</code>                                    | Custom header render                                                                                                                                                                                                                                                                                  |
-| `renderFooter`                | <code>(footer: ReactElement \| null) => ReactNode</code>                                    | Custom footer render                                                                                                                                                                                                                                                                                  |
-| `renderActions`               | <code>(actions: ReactElement \| null, close: () => void) => ReactNode</code>                | Custom actions render                                                                                                                                                                                                                                                                                 |
+| Property       | Type                                                                                        | Description                                                                                                                                                                                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`     | `ReactNode`                                                                                 | Modal content.                                                                                                                                                                                                                                                                                        |
+| `icon`         | `ReactNode`                                                                                 | Header icon.                                                                                                                                                                                                                                                                                          |
+| `title`        | `ReactNode`                                                                                 | Header title.                                                                                                                                                                                                                                                                                         |
+| `headnote`     | `ReactNode`                                                                                 | Header end note.                                                                                                                                                                                                                                                                                      |
+| `footnote`     | `ReactNode`                                                                                 | Footer start note.                                                                                                                                                                                                                                                                                    |
+| `divided`      | `boolean`                                                                                   | Divided header and footer by border.                                                                                                                                                                                                                                                                  |
+| `splited`      | `boolean`                                                                                   | Show background color of header and footer.                                                                                                                                                                                                                                                           |
+| `unpadding`    | `boolean`                                                                                   | Remove content padding.                                                                                                                                                                                                                                                                               |
+| `borderless`   | `boolean`                                                                                   | Remove borders. It defaults to `true` in the dark theme, otherwise it defaults to `false`.                                                                                                                                                                                                            |
+| `width`        | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Preset width or custom width.                                                                                                                                                                                                                                                                         |
+| `blurred`      | `boolean`                                                                                   | Show blurred backdrop.                                                                                                                                                                                                                                                                                |
+| `centered`     | `boolean`                                                                                   | Display modal in the middle of the document.                                                                                                                                                                                                                                                          |
+| `open`         | `boolean`                                                                                   | Controlled open.                                                                                                                                                                                                                                                                                      |
+| `defaultOpen`  | `boolean`                                                                                   | Uncontrolled open.                                                                                                                                                                                                                                                                                    |
+| `off`          | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"backdrop-click"` \| `string[]`          | Close event. Default is `"backdrop-click"`.                                                                                                                                                                                                                                                           |
+| `trigger`      | `ReactElement`                                                                              | Trigger element for opening modal. It should accept the `onClick` prop.                                                                                                                                                                                                                               |
+| `container`    | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the Modal should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig) |
+| `closable`     | `boolean`                                                                                   | Show close button.                                                                                                                                                                                                                                                                                    |
+| `closeProps`   | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom close button props.                                                                                                                                                                                                                                                                            |
+| `cancelLabel`  | `ReactNode`                                                                                 | Cancel button label.                                                                                                                                                                                                                                                                                  |
+| `cancelProps`  | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom cancel button props.                                                                                                                                                                                                                                                                           |
+| `confirmLabel` | `ReactNode`                                                                                 | Confirm button label.                                                                                                                                                                                                                                                                                 |
+| `confirmProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom confirm button props.                                                                                                                                                                                                                                                                          |
+| `openDelay`    | `number`                                                                                    | Open delay, in milliseconds.                                                                                                                                                                                                                                                                          |
+| `closeDelay`   | `number`                                                                                    | Close delay, in milliseconds.                                                                                                                                                                                                                                                                         |
+| `firstMount`   | `boolean`                                                                                   | Mount on first time, no matter whether the Modal is opened.                                                                                                                                                                                                                                           |
+| `keepMounted`  | `boolean`                                                                                   | Keep mounted after the Modal is closed.                                                                                                                                                                                                                                                               |
+| `onOpen`       | `() => void`                                                                                | Open event.                                                                                                                                                                                                                                                                                           |
+| `onClose`      | `() => void`                                                                                | Close event.                                                                                                                                                                                                                                                                                          |
+| `onOpened`     | `() => void`                                                                                | Opened event.                                                                                                                                                                                                                                                                                         |
+| `onClosed`     | `() => void`                                                                                | Closed event.                                                                                                                                                                                                                                                                                         |
+| `onCancel`     | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                                | Cancel event.                                                                                                                                                                                                                                                                                         |
+| `onConfirm`    | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code>               | Confirm event.                                                                                                                                                                                                                                                                                        |
 
 It accepts all props which the native `<div>` element supports.

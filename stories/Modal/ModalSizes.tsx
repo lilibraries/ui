@@ -19,47 +19,47 @@ function Example() {
 
       <Modal
         open={smallModalOpen}
-        onClose={closeSmallModal}
         width="small"
-        showClose
         title="Title"
-        confirmLabel="Confirm"
         cancelLabel="Cancel"
+        confirmLabel="Confirm"
+        closable
+        onClose={closeSmallModal}
       >
-        Content.
+        Content
       </Modal>
       <Modal
         open={mediumModalOpen}
-        onClose={closeMediumModal}
         width="medium"
-        showClose
         title="Title"
-        confirmLabel="Confirm"
         cancelLabel="Cancel"
+        confirmLabel="Confirm"
+        closable
+        onClose={closeMediumModal}
       >
-        Content.
+        Content
       </Modal>
       <Modal
         open={largeModalOpen}
-        onClose={closeLargeModal}
         width="large"
-        showClose
         title="Title"
-        confirmLabel="Confirm"
         cancelLabel="Cancel"
+        confirmLabel="Confirm"
+        closable
+        onClose={closeLargeModal}
       >
-        Content.
+        Content
       </Modal>
       <Modal
         open={customWidthModalOpen}
-        onClose={closeCustomWidthModal}
         width="1200px"
-        showClose
         title="Title"
-        confirmLabel="Confirm"
         cancelLabel="Cancel"
+        confirmLabel="Confirm"
+        closable
+        onClose={closeCustomWidthModal}
       >
-        Content.
+        Content
       </Modal>
     </>
   );

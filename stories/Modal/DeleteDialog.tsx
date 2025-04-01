@@ -7,19 +7,20 @@ function Example() {
 
   return (
     <>
-      <Button onClick={toggleOn}>Open</Button>
+      <Button intent="negative" onClick={toggleOn}>
+        Delete
+      </Button>
       <Modal
+        width="medium"
+        title="Delete Confirm"
+        confirmLabel="Delete"
+        confirmProps={{ intent: "negative" }}
+        closable
         open={open}
         onClose={toggleOff}
-        width="medium"
-        showClose
-        title="Title"
-        confirmLabel="Confirm"
-        cancelLabel="Cancel"
-        onConfirm={() => console.log("Confirmed")}
-        onCancel={() => console.log("Cancelled")}
+        onConfirm={() => alert("Deleted!")}
       >
-        Content.
+        Once deleted, the data cannot be recovered.
       </Modal>
     </>
   );
