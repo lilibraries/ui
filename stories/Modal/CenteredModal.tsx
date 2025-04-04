@@ -1,17 +1,18 @@
 import React from "react";
-import { useToggle } from "@lilib/hooks";
 import { Button, Modal, Spinner } from "@lilib/ui";
 
 function Example() {
-  const [open, { toggleOn, toggleOff }] = useToggle(false);
-
   return (
-    <>
-      <Button onClick={toggleOn}>Open</Button>
-      <Modal centered open={open} onClose={toggleOff}>
-        <Spinner spinning /> Loading...
-      </Modal>
-    </>
+    <Modal
+      content={
+        <div>
+          <Spinner spinning /> Loading...
+        </div>
+      }
+      centered
+    >
+      <Button>Open</Button>
+    </Modal>
   );
 }
 

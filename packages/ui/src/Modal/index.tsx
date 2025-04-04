@@ -27,9 +27,11 @@ import isRenderable from "../utils/isRenderable";
 
 export type ModalWidth = "small" | "medium" | "large" | number | (string & {});
 
-export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "content"> {
+  children?: ReactElement;
   icon?: ReactNode;
   title?: ReactNode;
+  content?: ReactNode;
   headnote?: ReactNode;
   footnote?: ReactNode;
   divided?: boolean;
@@ -39,17 +41,16 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"
   width?: ModalWidth;
   blurred?: boolean;
   centered?: boolean;
+  off?: BackdropCloseEvent | BackdropCloseEvent[];
   open?: boolean;
   defaultOpen?: boolean;
-  off?: BackdropCloseEvent | BackdropCloseEvent[];
-  trigger?: ReactElement;
-  container?: EffectTarget<HTMLElement>;
   closable?: boolean;
   closeProps?: ButtonProps;
   cancelLabel?: ReactNode;
   cancelProps?: ButtonProps;
   confirmLabel?: ReactNode;
   confirmProps?: ButtonProps;
+  container?: EffectTarget<HTMLElement>;
   openDelay?: number;
   closeDelay?: number;
   firstMount?: boolean;
@@ -69,6 +70,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     className,
     icon,
     title,
+    content,
     headnote,
     footnote,
     divided,
@@ -78,17 +80,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     width,
     blurred,
     centered,
+    off = "backdrop-click",
     open: openProp,
     defaultOpen,
-    off = "backdrop-click",
-    trigger,
-    container,
     closable,
     closeProps,
     cancelLabel,
     cancelProps,
     confirmLabel,
     confirmProps,
+    container,
     openDelay,
     closeDelay,
     firstMount,
@@ -132,7 +133,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   });
 
   const handleTriggerClick = usePersist((event: any) => {
-    (trigger as ReactElement).props.onClick?.(event);
+    children?.props?.onClick?.(event);
     if (!controlled) {
       setState({ open: true });
     }
@@ -261,7 +262,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   return (
     <>
-      {isValidElement(trigger) ? cloneElement<any>(trigger, { onClick: handleTriggerClick }) : trigger}
+      {isValidElement(children) ? cloneElement<any>(children, { onClick: handleTriggerClick }) : children}
       <Backdrop
         off={backdropCloseEvents}
         blurred={blurred}
@@ -293,7 +294,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               unpadding={unpadding}
               borderless={"borderless" in props ? borderless : isDark ? false : true}
             >
-              <Portal.Config container={containerRef}>{children}</Portal.Config>
+              <Portal.Config container={containerRef}>{content}</Portal.Config>
             </Card>
           </Transition>
         </div>

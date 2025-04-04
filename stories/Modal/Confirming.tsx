@@ -13,19 +13,17 @@ function Example() {
   return (
     <>
       <Modal
-        trigger={
-          <Button intent="major" variant="solid">
-            Confirm
-          </Button>
-        }
-        closable
         width="small"
+        closable
         title="Confirm"
+        content="Do you want to delete the data?"
         cancelLabel="No"
         confirmLabel="Yes"
         onConfirm={handleConfirm}
       >
-        Do you want to delete the data?
+        <Button intent="major" variant="solid">
+          Confirm
+        </Button>
       </Modal>
     </>
   );
