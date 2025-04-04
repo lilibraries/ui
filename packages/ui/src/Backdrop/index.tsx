@@ -68,7 +68,6 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
   const classes = cn(
     `${cls}backdrop`,
     {
-      [`${cls}opened`]: opened,
       [`${cls}blurred`]: blurred,
     },
     className

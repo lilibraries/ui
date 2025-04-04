@@ -4,7 +4,6 @@
   position: fixed;
   top: 32px;
   left: 50%;
-  display: none;
   max-width: calc(100vw - 64px);
   max-height: calc(100vh - 64px);
   transform: translateX(-50%);
@@ -23,10 +22,6 @@
     top: 0;
     left: 0;
     z-index: var(--z-index-modal);
-  }
-
-  &.#{$cls-prefix}opened {
-    display: flex;
   }
 
   &.#{$cls-prefix}transition {

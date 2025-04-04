@@ -84,7 +84,7 @@ React component library.
 ### Overlays
 
 - [ ] Affix
-- [ ] Modal
+- [x] Modal
 - [ ] Prompt
 - [ ] Drawer
 - [ ] Toast

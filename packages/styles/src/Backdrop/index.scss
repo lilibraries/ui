@@ -7,13 +7,8 @@
   bottom: 0;
   left: 0;
   z-index: var(--z-index-backdrop);
-  display: none;
   background-color: var(--background-color-backdrop);
   @include transition(base, ease-in-out, opacity);
-
-  &.#{$cls-prefix}opened {
-    display: block;
-  }
 
   &.#{$cls-prefix}blurred {
     backdrop-filter: blur(var(--blur-3));

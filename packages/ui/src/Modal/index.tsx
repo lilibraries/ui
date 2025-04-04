@@ -207,7 +207,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const classes = cn(
     `${cls}modal`,
     {
-      [`${cls}opened`]: opened,
       [`${cls}centered`]: centered,
       [`${cls}${width}`]: isPresetSize,
     },
