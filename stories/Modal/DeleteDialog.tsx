@@ -4,7 +4,7 @@ import { Button, Modal } from "@lilib/ui";
 function Example() {
   return (
     <Modal
-      width="medium"
+      size="medium"
       title="Delete Confirm"
       content="Once deleted, the data cannot be recovered."
       confirmLabel="Delete"

@@ -68,12 +68,12 @@ Modal can not only be nested within themselves, but also nested with other overl
   <Story id="examples-modal--nested-overlay" />
 </Canvas>
 
-### Modal Widths
+### Modal Sizes
 
-The Modal component has three preset widths: `"small"`, `"medium"`, `"large"`. You can also customize the width.
+The Modal component has three preset sizes: `"small"` (400px), `"medium"` (600px), `"large"` (800px). You can also customize the size.
 
-<Canvas mdxSource={require("!!raw-loader!./ModalWidths").default}>
-  <Story id="examples-modal--modal-widths" />
+<Canvas mdxSource={require("!!raw-loader!./ModalSizes").default}>
+  <Story id="examples-modal--modal-sizes" />
 </Canvas>
 
 ### Close Events
@@ -106,7 +106,7 @@ The `onConfirm` event handler can return a Promise object to show loading spinne
 | `splited`      | `boolean`                                                                                   | Show background color of header and footer.                                                                                                                                                                                                                                                           |
 | `unpadding`    | `boolean`                                                                                   | Remove content padding.                                                                                                                                                                                                                                                                               |
 | `borderless`   | `boolean`                                                                                   | Remove borders. It defaults to `true` in the dark theme, otherwise it defaults to `false`.                                                                                                                                                                                                            |
-| `width`        | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Preset width or custom width.                                                                                                                                                                                                                                                                         |
+| `size`         | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Preset size or custom width.                                                                                                                                                                                                                                                                          |
 | `blurred`      | `boolean`                                                                                   | Show blurred backdrop.                                                                                                                                                                                                                                                                                |
 | `centered`     | `boolean`                                                                                   | Display modal in the middle of the document.                                                                                                                                                                                                                                                          |
 | `off`          | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"backdrop-click"` \| `string[]`          | Close event. Default is `"backdrop-click"`.                                                                                                                                                                                                                                                           |

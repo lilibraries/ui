@@ -43,8 +43,8 @@
     align-items: center;
     box-sizing: border-box;
     padding: var(--space-4) var(--space-6);
-    border-top-left-radius: var(--border-radius-fixed-large);
-    border-top-right-radius: var(--border-radius-fixed-large);
+    border-start-start-radius: var(--border-radius-fixed-large);
+    border-start-end-radius: var(--border-radius-fixed-large);
   }
 
   &-icon {
@@ -87,8 +87,8 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding: var(--space-4) var(--space-6);
-    border-bottom-right-radius: var(--border-radius-fixed-large);
-    border-bottom-left-radius: var(--border-radius-fixed-large);
+    border-end-end-radius: var(--border-radius-fixed-large);
+    border-end-start-radius: var(--border-radius-fixed-large);
   }
 
   &-footnote {
@@ -140,8 +140,8 @@
     flex-direction: column;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-fixed-large);
-      border-top-right-radius: var(--border-radius-fixed-large);
+      border-start-start-radius: var(--border-radius-fixed-large);
+      border-start-end-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-inline-start: -1px;
       margin-inline-end: -1px;
@@ -149,8 +149,8 @@
 
     & > .#{$cls-prefix}card-main,
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
     }
   }
 
@@ -158,8 +158,8 @@
     flex-direction: column-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-bottom-right-radius: var(--border-radius-fixed-large);
-      border-bottom-left-radius: var(--border-radius-fixed-large);
+      border-end-end-radius: var(--border-radius-fixed-large);
+      border-end-start-radius: var(--border-radius-fixed-large);
       margin-inline-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
@@ -167,8 +167,8 @@
 
     & > .#{$cls-prefix}card-main,
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
     }
   }
 
@@ -176,24 +176,24 @@
     flex-direction: row;
 
     & > .#{$cls-prefix}card-image {
-      border-top-left-radius: var(--border-radius-fixed-large);
-      border-bottom-left-radius: var(--border-radius-fixed-large);
+      border-start-start-radius: var(--border-radius-fixed-large);
+      border-end-start-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-block-end: -1px;
       margin-inline-start: -1px;
     }
 
     & > .#{$cls-prefix}card-main {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      border-top-left-radius: 0;
+      border-start-start-radius: 0;
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      border-bottom-left-radius: 0;
+      border-end-start-radius: 0;
     }
   }
 
@@ -201,24 +201,24 @@
     flex-direction: row-reverse;
 
     & > .#{$cls-prefix}card-image {
-      border-top-right-radius: var(--border-radius-fixed-large);
-      border-bottom-right-radius: var(--border-radius-fixed-large);
+      border-start-end-radius: var(--border-radius-fixed-large);
+      border-end-end-radius: var(--border-radius-fixed-large);
       margin-block-start: -1px;
       margin-inline-end: -1px;
       margin-block-end: -1px;
     }
 
     & > .#{$cls-prefix}card-main {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      border-top-right-radius: 0;
+      border-start-end-radius: 0;
     }
 
     & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      border-bottom-right-radius: 0;
+      border-end-end-radius: 0;
     }
   }
 
@@ -267,48 +267,6 @@
 
     & > .#{$cls-prefix}card-image {
       margin: 0;
-    }
-  }
-}
-
-.#{$cls-prefix}card.#{$cls-prefix}rtl {
-  &.#{$cls-prefix}image-placement-start {
-    & > .#{$cls-prefix}card-image {
-      border-radius: 0 var(--border-radius-fixed-large) var(--border-radius-fixed-large) 0;
-    }
-
-    & > .#{$cls-prefix}card-main {
-      border-radius: var(--border-radius-fixed-large) 0 0 var(--border-radius-fixed-large);
-    }
-
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      border-top-left-radius: var(--border-radius-fixed-large);
-      border-top-right-radius: 0;
-    }
-
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: var(--border-radius-fixed-large);
-    }
-  }
-
-  &.#{$cls-prefix}image-placement-end {
-    & > .#{$cls-prefix}card-image {
-      border-radius: var(--border-radius-fixed-large) 0 0 var(--border-radius-fixed-large);
-    }
-
-    & > .#{$cls-prefix}card-main {
-      border-radius: 0 var(--border-radius-fixed-large) var(--border-radius-fixed-large) 0;
-    }
-
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
-      border-top-left-radius: 0;
-      border-top-right-radius: var(--border-radius-fixed-large);
-    }
-
-    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
-      border-bottom-right-radius: var(--border-radius-fixed-large);
-      border-bottom-left-radius: 0;
     }
   }
 }

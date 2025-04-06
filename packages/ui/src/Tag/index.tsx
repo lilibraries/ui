@@ -12,7 +12,6 @@ import React, {
 import cn from "classnames";
 import { usePersist } from "@lilib/hooks";
 import Prefix from "../Prefix";
-import Direction from "../Direction";
 import Size, { SizeValue } from "../Size";
 import Button, { ButtonProps } from "../Button";
 import CloseIcon from "../icons/CloseIcon";
@@ -66,7 +65,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
-  const rtl = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
   const hoverable = "hoverable" in props ? !!hoverableProp : !!onClick;
   const clearable = "clearable" in props ? !!clearableProp : !!onClear;
@@ -74,7 +72,6 @@ const Tag = forwardRef<HTMLSpanElement, TagProps>((props, ref) => {
   const classes = cn(
     `${cls}tag`,
     {
-      [`${cls}rtl`]: rtl,
       [`${cls}${size}`]: size,
       [`${cls}${variant}`]: variant,
       [`${cls}${color}`]: color,

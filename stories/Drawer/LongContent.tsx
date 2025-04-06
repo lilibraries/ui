@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Modal } from "@lilib/ui";
+import { Button, Drawer } from "@lilib/ui";
 
 function Example() {
   return (
-    <Modal
+    <Drawer
       size="medium"
       striped
       closable
@@ -74,7 +74,7 @@ function Example() {
       }
     >
       <Button>Open</Button>
-    </Modal>
+    </Drawer>
   );
 }
 

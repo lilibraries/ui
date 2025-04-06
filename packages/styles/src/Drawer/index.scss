@@ -1,0 +1,213 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}drawer {
+  position: fixed;
+
+  &-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-drawer);
+  }
+
+  &.#{$cls-prefix}card {
+    box-shadow: var(--shadow-5);
+
+    &:not(.#{$cls-prefix}borderless) {
+      margin: -1px;
+    }
+
+    &[data-placement="start"],
+    &[data-placement="start"] > .#{$cls-prefix}card-main,
+    &[data-placement="start"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header,
+    &[data-placement="start"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    &[data-placement="end"],
+    &[data-placement="end"] > .#{$cls-prefix}card-main,
+    &[data-placement="end"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header,
+    &[data-placement="end"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    &[data-placement="top"],
+    &[data-placement="top"] > .#{$cls-prefix}card-main,
+    &[data-placement="top"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header {
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+
+    &[data-placement="bottom"],
+    &[data-placement="bottom"] > .#{$cls-prefix}card-main,
+    &[data-placement="bottom"] > .#{$cls-prefix}card-main > .#{$cls-prefix}card-footer {
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    & > .#{$cls-prefix}card-main > .#{$cls-prefix}card-header > .#{$cls-prefix}card-headmark {
+      margin-inline-end: calc(var(--space-2) * -1);
+    }
+  }
+
+  &.#{$cls-prefix}transition {
+    &-enter,
+    &-exit,
+    &-exiting,
+    &-entering {
+      @include transition(base, ease-in-out, transform);
+    }
+
+    &-exited {
+      display: none;
+    }
+  }
+
+  &[data-placement="start"] {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-width: calc(100vw - 32px);
+    transform-origin: center left;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateX(-100%);
+      }
+
+      &-entering {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &[data-placement="end"] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: calc(100vw - 32px);
+    transform-origin: center right;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateX(100%);
+      }
+
+      &-entering {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &[data-placement="top"] {
+    top: 0;
+    right: 0;
+    left: 0;
+    max-height: calc(100vh - 32px);
+    transform-origin: top center;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateY(-100%);
+      }
+
+      &-entering {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &[data-placement="bottom"] {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: calc(100vh - 32px);
+    transform-origin: bottom center;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateY(100%);
+      }
+
+      &-entering {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &.#{$cls-prefix}small {
+    &[data-placement="start"],
+    &[data-placement="end"] {
+      width: 400px;
+    }
+
+    &[data-placement="top"],
+    &[data-placement="bottom"] {
+      height: 200px;
+    }
+  }
+
+  &.#{$cls-prefix}medium {
+    &[data-placement="start"],
+    &[data-placement="end"] {
+      width: 600px;
+    }
+
+    &[data-placement="top"],
+    &[data-placement="bottom"] {
+      height: 400px;
+    }
+  }
+
+  &.#{$cls-prefix}large {
+    &[data-placement="start"],
+    &[data-placement="end"] {
+      width: 800px;
+    }
+
+    &[data-placement="top"],
+    &[data-placement="bottom"] {
+      height: 600px;
+    }
+  }
+}
+
+.#{$cls-prefix}drawer.#{$cls-prefix}rtl {
+  &[data-placement="start"] {
+    right: 0;
+    left: auto;
+    transform-origin: center right;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &[data-placement="end"] {
+    right: auto;
+    left: 0;
+    transform-origin: center left;
+
+    &.#{$cls-prefix}transition {
+      &-enter,
+      &-exit,
+      &-exiting {
+        transform: translateX(-100%);
+      }
+    }
+  }
+}

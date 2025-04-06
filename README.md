@@ -85,8 +85,8 @@ React component library.
 
 - [ ] Affix
 - [x] Modal
-- [ ] Prompt
-- [ ] Drawer
+- [ ] Dialog
+- [x] Drawer
 - [ ] Toast
 - [ ] Notice
 - [x] Popup

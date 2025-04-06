@@ -11,7 +11,6 @@ import React, {
 import cn from "classnames";
 import isString from "lodash/isString";
 import Prefix from "../Prefix";
-import Direction from "../Direction";
 import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 
@@ -67,7 +66,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   } = props;
 
   const { cls } = Prefix.useConfig();
-  const isRTL = Direction.useConfig() === "rtl";
 
   const hasIcon = isRenderable(icon);
   const hasTitle = isRenderable(title);
@@ -124,7 +122,6 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const classes = cn(
     `${cls}card`,
     {
-      [`${cls}rtl`]: isRTL,
       [`${cls}divided`]: divided || striped,
       [`${cls}striped`]: striped,
       [`${cls}shadowed`]: shadowed,

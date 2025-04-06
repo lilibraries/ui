@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Flexbox, Modal, Popup, Spinner } from "@lilib/ui";
+import { Button, Flexbox, Drawer, Popup, Modal } from "@lilib/ui";
 
 function Example() {
   return (
-    <Modal
+    <Drawer
       size="medium"
       divided
       closable
@@ -14,34 +14,33 @@ function Example() {
             arrowed
             placement="right"
             content={
-              <Modal
-                content={
-                  <div>
-                    <Spinner spinning /> Loading...
-                  </div>
-                }
-              >
-                <Button>Open Nested Modal</Button>
-              </Modal>
+              <Drawer size="small" title="Title" content="Content">
+                <Button>Open Nested Drawer</Button>
+              </Drawer>
             }
             style={{ width: "max-content" }}
           >
             <Button>Nested Popup</Button>
           </Popup>
           <Modal
+            size="small"
+            title="Nested Modal"
             content={
-              <div>
-                <Spinner spinning /> Loading...
-              </div>
+              <Drawer size="small" title="Title" content="Content">
+                <Button>Open Nested Drawer</Button>
+              </Drawer>
             }
           >
             <Button>Open Nested Modal</Button>
           </Modal>
+          <Drawer size="small" title="Title" content="Content">
+            <Button>Open Nested Drawer</Button>
+          </Drawer>
         </Flexbox>
       }
     >
-      <Button>Open Modal</Button>
-    </Modal>
+      <Button>Open Drawer</Button>
+    </Drawer>
   );
 }
 

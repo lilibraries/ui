@@ -1,10 +1,10 @@
 import React from "react";
-import { Button, Modal, Avatar, Text } from "@lilib/ui";
+import { Button, Drawer, Avatar, Text } from "@lilib/ui";
 
 function Example() {
   return (
-    <Modal
-      size="medium"
+    <Drawer
+      size="small"
       closable
       icon={<Avatar rounded image="https://avatars.githubusercontent.com/u/9942342?v=4" />}
       title={
@@ -42,7 +42,7 @@ function Example() {
       }}
     >
       <Button intent="major">View Profile</Button>
-    </Modal>
+    </Drawer>
   );
 }
 

@@ -17,6 +17,7 @@ import Portal from "../Portal";
 import Prefix from "../Prefix";
 import Flexbox from "../Flexbox";
 import Duration from "../Duration";
+import Direction from "../Direction";
 import Transition from "../Transition";
 import Button, { ButtonProps } from "../Button";
 import Backdrop, { BackdropCloseEvent } from "../Backdrop";
@@ -25,22 +26,23 @@ import isPromise from "../utils/isPromise";
 import isCSSValue from "../utils/isCSSValue";
 import isRenderable from "../utils/isRenderable";
 
-export type ModalSize = "small" | "medium" | "large" | number | (string & {});
+export type DrawerSize = "small" | "medium" | "large" | number | (string & {});
+export type DrawerPlacement = "start" | "end" | "top" | "bottom";
 
-export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "content"> {
+export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "content"> {
   children?: ReactElement;
   icon?: ReactNode;
   title?: ReactNode;
   content?: ReactNode;
   headnote?: ReactNode;
   footnote?: ReactNode;
+  blurred?: boolean;
   divided?: boolean;
   striped?: boolean;
   unpadding?: boolean;
   borderless?: boolean;
-  size?: ModalSize;
-  blurred?: boolean;
-  centered?: boolean;
+  size?: DrawerSize;
+  placement?: DrawerPlacement;
   off?: BackdropCloseEvent | BackdropCloseEvent[];
   open?: boolean;
   defaultOpen?: boolean;
@@ -63,7 +65,7 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"
   onConfirm?: (event: MouseEvent<HTMLButtonElement>) => Promise<any> | void;
 }
 
-const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
   const {
     children,
     style,
@@ -73,13 +75,13 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     content,
     headnote,
     footnote,
+    blurred,
     divided,
     striped,
     unpadding,
     borderless,
     size,
-    blurred,
-    centered,
+    placement = "end",
     off = "backdrop-click",
     open: openProp,
     defaultOpen,
@@ -107,6 +109,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const backdropCloseEvents = closeEvents.filter((name) => name !== "backdrop-click");
   const closeOnClickOutside = closeEvents.includes("backdrop-click");
 
+  const isRTL = Direction.useConfig() === "rtl";
   const isDark = Theme.useConfig() === "dark";
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
@@ -202,13 +205,16 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose);
 
+  const isVertical = placement === "top" || placement === "bottom";
+  const isHorizontal = placement === "start" || placement === "end";
+
   const isPresetSize = ["small", "medium", "large"].includes(String(size));
   const isCustomSize = !isPresetSize && isCSSValue(size);
 
   const classes = cn(
-    `${cls}modal`,
+    `${cls}drawer`,
     {
-      [`${cls}centered`]: centered,
+      [`${cls}rtl`]: isRTL,
       [`${cls}${size}`]: isPresetSize,
     },
     className
@@ -276,12 +282,21 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         onOpened={handleOpened}
         onClosed={handleClosed}
       >
-        <div ref={containerRef} className={`${cls}modal-container`}>
+        <div ref={containerRef} className={`${cls}drawer-container`}>
           <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
             <Card
               {...rest}
               ref={ref}
-              style={isCustomSize ? { width: size, ...style } : style}
+              data-placement={placement}
+              style={
+                isCustomSize
+                  ? {
+                      width: isHorizontal ? size : undefined,
+                      height: isVertical ? size : undefined,
+                      ...style,
+                    }
+                  : style
+              }
               className={classes}
               icon={icon}
               title={title}
@@ -303,4 +318,4 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   );
 });
 
-export default Modal;
+export default Drawer;

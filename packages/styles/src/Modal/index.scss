@@ -9,6 +9,13 @@
   transform: translateX(-50%);
   transform-origin: top left;
 
+  &-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-modal);
+  }
+
   &.#{$cls-prefix}card {
     box-shadow: var(--shadow-5);
 
@@ -17,26 +24,17 @@
     }
   }
 
-  &-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-index-modal);
-  }
-
   &.#{$cls-prefix}transition {
     &-enter,
     &-exit,
     &-exiting {
       transform: translateX(-50%) translateY(-32px);
-      opacity: 0;
-      @include transition(base, ease-in-out, opacity, transform);
+      @include transition(base, ease-in-out, transform);
     }
 
     &-entering {
       transform: translateX(-50%) translateY(0);
-      opacity: 1;
-      @include transition(base, ease-in-out, opacity, transform);
+      @include transition(base, ease-in-out, transform);
     }
 
     &-exited {
@@ -48,7 +46,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transform-origin: top left;
 
     &.#{$cls-prefix}transition {
       &-enter,

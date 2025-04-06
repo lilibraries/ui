@@ -58,13 +58,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { fast } = Duration.useConfig();
-  const rtl = Direction.useConfig() === "rtl";
   const size = Size.useConfig(sizeProp);
+  const isRTL = Direction.useConfig() === "rtl";
 
   const classes = cn(
     `${cls}badge`,
     {
-      [`${cls}rtl`]: rtl,
+      [`${cls}rtl`]: isRTL,
       [`${cls}outlined`]: outlined,
       [`${cls}contented`]: contented,
     },
@@ -112,13 +112,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
     }
 
     if (placement.includes("start")) {
-      if (rtl) {
+      if (isRTL) {
         style.right = x;
       } else {
         style.left = x;
       }
     } else if (placement.includes("end")) {
-      if (rtl) {
+      if (isRTL) {
         style.left = x;
       } else {
         style.right = x;

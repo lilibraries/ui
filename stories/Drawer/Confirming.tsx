@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "@lilib/ui";
+import { Button, Drawer } from "@lilib/ui";
 
 function Example() {
   const handleConfirm = () => {
@@ -12,7 +12,7 @@ function Example() {
 
   return (
     <>
-      <Modal
+      <Drawer
         size="small"
         closable
         title="Confirm"
@@ -24,7 +24,7 @@ function Example() {
         <Button intent="major" variant="solid">
           Confirm
         </Button>
-      </Modal>
+      </Drawer>
     </>
   );
 }

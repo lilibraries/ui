@@ -1,0 +1,127 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Overlays/Drawer" />
+
+# Drawer
+
+Show drawer on the document.
+
+## Examples
+
+### Basic Drawer
+
+<Canvas mdxSource={require("!!raw-loader!./BasicDrawer").default}>
+  <Story id="examples-drawer--basic-drawer" />
+</Canvas>
+
+### Blurred Backdrop
+
+<Canvas mdxSource={require("!!raw-loader!./BlurredBackdrop").default}>
+  <Story id="examples-drawer--blurred-backdrop" />
+</Canvas>
+
+### Profile Drawer
+
+<Canvas mdxSource={require("!!raw-loader!./ProfileDrawer").default}>
+  <Story id="examples-drawer--profile-drawer" />
+</Canvas>
+
+### Long Content
+
+When the drawer content exceeds the maximum height, a scrollbar will be displayed.
+
+<Canvas mdxSource={require("!!raw-loader!./LongContent").default}>
+  <Story id="examples-drawer--long-content" />
+</Canvas>
+
+### Controlled Open
+
+<Canvas mdxSource={require("!!raw-loader!./ControlledOpen").default}>
+  <Story id="examples-drawer--controlled-open" />
+</Canvas>
+
+### Trigger Delay
+
+Open or close after 500ms.
+
+<Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
+  <Story id="examples-drawer--trigger-delay" />
+</Canvas>
+
+### Nested Overlay
+
+Drawer can not only be nested within themselves, but also nested with other overlay components (such as Popup, Modal).
+
+<Canvas mdxSource={require("!!raw-loader!./NestedOverlay").default}>
+  <Story id="examples-drawer--nested-overlay" />
+</Canvas>
+
+### Drawer Sizes
+
+The Drawer component has three preset sizes: `"small"`, `"medium"`, `"large"`. When the `placement` prop is specified to `"start"` or `"end"`, setting `size` prop will set the width of the drawer; When the `placement` prop is specified to `"top"` or `"bottom"`, setting `size` prop will set the height of the drawer.
+
+<Canvas mdxSource={require("!!raw-loader!./DrawerSizes").default}>
+  <Story id="examples-drawer--drawer-sizes" />
+</Canvas>
+
+### Drawer Placements
+
+<Canvas mdxSource={require("!!raw-loader!./DrawerPlacements").default}>
+  <Story id="examples-drawer--drawer-placements" />
+</Canvas>
+
+### Close Events
+
+In the following example, you can close the drawer by pressing the <kbd>ESC</kbd> key, hidding the page, losing focus on the window, or clicking the backdrop.
+
+<Canvas mdxSource={require("!!raw-loader!./CloseEvents").default}>
+  <Story id="examples-drawer--close-events" />
+</Canvas>
+
+### Confirming
+
+The `onConfirm` event handler can return a Promise object to show loading spinner of confirm button.
+
+<Canvas mdxSource={require("!!raw-loader!./Confirming").default}>
+  <Story id="examples-drawer--confirming" />
+</Canvas>
+
+## API
+
+| Property       | Type                                                                                        | Description                                                                                                                                                                                                                                                                                            |
+| -------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `children`     | `ReactElement`                                                                              | Trigger element for opening drawer. It should accept the `onClick` prop.                                                                                                                                                                                                                               |
+| `icon`         | `ReactNode`                                                                                 | Header icon.                                                                                                                                                                                                                                                                                           |
+| `title`        | `ReactNode`                                                                                 | Header title.                                                                                                                                                                                                                                                                                          |
+| `content`      | `ReactNode`                                                                                 | Drawer content.                                                                                                                                                                                                                                                                                        |
+| `headnote`     | `ReactNode`                                                                                 | Header end note.                                                                                                                                                                                                                                                                                       |
+| `footnote`     | `ReactNode`                                                                                 | Footer start note.                                                                                                                                                                                                                                                                                     |
+| `blurred`      | `boolean`                                                                                   | Show blurred backdrop.                                                                                                                                                                                                                                                                                 |
+| `divided`      | `boolean`                                                                                   | Divided header and footer by border.                                                                                                                                                                                                                                                                   |
+| `splited`      | `boolean`                                                                                   | Show background color of header and footer.                                                                                                                                                                                                                                                            |
+| `unpadding`    | `boolean`                                                                                   | Remove content padding.                                                                                                                                                                                                                                                                                |
+| `borderless`   | `boolean`                                                                                   | Remove borders. It defaults to `true` in the dark theme, otherwise it defaults to `false`.                                                                                                                                                                                                             |
+| `size`         | `"small"` \| `"medium"` \| `"large"` \| `string` \| `number`                                | Preset size or custom size.                                                                                                                                                                                                                                                                            |
+| `placement`    | `"start"` \| `"end"` \| `"top"` \| `"bottom"`                                               | Drawer placement. Default is `"end"`.                                                                                                                                                                                                                                                                  |
+| `off`          | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"backdrop-click"` \| `string[]`          | Close event. Default is `"backdrop-click"`.                                                                                                                                                                                                                                                            |
+| `open`         | `boolean`                                                                                   | Controlled open.                                                                                                                                                                                                                                                                                       |
+| `defaultOpen`  | `boolean`                                                                                   | Uncontrolled open.                                                                                                                                                                                                                                                                                     |
+| `closable`     | `boolean`                                                                                   | Show close button.                                                                                                                                                                                                                                                                                     |
+| `closeProps`   | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom close button props.                                                                                                                                                                                                                                                                             |
+| `cancelLabel`  | `ReactNode`                                                                                 | Cancel button label.                                                                                                                                                                                                                                                                                   |
+| `cancelProps`  | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom cancel button props.                                                                                                                                                                                                                                                                            |
+| `confirmLabel` | `ReactNode`                                                                                 | Confirm button label.                                                                                                                                                                                                                                                                                  |
+| `confirmProps` | [`ButtonProps`](?path=/story/generics-button--page#api)                                     | Custom confirm button props.                                                                                                                                                                                                                                                                           |
+| `container`    | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the Drawer should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig) |
+| `openDelay`    | `number`                                                                                    | Open delay, in milliseconds.                                                                                                                                                                                                                                                                           |
+| `closeDelay`   | `number`                                                                                    | Close delay, in milliseconds.                                                                                                                                                                                                                                                                          |
+| `firstMount`   | `boolean`                                                                                   | Mount on first time, no matter whether the Drawer is opened.                                                                                                                                                                                                                                           |
+| `keepMounted`  | `boolean`                                                                                   | Keep mounted after the Drawer is closed.                                                                                                                                                                                                                                                               |
+| `onOpen`       | `() => void`                                                                                | Open event.                                                                                                                                                                                                                                                                                            |
+| `onClose`      | `() => void`                                                                                | Close event.                                                                                                                                                                                                                                                                                           |
+| `onOpened`     | `() => void`                                                                                | Opened event.                                                                                                                                                                                                                                                                                          |
+| `onClosed`     | `() => void`                                                                                | Closed event.                                                                                                                                                                                                                                                                                          |
+| `onCancel`     | <code>(event: MouseEvent<HTMLButtonElement\>) => void</code>                                | Cancel event.                                                                                                                                                                                                                                                                                          |
+| `onConfirm`    | <code>(event: MouseEvent<HTMLButtonElement\>) => Promise<any\> \| void</code>               | Confirm event.                                                                                                                                                                                                                                                                                         |
+
+It accepts all props which the native `<div>` element supports.
