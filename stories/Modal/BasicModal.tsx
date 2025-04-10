@@ -9,6 +9,8 @@ function Example() {
           <Spinner spinning /> Loading...
         </div>
       }
+      onOpened={() => console.log("Opened")}
+      onClosed={() => console.log("Closed")}
     >
       <Button>Open</Button>
     </Modal>

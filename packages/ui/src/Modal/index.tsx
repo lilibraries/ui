@@ -113,9 +113,9 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const containerRef = useRef(null);
 
   const controlled = openProp != null;
-  const [{ open, opened, enter, confirming }, setState] = useSetState(() => {
+  const [{ open, displayed, enter, confirming }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open, confirming: false };
+    return { open, displayed: open, enter: open, confirming: false };
   });
 
   const close = usePersist(() => {
@@ -145,13 +145,12 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     close();
   });
 
-  const handleOpened = usePersist(() => {
-    setState({ opened: true });
-    onOpened?.();
+  const handleDisplayed = usePersist(() => {
+    setState({ displayed: true });
   });
 
   const handleClosed = usePersist(() => {
-    setState({ opened: false, confirming: false });
+    setState({ displayed: false, confirming: false });
     onClosed?.();
   });
 
@@ -192,15 +191,15 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
   useUpdate(() => {
     if (open) {
-      if (opened) {
+      if (displayed) {
         setState({ enter: true });
       }
     } else {
       setState({ enter: false });
     }
-  }, [open, opened]);
+  }, [open, displayed]);
 
-  useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose);
+  useClickOutside(closeOnClickOutside && open && displayed ? containerRef : null, handleClose);
 
   const isPresetSize = ["small", "medium", "large"].includes(String(size));
   const isCustomSize = !isPresetSize && isCSSValue(size);
@@ -272,12 +271,20 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
+        onOpen={handleDisplayed}
         onClose={handleClose}
-        onOpened={handleOpened}
         onClosed={handleClosed}
       >
         <div ref={containerRef} className={`${cls}modal-container`}>
-          <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+          <Transition
+            in={enter}
+            durations={base}
+            exitDelay={closeDelay}
+            classes
+            firstMount
+            keepMounted
+            onEntered={onOpened}
+          >
             <Card
               {...rest}
               ref={ref}
