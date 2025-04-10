@@ -1,10 +1,11 @@
 import React, { MouseEvent, ReactNode, forwardRef } from "react";
 import cn from "classnames";
-import { usePersist, useSetState, useUpdate } from "@lilib/hooks";
+import { usePersist, useSetState, useTimeout, useUpdate } from "@lilib/hooks";
 import Icon from "../Icon";
 import Text from "../Text";
 import Prefix from "../Prefix";
 import Flexbox from "../Flexbox";
+import Duration from "../Duration";
 import Description from "../Description";
 import Popup, { PopupProps } from "../Popup";
 import Button, { ButtonProps } from "../Button";
@@ -41,11 +42,11 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     content: contentProp,
     onOpen,
     onClose,
-    onClosed,
     ...rest
   } = props;
 
   const { cls } = Prefix.useConfig();
+  const { base } = Duration.useConfig();
   const classes = cn(`${cls}confirm`, className);
 
   const controlled = "open" in props;
@@ -53,6 +54,8 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     open: controlled ? !!openProp : !!defaultOpen,
     confirming: false,
   });
+
+  const [resetConfiming] = useTimeout(() => setState({ confirming: false }), base);
 
   useUpdate(() => {
     if (controlled) {
@@ -81,13 +84,6 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
     close();
   });
 
-  const handleClosed = usePersist(() => {
-    if (confirming) {
-      setState({ confirming: false });
-    }
-    onClosed?.();
-  });
-
   const handleCancel = usePersist((event: MouseEvent<HTMLButtonElement>) => {
     cancelProps?.onClick?.(event);
     onCancel?.(event);
@@ -102,6 +98,7 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       promise.then(
         (value) => {
           close();
+          resetConfiming();
           return value;
         },
         (reason) => {
@@ -166,7 +163,6 @@ const Confirm = forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
       className={classes}
       onOpen={handleOpen}
       onClose={handleClose}
-      onClosed={handleClosed}
     />
   );
 });
