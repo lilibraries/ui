@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
-import { useClickOutside, usePersist, useSetState, useUpdate } from "@lilib/hooks";
+import { useClickOutside, usePersist, useSetState, useTimeout, useUpdate } from "@lilib/hooks";
 import Card from "../Card";
 import Theme from "../Theme";
 import Portal from "../Portal";
@@ -118,6 +118,8 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     return { open, displayed: open, enter: open, confirming: false };
   });
 
+  const [resetConfirming] = useTimeout(() => setState({ confirming: false }), base);
+
   const close = usePersist(() => {
     if (!controlled) {
       setState({ open: false });
@@ -150,7 +152,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   });
 
   const handleClosed = usePersist(() => {
-    setState({ displayed: false, confirming: false });
+    setState({ displayed: false });
     onClosed?.();
   });
 
@@ -171,6 +173,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       promise.then(
         (value) => {
           close();
+          resetConfirming();
           return value;
         },
         (reason) => {
