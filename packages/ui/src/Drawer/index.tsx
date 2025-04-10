@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import cn from "classnames";
 import { EffectTarget } from "@lilib/utils";
-import { useClickOutside, usePersist, useSetState, useUpdate } from "@lilib/hooks";
+import { useClickOutside, usePersist, useSetState, useTimeout, useUpdate } from "@lilib/hooks";
 import Card from "../Card";
 import Theme from "../Theme";
 import Portal from "../Portal";
@@ -116,10 +116,12 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
   const containerRef = useRef(null);
 
   const controlled = openProp != null;
-  const [{ open, opened, enter, confirming }, setState] = useSetState(() => {
+  const [{ open, displayed, enter, confirming }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open, confirming: false };
+    return { open, displayed: open, enter: open, confirming: false };
   });
+
+  const [resetConfirming] = useTimeout(() => setState({ confirming: false }), base);
 
   const close = usePersist(() => {
     if (!controlled) {
@@ -148,13 +150,12 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
     close();
   });
 
-  const handleOpened = usePersist(() => {
-    setState({ opened: true });
-    onOpened?.();
+  const handleDisplayed = usePersist(() => {
+    setState({ displayed: true });
   });
 
   const handleClosed = usePersist(() => {
-    setState({ opened: false, confirming: false });
+    setState({ displayed: false });
     onClosed?.();
   });
 
@@ -175,6 +176,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
       promise.then(
         (value) => {
           close();
+          resetConfirming();
           return value;
         },
         (reason) => {
@@ -195,15 +197,15 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
 
   useUpdate(() => {
     if (open) {
-      if (opened) {
+      if (displayed) {
         setState({ enter: true });
       }
     } else {
       setState({ enter: false });
     }
-  }, [open, opened]);
+  }, [open, displayed]);
 
-  useClickOutside(closeOnClickOutside && open && opened ? containerRef : null, handleClose);
+  useClickOutside(closeOnClickOutside && open && displayed ? containerRef : null, handleClose);
 
   const isVertical = placement === "top" || placement === "bottom";
   const isHorizontal = placement === "start" || placement === "end";
@@ -278,12 +280,20 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
         closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
+        onOpen={handleDisplayed}
         onClose={handleClose}
-        onOpened={handleOpened}
         onClosed={handleClosed}
       >
         <div ref={containerRef} className={`${cls}drawer-container`}>
-          <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+          <Transition
+            in={enter}
+            durations={base}
+            exitDelay={closeDelay}
+            classes
+            firstMount
+            keepMounted
+            onEntered={onOpened}
+          >
             <Card
               {...rest}
               ref={ref}
