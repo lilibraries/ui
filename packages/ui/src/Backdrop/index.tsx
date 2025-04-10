@@ -23,10 +23,10 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
+  onOpen?: () => void;
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
-  onDisplayed?: () => void;
 }
 
 const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
@@ -42,11 +42,11 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     closeDelay: exitDelay,
     firstMount,
     keepMounted,
-    onClick,
+    onOpen,
     onClose,
     onOpened,
     onClosed,
-    onDisplayed,
+    onClick,
     ...rest
   } = props;
 
@@ -91,6 +91,7 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const handleDisplayed = usePersist(() => {
     setState({ displayed: true });
+    onOpen?.();
   });
 
   const handleClosed = usePersist(() => {
