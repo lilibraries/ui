@@ -26,6 +26,7 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   onOpened?: () => void;
   onClosed?: () => void;
+  onDisplayed?: () => void;
 }
 
 const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
@@ -38,13 +39,14 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     blurred,
     container,
     openDelay,
-    closeDelay,
+    closeDelay: exitDelay,
     firstMount,
     keepMounted,
     onClick,
     onClose,
     onOpened,
     onClosed,
+    onDisplayed,
     ...rest
   } = props;
 
@@ -54,15 +56,15 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
-  const displayCloseDelay = isPositiveNumber(closeDelay) ? closeDelay + base : base;
+  const closeDelay = isPositiveNumber(exitDelay) ? exitDelay + base : base;
 
   const backdropRef = useRef(null);
   const composedBackdropRef = useComposedRef(backdropRef, ref);
 
   const controlled = "open" in props;
-  const [{ open, opened, enter }, setState] = useSetState(() => {
+  const [{ open, displayed, enter }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open };
+    return { open, displayed: open, enter: open };
   });
 
   const classes = cn(
@@ -73,31 +75,27 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     className
   );
 
-  const triggerClose = usePersist(() => {
+  const handleClose = usePersist(() => {
     if (!controlled) {
       setState({ open: false });
     }
     onClose?.();
   });
 
-  const handleOpened = usePersist(() => {
-    setState({ opened: true });
-    onOpened?.();
-  });
-
-  const handleClosed = usePersist(() => {
-    setState({ opened: false });
-    onClosed?.();
-  });
-
   const handleBackdropClick = usePersist((event: MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
     if (closeOnBackdropClick && open) {
-      if (!controlled) {
-        setState({ open: false });
-      }
-      onClose?.();
+      handleClose();
     }
+  });
+
+  const handleDisplayed = usePersist(() => {
+    setState({ displayed: true });
+  });
+
+  const handleClosed = usePersist(() => {
+    setState({ displayed: false });
+    onClosed?.();
   });
 
   useUpdate(() => {
@@ -108,36 +106,45 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   useUpdate(() => {
     if (open) {
-      if (opened) {
+      if (displayed) {
         setState({ enter: true });
       }
     } else {
       setState({ enter: false });
     }
-  }, [open, opened]);
+  }, [open, displayed]);
 
-  useSuppressBodyScrollbar(opened);
+  useSuppressBodyScrollbar(displayed);
 
   return (
-    <Trigger off={triggerCloseEvents} open={open} onClose={triggerClose}>
+    <>
+      <Trigger off={triggerCloseEvents} open={open} onClose={handleClose} />
       <Display
         open={open}
         openDelay={openDelay}
-        closeDelay={displayCloseDelay}
+        closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
-        onOpened={handleOpened}
+        onOpened={handleDisplayed}
         onClosed={handleClosed}
       >
         <Portal container={container}>
-          <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
+          <Transition
+            in={enter}
+            durations={base}
+            exitDelay={exitDelay}
+            classes
+            firstMount
+            keepMounted
+            onEntered={onOpened}
+          >
             <div {...rest} ref={composedBackdropRef} className={classes} onClick={handleBackdropClick}>
               <Portal.Config container={backdropRef}>{children}</Portal.Config>
             </div>
           </Transition>
         </Portal>
       </Display>
-    </Trigger>
+    </>
   );
 });
 
