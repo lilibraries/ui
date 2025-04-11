@@ -31,9 +31,9 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   } = props;
 
   const controlled = "open" in props;
-  const [{ open, opened, enter }, setState] = useSetState(() => {
+  const [{ open, displayed, enter }, setState] = useSetState(() => {
     const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open };
+    return { open, displayed: open, enter: open };
   });
 
   const handleOpen = usePersist(() => {
@@ -50,13 +50,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     onClose?.();
   });
 
-  const handleOpened = usePersist(() => {
-    setState({ opened: true });
-    onOpened?.();
+  const handleDisplayed = usePersist(() => {
+    setState({ displayed: true });
   });
 
   const handleClosed = usePersist(() => {
-    setState({ opened: false });
+    setState({ displayed: false });
     onClosed?.();
   });
 
@@ -68,13 +67,13 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   useUpdate(() => {
     if (open) {
-      if (opened) {
+      if (displayed) {
         setState({ enter: true });
       }
     } else {
       setState({ enter: false });
     }
-  }, [open, opened]);
+  }, [open, displayed]);
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
@@ -128,7 +127,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   const popperRender = (popper: ReactElement) => {
     const node = (
-      <Transition in={enter} classes durations={base} exitDelay={exitDelay} firstMount keepMounted>
+      <Transition in={enter} durations={base} exitDelay={exitDelay} classes firstMount keepMounted onEntered={onOpened}>
         {popper}
       </Transition>
     );
@@ -155,7 +154,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
       render={popperRender}
       onOpen={handleOpen}
       onClose={handleClose}
-      onOpened={handleOpened}
+      onOpened={handleDisplayed}
       onClosed={handleClosed}
       onUpdate={handleUpdate}
     />
