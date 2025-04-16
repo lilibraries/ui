@@ -6,9 +6,8 @@ import Duration from "../Duration";
 import Direction from "../Direction";
 import Transition from "../Transition";
 import Popper, { PopperProps, PopperUpdateData } from "../Popper";
-import isPositiveNumber from "../utils/isPositiveNumber";
 
-export interface PopupProps extends Omit<PopperProps, "arrow"> {
+export interface PopupProps extends Omit<PopperProps, "arrow" | "openDelay" | "closeDelay"> {
   arrowed?: boolean;
   unpadding?: boolean;
 }
@@ -20,7 +19,6 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     unpadding,
     open: openProp,
     defaultOpen,
-    closeDelay: exitDelay,
     render,
     onOpen,
     onClose,
@@ -127,19 +125,12 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   const popperRender = (popper: ReactElement) => {
     const node = (
-      <Transition in={enter} durations={base} exitDelay={exitDelay} classes firstMount keepMounted onEntered={onOpened}>
+      <Transition in={enter} durations={base} classes firstMount keepMounted onEntered={onOpened}>
         {popper}
       </Transition>
     );
     return render ? render(node) : node;
   };
-
-  let closeDelay = exitDelay;
-  if (isPositiveNumber(exitDelay)) {
-    closeDelay = exitDelay + base;
-  } else {
-    closeDelay = base;
-  }
 
   return (
     <Popper
@@ -150,7 +141,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
       arrow={arrow}
       open={open}
       className={classes}
-      closeDelay={closeDelay}
+      closeDelay={base}
       render={popperRender}
       onOpen={handleOpen}
       onClose={handleClose}

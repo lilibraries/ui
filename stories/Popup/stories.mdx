@@ -44,14 +44,6 @@ Popup is built on the [Popper](?path=/story/overlays-popper--page) component. It
   <Story id="examples-popup--controlled-open" />
 </Canvas>
 
-### Trigger Delay
-
-Click to show or hide after 500ms.
-
-<Canvas mdxSource={require("!!raw-loader!./TriggerDelay").default}>
-  <Story id="examples-popup--trigger-delay" />
-</Canvas>
-
 ### Placements
 
 <Canvas mdxSource={require("!!raw-loader!./Placements").default}>
@@ -104,8 +96,6 @@ Click to show or hide after 500ms.
 | `container`       | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react)                                                                                                | The DOM node where the component should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig). |
 | `open`            | `boolean`                                                                                                                                                                                  | Show popup layer.                                                                                                                                                                                                                                                                                          |
 | `defaultOpen`     | `boolean`                                                                                                                                                                                  | Uncontrolled open.                                                                                                                                                                                                                                                                                         |
-| `openDelay`       | `number`                                                                                                                                                                                   | Delay time on open, in milliseconds.                                                                                                                                                                                                                                                                       |
-| `closeDelay`      | `number`                                                                                                                                                                                   | Delay time on close, in milliseconds.                                                                                                                                                                                                                                                                      |
 | `hoverEnterDelay` | `number`                                                                                                                                                                                   | Delay time on hover enter, in milliseconds, default is `100`.                                                                                                                                                                                                                                              |
 | `hoverLeaveDelay` | `number`                                                                                                                                                                                   | Delay time on hover leave, in milliseconds, default is `100`.                                                                                                                                                                                                                                              |
 | `firstMount`      | `boolean`                                                                                                                                                                                  | Mount on first time, no matter whether the component is opened.                                                                                                                                                                                                                                            |
