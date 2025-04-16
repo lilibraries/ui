@@ -1,0 +1,35 @@
+@import "@lilib/themes";
+
+.#{$cls-prefix}notice {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: var(--z-index-notice);
+  box-sizing: border-box;
+  width: 360px;
+  padding: var(--space-4);
+  background-color: var(--background-color-overlay);
+  border: 1px solid var(--border-color-base);
+  border-radius: var(--border-radius-fixed-large);
+  box-shadow: var(--shadow-3);
+  @include transition(base, ease-in-out, transform, opacity);
+
+  &.#{$cls-prefix}transition {
+    &-enter,
+    &-exiting,
+    &-exited {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    &-entering,
+    &-exit {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+
+    &-exited {
+      display: none;
+    }
+  }
+}

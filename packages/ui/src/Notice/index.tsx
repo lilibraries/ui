@@ -1,135 +1,142 @@
-import React, { forwardRef, HTMLAttributes, ReactNode, useRef } from "react";
-import cn from "classnames";
-import { ButtonProps } from "../Button";
-import { IntentValue } from "../utils/types";
+import React, { createContext, FC, ReactNode, useContext, useMemo, useRef, useState } from "react";
+import warning from "warning";
+import { usePersist } from "@lilib/hooks";
 import { EffectTarget } from "@lilib/utils";
-import Prefix from "../Prefix";
-import Duration from "../Duration";
-import Display from "../Display";
-import { useComposedRef, usePersist, useSetState, useUpdate } from "@lilib/hooks";
-import isPositiveNumber from "../utils/isPositiveNumber";
 import Portal from "../Portal";
-import Transition from "../Transition";
-import Description from "../Description";
+import IntervalNotice, { NoticeHookOptions } from "./InternalNotice";
 
-export type NoticePlacement = "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end";
+export * from "./InternalNotice";
 
-export interface NoticeProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> {
-  icon?: ReactNode;
-  title?: ReactNode;
-  detail?: ReactNode;
-  intent?: IntentValue;
-  compact?: boolean;
-  duration?: number;
-  placement?: NoticePlacement;
-  open?: boolean;
-  defaultOpen?: boolean;
-  closable?: boolean;
-  closeProps?: ButtonProps;
+export interface NoticeProps {
+  children: ReactNode;
   container?: EffectTarget<HTMLElement>;
-  openDelay?: number;
-  closeDelay?: number;
-  firstMount?: boolean;
-  keepMounted?: boolean;
-  onClose?: () => void;
-  onOpened?: () => void;
-  onClosed?: () => void;
 }
 
-const Notice = forwardRef<HTMLDivElement, NoticeProps>((props, ref) => {
-  const {
-    className,
-    icon,
-    title,
-    detail,
-    intent,
-    compact,
-    duration = 5000,
-    placement = "top-end",
-    open: openProp,
-    defaultOpen,
-    closable,
-    closeProps,
-    container,
-    openDelay,
-    closeDelay: exitDelay,
-    firstMount,
-    keepMounted,
-    onClose,
-    onOpened,
-    onClosed,
-    ...rest
-  } = props;
+interface NoticeStateItem {
+  id: number;
+  open: boolean;
+  options: NoticeHookOptions;
+}
 
-  const { cls } = Prefix.useConfig();
-  const { base } = Duration.useConfig();
+interface NoticeContextValue {
+  mounted: boolean;
+  openNotice: (options: NoticeHookOptions) => number;
+  closeNotice: (id: number) => void;
+  updateNotice: (id: number, options: NoticeHookOptions) => void;
+}
 
-  const closeDelay = isPositiveNumber(exitDelay) ? exitDelay + base : exitDelay;
-  const noticeRef = useRef(null);
-  const composedNoticeRef = useComposedRef(noticeRef, ref);
+const NoticeContext = createContext<NoticeContextValue>({
+  mounted: false,
+  openNotice: () => -1,
+  closeNotice: () => {},
+  updateNotice: () => {},
+});
 
-  const controlled = "open" in props;
-  const [{ open, opened, enter }, setState] = useSetState(() => {
-    const open = controlled ? !!openProp : !!defaultOpen;
-    return { open, opened: open, enter: open };
+const useNotice = () => {
+  const context = useContext(NoticeContext);
+
+  warning(context.mounted, "The `useNotice` hook must be used in the Notice component.");
+
+  const openNotice = usePersist((options: NoticeHookOptions) => {
+    const id = context.openNotice(options);
+
+    const closeNotice = () => {
+      context.closeNotice(id);
+    };
+
+    const updateNotice = (options: NoticeHookOptions) => {
+      context.updateNotice(id, options);
+    };
+
+    return { closeNotice, updateNotice };
   });
 
-  const handleClose = usePersist(() => {
-    if (!controlled) {
-      setState({ open: false });
-    }
-    onClose?.();
+  return openNotice;
+};
+
+const Notice: FC<NoticeProps> & {
+  useNotice: typeof useNotice;
+} = (props) => {
+  const { children, container } = props;
+
+  const idRef = useRef(0);
+  const [notices, setNotices] = useState<NoticeStateItem[]>([]);
+
+  // const topNotices = notices.filter((notice) => notice.options.placement === "top");
+  // const topStartNotices = notices.filter((notice) => notice.options.placement === "top-start");
+  // const topEndNotices = notices.filter((notice) => notice.options.placement === "top-end");
+  // const bottomNotices = notices.filter((notice) => notice.options.placement === "bottom");
+  // const bottomStartNotices = notices.filter((notice) => notice.options.placement === "bottom-start");
+  // const bottomEndNotices = notices.filter((notice) => notice.options.placement === "bottom-end");
+
+  const openNotice = usePersist((options: NoticeHookOptions) => {
+    const id = idRef.current++;
+    setNotices((notices) => [...notices, { id, open: true, options }]);
+    return id;
   });
 
-  const handleOpened = usePersist(() => {
-    setState({ opened: true });
-    onOpened?.();
+  const closeNotice = usePersist((id: number) => {
+    setNotices((notices) =>
+      notices.map((notice) => {
+        if (notice.id === id) {
+          return { ...notice, open: false };
+        }
+        return notice;
+      })
+    );
   });
 
-  const handleClosed = usePersist(() => {
-    setState({ opened: false });
-    onClosed?.();
+  const updateNotice = usePersist((id: number, options: NoticeHookOptions) => {
+    setNotices((notices) =>
+      notices.map((notice) => {
+        if (notice.id === id) {
+          return { ...notice, options: { ...notice.options, ...options } };
+        }
+        return notice;
+      })
+    );
   });
 
-  useUpdate(() => {
-    if (controlled) {
-      setState({ open: !!openProp });
-    }
-  }, [openProp]);
+  const removeNotice = usePersist((id: number) => {
+    setNotices((notices) => notices.filter((notice) => notice.id !== id));
+  });
 
-  useUpdate(() => {
-    if (open) {
-      if (opened) {
-        setState({ enter: true });
-      }
-    } else {
-      setState({ enter: false });
-    }
-  }, [open, opened]);
+  const renderNotices = usePersist((notices: NoticeStateItem[]) => {
+    return notices.map((notice) => {
+      const { id, open, options } = notice;
+      const { onClose, onClosed, ...props } = options;
+
+      const handleClose = () => {
+        onClose?.();
+        closeNotice(id);
+      };
+
+      const handleClosed = () => {
+        onClosed?.();
+        removeNotice(id);
+      };
+
+      return <IntervalNotice {...props} key={id} open={open} onClose={handleClose} onClosed={handleClosed} />;
+    });
+  });
+
+  const contextValue = useMemo(() => {
+    return {
+      mounted: true,
+      openNotice,
+      closeNotice,
+      updateNotice,
+    };
+  }, [openNotice, closeNotice, updateNotice]);
 
   return (
-    <Display
-      open={open}
-      openDelay={openDelay}
-      closeDelay={closeDelay}
-      firstMount={firstMount}
-      keepMounted={keepMounted}
-      onOpened={handleOpened}
-      onClosed={handleClosed}
-    >
-      <Portal container={container}>
-        <Transition in={enter} classes durations={base} exitDelay={closeDelay} firstMount keepMounted>
-          <div {...rest} ref={composedNoticeRef} className={cn(`${cls}notice`, className)} data-placement={placement}>
-            <Portal.Config container={noticeRef}>
-              <Description icon={icon} title={title}>
-                {detail}
-              </Description>
-            </Portal.Config>
-          </div>
-        </Transition>
-      </Portal>
-    </Display>
+    <NoticeContext.Provider value={contextValue}>
+      {children}
+      {!!notices.length && <Portal container={container}>{renderNotices(notices)}</Portal>}
+    </NoticeContext.Provider>
   );
-});
+};
+
+Notice.useNotice = useNotice;
 
 export default Notice;

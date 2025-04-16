@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useDarkMode } from "storybook-dark-mode";
 import { useLayoutMount } from "@lilib/hooks";
 import { DocsContainer as BaseContainer } from "@storybook/addon-docs";
-import { Root, Prefix, Baseline, Focusing, Theme, Direction } from "@lilib/ui";
+import { Root, Prefix, Baseline, Focusing, Theme, Direction, Notice } from "@lilib/ui";
 import order from "./order";
 import { light, dark } from "./themes";
 import "./preview.scss";
@@ -24,26 +24,28 @@ export const parameters = {
               <Prefix cls="li-" var="li-">
                 <Theme value={isDarkMode ? "dark" : "light"}>
                   <Direction value={direction || "ltr"}>
-                    <BaseContainer
-                      context={{
-                        ...context,
-                        storyById: (id) => {
-                          const storyContext = context.storyById(id);
-                          return {
-                            ...storyContext,
-                            parameters: {
-                              ...storyContext?.parameters,
-                              docs: {
-                                ...storyContext?.parameters?.docs,
-                                theme: isDarkMode ? dark : light,
+                    <Notice>
+                      <BaseContainer
+                        context={{
+                          ...context,
+                          storyById: (id) => {
+                            const storyContext = context.storyById(id);
+                            return {
+                              ...storyContext,
+                              parameters: {
+                                ...storyContext?.parameters,
+                                docs: {
+                                  ...storyContext?.parameters?.docs,
+                                  theme: isDarkMode ? dark : light,
+                                },
                               },
-                            },
-                          };
-                        },
-                      }}
-                    >
-                      {children}
-                    </BaseContainer>
+                            };
+                          },
+                        }}
+                      >
+                        {children}
+                      </BaseContainer>
+                    </Notice>
                   </Direction>
                 </Theme>
               </Prefix>
@@ -84,7 +86,9 @@ export const decorators = [
             <Prefix cls="li-" var="li-">
               <Theme value={useDarkMode() ? "dark" : "light"}>
                 <Direction value={direction || "ltr"}>
-                  <div ref={demoContainerRef}>{render()}</div>
+                  <Notice>
+                    <div ref={demoContainerRef}>{render()}</div>
+                  </Notice>
                 </Direction>
               </Theme>
             </Prefix>
