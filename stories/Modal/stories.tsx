@@ -9,7 +9,6 @@ export { default as DeleteDialog } from "./DeleteDialog";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as LongContent } from "./LongContent";
 export { default as ControlledOpen } from "./ControlledOpen";
-export { default as TriggerDelay } from "./TriggerDelay";
 export { default as NestedOverlay } from "./NestedOverlay";
 export { default as ModalSizes } from "./ModalSizes";
 export { default as CloseEvents } from "./CloseEvents";

@@ -51,8 +51,6 @@ export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"
   confirmLabel?: ReactNode;
   confirmProps?: ButtonProps;
   container?: EffectTarget<HTMLElement>;
-  openDelay?: number;
-  closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
   onOpen?: () => void;
@@ -90,8 +88,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     confirmLabel,
     confirmProps,
     container,
-    openDelay,
-    closeDelay,
     firstMount,
     keepMounted,
     onOpen,
@@ -270,8 +266,6 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         blurred={blurred}
         container={container}
         open={open}
-        openDelay={openDelay}
-        closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
         onOpen={handleDisplayed}
@@ -279,15 +273,7 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         onClosed={handleClosed}
       >
         <div ref={containerRef} className={`${cls}modal-container`}>
-          <Transition
-            in={enter}
-            durations={base}
-            exitDelay={closeDelay}
-            classes
-            firstMount
-            keepMounted
-            onEntered={onOpened}
-          >
+          <Transition in={enter} durations={base} classes firstMount keepMounted onEntered={onOpened}>
             <Card
               {...rest}
               ref={ref}
