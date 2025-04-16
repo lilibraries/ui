@@ -20,14 +20,6 @@ Show backdrop on the document.
   <Story id="examples-backdrop--blurred" />
 </Canvas>
 
-### Delay
-
-Open and close after 500ms.
-
-<Canvas mdxSource={require("!!raw-loader!./Delay").default}>
-  <Story id="examples-backdrop--delay" />
-</Canvas>
-
 ### Close Events
 
 In the following example, you can close the backdrop by pressing the <kbd>ESC</kbd> key, hidding the page, losing focus of the window, or clicking the backdrop.
@@ -46,8 +38,6 @@ In the following example, you can close the backdrop by pressing the <kbd>ESC</k
 | `off`         | `"escape"` \| `"page-hide"` \| `"window-blur"` \| `"backdrop-click"` \| `string[]`          | Close event. Default is `"backdrop-click"`.                                                                                                                                                                                                                                                              |
 | `blurred`     | `boolean`                                                                                   | Blurred backdrop.                                                                                                                                                                                                                                                                                        |
 | `container`   | [`EffectTarget<HTMLElement>`](https://lilibraries.github.io/utils/types#effecttarget-react) | The DOM node where the content should be rendered. It can be `null`, `undefined`, a DOM element, a function returns a DOM element or a ref object references a DOM element. Default is `document.body`. This prop can be configured by [`Portal.Config`](?path=/story/others-portal--page#portalconfig). |
-| `openDelay`   | `number`                                                                                    | Open delay, in milliseconds.                                                                                                                                                                                                                                                                             |
-| `closeDelay`  | `number`                                                                                    | Close delay, in milliseconds.                                                                                                                                                                                                                                                                            |
 | `firstMount`  | `boolean`                                                                                   | Mount on first time, no matter whether the component is opened.                                                                                                                                                                                                                                          |
 | `keepMounted` | `boolean`                                                                                   | Keep mounted after the component is closed.                                                                                                                                                                                                                                                              |
 | `onOpen`      | `() => void`                                                                                | Start executing open animation.                                                                                                                                                                                                                                                                          |

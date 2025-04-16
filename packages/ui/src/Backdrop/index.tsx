@@ -8,7 +8,6 @@ import Display from "../Display";
 import Trigger from "../Trigger";
 import Duration from "../Duration";
 import Transition from "../Transition";
-import isPositiveNumber from "../utils/isPositiveNumber";
 import useSuppressBodyScrollbar from "../utils/useSuppressBodyScrollbar";
 
 export type BackdropCloseEvent = "escape" | "page-hide" | "window-blur" | "backdrop-click";
@@ -19,8 +18,6 @@ export interface BackdropProps extends HTMLAttributes<HTMLDivElement> {
   off?: BackdropCloseEvent | BackdropCloseEvent[];
   blurred?: boolean;
   container?: EffectTarget<HTMLElement>;
-  openDelay?: number;
-  closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
   onOpen?: () => void;
@@ -38,8 +35,6 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
     off = "backdrop-click",
     blurred,
     container,
-    openDelay,
-    closeDelay: exitDelay,
     firstMount,
     keepMounted,
     onOpen,
@@ -56,7 +51,6 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
 
   const { cls } = Prefix.useConfig();
   const { base } = Duration.useConfig();
-  const closeDelay = isPositiveNumber(exitDelay) ? exitDelay + base : base;
 
   const backdropRef = useRef(null);
   const composedBackdropRef = useComposedRef(backdropRef, ref);
@@ -122,23 +116,14 @@ const Backdrop = forwardRef<HTMLDivElement, BackdropProps>((props, ref) => {
       <Trigger off={triggerCloseEvents} open={open} onClose={handleClose} />
       <Display
         open={open}
-        openDelay={openDelay}
-        closeDelay={closeDelay}
+        closeDelay={base}
         firstMount={firstMount}
         keepMounted={keepMounted}
         onOpened={handleDisplayed}
         onClosed={handleClosed}
       >
         <Portal container={container}>
-          <Transition
-            in={enter}
-            durations={base}
-            exitDelay={exitDelay}
-            classes
-            firstMount
-            keepMounted
-            onEntered={onOpened}
-          >
+          <Transition in={enter} durations={base} classes firstMount keepMounted onEntered={onOpened}>
             <div {...rest} ref={composedBackdropRef} className={classes} onClick={handleBackdropClick}>
               <Portal.Config container={backdropRef}>{children}</Portal.Config>
             </div>
