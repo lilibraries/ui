@@ -53,8 +53,6 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, "title
   confirmLabel?: ReactNode;
   confirmProps?: ButtonProps;
   container?: EffectTarget<HTMLElement>;
-  openDelay?: number;
-  closeDelay?: number;
   firstMount?: boolean;
   keepMounted?: boolean;
   onOpen?: () => void;
@@ -92,8 +90,6 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
     confirmLabel,
     confirmProps,
     container,
-    openDelay,
-    closeDelay,
     firstMount,
     keepMounted,
     onOpen,
@@ -276,8 +272,6 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
         blurred={blurred}
         container={container}
         open={open}
-        openDelay={openDelay}
-        closeDelay={closeDelay}
         firstMount={firstMount}
         keepMounted={keepMounted}
         onOpen={handleDisplayed}
@@ -285,15 +279,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
         onClosed={handleClosed}
       >
         <div ref={containerRef} className={`${cls}drawer-container`}>
-          <Transition
-            in={enter}
-            durations={base}
-            exitDelay={closeDelay}
-            classes
-            firstMount
-            keepMounted
-            onEntered={onOpened}
-          >
+          <Transition in={enter} durations={base} classes firstMount keepMounted onEntered={onOpened}>
             <Card
               {...rest}
               ref={ref}
