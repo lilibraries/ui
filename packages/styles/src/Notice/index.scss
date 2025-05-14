@@ -11,7 +11,7 @@
   background-color: var(--background-color-overlay);
   border: 1px solid var(--border-color-base);
   border-radius: var(--border-radius-fixed-large);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-4);
   @include transition(base, ease-in-out, transform, opacity);
 
   &.#{$cls-prefix}transition {

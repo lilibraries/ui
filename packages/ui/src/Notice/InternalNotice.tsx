@@ -45,7 +45,7 @@ const IntervalNotice: FC<IntervalNoticeProps> = (props) => {
     title,
     detail,
     intent,
-    duration = 5000,
+    duration,
     placement = "top-end",
     open,
     closable,
